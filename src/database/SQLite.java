@@ -46,7 +46,6 @@ public class SQLite {
             stmt.execute(deletar);
             deletar = "DROP TABLE IF EXISTS venda;";
             stmt.execute(deletar);
-            
 
             String cliente = "CREATE TABLE IF NOT EXISTS cliente("
                     + "cpf           CHAR(11)     NOT NULL,"

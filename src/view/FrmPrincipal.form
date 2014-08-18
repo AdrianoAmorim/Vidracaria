@@ -988,7 +988,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jPanel24" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBox3" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="cbTipoPagamento" min="-2" pref="130" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblQtdVezes" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1054,7 +1054,7 @@
                                   <Component id="jPanel24" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblQtdVezes" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="tfQtdVezes" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="jComboBox3" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Component id="cbTipoPagamento" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1128,7 +1128,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="79" max="32767" attributes="0"/>
+                          <EmptySpace pref="92" max="32767" attributes="0"/>
                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1184,7 +1184,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="79" max="32767" attributes="0"/>
+                          <EmptySpace pref="94" max="32767" attributes="0"/>
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1451,7 +1451,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JComboBox" name="jComboBox3">
+            <Component class="javax.swing.JComboBox" name="cbTipoPagamento">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
@@ -1463,6 +1463,10 @@
                 <Property name="selectedIndex" type="int" value="-1"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbTipoPagamentoMouseClicked"/>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbTipoPagamentoItemStateChanged"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="lblQtdVezes">
               <Properties>
@@ -1527,7 +1531,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="56" max="32767" attributes="0"/>
+                          <EmptySpace pref="76" max="32767" attributes="0"/>
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>

@@ -98,7 +98,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel24 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        cbTipoPagamento = new javax.swing.JComboBox();
         lblQtdVezes = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         tfQtdVezes = new javax.swing.JTextField();
@@ -637,7 +637,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -666,7 +666,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addContainerGap())
         );
@@ -793,9 +793,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A Vista", "Cartão de crédito", "Cheque" }));
-        jComboBox3.setSelectedIndex(-1);
-        jComboBox3.setToolTipText("");
+        cbTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A Vista", "Cartão de crédito", "Cheque" }));
+        cbTipoPagamento.setSelectedIndex(-1);
+        cbTipoPagamento.setToolTipText("");
+        cbTipoPagamento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbTipoPagamentoMouseClicked(evt);
+            }
+        });
+        cbTipoPagamento.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbTipoPagamentoItemStateChanged(evt);
+            }
+        });
 
         lblQtdVezes.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -835,7 +845,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addContainerGap())
         );
@@ -879,7 +889,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblQtdVezes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -935,7 +945,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblQtdVezes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfQtdVezes, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1015,6 +1025,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCadastrarProdActionPerformed
 
+    private void cbTipoPagamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbTipoPagamentoMouseClicked
+
+    }//GEN-LAST:event_cbTipoPagamentoMouseClicked
+
+    private void cbTipoPagamentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoPagamentoItemStateChanged
+        if (cbTipoPagamento.getSelectedIndex() == 1) {
+            tfQtdVezes.setVisible(true);
+            lblQtdVezes.setVisible(true);
+        } else {
+            tfQtdVezes.setVisible(false);
+            lblQtdVezes.setVisible(false);
+        }
+    }//GEN-LAST:event_cbTipoPagamentoItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -1055,10 +1079,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarCl;
     private javax.swing.JButton btnCadastrarProd;
+    private javax.swing.JComboBox cbTipoPagamento;
     private javax.swing.JComboBox cb_produtos;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
