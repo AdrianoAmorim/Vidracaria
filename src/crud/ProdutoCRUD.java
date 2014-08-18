@@ -26,7 +26,7 @@ public class ProdutoCRUD {
 
         PreparedStatement stmt;
         try {
-            stmt = conn.prepareStatement("INSERT INTO produto(codigoProduto, descricaoProduto, precoCusto, precoVenda, unidade medida)"
+            stmt = conn.prepareStatement("INSERT INTO produto(codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida)"
                     + " VALUES (?,?,?,?,?)");
             stmt.setString(1, String.valueOf(produto.getCodigoProduto()));
             stmt.setString(2, produto.getDescricaoProduto());
