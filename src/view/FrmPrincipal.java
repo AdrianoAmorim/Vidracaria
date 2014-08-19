@@ -35,6 +35,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroupVisualizar = new javax.swing.ButtonGroup();
         tpPrincipal = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         tfNome = new javax.swing.JTextField();
@@ -113,6 +114,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
+        rb_Produtos = new javax.swing.JRadioButton();
+        rb_Clientes = new javax.swing.JRadioButton();
+        btn_Pesquisar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tp_painelDeTexto = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema sem Nome - Vidraçaria");
@@ -686,7 +693,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -715,7 +722,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addContainerGap())
         );
@@ -755,7 +762,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         cb_produtos.setEditable(true);
-        cb_produtos.setSelectedIndex(-1);
 
         jPanel18.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -888,7 +894,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addContainerGap())
         );
@@ -1016,6 +1022,52 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407888039_Business.png")), jPanel4, "Movimento Caixa"); // NOI18N
 
+        btnGroupVisualizar.add(rb_Produtos);
+        rb_Produtos.setText("Produtos");
+
+        btnGroupVisualizar.add(rb_Clientes);
+        rb_Clientes.setText("Clientes");
+
+        btn_Pesquisar.setText("Pesquisar");
+        btn_Pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_PesquisarActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(tp_painelDeTexto);
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rb_Clientes)
+                    .addGroup(jPanel27Layout.createSequentialGroup()
+                        .addComponent(rb_Produtos)
+                        .addGap(161, 161, 161)
+                        .addComponent(btn_Pesquisar))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(392, Short.MAX_VALUE))
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(rb_Clientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb_Produtos)
+                    .addComponent(btn_Pesquisar))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(185, Short.MAX_VALUE))
+        );
+
+        tpPrincipal.addTab("Visualizar Registros", jPanel27);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1042,8 +1094,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ArrayList<Produto> arrayProduto = new ArrayList<>();
         ProdutoCRUD produto = new ProdutoCRUD();
         arrayProduto = produto.consultarProduto();
-        
-        for(Produto prod: arrayProduto){
+
+        for (Produto prod : arrayProduto) {
             cb_produtos.addItem(prod);
         }
     }
@@ -1096,6 +1148,39 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbUnidadeMedidaItemStateChanged
 
+    private void btn_PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PesquisarActionPerformed
+        if (rb_Clientes.isSelected()) {
+            Cliente cliente = new Cliente();
+            ClienteCRUD clienteCRUD = new ClienteCRUD();
+            ArrayList<Cliente> listaCliente = new ArrayList<>();
+
+            listaCliente = clienteCRUD.consultarCliente();
+            for (int i = 0; i < listaCliente.size(); i++) {
+                tp_painelDeTexto.setText("Nome: " + listaCliente.get(i).getNome() + "\n"
+                        + "CPF: " + listaCliente.get(i).getCpf() + "\n"
+                        + "RG: " + listaCliente.get(i).getRg() + "\n"
+                        + "End: " + listaCliente.get(i).getEndereco() + "\n"
+                        + "Tel. fixo: " + listaCliente.get(i).getTelResidencial() + "\n"
+                        + "Tel. Cel: " + listaCliente.get(i).getTelResidencial() + "\n\n\n");
+            }
+        }
+        if (rb_Produtos.isSelected()) {
+            Produto produto = new Produto();
+            ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+            ArrayList<Produto> listaProduto = new ArrayList<>();
+
+            listaProduto = produtoCRUD.consultarProduto();
+            for (int i = 0; i < listaProduto.size(); i++) {
+                tp_painelDeTexto.setText("Codigo: " + listaProduto.get(i).getCodigoProduto() + "\n"
+                        + "Descricao: " + listaProduto.get(i).getDescricaoProduto() + "\n"
+                        + "Un. medida: " + listaProduto.get(i).getUnidadeMedida() + "\n"
+                        + "Preco custo: " + listaProduto.get(i).getPrecoCusto() + "\n"
+                        + "Preco venda: " + listaProduto.get(i).getPrecoVenda() + "\n\n\n");
+            }
+
+        }
+    }//GEN-LAST:event_btn_PesquisarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1136,6 +1221,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarCl;
     private javax.swing.JButton btnCadastrarProd;
+    private javax.swing.ButtonGroup btnGroupVisualizar;
+    private javax.swing.JButton btn_Pesquisar;
     private javax.swing.JComboBox cbTipoPagamento;
     private javax.swing.JComboBox cbUnidadeMedida;
     private javax.swing.JComboBox cb_produtos;
@@ -1184,6 +1271,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1192,11 +1280,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel lblQtdVezes;
+    private javax.swing.JRadioButton rb_Clientes;
+    private javax.swing.JRadioButton rb_Produtos;
     private javax.swing.JTextField tfCodProd;
     private javax.swing.JTextField tfCodProd1;
     private javax.swing.JTextField tfCpf;
@@ -1212,5 +1303,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfVlCustoProd;
     private javax.swing.JTextField tfVlVendaProd;
     private javax.swing.JTabbedPane tpPrincipal;
+    private javax.swing.JTextPane tp_painelDeTexto;
     // End of variables declaration//GEN-END:variables
 }
