@@ -88,6 +88,7 @@ public class SQLite {
                     + ""
                     + "CONSTRAINT fk_produto_venda"
                     + "  FOREIGN KEY (codigoProduto)"
+                    + "  REFERENCES produto (codigoProduto)"
                     + ");";
 
             stmt.executeUpdate(estoque);
@@ -131,7 +132,7 @@ public class SQLite {
             conn.close();
             System.out.println("Tabelas criadas com sucesso !");
         } catch (SQLException erroTabelas) {
-            System.err.println(erroTabelas.getMessage());
+            System.out.println(erroTabelas.getSQLState());
             System.exit(0);
         }
     }
