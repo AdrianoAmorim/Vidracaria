@@ -29,7 +29,7 @@ public class VendaCRUD {
                     + " VALUES (?, ?, ?, ?, ?, ?)");
             stmt.setString(1, venda.getCodigoVenda());
             stmt.setString(2, venda.getCodigoCliente());
-            stmt.setInt(3, venda.getQuantidadeProduto());
+            stmt.setDouble(3, venda.getQuantidadeProduto());
             stmt.setString(4, venda.getCodigoTipoPagamento());
             stmt.setString(5, venda.getCodigoCliente());
             stmt.setString(6, venda.getDataVenda());
@@ -53,7 +53,7 @@ public class VendaCRUD {
                 Venda venda = new Venda();
                 venda.setCodigoVenda(result.getString("codigoVenda"));
                 venda.setCodigoProduto(result.getString("codigoProduto"));
-                venda.setQuantidadeProduto(result.getInt("quantidadeProduto"));
+                venda.setQuantidadeProduto(result.getDouble("quantidadeProduto"));
                 venda.setCodigoCliente(result.getString("codigoCliente"));
                 venda.setCodigoTipoPagamento(result.getString("codigoTipoPagamento"));
                 venda.setDataVenda(result.getString("dataVenda"));
@@ -75,7 +75,7 @@ public class VendaCRUD {
             stmt = conn.prepareStatement("UPDATE venda SET codigoProduto = ?, quantidadeProduto = ?, codigoCliente = ?, codigoTipoPagamento = ?, dataVenda = ?"
                     + " WHERE codigoVenda = ?;");
             stmt.setString(1, venda.getCodigoProduto());
-            stmt.setInt(2, venda.getQuantidadeProduto());
+            stmt.setDouble(2, venda.getQuantidadeProduto());
             stmt.setString(3, venda.getCodigoCliente());
             stmt.setString(4, venda.getCodigoTipoPagamento());
             stmt.setString(5, venda.getDataVenda());

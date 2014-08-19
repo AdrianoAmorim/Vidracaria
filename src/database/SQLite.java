@@ -40,17 +40,21 @@ public class SQLite {
         try {
             Statement stmt = conn.createStatement();
 
-            String deletar = "DROP TABLE IF EXISTS cliente;";
-            stmt.execute(deletar);
-            deletar = "DROP TABLE IF EXISTS produto;";
-            stmt.execute(deletar);
-            deletar = "DROP TABLE IF EXISTS venda;";
-            stmt.execute(deletar);
-
+            // Descomentar caso o database seja modificado, para recriar as tabelas
+            // String deletar = "DROP TABLE IF EXISTS cliente;";
+            // stmt.execute(deletar);
+            // deletar = "DROP TABLE IF EXISTS produto;";
+            // stmt.execute(deletar);
+            // deletar = "DROP TABLE IF EXISTS venda;";
+            // stmt.execute(deletar);
+            // deletar = "DROP TABLE IF EXISTS tipoPagamento;";
+            // stmt.execute(deletar);
+            // deletar = "DROP TABLE IF EXISTS estoque;";
+            // stmt.execute(deletar);
             String cliente = "CREATE TABLE IF NOT EXISTS cliente("
-                    + "cpf           CHAR(11)     NOT NULL,"
-                    + "nome          VARCHAR(30)  NOT NULL,"
-                    + "endereco      VARCHAR(256) NOT NULL,"
+                    + "cpf            CHAR(11)     NOT NULL,"
+                    + "nome           VARCHAR(30)  NOT NULL,"
+                    + "endereco       VARCHAR(256) NOT NULL,"
                     + "telResidencial VARCHAR(20)     NULL,"
                     + "telCelular     VARCHAR(20)     NULL,"
                     + "rg             VARCHAR(10) NOT NULL,"
@@ -74,6 +78,21 @@ public class SQLite {
             stmt.executeUpdate(produto);
             stmt.close();
 
+            String estoque = "CREATE TABLE IF NOT EXISTS estoque("
+                    + "codigoProduto    CHAR(6) NOT NULL,"
+                    + "quantidadeAtual  DOUBLE  NOT NULL,"
+                    + "quantidadeMinima DOUBLE  NOT NULL,"
+                    + ""
+                    + "CONSTRAINT pk_estoque"
+                    + "  PRIMARY KEY (codigoProduto),"
+                    + ""
+                    + "CONSTRAINT fk_produto_venda"
+                    + "  FOREIGN KEY (codigoProduto)"
+                    + ");";
+
+            stmt.executeUpdate(estoque);
+            stmt.close();
+
             String pagamento = "CREATE TABLE IF NOT EXISTS tipoPagamento("
                     + "codigoTipoPagamento CHAR(2)     NOT NULL,"
                     + "descricaoPagamento  VARCHAR(30) NOT NULL,"
@@ -87,7 +106,7 @@ public class SQLite {
             String venda = "CREATE TABLE IF NOT EXISTS venda("
                     + "codigoVenda         CHAR(9) NOT NULL,"
                     + "codigoProduto       CHAR(6) NOT NULL,"
-                    + "quantidadeProduto   INT     NOT NULL,"
+                    + "quantidadeProduto   DOUBLE  NOT NULL,"
                     + "codigoCliente       CHAR(6) NOT NULL,"
                     + "codigoTipoPagamento CHAR(2) NOT NULL,"
                     + "dataVenda           DATE    NOT NULL,"

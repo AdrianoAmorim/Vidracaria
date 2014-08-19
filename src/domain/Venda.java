@@ -17,7 +17,7 @@ public class Venda {
     private String codigoProduto;
     private String codigoCliente;
     private String codigoTipoPagamento;
-    private int quantidadeProduto;
+    private Double quantidadeProduto;
     private String dataVenda;
 
     public String getCodigoVenda() {
@@ -46,12 +46,12 @@ public class Venda {
         return true;
     }
 
-    public int getQuantidadeProduto() {
+    public Double getQuantidadeProduto() {
         return quantidadeProduto;
     }
 
-    public boolean setQuantidadeProduto(int quantidadeProduto) {
-        if (Integer.toString(quantidadeProduto).isEmpty()) {
+    public boolean setQuantidadeProduto(Double quantidadeProduto) {
+        if (Double.toString(quantidadeProduto).isEmpty()) {
             JOptionPane.showMessageDialog(null, "Quantidade do produto inválido !", "AVISO", 2);
             return false;
         }
