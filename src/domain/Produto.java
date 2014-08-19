@@ -19,6 +19,9 @@ public class Produto {
     private Double precoVenda;
     private String unidadeMedida;
 
+    
+   
+
     public String getCodigoProduto() {
         return codigoProduto;
     }

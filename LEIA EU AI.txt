@@ -1,0 +1,13 @@
+
+COnsegui ENFIM... os dois COmbo BOx estao funcionando pegando do banco e preenchendo....
+
+SQLite
+
+Tinha um Erro nela...o produto so estava pegando o primeiro gravado...
+Corrigido(o STATEMENT estava sendo fechado dentro do laço)
+
+ProdutoCRUD, ClienteCRUD
+
+Mudei as query de consulta para (select * from tabela)...
+porq funciona do mesmo jeito...ela retorna tudo pra mim ....dai posso
+usar o q eu quero separadamente igual tava...OK

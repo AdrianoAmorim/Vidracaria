@@ -48,7 +48,7 @@ public class ClienteCRUD {
         ResultSet result;
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         try {
-            stmt = conn.prepareStatement("SELECT nome,cpf,rg,endereco,telResidencial,telCelular FROM cliente;");
+            stmt = conn.prepareStatement("SELECT * FROM cliente;");
             result = stmt.executeQuery();
             while (result.next()) {
                 Cliente cliente = new Cliente();

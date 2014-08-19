@@ -8,7 +8,9 @@ package view;
 import crud.*;
 import domain.Cliente;
 import domain.Produto;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -24,6 +26,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.lblQtdVezes.setVisible(false);
         this.tfQtdVezes.setVisible(false);
+
     }
 
     /**
@@ -90,7 +93,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfCodProd1 = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbCliente = new javax.swing.JComboBox();
         jPanel17 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         cb_produtos = new javax.swing.JComboBox();
@@ -128,6 +131,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tpPrincipal.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tpPrincipal.setMinimumSize(new java.awt.Dimension(912, 661));
         tpPrincipal.setPreferredSize(new java.awt.Dimension(912, 661));
+        tpPrincipal.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tpPrincipalStateChanged(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         jPanel1.setMinimumSize(new java.awt.Dimension(802, 426));
@@ -336,7 +344,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        tfCpf1.setEditable(false);
         tfCpf1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfCpf1.setForeground(new java.awt.Color(255, 0, 0));
         tfCpf1.setText("0");
@@ -473,10 +480,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfDescricaoProd.setBackground(new java.awt.Color(204, 255, 204));
         tfDescricaoProd.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
-        tfCodProd.setEditable(false);
         tfCodProd.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfCodProd.setForeground(new java.awt.Color(255, 0, 0));
-        tfCodProd.setText("0");
+        tfCodProd.setText("1");
 
         jPanel13.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -585,11 +591,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         cbUnidadeMedida.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M²", "Un" }));
         cbUnidadeMedida.setToolTipText("");
-        cbUnidadeMedida.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbUnidadeMedidaItemStateChanged(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -628,7 +629,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addGap(61, 61, 61)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -649,7 +650,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cbUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(btnCadastrarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -693,7 +694,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -705,10 +706,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        tfCodProd1.setEditable(false);
         tfCodProd1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfCodProd1.setForeground(new java.awt.Color(255, 0, 0));
-        tfCodProd1.setText("0");
+        tfCodProd1.setText("1");
 
         jPanel16.setBackground(new java.awt.Color(153, 153, 255));
         jPanel16.setPreferredSize(new java.awt.Dimension(152, 49));
@@ -722,7 +722,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addContainerGap())
         );
@@ -734,9 +734,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jComboBox1.setEditable(true);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setSelectedIndex(-1);
+        cbCliente.setSelectedIndex(-1);
 
         jPanel17.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -760,8 +758,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel17)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
-
-        cb_produtos.setEditable(true);
 
         jPanel18.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -894,7 +890,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addContainerGap())
         );
@@ -930,7 +926,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfCodProd1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -976,7 +972,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cb_produtos, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1089,17 +1085,40 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 //Carrega combosBox
-    public void carregarComboBox() {
-        ArrayList<Cliente> arrayCliente = new ArrayList<>();
-        ArrayList<Produto> arrayProduto = new ArrayList<>();
-        ProdutoCRUD produto = new ProdutoCRUD();
-        arrayProduto = produto.consultarProduto();
+    public void carregarCbProduto() {
+        if (tpPrincipal.getSelectedIndex() == 2) {
+            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            ArrayList<Produto> arrayProd = new ArrayList<>();
+            ProdutoCRUD prod = new ProdutoCRUD();
 
-        for (Produto prod : arrayProduto) {
-            cb_produtos.addItem(prod);
+            arrayProd = prod.consultarProduto();
+            cb_produtos.removeAllItems();
+
+            for (Produto prodd : arrayProd) {
+                modelo.addElement(prodd.getDescricaoProduto());
+            }
+
+            cb_produtos.setModel(modelo);
+
         }
     }
+    public void carregarCbCliente() {
+        if (tpPrincipal.getSelectedIndex() == 2) {
+            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            ArrayList<Cliente> arrayCliente = new ArrayList<>();
+            ClienteCRUD cli = new ClienteCRUD();
 
+            arrayCliente = cli.consultarCliente();
+            cbCliente.removeAllItems();
+            
+            for(Cliente cliente : arrayCliente){
+                modelo.addElement(cliente.getNome());
+            }
+            cbCliente.setModel(modelo);
+            
+        }
+
+    }
 //Cadastrar Cliente
     private void btnCadastrarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClActionPerformed
         Cliente cliente = new Cliente();
@@ -1129,7 +1148,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         produto.setPrecoCusto(Double.parseDouble(tfVlCustoProd.getText()));
         produto.setPrecoVenda(Double.parseDouble(tfVlVendaProd.getText()));
         produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
-        System.out.println(cbUnidadeMedida.getSelectedItem().toString());
+
         prodCrud.inserirProduto(produto);
 
     }//GEN-LAST:event_btnCadastrarProdActionPerformed
@@ -1143,10 +1162,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             lblQtdVezes.setVisible(false);
         }
     }//GEN-LAST:event_cbTipoPagamentoItemStateChanged
-
-    private void cbUnidadeMedidaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbUnidadeMedidaItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbUnidadeMedidaItemStateChanged
 
     private void btn_PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PesquisarActionPerformed
         if (rb_Clientes.isSelected()) {
@@ -1180,6 +1195,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btn_PesquisarActionPerformed
+
+    private void tpPrincipalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tpPrincipalStateChanged
+        carregarCbProduto();
+        carregarCbCliente();
+    }//GEN-LAST:event_tpPrincipalStateChanged
 
     /**
      * @param args the command line arguments
@@ -1223,11 +1243,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrarProd;
     private javax.swing.ButtonGroup btnGroupVisualizar;
     private javax.swing.JButton btn_Pesquisar;
+    private javax.swing.JComboBox cbCliente;
     private javax.swing.JComboBox cbTipoPagamento;
     private javax.swing.JComboBox cbUnidadeMedida;
     private javax.swing.JComboBox cb_produtos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

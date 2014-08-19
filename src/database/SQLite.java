@@ -40,17 +40,19 @@ public class SQLite {
         try {
             Statement stmt = conn.createStatement();
 
-            // Descomentar caso o database seja modificado, para recriar as tabelas
-            // String deletar = "DROP TABLE IF EXISTS cliente;";
-            // stmt.execute(deletar);
-            // deletar = "DROP TABLE IF EXISTS produto;";
-            // stmt.execute(deletar);
-            // deletar = "DROP TABLE IF EXISTS venda;";
-            // stmt.execute(deletar);
-            // deletar = "DROP TABLE IF EXISTS tipoPagamento;";
-            // stmt.execute(deletar);
-            // deletar = "DROP TABLE IF EXISTS estoque;";
-            // stmt.execute(deletar);
+ // Descomentar caso o database seja modificado, para recriar as tabelas
+            //String deletar = "DROP TABLE IF EXISTS cliente;";
+            //stmt.execute(deletar);
+            //deletar = "DROP TABLE IF EXISTS produto;";
+            //stmt.execute(deletar);
+            //deletar = "DROP TABLE IF EXISTS venda;";
+            //stmt.execute(deletar);
+            //deletar = "DROP TABLE IF EXISTS tipoPagamento;";
+            //stmt.execute(deletar);
+            //deletar = "DROP TABLE IF EXISTS estoque;";
+            //stmt.execute(deletar);
+            
+            
             String cliente = "CREATE TABLE IF NOT EXISTS cliente("
                     + "cpf            CHAR(11)     NOT NULL,"
                     + "nome           VARCHAR(30)  NOT NULL,"

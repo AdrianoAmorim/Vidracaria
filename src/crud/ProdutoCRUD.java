@@ -47,7 +47,7 @@ public class ProdutoCRUD {
         ResultSet result;
         ArrayList<Produto> listaProdutos = new ArrayList<>();
         try {
-            stmt = conn.prepareStatement("SELECT codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida FROM produto;");
+            stmt = conn.prepareStatement("SELECT * FROM produto;");
             result = stmt.executeQuery();
             while (result.next()) {
                 Produto produto = new Produto();
@@ -58,8 +58,8 @@ public class ProdutoCRUD {
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
 
                 listaProdutos.add(produto);
-                stmt.close();
             }
+            stmt.close();
             return listaProdutos;
         } catch (SQLException erroConsultarProduto) {
             System.out.println(erroConsultarProduto.getMessage());
