@@ -54,7 +54,7 @@ public class ClienteCRUD {
                 Cliente cliente = new Cliente();
                 cliente.setNome(result.getString("nome"));
                 cliente.setCpf(result.getString("cpf"));
-                cliente.setCpf(result.getString("rg"));
+                cliente.setRg(result.getString("rg"));
                 cliente.setEndereco(result.getString("endereco"));
                 cliente.setTelResidencial(result.getString("telResidencial"));
                 cliente.setTelCelular(result.getString("telCelular"));
