@@ -8,7 +8,6 @@ package view;
 import crud.*;
 import domain.Cliente;
 import domain.Produto;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
@@ -1084,10 +1083,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//Carrega combosBox
+//Carregar combosBoxs------------------------------------
     public void carregarCbProduto() {
         if (tpPrincipal.getSelectedIndex() == 2) {
-            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
             ArrayList<Produto> arrayProd = new ArrayList<>();
             ProdutoCRUD prod = new ProdutoCRUD();
 
@@ -1095,27 +1094,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
             cb_produtos.removeAllItems();
 
             for (Produto prodd : arrayProd) {
-                modelo.addElement(prodd.getDescricaoProduto());
+                cb_produtos.addItem(prodd.getDescricaoProduto());
             }
-
-            cb_produtos.setModel(modelo);
-
         }
     }
+
     public void carregarCbCliente() {
         if (tpPrincipal.getSelectedIndex() == 2) {
-            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
             ArrayList<Cliente> arrayCliente = new ArrayList<>();
             ClienteCRUD cli = new ClienteCRUD();
 
             arrayCliente = cli.consultarCliente();
             cbCliente.removeAllItems();
-            
-            for(Cliente cliente : arrayCliente){
-                modelo.addElement(cliente.getNome());
+
+            for (Cliente cliente : arrayCliente) {
+                cbCliente.addItem(cliente.getNome());
             }
-            cbCliente.setModel(modelo);
-            
+
         }
 
     }
