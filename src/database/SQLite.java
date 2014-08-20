@@ -52,14 +52,13 @@ public class SQLite {
             //deletar = "DROP TABLE IF EXISTS estoque;";
             //stmt.execute(deletar);
             
-            
             String cliente = "CREATE TABLE IF NOT EXISTS cliente("
                     + "cpf            CHAR(11)     NOT NULL,"
                     + "nome           VARCHAR(30)  NOT NULL,"
+                    + "rg             VARCHAR(10)  NOT NULL,"
                     + "endereco       VARCHAR(256) NOT NULL,"
-                    + "telResidencial VARCHAR(20)     NULL,"
-                    + "telCelular     VARCHAR(20)     NULL,"
-                    + "rg             VARCHAR(10) NOT NULL,"
+                    + "telResidencial VARCHAR(20)      NULL,"
+                    + "telCelular     VARCHAR(20)      NULL,"
                     + ""
                     + "CONSTRAINT pk_cliente"
                     + "  PRIMARY KEY(cpf)"

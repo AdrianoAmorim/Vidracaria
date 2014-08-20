@@ -6,7 +6,6 @@
 package crud;
 
 import database.SQLite;
-import domain.Cliente;
 import domain.Estoque;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,12 +25,15 @@ public class EstoqueCRUD {
 
         PreparedStatement stmt;
         try {
+            // falta implementar a quantidade minima na janela
             stmt = conn.prepareStatement("INSERT INTO estoque(codigoProduto, quantidadeAtual, quantidadeMinima)"
                     + " VALUES (?,?,?);");
+            
+            System.out.println(estoque.getQuantidadeAtual());
 
             stmt.setString(1, estoque.getCodigoProduto());
             stmt.setDouble(2, estoque.getQuantidadeAtual());
-            stmt.setDouble(3, estoque.getQuantidadeMinima());
+            stmt.setDouble(3, 3);
 
             stmt.executeUpdate();
             stmt.close();
@@ -65,6 +67,53 @@ public class EstoqueCRUD {
         }
     }
 
+    public Estoque consultarCodigoEstoque(String codigo) {
+
+        Estoque estoque = new Estoque();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = conn.prepareStatement("SELECT codigoProduto, quantidadeAtual, quantidadeMinima"
+                    + " FROM estoque WHERE codigoProduto = '" + codigo + "';");
+            result = stmt.executeQuery();
+            while (result.next()) {
+
+                estoque.setCodigoProduto(result.getString("codigoProduto"));
+                estoque.setQuantidadeAtual(result.getDouble("quantidadeAtual"));
+                estoque.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
+            }
+            stmt.close();
+        } catch (SQLException erroConsultarCodigoEstoque) {
+            System.out.println(erroConsultarCodigoEstoque.getMessage());
+        }
+        return estoque;
+    }
+
+    public Estoque consultarDescricaoEstoque(String descricao) {
+
+        Estoque estoque = new Estoque();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = conn.prepareStatement("SELECT e.codigoProduto, e.quantidadeAtual, e.quantidadeMinima"
+                    + "                     FROM estoque e CROSS JOIN produto p ON e.codigoProduto = p.codigoProduto"
+                    + "                     AND p.descricaoProduto = '" + descricao + "';");
+            result = stmt.executeQuery();
+            while (result.next()) {
+
+                estoque.setCodigoProduto(result.getString("codigoProduto"));
+                estoque.setQuantidadeAtual(result.getDouble("quantidadeAtual"));
+                estoque.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
+            }
+            stmt.close();
+        } catch (SQLException erroConsultarCodigoEstoque) {
+            System.out.println(erroConsultarCodigoEstoque.getMessage());
+        }
+        return estoque;
+    }
+
     public void atualizarEstoque(Estoque estoque) {
 
         PreparedStatement stmt;
@@ -78,7 +127,7 @@ public class EstoqueCRUD {
 
             stmt.executeUpdate();
             stmt.close();
-            
+
             System.out.println("Informações atualizadas com sucesso!");
         } catch (SQLException erroAtualizarEstoque) {
             System.out.println(erroAtualizarEstoque.getMessage());

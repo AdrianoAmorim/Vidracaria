@@ -48,7 +48,8 @@ public class ClienteCRUD {
         ResultSet result;
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         try {
-            stmt = conn.prepareStatement("SELECT * FROM cliente;");
+            stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
+                    + " FROM cliente;");
             result = stmt.executeQuery();
             while (result.next()) {
                 Cliente cliente = new Cliente();
@@ -67,6 +68,60 @@ public class ClienteCRUD {
             System.out.println(erroConsultarCliente.getMessage());
             return listaClientes;
         }
+    }
+
+    public Cliente consultarCpfCliente(String cpf) {
+
+        Cliente cliente = new Cliente();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
+                    + " FROM cliente WHERE cpf = '" + cpf + "';");
+
+            result = stmt.executeQuery();
+            while (result.next()) {
+
+                cliente.setNome(result.getString("nome"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setRg(result.getString("rg"));
+                cliente.setEndereco(result.getString("endereco"));
+                cliente.setTelResidencial(result.getString("telResidencial"));
+                cliente.setTelCelular(result.getString("telCelular"));
+
+            }
+            stmt.close();
+        } catch (SQLException erroConsultarCpfCliente) {
+            System.out.println(erroConsultarCpfCliente.getMessage());
+        }
+        return cliente;
+    }
+    
+        public Cliente consultarNomeCliente(String nome) {
+
+        Cliente cliente = new Cliente();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
+                    + " FROM cliente WHERE nome = '" + nome + "';");
+
+            result = stmt.executeQuery();
+            while (result.next()) {
+                cliente.setNome(result.getString("nome"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setRg(result.getString("rg"));
+                cliente.setEndereco(result.getString("endereco"));
+                cliente.setTelResidencial(result.getString("telResidencial"));
+                cliente.setTelCelular(result.getString("telCelular"));
+            }
+            stmt.close();
+        } catch (SQLException erroConsultarNomeCliente) {
+            System.out.println(erroConsultarNomeCliente.getMessage());
+        }
+        return cliente;
     }
 
     public void atualizarCliente(Cliente cliente) {

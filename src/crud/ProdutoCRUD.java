@@ -47,7 +47,8 @@ public class ProdutoCRUD {
         ResultSet result;
         ArrayList<Produto> listaProdutos = new ArrayList<>();
         try {
-            stmt = conn.prepareStatement("SELECT * FROM produto;");
+            stmt = conn.prepareStatement("SELECT codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida"
+                    + " FROM produto;");
             result = stmt.executeQuery();
             while (result.next()) {
                 Produto produto = new Produto();
@@ -67,6 +68,56 @@ public class ProdutoCRUD {
         }
     }
 
+    public Produto consultarCodigoProduto(String codigo) {
+
+        Produto produto = new Produto();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = conn.prepareStatement("SELECT codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida"
+                    + " FROM produto WHERE codigoProduto = '" + codigo + "';");
+
+            result = stmt.executeQuery();
+            while (result.next()) {
+                produto.setCodigoProduto(result.getString("codigoProduto"));
+                produto.setDescricaoProduto(result.getString("descricaoProduto"));
+                produto.setPrecoCusto(result.getDouble("precoCusto"));
+                produto.setPrecoVenda(result.getDouble("precoVenda"));
+                produto.setUnidadeMedida(result.getString("unidadeMedida"));
+            }
+            stmt.close();
+        } catch (SQLException erroConsultarCodigoProduto) {
+            System.out.println(erroConsultarCodigoProduto.getMessage());
+        }
+        return produto;
+    }
+
+        public Produto consultarNomeProduto(String nome) {
+
+        Produto produto = new Produto();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = conn.prepareStatement("SELECT codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida"
+                    + " FROM produto WHERE descricaoProduto = '" + nome + "';");
+
+            result = stmt.executeQuery();
+            while (result.next()) {
+                produto.setCodigoProduto(result.getString("codigoProduto"));
+                produto.setDescricaoProduto(result.getString("descricaoProduto"));
+                produto.setPrecoCusto(result.getDouble("precoCusto"));
+                produto.setPrecoVenda(result.getDouble("precoVenda"));
+                produto.setUnidadeMedida(result.getString("unidadeMedida"));
+            }
+            stmt.close();
+        } catch (SQLException erroConsultarCodigoProduto) {
+            System.out.println(erroConsultarCodigoProduto.getMessage());
+        }
+        return produto;
+    }
+        
     public void atualizarProduto(Produto produto) {
 
         PreparedStatement stmt;
