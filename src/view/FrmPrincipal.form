@@ -106,7 +106,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                              <Component id="tfTelCelular" min="-2" pref="158" max="-2" attributes="0"/>
+                              <Component id="tfClienteTelCel" min="-2" pref="158" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnCadastrarCl" min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
@@ -115,22 +115,22 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                      <Component id="tfEndereco" min="-2" pref="500" max="-2" attributes="0"/>
+                                      <Component id="tfClienteEndereco" min="-2" pref="500" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                      <Component id="tfCpf" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="tfClienteCpf" min="-2" pref="158" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                      <Component id="tfRg" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="tfClienteRg" min="-2" pref="158" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                      <Component id="tfTelResidencial" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="tfClienteTelRes" min="-2" pref="158" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -139,7 +139,7 @@
                                       </Group>
                                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tfNome" min="-2" pref="500" max="-2" attributes="0"/>
+                                          <Component id="tfClienteNome" min="-2" pref="500" max="-2" attributes="0"/>
                                           <Component id="tfCpf1" min="-2" pref="95" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -163,33 +163,33 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfNome" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="tfClienteNome" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfEndereco" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="tfClienteEndereco" min="-2" pref="49" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfCpf" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="tfClienteCpf" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfRg" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="tfClienteRg" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfTelResidencial" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="tfClienteTelRes" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tfTelCelular" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="tfClienteTelCel" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                               <Component id="btnCadastrarCl" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -199,7 +199,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="tfNome">
+            <Component class="javax.swing.JTextField" name="tfClienteNome">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="ff" red="cc" type="rgb"/>
@@ -209,14 +209,14 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfCpf">
+            <Component class="javax.swing.JTextField" name="tfClienteCpf">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Comic Sans MS" size="14" style="1"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfEndereco">
+            <Component class="javax.swing.JTextField" name="tfClienteEndereco">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Comic Sans MS" size="14" style="1"/>
@@ -231,7 +231,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarClActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfRg">
+            <Component class="javax.swing.JTextField" name="tfClienteRg">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Comic Sans MS" size="14" style="1"/>
@@ -443,7 +443,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="tfTelResidencial">
+            <Component class="javax.swing.JTextField" name="tfClienteTelRes">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Comic Sans MS" size="14" style="1"/>
@@ -491,7 +491,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="tfTelCelular">
+            <Component class="javax.swing.JTextField" name="tfClienteTelCel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Comic Sans MS" size="14" style="1"/>
@@ -638,14 +638,14 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfCodProd" min="-2" pref="95" max="-2" attributes="0"/>
-                                  <Component id="tfDescricaoProd" min="-2" pref="500" max="-2" attributes="0"/>
+                                  <Component id="tfProdutoCodigo" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Component id="tfProdutoDescricao" min="-2" pref="500" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="tfVlVendaProd" alignment="0" pref="110" max="32767" attributes="0"/>
-                                      <Component id="tfVlCustoProd" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfProdutoPrecoVenda" alignment="0" pref="110" max="32767" attributes="0"/>
+                                      <Component id="tfProdutoPrecoCusto" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="tfQtd" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Component id="tfProdutoQuantidade" min="-2" pref="50" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cbUnidadeMedida" min="-2" pref="69" max="-2" attributes="0"/>
                                   </Group>
@@ -670,28 +670,28 @@
                               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfCodProd" min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="tfProdutoCodigo" min="-2" pref="47" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jPanel21" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfDescricaoProd" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="tfProdutoDescricao" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jPanel22" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tfVlCustoProd" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="tfProdutoPrecoCusto" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel23" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfVlVendaProd" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="tfProdutoPrecoVenda" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel26" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tfQtd" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="tfProdutoQuantidade" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                               <Component id="cbUnidadeMedida" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -785,7 +785,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="tfDescricaoProd">
+            <Component class="javax.swing.JTextField" name="tfProdutoDescricao">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="ff" red="cc" type="rgb"/>
@@ -795,7 +795,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfCodProd">
+            <Component class="javax.swing.JTextField" name="tfProdutoCodigo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Comic Sans MS" size="14" style="1"/>
@@ -929,14 +929,14 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="tfVlCustoProd">
+            <Component class="javax.swing.JTextField" name="tfProdutoPrecoCusto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Comic Sans MS" size="14" style="1"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfVlVendaProd">
+            <Component class="javax.swing.JTextField" name="tfProdutoPrecoVenda">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Comic Sans MS" size="14" style="1"/>
@@ -992,7 +992,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="tfQtd">
+            <Component class="javax.swing.JTextField" name="tfProdutoQuantidade">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Comic Sans MS" size="14" style="1"/>
@@ -1108,7 +1108,7 @@
                           </Group>
                           <Component id="btnCadastrarProd1" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1171,7 +1171,7 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnCadastrarProd1" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1237,7 +1237,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="92" max="32767" attributes="0"/>
+                          <EmptySpace pref="79" max="32767" attributes="0"/>
                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1292,7 +1292,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="94" max="32767" attributes="0"/>
+                          <EmptySpace pref="79" max="32767" attributes="0"/>
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1630,7 +1630,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="76" max="32767" attributes="0"/>
+                          <EmptySpace pref="56" max="32767" attributes="0"/>
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1929,60 +1929,58 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="rb_Clientes" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="rb_Produtos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="497" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btn_Pesquisar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane2" alignment="0" min="-2" pref="497" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="rb_Clientes" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rb_Produtos" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbl_nomeC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_nomeP" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="tf_condicaoP" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="tf_condicaoC" min="-2" pref="104" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="755" max="32767" attributes="0"/>
+                      <EmptySpace pref="627" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Component id="rb_Clientes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rb_Clientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_nomeC" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tf_condicaoC" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rb_Produtos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_Pesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_nomeP" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tf_condicaoP" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="298" max="-2" attributes="0"/>
-                      <EmptySpace pref="216" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane2" min="-2" pref="298" max="-2" attributes="0"/>
+                          <Component id="btn_Pesquisar" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="221" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JRadioButton" name="rb_Produtos">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="btnGroupVisualizar"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Produtos"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="rb_Clientes">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="btnGroupVisualizar"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Clientes"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_Pesquisar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pesquisar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_PesquisarActionPerformed"/>
-              </Events>
-            </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -1994,6 +1992,44 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JRadioButton" name="rb_Clientes">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btnGroupVisualizar"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Clientes"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="rb_Produtos">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btnGroupVisualizar"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Produtos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_nomeC">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_nomeP">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tf_condicaoC">
+            </Component>
+            <Component class="javax.swing.JTextField" name="tf_condicaoP">
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_Pesquisar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pesquisar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_PesquisarActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
