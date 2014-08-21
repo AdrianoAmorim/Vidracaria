@@ -11,6 +11,7 @@ import domain.Estoque;
 import domain.Produto;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -376,10 +377,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfCpf1.setText("0");
 
         btnAlterarCliente.setText("Alterar");
+        btnAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarClienteActionPerformed(evt);
+            }
+        });
 
         btnDeletarCliente.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnDeletarCliente.setText("Deletar");
+        btnDeletarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -631,8 +642,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnDeletarProduto.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnDeletarProduto.setText("Deletar");
+        btnDeletarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarProdutoActionPerformed(evt);
+            }
+        });
 
         btnAlterarProduto.setText("Alterar");
+        btnAlterarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarProdutoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -744,7 +765,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -772,7 +793,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addContainerGap())
         );
@@ -810,11 +831,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         cb_produtos.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        cb_produtos.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cb_produtosItemStateChanged(evt);
-            }
-        });
 
         jPanel18.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -954,7 +970,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addContainerGap())
         );
@@ -1385,6 +1401,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void tpPrincipalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tpPrincipalStateChanged
         carregarCbProduto();
         carregarCbCliente();
+
     }//GEN-LAST:event_tpPrincipalStateChanged
 
 //Adiciona os produtos que estao incluidos na venda
@@ -1430,7 +1447,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tfProdutoPrecoVenda.setText(produto.getPrecoVenda().toString());
             tfProdutoQuantidade.setText(estoque.getQuantidadeAtual().toString());
             cbUnidadeMedida.addItem(produto.getUnidadeMedida());
-            
+
             tpPrincipal.setSelectedIndex(1);
             btnAlterarProduto.setVisible(true);
             btnDeletarProduto.setVisible(true);
@@ -1439,20 +1456,99 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_PesquisarActionPerformed
 
-    private void cb_produtosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_produtosItemStateChanged
-        ArrayList<String> arrayMedidas = new ArrayList<>();
+    private void btnAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdutoActionPerformed
         ProdutoCRUD prodCrud = new ProdutoCRUD();
+        EstoqueCRUD estCrud = new EstoqueCRUD();
+        Produto produto = new Produto();
+        Estoque estoque = new Estoque();
 
-        for (int i = 0; i < prodCrud.consultarProduto().size(); i++) {
-            arrayMedidas.add(prodCrud.consultarProduto().get(i).getUnidadeMedida());
-        }
-
-        for (int i = 0; i < prodCrud.consultarProduto().size(); i++) {
-            if (prodCrud.consultarProduto().get(i).getDescricaoProduto().equals(cb_produtos.getSelectedItem().toString())) {
-                tbMedidaProd.setText(arrayMedidas.get(i));
+        if (produto.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()))) {
+            if (estoque.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()))) {
+                if (produto.setDescricaoProduto(tfProdutoDescricao.getText())) {
+                    if (produto.setPrecoCusto(Double.parseDouble(tfProdutoPrecoCusto.getText()))) {
+                        if (produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()))) {
+                            if (estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()))) {
+                                prodCrud.atualizarProduto(produto);
+                                estCrud.atualizarEstoque(estoque);
+                                this.btnAlterarCliente.setVisible(false);
+                                this.btnAlterarProduto.setVisible(false);
+                                this.btnDeletarCliente.setVisible(false);
+                                this.btnDeletarProduto.setVisible(false);
+                                this.btnCadastrarCl.setEnabled(true);
+                                JOptionPane.showMessageDialog(null, "Alteração realizado com Sucesso.");
+                            }
+                        }
+                    }
+                }
             }
         }
-    }//GEN-LAST:event_cb_produtosItemStateChanged
+
+
+    }//GEN-LAST:event_btnAlterarProdutoActionPerformed
+
+    private void btnDeletarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarProdutoActionPerformed
+        ProdutoCRUD prodCrud = new ProdutoCRUD();
+        EstoqueCRUD estCrud = new EstoqueCRUD();
+        Produto produto = new Produto();
+        Estoque estoque = new Estoque();
+
+        if (produto.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()))) {
+            if (estoque.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()))) {
+                prodCrud.deletarProduto(produto);
+                estCrud.deletarEstoque(estoque);
+                this.btnAlterarCliente.setVisible(false);
+                this.btnAlterarProduto.setVisible(false);
+                this.btnDeletarCliente.setVisible(false);
+                this.btnDeletarProduto.setVisible(false);
+                this.btnCadastrarCl.setEnabled(true);
+                JOptionPane.showMessageDialog(null, "Remoção realizado com Sucesso.");
+            }
+        }
+
+    }//GEN-LAST:event_btnDeletarProdutoActionPerformed
+
+//Altera o Cliente procurado
+    private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
+        ClienteCRUD cliCrud = new ClienteCRUD();
+        Cliente cli = new Cliente();
+
+        if (cli.setCpf(tfClienteCpf.getText())) {
+            if (cli.setNome(tfClienteNome.getText())) {
+                if (cli.setEndereco(tfClienteEndereco.getText())) {
+                    if (cli.setRg(tfClienteRg.getText())) {
+                        if (cli.setTelResidencial(tfClienteTelRes.getText())) {
+                            if (cli.setTelCelular(tfClienteTelCel.getText())) {
+                                cliCrud.atualizarCliente(cli);
+                                this.btnAlterarCliente.setVisible(false);
+                                this.btnAlterarProduto.setVisible(false);
+                                this.btnDeletarCliente.setVisible(false);
+                                this.btnDeletarProduto.setVisible(false);
+                                this.btnCadastrarCl.setEnabled(true);
+                                JOptionPane.showMessageDialog(null, "Alteração realizado com Sucesso.");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_btnAlterarClienteActionPerformed
+//Deleta o cliente Procurado
+    private void btnDeletarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarClienteActionPerformed
+        ClienteCRUD cliCrud = new ClienteCRUD();
+        Cliente cli = new Cliente();
+
+        if (cli.setNome(tfClienteNome.getText())) {
+            if (cli.setCpf(tfClienteCpf.getText())) {
+                cliCrud.deletarCliente(cli);
+                this.btnAlterarCliente.setVisible(false);
+                this.btnAlterarProduto.setVisible(false);
+                this.btnDeletarCliente.setVisible(false);
+                this.btnDeletarProduto.setVisible(false);
+                this.btnCadastrarCl.setEnabled(true);
+                JOptionPane.showMessageDialog(null, "Remoção realizado com Sucesso.");
+            }
+        }
+    }//GEN-LAST:event_btnDeletarClienteActionPerformed
 
     /**
      * @param args the command line arguments
