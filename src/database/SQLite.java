@@ -67,7 +67,7 @@ public class SQLite {
             stmt.close();
 
             String produto = "CREATE TABLE IF NOT EXISTS produto("
-                    + "codigoProduto    CHAR(6)     NOT NULL,"
+                    + "codigoProduto    INTEGER     AUTO INCREMENT,"
                     + "descricaoProduto VARCHAR(50) NOT NULL,"
                     + "precoCusto       DOUBLE      NOT NULL,"
                     + "precoVenda       DOUBLE      NOT NULL,"
@@ -80,7 +80,7 @@ public class SQLite {
             stmt.close();
 
             String estoque = "CREATE TABLE IF NOT EXISTS estoque("
-                    + "codigoProduto    CHAR(6) NOT NULL,"
+                    + "codigoProduto    INTEGER NOT NULL,"
                     + "quantidadeAtual  DOUBLE  NOT NULL,"
                     + "quantidadeMinima DOUBLE  NOT NULL,"
                     + ""
@@ -96,7 +96,7 @@ public class SQLite {
             stmt.close();
 
             String pagamento = "CREATE TABLE IF NOT EXISTS tipoPagamento("
-                    + "codigoTipoPagamento CHAR(2)     NOT NULL,"
+                    + "codigoTipoPagamento INTEGER     AUTO INCREMENT,"
                     + "descricaoPagamento  VARCHAR(30) NOT NULL,"
                     + ""
                     + "CONSTRAINT pk_tipoPagemento"
@@ -106,12 +106,12 @@ public class SQLite {
             stmt.close();
 
             String venda = "CREATE TABLE IF NOT EXISTS venda("
-                    + "codigoVenda         CHAR(9) NOT NULL,"
-                    + "codigoProduto       CHAR(6) NOT NULL,"
-                    + "quantidadeProduto   DOUBLE  NOT NULL,"
-                    + "codigoCliente       CHAR(6) NOT NULL,"
-                    + "codigoTipoPagamento CHAR(2) NOT NULL,"
-                    + "dataVenda           DATE    NOT NULL,"
+                    + "codigoVenda         INTEGER  NOT NULL,"
+                    + "codigoProduto       INTEGER  NOT NULL,"
+                    + "quantidadeProduto   DOUBLE   NOT NULL,"
+                    + "codigoCliente       CHAR(11) NOT NULL,"
+                    + "codigoTipoPagamento INTEGER  NOT NULL,"
+                    + "dataVenda           CHAR(10) NOT NULL,"
                     + ""
                     + "CONSTRAINT pk_venda"
                     + "  PRIMARY KEY(codigoVenda)"

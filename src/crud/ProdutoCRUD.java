@@ -28,7 +28,7 @@ public class ProdutoCRUD {
         try {
             stmt = conn.prepareStatement("INSERT INTO produto(codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida)"
                     + " VALUES (?,?,?,?,?)");
-            stmt.setString(1, String.valueOf(produto.getCodigoProduto()));
+            stmt.setInt(1, produto.getCodigoProduto());
             stmt.setString(2, produto.getDescricaoProduto());
             stmt.setDouble(3, produto.getPrecoCusto());
             stmt.setDouble(4, produto.getPrecoVenda());
@@ -52,7 +52,7 @@ public class ProdutoCRUD {
             result = stmt.executeQuery();
             while (result.next()) {
                 Produto produto = new Produto();
-                produto.setCodigoProduto(result.getString("codigoProduto"));
+                produto.setCodigoProduto(result.getInt("codigoProduto"));
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
                 produto.setPrecoCusto(result.getDouble("precoCusto"));
                 produto.setPrecoVenda(result.getDouble("precoVenda"));
@@ -80,7 +80,7 @@ public class ProdutoCRUD {
 
             result = stmt.executeQuery();
             while (result.next()) {
-                produto.setCodigoProduto(result.getString("codigoProduto"));
+                produto.setCodigoProduto(result.getInt("codigoProduto"));
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
                 produto.setPrecoCusto(result.getDouble("precoCusto"));
                 produto.setPrecoVenda(result.getDouble("precoVenda"));
@@ -105,7 +105,7 @@ public class ProdutoCRUD {
 
             result = stmt.executeQuery();
             while (result.next()) {
-                produto.setCodigoProduto(result.getString("codigoProduto"));
+                produto.setCodigoProduto(result.getInt("codigoProduto"));
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
                 produto.setPrecoCusto(result.getDouble("precoCusto"));
                 produto.setPrecoVenda(result.getDouble("precoVenda"));
@@ -128,7 +128,7 @@ public class ProdutoCRUD {
             stmt.setDouble(2, produto.getPrecoCusto());
             stmt.setDouble(3, produto.getPrecoVenda());
             stmt.setString(4, produto.getUnidadeMedida());
-            stmt.setString(5, produto.getCodigoProduto());
+            stmt.setInt(5, produto.getCodigoProduto());
 
             stmt.executeUpdate();
             stmt.close();
@@ -143,7 +143,7 @@ public class ProdutoCRUD {
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("DELETE FROM produto WHERE codigoProduto = ?;");
-            stmt.setString(1, produto.getCodigoProduto());
+            stmt.setInt(1, produto.getCodigoProduto());
 
             stmt.executeUpdate();
             stmt.close();

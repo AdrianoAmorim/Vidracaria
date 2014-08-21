@@ -13,15 +13,15 @@ import javax.swing.JOptionPane;
  */
 public class TipoPagamento {
 
-    private String codigoTipoPagamento;
+    private int codigoTipoPagamento;
     private String descricaoPagamento;
 
-    public String getCodigoTipoPagamento() {
+    public int getCodigoTipoPagamento() {
         return codigoTipoPagamento;
     }
 
-    public boolean setCodigoTipoPagamento(String codigoTipoPagamento) {
-        if (codigoTipoPagamento.isEmpty()) {
+    public boolean setCodigoTipoPagamento(int codigoTipoPagamento) {
+        if (Integer.toString(codigoTipoPagamento).isEmpty()) {
             JOptionPane.showMessageDialog(null, "Codigo do tipo de pagamento inválido !", "AVISO", 2);
             return false;
         }

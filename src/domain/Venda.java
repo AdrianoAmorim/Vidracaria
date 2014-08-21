@@ -13,19 +13,19 @@ import javax.swing.JOptionPane;
  */
 public class Venda {
 
-    private String codigoVenda;
-    private String codigoProduto;
+    private int codigoVenda;
+    private int codigoProduto;
     private String codigoCliente;
-    private String codigoTipoPagamento;
+    private int codigoTipoPagamento;
     private Double quantidadeProduto;
     private String dataVenda;
 
-    public String getCodigoVenda() {
+    public int getCodigoVenda() {
         return codigoVenda;
     }
 
-    public boolean setCodigoVenda(String codigoVenda) {
-        if (codigoVenda.isEmpty()) {
+    public boolean setCodigoVenda(int codigoVenda) {
+        if (Integer.toString(codigoVenda).isEmpty()) {
             JOptionPane.showMessageDialog(null, "Codigo da venda inválido !", "AVISO", 2);
             return false;
         }
@@ -33,12 +33,12 @@ public class Venda {
         return true;
     }
 
-    public String getCodigoProduto() {
+    public int getCodigoProduto() {
         return codigoProduto;
     }
 
-    public boolean setCodigoProduto(String codigoProduto) {
-        if (codigoProduto.isEmpty()) {
+    public boolean setCodigoProduto(int codigoProduto) {
+        if (Integer.toString(codigoProduto).isEmpty()) {
             JOptionPane.showMessageDialog(null, "Codigo do produto inválido !", "AVISO", 2);
             return false;
         }
@@ -72,12 +72,12 @@ public class Venda {
         return true;
     }
 
-    public String getCodigoTipoPagamento() {
+    public int getCodigoTipoPagamento() {
         return codigoTipoPagamento;
     }
 
-    public boolean setCodigoTipoPagamento(String codigoTipoPagamento) {
-        if (codigoTipoPagamento.isEmpty()) {
+    public boolean setCodigoTipoPagamento(int codigoTipoPagamento) {
+        if (Integer.toString(codigoTipoPagamento).isEmpty()) {
             JOptionPane.showMessageDialog(null, "Codigo do tipo do pagamento inválido !", "AVISO", 2);
             return false;
         }

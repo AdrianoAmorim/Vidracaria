@@ -697,11 +697,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(tfProdutoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cbUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDeletarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnDeletarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCadastrarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -744,7 +744,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -772,7 +772,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addContainerGap())
         );
@@ -954,7 +954,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addContainerGap())
         );
@@ -1139,7 +1139,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1192,7 +1192,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                     .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(22, 22, 22)
                                 .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 3, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
 
@@ -1351,7 +1351,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ProdutoCRUD prodCrud = new ProdutoCRUD();
         EstoqueCRUD estoqueCRUD = new EstoqueCRUD();
 
-        if (produto.setCodigoProduto(tfProdutoCodigo.getText())) {
+        if (produto.setCodigoProduto(Integer.valueOf(tfProdutoCodigo.getText()))) {
             if (produto.setDescricaoProduto(tfProdutoDescricao.getText())) {
                 if (produto.setPrecoCusto(Double.parseDouble(tfProdutoPrecoCusto.getText()))) {
                     if (produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()))) {
@@ -1362,7 +1362,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 }
             }
         }
-        if (estoque.setCodigoProduto(tfProdutoCodigo.getText())) {
+        if (estoque.setCodigoProduto(Integer.valueOf(tfProdutoCodigo.getText()))) {
             if (estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()))) {
                 estoqueCRUD.inserirEstoque(estoque);
             }
@@ -1424,7 +1424,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             produto = produtoCRUD.consultarNomeProduto(tf_condicaoP.getText());
             estoque = estoqueCRUD.consultarDescricaoEstoque(tf_condicaoP.getText());
 
-            tfProdutoCodigo.setText(produto.getCodigoProduto());
+            tfProdutoCodigo.setText(Integer.toString(produto.getCodigoProduto()));
             tfProdutoDescricao.setText(produto.getDescricaoProduto());
             tfProdutoPrecoCusto.setText(produto.getPrecoCusto().toString());
             tfProdutoPrecoVenda.setText(produto.getPrecoVenda().toString());

@@ -13,16 +13,16 @@ import javax.swing.JOptionPane;
  */
 public class Estoque {
 
-    protected String codigoProduto;
+    protected int codigoProduto;
     protected Double quantidadeAtual;
     protected Double quantidadeMinima;
 
-    public String getCodigoProduto() {
+    public int getCodigoProduto() {
         return codigoProduto;
     }
 
-    public boolean setCodigoProduto(String codigoProduto) {
-        if (codigoProduto.isEmpty()) {
+    public boolean setCodigoProduto(int codigoProduto) {
+        if (Integer.toString(codigoProduto).isEmpty()) {
             JOptionPane.showMessageDialog(null, "Codigo do produto inválido !", "AVISO", 2);
             return false;
         }

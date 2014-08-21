@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Produto {
 
-    private String codigoProduto;
+    private int codigoProduto;
     private String descricaoProduto;
     private Double precoCusto;
     private Double precoVenda;
@@ -22,12 +22,12 @@ public class Produto {
     
    
 
-    public String getCodigoProduto() {
+    public int getCodigoProduto() {
         return codigoProduto;
     }
 
-    public boolean setCodigoProduto(String codigoProduto) {
-        if (codigoProduto.isEmpty()) {
+    public boolean setCodigoProduto(int codigoProduto) {
+        if (Integer.toString(codigoProduto).isEmpty()) {
             JOptionPane.showMessageDialog(null, "Codigo do produto inválido !", "AVISO", 2);
             return false;
         }

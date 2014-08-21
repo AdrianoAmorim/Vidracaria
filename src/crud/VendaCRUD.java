@@ -27,11 +27,11 @@ public class VendaCRUD {
         try {
             stmt = conn.prepareStatement("INSERT INTO venda(codigoVenda, codigoProduto, quantidadeProduto, codigoCliente, codigoTipoPagamento, dataVenda)"
                     + " VALUES (?, ?, ?, ?, ?, ?)");
-            stmt.setString(1, venda.getCodigoVenda());
-            stmt.setString(2, venda.getCodigoCliente());
+            stmt.setInt(1, venda.getCodigoVenda());
+            stmt.setInt(2, venda.getCodigoProduto());
             stmt.setDouble(3, venda.getQuantidadeProduto());
-            stmt.setString(4, venda.getCodigoTipoPagamento());
-            stmt.setString(5, venda.getCodigoCliente());
+            stmt.setString(4, venda.getCodigoCliente());
+            stmt.setInt(5, venda.getCodigoTipoPagamento());
             stmt.setString(6, venda.getDataVenda());
             stmt.executeUpdate();
             stmt.close();
@@ -51,11 +51,11 @@ public class VendaCRUD {
             result = stmt.executeQuery();
             while (result.next()) {
                 Venda venda = new Venda();
-                venda.setCodigoVenda(result.getString("codigoVenda"));
-                venda.setCodigoProduto(result.getString("codigoProduto"));
+                venda.setCodigoVenda(result.getInt("codigoVenda"));
+                venda.setCodigoProduto(result.getInt("codigoProduto"));
                 venda.setQuantidadeProduto(result.getDouble("quantidadeProduto"));
                 venda.setCodigoCliente(result.getString("codigoCliente"));
-                venda.setCodigoTipoPagamento(result.getString("codigoTipoPagamento"));
+                venda.setCodigoTipoPagamento(result.getInt("codigoTipoPagamento"));
                 venda.setDataVenda(result.getString("dataVenda"));
 
                 listaVendas.add(venda);
@@ -74,12 +74,12 @@ public class VendaCRUD {
         try {
             stmt = conn.prepareStatement("UPDATE venda SET codigoProduto = ?, quantidadeProduto = ?, codigoCliente = ?, codigoTipoPagamento = ?, dataVenda = ?"
                     + " WHERE codigoVenda = ?;");
-            stmt.setString(1, venda.getCodigoProduto());
+            stmt.setInt(1, venda.getCodigoProduto());
             stmt.setDouble(2, venda.getQuantidadeProduto());
             stmt.setString(3, venda.getCodigoCliente());
-            stmt.setString(4, venda.getCodigoTipoPagamento());
+            stmt.setInt(4, venda.getCodigoTipoPagamento());
             stmt.setString(5, venda.getDataVenda());
-            stmt.setString(6, venda.getCodigoVenda());
+            stmt.setInt(6, venda.getCodigoVenda());
 
             stmt.executeUpdate();
             stmt.close();
@@ -94,7 +94,7 @@ public class VendaCRUD {
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("DELETE FROM venda WHERE codigoVenda = ?;");
-            stmt.setString(1, venda.getCodigoVenda());
+            stmt.setInt(1, venda.getCodigoVenda());
 
             stmt.executeUpdate();
             stmt.close();

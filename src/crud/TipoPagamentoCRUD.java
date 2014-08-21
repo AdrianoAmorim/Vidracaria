@@ -26,7 +26,7 @@ public class TipoPagamentoCRUD {
         try {
             stmt = conn.prepareStatement("INSERT INTO tipoPagamento(codigoTipoPagamento, descricaoPagamento)"
                     + " VALUES (?, ?)");
-            stmt.setString(1, tipoPagamento.getCodigoTipoPagamento());
+            stmt.setInt(1, tipoPagamento.getCodigoTipoPagamento());
             stmt.setString(2, tipoPagamento.getDescricaoPagamento());
 stmt.executeUpdate();
             stmt.close();
@@ -46,7 +46,7 @@ stmt.executeUpdate();
             result = stmt.executeQuery();
             while (result.next()) {
                 TipoPagamento tipoPagamento = new TipoPagamento();
-                tipoPagamento.setCodigoTipoPagamento(result.getString("codigoTipoPagamento"));
+                tipoPagamento.setCodigoTipoPagamento(result.getInt("codigoTipoPagamento"));
                 tipoPagamento.setDescricaoPagamento(result.getString("descricaoPagamento"));
 
                 listaTiposPagamento.add(tipoPagamento);
@@ -66,7 +66,7 @@ stmt.executeUpdate();
             stmt = conn.prepareStatement("UPDATE tipoPagamento SET descricaoPagamento = ?"
                     + " WHERE codigoTipoPagamento = ?;");
             stmt.setString(1, tipoPagamento.getDescricaoPagamento());
-            stmt.setString(2, tipoPagamento.getCodigoTipoPagamento());
+            stmt.setInt(2, tipoPagamento.getCodigoTipoPagamento());
 
             stmt.executeUpdate();
             stmt.close();
@@ -81,7 +81,7 @@ stmt.executeUpdate();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("DELETE FROM tipoPagamento WHERE codigoTipoPagamento = ?;");
-            stmt.setString(1, tipoPagamento.getCodigoTipoPagamento());
+            stmt.setInt(1, tipoPagamento.getCodigoTipoPagamento());
 
             stmt.executeUpdate();
             stmt.close();

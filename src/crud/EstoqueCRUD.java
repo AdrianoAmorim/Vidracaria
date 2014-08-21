@@ -31,7 +31,7 @@ public class EstoqueCRUD {
             
             System.out.println(estoque.getQuantidadeAtual());
 
-            stmt.setString(1, estoque.getCodigoProduto());
+            stmt.setInt(1, estoque.getCodigoProduto());
             stmt.setDouble(2, estoque.getQuantidadeAtual());
             stmt.setDouble(3, 3);
 
@@ -53,7 +53,7 @@ public class EstoqueCRUD {
             result = stmt.executeQuery();
             while (result.next()) {
                 Estoque estoque = new Estoque();
-                estoque.setCodigoProduto(result.getString("codigoProduto"));
+                estoque.setCodigoProduto(result.getInt("codigoProduto"));
                 estoque.setQuantidadeAtual(result.getDouble("quantidadeAtual"));
                 estoque.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
 
@@ -79,7 +79,7 @@ public class EstoqueCRUD {
             result = stmt.executeQuery();
             while (result.next()) {
 
-                estoque.setCodigoProduto(result.getString("codigoProduto"));
+                estoque.setCodigoProduto(result.getInt(("codigoProduto").toString()));
                 estoque.setQuantidadeAtual(result.getDouble("quantidadeAtual"));
                 estoque.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
             }
@@ -103,7 +103,7 @@ public class EstoqueCRUD {
             result = stmt.executeQuery();
             while (result.next()) {
 
-                estoque.setCodigoProduto(result.getString("codigoProduto"));
+                estoque.setCodigoProduto(result.getInt("codigoProduto"));
                 estoque.setQuantidadeAtual(result.getDouble("quantidadeAtual"));
                 estoque.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
             }
@@ -123,7 +123,7 @@ public class EstoqueCRUD {
 
             stmt.setDouble(1, estoque.getQuantidadeAtual());
             stmt.setDouble(2, estoque.getQuantidadeMinima());
-            stmt.setString(3, estoque.getCodigoProduto());
+            stmt.setInt(3, estoque.getCodigoProduto());
 
             stmt.executeUpdate();
             stmt.close();
@@ -139,7 +139,7 @@ public class EstoqueCRUD {
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("DELETE FROM estoque WHERE codigoProduto = ?");
-            stmt.setString(1, estoque.getCodigoProduto());
+            stmt.setInt(1, estoque.getCodigoProduto());
 
             stmt.executeUpdate();
             stmt.close();
