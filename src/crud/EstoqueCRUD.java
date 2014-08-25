@@ -29,8 +29,6 @@ public class EstoqueCRUD {
             stmt = conn.prepareStatement("INSERT INTO estoque(codigoProduto, quantidadeAtual, quantidadeMinima)"
                     + " VALUES (?,?,?);");
             
-            System.out.println(estoque.getQuantidadeAtual());
-
             stmt.setInt(1, estoque.getCodigoProduto());
             stmt.setDouble(2, estoque.getQuantidadeAtual());
             stmt.setDouble(3, 3);
@@ -118,11 +116,11 @@ public class EstoqueCRUD {
 
         PreparedStatement stmt;
         try {
-            stmt = conn.prepareStatement("UPDATE estpque SET quantidadeAtual = ?, quantidadeMinima = ?"
+            stmt = conn.prepareStatement("UPDATE estoque SET quantidadeAtual = ?, quantidadeMinima = ?"
                     + " WHERE codigoProduto = ?;");
 
             stmt.setDouble(1, estoque.getQuantidadeAtual());
-            stmt.setDouble(2, estoque.getQuantidadeMinima());
+            stmt.setDouble(2, 0);
             stmt.setInt(3, estoque.getCodigoProduto());
 
             stmt.executeUpdate();

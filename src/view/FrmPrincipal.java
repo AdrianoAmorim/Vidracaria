@@ -10,9 +10,9 @@ import domain.Cliente;
 import domain.Estoque;
 import domain.Produto;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -1315,7 +1315,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    public void limparCampos(JTextField... args) {
+        int totalCampos = args.length;
+        for (int i = 0; i < totalCampos; i++) {
+            args[i].setText(null);
+        }
+    }
 
 //Insere os produtos do ComboBoxProduto na tabela- aba VEndas...
     public void insertTabelaProdVenda() {
@@ -1371,6 +1376,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         if (cliente.setTelResidencial(tfClienteTelRes.getText())) {
                             if (cliente.setTelCelular(tfClienteTelCel.getText())) {
                                 crud.inserirCliente(cliente);
+                                limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
+                                        tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
+                                tpPrincipal.setSelectedIndex(0);
                             }
                         }
                     }
@@ -1378,6 +1386,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnCadastrarClActionPerformed
+
 //Cadastra Produto
     private void btnCadastrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdActionPerformed
         Produto produto = new Produto();
@@ -1395,6 +1404,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                     //estoque.setQuantidadeMinima(Double.parseDouble(tfProdutoQuantidadeMinima.getText()));
                                     estoqueCRUD.inserirEstoque(estoque);
                                     prodCrud.inserirProduto(produto);
+                                    limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
+                                            tfProdutoPrecoVenda, tfProdutoQuantidade);
+                                    tpPrincipal.setSelectedIndex(0);
                                 }
                             }
                         }
@@ -1448,7 +1460,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             btnAlterarCliente.setVisible(true);
             btnDeletarCliente.setVisible(true);
             btnCadastrarCl.setEnabled(false);
-            tpPrincipal.setSelectedIndex(0);
+            tpPrincipal.setSelectedIndex(1);
 
         } else if (rb_Produtos.isSelected()) {
             ProdutoCRUD produtoCRUD = new ProdutoCRUD();
@@ -1462,12 +1474,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             tfProdutoCodigo.setText(Integer.toString(produto.getCodigoProduto()));
             tfProdutoDescricao.setText(produto.getDescricaoProduto());
-            tfProdutoPrecoCusto.setText(produto.getPrecoCusto().toString());
-            tfProdutoPrecoVenda.setText(produto.getPrecoVenda().toString());
+            tfProdutoPrecoCusto.setText(Double.toString(produto.getPrecoCusto()));
+            tfProdutoPrecoVenda.setText(Double.toString(produto.getPrecoVenda()));
             tfProdutoQuantidade.setText(estoque.getQuantidadeAtual().toString());
             cbUnidadeMedida.addItem(produto.getUnidadeMedida());
 
-            tpPrincipal.setSelectedIndex(1);
+            tpPrincipal.setSelectedIndex(2);
             btnAlterarProduto.setVisible(true);
             btnDeletarProduto.setVisible(true);
             btnCadastrarProd.setEnabled(false);
@@ -1486,23 +1498,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 if (produto.setDescricaoProduto(tfProdutoDescricao.getText())) {
                     if (produto.setPrecoCusto(Double.parseDouble(tfProdutoPrecoCusto.getText()))) {
                         if (produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()))) {
-                            if (estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()))) {
-                                prodCrud.atualizarProduto(produto);
-                                estCrud.atualizarEstoque(estoque);
-                                this.btnAlterarCliente.setVisible(false);
-                                this.btnAlterarProduto.setVisible(false);
-                                this.btnDeletarCliente.setVisible(false);
-                                this.btnDeletarProduto.setVisible(false);
-                                this.btnCadastrarCl.setEnabled(true);
-                                JOptionPane.showMessageDialog(null, "Alteração realizado com Sucesso.");
+                            if (produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString())) {
+                                if (estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()))) {
+                                    prodCrud.atualizarProduto(produto);
+                                    estCrud.atualizarEstoque(estoque);
+                                    this.btnAlterarProduto.setVisible(false);
+                                    this.btnDeletarProduto.setVisible(false);
+                                    this.btnCadastrarProd.setEnabled(true);
+                                    limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
+                                            tfProdutoPrecoVenda, tfProdutoQuantidade);
+                                    tpPrincipal.setSelectedIndex(0);
+                                }
                             }
                         }
                     }
                 }
             }
         }
-
-
     }//GEN-LAST:event_btnAlterarProdutoActionPerformed
 
     private void btnDeletarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarProdutoActionPerformed
@@ -1515,12 +1527,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
             if (estoque.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()))) {
                 prodCrud.deletarProduto(produto);
                 estCrud.deletarEstoque(estoque);
-                this.btnAlterarCliente.setVisible(false);
                 this.btnAlterarProduto.setVisible(false);
-                this.btnDeletarCliente.setVisible(false);
                 this.btnDeletarProduto.setVisible(false);
-                this.btnCadastrarCl.setEnabled(true);
-                JOptionPane.showMessageDialog(null, "Remoção realizado com Sucesso.");
+                this.btnCadastrarProd.setEnabled(true);
+                limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
+                        tfProdutoPrecoVenda, tfProdutoQuantidade);
+                tpPrincipal.setSelectedIndex(0);
             }
         }
 
@@ -1539,11 +1551,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             if (cli.setTelCelular(tfClienteTelCel.getText())) {
                                 cliCrud.atualizarCliente(cli);
                                 this.btnAlterarCliente.setVisible(false);
-                                this.btnAlterarProduto.setVisible(false);
                                 this.btnDeletarCliente.setVisible(false);
-                                this.btnDeletarProduto.setVisible(false);
                                 this.btnCadastrarCl.setEnabled(true);
-                                JOptionPane.showMessageDialog(null, "Alteração realizado com Sucesso.");
+                                limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
+                                        tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
+                                tpPrincipal.setSelectedIndex(0);
                             }
                         }
                     }
@@ -1551,6 +1563,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnAlterarClienteActionPerformed
+
 //Deleta o cliente Procurado
     private void btnDeletarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarClienteActionPerformed
         ClienteCRUD cliCrud = new ClienteCRUD();
@@ -1560,11 +1573,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             if (cli.setCpf(tfClienteCpf.getText())) {
                 cliCrud.deletarCliente(cli);
                 this.btnAlterarCliente.setVisible(false);
-                this.btnAlterarProduto.setVisible(false);
                 this.btnDeletarCliente.setVisible(false);
-                this.btnDeletarProduto.setVisible(false);
                 this.btnCadastrarCl.setEnabled(true);
-                JOptionPane.showMessageDialog(null, "Remoção realizado com Sucesso.");
+                limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
+                        tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
+                tpPrincipal.setSelectedIndex(0);
             }
         }
     }//GEN-LAST:event_btnDeletarClienteActionPerformed
@@ -1604,6 +1617,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
 
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FrmPrincipal().setVisible(true);
 

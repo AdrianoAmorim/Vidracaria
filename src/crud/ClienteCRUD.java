@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,7 +37,7 @@ public class ClienteCRUD {
             stmt.setString(6, cliente.getTelCelular());
             stmt.executeUpdate();
             stmt.close();
-            System.out.println("Cliente cadastrado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
         } catch (SQLException erroInserirCliente) {
             System.out.println(erroInserirCliente.getMessage());
         }
@@ -97,8 +98,8 @@ public class ClienteCRUD {
         }
         return cliente;
     }
-    
-        public Cliente consultarNomeCliente(String nome) {
+
+    public Cliente consultarNomeCliente(String nome) {
 
         Cliente cliente = new Cliente();
         PreparedStatement stmt;
@@ -139,7 +140,7 @@ public class ClienteCRUD {
 
             stmt.executeUpdate();
             stmt.close();
-            System.out.println("Informações atualizadas com sucesso!");
+            JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
         } catch (SQLException erroAtualizarCliente) {
             System.out.println(erroAtualizarCliente.getMessage());
         }
@@ -155,6 +156,7 @@ public class ClienteCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
         } catch (SQLException erroDeletarCliente) {
             System.out.println(erroDeletarCliente.getMessage());
         }

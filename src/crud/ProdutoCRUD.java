@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,8 +35,8 @@ public class ProdutoCRUD {
             stmt.setDouble(4, produto.getPrecoVenda());
             stmt.setString(5, produto.getUnidadeMedida());
             stmt.executeUpdate();
-            System.out.println("Produto cadastrado com sucesso!");
             stmt.close();
+            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
         } catch (SQLException erroInserirProduto) {
             System.out.println(erroInserirProduto.getMessage());
         }
@@ -93,7 +94,7 @@ public class ProdutoCRUD {
         return produto;
     }
 
-        public Produto consultarNomeProduto(String nome) {
+    public Produto consultarNomeProduto(String nome) {
 
         Produto produto = new Produto();
         PreparedStatement stmt;
@@ -117,7 +118,7 @@ public class ProdutoCRUD {
         }
         return produto;
     }
-        
+
     public void atualizarProduto(Produto produto) {
 
         PreparedStatement stmt;
@@ -132,7 +133,7 @@ public class ProdutoCRUD {
 
             stmt.executeUpdate();
             stmt.close();
-            System.out.println("Informações atualizadas com sucesso!");
+            JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
         } catch (SQLException erroAtualizarProduto) {
             System.out.println(erroAtualizarProduto.getMessage());
         }
@@ -147,6 +148,7 @@ public class ProdutoCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            JOptionPane.showMessageDialog(null, "Produto deletado com sucesso!");
         } catch (SQLException erroDeletarProduto) {
             System.out.println(erroDeletarProduto.getMessage());
         }

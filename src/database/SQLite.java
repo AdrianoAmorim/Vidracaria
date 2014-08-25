@@ -40,7 +40,7 @@ public class SQLite {
         try {
             Statement stmt = conn.createStatement();
 
- // Descomentar caso o database seja modificado, para recriar as tabelas
+            // Descomentar caso o database seja modificado, para recriar as tabelas
             //String deletar = "DROP TABLE IF EXISTS cliente;";
             //stmt.execute(deletar);
             //deletar = "DROP TABLE IF EXISTS produto;";
@@ -131,7 +131,6 @@ public class SQLite {
             stmt.executeUpdate(venda);
             stmt.close();
             conn.close();
-            System.out.println("Tabelas criadas com sucesso !");
         } catch (SQLException erroTabelas) {
             System.out.println(erroTabelas.getSQLState());
             System.exit(0);
