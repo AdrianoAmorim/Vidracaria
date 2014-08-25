@@ -120,7 +120,7 @@ public class EstoqueCRUD {
                     + " WHERE codigoProduto = ?;");
 
             stmt.setDouble(1, estoque.getQuantidadeAtual());
-            stmt.setDouble(2, 0);
+            stmt.setDouble(2, estoque.getQuantidadeMinima());
             stmt.setInt(3, estoque.getCodigoProduto());
 
             stmt.executeUpdate();
