@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/Adriano/Documents/GitHub/Vidracaria/src/view/FrmPrincipal.java</file>
             <file>file:/C:/Users/Adriano/Documents/GitHub/Vidracaria/src/domain/Estoque.java</file>
-            <file>file:/C:/Users/Adriano/Documents/GitHub/Vidracaria/src/crud/EstoqueCRUD.java</file>
             <file>file:/C:/Users/Adriano/Documents/GitHub/Vidracaria/src/crud/ProdutoCRUD.java</file>
+            <file>file:/C:/Users/Adriano/Documents/GitHub/Vidracaria/src/crud/EstoqueCRUD.java</file>
             <file>file:/C:/Users/Adriano/Documents/GitHub/Vidracaria/src/database/SQLite.java</file>
         </group>
     </open-files>
