@@ -12,7 +12,6 @@ import domain.Produto;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -925,7 +924,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -953,7 +952,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addContainerGap())
         );
@@ -1123,7 +1122,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addContainerGap())
         );
@@ -1392,7 +1391,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -1487,14 +1486,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }
 
-//Insere os produtos do ComboBoxProduto na tabela- aba VEndas...
+//Insere os produtos do ComboBoxProduto na tabela- aba Vendas...
     public void insertTabelaProdVenda() {
-        ArrayList<String> prod = new ArrayList<>();
+        //      ArrayList<String> prod = new ArrayList<>();
         DefaultTableModel modelo = (DefaultTableModel) tbListProduto.getModel();
 
-        modelo.addRow(new Object[]{cb_produtos.getSelectedItem().toString(), tfQtdProd.getText()});
-        tbListProduto.setModel(modelo);
+        // inicializa um produto com o retorno da consulta pelo nome do produto no comboBox
+        Produto produto = new ProdutoCRUD().consultarNomeProduto(cb_produtos.getSelectedItem().toString());
 
+        // multiplica o preco de venda do produto pela quantidade vendida
+        Double precoTotalProduto = produto.getPrecoVenda() * Integer.valueOf(tfQtdProd.getText());
+        
+        modelo.addRow(new Object[]{produto.getDescricaoProduto(), tfQtdProd.getText(), precoTotalProduto});
+
+        tbListProduto.setModel(modelo);
     }
 
 //Carregar combosBoxs------------------------------------
@@ -1668,9 +1673,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                         this.btnAlterarProduto.setVisible(false);
                                         this.btnDeletarProduto.setVisible(false);
                                         this.btnCadastrarProd.setEnabled(true);
-                                        
+
                                         limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
-                                                tfProdutoPrecoVenda, tfProdutoQuantidade,tfProdutoQtdMinima);
+                                                tfProdutoPrecoVenda, tfProdutoQuantidade, tfProdutoQtdMinima);
                                         carregarCbProduto();
                                         tpPrincipal.setSelectedIndex(0);
                                     }
@@ -1697,7 +1702,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 this.btnDeletarProduto.setVisible(false);
                 this.btnCadastrarProd.setEnabled(true);
                 limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
-                        tfProdutoPrecoVenda, tfProdutoQuantidade,tfProdutoQtdMinima);
+                        tfProdutoPrecoVenda, tfProdutoQuantidade, tfProdutoQtdMinima);
                 carregarCbProduto();
                 tpPrincipal.setSelectedIndex(0);
             }
