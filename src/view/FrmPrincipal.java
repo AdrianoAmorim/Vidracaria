@@ -176,15 +176,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema sem Nome - Vidraçaria");
-        setMinimumSize(new java.awt.Dimension(1024, 768));
-        setPreferredSize(new java.awt.Dimension(1024, 768));
-        setResizable(false);
 
         tpPrincipal.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        tpPrincipal.setMinimumSize(new java.awt.Dimension(912, 661));
-        tpPrincipal.setPreferredSize(new java.awt.Dimension(912, 661));
 
         pnlPesquisar.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlPesquisar.setPreferredSize(new java.awt.Dimension(0, 0));
 
         btn_Pesquisar.setText("Pesquisar");
         btn_Pesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +267,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(pnlPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPesquisarLayout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 572, Short.MAX_VALUE))
+                        .addGap(0, 568, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPesquisarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -283,9 +279,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addComponent(btn_Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(47, 47, 47))
         );
 
         tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Untitled-2.png")), pnlPesquisar, "Pesquisar"); // NOI18N
@@ -294,6 +290,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadCliente.setForeground(new java.awt.Color(255, 255, 255));
         pnlCadCliente.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         pnlCadCliente.setMinimumSize(new java.awt.Dimension(802, 426));
+        pnlCadCliente.setPreferredSize(new java.awt.Dimension(0, 0));
 
         tfClienteNome.setBackground(new java.awt.Color(204, 255, 204));
         tfClienteNome.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -509,7 +506,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(tfClienteTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 627, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 623, Short.MAX_VALUE)
                         .addComponent(btnDeletarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -575,6 +572,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407887820_clients.png")), pnlCadCliente, "Cadastrar Cliente"); // NOI18N
 
         pnlCadProduto.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlCadProduto.setPreferredSize(new java.awt.Dimension(0, 0));
 
         jPanel20.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -631,9 +629,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfProdutoDescricao.setBackground(new java.awt.Color(204, 255, 204));
         tfProdutoDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
+        tfProdutoCodigo.setEditable(false);
         tfProdutoCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfProdutoCodigo.setForeground(new java.awt.Color(255, 0, 0));
-        tfProdutoCodigo.setText("0");
 
         jPanel13.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -834,9 +832,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                     .addComponent(tfProdutoQuantidade)
                                     .addComponent(tfProdutoQtdMinima))
                                 .addGap(431, 431, 431))
-                            .addComponent(tfProdutoPrecoCusto)
-                            .addComponent(tfProdutoPrecoVenda)
-                            .addComponent(tfProdutoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfProdutoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlCadProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfProdutoPrecoCusto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                .addComponent(tfProdutoPrecoVenda, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(pnlCadProdutoLayout.createSequentialGroup()
                         .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -880,7 +879,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(tfProdutoQtdMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlCadProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCadProdutoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                         .addGroup(pnlCadProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlCadProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -934,7 +933,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -946,9 +945,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        tfVendaCodigo.setEditable(false);
         tfVendaCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfVendaCodigo.setForeground(new java.awt.Color(255, 0, 0));
-        tfVendaCodigo.setText("0");
 
         jPanel16.setBackground(new java.awt.Color(153, 153, 255));
         jPanel16.setPreferredSize(new java.awt.Dimension(152, 49));
@@ -962,7 +961,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addContainerGap())
         );
@@ -1086,6 +1085,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         cbTipoPagamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         cbTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A Vista", "Cartão de crédito", "Cheque" }));
+        cbTipoPagamento.setSelectedIndex(-1);
         cbTipoPagamento.setToolTipText("");
         cbTipoPagamento.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1130,7 +1130,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addContainerGap())
         );
@@ -1237,7 +1237,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel40.setText("Tp Pagamento:");
 
-        lblTipoPagamento.setText("A Vista");
+        lblTipoPagamento.setText("...");
 
         jLabel42.setText("Parcelamento:");
 
@@ -1250,20 +1250,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
-                        .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel30Layout.createSequentialGroup()
-                                .addComponent(jLabel40)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTipoPagamento))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel30Layout.createSequentialGroup()
-                                .addComponent(jLabel35)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblNomeCliente)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(jLabel42)
-                        .addGap(37, 37, 37)
-                        .addComponent(lblQtdvezesResumoVenda))
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1272,10 +1258,26 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel36)
                             .addComponent(jLabel37))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                         .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDescontoVenda)
-                            .addComponent(lblTotalProdVenda))))
+                            .addComponent(lblTotalProdVenda)))
+                    .addGroup(jPanel30Layout.createSequentialGroup()
+                        .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel30Layout.createSequentialGroup()
+                                    .addComponent(jLabel40)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblTipoPagamento))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel30Layout.createSequentialGroup()
+                                    .addComponent(jLabel35)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(lblNomeCliente)))
+                            .addGroup(jPanel30Layout.createSequentialGroup()
+                                .addComponent(jLabel42)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblQtdvezesResumoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel30Layout.setVerticalGroup(
@@ -1288,10 +1290,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
-                    .addComponent(lblTipoPagamento)
+                    .addComponent(lblTipoPagamento))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
-                    .addComponent(lblQtdvezesResumoVenda))
-                .addGap(79, 79, 79)
+                    .addComponent(lblQtdvezesResumoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addComponent(jLabel36)
@@ -1304,7 +1308,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel26)
                             .addComponent(lblValorTotalVenda)))
                     .addComponent(lblTotalProdVenda))
-                .addGap(34, 34, 34))
+                .addGap(20, 20, 20))
         );
 
         jPanel29.setBackground(new java.awt.Color(153, 153, 255));
@@ -1320,7 +1324,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(jLabel24)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1368,7 +1372,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel34Layout.setHorizontalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addContainerGap())
         );
@@ -1409,8 +1413,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(tfVendaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
@@ -1458,7 +1461,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jPanel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarVendaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlEfetuarVendaLayout.setVerticalGroup(
@@ -1504,7 +1510,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(285, 285, 285)
+                        .addGap(297, 297, 297)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1513,15 +1519,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                        .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                        .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEfetuarVendaLayout.createSequentialGroup()
+                                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
+                                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(64, 64, Short.MAX_VALUE))
         );
 
@@ -1533,15 +1541,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1294, Short.MAX_VALUE)
+                .addComponent(tpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1290, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(tpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1574,7 +1582,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tbListProduto.setModel(modelo);
     }
 //Inseri os valores no detalhamento de vendas(Valor total de produtos)
-
     public void inserirValoresProdVenda(Produto produto) {
         //cria uma formatação para Um Double com os padroes Brasileiros
         NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
@@ -1674,6 +1681,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 // quantidade de vezes quando escolher cartao de credito)
     private void cbTipoPagamentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoPagamentoItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
+            lblTipoPagamento.setText(cbTipoPagamento.getSelectedItem().toString());
             if (cbTipoPagamento.getSelectedIndex() == 1) {
                 tfQtdVezes.setVisible(true);
                 lblQtdVezes.setVisible(true);
