@@ -64,6 +64,7 @@ public class FrmBuscarClienteVenda extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        TbResultBusca.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TbResultBusca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TbResultBuscaMouseClicked(evt);
@@ -142,7 +143,7 @@ public class FrmBuscarClienteVenda extends javax.swing.JDialog {
 
     private void TbResultBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TbResultBuscaMouseClicked
         //Adiciona o nome do Cliente q o usuario escolheu na Tabela
-        this.cliente = new ClienteCRUD().consultarNomeCliente(TbResultBusca.getValueAt(TbResultBusca.getSelectedRow(),TbResultBusca.getSelectedColumn()).toString());
+        this.cliente = new ClienteCRUD().consultarNomeCliente(TbResultBusca.getValueAt(TbResultBusca.getSelectedRow(),0).toString());
         this.dispose();
     }//GEN-LAST:event_TbResultBuscaMouseClicked
 

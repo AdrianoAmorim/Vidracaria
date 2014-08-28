@@ -176,6 +176,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema sem Nome - Vidraçaria");
+        setPreferredSize(new java.awt.Dimension(0, 0));
+        getContentPane().setLayout(new java.awt.GridLayout());
 
         tpPrincipal.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
 
@@ -267,7 +269,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(pnlPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPesquisarLayout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 568, Short.MAX_VALUE))
+                        .addGap(0, 610, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPesquisarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -279,7 +281,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addComponent(btn_Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
@@ -506,7 +508,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(tfClienteTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 623, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 665, Short.MAX_VALUE)
                         .addComponent(btnDeletarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -879,7 +881,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(tfProdutoQtdMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlCadProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCadProdutoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                         .addGroup(pnlCadProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlCadProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -897,6 +899,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407890062_self1.png")), pnlCadProduto, "Cadastrar Produto"); // NOI18N
 
         pnlEfetuarVenda.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlEfetuarVenda.setPreferredSize(new java.awt.Dimension(0, 0));
 
         jPanel14.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -1172,6 +1175,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbListProduto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(tbListProduto);
         if (tbListProduto.getColumnModel().getColumnCount() > 0) {
             tbListProduto.getColumnModel().getColumn(0).setResizable(false);
@@ -1246,7 +1250,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel42.setText("Parcelamento:");
 
-        lblQtdvezesResumoVenda.setText("2");
+        lblQtdvezesResumoVenda.setText("0");
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -1329,7 +1333,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(jLabel24)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1418,7 +1422,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(tfVendaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 806, Short.MAX_VALUE))
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
@@ -1540,22 +1544,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1408033473_cashbox.png")), pnlEfetuarVenda, "Cadastrar Venda"); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1290, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(tpPrincipal);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
