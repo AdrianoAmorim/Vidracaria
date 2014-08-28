@@ -40,7 +40,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnAlterarProduto.setVisible(false);
         this.btnDeletarCliente.setVisible(false);
         this.btnDeletarProduto.setVisible(false);
-        carregarCbCliente();
         carregarCbProduto();
     }
 
@@ -125,7 +124,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfCodProd1 = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        cbCliente = new javax.swing.JComboBox();
         jPanel17 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         cb_produtos = new javax.swing.JComboBox();
@@ -172,6 +170,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel34 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         tfDataVenda = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
+        tfNomeCl = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema sem Nome - Vidraçaria");
@@ -270,7 +270,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(pnlPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPesquisarLayout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 290, Short.MAX_VALUE))
+                        .addGap(0, 572, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPesquisarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -508,7 +508,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(tfClienteTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 345, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 627, Short.MAX_VALUE)
                         .addComponent(btnDeletarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -973,8 +973,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        cbCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-
         jPanel17.setBackground(new java.awt.Color(153, 153, 255));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1213,6 +1211,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblValorTotalVenda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblValorTotalVenda.setText("R$ 0,00");
 
+        jLabel35.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel35.setText("Cliente:");
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1221,7 +1220,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel37.setText("Desconto:");
 
-        lblNomeCliente.setText("Cliente Numero 1");
+        lblNomeCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNomeCliente.setText("...");
 
         lblDescontoVenda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblDescontoVenda.setText("R$ 0,00");
@@ -1249,13 +1249,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel30Layout.createSequentialGroup()
                                 .addComponent(jLabel40)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTipoPagamento)
-                                .addGap(30, 30, 30))
-                            .addGroup(jPanel30Layout.createSequentialGroup()
+                                .addComponent(lblTipoPagamento))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel30Layout.createSequentialGroup()
                                 .addComponent(jLabel35)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblNomeCliente)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(jLabel42)
                         .addGap(37, 37, 37)
                         .addComponent(lblQtdvezesResumoVenda))
@@ -1315,7 +1314,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(jLabel24)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1377,6 +1376,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfDataVenda.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        tfNomeCl.setEditable(false);
+        tfNomeCl.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout pnlEfetuarVendaLayout = new javax.swing.GroupLayout(pnlEfetuarVenda);
         pnlEfetuarVenda.setLayout(pnlEfetuarVendaLayout);
         pnlEfetuarVendaLayout.setHorizontalGroup(
@@ -1412,24 +1421,30 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                         .addGap(6, 6, 6)
                                         .addComponent(lblQtdVezes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(12, 12, 12)
-                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                        .addComponent(cb_produtos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(tfQtdProd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(6, 6, 6)
-                                .addComponent(btnAddProdutoVenda))
-                            .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEfetuarVendaLayout.createSequentialGroup()
+                                        .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tfDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEfetuarVendaLayout.createSequentialGroup()
+                                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addComponent(cb_produtos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(6, 6, 6)
+                                                .addComponent(tfQtdProd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tfNomeCl)))))
+                                .addGap(30, 30, 30)
+                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnAddProdutoVenda)
+                                    .addComponent(jButton1))))
                         .addGap(27, 27, 27)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1458,19 +1473,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cb_produtos)
-                                    .addComponent(tfQtdProd)
-                                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(btnAddProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfNomeCl, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cb_produtos)
+                                        .addComponent(tfQtdProd)
+                                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnAddProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1497,7 +1513,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                         .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(64, 64, Short.MAX_VALUE))
@@ -1511,7 +1527,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1012, Short.MAX_VALUE)
+                .addComponent(tpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1294, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1524,8 +1540,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-//limpa todos os JTextField do programa 
 
+//limpa todos os JTextField do programa 
     public void limparCampos(JTextField... args) {
         int totalCampos = args.length;
         for (int i = 0; i < totalCampos; i++) {
@@ -1575,17 +1591,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
 
     }
-//to fazendo ainda inserir o valor final da venda ja com o desconto
-    public void inserirValorTotalVendas() {
-        NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-        double desconto;
-        double totalVendaReal;
-        
-        lblDescontoVenda.setText(nf.format(tfDesconto.getText()));
-        
-    }
 
-//Carregar combosBoxs------------------------------------
+//Carregar combosBox produto------------------------------------
     public void carregarCbProduto() {
 
         ArrayList<Produto> arrayProd = new ArrayList<>();
@@ -1600,19 +1607,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     }
 
-    public void carregarCbCliente() {
-
-        ArrayList<Cliente> arrayCliente = new ArrayList<>();
-        ClienteCRUD cli = new ClienteCRUD();
-
-        arrayCliente = cli.consultarCliente();
-        cbCliente.removeAllItems();
-
-        for (Cliente cliente : arrayCliente) {
-            cbCliente.addItem(cliente.getNome());
-        }
-
-    }
 
 //Cadastrar Cliente
     private void btnCadastrarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClActionPerformed
@@ -1628,7 +1622,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 crud.inserirCliente(cliente);
                                 limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
                                         tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
-                                carregarCbCliente();
                                 tpPrincipal.setSelectedIndex(0);
                             }
                         }
@@ -1737,7 +1730,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btn_PesquisarActionPerformed
-
+//altera produto
     private void btnAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdutoActionPerformed
         ProdutoCRUD prodCrud = new ProdutoCRUD();
         EstoqueCRUD estCrud = new EstoqueCRUD();
@@ -1771,7 +1764,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnAlterarProdutoActionPerformed
-
+//deleta produto
     private void btnDeletarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarProdutoActionPerformed
         ProdutoCRUD prodCrud = new ProdutoCRUD();
         EstoqueCRUD estCrud = new EstoqueCRUD();
@@ -1811,7 +1804,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 this.btnCadastrarCl.setEnabled(true);
                                 limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
                                         tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
-                                carregarCbCliente();
                                 tpPrincipal.setSelectedIndex(0);
                             }
                         }
@@ -1834,11 +1826,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 this.btnCadastrarCl.setEnabled(true);
                 limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
                         tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
-                carregarCbCliente();
                 tpPrincipal.setSelectedIndex(0);
             }
         }
     }//GEN-LAST:event_btnDeletarClienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FrmBuscarClienteVenda buscaCliente = new FrmBuscarClienteVenda(this, true);
+        buscaCliente.setVisible(true);
+        //seta o nome do Cliente no TextField
+         tfNomeCl.setText(buscaCliente.cliente.getNome());
+         lblNomeCliente.setText(buscaCliente.cliente.getNome());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1894,10 +1893,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEfetuarVenda;
     private javax.swing.ButtonGroup btnGroupVisualizar;
     private javax.swing.JButton btn_Pesquisar;
-    private javax.swing.JComboBox cbCliente;
     private javax.swing.JComboBox cbTipoPagamento;
     private javax.swing.JComboBox cbUnidadeMedida;
     private javax.swing.JComboBox cb_produtos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1993,6 +1992,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfCodProd1;
     private javax.swing.JFormattedTextField tfDataVenda;
     private javax.swing.JTextField tfDesconto;
+    private javax.swing.JTextField tfNomeCl;
     private javax.swing.JTextField tfProdutoCodigo;
     private javax.swing.JTextField tfProdutoDescricao;
     private javax.swing.JTextField tfProdutoPrecoCusto;

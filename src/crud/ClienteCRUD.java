@@ -98,6 +98,33 @@ public class ClienteCRUD {
         }
         return cliente;
     }
+    
+    public ArrayList<Cliente> consultarCpfClienteAprox(String cpf) {
+        ArrayList<Cliente> listCliente = new ArrayList<>();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
+                    + " FROM cliente WHERE cpf LIKE '" + cpf + "%';");
+
+            result = stmt.executeQuery();
+            while (result.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setNome(result.getString("nome"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setRg(result.getString("rg"));
+                cliente.setEndereco(result.getString("endereco"));
+                cliente.setTelResidencial(result.getString("telResidencial"));
+                cliente.setTelCelular(result.getString("telCelular"));
+                listCliente.add(cliente);
+            }
+            stmt.close();
+        } catch (SQLException erroConsultarNomeCliente) {
+            System.out.println(erroConsultarNomeCliente.getMessage());
+        }
+        return listCliente;
+    }
 
     public Cliente consultarNomeCliente(String nome) {
 
@@ -123,6 +150,33 @@ public class ClienteCRUD {
             System.out.println(erroConsultarNomeCliente.getMessage());
         }
         return cliente;
+    }
+
+    public ArrayList<Cliente> consultarNomeClienteAprox(String nome) {
+        ArrayList<Cliente> listCliente = new ArrayList<>();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
+                    + " FROM cliente WHERE nome LIKE '" + nome + "%';");
+
+            result = stmt.executeQuery();
+            while (result.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setNome(result.getString("nome"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setRg(result.getString("rg"));
+                cliente.setEndereco(result.getString("endereco"));
+                cliente.setTelResidencial(result.getString("telResidencial"));
+                cliente.setTelCelular(result.getString("telCelular"));
+                listCliente.add(cliente);
+            }
+            stmt.close();
+        } catch (SQLException erroConsultarNomeCliente) {
+            System.out.println(erroConsultarNomeCliente.getMessage());
+        }
+        return listCliente;
     }
 
     public void atualizarCliente(Cliente cliente) {
