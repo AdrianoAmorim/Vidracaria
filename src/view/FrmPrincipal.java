@@ -1117,6 +1117,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         tfQtdVezes.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfQtdVezes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfQtdVezesFocusLost(evt);
+            }
+        });
 
         jPanel25.setBackground(new java.awt.Color(153, 153, 255));
         jPanel25.setPreferredSize(new java.awt.Dimension(152, 49));
@@ -1685,6 +1690,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             if (cbTipoPagamento.getSelectedIndex() == 1) {
                 tfQtdVezes.setVisible(true);
                 lblQtdVezes.setVisible(true);
+                tfQtdVezes.requestFocus();
             } else {
                 tfQtdVezes.setVisible(false);
                 lblQtdVezes.setVisible(false);
@@ -1859,6 +1865,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         
         //tfVendaCodigo.setText(String.valueOf(venda.retornarIncrement()));
     }//GEN-LAST:event_btnEfetuarVendaActionPerformed
+
+    private void tfQtdVezesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfQtdVezesFocusLost
+       lblQtdvezesResumoVenda.setText(tfQtdVezes.getText());
+    }//GEN-LAST:event_tfQtdVezesFocusLost
 
     /**
      * @param args the command line arguments
