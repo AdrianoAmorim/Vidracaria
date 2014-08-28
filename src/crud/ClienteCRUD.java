@@ -98,7 +98,7 @@ public class ClienteCRUD {
         }
         return cliente;
     }
-    
+
     public ArrayList<Cliente> consultarCpfClienteAprox(String cpf) {
         ArrayList<Cliente> listCliente = new ArrayList<>();
         PreparedStatement stmt;

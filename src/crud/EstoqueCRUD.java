@@ -77,7 +77,7 @@ public class EstoqueCRUD {
             result = stmt.executeQuery();
             while (result.next()) {
 
-                estoque.setCodigoProduto(result.getInt(("codigoProduto").toString()));
+                estoque.setCodigoProduto(result.getInt(("codigoProduto")));
                 estoque.setQuantidadeAtual(result.getDouble("quantidadeAtual"));
                 estoque.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
             }

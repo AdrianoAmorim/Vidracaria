@@ -21,6 +21,26 @@ public class VendaCRUD {
 
     Connection conn = new SQLite().conectar();
 
+    // metodo para controlar, pelo Java, a função de Auto Increment da Venda.
+    public int retornarIncrement() {
+        int increment = 0;
+
+        ResultSet res;
+        PreparedStatement stmt;
+
+        try {
+            stmt = conn.prepareStatement("SELECT max(codigoVenda) FROM venda;");
+            res = stmt.executeQuery();
+            if (res.next()) {
+                // guarda o valor atual do codigoProduto + 1
+                increment = res.getInt("max(codigoVenda)") + 1;
+            }
+        } catch (SQLException erroReturnIncrement) {
+            System.out.println(erroReturnIncrement.getMessage());
+        }
+        return increment;
+    }
+
     public void inserirVenda(Venda venda) {
 
         PreparedStatement stmt;

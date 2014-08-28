@@ -23,6 +23,26 @@ public class ProdutoCRUD {
 
     Connection conn = new SQLite().conectar();
 
+    // metodo para controlar, pelo Java, a função de Auto Increment do Produto.
+    public int retornarIncrement() {
+        int increment = 0;
+
+        ResultSet res;
+        PreparedStatement stmt;
+
+        try {
+            stmt = conn.prepareStatement("SELECT max(codigoProduto) FROM produto;");
+            res = stmt.executeQuery();
+            if (res.next()) {
+                // guarda o valor atual do codigoProduto + 1
+                increment = res.getInt("max(codigoProduto)") + 1;
+            }
+        } catch (SQLException erroReturnIncrement) {
+            System.out.println(erroReturnIncrement.getMessage());
+        }
+        return increment;
+    }
+
     public void inserirProduto(Produto produto) {
 
         PreparedStatement stmt;

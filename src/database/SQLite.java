@@ -67,7 +67,7 @@ public class SQLite {
             stmt.close();
 
             String produto = "CREATE TABLE IF NOT EXISTS produto("
-                    + "codigoProduto    INTEGER     AUTO INCREMENT,"
+                    + "codigoProduto    INTEGER     NOT NULL,"
                     + "descricaoProduto VARCHAR(50) NOT NULL,"
                     + "precoCusto       DOUBLE      NOT NULL,"
                     + "precoVenda       DOUBLE      NOT NULL,"
@@ -96,7 +96,7 @@ public class SQLite {
             stmt.close();
 
             String pagamento = "CREATE TABLE IF NOT EXISTS tipoPagamento("
-                    + "codigoTipoPagamento INTEGER     AUTO INCREMENT,"
+                    + "codigoTipoPagamento INTEGER     NOT NULL,"
                     + "descricaoPagamento  VARCHAR(30) NOT NULL,"
                     + ""
                     + "CONSTRAINT pk_tipoPagemento"
