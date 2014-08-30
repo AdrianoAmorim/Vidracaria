@@ -7,15 +7,12 @@ package view;
 
 import crud.*;
 import domain.*;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import controller.*;
 import java.awt.event.ItemEvent;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -1887,59 +1884,64 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //Cadastrar Cliente
     private void btnCadastrarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClActionPerformed
         Cliente cliente = new Cliente();
-        ClienteCRUD crud = new ClienteCRUD();
+        ClienteController cliController = new ClienteController();
 
-        if (cliente.setNome(tfClienteNome.getText())) {
-            if (cliente.setCpf(tfClienteCpf.getText())) {
-                if (cliente.setRg(tfClienteRg.getText())) {
-                    if (cliente.setEndereco(tfClienteEndereco.getText())) {
-                        if (cliente.setTelResidencial(tfClienteTelRes.getText())) {
-                            if (cliente.setTelCelular(tfClienteTelCel.getText())) {
-                                crud.inserirCliente(cliente);
-                                limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
-                                        tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
-                                tpPrincipal.setSelectedIndex(0);
-                            }
-                        }
-                    }
-                }
-            }
+        cliente.setNome(tfClienteNome.getText());
+        cliente.setCpf(tfClienteCpf.getText());
+        cliente.setRg(tfClienteRg.getText());
+        cliente.setEndereco(tfClienteEndereco.getText());
+        cliente.setTelResidencial(tfClienteTelRes.getText());
+        cliente.setTelCelular(tfClienteTelCel.getText());
+
+        // se os atributos forem todos válidos passa o cliente para o crud
+        if (cliController.validarAtributos(cliente)) {
+            ClienteCRUD cliCrud = new ClienteCRUD();
+            cliCrud.inserirCliente(cliente);
+            // limpa os dados do formulário
+            limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
+                    tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
+            tpPrincipal.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnCadastrarClActionPerformed
 
 //Cadastra Produto
     private void btnCadastrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdActionPerformed
         Produto produto = new Produto();
+        ProdutoController prodController = new ProdutoController();
         Estoque estoque = new Estoque();
-        ProdutoCRUD prodCrud = new ProdutoCRUD();
-        EstoqueCRUD estoqueCRUD = new EstoqueCRUD();
+        EstoqueController estoqController = new EstoqueController();
 
-        if (produto.setCodigoProduto(Integer.valueOf(tfProdutoCodigo.getText()))) {
-            if (produto.setDescricaoProduto(tfProdutoDescricao.getText())) {
-                if (produto.setPrecoCusto(Double.parseDouble(tfProdutoPrecoCusto.getText()))) {
-                    if (produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()))) {
-                        if (produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString())) {
-                            if (estoque.setCodigoProduto(Integer.valueOf(tfProdutoCodigo.getText()))) {
-                                if (estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()))) {
-                                    if (estoque.setQuantidadeMinima(Double.parseDouble(tfProdutoQtdMinima.getText()))) {
-                                        estoqueCRUD.inserirEstoque(estoque);
-                                        prodCrud.inserirProduto(produto);
-                                        limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
-                                                tfProdutoPrecoVenda, tfProdutoQuantidade, tfProdutoQtdMinima);
-                                        carregarCbProduto();
-                                        tfProdutoCodigo.setText(String.valueOf(prodCrud.retornarIncrement()));
-                                        tpPrincipal.setSelectedIndex(0);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        // preparação do objeto produto
+        produto.setCodigoProduto(Integer.valueOf(tfProdutoCodigo.getText()));
+        produto.setDescricaoProduto(tfProdutoDescricao.getText());
+        produto.setPrecoCusto(Double.valueOf(tfProdutoPrecoCusto.getText()));
+        produto.setPrecoVenda(Double.valueOf(tfProdutoPrecoVenda.getText()));
+        produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
+        // preparação do objeto estoque
+        estoque.setCodigoProduto(Integer.valueOf(tfProdutoCodigo.getText()));
+        estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()));
+        estoque.setQuantidadeMinima(Double.parseDouble(tfProdutoQtdMinima.getText()));
+
+        // se os atributos forem válidos passa o produto e estoque para o crud
+        if ((prodController.validarProduto(produto)) && (estoqController.validarEstoque(estoque))) {
+            EstoqueCRUD estoqueCRUD = new EstoqueCRUD();
+            ProdutoCRUD prodCrud = new ProdutoCRUD();
+
+            prodCrud.inserirProduto(produto);
+            estoqueCRUD.inserirEstoque(estoque);
+
+            // limpa os dados do formulário
+            limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
+                    tfProdutoPrecoVenda, tfProdutoQuantidade);
+            carregarCbProduto();
+
+            // atualiza o valor do codigo do Produto
+            tfProdutoCodigo.setText(String.valueOf(prodCrud.retornarIncrement()));
+            // volta para a aba inicial
+            tpPrincipal.setSelectedIndex(0);
         }
-
-
     }//GEN-LAST:event_btnCadastrarProdActionPerformed
+
 //a medida q seleciona um tipo de pagamento faz os teste do metodo (
     private void cbTipoPagamentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoPagamentoItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
@@ -2012,38 +2014,42 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_PesquisarActionPerformed
 //altera produto
     private void btnAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdutoActionPerformed
-        ProdutoCRUD prodCrud = new ProdutoCRUD();
-        EstoqueCRUD estCrud = new EstoqueCRUD();
         Produto produto = new Produto();
+        ProdutoController prodController = new ProdutoController();
         Estoque estoque = new Estoque();
+        EstoqueController estoqController = new EstoqueController();
 
-        if (produto.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()))) {
-            if (estoque.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()))) {
-                if (produto.setDescricaoProduto(tfProdutoDescricao.getText())) {
-                    if (produto.setPrecoCusto(Double.parseDouble(tfProdutoPrecoCusto.getText()))) {
-                        if (produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()))) {
-                            if (produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString())) {
-                                if (estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()))) {
-                                    if (estoque.setQuantidadeMinima(Double.parseDouble(tfProdutoQtdMinima.getText()))) {
-                                        prodCrud.atualizarProduto(produto);
-                                        estCrud.atualizarEstoque(estoque);
-                                        this.btnAlterarProduto.setVisible(false);
-                                        this.btnDeletarProduto.setVisible(false);
-                                        this.btnCadastrarProd.setEnabled(true);
+        // preparação do objeto produto
+        produto.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()));
+        produto.setDescricaoProduto(tfProdutoDescricao.getText());
+        produto.setPrecoCusto(Double.parseDouble(tfProdutoPrecoCusto.getText()));
+        produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
+        produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
+        // preparação do objeto estoque
+        estoque.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()));
+        estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()));
+        estoque.setQuantidadeMinima(Double.parseDouble(tfProdutoQtdMinima.getText()));
 
-                                        limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
-                                                tfProdutoPrecoVenda, tfProdutoQuantidade, tfProdutoQtdMinima);
-                                        carregarCbProduto();
-                                        tpPrincipal.setSelectedIndex(0);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        // se os atributos do produto e estoque forem válidos; os passa para seus respectivos crud
+        if ((prodController.validarProduto(produto) && (estoqController.validarEstoque(estoque)))) {
+            ProdutoCRUD prodCrud = new ProdutoCRUD();
+            EstoqueCRUD estCrud = new EstoqueCRUD();
+            prodCrud.atualizarProduto(produto);
+            estCrud.atualizarEstoque(estoque);
+
+            // limpa os dados do formulário
+            limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
+                    tfProdutoPrecoVenda, tfProdutoQuantidade, tfProdutoQtdMinima);
+            carregarCbProduto();
+
+            this.btnAlterarProduto.setVisible(false);
+            this.btnDeletarProduto.setVisible(false);
+            this.btnCadastrarProd.setEnabled(true);
+
+            tpPrincipal.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnAlterarProdutoActionPerformed
+
 //deleta produto
     private void btnDeletarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarProdutoActionPerformed
         ProdutoCRUD prodCrud = new ProdutoCRUD();
@@ -2051,45 +2057,48 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Produto produto = new Produto();
         Estoque estoque = new Estoque();
 
-        if (produto.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()))) {
-            if (estoque.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()))) {
-                prodCrud.deletarProduto(produto);
-                estCrud.deletarEstoque(estoque);
-                this.btnAlterarProduto.setVisible(false);
-                this.btnDeletarProduto.setVisible(false);
-                this.btnCadastrarProd.setEnabled(true);
-                limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
-                        tfProdutoPrecoVenda, tfProdutoQuantidade, tfProdutoQtdMinima);
-                carregarCbProduto();
-                tpPrincipal.setSelectedIndex(0);
-            }
-        }
+        produto.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()));
+        estoque.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()));
 
+        prodCrud.deletarProduto(produto);
+        estCrud.deletarEstoque(estoque);
+
+        // remove da aba os botões para deletar e alterar
+        this.btnAlterarProduto.setVisible(false);
+        this.btnDeletarProduto.setVisible(false);
+        this.btnCadastrarProd.setEnabled(true);
+
+        // limpa os dados do formulário
+        limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
+                tfProdutoPrecoVenda, tfProdutoQuantidade, tfProdutoQtdMinima);
+        carregarCbProduto();
+
+        tpPrincipal.setSelectedIndex(0);
     }//GEN-LAST:event_btnDeletarProdutoActionPerformed
 
 //Altera o Cliente procurado
     private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
-        ClienteCRUD cliCrud = new ClienteCRUD();
         Cliente cli = new Cliente();
+        ClienteController cliController = new ClienteController();
 
-        if (cli.setCpf(tfClienteCpf.getText())) {
-            if (cli.setNome(tfClienteNome.getText())) {
-                if (cli.setEndereco(tfClienteEndereco.getText())) {
-                    if (cli.setRg(tfClienteRg.getText())) {
-                        if (cli.setTelResidencial(tfClienteTelRes.getText())) {
-                            if (cli.setTelCelular(tfClienteTelCel.getText())) {
-                                cliCrud.atualizarCliente(cli);
-                                this.btnAlterarCliente.setVisible(false);
-                                this.btnDeletarCliente.setVisible(false);
-                                this.btnCadastrarCl.setEnabled(true);
-                                limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
-                                        tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
-                                tpPrincipal.setSelectedIndex(0);
-                            }
-                        }
-                    }
-                }
-            }
+        cli.setCpf(tfClienteCpf.getText());
+        cli.setNome(tfClienteNome.getText());
+        cli.setEndereco(tfClienteEndereco.getText());
+        cli.setRg(tfClienteRg.getText());
+        cli.setTelResidencial(tfClienteTelRes.getText());
+        cli.setTelCelular(tfClienteTelCel.getText());
+
+        if (cliController.validarAtributos(cli)) {
+            ClienteCRUD cliCrud = new ClienteCRUD();
+            cliCrud.inserirCliente(cli);
+
+            limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
+                    tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
+
+            this.btnAlterarCliente.setVisible(false);
+            this.btnDeletarCliente.setVisible(false);
+            this.btnCadastrarCl.setEnabled(true);
+            tpPrincipal.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnAlterarClienteActionPerformed
 
@@ -2098,17 +2107,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ClienteCRUD cliCrud = new ClienteCRUD();
         Cliente cli = new Cliente();
 
-        if (cli.setNome(tfClienteNome.getText())) {
-            if (cli.setCpf(tfClienteCpf.getText())) {
-                cliCrud.deletarCliente(cli);
-                this.btnAlterarCliente.setVisible(false);
-                this.btnDeletarCliente.setVisible(false);
-                this.btnCadastrarCl.setEnabled(true);
-                limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
-                        tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
-                tpPrincipal.setSelectedIndex(0);
-            }
-        }
+        cli.setNome(tfClienteNome.getText());
+        cli.setCpf(tfClienteCpf.getText());
+
+        cliCrud.deletarCliente(cli);
+
+        this.btnAlterarCliente.setVisible(false);
+        this.btnDeletarCliente.setVisible(false);
+        this.btnCadastrarCl.setEnabled(true);
+
+        limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
+                tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
+        tpPrincipal.setSelectedIndex(0);
     }//GEN-LAST:event_btnDeletarClienteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

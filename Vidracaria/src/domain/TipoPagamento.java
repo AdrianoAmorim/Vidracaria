@@ -5,8 +5,6 @@
  */
 package domain;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author debian
@@ -15,6 +13,7 @@ public class TipoPagamento {
 
     private int codigoTipoPagamento;
     private String descricaoPagamento;
+    private int parcelas;
 
     public int getCodigoTipoPagamento() {
         return codigoTipoPagamento;
@@ -30,6 +29,14 @@ public class TipoPagamento {
 
     public void setDescricaoPagamento(String descricaoPagamento) {
         this.descricaoPagamento = descricaoPagamento;
+    }
+
+    public int getParcelas() {
+        return parcelas;
+    }
+
+    public void setParcelas(int parcelas) {
+        this.parcelas = parcelas;
     }
 
 }
