@@ -19,17 +19,18 @@ import java.util.ArrayList;
  */
 public class TipoPagamentoCRUD {
 
-    Connection conn = new SQLite().conectar();
-
     public void inserirTipoPagamento(TipoPagamento tipoPagamento) {
+
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("INSERT INTO tipoPagamento(codigoTipoPagamento, descricaoPagamento)"
                     + " VALUES (?, ?)");
             stmt.setInt(1, tipoPagamento.getCodigoTipoPagamento());
             stmt.setString(2, tipoPagamento.getDescricaoPagamento());
-stmt.executeUpdate();
+            stmt.executeUpdate();
             stmt.close();
+            conn.close();
             System.out.println("Tipo de pagamento cadastrado com sucesso!");
         } catch (SQLException erroInserirTipoPagamento) {
             System.out.println(erroInserirTipoPagamento.getMessage());
@@ -38,6 +39,7 @@ stmt.executeUpdate();
 
     public ArrayList<TipoPagamento> consultarTipoPagamento() {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<TipoPagamento> listaTiposPagamento = new ArrayList<>();
@@ -51,6 +53,7 @@ stmt.executeUpdate();
 
                 listaTiposPagamento.add(tipoPagamento);
                 stmt.close();
+                conn.close();
             }
             return listaTiposPagamento;
         } catch (SQLException erroConsultarTipoPagamento) {
@@ -61,6 +64,7 @@ stmt.executeUpdate();
 
     public void atualizarTipoPagamento(TipoPagamento tipoPagamento) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("UPDATE tipoPagamento SET descricaoPagamento = ?"
@@ -70,6 +74,7 @@ stmt.executeUpdate();
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             System.out.println("Informações atualizadas com sucesso!");
         } catch (SQLException erroAtualizarTipoPagamento) {
             System.out.println(erroAtualizarTipoPagamento.getMessage());
@@ -78,6 +83,7 @@ stmt.executeUpdate();
 
     public void deletarTipoPagamento(TipoPagamento tipoPagamento) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("DELETE FROM tipoPagamento WHERE codigoTipoPagamento = ?;");
@@ -85,6 +91,7 @@ stmt.executeUpdate();
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
         } catch (SQLException erroDeletarTipoPagamento) {
             System.out.println(erroDeletarTipoPagamento.getMessage());
         }

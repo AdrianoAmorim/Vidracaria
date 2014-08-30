@@ -21,14 +21,13 @@ import javax.swing.JOptionPane;
  */
 public class ProdutoCRUD {
 
-    Connection conn = new SQLite().conectar();
-
     // metodo para controlar, pelo Java, a função de Auto Increment do Produto.
     public int retornarIncrement() {
         int increment = 0;
 
-        ResultSet res;
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
+        ResultSet res;
 
         try {
             stmt = conn.prepareStatement("SELECT max(codigoProduto) FROM produto;");
@@ -37,6 +36,8 @@ public class ProdutoCRUD {
                 // guarda o valor atual do codigoProduto + 1
                 increment = res.getInt("max(codigoProduto)") + 1;
             }
+            stmt.close();
+            conn.close();
         } catch (SQLException erroReturnIncrement) {
             System.out.println(erroReturnIncrement.getMessage());
         }
@@ -45,6 +46,7 @@ public class ProdutoCRUD {
 
     public void inserirProduto(Produto produto) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("INSERT INTO produto(codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida)"
@@ -56,6 +58,7 @@ public class ProdutoCRUD {
             stmt.setString(5, produto.getUnidadeMedida());
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
         } catch (SQLException erroInserirProduto) {
             System.out.println(erroInserirProduto.getMessage());
@@ -64,6 +67,7 @@ public class ProdutoCRUD {
 
     public ArrayList<Produto> consultarProduto() {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Produto> listaProdutos = new ArrayList<>();
@@ -82,6 +86,7 @@ public class ProdutoCRUD {
                 listaProdutos.add(produto);
             }
             stmt.close();
+            conn.close();
             return listaProdutos;
         } catch (SQLException erroConsultarProduto) {
             System.out.println(erroConsultarProduto.getMessage());
@@ -91,9 +96,10 @@ public class ProdutoCRUD {
 
     public Produto consultarCodigoProduto(String codigo) {
 
-        Produto produto = new Produto();
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
+        Produto produto = new Produto();
 
         try {
             stmt = conn.prepareStatement("SELECT codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida"
@@ -108,6 +114,7 @@ public class ProdutoCRUD {
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
             }
             stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarCodigoProduto) {
             System.out.println(erroConsultarCodigoProduto.getMessage());
         }
@@ -116,9 +123,10 @@ public class ProdutoCRUD {
 
     public Produto consultarNomeProduto(String nome) {
 
-        Produto produto = new Produto();
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
+        Produto produto = new Produto();
 
         try {
             stmt = conn.prepareStatement("SELECT codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida"
@@ -133,6 +141,7 @@ public class ProdutoCRUD {
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
             }
             stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarCodigoProduto) {
             System.out.println(erroConsultarCodigoProduto.getMessage());
         }
@@ -141,6 +150,7 @@ public class ProdutoCRUD {
 
     public void atualizarProduto(Produto produto) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("UPDATE produto SET descricaoProduto = ?, precoCusto = ?, precoVenda = ?, unidadeMedida = ?"
@@ -153,6 +163,7 @@ public class ProdutoCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
         } catch (SQLException erroAtualizarProduto) {
             System.out.println(erroAtualizarProduto.getMessage());
@@ -161,6 +172,7 @@ public class ProdutoCRUD {
 
     public void deletarProduto(Produto produto) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("DELETE FROM produto WHERE codigoProduto = ?;");
@@ -168,6 +180,7 @@ public class ProdutoCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             JOptionPane.showMessageDialog(null, "Produto deletado com sucesso!");
         } catch (SQLException erroDeletarProduto) {
             System.out.println(erroDeletarProduto.getMessage());

@@ -19,22 +19,22 @@ import java.util.ArrayList;
  */
 public class EstoqueCRUD {
 
-    Connection conn = new SQLite().conectar();
-
     public void inserirEstoque(Estoque estoque) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             // falta implementar a quantidade minima na janela
             stmt = conn.prepareStatement("INSERT INTO estoque(codigoProduto, quantidadeAtual, quantidadeMinima)"
                     + " VALUES (?,?,?);");
-            
+
             stmt.setInt(1, estoque.getCodigoProduto());
             stmt.setDouble(2, estoque.getQuantidadeAtual());
             stmt.setDouble(3, 3);
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             System.out.println("Estoque cadastrado com sucesso!");
         } catch (SQLException erroInserirEstoque) {
             System.out.println(erroInserirEstoque.getMessage());
@@ -43,6 +43,7 @@ public class EstoqueCRUD {
 
     public ArrayList<Estoque> consultarEstoque() {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Estoque> listaEstoque = new ArrayList<>();
@@ -58,6 +59,7 @@ public class EstoqueCRUD {
                 listaEstoque.add(estoque);
             }
             stmt.close();
+            conn.close();
             return listaEstoque;
         } catch (SQLException erroConsultarEstoque) {
             System.out.println(erroConsultarEstoque.getMessage());
@@ -67,9 +69,10 @@ public class EstoqueCRUD {
 
     public Estoque consultarCodigoEstoque(String codigo) {
 
-        Estoque estoque = new Estoque();
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
+        Estoque estoque = new Estoque();
 
         try {
             stmt = conn.prepareStatement("SELECT codigoProduto, quantidadeAtual, quantidadeMinima"
@@ -82,6 +85,7 @@ public class EstoqueCRUD {
                 estoque.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
             }
             stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarCodigoEstoque) {
             System.out.println(erroConsultarCodigoEstoque.getMessage());
         }
@@ -90,9 +94,10 @@ public class EstoqueCRUD {
 
     public Estoque consultarDescricaoEstoque(String descricao) {
 
-        Estoque estoque = new Estoque();
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
+        Estoque estoque = new Estoque();
 
         try {
             stmt = conn.prepareStatement("SELECT e.codigoProduto, e.quantidadeAtual, e.quantidadeMinima"
@@ -106,6 +111,7 @@ public class EstoqueCRUD {
                 estoque.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
             }
             stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarCodigoEstoque) {
             System.out.println(erroConsultarCodigoEstoque.getMessage());
         }
@@ -114,6 +120,7 @@ public class EstoqueCRUD {
 
     public void atualizarEstoque(Estoque estoque) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("UPDATE estoque SET quantidadeAtual = ?, quantidadeMinima = ?"
@@ -125,6 +132,7 @@ public class EstoqueCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
 
             System.out.println("Informações atualizadas com sucesso!");
         } catch (SQLException erroAtualizarEstoque) {
@@ -134,6 +142,7 @@ public class EstoqueCRUD {
 
     public void deletarEstoque(Estoque estoque) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("DELETE FROM estoque WHERE codigoProduto = ?");
@@ -141,6 +150,7 @@ public class EstoqueCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
         } catch (SQLException erroDeletarEstoque) {
             System.out.println(erroDeletarEstoque.getMessage());
         }

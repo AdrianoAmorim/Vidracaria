@@ -19,14 +19,13 @@ import java.util.ArrayList;
  */
 public class VendaCRUD {
 
-    Connection conn = new SQLite().conectar();
-
     // metodo para controlar, pelo Java, a função de Auto Increment da Venda.
     public int retornarIncrement() {
         int increment = 0;
 
-        ResultSet res;
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
+        ResultSet res;
 
         try {
             stmt = conn.prepareStatement("SELECT max(codigoVenda) FROM venda;");
@@ -35,6 +34,8 @@ public class VendaCRUD {
                 // guarda o valor atual do codigoProduto + 1
                 increment = res.getInt("max(codigoVenda)") + 1;
             }
+            stmt.close();
+            conn.close();
         } catch (SQLException erroReturnIncrement) {
             System.out.println(erroReturnIncrement.getMessage());
         }
@@ -43,6 +44,7 @@ public class VendaCRUD {
 
     public void inserirVenda(Venda venda) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("INSERT INTO venda(codigoVenda, codigoProduto, quantidadeProduto, codigoCliente, codigoTipoPagamento, dataVenda)"
@@ -55,6 +57,7 @@ public class VendaCRUD {
             stmt.setString(6, venda.getDataVenda());
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             System.out.println("Venda cadastrada com sucesso!");
         } catch (SQLException erroInserirVenda) {
             System.out.println(erroInserirVenda.getMessage());
@@ -63,6 +66,7 @@ public class VendaCRUD {
 
     public ArrayList<Venda> consultarVenda() {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Venda> listaVendas = new ArrayList<>();
@@ -80,6 +84,7 @@ public class VendaCRUD {
 
                 listaVendas.add(venda);
                 stmt.close();
+                conn.close();
             }
             return listaVendas;
         } catch (SQLException erroConsultarVenda) {
@@ -90,6 +95,7 @@ public class VendaCRUD {
 
     public void atualizarVenda(Venda venda) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("UPDATE venda SET codigoProduto = ?, quantidadeProduto = ?, codigoCliente = ?, codigoTipoPagamento = ?, dataVenda = ?"
@@ -103,6 +109,7 @@ public class VendaCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             System.out.println("Informações atualizadas com sucesso!");
         } catch (SQLException erroAtualizarVenda) {
             System.out.println(erroAtualizarVenda.getMessage());
@@ -111,6 +118,7 @@ public class VendaCRUD {
 
     public void deletarVenda(Venda venda) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("DELETE FROM venda WHERE codigoVenda = ?;");
@@ -118,6 +126,7 @@ public class VendaCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
         } catch (SQLException erroDeletarVenda) {
             System.out.println(erroDeletarVenda.getMessage());
         }

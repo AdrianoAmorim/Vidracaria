@@ -20,10 +20,9 @@ import javax.swing.JOptionPane;
  */
 public class ClienteCRUD {
 
-    Connection conn = new SQLite().conectar();
-
     public void inserirCliente(Cliente cliente) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("INSERT INTO cliente(cpf,nome,rg,endereco,telResidencial,telCelular)"
@@ -37,6 +36,7 @@ public class ClienteCRUD {
             stmt.setString(6, cliente.getTelCelular());
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
         } catch (SQLException erroInserirCliente) {
             System.out.println(erroInserirCliente.getMessage());
@@ -45,6 +45,7 @@ public class ClienteCRUD {
 
     public ArrayList<Cliente> consultarCliente() {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Cliente> listaClientes = new ArrayList<>();
@@ -64,6 +65,7 @@ public class ClienteCRUD {
                 listaClientes.add(cliente);
             }
             stmt.close();
+            conn.close();
             return listaClientes;
         } catch (SQLException erroConsultarCliente) {
             System.out.println(erroConsultarCliente.getMessage());
@@ -73,9 +75,10 @@ public class ClienteCRUD {
 
     public Cliente consultarCpfCliente(String cpf) {
 
-        Cliente cliente = new Cliente();
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
+        Cliente cliente = new Cliente();
 
         try {
             stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
@@ -93,6 +96,7 @@ public class ClienteCRUD {
 
             }
             stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarCpfCliente) {
             System.out.println(erroConsultarCpfCliente.getMessage());
         }
@@ -100,9 +104,11 @@ public class ClienteCRUD {
     }
 
     public ArrayList<Cliente> consultarCpfClienteAprox(String cpf) {
-        ArrayList<Cliente> listCliente = new ArrayList<>();
+
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
+        ArrayList<Cliente> listCliente = new ArrayList<>();
 
         try {
             stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
@@ -120,6 +126,7 @@ public class ClienteCRUD {
                 listCliente.add(cliente);
             }
             stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarNomeCliente) {
             System.out.println(erroConsultarNomeCliente.getMessage());
         }
@@ -128,9 +135,10 @@ public class ClienteCRUD {
 
     public Cliente consultarNomeCliente(String nome) {
 
-        Cliente cliente = new Cliente();
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
+        Cliente cliente = new Cliente();
 
         try {
             stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
@@ -146,6 +154,7 @@ public class ClienteCRUD {
                 cliente.setTelCelular(result.getString("telCelular"));
             }
             stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarNomeCliente) {
             System.out.println(erroConsultarNomeCliente.getMessage());
         }
@@ -153,9 +162,11 @@ public class ClienteCRUD {
     }
 
     public ArrayList<Cliente> consultarNomeClienteAprox(String nome) {
-        ArrayList<Cliente> listCliente = new ArrayList<>();
+
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
+        ArrayList<Cliente> listCliente = new ArrayList<>();
 
         try {
             stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
@@ -173,6 +184,7 @@ public class ClienteCRUD {
                 listCliente.add(cliente);
             }
             stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarNomeCliente) {
             System.out.println(erroConsultarNomeCliente.getMessage());
         }
@@ -181,7 +193,9 @@ public class ClienteCRUD {
 
     public void atualizarCliente(Cliente cliente) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
+        ArrayList<Cliente> listCliente = new ArrayList<>();
         try {
             stmt = conn.prepareStatement("UPDATE cliente SET nome = ?, endereco = ?, rg = ?, telResidencial = ?, telCelular = ?"
                     + " WHERE cpf = ?;");
@@ -194,6 +208,7 @@ public class ClienteCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
         } catch (SQLException erroAtualizarCliente) {
             System.out.println(erroAtualizarCliente.getMessage());
@@ -202,6 +217,7 @@ public class ClienteCRUD {
 
     public void deletarCliente(Cliente cliente) {
 
+        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement("DELETE FROM cliente WHERE nome = ? AND cpf = ?;");
@@ -210,6 +226,7 @@ public class ClienteCRUD {
 
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
             JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
         } catch (SQLException erroDeletarCliente) {
             System.out.println(erroDeletarCliente.getMessage());
