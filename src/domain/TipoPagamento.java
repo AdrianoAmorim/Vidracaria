@@ -15,6 +15,7 @@ public class TipoPagamento {
 
     private int codigoTipoPagamento;
     private String descricaoPagamento;
+    private int parcelas;
 
     public int getCodigoTipoPagamento() {
         return codigoTipoPagamento;
@@ -40,6 +41,14 @@ public class TipoPagamento {
         }
         this.descricaoPagamento = descricaoPagamento;
         return true;
+    }
+
+    public int getParcelas() {
+        return parcelas;
+    }
+
+    public void setParcelas(int parcelas) {
+        this.parcelas = parcelas;
     }
 
 }
