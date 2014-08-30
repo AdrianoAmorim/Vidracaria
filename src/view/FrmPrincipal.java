@@ -14,6 +14,8 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -1094,6 +1096,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         tfDesconto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfDesconto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfDescontoFocusLost(evt);
+            }
+        });
 
         jPanel34.setBackground(new java.awt.Color(153, 153, 255));
         jPanel34.setPreferredSize(new java.awt.Dimension(152, 49));
@@ -2118,6 +2125,25 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         //tfVendaCodigo.setText(String.valueOf(venda.retornarIncrement()));
     }//GEN-LAST:event_btnEfetuarVendaActionPerformed
+
+    private void tfDescontoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDescontoFocusLost
+        try {
+            NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+            //nicializa a variavel com valor da label (pegando valor 0)
+            double valorDesc = nf.parse(lblDescontoVenda.getText()).doubleValue();
+            String valorFormatado;
+            //pega do Tfield o valor digitado e transforma pra double
+            valorDesc = Double.valueOf(tfDesconto.getText());
+            //em seguida formata para nosso padrao de moeda
+            valorFormatado = nf.format(valorDesc);
+            //e seta na label.
+            lblDescontoVenda.setText(valorFormatado);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Erro Na Conversão de Valores - Desconto " + ex.getMessage());
+        }
+
+
+    }//GEN-LAST:event_tfDescontoFocusLost
 
     /**
      * @param args the command line arguments
