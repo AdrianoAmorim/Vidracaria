@@ -15,21 +15,40 @@ public class TipoPagamento {
 
     private int codigoTipoPagamento;
     private String descricaoPagamento;
+    private int parcelas;
 
     public int getCodigoTipoPagamento() {
         return codigoTipoPagamento;
     }
 
-    public void setCodigoTipoPagamento(int codigoTipoPagamento) {
+    public boolean setCodigoTipoPagamento(int codigoTipoPagamento) {
+        if (Integer.toString(codigoTipoPagamento).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Codigo do tipo de pagamento inválido !", "AVISO", 2);
+            return false;
+        }
         this.codigoTipoPagamento = codigoTipoPagamento;
+        return true;
     }
 
     public String getDescricaoPagamento() {
         return descricaoPagamento;
     }
 
-    public void setDescricaoPagamento(String descricaoPagamento) {
+    public boolean setDescricaoPagamento(String descricaoPagamento) {
+        if (descricaoPagamento.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Descrição do tipo de pagamento inválida !", "AVISO", 2);
+            return false;
+        }
         this.descricaoPagamento = descricaoPagamento;
+        return true;
+    }
+
+    public int getParcelas() {
+        return parcelas;
+    }
+
+    public void setParcelas(int parcelas) {
+        this.parcelas = parcelas;
     }
 
 }

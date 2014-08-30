@@ -5,6 +5,8 @@
  */
 package domain;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author debian
@@ -22,48 +24,78 @@ public class Venda {
         return codigoVenda;
     }
 
-    public void setCodigoVenda(int codigoVenda) {
+    public boolean setCodigoVenda(int codigoVenda) {
+        if (Integer.toString(codigoVenda).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Codigo da venda inválido !", "AVISO", 2);
+            return false;
+        }
         this.codigoVenda = codigoVenda;
+        return true;
     }
 
     public int getCodigoProduto() {
         return codigoProduto;
     }
 
-    public void setCodigoProduto(int codigoProduto) {
+    public boolean setCodigoProduto(int codigoProduto) {
+        if (Integer.toString(codigoProduto).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Codigo do produto inválido !", "AVISO", 2);
+            return false;
+        }
         this.codigoProduto = codigoProduto;
+        return true;
     }
 
     public Double getQuantidadeProduto() {
         return quantidadeProduto;
     }
 
-    public void setQuantidadeProduto(Double quantidadeProduto) {
+    public boolean setQuantidadeProduto(Double quantidadeProduto) {
+        if (Double.toString(quantidadeProduto).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Quantidade do produto inválido !", "AVISO", 2);
+            return false;
+        }
         this.quantidadeProduto = quantidadeProduto;
+        return true;
     }
 
     public String getCodigoCliente() {
         return codigoCliente;
     }
 
-    public void setCodigoCliente(String codigoCliente) {
+    public boolean setCodigoCliente(String codigoCliente) {
+        if (codigoCliente.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Codigo do cliente inválido !", "AVISO", 2);
+            return false;
+        }
         this.codigoCliente = codigoCliente;
+        return true;
     }
 
     public int getCodigoTipoPagamento() {
         return codigoTipoPagamento;
     }
 
-    public void setCodigoTipoPagamento(int codigoTipoPagamento) {
+    public boolean setCodigoTipoPagamento(int codigoTipoPagamento) {
+        if (Integer.toString(codigoTipoPagamento).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Codigo do tipo do pagamento inválido !", "AVISO", 2);
+            return false;
+        }
         this.codigoTipoPagamento = codigoTipoPagamento;
+        return true;
     }
 
     public String getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(String dataVenda) {
+    public boolean setDataVenda(String dataVenda) {
+        if (dataVenda.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Data da venda inválida !", "AVISO", 2);
+            return false;
+        }
         this.dataVenda = dataVenda;
+        return true;
     }
 
 }

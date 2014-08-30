@@ -5,6 +5,8 @@
  */
 package domain;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author debian
@@ -18,52 +20,74 @@ public class Cliente {
     protected String telResidencial;
     protected String telCelular;
 
+    public boolean setCpf(String cpf) {
+        if (cpf.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "CPF inválido !", "AVISO", 2);
+            return false;
+        }
+        this.cpf = cpf;
+        return true;
+    }
+
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public boolean setNome(String nome) {
+        if (nome.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nome inválido !", "AVISO", 2);
+            return false;
+        }
+        this.nome = nome;
+        return true;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public boolean setRg(String rg) {
+        if (rg.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "RG inválido !", "AVISO", 2);
+            return false;
+        }
+        this.rg = rg;
+        return true;
     }
 
     public String getRg() {
         return rg;
     }
 
-    public void setRg(String rg) {
-        this.rg = rg;
+    public boolean setEndereco(String endereco) {
+        if (endereco.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Endereço inválido !", "AVISO", 2);
+            return false;
+        }
+        this.endereco = endereco;
+        return true;
     }
 
     public String getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public boolean setTelResidencial(String telResidencial) {
+        this.telResidencial = telResidencial;
+        return true;
     }
 
     public String getTelResidencial() {
         return telResidencial;
     }
 
-    public void setTelResidencial(String telResidencial) {
-        this.telResidencial = telResidencial;
+    public boolean setTelCelular(String telCelular) {
+        this.telCelular = telCelular;
+        return true;
     }
 
     public String getTelCelular() {
         return telCelular;
     }
 
-    public void setTelCelular(String telCelular) {
-        this.telCelular = telCelular;
-    }
-    
 }

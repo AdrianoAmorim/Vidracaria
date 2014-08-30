@@ -5,6 +5,8 @@
  */
 package domain;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author debian
@@ -17,43 +19,71 @@ public class Produto {
     private Double precoVenda;
     private String unidadeMedida;
 
+    
+   
+
     public int getCodigoProduto() {
         return codigoProduto;
     }
 
-    public void setCodigoProduto(int codigoProduto) {
+    public boolean setCodigoProduto(int codigoProduto) {
+        if (Integer.toString(codigoProduto).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Codigo do produto inválido !", "AVISO", 2);
+            return false;
+        }
         this.codigoProduto = codigoProduto;
+        return true;
     }
 
     public String getDescricaoProduto() {
         return descricaoProduto;
     }
 
-    public void setDescricaoProduto(String descricaoProduto) {
+    public boolean setDescricaoProduto(String descricaoProduto) {
+        if (descricaoProduto.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Descrição do produto inválida !", "AVISO", 2);
+            return false;
+        }
         this.descricaoProduto = descricaoProduto;
+        return true;
     }
 
     public Double getPrecoCusto() {
         return precoCusto;
     }
 
-    public void setPrecoCusto(Double precoCusto) {
+    public boolean setPrecoCusto(Double precoCusto) {
+        if (precoCusto.toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preco de custo do produto inválido !", "AVISO", 2);
+            return false;
+        }
         this.precoCusto = precoCusto;
+        return true;
     }
 
     public Double getPrecoVenda() {
         return precoVenda;
     }
 
-    public void setPrecoVenda(Double precoVenda) {
+    public boolean setPrecoVenda(Double precoVenda) {
+        if (precoVenda.toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preco de venda do produto inválido !", "AVISO", 2);
+            return false;
+        }
         this.precoVenda = precoVenda;
+        return true;
     }
 
     public String getUnidadeMedida() {
         return unidadeMedida;
     }
 
-    public void setUnidadeMedida(String unidadeMedida) {
+    public boolean setUnidadeMedida(String unidadeMedida) {
+        if (unidadeMedida.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Unidade de medida do produto inválida !", "AVISO", 2);
+            return false;
+        }
         this.unidadeMedida = unidadeMedida;
+        return true;
     }
 }
