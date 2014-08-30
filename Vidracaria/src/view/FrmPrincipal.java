@@ -2153,14 +2153,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
             } else {
                 NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
                 //nicializa a variavel com valor da label (pegando valor 0)
-                double valorDesc = nf.parse(lblDescontoVenda.getText()).doubleValue();
-                String valorFormatado;
+                double valorDesc = nf.parse(lblDescontoVenda.getText()).doubleValue();   
+                String TotalVendaFormat;
+                String valorDescontoFormatado;
                 //pega do Tfield o valor digitado e transforma pra double
                 valorDesc = Double.valueOf(tfDesconto.getText());
+                //*inicializa a variavel com valor total da venda.
+                double valorTotalVenda = nf.parse(lblValorTotalVenda.getText()).doubleValue();
+                //*realizando o desconto na venda
+                double valorTotalAtualizado= valorTotalVenda - valorDesc;
                 //em seguida formata para nosso padrao de moeda
-                valorFormatado = nf.format(valorDesc);
-                //e seta na label.
-                lblDescontoVenda.setText(valorFormatado);
+                valorDescontoFormatado = nf.format(valorDesc); 
+                //*formata valor Total da Venda ja com o desconto
+                TotalVendaFormat = nf.format(valorTotalAtualizado);
+                //e seta nas label.
+                lblDescontoVenda.setText(valorDescontoFormatado);
+                //*
+                lblValorTotalVenda.setText(TotalVendaFormat);
                 //Limpa o Campo Desconto
                 tfDesconto.setText("");
 
