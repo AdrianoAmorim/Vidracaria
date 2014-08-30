@@ -21,38 +21,23 @@ public class Estoque {
         return codigoProduto;
     }
 
-    public boolean setCodigoProduto(int codigoProduto) {
-        if (Integer.toString(codigoProduto).isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Codigo do produto inválido !", "AVISO", 2);
-            return false;
-        }
+    public void setCodigoProduto(int codigoProduto) {
         this.codigoProduto = codigoProduto;
-        return true;
     }
 
     public Double getQuantidadeAtual() {
         return quantidadeAtual;
     }
 
-    public boolean setQuantidadeAtual(Double quantidadeAtual) {
-        if (quantidadeAtual.toString().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Quantidade atual inválida !", "AVISO", 2);
-            return false;
-        }
+    public void setQuantidadeAtual(Double quantidadeAtual) {
         this.quantidadeAtual = quantidadeAtual;
-        return true;
     }
 
     public Double getQuantidadeMinima() {
         return quantidadeMinima;
     }
 
-    public boolean setQuantidadeMinima(Double quantidadeMinima) {
-        if (quantidadeMinima.toString().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Quantidade mínima inválida !", "AVISO", 2);
-            return false;
-        }
+    public void setQuantidadeMinima(Double quantidadeMinima) {
         this.quantidadeMinima = quantidadeMinima;
-        return true;
     }
 }
