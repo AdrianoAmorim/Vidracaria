@@ -51,7 +51,6 @@ public class SQLite {
             //stmt.execute(deletar);
             //deletar = "DROP TABLE IF EXISTS estoque;";
             //stmt.execute(deletar);
-            
             String cliente = "CREATE TABLE IF NOT EXISTS cliente("
                     + "cpf            CHAR(11)     NOT NULL,"
                     + "nome           VARCHAR(30)  NOT NULL,"
@@ -130,7 +129,54 @@ public class SQLite {
                     + ");";
             stmt.executeUpdate(venda);
             stmt.close();
-            conn.close();
+
+            String planoContas = "CREATE TABLE planoContas("
+                    + "mesAno  CHAR(7) NOT NULL,"
+                    + "receita DOUBLE NOT NULL,"
+                    + "despesa DOUBLE NOT NULL,"
+                    + ""
+                    + "CONSTRAINT pk_contas"
+                    + "  PRIMARY KEY(mesAno)"
+                    + ");";
+            stmt.executeUpdate(planoContas);
+            stmt.close();
+
+            String despesa = "CREATE TABLE despesa("
+                    + "codigoDespesa    INTEGER NOT NULL,"
+                    + "descricaoDespesa VARCHAR(20) NOT NULL,"
+                    + "custoDespesa     DOUBLE  NOT NULL,"
+                    + ""
+                    + "CONSTRAINT pk_despesa"
+                    + "  PRIMARY KEY(codigoDespesa)"
+                    + ");";
+            stmt.executeUpdate(despesa);
+            stmt.close();
+            
+            String cargo = "CREATE TABLE cargo("
+                    + "codigoCargo INTEGER NOT NULL,"
+                    + "descricaoCargo VARCHAR(30) NOT NULL,"
+                    + ""
+                    + "CONSTRAINT pk_cargo"
+                    + "  PRIMARY KEY(codigoCargo)"
+                    + ");";
+            stmt.executeUpdate(cargo);
+            stmt.close();
+                        
+            String funcionario = "CREATE TABLE funcionario( "
+                    + "codigoFuncionario INTEGER NOT NULL,"
+                    + "codigoCargo INTEGER NOT NULL,"
+                    + "nomeFuncionario VARCHAR(30) NOT NULL,"
+                    + "salarioFuncionario DOUBLE NOT NULL,"
+                    + ""
+                    + "CONSTRAINT pk_funcionario"
+                    + "  PRIMARY KEY (codigoFuncionario)"
+                    + ""
+                    + "CONSTRAINT fk_cargo_funcionario"
+                    + "  FOREIGN KEY (codigoCargo)"
+                    + "  REFERENCES ON cargo (codigoCargo)"
+                    + ");";
+            stmt.executeUpdate(funcionario);
+            stmt.close();
         } catch (SQLException erroTabelas) {
             System.out.println(erroTabelas.getSQLState());
             System.exit(0);
