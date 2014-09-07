@@ -104,7 +104,7 @@ public class SQLite {
             stmt.executeUpdate(pagamento);
             stmt.close();
 
-            String venda = "CREATE TABLE IF NOT EXISTS venda("
+            /*String venda = "CREATE TABLE IF NOT EXISTS venda("
                     + "codigoVenda         INTEGER  NOT NULL,"
                     + "codigoProduto       INTEGER  NOT NULL,"
                     + "quantidadeProduto   DOUBLE   NOT NULL,"
@@ -176,7 +176,7 @@ public class SQLite {
                     + "  REFERENCES ON cargo (codigoCargo)"
                     + ");";
             stmt.executeUpdate(funcionario);
-            stmt.close();
+            stmt.close();*/
         } catch (SQLException erroTabelas) {
             System.out.println(erroTabelas.getSQLState());
             System.exit(0);
