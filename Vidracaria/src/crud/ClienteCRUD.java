@@ -43,7 +43,7 @@ public class ClienteCRUD {
         }
     }
 
-    public ArrayList<Cliente> consultarCliente() {
+    public ArrayList<Cliente> consultarTodosCliente() {
 
         Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
@@ -72,7 +72,32 @@ public class ClienteCRUD {
             return listaClientes;
         }
     }
-
+    //Consulta o cliente passando todos ou um parametro
+    public ArrayList<Cliente> consultarCliente(String cod,String nome,String cpf,String rg,String celular,String residencial){
+        Connection conn = new SQLite().conectar();
+        PreparedStatement stm;
+        ResultSet result;
+        ArrayList<Cliente> listCliente = new ArrayList<>();
+        try{
+            //implementar a query...
+            String query = "QUERY";
+            stm = conn.prepareStatement(query); 
+            result = stm.executeQuery();
+          
+            while(result.next()){
+                Cliente cliente = new Cliente();      
+                //falta pegar o resultado da consulta e atribuir aos clientes.
+                listCliente.add(cliente);
+            }
+            stm.close();
+            result.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Consulta Detalhada de Clientes.");
+        }
+                
+        return listCliente;
+    }
+    
     public Cliente consultarCpfCliente(String cpf) {
 
         Connection conn = new SQLite().conectar();

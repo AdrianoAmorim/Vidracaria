@@ -300,7 +300,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel11" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
@@ -316,28 +316,28 @@
                               <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                               <Component id="tfClienteTelRes" min="-2" pref="158" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <Component id="tfClienteTelCel" min="-2" pref="158" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnDeletarCliente" min="-2" pref="90" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnAlterarCliente" min="-2" pref="90" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="btnCadastrarCl" min="-2" pref="90" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <Component id="tfClienteEndereco" min="-2" pref="500" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                              <Component id="tfClienteNome" min="-2" pref="500" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                  <Component id="tfClienteTelCel" min="-2" pref="158" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnDeletarCliente" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnAlterarCliente" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="btnCadastrarCl" min="-2" pref="90" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                  <Component id="tfClienteEndereco" min="-2" pref="500" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButton2" min="-2" pref="42" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tfClienteNome" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="619" max="32767" attributes="0"/>
@@ -348,10 +348,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" pref="191" max="32767" attributes="0"/>
+                      <EmptySpace pref="191" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfClienteNome" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButton2" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="tfClienteNome" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -763,6 +766,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeletarClienteActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="jButton2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="..."/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlCadProduto">
@@ -846,7 +857,9 @@
                               <Component id="btnCadastrarProd" min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="619" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace pref="571" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -864,7 +877,10 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jPanel21" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfProdutoDescricao" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="tfProdutoDescricao" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                                      <Component id="jButton3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jPanel22" min="-2" max="-2" attributes="0"/>
@@ -1338,6 +1354,11 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="jButton3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="..."/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlEfetuarVenda">
