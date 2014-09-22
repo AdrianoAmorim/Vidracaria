@@ -1,4 +1,3 @@
-
 package crud;
 
 import database.SQLite;
@@ -19,22 +18,22 @@ public class ClienteCRUD {
     public void inserirCliente(Cliente cliente) {
 
         PreparedStatement stmt;
-        try {
-            try (Connection conn = new SQLite().conectar()) {
-                stmt = conn.prepareStatement("INSERT INTO cliente(codCliente, cpfCliente, nomeCliente, rgCliente, "
-                        + "enderecoCliente,telResidencial,telCelular "
-                        + "VALUES (?,?,?,?,?,?,?);");
 
-                stmt.setInt(1, cliente.getCodCliente());
-                stmt.setString(2, cliente.getCpfCliente());
-                stmt.setString(3, cliente.getNomeCliente());
-                stmt.setString(4, cliente.getRgCliente());
-                stmt.setString(5, cliente.getEnderecoCliente());
-                stmt.setString(6, cliente.getTelResidencial());
-                stmt.setString(7, cliente.getTelCelular());
-                stmt.executeUpdate();
-                stmt.close();
-            }
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("INSERT INTO cliente(codCliente, cpfCliente, nomeCliente, rgCliente, "
+                    + "enderecoCliente,telResidencial,telCelular "
+                    + "VALUES (?,?,?,?,?,?,?);");
+
+            stmt.setInt(1, cliente.getCodCliente());
+            stmt.setString(2, cliente.getCpfCliente());
+            stmt.setString(3, cliente.getNomeCliente());
+            stmt.setString(4, cliente.getRgCliente());
+            stmt.setString(5, cliente.getEnderecoCliente());
+            stmt.setString(6, cliente.getTelResidencial());
+            stmt.setString(7, cliente.getTelCelular());
+            stmt.executeUpdate();
+            stmt.close();
+
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
         } catch (SQLException erroInserirCliente) {
             System.out.println(erroInserirCliente.getMessage());
@@ -46,25 +45,25 @@ public class ClienteCRUD {
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Cliente> listaClientes = new ArrayList<>();
-        try {
-            try (Connection conn = new SQLite().conectar()) {
-                stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
-                        + "enderecoCliente, telResidencial, telCelular FROM cliente;");
-                result = stmt.executeQuery();
-                while (result.next()) {
-                    Cliente cliente = new Cliente();
-                    cliente.setCodCliente(result.getInt("codCliente"));
-                    cliente.setNomeCliente(result.getString("nome"));
-                    cliente.setCpfCliente(result.getString("cpf"));
-                    cliente.setRgCliente(result.getString("rg"));
-                    cliente.setEnderecoCliente(result.getString("endereco"));
-                    cliente.setTelResidencial(result.getString("telResidencial"));
-                    cliente.setTelCelular(result.getString("telCelular"));
 
-                    listaClientes.add(cliente);
-                }
-                stmt.close();
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
+                    + "enderecoCliente, telResidencial, telCelular FROM cliente;");
+            result = stmt.executeQuery();
+            while (result.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setCodCliente(result.getInt("codCliente"));
+                cliente.setNomeCliente(result.getString("nome"));
+                cliente.setCpfCliente(result.getString("cpf"));
+                cliente.setRgCliente(result.getString("rg"));
+                cliente.setEnderecoCliente(result.getString("endereco"));
+                cliente.setTelResidencial(result.getString("telResidencial"));
+                cliente.setTelCelular(result.getString("telCelular"));
+
+                listaClientes.add(cliente);
             }
+            stmt.close();
+
             return listaClientes;
         } catch (SQLException erroConsultarCliente) {
             System.out.println(erroConsultarCliente.getMessage());
@@ -72,14 +71,13 @@ public class ClienteCRUD {
         }
     }
 
-    //Consulta o cliente passando todos ou um parametro
+//Consulta o cliente passando todos ou um parametro
     public ArrayList<Cliente> consultarCliente(String cod, String nome, String cpf, String rg, String celular, String residencial) {
 
         PreparedStatement stm;
         ResultSet result;
         ArrayList<Cliente> listCliente = new ArrayList<>();
-        try {
-            Connection conn = new SQLite().conectar();
+        try (Connection conn = new SQLite().conectar()) {
             //implementar a query...
             String query = "QUERY";
             stm = conn.prepareStatement(query);

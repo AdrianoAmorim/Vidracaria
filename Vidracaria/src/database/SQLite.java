@@ -349,11 +349,11 @@ public class SQLite {
             stmt.close();
 
             String alteracaoPreco = "CREATE  TABLE IF NOT EXISTS AlteracaoPreco ("
-                    + "  codAlteracao   INT          NOT NULL,"
-                    + "  codProduto     INT          NOT NULL,"
-                    + "  codFuncionario INT          NOT NULL,"
-                    + "  dataAlteracao  DATE         NOT NULl,"
-                    + "  precoVenda     NUMERIC(6,2) NOT NULL,"
+                    + "  codAlteracaoPreco INT          NOT NULL,"
+                    + "  codProduto        INT          NOT NULL,"
+                    + "  codFuncionario    INT          NOT NULL,"
+                    + "  dataAlteracao     DATE         NOT NULl,"
+                    + "  precoVenda        NUMERIC(6,2) NOT NULL,"
                     + ""
                     + "  CONSTRAINT pk_alteracaoPreco "
                     + "    PRIMARY KEY (codAlteracao),"
