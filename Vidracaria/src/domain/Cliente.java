@@ -15,6 +15,14 @@ public class Cliente {
     protected String telResidencial;
     protected String telCelular;
 
+    public int getCodCliente() {
+        return codCliente;
+    }
+    
+    public void setCodCliente(int codCliente) {
+        this.codCliente = codCliente;
+    }
+    
     public String getCpfCliente() {
         return cpfCliente;
     }

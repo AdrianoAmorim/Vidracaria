@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import domain.Cliente;
@@ -15,16 +11,20 @@ import javax.swing.JOptionPane;
 public class ClienteController {
 
     public boolean validarAtributos(Cliente cliente) {
-        if (cliente.getNome().isEmpty()) {
+        if(String.valueOf(cliente.getCodCliente()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O preenchimento do codigo do cliente é obrigatório");
+            return false;
+        }
+        else if (cliente.getNomeCliente().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do nome do cliente é obrigatório");
             return false;
-        } else if (cliente.getCpf().isEmpty()) {
+        } else if (cliente.getCpfCliente().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do CPF do cliente é obrigatório");
             return false;
-        } else if(cliente.getRg().isEmpty()) {
+        } else if(cliente.getRgCliente().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do RG do cliente é obrigatório)");
             return false;
-        } else if(cliente.getEndereco().isEmpty()) {
+        } else if(cliente.getEnderecoCliente().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do endereço do cliente é obrigatório)");
             return false;
         } else {

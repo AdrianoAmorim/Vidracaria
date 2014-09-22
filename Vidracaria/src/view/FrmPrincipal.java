@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import crud.*;
@@ -64,7 +60,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tf_condicaoC = new javax.swing.JTextField();
         pnlCadCliente = new javax.swing.JPanel();
         tfClienteNome = new javax.swing.JTextField();
-        tfClienteCpf = new javax.swing.JTextField();
+        tfClienteCodigo = new javax.swing.JTextField();
         tfClienteEndereco = new javax.swing.JTextField();
         btnCadastrarCl = new javax.swing.JButton();
         tfClienteRg = new javax.swing.JTextField();
@@ -88,6 +84,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnAlterarCliente = new javax.swing.JButton();
         btnDeletarCliente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel52 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        tfClienteCpf1 = new javax.swing.JTextField();
         pnlCadProduto = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -316,7 +315,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfClienteNome.setBackground(new java.awt.Color(204, 255, 204));
         tfClienteNome.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
-        tfClienteCpf.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfClienteCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         tfClienteEndereco.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
@@ -333,14 +332,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Nome:");
+        jLabel1.setText("Codigo:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -523,6 +522,31 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jPanel52.setBackground(new java.awt.Color(153, 153, 255));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Nome:");
+
+        javax.swing.GroupLayout jPanel52Layout = new javax.swing.GroupLayout(jPanel52);
+        jPanel52.setLayout(jPanel52Layout);
+        jPanel52Layout.setHorizontalGroup(
+            jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel52Layout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addContainerGap())
+        );
+        jPanel52Layout.setVerticalGroup(
+            jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel52Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel14)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        tfClienteCpf1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout pnlCadClienteLayout = new javax.swing.GroupLayout(pnlCadCliente);
         pnlCadCliente.setLayout(pnlCadClienteLayout);
         pnlCadClienteLayout.setHorizontalGroup(
@@ -530,10 +554,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadClienteLayout.createSequentialGroup()
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlCadClienteLayout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(tfClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlCadClienteLayout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
@@ -557,31 +578,44 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(tfClienteEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlCadClienteLayout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(192, 192, 192)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfClienteNome)))
-                .addContainerGap(619, Short.MAX_VALUE))
+                        .addComponent(tfClienteNome))
+                    .addGroup(pnlCadClienteLayout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(tfClienteCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(608, Short.MAX_VALUE))
+            .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCadClienteLayout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addComponent(jPanel52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(1116, Short.MAX_VALUE)))
+            .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCadClienteLayout.createSequentialGroup()
+                    .addGap(201, 201, 201)
+                    .addComponent(tfClienteCpf1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(947, Short.MAX_VALUE)))
         );
         pnlCadClienteLayout.setVerticalGroup(
             pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCadClienteLayout.createSequentialGroup()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfClienteCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfClienteEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -599,6 +633,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(btnAlterarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnDeletarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
+            .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCadClienteLayout.createSequentialGroup()
+                    .addGap(274, 274, 274)
+                    .addComponent(jPanel52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(331, Short.MAX_VALUE)))
+            .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadClienteLayout.createSequentialGroup()
+                    .addContainerGap(396, Short.MAX_VALUE)
+                    .addComponent(tfClienteCpf1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(211, 211, 211)))
         );
 
         tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407887820_clients.png")), pnlCadCliente, "Cadastrar Cliente"); // NOI18N
@@ -946,7 +990,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -975,7 +1019,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addContainerGap())
         );
@@ -1137,7 +1181,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel34Layout.setHorizontalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addContainerGap(105, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addContainerGap())
         );
@@ -1671,7 +1715,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addComponent(jLabel21)
                 .addContainerGap())
         );
@@ -1695,7 +1739,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel27Layout.setHorizontalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addContainerGap())
         );
@@ -1968,16 +2012,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Produto produto = new ProdutoCRUD().consultarNomeProduto(cb_produtos.getSelectedItem().toString());
 
         //Pega o double com o valor do produto e formata para adicionar na tabela...
-        String valorProdutoFormatado = nf.format(produto.getPrecoVenda());
-        
-        String totalCadaProdutoFormat = nf.format(produto.getPrecoVenda() * Double.valueOf(tfQtdProd.getText()));
+//        String valorProdutoFormatado = nf.format(produto.getPrecoVenda());
+
+  //      String totalCadaProdutoFormat = nf.format(produto.getPrecoVenda() * Double.valueOf(tfQtdProd.getText()));
         //adicionando na tabela
-        modelo.addRow(new Object[]{produto.getDescricaoProduto(), tfQtdProd.getText(), valorProdutoFormatado,totalCadaProdutoFormat});
+     //   modelo.addRow(new Object[]{produto.getDescricaoProduto(), tfQtdProd.getText(), valorProdutoFormatado, totalCadaProdutoFormat});
 
         inserirValoresProdVenda(produto);
         tbListProduto.setModel(modelo);
     }
 //Inseri os valores no detalhamento de vendas(Valor total de produtos)
+
     public void inserirValoresProdVenda(Produto produto) {
         //cria uma formatação para Um Double com os padroes Brasileiros
         NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
@@ -1990,7 +2035,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             //inicializa a variavel com o valor que tem atualmente na label ValorTotalProduto e passa pra double
             valorTotalProduto = nf.parse(lblTotalProdVenda.getText()).doubleValue();
             //faz a soma com o valor total de venda do produto passado no parametro....
-            valorTotalProduto += produto.getPrecoVenda() * Double.parseDouble(tfQtdProd.getText());
+
             //formata o valor total de venda do produto atualizado..
             valorTotalProdFormatado = nf.format(valorTotalProduto);
             //inseri na label...
@@ -2023,10 +2068,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         ClienteController cliController = new ClienteController();
 
-        cliente.setNome(tfClienteNome.getText());
-        cliente.setCpf(tfClienteCpf.getText());
-        cliente.setRg(tfClienteRg.getText());
-        cliente.setEndereco(tfClienteEndereco.getText());
+        cliente.setNomeCliente(tfClienteNome.getText());
+        cliente.setCpfCliente(tfClienteCodigo.getText());
+        cliente.setRgCliente(tfClienteRg.getText());
+        cliente.setEnderecoCliente(tfClienteEndereco.getText());
         cliente.setTelResidencial(tfClienteTelRes.getText());
         cliente.setTelCelular(tfClienteTelCel.getText());
 
@@ -2035,7 +2080,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             ClienteCRUD cliCrud = new ClienteCRUD();
             cliCrud.inserirCliente(cliente);
             // limpa os dados do formulário
-            limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
+            limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCodigo, tfClienteRg,
                     tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
             tpPrincipal.setSelectedIndex(0);
         }
@@ -2045,30 +2090,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnCadastrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdActionPerformed
         Produto produto = new Produto();
         ProdutoController prodController = new ProdutoController();
-        Estoque estoque = new Estoque();
-        EstoqueController estoqController = new EstoqueController();
         try {
             // preparação do objeto produto
-            produto.setCodigoProduto(Integer.valueOf(tfProdutoCodigo.getText()));
+            produto.setCodProduto(Integer.valueOf(tfProdutoCodigo.getText()));
             produto.setDescricaoProduto(tfProdutoDescricao.getText());
-            produto.setPrecoCusto(Double.valueOf(tfProdutoPrecoCusto.getText()));
-            produto.setPrecoVenda(Double.valueOf(tfProdutoPrecoVenda.getText()));
             produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
-            // preparação do objeto estoque
-            estoque.setCodigoProduto(Integer.valueOf(tfProdutoCodigo.getText()));
-            estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()));
-            estoque.setQuantidadeMinima(Double.parseDouble(tfProdutoQtdMinima.getText()));
         } catch (NumberFormatException erro) {
             JOptionPane.showMessageDialog(null, "Erro Na conversao de Valores.");
             return;
         }
         // se os atributos forem válidos passa o produto e estoque para o crud
-        if ((prodController.validarProduto(produto)) && (estoqController.validarEstoque(estoque))) {
-            EstoqueCRUD estoqueCRUD = new EstoqueCRUD();
+        if (prodController.validarProduto(produto)) {
             ProdutoCRUD prodCrud = new ProdutoCRUD();
 
             prodCrud.inserirProduto(produto);
-            estoqueCRUD.inserirEstoque(estoque);
 
             // limpa os dados do formulário
             limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
@@ -2090,7 +2125,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             } else if (cbTipoPagamento.getSelectedIndex() == 1) {
                 FrmPagCartaoCredito frmPagCartao = new FrmPagCartaoCredito(this, true);
                 frmPagCartao.setVisible(true);
-                lblQtdParcelas.setText(String.valueOf(frmPagCartao.pagCartao.getParcelas()));
 
             } else if (cbTipoPagamento.getSelectedIndex() == 2) {
 
@@ -2115,10 +2149,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             cliente = clienteCRUD.consultarNomeCliente(tf_condicaoC.getText());
 
-            tfClienteNome.setText(cliente.getNome());
-            tfClienteCpf.setText(cliente.getCpf());
-            tfClienteRg.setText(cliente.getRg());
-            tfClienteEndereco.setText(cliente.getEndereco());
+            tfClienteCodigo.setText(String.valueOf(cliente.getCodCliente()));
+            tfClienteNome.setText(cliente.getNomeCliente());
+            tfClienteCodigo.setText(cliente.getCpfCliente());
+            tfClienteRg.setText(cliente.getRgCliente());
+            tfClienteEndereco.setText(cliente.getEnderecoCliente());
             tfClienteTelRes.setText(cliente.getTelResidencial());
             tfClienteTelCel.setText(cliente.getTelCelular());
 
@@ -2129,20 +2164,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         } else if (rb_Produtos.isSelected()) {
             ProdutoCRUD produtoCRUD = new ProdutoCRUD();
-            EstoqueCRUD estoqueCRUD = new EstoqueCRUD();
-
             Produto produto;
-            Estoque estoque;
 
             produto = produtoCRUD.consultarNomeProduto(tf_condicaoC.getText());
-            estoque = estoqueCRUD.consultarDescricaoEstoque(tf_condicaoC.getText());
 
-            tfProdutoCodigo.setText(Integer.toString(produto.getCodigoProduto()));
+            tfProdutoCodigo.setText(Integer.toString(produto.getCodProduto()));
             tfProdutoDescricao.setText(produto.getDescricaoProduto());
-            tfProdutoPrecoCusto.setText(Double.toString(produto.getPrecoCusto()));
-            tfProdutoPrecoVenda.setText(Double.toString(produto.getPrecoVenda()));
-            tfProdutoQuantidade.setText(estoque.getQuantidadeAtual().toString());
-            tfProdutoQtdMinima.setText(estoque.getQuantidadeMinima().toString());
             cbUnidadeMedida.addItem(produto.getUnidadeMedida());
 
             tpPrincipal.setSelectedIndex(2);
@@ -2156,26 +2183,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdutoActionPerformed
         Produto produto = new Produto();
         ProdutoController prodController = new ProdutoController();
-        Estoque estoque = new Estoque();
-        EstoqueController estoqController = new EstoqueController();
 
         // preparação do objeto produto
-        produto.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()));
+        produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
         produto.setDescricaoProduto(tfProdutoDescricao.getText());
-        produto.setPrecoCusto(Double.parseDouble(tfProdutoPrecoCusto.getText()));
-        produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
         produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
-        // preparação do objeto estoque
-        estoque.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()));
-        estoque.setQuantidadeAtual(Double.parseDouble(tfProdutoQuantidade.getText()));
-        estoque.setQuantidadeMinima(Double.parseDouble(tfProdutoQtdMinima.getText()));
 
         // se os atributos do produto e estoque forem válidos; os passa para seus respectivos crud
-        if ((prodController.validarProduto(produto) && (estoqController.validarEstoque(estoque)))) {
+        if (prodController.validarProduto(produto)) {
             ProdutoCRUD prodCrud = new ProdutoCRUD();
-            EstoqueCRUD estCrud = new EstoqueCRUD();
             prodCrud.atualizarProduto(produto);
-            estCrud.atualizarEstoque(estoque);
 
             // limpa os dados do formulário
             limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
@@ -2193,15 +2210,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //deleta produto
     private void btnDeletarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarProdutoActionPerformed
         ProdutoCRUD prodCrud = new ProdutoCRUD();
-        EstoqueCRUD estCrud = new EstoqueCRUD();
         Produto produto = new Produto();
-        Estoque estoque = new Estoque();
 
-        produto.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()));
-        estoque.setCodigoProduto(Integer.parseInt(tfProdutoCodigo.getText()));
+        produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
 
         prodCrud.deletarProduto(produto);
-        estCrud.deletarEstoque(estoque);
 
         // remove da aba os botões para deletar e alterar
         this.btnAlterarProduto.setVisible(false);
@@ -2221,10 +2234,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Cliente cli = new Cliente();
         ClienteController cliController = new ClienteController();
 
-        cli.setCpf(tfClienteCpf.getText());
-        cli.setNome(tfClienteNome.getText());
-        cli.setEndereco(tfClienteEndereco.getText());
-        cli.setRg(tfClienteRg.getText());
+        cli.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
+        cli.setCpfCliente(tfClienteCodigo.getText());
+        cli.setNomeCliente(tfClienteNome.getText());
+        cli.setEnderecoCliente(tfClienteEndereco.getText());
+        cli.setRgCliente(tfClienteRg.getText());
         cli.setTelResidencial(tfClienteTelRes.getText());
         cli.setTelCelular(tfClienteTelCel.getText());
 
@@ -2232,7 +2246,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             ClienteCRUD cliCrud = new ClienteCRUD();
             cliCrud.inserirCliente(cli);
 
-            limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
+            limparCampos(tfClienteNome, tfClienteCodigo, tfClienteRg,
                     tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
 
             this.btnAlterarCliente.setVisible(false);
@@ -2247,8 +2261,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ClienteCRUD cliCrud = new ClienteCRUD();
         Cliente cli = new Cliente();
 
-        cli.setNome(tfClienteNome.getText());
-        cli.setCpf(tfClienteCpf.getText());
+        cli.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
 
         cliCrud.deletarCliente(cli);
 
@@ -2256,7 +2269,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnDeletarCliente.setVisible(false);
         this.btnCadastrarCl.setEnabled(true);
 
-        limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
+        limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCodigo, tfClienteRg,
                 tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
         tpPrincipal.setSelectedIndex(0);
     }//GEN-LAST:event_btnDeletarClienteActionPerformed
@@ -2264,10 +2277,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         FrmBuscarClienteVenda buscaCliente = new FrmBuscarClienteVenda(this, true);
         buscaCliente.setVisible(true);
+
         //seta o nome do Cliente no TextField
-        tfNomeCl.setText(buscaCliente.cliente.getNome());
-        lblNomeCliente.setText(buscaCliente.cliente.getNome());
-        lblCpfCliente.setText(buscaCliente.cliente.getCpf());
+        tfNomeCl.setText(buscaCliente.cliente.getNomeCliente());
+        lblNomeCliente.setText(buscaCliente.cliente.getNomeCliente());
+        lblCpfCliente.setText(buscaCliente.cliente.getCpfCliente());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnEfetuarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfetuarVendaActionPerformed
@@ -2283,7 +2297,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             } else {
                 NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
                 //nicializa a variavel com valor da label (pegando valor 0)
-                double valorDesc = nf.parse(lblDescontoVenda.getText()).doubleValue();   
+                double valorDesc = nf.parse(lblDescontoVenda.getText()).doubleValue();
                 String TotalVendaFormat;
                 String valorDescontoFormatado;
                 //pega do Tfield o valor digitado e transforma pra double
@@ -2291,9 +2305,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 //*inicializa a variavel com valor total da venda.
                 double valorTotalVenda = nf.parse(lblValorTotalVenda.getText()).doubleValue();
                 //*realizando o desconto na venda
-                double valorTotalAtualizado= valorTotalVenda - valorDesc;
+                double valorTotalAtualizado = valorTotalVenda - valorDesc;
                 //em seguida formata para nosso padrao de moeda
-                valorDescontoFormatado = nf.format(valorDesc); 
+                valorDescontoFormatado = nf.format(valorDesc);
                 //*formata valor Total da Venda ja com o desconto
                 TotalVendaFormat = nf.format(valorTotalAtualizado);
                 //e seta nas label.
@@ -2312,7 +2326,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDescontoFocusLost
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        FrmBuscarCliente buscaCli = new FrmBuscarCliente(this,true);
+        FrmBuscarCliente buscaCli = new FrmBuscarCliente(this, true);
         buscaCli.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -2381,6 +2395,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -2461,6 +2476,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel50;
     private javax.swing.JPanel jPanel51;
+    private javax.swing.JPanel jPanel52;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -2483,7 +2499,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_Clientes;
     private javax.swing.JRadioButton rb_Produtos;
     private javax.swing.JTable tbListProduto;
-    private javax.swing.JTextField tfClienteCpf;
+    private javax.swing.JTextField tfClienteCodigo;
+    private javax.swing.JTextField tfClienteCpf1;
     private javax.swing.JTextField tfClienteEndereco;
     private javax.swing.JTextField tfClienteNome;
     private javax.swing.JTextField tfClienteRg;
