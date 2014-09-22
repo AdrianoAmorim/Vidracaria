@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package controller;
 
@@ -16,14 +11,21 @@ import javax.swing.JOptionPane;
 public class ProdutoController {
     
     public boolean validarProduto(Produto produto) {
+        if(String.valueOf(produto.getCodProduto()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O preenchimento do codigo do produto é obrigatório.");
+            return false;
+        }
         if(produto.getDescricaoProduto().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento da descrição do produto é obrigatório.");
             return false;
-        } else if(produto.getPrecoCusto().toString().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento do preço de custo do produto é obrigatório.");
+        } else if(produto.getUnidadeMedida().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O preenchimento da unidade de medida do produto é obrigatório.");
             return false;
-        } else if(produto.getPrecoVenda().toString().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento do preço de venda do produto é obrigatório.");
+        } else if(produto.getQuantidadeEstoque().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O preenchimento da quantidade em estoque é obrigatório.");
+            return false;
+        } else if (produto.getQuantidadeMinima().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O preenchimento da quantidade mínima em estoque é obrigatório.");
             return false;
         } else {
             return true;        

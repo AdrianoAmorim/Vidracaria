@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package crud;
 
 import database.SQLite;
@@ -25,11 +19,10 @@ public class ProdutoCRUD {
     public int retornarIncrement() {
         int increment = 0;
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet res;
 
-        try {
+        try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT max(codigoProduto) FROM produto;");
             res = stmt.executeQuery();
             if (res.next()) {
@@ -37,7 +30,6 @@ public class ProdutoCRUD {
                 increment = res.getInt("max(codigoProduto)") + 1;
             }
             stmt.close();
-            conn.close();
         } catch (SQLException erroReturnIncrement) {
             System.out.println(erroReturnIncrement.getMessage());
         }
@@ -46,19 +38,20 @@ public class ProdutoCRUD {
 
     public void inserirProduto(Produto produto) {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
-        try {
-            stmt = conn.prepareStatement("INSERT INTO produto(codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida)"
-                    + " VALUES (?,?,?,?,?)");
-            stmt.setInt(1, produto.getCodigoProduto());
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("INSERT INTO produto(codProduto, descricaoProduto, unidadeMedida, "
+                    + "quantidadeEstoque, quantidadeMinima) "
+                    + "VALUES (?,?,?,?,?)");
+            stmt.setInt(1, produto.getCodProduto());
             stmt.setString(2, produto.getDescricaoProduto());
-            stmt.setDouble(3, produto.getPrecoCusto());
-            stmt.setDouble(4, produto.getPrecoVenda());
-            stmt.setString(5, produto.getUnidadeMedida());
+            stmt.setString(3, produto.getUnidadeMedida());
+            stmt.setDouble(4, produto.getQuantidadeEstoque());
+            stmt.setDouble(5, produto.getQuantidadeMinima());
+
             stmt.executeUpdate();
             stmt.close();
-            conn.close();
+
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
         } catch (SQLException erroInserirProduto) {
             System.out.println(erroInserirProduto.getMessage());
@@ -67,26 +60,28 @@ public class ProdutoCRUD {
 
     public ArrayList<Produto> consultarProduto() {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Produto> listaProdutos = new ArrayList<>();
-        try {
-            stmt = conn.prepareStatement("SELECT codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida"
-                    + " FROM produto;");
+
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("SELECT codProduto, descricaoProduto, unidadeMedida, "
+                    + "quantidadeEstoque, quantidadeMinima FROM produto;");
+
             result = stmt.executeQuery();
+
             while (result.next()) {
                 Produto produto = new Produto();
-                produto.setCodigoProduto(result.getInt("codigoProduto"));
+                produto.setCodProduto(result.getInt("codProduto"));
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
-                produto.setPrecoCusto(result.getDouble("precoCusto"));
-                produto.setPrecoVenda(result.getDouble("precoVenda"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
+                produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
+                produto.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
 
                 listaProdutos.add(produto);
             }
             stmt.close();
-            conn.close();
+
             return listaProdutos;
         } catch (SQLException erroConsultarProduto) {
             System.out.println(erroConsultarProduto.getMessage());
@@ -94,54 +89,51 @@ public class ProdutoCRUD {
         }
     }
 
-    public Produto consultarCodigoProduto(String codigo) {
+    public Produto consultarCodigoProduto(String codProduto) {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         Produto produto = new Produto();
 
-        try {
-            stmt = conn.prepareStatement("SELECT codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida"
-                    + " FROM produto WHERE codigoProduto = '" + codigo + "';");
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("SELECT codProduto, descricaoProduto, unidadeMedida "
+                    + " quantidadeEstoque, quantidadeMinima FROM produto WHERE codProduto = '" + codProduto + "';");
 
             result = stmt.executeQuery();
             while (result.next()) {
-                produto.setCodigoProduto(result.getInt("codigoProduto"));
+                produto.setCodProduto(result.getInt("codProduto"));
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
-                produto.setPrecoCusto(result.getDouble("precoCusto"));
-                produto.setPrecoVenda(result.getDouble("precoVenda"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
+                produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
+                produto.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
+
             }
             stmt.close();
-            conn.close();
         } catch (SQLException erroConsultarCodigoProduto) {
             System.out.println(erroConsultarCodigoProduto.getMessage());
         }
         return produto;
     }
 
-    public Produto consultarNomeProduto(String nome) {
+    public Produto consultarNomeProduto(String descricaoProduto) {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         Produto produto = new Produto();
 
-        try {
-            stmt = conn.prepareStatement("SELECT codigoProduto, descricaoProduto, precoCusto, precoVenda, unidadeMedida"
-                    + " FROM produto WHERE descricaoProduto = '" + nome + "';");
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("SELECT codProduto, descricaoProduto, unidadeMedida, "
+                    + "quantidadeEstoque, quantidadeMinima FROM produto WHERE descricaoProduto = '" + descricaoProduto + "';");
 
             result = stmt.executeQuery();
             while (result.next()) {
-                produto.setCodigoProduto(result.getInt("codigoProduto"));
+                produto.setCodProduto(result.getInt("codProduto"));
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
-                produto.setPrecoCusto(result.getDouble("precoCusto"));
-                produto.setPrecoVenda(result.getDouble("precoVenda"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
+                produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
+                produto.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
             }
             stmt.close();
-            conn.close();
         } catch (SQLException erroConsultarCodigoProduto) {
             System.out.println(erroConsultarCodigoProduto.getMessage());
         }
@@ -150,20 +142,21 @@ public class ProdutoCRUD {
 
     public void atualizarProduto(Produto produto) {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
-        try {
-            stmt = conn.prepareStatement("UPDATE produto SET descricaoProduto = ?, precoCusto = ?, precoVenda = ?, unidadeMedida = ?"
-                    + " WHERE codigoProduto = ?;");
+
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("UPDATE produto SET descricaoProduto = ?, unidadeMedida = ?, quantidadeEstoque = ?, "
+                    + "quantidadeMinima = ? WHERE codProduto = ?;");
+
             stmt.setString(1, produto.getDescricaoProduto());
-            stmt.setDouble(2, produto.getPrecoCusto());
-            stmt.setDouble(3, produto.getPrecoVenda());
-            stmt.setString(4, produto.getUnidadeMedida());
-            stmt.setInt(5, produto.getCodigoProduto());
+            stmt.setString(2, produto.getUnidadeMedida());
+            stmt.setDouble(3, produto.getQuantidadeEstoque());
+            stmt.setDouble(4, produto.getQuantidadeMinima());
+            stmt.setInt(5, produto.getCodProduto());
 
             stmt.executeUpdate();
             stmt.close();
-            conn.close();
+
             JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
         } catch (SQLException erroAtualizarProduto) {
             System.out.println(erroAtualizarProduto.getMessage());
@@ -172,15 +165,15 @@ public class ProdutoCRUD {
 
     public void deletarProduto(Produto produto) {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
-        try {
-            stmt = conn.prepareStatement("DELETE FROM produto WHERE codigoProduto = ?;");
-            stmt.setInt(1, produto.getCodigoProduto());
+
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("DELETE FROM produto WHERE codProduto = ?;");
+            stmt.setInt(1, produto.getCodProduto());
 
             stmt.executeUpdate();
             stmt.close();
-            conn.close();
+
             JOptionPane.showMessageDialog(null, "Produto deletado com sucesso!");
         } catch (SQLException erroDeletarProduto) {
             System.out.println(erroDeletarProduto.getMessage());
