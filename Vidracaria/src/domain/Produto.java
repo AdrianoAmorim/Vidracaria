@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package domain;
 
 /**
@@ -11,18 +7,19 @@ package domain;
  */
 public class Produto {
 
-    private int codigoProduto;
+    private int codProduto;
     private String descricaoProduto;
-    private Double precoCusto;
-    private Double precoVenda;
     private String unidadeMedida;
+    private Double quantidadeEstoque;
+    private Double quantidadeMinima;
 
-    public int getCodigoProduto() {
-        return codigoProduto;
+
+    public int getCodProduto() {
+        return codProduto;
     }
 
-    public void setCodigoProduto(int codigoProduto) {
-        this.codigoProduto = codigoProduto;
+    public void setCodProduto(int codProduto) {
+        this.codProduto = codProduto;
     }
 
     public String getDescricaoProduto() {
@@ -33,27 +30,27 @@ public class Produto {
         this.descricaoProduto = descricaoProduto;
     }
 
-    public Double getPrecoCusto() {
-        return precoCusto;
-    }
-
-    public void setPrecoCusto(Double precoCusto) {
-        this.precoCusto = precoCusto;
-    }
-
-    public Double getPrecoVenda() {
-        return precoVenda;
-    }
-
-    public void setPrecoVenda(Double precoVenda) {
-        this.precoVenda = precoVenda;
-    }
-
     public String getUnidadeMedida() {
         return unidadeMedida;
     }
 
     public void setUnidadeMedida(String unidadeMedida) {
         this.unidadeMedida = unidadeMedida;
+    }
+    
+    public Double getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+    
+    public void setQuantidadeEstoque(Double quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
+    }
+    
+    public Double getQuantidadeMinima() {
+        return quantidadeMinima;
+    }
+     
+    public void setQuantidadeMinima(Double quantidadeMinima) {
+        this.quantidadeMinima = quantidadeMinima;
     }
 }

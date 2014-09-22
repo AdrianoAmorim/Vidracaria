@@ -5,12 +5,11 @@ package domain;
  *
  * @author rafael
  */
-public class Despesa {
-
+public class Renda {
     protected int codEmpresa;
-    protected int codTipoDespesa;
+    protected int codTipoRenda;
     protected String mesAno;
-
+    
     public int getCodEmpresa() {
         return codEmpresa;
     }
@@ -19,12 +18,12 @@ public class Despesa {
         this.codEmpresa = codEmpresa;
     }
 
-    public int getCodTipoDespesa() {
-        return codTipoDespesa;
+    public int getCodTipoRenda() {
+        return codTipoRenda;
     }
 
-    public void setCodTipoDespesa(int codTipoDespesa) {
-        this.codTipoDespesa = codTipoDespesa;
+    public void setCodTipoRenda(int codTipoRenda) {
+        this.codTipoRenda = codTipoRenda;
     }
 
     public String getMesAno() {
@@ -34,4 +33,5 @@ public class Despesa {
     public void setMesAno(String mesAno) {
         this.mesAno = mesAno;
     }
+
 }

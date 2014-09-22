@@ -1,10 +1,6 @@
+
 package domain;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -12,25 +8,34 @@ package domain;
  */
 public class Funcionario {
     
-    protected int codigoFuncionario;
-    protected int codigoCargo;
+    protected int codFuncionario;
+    protected int codCargo;
+    protected int codEmpresa;
     protected String nomeFuncionario;
     protected Double salarioFuncionario;
     
-    public int getCodigoFuncionario() {
-        return codigoFuncionario;
+    public int getCodFuncionario() {
+        return codFuncionario;
     }
     
-    public void setCodigoFuncionario(int codigoFuncionario) {
-        this.codigoFuncionario = codigoFuncionario;
+    public void setCodFuncionario(int codFuncionario) {
+        this.codFuncionario = codFuncionario;
     }
     
-    public int getCodigoCargo() {
-        return codigoCargo;
+    public int getCodCargo() {
+        return codCargo;
     }
     
-    public void setCodigoCargo(int codigoCargo) {
-        this.codigoCargo = codigoCargo;
+    public void setCodCargo(int codCargo) {
+        this.codCargo = codCargo;
+    }
+    
+    public int getCodEmpresa() {
+        return codEmpresa;
+    }
+    
+    public void setCodEmpresa(int codEmpresa) {
+        this.codEmpresa = codEmpresa;
     }
     
     public String getNomeFuncionario() {

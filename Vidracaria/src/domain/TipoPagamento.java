@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package domain;
 
 /**
@@ -11,32 +7,22 @@ package domain;
  */
 public class TipoPagamento {
 
-    private int codigoTipoPagamento;
-    private String descricaoPagamento;
-    private int parcelas;
+    private int codTipoPagamento;
+    private String descricaoTipoPagamento;
 
-    public int getCodigoTipoPagamento() {
-        return codigoTipoPagamento;
+    public int getCodTipoPagamento() {
+        return codTipoPagamento;
     }
 
-    public void setCodigoTipoPagamento(int codigoTipoPagamento) {
-        this.codigoTipoPagamento = codigoTipoPagamento;
+    public void setCodTipoPagamento(int codTipoPagamento) {
+        this.codTipoPagamento = codTipoPagamento;
     }
 
-    public String getDescricaoPagamento() {
-        return descricaoPagamento;
+    public String getDescricaoTipoPagamento() {
+        return descricaoTipoPagamento;
     }
 
-    public void setDescricaoPagamento(String descricaoPagamento) {
-        this.descricaoPagamento = descricaoPagamento;
+    public void setDescricaoTipoPagamento(String descricaoTipoPagamento) {
+        this.descricaoTipoPagamento = descricaoTipoPagamento;
     }
-
-    public int getParcelas() {
-        return parcelas;
-    }
-
-    public void setParcelas(int parcelas) {
-        this.parcelas = parcelas;
-    }
-
 }

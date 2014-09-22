@@ -90,9 +90,9 @@ public class SQLite {
             stmt.close();
 
             String tipoRenda = "CREATE  TABLE IF NOT EXISTS TipoRenda ("
-                    + "  codTipoRenda   INT          NOT NULL,"
-                    + "  descricaoRenda VARCHAR(45)  NOT NULL,"
-                    + "  totalRenda     NUMERIC(6,2) NOT NULL,"
+                    + "  codTipoRenda       INT          NOT NULL,"
+                    + "  descricaoTipoRenda VARCHAR(45)  NOT NULL,"
+                    + "  totalRenda         NUMERIC(6,2) NOT NULL,"
                     + ""
                     + "  CONSTRAINT pk_tipoRenda "
                     + "    PRIMARY KEY (codTipoRenda)"
@@ -102,8 +102,8 @@ public class SQLite {
 
             String renda = "CREATE  TABLE IF NOT EXISTS Renda ("
                     + "  codEmpresa INT     NOT NULL,"
-                    + "  mesAno     CHAR(6) NOT NULL,"
                     + "  codTipoRenda  INT  NOT NULL,"
+                    + "  mesAno     CHAR(6) NOT NULL,"
                     + ""
                     + "  CONSTRAINT pk_renda "
                     + "    PRIMARY KEY (codTipoRenda, mesAno, codEmpresa),"
@@ -154,13 +154,13 @@ public class SQLite {
             stmt.close();
 
             String cliente = "CREATE  TABLE IF NOT EXISTS Cliente ("
-                    + "  codCliente     INT         NOT NULL,"
-                    + "  cpfCliente     CHAR(11)    NOT NULL,"
-                    + "  nomeCliente    VARCHAR(45) NOT NULL,"
-                    + "  rgCliente      VARCHAR(10) NOT NULL,"
-                    + "  endereco       VARCHAR(45) NOT NULL,"
-                    + "  telResidencial VARCHAR(20) NULL,"
-                    + "  telCelular     VARCHAR(20) NULL,"
+                    + "  codCliente      INT         NOT NULL,"
+                    + "  cpfCliente      CHAR(11)    NOT NULL,"
+                    + "  nomeCliente     VARCHAR(45) NOT NULL,"
+                    + "  rgCliente       VARCHAR(10) NOT NULL,"
+                    + "  enderecoCliente VARCHAR(45) NOT NULL,"
+                    + "  telResidencial  VARCHAR(20) NULL,"
+                    + "  telCelular      VARCHAR(20) NULL,"
                     + ""
                     + "  CONSTRAINT pk_cliente "
                     + "    PRIMARY KEY (codCliente)"
@@ -239,7 +239,7 @@ public class SQLite {
 
             String fornecedor = "CREATE  TABLE IF NOT EXISTS Fornecedor ("
                     + "  codFornecedor  INT         NOT NULL,"
-                    + "  cnpj           CHAR(14)    NOT NULL,"
+                    + "  cnpjFornecedor CHAR(14)    NOT NULL,"
                     + "  nomeFornecedor VARCHAR(45) NOT NULL,"
                     + ""
                     + "  CONSTRAINT pk_fornecedor "
@@ -299,10 +299,10 @@ public class SQLite {
             stmt.close();
 
             String tituloCompra = "CREATE  TABLE IF NOT EXISTS TituloCompra ("
-                    + "  codTitulo        INT         NOT NULL,"
-                    + "  codCompra        INT         NOT NULL,"
-                    + "  vencimentoTitulo VARCHAR(45) NOT NULL,"
-                    + "  valorTitulo      VARCHAR(45) NOT NULL,"
+                    + "  codTitulo        INT          NOT NULL,"
+                    + "  codCompra        INT          NOT NULL,"
+                    + "  vencimentoTitulo DATE(45)     NOT NULL,"
+                    + "  valorTitulo      NUMERIC(6,2) NOT NULL,"
                     + ""
                     + "  CONSTRAINT pk_tituloCompra "
                     + "    PRIMARY KEY (codTitulo),"

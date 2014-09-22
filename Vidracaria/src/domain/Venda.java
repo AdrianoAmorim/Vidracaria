@@ -1,63 +1,59 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package domain;
 
 /**
  *
- * @author debian
+ * @author rafael
  */
 public class Venda {
 
-    private int codigoVenda;
-    private int codigoProduto;
-    private String codigoCliente;
-    private int codigoTipoPagamento;
-    private Double quantidadeProduto;
-    private String dataVenda;
-
-    public int getCodigoVenda() {
-        return codigoVenda;
+    protected int codVenda;
+    protected int codTipoRenda;
+    protected int codCliente;
+    protected int codParcelamento;
+    protected Double totalVenda;
+    protected String dataVenda;
+ 
+    public int getCodVenda() {
+        return codVenda;
     }
 
-    public void setCodigoVenda(int codigoVenda) {
-        this.codigoVenda = codigoVenda;
+    public void setCodVenda(int codVenda) {
+        this.codVenda = codVenda;
     }
 
-    public int getCodigoProduto() {
-        return codigoProduto;
+    public int getCodTipoRenda() {
+        return codTipoRenda;
     }
-
-    public void setCodigoProduto(int codigoProduto) {
-        this.codigoProduto = codigoProduto;
+    
+    public void setCodTipoRenda(int codTipoRenda) {
+        this.codTipoRenda = codTipoRenda;
     }
-
-    public Double getQuantidadeProduto() {
-        return quantidadeProduto;
+    
+    public int getCodCliente() {
+        return codCliente;
     }
-
-    public void setQuantidadeProduto(Double quantidadeProduto) {
-        this.quantidadeProduto = quantidadeProduto;
+    
+    public void setCodCliente(int codCliente) {
+        this.codCliente = codCliente;
     }
-
-    public String getCodigoCliente() {
-        return codigoCliente;
+    
+    public int getCodParcelamento() {
+        return codParcelamento;
     }
-
-    public void setCodigoCliente(String codigoCliente) {
-        this.codigoCliente = codigoCliente;
+    
+    public void setCodParcelamento(int codParcelamento) {
+        this.codParcelamento = codParcelamento;
     }
-
-    public int getCodigoTipoPagamento() {
-        return codigoTipoPagamento;
+    
+    public Double getTotalVenda() {
+        return totalVenda;
     }
-
-    public void setCodigoTipoPagamento(int codigoTipoPagamento) {
-        this.codigoTipoPagamento = codigoTipoPagamento;
+    
+    public void setTotalVenda(Double totalVenda) {
+        this.totalVenda = totalVenda;
     }
-
+    
     public String getDataVenda() {
         return dataVenda;
     }

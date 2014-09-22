@@ -22,21 +22,22 @@ public class ClienteCRUD {
 
     public void inserirCliente(Cliente cliente) {
 
-        Connection conn = new SQLite().conectar();
+
         PreparedStatement stmt;
         try {
-            stmt = conn.prepareStatement("INSERT INTO cliente(cpf,nome,rg,endereco,telResidencial,telCelular)"
-                    + " VALUES (?,?,?,?,?,?);");
-
-            stmt.setString(1, cliente.getCpf());
-            stmt.setString(2, cliente.getNome());
-            stmt.setString(3, cliente.getRg());
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setString(5, cliente.getTelResidencial());
-            stmt.setString(6, cliente.getTelCelular());
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
+            try (Connection conn = new SQLite().conectar()) {
+                stmt = conn.prepareStatement("INSERT INTO cliente(cpf,nome,rg,endereco,telResidencial,telCelular)"
+                        + " VALUES (?,?,?,?,?,?);");
+                
+                stmt.setString(1, cliente.getCpf());
+                stmt.setString(2, cliente.getNome());
+                stmt.setString(3, cliente.getRg());
+                stmt.setString(4, cliente.getEndereco());
+                stmt.setString(5, cliente.getTelResidencial());
+                stmt.setString(6, cliente.getTelCelular());
+                stmt.executeUpdate();
+                stmt.close();
+            }
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
         } catch (SQLException erroInserirCliente) {
             System.out.println(erroInserirCliente.getMessage());
@@ -45,59 +46,62 @@ public class ClienteCRUD {
 
     public ArrayList<Cliente> consultarTodosCliente() {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         try {
-            stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
-                    + " FROM cliente;");
-            result = stmt.executeQuery();
-            while (result.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setNome(result.getString("nome"));
-                cliente.setCpf(result.getString("cpf"));
-                cliente.setRg(result.getString("rg"));
-                cliente.setEndereco(result.getString("endereco"));
-                cliente.setTelResidencial(result.getString("telResidencial"));
-                cliente.setTelCelular(result.getString("telCelular"));
-
-                listaClientes.add(cliente);
+            try (Connection conn = new SQLite().conectar()) {
+                stmt = conn.prepareStatement("SELECT cpf, nome, rg, endereco, telResidencial, telCelular"
+                        + " FROM cliente;");
+                result = stmt.executeQuery();
+                while (result.next()) {
+                    Cliente cliente = new Cliente();
+                    cliente.setNome(result.getString("nome"));
+                    cliente.setCpf(result.getString("cpf"));
+                    cliente.setRg(result.getString("rg"));
+                    cliente.setEndereco(result.getString("endereco"));
+                    cliente.setTelResidencial(result.getString("telResidencial"));
+                    cliente.setTelCelular(result.getString("telCelular"));
+                    
+                    listaClientes.add(cliente);
+                }
+                stmt.close();
             }
-            stmt.close();
-            conn.close();
             return listaClientes;
         } catch (SQLException erroConsultarCliente) {
             System.out.println(erroConsultarCliente.getMessage());
             return listaClientes;
         }
     }
+
     //Consulta o cliente passando todos ou um parametro
-    public ArrayList<Cliente> consultarCliente(String cod,String nome,String cpf,String rg,String celular,String residencial){
-        Connection conn = new SQLite().conectar();
+
+    public ArrayList<Cliente> consultarCliente(String cod, String nome, String cpf, String rg, String celular, String residencial) {
+        
         PreparedStatement stm;
         ResultSet result;
         ArrayList<Cliente> listCliente = new ArrayList<>();
-        try{
+        try {
+            Connection conn = new SQLite().conectar();
             //implementar a query...
             String query = "QUERY";
-            stm = conn.prepareStatement(query); 
+            stm = conn.prepareStatement(query);
             result = stm.executeQuery();
-          
-            while(result.next()){
-                Cliente cliente = new Cliente();      
+
+            while (result.next()) {
+                Cliente cliente = new Cliente();
                 //falta pegar o resultado da consulta e atribuir aos clientes.
                 listCliente.add(cliente);
             }
             stm.close();
             result.close();
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na Consulta Detalhada de Clientes.");
         }
-                
+
         return listCliente;
     }
-    
+
     public Cliente consultarCpfCliente(String cpf) {
 
         Connection conn = new SQLite().conectar();

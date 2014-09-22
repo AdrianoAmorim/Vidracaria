@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package domain;
 
 /**
@@ -11,43 +7,44 @@ package domain;
  */
 public class Cliente {
 
-    protected String cpf;
-    protected String nome;
-    protected String rg;
-    protected String endereco;
+    protected int codCliente;
+    protected String cpfCliente;
+    protected String nomeCliente;
+    protected String rgCliente;
+    protected String enderecoCliente;
     protected String telResidencial;
     protected String telCelular;
 
-    public String getCpf() {
-        return cpf;
+    public String getCpfCliente() {
+        return cpfCliente;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCliente() {
+        return nomeCliente;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
     }
 
-    public String getRg() {
-        return rg;
+    public String getRgCliente() {
+        return rgCliente;
     }
 
-    public void setRg(String rg) {
-        this.rg = rg;
+    public void setRgCliente(String rgCliente) {
+        this.rgCliente = rgCliente;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getEnderecoCliente() {
+        return enderecoCliente;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setEnderecoCliente(String enderecoCliente) {
+        this.enderecoCliente = enderecoCliente;
     }
 
     public String getTelResidencial() {
