@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package crud;
 
 import database.SQLite;
@@ -23,16 +18,15 @@ public class VendaCRUD {
     public int retornarIncrement() {
         int increment = 0;
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet res;
 
-        try {
-            stmt = conn.prepareStatement("SELECT max(codigoVenda) FROM venda;");
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("SELECT max(codVenda) FROM venda;");
             res = stmt.executeQuery();
             if (res.next()) {
                 // guarda o valor atual do codigoProduto + 1
-                increment = res.getInt("max(codigoVenda)") + 1;
+                increment = res.getInt("max(codVenda)") + 1;
             }
             stmt.close();
             conn.close();
@@ -44,17 +38,17 @@ public class VendaCRUD {
 
     public void inserirVenda(Venda venda) {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
-        try {
-            stmt = conn.prepareStatement("INSERT INTO venda(codigoVenda, codigoProduto, quantidadeProduto, codigoCliente, codigoTipoPagamento, dataVenda)"
-                    + " VALUES (?, ?, ?, ?, ?, ?)");
-            stmt.setInt(1, venda.getCodigoVenda());
-            stmt.setInt(2, venda.getCodigoProduto());
-            stmt.setDouble(3, venda.getQuantidadeProduto());
-            stmt.setString(4, venda.getCodigoCliente());
-            stmt.setInt(5, venda.getCodigoTipoPagamento());
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("INSERT INTO venda(codVenda, codTipoRenda, codCliente, codParcelamento, totalVenda, dataVenda) "
+                    + "VALUES(?,?,?,?,?,?);");
+            stmt.setInt(1, venda.getCodVenda());
+            stmt.setInt(2, venda.getCodTipoRenda());
+            stmt.setInt(3, venda.getCodCliente());
+            stmt.setInt(4, venda.getCodParcelamento());
+            stmt.setDouble(5, venda.getTotalVenda());
             stmt.setString(6, venda.getDataVenda());
+
             stmt.executeUpdate();
             stmt.close();
             conn.close();
@@ -66,20 +60,19 @@ public class VendaCRUD {
 
     public ArrayList<Venda> consultarVenda() {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Venda> listaVendas = new ArrayList<>();
-        try {
-            stmt = conn.prepareStatement("SELECT codigoVenda, codigoProduto, quantidadeProduto, codigoCliente, codigoTipoPagamento, dataVenda FROM venda;");
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("SELECT codVenda, codTipoRenda, codCliente, codParcelamento, totalVenda, dataVenda FROM venda;");
             result = stmt.executeQuery();
             while (result.next()) {
                 Venda venda = new Venda();
-                venda.setCodigoVenda(result.getInt("codigoVenda"));
-                venda.setCodigoProduto(result.getInt("codigoProduto"));
-                venda.setQuantidadeProduto(result.getDouble("quantidadeProduto"));
-                venda.setCodigoCliente(result.getString("codigoCliente"));
-                venda.setCodigoTipoPagamento(result.getInt("codigoTipoPagamento"));
+                venda.setCodVenda(result.getInt("codVenda"));
+                venda.setCodTipoRenda(result.getInt("codTipoRenda"));
+                venda.setCodCliente(result.getInt("codCliente"));
+                venda.setCodParcelamento(result.getInt("codParcelamento"));
+                venda.setTotalVenda(result.getDouble("totalVenda"));
                 venda.setDataVenda(result.getString("dataVenda"));
 
                 listaVendas.add(venda);
@@ -95,17 +88,17 @@ public class VendaCRUD {
 
     public void atualizarVenda(Venda venda) {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
-        try {
-            stmt = conn.prepareStatement("UPDATE venda SET codigoProduto = ?, quantidadeProduto = ?, codigoCliente = ?, codigoTipoPagamento = ?, dataVenda = ?"
-                    + " WHERE codigoVenda = ?;");
-            stmt.setInt(1, venda.getCodigoProduto());
-            stmt.setDouble(2, venda.getQuantidadeProduto());
-            stmt.setString(3, venda.getCodigoCliente());
-            stmt.setInt(4, venda.getCodigoTipoPagamento());
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("UPDATE venda SET codTipoRenda = ?, codCliente = ?, codParcelamento = ?, totalVenda = ?, "
+                    + "dataVenda = ? WHERE codVenda = ?;");
+
+            stmt.setInt(1, venda.getCodTipoRenda());
+            stmt.setInt(2, venda.getCodCliente());
+            stmt.setInt(3, venda.getCodParcelamento());
+            stmt.setDouble(4, venda.getTotalVenda());
             stmt.setString(5, venda.getDataVenda());
-            stmt.setInt(6, venda.getCodigoVenda());
+            stmt.setInt(6, venda.getCodVenda());
 
             stmt.executeUpdate();
             stmt.close();
@@ -118,11 +111,10 @@ public class VendaCRUD {
 
     public void deletarVenda(Venda venda) {
 
-        Connection conn = new SQLite().conectar();
         PreparedStatement stmt;
-        try {
-            stmt = conn.prepareStatement("DELETE FROM venda WHERE codigoVenda = ?;");
-            stmt.setInt(1, venda.getCodigoVenda());
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("DELETE FROM venda WHERE codVenda = ?;");
+            stmt.setInt(1, venda.getCodVenda());
 
             stmt.executeUpdate();
             stmt.close();
