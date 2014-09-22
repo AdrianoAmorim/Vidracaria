@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import crud.ClienteCRUD;
@@ -14,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Adriano
  */
+
 public class FrmBuscarClienteVenda extends javax.swing.JDialog {
 //Variavel que Armazena o Cliente Escolhido
     Cliente cliente = new Cliente();
@@ -167,7 +164,7 @@ public class FrmBuscarClienteVenda extends javax.swing.JDialog {
                 //Adiciona cada Cliente no modelo
                 for (Cliente cli : listaCliente) {
 
-                    modelo.addRow(new Object[]{cli.getNome(), cli.getCpf()});
+                    modelo.addRow(new Object[]{cli.getNomeCliente(), cli.getCpfCliente()});
                 }
             }
         } else {
@@ -179,7 +176,7 @@ public class FrmBuscarClienteVenda extends javax.swing.JDialog {
                     //Adiciona cada Cliente no modelo
                     for (Cliente cli : listaCliente) {
 
-                        modelo.addRow(new Object[]{cli.getNome(), cli.getCpf()});
+                        modelo.addRow(new Object[]{cli.getNomeCliente(), cli.getCpfCliente()});
                     }
                 }
             }

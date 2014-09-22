@@ -10,6 +10,7 @@ import java.sql.Statement;
  *
  * @author debian
  */
+
 public class SQLite {
 
     public Connection conn = conectar();

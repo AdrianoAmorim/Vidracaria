@@ -23,11 +23,11 @@ public class ProdutoCRUD {
         ResultSet res;
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT max(codigoProduto) FROM produto;");
+            stmt = conn.prepareStatement("SELECT max(codProduto) FROM produto;");
             res = stmt.executeQuery();
             if (res.next()) {
                 // guarda o valor atual do codigoProduto + 1
-                increment = res.getInt("max(codigoProduto)") + 1;
+                increment = res.getInt("max(codProduto)") + 1;
             }
             stmt.close();
         } catch (SQLException erroReturnIncrement) {
