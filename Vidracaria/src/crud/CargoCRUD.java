@@ -81,7 +81,7 @@ public class CargoCRUD {
     }
 
     // DELETE
-    public void deletarCargoo(Cargo cargo) {
+    public void deletarCargo(Cargo cargo) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
