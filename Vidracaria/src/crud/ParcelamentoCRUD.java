@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class ParcelamentoCRUD {
 
     // INSERT 
-
     public void inserirParcelamento(Parcelamento parcelamento) {
 
         PreparedStatement stmt;
