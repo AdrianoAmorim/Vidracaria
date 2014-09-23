@@ -30,7 +30,7 @@ public class Parcelamento {
         return quantidadeParcelas;
     }
     
-    public void setQuantidadeParcelas() {
+    public void setQuantidadeParcelas(int quantidadeParcelas) {
         this.quantidadeParcelas = quantidadeParcelas;
     }
 }
