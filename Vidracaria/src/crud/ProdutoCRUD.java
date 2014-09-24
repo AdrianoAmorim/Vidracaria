@@ -26,7 +26,7 @@ public class ProdutoCRUD {
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT max(codProduto) FROM produto;");
             res = stmt.executeQuery();
-            if (res.next()) {
+            while (res.next()) {
                 // guarda o valor atual do codigoProduto + 1
                 increment = res.getInt("max(codProduto)") + 1;
             }
