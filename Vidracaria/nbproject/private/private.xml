@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/workspace/GitHub/vidracaria/Vidracaria/src/crud/ParcelamentoCRUD.java</file>
+            <file>file:/home/workspace/GitHub/vidracaria/Vidracaria/src/domain/Renda.java</file>
             <file>file:/home/workspace/GitHub/vidracaria/Vidracaria/src/database/SQLite.java</file>
-            <file>file:/home/workspace/GitHub/vidracaria/Vidracaria/src/controller/ProdutoCompradoController.java</file>
-            <file>file:/home/workspace/GitHub/vidracaria/Vidracaria/src/crud/ProdutoCompradoCRUD.java</file>
-            <file>file:/home/workspace/GitHub/vidracaria/Vidracaria/src/domain/ProdutoComprado.java</file>
+            <file>file:/home/workspace/GitHub/vidracaria/Vidracaria/src/controller/RendaController.java</file>
+            <file>file:/home/workspace/GitHub/vidracaria/Vidracaria/src/crud/RendaCRUD.java</file>
         </group>
     </open-files>
 </project-private>
