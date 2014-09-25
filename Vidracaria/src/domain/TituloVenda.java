@@ -7,7 +7,7 @@ package domain;
  */
 public class TituloVenda {
     protected int codTitulo;
-    protected int codVenda;
+    private int codVenda;
     protected String vencimentoTitulo;
     protected Double valorTitulo;
     
@@ -42,6 +42,14 @@ public class TituloVenda {
     
     public void setValorTitulo(Double valorTitulo) {
         this.valorTitulo = valorTitulo;
+    }
+
+    public int getCodVenda() {
+        return codVenda;
+    }
+
+    public void setCodVenda(int codVenda) {
+        this.codVenda = codVenda;
     }
 }
  
