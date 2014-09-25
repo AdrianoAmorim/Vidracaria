@@ -19,15 +19,7 @@ public class TituloVenda {
     public void setCodTitulo(int codTitulo) {
         this.codTitulo = codTitulo;
     }
-    
-    public int getCodCompra() {
-        return codVenda;
-    }
-    
-    public void setCodCompra(int codVenda) {
-        this.codVenda = codVenda;
-    }
-    
+        
     public String getVencimentoTitulo() {
         return vencimentoTitulo;
     }
