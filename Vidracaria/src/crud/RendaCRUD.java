@@ -14,98 +14,95 @@ import java.util.ArrayList;
  * @author rafael
  */
 public class RendaCRUD {
-    
-        // INSERT 
+
+    // INSERT 
     public void inserirRenda(Renda renda) {
 
         PreparedStatement stmt;
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO renda(codProduto, codVenda, quantidadeProduto) "
-                    + "VALUES (?,?,?);");
 
-            stmt.setInt(1, produtoVendido.getCodProduto());
-            stmt.setInt(2, produtoVendido.getCodVenda());
-            stmt.setDouble(3, produtoVendido.getQuantidadeProduto());
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("INSERT INTO renda(codEmpresa, codTipoRenda, mesAno) "
+                    + "VALUES (?,?,?)");
+
+            stmt.setInt(1, renda.getCodEmpresa());
+            stmt.setInt(2, renda.getCodTipoRenda());
+            stmt.setString(3, renda.getMesAno());
 
             stmt.executeUpdate();
             stmt.close();
 
-            System.out.println("Produto Comprado cadastrado com sucesso!");
-        } catch (SQLException erroInserirProdutoVendido) {
-            System.out.println(erroInserirProdutoVendido.getMessage());
+            System.out.println("Renda cadastrada com sucesso!");
+        } catch (SQLException erroInserirRenda) {
+            System.out.println(erroInserirRenda.getMessage());
         }
     }
 
     // UPDATE
-    public void atualizarProdutoVendido(ProdutoVendido produtoVendido) {
+    public void atualizarRenda(Renda renda) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE produtoVendido SET quantidadeProduto = ? "
-                    + "WHERE codProduto = ? AND codVenda = ?;");
+            stmt = conn.prepareStatement("UPDATE renda SET codEmpresa = ?, codTipoRenda = ?, mesAno = ? "
+                    + "WHERE codEmpresa = ?, codTipoRenda = ?, mesAno = ?;");
 
-            stmt.setDouble(1, produtoVendido.getQuantidadeProduto());
-            stmt.setInt(2, produtoVendido.getCodProduto());
-            stmt.setInt(3, produtoVendido.getCodVenda());
+            stmt.setInt(1, renda.getCodEmpresa());
+            stmt.setInt(2, renda.getCodTipoRenda());
+            stmt.setString(3, renda.getMesAno());
+            stmt.setInt(4, renda.getCodEmpresa());
+            stmt.setInt(5, renda.getCodTipoRenda());
+            stmt.setString(6, renda.getMesAno());
 
             stmt.executeUpdate();
             stmt.close();
             conn.close();
             System.out.println("Informações atualizadas com sucesso!");
-        } catch (SQLException erroAtualizarProdutoVendido) {
-            System.out.println(erroAtualizarProdutoVendido.getMessage());
+        } catch (SQLException erroAtualizarRenda) {
+            System.out.println(erroAtualizarRenda.getMessage());
         }
     }
 
     // SELECT
-    public ArrayList<ProdutoVendido> consultarProdutoVendido() {
+    public ArrayList<Renda> consultarRenda() {
 
         PreparedStatement stmt;
         ResultSet result;
-
-        ArrayList<ProdutoVendido> listaProdutoVendido = new ArrayList<>();
-
+        ArrayList<Renda> listaRendas = new ArrayList<>();
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, codCompra, quantidadeProduto "
-                    + "FROM produtoVendido;");
-
+            stmt = conn.prepareStatement("SELECT codEmpresa, codTipoRenda, mesAno FROM renda;");
             result = stmt.executeQuery();
             while (result.next()) {
-                ProdutoVendido produtoVendido = new ProdutoVendido();
+                Renda renda = new Renda();
+                renda.setCodEmpresa(result.getInt("codEmpresa"));
+                renda.setCodTipoRenda(result.getInt("codTipoRenda"));
+                renda.setMesAno(result.getString("mesAno"));
 
-                produtoVendido.setCodProduto(result.getInt("codProduto"));
-                produtoVendido.setCodVenda(result.getInt("codCompra"));
-                produtoVendido.setQuantidadeProduto(result.getDouble("quantidadeProduto"));
-                
-                listaProdutoVendido.add(produtoVendido);
-
+                listaRendas.add(renda);
                 stmt.close();
                 conn.close();
             }
-            return listaProdutoVendido;
-        } catch (SQLException erroConsultarProdutoVendido) {
-            System.out.println(erroConsultarProdutoVendido.getMessage());
-            return listaProdutoVendido;
+            return listaRendas;
+        } catch (SQLException erroConsultarRendas) {
+            System.out.println(erroConsultarRendas.getMessage());
+            return listaRendas;
         }
     }
 
     // DELETE
-    public void deletarProdutoVendido(ProdutoVendido produtoVendido) {
+    public void deletarRenda(Renda renda) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM produtoVendido WHERE codProduto = ? AND codCompra = ?;");
+            stmt = conn.prepareStatement("DELETE FROM renda WHERE codRenda = ?, codTipoRenda = ?, mesAno = ?;");
 
-            stmt.setInt(1, produtoVendido.getCodProduto());
-            stmt.setInt(2, produtoVendido.getCodVenda());
+            stmt.setInt(1, renda.getCodEmpresa());
+            stmt.setInt(2, renda.getCodTipoRenda());
+            stmt.setString(3, renda.getMesAno());
 
             stmt.executeUpdate();
             stmt.close();
             conn.close();
-        } catch (SQLException erroDeletarProdutoVendido) {
-            System.out.println(erroDeletarProdutoVendido.getMessage());
+        } catch (SQLException erroDeletarRenda) {
+            System.out.println(erroDeletarRenda.getMessage());
         }
-
     }
-    
 }

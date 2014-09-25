@@ -42,12 +42,15 @@ public class DespesaCRUD {
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("UPDATE despesa SET codEmpresa = ?, codTipoDespesa = ?, mesAno = ? "
-                    + "WHERE codCompra = ?;");
+                    + "WHERE codEmpresa = ?, codTipoDespesa = ?, mesAno = ? ;");
 
             stmt.setInt(1, despesa.getCodEmpresa());
             stmt.setInt(2, despesa.getCodTipoDespesa());
             stmt.setString(3, despesa.getMesAno());
             stmt.setInt(4, despesa.getCodEmpresa());
+            stmt.setInt(5, despesa.getCodTipoDespesa());
+            stmt.setString(6, despesa.getMesAno());
+
 
             stmt.executeUpdate();
             stmt.close();
@@ -89,7 +92,7 @@ public class DespesaCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM despesa WHERE codDespesa = ?, codTipoDespesa = ?, mesAno = ?;");
+            stmt = conn.prepareStatement("DELETE FROM despesa WHERE codEmpresa = ?, codTipoDespesa = ?, mesAno = ?;");
             
             stmt.setInt(1, despesa.getCodEmpresa());
             stmt.setInt(2, despesa.getCodTipoDespesa());
