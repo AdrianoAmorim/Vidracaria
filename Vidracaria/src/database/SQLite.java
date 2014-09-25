@@ -122,7 +122,7 @@ public class SQLite {
 
             String tipoDespesa = "CREATE  TABLE IF NOT EXISTS TipoDespesa ("
                     + "  codTipoDespesa   INT          NOT NULL,"
-                    + "  descricaoDespesa VARCHAR(45)  NOT NULL,"
+                    + "  descricaTipoDespesa VARCHAR(45)  NOT NULL,"
                     + "  totalDespesa     NUMERIC(6,2) NOT NULL,"
                     + ""
                     + "  CONSTRAINT pk_tipoDespesa "

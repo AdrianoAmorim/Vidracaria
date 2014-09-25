@@ -16,15 +16,15 @@ import javax.swing.JOptionPane;
  */
 public class TipoDespesaCRUD {
 
-    public void inserirTipoPagamento(TipoDespesa tipoDespesa) {
+    public void inserirTipoDespesa(TipoDespesa tipoDespesa) {
 
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO TipoDespesa(codTipoDespesa, descricaoDespesa, totalDespesa)"
+            stmt = conn.prepareStatement("INSERT INTO TipoDespesa(codTipoDespesa, descricaoTipoDespesa, totalDespesa)"
                     + " VALUES (?, ?,?);");
             stmt.setInt(1, tipoDespesa.getCodTipoDespesa());
-            stmt.setString(2, tipoDespesa.getDescricaoDespesa());
+            stmt.setString(2, tipoDespesa.getDescricaoTipoDespesa());
             stmt.setDouble(3, tipoDespesa.getTotalDespesa());
             stmt.executeUpdate();
             stmt.close();
@@ -41,13 +41,13 @@ public class TipoDespesaCRUD {
         ArrayList<TipoDespesa> listaTipoDespesa = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            stm = conn.prepareStatement("SELECT codTipoDespesa, descricaoDespesa, totalDespesa FROM TipoDespesa;");
+            stm = conn.prepareStatement("SELECT codTipoDespesa, descricaoTipoDespesa, totalDespesa FROM TipoDespesa;");
             rs = stm.executeQuery();
 
             while (rs.next()) {
                 TipoDespesa tipoDespesa = new TipoDespesa();
                 tipoDespesa.setCodTipoDespesa(rs.getInt("codTipoDespesa"));
-                tipoDespesa.setDescricaoDespesa(rs.getString("descricaoDespesa"));
+                tipoDespesa.setDescricaoTipoDespesa(rs.getString("descricaoTipoDespesa"));
                 tipoDespesa.setTotalDespesa(rs.getDouble("totalDespesa"));
 
                 listaTipoDespesa.add(tipoDespesa);
@@ -66,8 +66,8 @@ public class TipoDespesaCRUD {
         PreparedStatement stm;
 
         try (Connection conn = new SQLite().conectar()) {
-            stm = conn.prepareStatement("UPDATE TipoDespesa SET descricaoDespesa = ?, totalDespesa = ? WHERE codTipoDespesa = ?;");
-            stm.setString(1, tipoDespesa.getDescricaoDespesa());
+            stm = conn.prepareStatement("UPDATE TipoDespesa SET descricaoTipoDespesa = ?, totalDespesa = ? WHERE codTipoDespesa = ?;");
+            stm.setString(1, tipoDespesa.getDescricaoTipoDespesa());
             stm.setDouble(2, tipoDespesa.getTotalDespesa());
             stm.setInt(3, tipoDespesa.getCodTipoDespesa());
 

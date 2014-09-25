@@ -7,7 +7,7 @@ package domain;
  */
 public class TipoDespesa {
     protected int codTipoDespesa;
-    protected String descricaoDespesa;
+    protected String descricaoTipoDespesa;
     protected Double totalDespesa;
     
     public int getCodTipoDespesa() {
@@ -18,12 +18,12 @@ public class TipoDespesa {
         this.codTipoDespesa = codTipoDespesa;
     }
     
-    public String getDescricaoDespesa() {
-        return descricaoDespesa;
+    public String getDescricaoTipoDespesa() {
+        return descricaoTipoDespesa;
     }
     
-    public void setDescricaoDespesa(String descricaoDespesa) {
-        this.descricaoDespesa = descricaoDespesa;
+    public void setDescricaoTipoDespesa(String descricaoTipoDespesa) {
+        this.descricaoTipoDespesa = descricaoTipoDespesa;
     }
     
     public Double getTotalDespesa() {

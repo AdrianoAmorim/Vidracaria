@@ -14,7 +14,7 @@ public class TipoDespesaController {
        if(String.valueOf(tipoDespesa.getCodTipoDespesa()).isEmpty()){
             JOptionPane.showMessageDialog(null, "O preenchimento do codigo do tipo de despesa é obrigatório!");
             return false;
-       } else if (tipoDespesa.getDescricaoDespesa().isEmpty()) {
+       } else if (tipoDespesa.getDescricaoTipoDespesa().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento da descricao do tipo de despesa é obrigatório!");
             return false;
         }else if (tipoDespesa.getTotalDespesa().toString().isEmpty()){
