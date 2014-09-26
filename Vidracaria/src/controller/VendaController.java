@@ -29,8 +29,7 @@ public class VendaController {
         } else if (venda.getDataVenda().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento da data da venda é obrigatório.");
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 }
