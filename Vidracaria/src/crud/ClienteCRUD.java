@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +24,9 @@ public class ClienteCRUD {
             stmt = conn.prepareStatement("SELECT MAX(codCliente) FROM cliente;");
             ResultSet result = stmt.executeQuery();
             increment = result.getInt(1);
+            
+            stmt.close();
+            conn.close();
         } catch (SQLException erroIncrementCodCliente) {
             JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo do cliente");
         }

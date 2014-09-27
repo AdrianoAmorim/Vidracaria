@@ -1,4 +1,3 @@
-
 package crud;
 
 import database.SQLite;
@@ -21,11 +20,14 @@ public class ProdutoCRUD {
         PreparedStatement stmt;
         Connection conn = new SQLite().conectar();
         int increment = 0;
-        
+
         try {
             stmt = conn.prepareStatement("SELECT MAX(codProduto) FROM produto;");
             ResultSet result = stmt.executeQuery();
             increment = result.getInt(1);
+            
+            stmt.close();
+            conn.close();
         } catch (SQLException erroIncrementCodProduto) {
             JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo do produto");
         }
@@ -37,8 +39,8 @@ public class ProdutoCRUD {
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("INSERT INTO produto(codProduto, descricaoProduto, unidadeMedida, "
-                    + "quantidadeEstoque, precoVenda) "
-                    + "VALUES (?,?,?,?,?)");
+                    + "quantidadeEstoque, precoVenda) VALUES (?,?,?,?,?)");
+
             stmt.setInt(1, produto.getCodProduto());
             stmt.setString(2, produto.getDescricaoProduto());
             stmt.setString(3, produto.getUnidadeMedida());

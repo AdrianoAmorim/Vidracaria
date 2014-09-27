@@ -2585,7 +2585,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCpf, tfClienteRg,
                     tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
 
-            // incrementa o cidog do cliente
+            // incrementa o codigo do cliente
             tfClienteCodigo.setText(Integer.toString(cliCrud.incrementCodCliente()));
             tpPrincipal.setSelectedIndex(0);
         }
@@ -2595,15 +2595,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnCadastrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdActionPerformed
         Produto produto = new Produto();
         ProdutoController prodController = new ProdutoController();
+        
         try {
             // preparação do objeto produto
             produto.setCodProduto(Integer.valueOf(tfProdutoCodigo.getText()));
             produto.setDescricaoProduto(tfProdutoDescricao.getText());
             produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
-        } catch (NumberFormatException erro) {
+            produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
+            produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
+        } catch (NumberFormatException erroConversaoProduto) {
             JOptionPane.showMessageDialog(null, "Erro Na conversao de Valores.");
             return;
         }
+        
         // se os atributos forem válidos passa o produto e estoque para o crud
         if (prodController.validarProduto(produto)) {
             ProdutoCRUD prodCrud = new ProdutoCRUD();
@@ -2615,7 +2619,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     tfProdutoPrecoVenda, tfProdutoQuantidade);
             carregarCbProduto();
 
-            // atualiza o valor do codigo do Produto
+            // incrementa o codigo do produto
             tfProdutoCodigo.setText(String.valueOf(prodCrud.incrementCodProduto()));
             // volta para a aba inicial
             tpPrincipal.setSelectedIndex(0);
