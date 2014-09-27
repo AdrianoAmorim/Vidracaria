@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +16,21 @@ import javax.swing.JOptionPane;
  * @author debian
  */
 public class ClienteCRUD {
+
+    public int incrementCodCliente() {
+        PreparedStatement stmt;
+        Connection conn = new SQLite().conectar();
+        int increment = 0;
+        
+        try {
+            stmt = conn.prepareStatement("SELECT MAX(codCliente) FROM cliente;");
+            ResultSet result = stmt.executeQuery();
+            increment = result.getInt(1);
+        } catch (SQLException erroIncrementCodCliente) {
+            JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo do cliente");
+        }
+        return increment + 1;
+    }
 
     public void inserirCliente(Cliente cliente) {
 

@@ -34,11 +34,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnAlterarFuncionario.setVisible(false);
         this.btnAlterarFornecedor.setVisible(false);
         this.btnDeletarFornecedor.setVisible(false);
+        
         //carregarCbProduto();
         //int prodId = new ProdutoCRUD().retornarIncrement();
         //tfProdutoCodigo.setText(String.valueOf(prodId));
         //int vendaId = new VendaCRUD().retornarIncrement();
-        //tfVendaCodigo.setText(String.valueOf(vendaId));        
+        //tfVendaCodigo.setText(String.valueOf(vendaId));
+        
+        // INICIALIZAÇÃO DO CODIGO DO CLIENTE
+        int codCli = new ClienteCRUD().incrementCodCliente();
+        tfClienteCodigo.setText(Integer.toString(codCli));
     }
 
     /**
@@ -2195,6 +2200,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfClienteNome.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
+        tfClienteCodigo.setEditable(false);
         tfClienteCodigo.setBackground(new java.awt.Color(204, 255, 204));
         tfClienteCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
@@ -2608,9 +2614,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
             // O ERRO ESTÁ NO CRUD - JÁ TESTEI AS OUTRAS CLASSES ENVOLVIDAS
             ClienteCRUD cliCrud = new ClienteCRUD();
             cliCrud.inserirCliente(cliente);
+
             // limpa os dados do formulário
             limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCpf, tfClienteRg,
                     tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
+
+            // incrementa o cidog do cliente
+            tfClienteCodigo.setText(Integer.toString(cliCrud.incrementCodCliente()));
             tpPrincipal.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnCadastrarClActionPerformed
