@@ -17,24 +17,19 @@ import javax.swing.JOptionPane;
 public class ProdutoCRUD {
 
     // metodo para controlar, pelo Java, a função de Auto Increment do Produto.
-    public int retornarIncrement() {
-        int increment = 0;
-
+    public int incrementCodProduto() {
         PreparedStatement stmt;
-        ResultSet res;
-
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT max(codProduto) FROM produto;");
-            res = stmt.executeQuery();
-            while (res.next()) {
-                // guarda o valor atual do codigoProduto + 1
-                increment = res.getInt("max(codProduto)") + 1;
-            }
-            stmt.close();
-        } catch (SQLException erroReturnIncrement) {
-            System.out.println(erroReturnIncrement.getMessage());
+        Connection conn = new SQLite().conectar();
+        int increment = 0;
+        
+        try {
+            stmt = conn.prepareStatement("SELECT MAX(codProduto) FROM produto;");
+            ResultSet result = stmt.executeQuery();
+            increment = result.getInt(1);
+        } catch (SQLException erroIncrementCodProduto) {
+            JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo do produto");
         }
-        return increment;
+        return increment + 1;
     }
 
     public void inserirProduto(Produto produto) {
