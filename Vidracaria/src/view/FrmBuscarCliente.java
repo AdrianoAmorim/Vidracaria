@@ -330,20 +330,20 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     private void tfNomeClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfNomeClienteCaretUpdate
         DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
 
+        Cliente cliente = new Cliente();
         ClienteCRUD cliCrud = new ClienteCRUD();
         ArrayList<Cliente> listaCliente = new ArrayList<>();
 
         modelo.setRowCount(0);
-
-/*        listaCliente = cliCrud.consultarCliente(C
-                Integer.valueOf(tfCodCliente.getText())
-        , tfNomeCliente.getText()
-        , tfCpfCliente.getText()
-        , tfRgCliente.getText()
-        , tfCelularCliente.getText()
-        , tfResidencialCliente.getText()
-        );*/
-
+        
+        cliente.setCodCliente(Integer.valueOf(tfCodCliente.getText()));
+        cliente.setNomeCliente(tfNomeCliente.getText());
+        cliente.setCpfCliente(tfCpfCliente.getText());
+        cliente.setRgCliente(tfRgCliente.getText());
+        cliente.setTelResidencial(tfResidencialCliente.getText());
+        cliente.setTelCelular(tfCelularCliente.getText());
+        
+        listaCliente = cliCrud.consultarCliente(cliente);
         
         for (Cliente cli : listaCliente) {
 

@@ -14,14 +14,6 @@ public class SQLite {
 
     public Connection conn = conectar();
 
-    public SQLite() {
-        try {
-            prepararTabelas(conn);
-        } catch (SQLException erroCriarTabelas) {
-            JOptionPane.showMessageDialog(null, "Erro na criação do banco de dados!");
-        }
-    }
-
     public Connection conectar() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -35,16 +27,18 @@ public class SQLite {
         return conn;
     }
 
+    // POR ALGUM MOTIVO QUE NÃO IDENTIFIQUEI ESTE MÉTODO ESTÁ CAGANDO O SISTEMA
+    // AS TABELAS JÁ ESTÃO CRIADAS. ENTÃO ATÉ CORRIGIRMOS.. PARA ALTERAÇÕES
+    // UTILIZE ALGUM GERENCIADOR DE SQLite;
     public static void prepararTabelas(Connection conn) throws SQLException {
         try {
             Statement stmt = conn.createStatement();
 
             // DELETAR TABELAS
-            // descomentar caso haja alguma modificação no banco de dados
-            String del = "DROP TABLE cliente;";
-            stmt.executeUpdate(del);
-            stmt.close();
-
+            // descomentar e modificar caso haja alguma modificação no banco de dados
+            //String del = "DROP TABLE nomeTabela;";
+            //stmt.executeUpdate(del);
+            //stmt.close();
             String empresa = "CREATE  TABLE IF NOT EXISTS Empresa ("
                     + "  codEmpresa   INT          NOT NULL,"
                     + "  cnpjEmpresa  VARCHAR(14)  NOT NULL,"

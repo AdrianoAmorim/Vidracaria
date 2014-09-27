@@ -24,9 +24,6 @@ public class ClienteController {
         } else if(cliente.getRgCliente().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do RG do cliente é obrigatório)");
             return false;
-        } else if(cliente.getEnderecoCliente().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento do endereço do cliente é obrigatório)");
-            return false;
         } else {
             return true;
         }

@@ -19,12 +19,13 @@ public class ProdutoVendidoCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO produtoVendido(codProduto, codVenda, quantidadeProduto) "
-                    + "VALUES (?,?,?);");
+            stmt = conn.prepareStatement("INSERT INTO produtoVendido(codProduto, codVenda, quantidadeProduto, precoVenda) "
+                    + "VALUES (?,?,?,?);");
 
             stmt.setInt(1, produtoVendido.getCodProduto());
             stmt.setInt(2, produtoVendido.getCodVenda());
             stmt.setDouble(3, produtoVendido.getQuantidadeProduto());
+            stmt.setDouble(4, produtoVendido.getPrecoVenda());
 
             stmt.executeUpdate();
             stmt.close();
@@ -40,12 +41,13 @@ public class ProdutoVendidoCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE produtoVendido SET quantidadeProduto = ? "
+            stmt = conn.prepareStatement("UPDATE produtoVendido, SET quantidadeProduto = ?, precoVenda = ?"
                     + "WHERE codProduto = ? AND codVenda = ?;");
 
             stmt.setDouble(1, produtoVendido.getQuantidadeProduto());
-            stmt.setInt(2, produtoVendido.getCodProduto());
-            stmt.setInt(3, produtoVendido.getCodVenda());
+            stmt.setDouble(2, produtoVendido.getPrecoVenda());
+            stmt.setInt(3, produtoVendido.getCodProduto());
+            stmt.setInt(4, produtoVendido.getCodVenda());
 
             stmt.executeUpdate();
             stmt.close();
@@ -65,7 +67,7 @@ public class ProdutoVendidoCRUD {
         ArrayList<ProdutoVendido> listaProdutoVendido = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, codCompra, quantidadeProduto "
+            stmt = conn.prepareStatement("SELECT codProduto, codCompra, quantidadeProduto, precoVenda "
                     + "FROM produtoVendido;");
 
             result = stmt.executeQuery();
@@ -75,6 +77,7 @@ public class ProdutoVendidoCRUD {
                 produtoVendido.setCodProduto(result.getInt("codProduto"));
                 produtoVendido.setCodVenda(result.getInt("codCompra"));
                 produtoVendido.setQuantidadeProduto(result.getDouble("quantidadeProduto"));
+                produtoVendido.setPrecoVenda(result.getDouble("precoVenda"));
                 
                 listaProdutoVendido.add(produtoVendido);
 
