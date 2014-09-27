@@ -1,29 +1,31 @@
-
 package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author debian
  */
-
 public class SQLite {
 
     public Connection conn = conectar();
 
-    public SQLite() throws SQLException {
-        prepararTabelas(conn);
+    public SQLite() {
+        try {
+            prepararTabelas(conn);
+        } catch (SQLException erroCriarTabelas) {
+            JOptionPane.showMessageDialog(null, "Erro na criação do banco de dados!");
+        }
     }
 
     public Connection conectar() {
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:projeto.db");
-            System.out.println("Conectado com sucesso !");
+            conn = DriverManager.getConnection("jdbc:sqlite:projeto.sql");
         } catch (SQLException erroCon) {
             System.err.println(erroCon.getMessage());
             System.exit(0);
@@ -33,9 +35,15 @@ public class SQLite {
         return conn;
     }
 
-    private void prepararTabelas(Connection conn) throws SQLException {
+    public static void prepararTabelas(Connection conn) throws SQLException {
         try {
             Statement stmt = conn.createStatement();
+
+            // DELETAR TABELAS
+            // descomentar caso haja alguma modificação no banco de dados
+            String del = "DROP TABLE cliente;";
+            stmt.executeUpdate(del);
+            stmt.close();
 
             String empresa = "CREATE  TABLE IF NOT EXISTS Empresa ("
                     + "  codEmpresa   INT          NOT NULL,"
@@ -128,7 +136,7 @@ public class SQLite {
                     + "  CONSTRAINT pk_tipoDespesa "
                     + "    PRIMARY KEY (codTipoDespesa)"
                     + "  );";
-            stmt.executeQuery(tipoDespesa);
+            stmt.executeUpdate(tipoDespesa);
             stmt.close();
 
             String despesa = "CREATE  TABLE IF NOT EXISTS Despesa ("
@@ -204,10 +212,10 @@ public class SQLite {
 
             String produto = "CREATE  TABLE IF NOT EXISTS Produto ("
                     + "  codProduto INT          NOT NULL,"
-                    + "  descricaoProduto  VARCHAR(45)  NOT NULL,"
-                    + "  unidadeMedida     CHAR(6)      NOT NULL,"
+                    + "  descricaoProduto  VARCHAR(45)   NOT NULL,"
+                    + "  unidadeMedida     CHAR(6)       NOT NULL,"
                     + "  quantidadeEstoque NUMERIC(6, 2) NOT NULL,"
-                    + "  quantidadeMinima  NUMERIC(6, 2) NOT NULL,"
+                    + "  precoVenda        NUMERIC(6, 2) NOT NULL,"
                     + ""
                     + "  CONSTRAINT pk_produto "
                     + "    PRIMARY KEY(codProduto)"
@@ -347,28 +355,6 @@ public class SQLite {
                     + "  );";
             stmt.executeUpdate(pagamentoTitulo);
             stmt.close();
-
-            String alteracaoPreco = "CREATE  TABLE IF NOT EXISTS AlteracaoPreco ("
-                    + "  codAlteracaoPreco INT          NOT NULL,"
-                    + "  codProduto        INT          NOT NULL,"
-                    + "  codFuncionario    INT          NOT NULL,"
-                    + "  dataAlteracao     DATE         NOT NULl,"
-                    + "  precoVenda        NUMERIC(6,2) NOT NULL,"
-                    + ""
-                    + "  CONSTRAINT pk_alteracaoPreco "
-                    + "    PRIMARY KEY (codAlteracao),"
-                    + ""
-                    + "  CONSTRAINT fk_produto_alteracaoPreco "
-                    + "    FOREIGN KEY (codProduto)"
-                    + "    REFERENCES Produto (codProduto),"
-                    + ""
-                    + "  CONSTRAINT fk_funcionario_alterarPreco "
-                    + "    FOREIGN KEY (codFuncionario)"
-                    + "    REFERENCES Funcionario (codFuncionario)"
-                    + "  );";
-            stmt.executeUpdate(alteracaoPreco);
-            stmt.close();
-
         } catch (SQLException erroTabelas) {
             System.out.println(erroTabelas.getSQLState());
             System.exit(0);

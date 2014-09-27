@@ -15,6 +15,16 @@ public class Cliente {
     protected String telResidencial;
     protected String telCelular;
 
+    public Cliente() {
+        codCliente = 0;
+        cpfCliente = "";
+        nomeCliente = "";
+        rgCliente = "";
+        enderecoCliente = "";
+        telResidencial = "";
+        telCelular = "";
+    }
+    
     public int getCodCliente() {
         return codCliente;
     }

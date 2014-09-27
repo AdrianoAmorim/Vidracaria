@@ -19,9 +19,11 @@ public class ClienteCRUD {
 
         PreparedStatement stmt;
 
-        try (Connection conn = new SQLite().conectar()) {
+        Connection conn = new SQLite().conectar();
+
+        try {
             stmt = conn.prepareStatement("INSERT INTO cliente(codCliente, cpfCliente, nomeCliente, rgCliente, "
-                    + "enderecoCliente,telResidencial,telCelular "
+                    + "enderecoCliente, telResidencial, telCelular) "
                     + "VALUES (?,?,?,?,?,?,?);");
 
             stmt.setInt(1, cliente.getCodCliente());
@@ -33,10 +35,11 @@ public class ClienteCRUD {
             stmt.setString(7, cliente.getTelCelular());
             stmt.executeUpdate();
             stmt.close();
+            conn.close();
 
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
         } catch (SQLException erroInserirCliente) {
-            System.out.println(erroInserirCliente.getMessage());
+            System.out.println(erroInserirCliente.getErrorCode());
         }
     }
 
@@ -53,10 +56,10 @@ public class ClienteCRUD {
             while (result.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setCodCliente(result.getInt("codCliente"));
-                cliente.setNomeCliente(result.getString("nome"));
-                cliente.setCpfCliente(result.getString("cpf"));
-                cliente.setRgCliente(result.getString("rg"));
-                cliente.setEnderecoCliente(result.getString("endereco"));
+                cliente.setNomeCliente(result.getString("nomeCliente"));
+                cliente.setCpfCliente(result.getString("cpfCliente"));
+                cliente.setRgCliente(result.getString("rgCliente"));
+                cliente.setEnderecoCliente(result.getString("enderecoCliente"));
                 cliente.setTelResidencial(result.getString("telResidencial"));
                 cliente.setTelCelular(result.getString("telCelular"));
 
@@ -72,23 +75,37 @@ public class ClienteCRUD {
     }
 
 //Consulta o cliente passando todos ou um parametro
-    public ArrayList<Cliente> consultarCliente(String cod, String nome, String cpf, String rg, String celular, String residencial) {
+    public ArrayList<Cliente> consultarCliente(Cliente cliente) {
 
-        PreparedStatement stm;
+        PreparedStatement stmt;
         ResultSet result;
         ArrayList<Cliente> listCliente = new ArrayList<>();
+
         try (Connection conn = new SQLite().conectar()) {
-            //implementar a query...
-            String query = "QUERY";
-            stm = conn.prepareStatement(query);
-            result = stm.executeQuery();
+
+            // FALTA IMPLEMENTAR OS IFS para pesquisar utilizando todos os campos
+            stmt = conn.prepareStatement("SELECT codCliente, nomeCliente, cpfCliente, rgCliente, enderecoCliente, telResidencial, "
+                    + "telCelular FROM cliente WHERE CodCliente = ?;");
+
+            stmt.setInt(1, cliente.getCodCliente());
+
+            result = stmt.executeQuery();
 
             while (result.next()) {
-                Cliente cliente = new Cliente();
-                //falta pegar o resultado da consulta e atribuir aos clientes.
+                // reseta os valores do objeto cliente
+                cliente = new Cliente();
+
+                cliente.setCodCliente(result.getInt("codCliente"));
+                cliente.setNomeCliente(result.getString("nomeCliente"));
+                cliente.setCpfCliente(result.getString("cpfCliente"));
+                cliente.setRgCliente(result.getString("rgCliente"));
+                cliente.setEnderecoCliente(result.getString("enderecoCliente"));
+                cliente.setTelResidencial(result.getString("telResidencial"));
+                cliente.setTelCelular(result.getString("telCelular"));
+
                 listCliente.add(cliente);
             }
-            stm.close();
+            stmt.close();
             result.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na Consulta Detalhada de Clientes.");

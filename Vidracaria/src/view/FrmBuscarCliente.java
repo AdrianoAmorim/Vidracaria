@@ -1,4 +1,3 @@
-
 package view;
 
 import crud.ClienteCRUD;
@@ -85,7 +84,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -167,7 +166,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +190,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,17 +329,26 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
     private void tfNomeClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfNomeClienteCaretUpdate
         DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
+
         ClienteCRUD cliCrud = new ClienteCRUD();
         ArrayList<Cliente> listaCliente = new ArrayList<>();
 
         modelo.setRowCount(0);
-        
-        listaCliente = cliCrud.consultarCliente(tfCodCliente.getText(), tfNomeCliente.getText(), tfCpfCliente.getText(), tfRgCliente.getText(), tfCelularCliente.getText(), tfResidencialCliente.getText());
 
+/*        listaCliente = cliCrud.consultarCliente(C
+                Integer.valueOf(tfCodCliente.getText())
+        , tfNomeCliente.getText()
+        , tfCpfCliente.getText()
+        , tfRgCliente.getText()
+        , tfCelularCliente.getText()
+        , tfResidencialCliente.getText()
+        );*/
+
+        
         for (Cliente cli : listaCliente) {
 
-            modelo.addRow(new Object[]{cli.getCodCliente(), cli.getNomeCliente(), cli.getCpfCliente(),cli.getRgCliente(), 
-                cli.getTelCelular(),cli.getTelResidencial()});
+            modelo.addRow(new Object[]{cli.getCodCliente(), cli.getNomeCliente(), cli.getCpfCliente(), cli.getRgCliente(),
+                cli.getTelCelular(), cli.getTelResidencial()});
         }
 
     }//GEN-LAST:event_tfNomeClienteCaretUpdate

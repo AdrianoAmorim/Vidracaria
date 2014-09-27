@@ -11,7 +11,7 @@ public class Produto {
     private String descricaoProduto;
     private String unidadeMedida;
     private Double quantidadeEstoque;
-    private Double quantidadeMinima;
+    private Double precoVenda;
 
 
     public int getCodProduto() {
@@ -46,11 +46,11 @@ public class Produto {
         this.quantidadeEstoque = quantidadeEstoque;
     }
     
-    public Double getQuantidadeMinima() {
-        return quantidadeMinima;
+    public Double getPrecoVenda() {
+        return precoVenda;
     }
      
-    public void setQuantidadeMinima(Double quantidadeMinima) {
-        this.quantidadeMinima = quantidadeMinima;
+    public void setPrecoVenda(Double precoVenda) {
+        this.precoVenda = precoVenda;
     }
 }

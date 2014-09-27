@@ -24,8 +24,8 @@ public class ProdutoController {
         } else if(produto.getQuantidadeEstoque().toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento da quantidade em estoque é obrigatório.");
             return false;
-        } else if (produto.getQuantidadeMinima().toString().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento da quantidade mínima em estoque é obrigatório.");
+        } else if (produto.getPrecoVenda().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O preenchimento do preco de venda é obrigatório.");
             return false;
         } else {
             return true;        

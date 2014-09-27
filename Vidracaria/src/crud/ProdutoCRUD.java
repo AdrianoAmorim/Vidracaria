@@ -42,13 +42,13 @@ public class ProdutoCRUD {
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("INSERT INTO produto(codProduto, descricaoProduto, unidadeMedida, "
-                    + "quantidadeEstoque, quantidadeMinima) "
+                    + "quantidadeEstoque, precoVenda) "
                     + "VALUES (?,?,?,?,?)");
             stmt.setInt(1, produto.getCodProduto());
             stmt.setString(2, produto.getDescricaoProduto());
             stmt.setString(3, produto.getUnidadeMedida());
             stmt.setDouble(4, produto.getQuantidadeEstoque());
-            stmt.setDouble(5, produto.getQuantidadeMinima());
+            stmt.setDouble(5, produto.getPrecoVenda());
 
             stmt.executeUpdate();
             stmt.close();
@@ -67,7 +67,7 @@ public class ProdutoCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codProduto, descricaoProduto, unidadeMedida, "
-                    + "quantidadeEstoque, quantidadeMinima FROM produto;");
+                    + "quantidadeEstoque, precoVenda FROM produto;");
 
             result = stmt.executeQuery();
 
@@ -77,7 +77,7 @@ public class ProdutoCRUD {
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
                 produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
-                produto.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
+                produto.setPrecoVenda(result.getDouble("precoVenda"));
 
                 listaProdutos.add(produto);
             }
@@ -98,7 +98,7 @@ public class ProdutoCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codProduto, descricaoProduto, unidadeMedida "
-                    + " quantidadeEstoque, quantidadeMinima FROM produto WHERE codProduto = '" + codProduto + "';");
+                    + " quantidadeEstoque, precoVenda FROM produto WHERE codProduto = '" + codProduto + "';");
 
             result = stmt.executeQuery();
             while (result.next()) {
@@ -106,7 +106,7 @@ public class ProdutoCRUD {
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
                 produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
-                produto.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
+                produto.setPrecoVenda(result.getDouble("precoVenda"));
 
             }
             stmt.close();
@@ -124,7 +124,7 @@ public class ProdutoCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codProduto, descricaoProduto, unidadeMedida, "
-                    + "quantidadeEstoque, quantidadeMinima FROM produto WHERE descricaoProduto = '" + descricaoProduto + "';");
+                    + "quantidadeEstoque, precoVenda FROM produto WHERE descricaoProduto = '" + descricaoProduto + "';");
 
             result = stmt.executeQuery();
             while (result.next()) {
@@ -132,7 +132,7 @@ public class ProdutoCRUD {
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
                 produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
-                produto.setQuantidadeMinima(result.getDouble("quantidadeMinima"));
+                produto.setPrecoVenda(result.getDouble("precoVenda"));
             }
             stmt.close();
         } catch (SQLException erroConsultarCodigoProduto) {
@@ -147,12 +147,12 @@ public class ProdutoCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("UPDATE produto SET descricaoProduto = ?, unidadeMedida = ?, quantidadeEstoque = ?, "
-                    + "quantidadeMinima = ? WHERE codProduto = ?;");
+                    + "precoVenda = ? WHERE codProduto = ?;");
 
             stmt.setString(1, produto.getDescricaoProduto());
             stmt.setString(2, produto.getUnidadeMedida());
             stmt.setDouble(3, produto.getQuantidadeEstoque());
-            stmt.setDouble(4, produto.getQuantidadeMinima());
+            stmt.setDouble(4, produto.getPrecoVenda());
             stmt.setInt(5, produto.getCodProduto());
 
             stmt.executeUpdate();
