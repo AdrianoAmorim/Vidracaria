@@ -201,7 +201,7 @@ public class ClienteCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codcliente, cpfCliente, nomeCliente, rgCliente, "
-                    + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE nome = '" + nomeCliente + "';");
+                    + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE nomeCliente = '" + nomeCliente + "';");
 
             result = stmt.executeQuery();
             while (result.next()) {
@@ -228,13 +228,13 @@ public class ClienteCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
-                    + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE nome LIKE '" + nomeCliente + "%';");
+                    + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE nomeCliente LIKE '" + nomeCliente + "%';");
 
             result = stmt.executeQuery();
             while (result.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setCodCliente(result.getInt("codCliente"));
-                cliente.setNomeCliente(result.getString("nomeCilente"));
+                cliente.setNomeCliente(result.getString("nomeCliente"));
                 cliente.setCpfCliente(result.getString("cpfCliente"));
                 cliente.setRgCliente(result.getString("rgCliente"));
                 cliente.setEnderecoCliente(result.getString("enderecoCliente"));

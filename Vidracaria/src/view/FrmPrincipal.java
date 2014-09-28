@@ -35,7 +35,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnAlterarFornecedor.setVisible(false);
         this.btnDeletarFornecedor.setVisible(false);
         
-        //carregarCbProduto();
+        carregarCbProduto();
         //int prodId = new ProdutoCRUD().retornarIncrement();
         //tfProdutoCodigo.setText(String.valueOf(prodId));
         //int vendaId = new VendaCRUD().retornarIncrement();
@@ -2518,7 +2518,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Produto produto = new ProdutoCRUD().consultarNomeProduto(cb_produtos.getSelectedItem().toString());
 
         //adicionando na tabela
-        modelo.addRow(new Object[]{produto.getDescricaoProduto(), tfQtdProd.getText()});
+        modelo.addRow(new Object[]{produto.getDescricaoProduto(), tfQtdProd.getText(), produto.getPrecoVenda(), 
+            (produto.getPrecoVenda() * Double.parseDouble(tfQtdProd.getText()))});
 
         inserirValoresProdVenda(produto);
         tbListProduto.setModel(modelo);
