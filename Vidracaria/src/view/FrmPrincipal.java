@@ -3,7 +3,6 @@ package view;
 import controller.*;
 import crud.*;
 import domain.*;
-import java.awt.event.ItemEvent;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -34,15 +33,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnAlterarFuncionario.setVisible(false);
         this.btnAlterarFornecedor.setVisible(false);
         this.btnDeletarFornecedor.setVisible(false);
-        
-        carregarCbProduto();
-        //int prodId = new ProdutoCRUD().retornarIncrement();
-        //tfProdutoCodigo.setText(String.valueOf(prodId));
-        //int vendaId = new VendaCRUD().retornarIncrement();
-        //tfVendaCodigo.setText(String.valueOf(vendaId));
-        
+
         // INICIALIZAÇAO DO CODIGO DO PRODUTO
         int codProd = new ProdutoCRUD().incrementCodProduto();
+        // INICIALIZAÇÃO DA LISTA DE PRODUTOS
+        this.carregarCbProduto();
         tfProdutoCodigo.setText(Integer.toString(codProd));
         // INICIALIZAÇÃO DO CODIGO DO CLIENTE
         int codCli = new ClienteCRUD().incrementCodCliente();
@@ -50,6 +45,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DO CODIGO DA VENDA
         int codVend = new VendaCRUD().incrementCodVenda();
         tfVendaCodigo.setText(Integer.toString(codVend));
+        // INICIALIZAÇÃO DA LISTA DE TIPOS DE PAGAMENTO
+        this.carregarCbParcelamento();
     }
 
     /**
@@ -156,7 +153,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         tfQtdProd = new javax.swing.JTextField();
         btnAddProdutoVenda = new javax.swing.JButton();
-        cbTipoPagamento = new javax.swing.JComboBox();
+        cbParcelamento = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -207,10 +204,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel30 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
+        Parcelamento = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         btnEfetuarVenda = new javax.swing.JButton();
+        jPanel32 = new javax.swing.JPanel();
+        Parcelamento1 = new javax.swing.JLabel();
+        cbTipoPagamento = new javax.swing.JComboBox();
         jPanel45 = new javax.swing.JPanel();
         jPanel46 = new javax.swing.JPanel();
         jPanel47 = new javax.swing.JPanel();
@@ -1278,13 +1278,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        cbTipoPagamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        cbTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A Vista", "Cartão de crédito", "Cheque" }));
-        cbTipoPagamento.setSelectedIndex(-1);
-        cbTipoPagamento.setToolTipText("");
-        cbTipoPagamento.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbTipoPagamentoItemStateChanged(evt);
+        cbParcelamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        cbParcelamento.setSelectedIndex(-1);
+        cbParcelamento.setToolTipText("");
+        cbParcelamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbParcelamentoActionPerformed(evt);
             }
         });
 
@@ -1338,7 +1337,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jLabel24)
                 .addGap(101, 101, 101))
         );
@@ -1894,24 +1893,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel25.setBackground(new java.awt.Color(153, 153, 255));
         jPanel25.setPreferredSize(new java.awt.Dimension(152, 49));
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Tipo:");
+        Parcelamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Parcelamento.setForeground(new java.awt.Color(255, 255, 255));
+        Parcelamento.setText("Parcelamento:");
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addComponent(jLabel21)
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(Parcelamento)
                 .addContainerGap())
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel21)
+                .addComponent(Parcelamento)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -1927,7 +1926,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel27Layout.setHorizontalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addContainerGap())
         );
@@ -1945,6 +1944,34 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnEfetuarVendaActionPerformed(evt);
             }
         });
+
+        jPanel32.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel32.setPreferredSize(new java.awt.Dimension(152, 49));
+
+        Parcelamento1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Parcelamento1.setForeground(new java.awt.Color(255, 255, 255));
+        Parcelamento1.setText("TipoPagamento:");
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Parcelamento1)
+                .addContainerGap())
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(Parcelamento1)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        cbTipoPagamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        cbTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dinheiro", "Cheque", "Cartão de Crédito" }));
+        cbTipoPagamento.setToolTipText("");
 
         javax.swing.GroupLayout pnlEfetuarVendaLayout = new javax.swing.GroupLayout(pnlEfetuarVenda);
         pnlEfetuarVenda.setLayout(pnlEfetuarVendaLayout);
@@ -1995,18 +2022,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(21, 21, 21)
+                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                    .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarVendaLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)))))
+                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)))))
         );
         pnlEfetuarVendaLayout.setVerticalGroup(
             pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2047,24 +2078,27 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jSeparator1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(31, 31, 31)
-                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)))
+                        .addGap(33, 33, 33))
+                    .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
+                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
         );
@@ -2518,7 +2552,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Produto produto = new ProdutoCRUD().consultarNomeProduto(cb_produtos.getSelectedItem().toString());
 
         //adicionando na tabela
-        modelo.addRow(new Object[]{produto.getDescricaoProduto(), tfQtdProd.getText(), produto.getPrecoVenda(), 
+        modelo.addRow(new Object[]{produto.getDescricaoProduto(), tfQtdProd.getText(), produto.getPrecoVenda(),
             (produto.getPrecoVenda() * Double.parseDouble(tfQtdProd.getText()))});
 
         inserirValoresProdVenda(produto);
@@ -2551,7 +2585,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     }
 
+// Carregar lista de tipos de pagamento
+    public void carregarCbParcelamento() {
+        ArrayList<Parcelamento> arrayParcelamento = new ArrayList<>();
+        ParcelamentoCRUD parcelamentoCRUD = new ParcelamentoCRUD();
+
+        arrayParcelamento = parcelamentoCRUD.consultarParcelamento();
+        cbParcelamento.removeAllItems();
+
+        for (Parcelamento parcelamento : arrayParcelamento) {
+            cbParcelamento.addItem(parcelamento.getDescricaoParcelamento());
+        }
+    }
+    
 //Carregar combosBox produto------------------------------------
+
     public void carregarCbProduto() {
 
         ArrayList<Produto> arrayProd = new ArrayList<>();
@@ -2599,7 +2647,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnCadastrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdActionPerformed
         Produto produto = new Produto();
         ProdutoController prodController = new ProdutoController();
-        
+
         try {
             // preparação do objeto produto
             produto.setCodProduto(Integer.valueOf(tfProdutoCodigo.getText()));
@@ -2611,7 +2659,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro Na conversao de Valores.");
             return;
         }
-        
+
         // se os atributos forem válidos passa o produto e estoque para o crud
         if (prodController.validarProduto(produto)) {
             ProdutoCRUD prodCrud = new ProdutoCRUD();
@@ -2629,22 +2677,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tpPrincipal.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnCadastrarProdActionPerformed
-
-//a medida q seleciona um tipo de pagamento faz os teste do metodo (
-    private void cbTipoPagamentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoPagamentoItemStateChanged
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            if (cbTipoPagamento.getSelectedIndex() == 0) {
-
-            } else if (cbTipoPagamento.getSelectedIndex() == 1) {
-                FrmPagCartaoCredito frmPagCartao = new FrmPagCartaoCredito(this, true);
-                frmPagCartao.setVisible(true);
-
-            } else if (cbTipoPagamento.getSelectedIndex() == 2) {
-
-            }
-            lblTipoPagamento.setText(cbTipoPagamento.getSelectedItem().toString());
-        }
-    }//GEN-LAST:event_cbTipoPagamentoItemStateChanged
 
 //Adiciona os produtos que estao incluidos na venda
     private void btnAddProdutoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProdutoVendaActionPerformed
@@ -2858,6 +2890,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarCliente3ActionPerformed
 
+    private void cbParcelamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbParcelamentoActionPerformed
+        ParcelamentoCRUD parcelamentoCRUD = new ParcelamentoCRUD();
+        
+        lblQtdParcelas.setText(Integer.toString(parcelamentoCRUD.consultarQuantidadeParcelas(cbParcelamento.getSelectedItem().toString())));
+    }//GEN-LAST:event_cbParcelamentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2901,6 +2939,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Parcelamento;
+    private javax.swing.JLabel Parcelamento1;
     private javax.swing.JButton btnAddProdutoVenda;
     private javax.swing.JButton btnAlterarCliente;
     private javax.swing.JButton btnAlterarFornecedor;
@@ -2922,6 +2962,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEfetuarVenda;
     private javax.swing.ButtonGroup btnGroupVisualizar;
     private javax.swing.JButton btn_Pesquisar;
+    private javax.swing.JComboBox cbParcelamento;
     private javax.swing.JComboBox cbTipoPagamento;
     private javax.swing.JComboBox cbUnidadeMedida;
     private javax.swing.JComboBox cb_produtos;
@@ -2939,7 +2980,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -3002,6 +3042,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;

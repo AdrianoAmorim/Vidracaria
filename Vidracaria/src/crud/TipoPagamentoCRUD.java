@@ -40,6 +40,7 @@ public class TipoPagamentoCRUD {
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codTipoPagamento, descricaoTipoPagamento FROM tipoPagamento;");
             result = stmt.executeQuery();
+            
             while (result.next()) {
                 TipoPagamento tipoPagamento = new TipoPagamento();
                 tipoPagamento.setCodTipoPagamento(result.getInt("codTipoPagamento"));

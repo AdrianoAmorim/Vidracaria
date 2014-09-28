@@ -66,6 +66,7 @@ public class ParcelamentoCRUD {
         ArrayList<Parcelamento> listaParcelamento = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
+
             stmt = conn.prepareStatement("SELECT codParcelamento, descricaoParcelamento, quantidadeParcelas "
                     + "FROM parcelamento;");
 
@@ -74,7 +75,7 @@ public class ParcelamentoCRUD {
                 Parcelamento parcelamento = new Parcelamento();
 
                 parcelamento.setCodParcelamento(result.getInt("codParcelamento"));
-                parcelamento.setDescricaoParcelamento(result.getString("descricaoParcelas"));
+                parcelamento.setDescricaoParcelamento(result.getString("descricaoParcelamento"));
                 parcelamento.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
 
                 listaParcelamento.add(parcelamento);
@@ -89,9 +90,33 @@ public class ParcelamentoCRUD {
         }
     }
 
+    // SELECT (Quantidade de parcelas)
+    public int consultarQuantidadeParcelas(String descricaoParcelamento) {
+
+        PreparedStatement stmt;
+        ResultSet result;
+
+        Parcelamento parcelamento = new Parcelamento();
+
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("SELECT quantidadeParcelas FROM parcelamento WHERE descricaoParcelamento = '" + descricaoParcelamento + "';");
+
+            result = stmt.executeQuery();
+            if(result.next()) {
+                parcelamento.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
+
+                stmt.close();
+                conn.close();
+            }
+        } catch (SQLException erroConsultarQuantidadeParcelas) {
+            System.out.println(erroConsultarQuantidadeParcelas.getMessage());
+        }
+        return parcelamento.getQuantidadeParcelas();
+    }
+
     // DELETE
     public void deletarParcelamento(Parcelamento parcelamento) {
-        
+
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("DELETE FROM parcelamento WHERE codParcelamento = ?");
