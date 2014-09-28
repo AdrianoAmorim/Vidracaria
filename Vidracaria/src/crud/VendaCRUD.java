@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,26 +15,22 @@ import java.util.ArrayList;
  */
 public class VendaCRUD {
 
-    // metodo para controlar, pelo Java, a função de Auto Increment da Venda.
-    public int retornarIncrement() {
-        int increment = 0;
-
+    public int incrementCodVenda() {
         PreparedStatement stmt;
-        ResultSet res;
-
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT max(codVenda) FROM venda;");
-            res = stmt.executeQuery();
-            if (res.next()) {
-                // guarda o valor atual do codigoProduto + 1
-                increment = res.getInt("max(codVenda)") + 1;
-            }
+        Connection conn = new SQLite().conectar();
+        int increment = 0;
+        
+        try {
+            stmt = conn.prepareStatement("SELECT MAX(codVenda) FROM venda;");
+            ResultSet result = stmt.executeQuery();
+            increment = result.getInt(1);
+            
             stmt.close();
             conn.close();
-        } catch (SQLException erroReturnIncrement) {
-            System.out.println(erroReturnIncrement.getMessage());
+        } catch (SQLException erroIncrementCodVenda) {
+            JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo da venda");
         }
-        return increment;
+        return increment + 1;
     }
 
     public void inserirVenda(Venda venda) {

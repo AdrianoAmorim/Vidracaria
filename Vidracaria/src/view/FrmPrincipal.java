@@ -47,6 +47,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DO CODIGO DO CLIENTE
         int codCli = new ClienteCRUD().incrementCodCliente();
         tfClienteCodigo.setText(Integer.toString(codCli));
+        // INICIALIZAÇÃO DO CODIGO DA VENDA
+        int codVend = new VendaCRUD().incrementCodVenda();
+        tfVendaCodigo.setText(Integer.toString(codVend));
     }
 
     /**
@@ -2797,7 +2800,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnEfetuarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfetuarVendaActionPerformed
         VendaCRUD venda = new VendaCRUD();
 
-        tfVendaCodigo.setText(String.valueOf(venda.retornarIncrement()));
+        tfVendaCodigo.setText(String.valueOf(venda.incrementCodVenda()));
     }//GEN-LAST:event_btnEfetuarVendaActionPerformed
 
     private void tfDescontoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDescontoFocusLost
