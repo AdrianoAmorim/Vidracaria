@@ -27,8 +27,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         // DEFINIÇÃO DO ESTADO DOS BOTÕES
-        this.btnAlterarCliente.setVisible(false);
-        this.btnDeletarCliente.setVisible(false);
+        this.btnAlterarCliente.setVisible(true);
+        this.btnDeletarCliente.setVisible(true);
         this.btnAlterarFuncionario.setVisible(true);
         this.btnCadastrarFuncionario.setVisible(true);
 
@@ -418,7 +418,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfClienteNome.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
-        tfClienteCodigo.setEditable(false);
         tfClienteCodigo.setBackground(new java.awt.Color(204, 255, 204));
         tfClienteCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
@@ -3082,21 +3081,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
 //Altera o Cliente procurado
     private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
-        Cliente cli = new Cliente();
-        ClienteController cliController = new ClienteController();
+        Cliente cliente = new Cliente();
+        ClienteController clienteController = new ClienteController();
 
-        cli.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
-        cli.setCpfCliente(tfClienteCodigo.getText());
-        cli.setNomeCliente(tfClienteNome.getText());
-        cli.setEnderecoCliente(tfClienteEndereco.getText());
-        cli.setRgCliente(tfClienteRg.getText());
-        cli.setTelResidencial(tfClienteTelRes.getText());
-        cli.setTelCelular(tfClienteTelCel.getText());
+        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
+        cliente.setCpfCliente(tfClienteCodigo.getText());
+        cliente.setNomeCliente(tfClienteNome.getText());
+        cliente.setEnderecoCliente(tfClienteEndereco.getText());
+        cliente.setRgCliente(tfClienteRg.getText());
+        cliente.setTelResidencial(tfClienteTelRes.getText());
+        cliente.setTelCelular(tfClienteTelCel.getText());
 
-        if (cliController.validarAtributos(cli)) {
-            ClienteCRUD cliCrud = new ClienteCRUD();
-            cliCrud.inserirCliente(cli);
+        if (clienteController.validarAtributos(cliente)) {
+            ClienteCRUD clienteCrud = new ClienteCRUD();
+            
+            clienteCrud.atualizarCliente(cliente);
 
+            // limpa os dados do formulario
             limparCampos(tfClienteNome, tfClienteCodigo, tfClienteRg,
                     tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
 
