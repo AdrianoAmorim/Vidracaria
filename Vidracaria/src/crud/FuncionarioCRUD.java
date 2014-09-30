@@ -58,7 +58,7 @@ public class FuncionarioCRUD {
     }
 
     // UPDATE
-    public void atualizarFornecedor(Funcionario funcionario) {
+    public void atualizarFuncionario(Funcionario funcionario) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
@@ -74,7 +74,7 @@ public class FuncionarioCRUD {
             stmt.executeUpdate();
             stmt.close();
             conn.close();
-            System.out.println("Informações atualizadas com sucesso!");
+            JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso !");
         } catch (SQLException erroAtualizarFuncionario) {
             System.out.println(erroAtualizarFuncionario.getMessage());
         }
@@ -126,6 +126,7 @@ public class FuncionarioCRUD {
             stmt.executeUpdate();
             stmt.close();
             conn.close();
+            JOptionPane.showMessageDialog(null, "O funcionario foi removido com sucesso!");
         } catch (SQLException erroDeletarFuncionario) {
             System.out.println(erroDeletarFuncionario.getMessage());
         }

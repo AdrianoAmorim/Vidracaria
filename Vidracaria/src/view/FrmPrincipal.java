@@ -935,6 +935,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         btnAlterarFuncionario.setText("Alterar");
+        btnAlterarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarFuncionarioActionPerformed(evt);
+            }
+        });
 
         btnDeletarFuncionario.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarFuncionario.setForeground(new java.awt.Color(255, 255, 255));
@@ -3282,6 +3287,27 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     tfFuncionarioNome, tfFuncionarioSalario);
         }
     }//GEN-LAST:event_btnDeletarFuncionarioActionPerformed
+
+    private void btnAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarFuncionarioActionPerformed
+               Funcionario funcionario = new Funcionario();
+        FuncionarioController funcionarioController = new FuncionarioController();
+
+        funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
+        funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
+        funcionario.setCodEmpresa(Integer.parseInt(tfFuncionarioCodEmpresa.getText()));
+        funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
+        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
+
+        if (funcionarioController.validarFuncionario(funcionario)) {
+            FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+
+            funcionarioCRUD.atualizarFuncionario(funcionario);
+
+            // limpa os dados do formulário
+            limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioCodEmpresa,
+                    tfFuncionarioNome, tfFuncionarioSalario);
+        }
+    }//GEN-LAST:event_btnAlterarFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
