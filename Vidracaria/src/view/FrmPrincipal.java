@@ -172,6 +172,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlNomeFornecedor = new javax.swing.JPanel();
         lblNomeFornecedor = new javax.swing.JLabel();
         tfNomeFornecedor = new javax.swing.JTextField();
+        btnBuscarFornecedor = new javax.swing.JButton();
         lblCodFuncionario2 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         tfCnpjFornecedor = new javax.swing.JTextField();
@@ -1115,8 +1116,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfProdutoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(tfProdutoDescricao)
+                .addContainerGap())
         );
         jPanel56Layout.setVerticalGroup(
             jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1307,12 +1308,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel55, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel56, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1330,7 +1331,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel59.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel59.setText("Data Compra");
+        jLabel59.setText("Data Compra:");
 
         tfcodigoFornecedor1.setEditable(false);
         tfcodigoFornecedor1.setBackground(new java.awt.Color(204, 204, 255));
@@ -1362,7 +1363,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel60.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel60.setText("Vencimento Compra");
+        jLabel60.setText("Vencimento Compra:");
 
         tfcodigoFornecedor2.setEditable(false);
         tfcodigoFornecedor2.setBackground(new java.awt.Color(204, 204, 255));
@@ -1409,7 +1410,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel26Layout.setHorizontalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
+                .addContainerGap(200, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -1429,7 +1430,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel23Layout.setVerticalGroup(
@@ -1507,7 +1508,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel49.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setText("Código");
+        jLabel49.setText("Código:");
 
         tfcodigoFornecedor.setEditable(false);
         tfcodigoFornecedor.setBackground(new java.awt.Color(204, 255, 204));
@@ -1523,7 +1524,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel49)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfcodigoFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                .addComponent(tfcodigoFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                 .addContainerGap())
         );
         lblCodFuncionario1Layout.setVerticalGroup(
@@ -1541,10 +1542,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         lblNomeFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNomeFornecedor.setForeground(new java.awt.Color(255, 255, 255));
-        lblNomeFornecedor.setText("Nome / Razão Social");
+        lblNomeFornecedor.setText("Nome / Razão Social:");
 
         tfNomeFornecedor.setBackground(new java.awt.Color(204, 204, 255));
         tfNomeFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+
+        btnBuscarFornecedor.setText("...");
+        btnBuscarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarFornecedorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlNomeFornecedorLayout = new javax.swing.GroupLayout(pnlNomeFornecedor);
         pnlNomeFornecedor.setLayout(pnlNomeFornecedorLayout);
@@ -1553,7 +1561,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(pnlNomeFornecedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblNomeFornecedor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfNomeFornecedor)
                 .addContainerGap())
         );
@@ -1563,7 +1573,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(pnlNomeFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeFornecedor)
-                    .addComponent(tfNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarFornecedor))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -1572,7 +1583,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel50.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel50.setText("CNPJ");
+        jLabel50.setText("CNPJ:");
 
         tfCnpjFornecedor.setBackground(new java.awt.Color(204, 204, 255));
         tfCnpjFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -1586,7 +1597,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel50)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfCnpjFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         lblCodFuncionario2Layout.setVerticalGroup(
             lblCodFuncionario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1620,8 +1631,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCodFuncionario2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
                         .addComponent(btnDeletarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1634,21 +1644,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
-                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCodFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCodFuncionario2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 46, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnAlterarFornecedor)
-                                .addComponent(btnDeletarFornecedor)))))
-                .addContainerGap())
+                    .addComponent(lblCodFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCodFuncionario2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAlterarFornecedor)
+                        .addComponent(btnDeletarFornecedor))
+                    .addComponent(btnCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlEfetuarCompraLayout = new javax.swing.GroupLayout(pnlEfetuarCompra);
@@ -1663,8 +1669,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(pnlDadosFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDeletarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnDeletarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                         .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1675,10 +1685,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnAlterarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
-            .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                .addGap(799, 799, 799)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(6, 6, 6))
         );
         pnlEfetuarCompraLayout.setVerticalGroup(
             pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1691,8 +1697,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnDeletarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1701,7 +1708,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(btnAlterarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(btnCadastrarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         tpPrincipal.addTab("Compra", pnlEfetuarCompra);
@@ -2832,8 +2839,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFinanceiroLayout.createSequentialGroup()
                         .addComponent(pnlDadosContasPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(pnlDadosContasPagar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0))
+                        .addComponent(pnlDadosContasPagar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlPesquisaContasPagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -3203,12 +3209,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             // limpa os dados do formulário
             limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
                     tfProdutoPrecoVenda, tfProdutoQuantidade);
+            //carrega comboBox de produto na venda
             carregarCbProduto();
 
             // incrementa o codigo do produto
             tfProdutoCodigo.setText(String.valueOf(prodCrud.incrementCodProduto()));
-            // volta para a aba inicial
-            tpPrincipal.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
 
@@ -3216,6 +3221,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
        FrmCadastrarRenda cadastrarRenda = new FrmCadastrarRenda(this, true);
        cadastrarRenda.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnBuscarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3273,6 +3282,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarCliente1;
     private javax.swing.JButton btnBuscarCliente2;
     private javax.swing.JButton btnBuscarCliente3;
+    private javax.swing.JButton btnBuscarFornecedor;
     private javax.swing.JButton btnBuscarProduto;
     private javax.swing.JButton btnCadastrarCl;
     private javax.swing.JButton btnCadastrarCompra;
