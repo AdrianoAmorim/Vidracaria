@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,8 +15,26 @@ import java.util.ArrayList;
  */
 public class FuncionarioCRUD {
 
+        public int incrementCodFuncionario() {
+        PreparedStatement stmt;
+        Connection conn = new SQLite().conectar();
+        int increment = 0;
+        
+        try {
+            stmt = conn.prepareStatement("SELECT MAX(codFuncionario) FROM funcionario;");
+            ResultSet result = stmt.executeQuery();
+            increment = result.getInt(1);
+            
+            stmt.close();
+            conn.close();
+        } catch (SQLException erroIncrementCodFuncionario) {
+            JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo do funcionario");
+        }
+        return increment + 1;
+    }
+        
     // INSERT 
-    public void inserirFornecedor(Funcionario funcionario) {
+    public void inserirFuncionario(Funcionario funcionario) {
 
         PreparedStatement stmt;
 
@@ -32,7 +51,7 @@ public class FuncionarioCRUD {
             stmt.executeUpdate();
             stmt.close();
 
-            System.out.println("Empresa cadastrada com sucesso!");
+            JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso!");
         } catch (SQLException erroInserirFuncionario) {
             System.out.println(erroInserirFuncionario.getMessage());
         }
