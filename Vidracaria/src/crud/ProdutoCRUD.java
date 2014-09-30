@@ -25,7 +25,7 @@ public class ProdutoCRUD {
             stmt = conn.prepareStatement("SELECT MAX(codProduto) FROM produto;");
             ResultSet result = stmt.executeQuery();
             increment = result.getInt(1);
-            
+
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodProduto) {
@@ -34,6 +34,7 @@ public class ProdutoCRUD {
         return increment + 1;
     }
 
+    // INSERT
     public void inserirProduto(Produto produto) {
 
         PreparedStatement stmt;
@@ -56,6 +57,7 @@ public class ProdutoCRUD {
         }
     }
 
+    // SELECT
     public ArrayList<Produto> consultarProduto() {
 
         PreparedStatement stmt;
@@ -87,7 +89,9 @@ public class ProdutoCRUD {
         }
     }
 
-    public Produto consultarCodigoProduto(String codProduto) {
+    // SELECT CODIGO
+    // PROVISÓRIO - ATÉ MONTAR A QUERY COM SELECT CONDICIONAL
+    public Produto consultarCodigoProduto(int codProduto) {
 
         PreparedStatement stmt;
         ResultSet result;
@@ -113,6 +117,8 @@ public class ProdutoCRUD {
         return produto;
     }
 
+    // SELECT NOME
+    // PROVISÓRIO - ATÉ MONTAR A QUERY COM SELECT CONDICIONAL
     public Produto consultarNomeProduto(String descricaoProduto) {
 
         PreparedStatement stmt;
@@ -132,12 +138,14 @@ public class ProdutoCRUD {
                 produto.setPrecoVenda(result.getDouble("precoVenda"));
             }
             stmt.close();
-        } catch (SQLException erroConsultarCodigoProduto) {
-            System.out.println(erroConsultarCodigoProduto.getMessage());
+        } catch (SQLException erroConsultarDescricaoProduto) {
+            System.out.println(erroConsultarDescricaoProduto.getMessage());
         }
         return produto;
     }
 
+    
+    // UPDATE
     public void atualizarProduto(Produto produto) {
 
         PreparedStatement stmt;
@@ -161,6 +169,7 @@ public class ProdutoCRUD {
         }
     }
 
+    // DELETE
     public void deletarProduto(Produto produto) {
 
         PreparedStatement stmt;

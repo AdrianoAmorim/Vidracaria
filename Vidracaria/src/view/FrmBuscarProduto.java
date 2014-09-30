@@ -129,9 +129,16 @@ public class FrmBuscarProduto extends javax.swing.JDialog {
                 "Código", "Descrição", "Valor"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -215,27 +222,28 @@ public class FrmBuscarProduto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfDescricaoProdCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfDescricaoProdCaretUpdate
-       
+
     }//GEN-LAST:event_tfDescricaoProdCaretUpdate
 
     private void tfCodProdutoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCodProdutoCaretUpdate
         DefaultTableModel modelo = (DefaultTableModel) tbBuscarProduto.getModel();
+
         ProdutoCRUD prodCrud = new ProdutoCRUD();
+        Produto produto = new Produto();
+
         ArrayList<Produto> listaProduto = new ArrayList<>();
+
+        produto = prodCrud.consultarCodigoProduto(Integer.parseInt(tfCodProduto.getText()));
         
-        listaProduto = prodCrud.consultarProduto();
+        listaProduto.add(produto);
+
         modelo.setRowCount(0);
-        
-        for(Produto prod: listaProduto){
-            
-        }
         
     }//GEN-LAST:event_tfCodProdutoCaretUpdate
 
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbUnidadeMedida;
