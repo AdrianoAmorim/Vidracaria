@@ -25,10 +25,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
+        
+        // DEFINIÇÃO DO ESTADO DOS BOTÕES
         this.btnAlterarCliente.setVisible(false);
         this.btnDeletarCliente.setVisible(false);
-        this.btnDeletarFuncionario.setVisible(false);
-        this.btnAlterarFuncionario.setVisible(false);
+        this.btnAlterarFuncionario.setVisible(true);
+        this.btnCadastrarFuncionario.setVisible(true);
 
         // INICIALIZAÇAO DO CODIGO DO PRODUTO
         int codProd = new ProdutoCRUD().incrementCodProduto();
@@ -796,7 +798,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        tfFuncionarioCodigo.setEditable(false);
         tfFuncionarioCodigo.setBackground(new java.awt.Color(204, 255, 204));
         tfFuncionarioCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfFuncionarioCodigo.setForeground(new java.awt.Color(255, 0, 0));
@@ -938,6 +939,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnDeletarFuncionario.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarFuncionario.setForeground(new java.awt.Color(255, 255, 255));
         btnDeletarFuncionario.setText("Deletar");
+        btnDeletarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarFuncionarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCadFuncionarioLayout = new javax.swing.GroupLayout(pnlCadFuncionario);
         pnlCadFuncionario.setLayout(pnlCadFuncionarioLayout);
@@ -3255,6 +3261,27 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario()));
         }
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
+
+    private void btnDeletarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarFuncionarioActionPerformed
+        Funcionario funcionario = new Funcionario();
+        FuncionarioController funcionarioController = new FuncionarioController();
+
+        funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
+        funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
+        funcionario.setCodEmpresa(Integer.parseInt(tfFuncionarioCodEmpresa.getText()));
+        funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
+        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
+
+        if (funcionarioController.validarFuncionario(funcionario)) {
+            FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+
+            funcionarioCRUD.deletarFuncionario(funcionario);
+
+            // limpa os dados do formulário
+            limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioCodEmpresa,
+                    tfFuncionarioNome, tfFuncionarioSalario);
+        }
+    }//GEN-LAST:event_btnDeletarFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
