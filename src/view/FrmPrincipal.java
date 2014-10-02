@@ -63,15 +63,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         rgOpcContasFinanceiro = new javax.swing.ButtonGroup();
         tpPrincipal = new javax.swing.JTabbedPane();
         jPanel49 = new javax.swing.JPanel();
-        pnlPesquisar = new javax.swing.JPanel();
-        btn_Pesquisar = new javax.swing.JButton();
-        jPanel31 = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        rb_Clientes = new javax.swing.JRadioButton();
-        rb_Produtos = new javax.swing.JRadioButton();
-        tf_condicaoC = new javax.swing.JTextField();
         pnlCadCliente = new javax.swing.JPanel();
         tfClienteNome = new javax.swing.JTextField();
         tfClienteCodigo = new javax.swing.JTextField();
@@ -306,109 +297,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         tpPrincipal.addTab("Principal", jPanel49);
-
-        pnlPesquisar.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
-        pnlPesquisar.setPreferredSize(new java.awt.Dimension(0, 0));
-
-        btn_Pesquisar.setText("Pesquisar");
-        btn_Pesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_PesquisarActionPerformed(evt);
-            }
-        });
-
-        jPanel31.setBackground(new java.awt.Color(153, 153, 255));
-
-        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("Pesquisar");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LupaMenor.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
-        jPanel31.setLayout(jPanel31Layout);
-        jPanel31Layout.setHorizontalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel31Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel3)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel29)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel31Layout.setVerticalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel31Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel29))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true), "Procurar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
-
-        btnGroupVisualizar.add(rb_Clientes);
-        rb_Clientes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        rb_Clientes.setText("Clientes");
-
-        btnGroupVisualizar.add(rb_Produtos);
-        rb_Produtos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        rb_Produtos.setText("Produtos");
-
-        tf_condicaoC.setBackground(new java.awt.Color(204, 255, 204));
-        tf_condicaoC.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tf_condicaoC)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(rb_Clientes)
-                        .addGap(426, 426, 426)
-                        .addComponent(rb_Produtos)))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rb_Clientes)
-                    .addComponent(rb_Produtos))
-                .addGap(72, 72, 72)
-                .addComponent(tf_condicaoC, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout pnlPesquisarLayout = new javax.swing.GroupLayout(pnlPesquisar);
-        pnlPesquisar.setLayout(pnlPesquisarLayout);
-        pnlPesquisarLayout.setHorizontalGroup(
-            pnlPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnlPesquisarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(420, Short.MAX_VALUE))
-        );
-        pnlPesquisarLayout.setVerticalGroup(
-            pnlPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPesquisarLayout.createSequentialGroup()
-                .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(249, Short.MAX_VALUE))
-        );
-
-        tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Untitled-2.png")), pnlPesquisar, "Pesquisar"); // NOI18N
 
         pnlCadCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlCadCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -3058,46 +2946,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         insertTabelaProdVenda();
 
     }//GEN-LAST:event_btnAddProdutoVendaActionPerformed
-    /*
-     Realiza as buscas de acordo com o que o usuario escolher
-     em seguida Seta as informações na secao Correspondente a escolha do usuario
-     */
-    private void btn_PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PesquisarActionPerformed
-        if (rb_Clientes.isSelected()) {
-            ClienteCRUD clienteCRUD = new ClienteCRUD();
-            Cliente cliente;
-
-            cliente = clienteCRUD.consultarNomeCliente(tf_condicaoC.getText());
-
-            tfClienteCodigo.setText(String.valueOf(cliente.getCodCliente()));
-            tfClienteNome.setText(cliente.getNomeCliente());
-            tfClienteCodigo.setText(cliente.getCpfCliente());
-            tfClienteRg.setText(cliente.getRgCliente());
-            tfClienteEndereco.setText(cliente.getEnderecoCliente());
-            tfClienteTelRes.setText(cliente.getTelResidencial());
-            tfClienteTelCel.setText(cliente.getTelCelular());
-
-            btnAlterarCliente.setVisible(true);
-            btnDeletarCliente.setVisible(true);
-            btnCadastrarCl.setEnabled(false);
-            tpPrincipal.setSelectedIndex(1);
-
-        } else if (rb_Produtos.isSelected()) {
-            ProdutoCRUD produtoCRUD = new ProdutoCRUD();
-            Produto produto;
-
-            produto = produtoCRUD.consultarNomeProduto(tf_condicaoC.getText());
-
-            tfProdutoCodigo.setText(Integer.toString(produto.getCodProduto()));
-            tfProdutoDescricao.setText(produto.getDescricaoProduto());
-            cbUnidadeMedida.addItem(produto.getUnidadeMedida());
-
-            tpPrincipal.setSelectedIndex(2);
-
-            btnCadastrarCompra.setEnabled(false);
-
-        }
-    }//GEN-LAST:event_btn_PesquisarActionPerformed
 
 //Altera o Cliente procurado
     private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
@@ -3475,7 +3323,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnDeletarProduto;
     private javax.swing.JButton btnEfetuarVenda;
     private javax.swing.ButtonGroup btnGroupVisualizar;
-    private javax.swing.JButton btn_Pesquisar;
     private javax.swing.JComboBox cbParcelamento;
     private javax.swing.JComboBox cbTipoPagamento;
     private javax.swing.JComboBox cbUnidadeMedida;
@@ -3506,8 +3353,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -3563,7 +3408,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
-    private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
@@ -3571,7 +3415,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel42;
@@ -3629,11 +3472,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFinanceiro;
     private javax.swing.JPanel pnlNomeFornecedor;
     private javax.swing.JPanel pnlPesquisaContasPagar;
-    private javax.swing.JPanel pnlPesquisar;
     private javax.swing.JPanel pnlRelatorios;
     private javax.swing.JRadioButton rbListarCOntasPagar;
-    private javax.swing.JRadioButton rb_Clientes;
-    private javax.swing.JRadioButton rb_Produtos;
     private javax.swing.ButtonGroup rgOpcContasFinanceiro;
     private javax.swing.JTable tbListProdutoVenda;
     private javax.swing.JTable tblContasPagar;
@@ -3664,7 +3504,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfProdutoQuantidade;
     private javax.swing.JTextField tfQtdProd;
     private javax.swing.JTextField tfVendaCodigo;
-    private javax.swing.JTextField tf_condicaoC;
     private javax.swing.JTextField tfcodigoFornecedor;
     private javax.swing.JTextField tfcodigoFornecedor1;
     private javax.swing.JTextField tfcodigoFornecedor2;
