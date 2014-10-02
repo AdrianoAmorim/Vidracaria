@@ -129,7 +129,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel56 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
         tfProdutoDescricao = new javax.swing.JTextField();
-        btnBuscarProduto = new javax.swing.JButton();
+        btnBuscarProduto = new javax.swing.JLabel();
         jPanel57 = new javax.swing.JPanel();
         jLabel55 = new javax.swing.JLabel();
         tfProdutoPrecoCusto = new javax.swing.JTextField();
@@ -168,7 +168,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlNomeFornecedor = new javax.swing.JPanel();
         lblNomeFornecedor = new javax.swing.JLabel();
         tfNomeFornecedor = new javax.swing.JTextField();
-        btnBuscarFornecedor = new javax.swing.JButton();
+        btnBuscarFornecedor = new javax.swing.JLabel();
         lblCodFuncionario2 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         tfCnpjFornecedor = new javax.swing.JTextField();
@@ -628,7 +628,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407887820_clients.png")), pnlCadCliente, "Cadastrar Cliente"); // NOI18N
+        tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407887820_clients.png")), pnlCadCliente, "Cadastro de Cliente"); // NOI18N
 
         pnlCadFuncionario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
@@ -920,7 +920,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(132, Short.MAX_VALUE))
         );
 
-        tpPrincipal.addTab("cadastrar Funcionarios", pnlCadFuncionario);
+        tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Funcionario.png")), pnlCadFuncionario, "Cadastro de Funcionário"); // NOI18N
 
         pnlEfetuarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
@@ -1003,10 +1003,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfProdutoDescricao.setBackground(new java.awt.Color(204, 204, 255));
         tfProdutoDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
-        btnBuscarProduto.setText("...");
-        btnBuscarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarProdutoActionPerformed(evt);
+        btnBuscarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/PesquisarPequeno.png"))); // NOI18N
+        btnBuscarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarProdutoMouseClicked(evt);
             }
         });
 
@@ -1018,19 +1019,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel54)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBuscarProduto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfProdutoDescricao)
+                .addComponent(tfProdutoDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel56Layout.setVerticalGroup(
             jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel56Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addGroup(jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel54)
-                    .addComponent(tfProdutoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarProduto))
+                .addGroup(jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBuscarProduto)
+                    .addGroup(jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel54)
+                        .addComponent(tfProdutoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -1203,10 +1205,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jPanel55, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel56, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE))
+                        .addComponent(jPanel56, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addComponent(jPanel60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDeletarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1471,10 +1473,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfNomeFornecedor.setBackground(new java.awt.Color(204, 204, 255));
         tfNomeFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
-        btnBuscarFornecedor.setText("...");
-        btnBuscarFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarFornecedorActionPerformed(evt);
+        btnBuscarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/PesquisarPequeno.png"))); // NOI18N
+        btnBuscarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarFornecedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarFornecedorMouseClicked(evt);
             }
         });
 
@@ -1485,8 +1488,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(pnlNomeFornecedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblNomeFornecedor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnBuscarFornecedor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfNomeFornecedor)
                 .addContainerGap())
@@ -1495,10 +1498,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             pnlNomeFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNomeFornecedorLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addGroup(pnlNomeFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNomeFornecedor)
-                    .addComponent(tfNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarFornecedor))
+                .addGroup(pnlNomeFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscarFornecedor)
+                    .addGroup(pnlNomeFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNomeFornecedor)
+                        .addComponent(tfNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -1541,6 +1545,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnCadastrarFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCadastrarFornecedor.setText("S");
         btnCadastrarFornecedor.setToolTipText("");
+        btnCadastrarFornecedor.setPreferredSize(new java.awt.Dimension(0, 0));
 
         javax.swing.GroupLayout pnlDadosFornecedorLayout = new javax.swing.GroupLayout(pnlDadosFornecedor);
         pnlDadosFornecedor.setLayout(pnlDadosFornecedorLayout);
@@ -1549,7 +1554,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlNomeFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+                    .addComponent(pnlNomeFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
                     .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
                         .addComponent(lblCodFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1560,7 +1565,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCadastrarFornecedor)))
+                        .addComponent(btnCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlDadosFornecedorLayout.setVerticalGroup(
@@ -1577,7 +1582,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAlterarFornecedor)
                         .addComponent(btnDeletarFornecedor))
-                    .addComponent(btnCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -1635,7 +1640,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tpPrincipal.addTab("Compra", pnlEfetuarCompra);
+        tpPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/compra.png")), pnlEfetuarCompra, "Efetuar Compra"); // NOI18N
 
         pnlEfetuarVenda.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlEfetuarVenda.setMinimumSize(new java.awt.Dimension(1210, 497));
@@ -3065,26 +3070,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblQtdParcelas.setText(Integer.toString(parcelamentoCRUD.consultarQuantidadeParcelas(cbParcelamento.getSelectedItem().toString())));
     }//GEN-LAST:event_cbParcelamentoActionPerformed
 
-    private void btnBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdutoActionPerformed
-        FrmBuscarProduto buscarProd = new FrmBuscarProduto(this, true);
-        buscarProd.setVisible(true);
-        if (buscarProd.produto.getCodProduto() != 0) {
-            //Adicionando valores nos campos
-            tfProdutoCodigo.setText(String.valueOf(buscarProd.produto.getCodProduto()));
-            tfProdutoDescricao.setText(buscarProd.produto.getDescricaoProduto());
-            tfProdutoPrecoVenda.setText(String.valueOf(buscarProd.produto.getPrecoVenda()));
-            tfProdutoQuantidade.setText(String.valueOf(buscarProd.produto.getQuantidadeEstoque()));
-            cbUnidadeMedida.setSelectedItem(buscarProd.produto.getUnidadeMedida());
-
-            //Habilita Botoes de Alterar,Adicionar e deletar um produto
-            //e desabilita o de cadastrar
-            btnAddProdutoCompra.setEnabled(true);
-            btnAlterarProduto.setEnabled(true);
-            btnDeletarProduto.setEnabled(true);
-            btnCadastrarProduto.setEnabled(false);
-        }
-    }//GEN-LAST:event_btnBuscarProdutoActionPerformed
-
     private void btnCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdutoActionPerformed
         Produto produto = new Produto();
         ProdutoController prodController = new ProdutoController();
@@ -3123,10 +3108,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         FrmCadastrarRenda cadastrarRenda = new FrmCadastrarRenda(this, true);
         cadastrarRenda.setVisible(true);
     }//GEN-LAST:event_btnCadastrarTituloReceberActionPerformed
-
-    private void btnBuscarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFornecedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarFornecedorActionPerformed
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
         Funcionario funcionario = new Funcionario();
@@ -3252,6 +3233,30 @@ public class FrmPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnDeletarProdutoActionPerformed
 
+    private void btnBuscarProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProdutoMouseClicked
+        FrmBuscarProduto buscarProd = new FrmBuscarProduto(this, true);
+        buscarProd.setVisible(true);
+        if (buscarProd.produto.getCodProduto() != 0) {
+            //Adicionando valores nos campos
+            tfProdutoCodigo.setText(String.valueOf(buscarProd.produto.getCodProduto()));
+            tfProdutoDescricao.setText(buscarProd.produto.getDescricaoProduto());
+            tfProdutoPrecoVenda.setText(String.valueOf(buscarProd.produto.getPrecoVenda()));
+            tfProdutoQuantidade.setText(String.valueOf(buscarProd.produto.getQuantidadeEstoque()));
+            cbUnidadeMedida.setSelectedItem(buscarProd.produto.getUnidadeMedida());
+
+            //Habilita Botoes de Alterar,Adicionar e deletar um produto
+            //e desabilita o de cadastrar
+            btnAddProdutoCompra.setEnabled(true);
+            btnAlterarProduto.setEnabled(true);
+            btnDeletarProduto.setEnabled(true);
+            btnCadastrarProduto.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnBuscarProdutoMouseClicked
+
+    private void btnBuscarFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarFornecedorMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarFornecedorMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -3308,8 +3313,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarCliente1;
     private javax.swing.JButton btnBuscarCliente2;
     private javax.swing.JButton btnBuscarCliente3;
-    private javax.swing.JButton btnBuscarFornecedor;
-    private javax.swing.JButton btnBuscarProduto;
+    private javax.swing.JLabel btnBuscarFornecedor;
+    private javax.swing.JLabel btnBuscarProduto;
     private javax.swing.JButton btnCadastrarCl;
     private javax.swing.JButton btnCadastrarCompra;
     private javax.swing.JButton btnCadastrarFornecedor;
