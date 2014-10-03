@@ -19,7 +19,7 @@ public class ProdutoCompradoCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO produtoComprado(codProduto, codCompra, quantidadeProduto, precoCusto) "
+            stmt = conn.prepareStatement("INSERT INTO ProdutoComprado(codProduto, codCompra, quantidadeProduto, precoCusto) "
                     + "VALUES (?,?,?,?);");
 
             stmt.setInt(1, produtoComprado.getCodProduto());

@@ -149,10 +149,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel22 = new javax.swing.JPanel();
         lblCodFuncionario4 = new javax.swing.JPanel();
         jLabel59 = new javax.swing.JLabel();
-        tfcodigoFornecedor1 = new javax.swing.JTextField();
+        tfCompraData = new javax.swing.JTextField();
         lblCodFuncionario5 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
-        tfcodigoFornecedor2 = new javax.swing.JTextField();
+        tfCompraVencimento = new javax.swing.JTextField();
         jPanel23 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
@@ -175,6 +175,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnDeletarFornecedor = new javax.swing.JButton();
         btnAlterarFornecedor = new javax.swing.JButton();
         btnCadastrarFornecedor = new javax.swing.JButton();
+        tfCompraCodigo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         pnlEfetuarVenda = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -954,6 +956,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         btnCadastrarCompra.setText("Cadastrar");
+        btnCadastrarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarCompraActionPerformed(evt);
+            }
+        });
 
         jPanel13.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Dados do Produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(0, 0, 0)), null)); // NOI18N
 
@@ -1257,10 +1264,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel59.setForeground(new java.awt.Color(255, 255, 255));
         jLabel59.setText("Data Compra:");
 
-        tfcodigoFornecedor1.setEditable(false);
-        tfcodigoFornecedor1.setBackground(new java.awt.Color(204, 204, 255));
-        tfcodigoFornecedor1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfcodigoFornecedor1.setForeground(new java.awt.Color(255, 0, 0));
+        tfCompraData.setBackground(new java.awt.Color(204, 204, 255));
+        tfCompraData.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraData.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout lblCodFuncionario4Layout = new javax.swing.GroupLayout(lblCodFuncionario4);
         lblCodFuncionario4.setLayout(lblCodFuncionario4Layout);
@@ -1270,7 +1276,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel59)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfcodigoFornecedor1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addComponent(tfCompraData, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                 .addContainerGap())
         );
         lblCodFuncionario4Layout.setVerticalGroup(
@@ -1279,7 +1285,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(lblCodFuncionario4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel59)
-                    .addComponent(tfcodigoFornecedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCompraData, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7))
         );
 
@@ -1289,10 +1295,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel60.setForeground(new java.awt.Color(255, 255, 255));
         jLabel60.setText("Vencimento Compra:");
 
-        tfcodigoFornecedor2.setEditable(false);
-        tfcodigoFornecedor2.setBackground(new java.awt.Color(204, 204, 255));
-        tfcodigoFornecedor2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfcodigoFornecedor2.setForeground(new java.awt.Color(255, 0, 0));
+        tfCompraVencimento.setBackground(new java.awt.Color(204, 204, 255));
+        tfCompraVencimento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraVencimento.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout lblCodFuncionario5Layout = new javax.swing.GroupLayout(lblCodFuncionario5);
         lblCodFuncionario5.setLayout(lblCodFuncionario5Layout);
@@ -1302,7 +1307,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel60)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfcodigoFornecedor2, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addComponent(tfCompraVencimento, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                 .addContainerGap())
         );
         lblCodFuncionario5Layout.setVerticalGroup(
@@ -1311,7 +1316,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(lblCodFuncionario5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel60)
-                    .addComponent(tfcodigoFornecedor2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCompraVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7))
         );
 
@@ -1334,7 +1339,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel26Layout.setHorizontalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
-                .addContainerGap(200, Short.MAX_VALUE)
+                .addContainerGap(146, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -1600,6 +1605,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
+        jLabel3.setText("Registro Numero:");
+
         javax.swing.GroupLayout pnlEfetuarCompraLayout = new javax.swing.GroupLayout(pnlEfetuarCompra);
         pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
         pnlEfetuarCompraLayout.setHorizontalGroup(
@@ -1616,6 +1623,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfCompraCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
                                 .addComponent(btnDeletarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
@@ -1643,7 +1654,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnDeletarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDeletarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfCompraCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(21, 21, 21)
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3330,6 +3345,47 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCadastrarFornecedorActionPerformed
 
+    
+    private void btnCadastrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCompraActionPerformed
+        // Dados e validação da compra
+        Compra compra = new Compra();
+        CompraController compraController = new CompraController();
+
+        // recebe informaççoes da compra
+        compra.setCodCompra(Integer.valueOf(tfCompraCodigo.getText()));
+        compra.setCodTipoDespesa(1);
+        compra.setCodFornecedor(Integer.valueOf(tfFornecedorCodigo.getText()));
+        compra.setDataCompra(tfCompraData.getText());
+
+        // testa se as informações de compra são válidas
+        if (compraController.validarCompra(compra)) {
+            // Dados e validação do produto comprado
+            ProdutoComprado produtoComprado = new ProdutoComprado();
+            ProdutoCompradoController produtoCompradoController = new ProdutoCompradoController();
+
+            // recebe informações do produto comprado
+            produtoComprado.setCodCompra(compra.getCodCompra());
+            produtoComprado.setCodProduto(Integer.valueOf(tfProdutoCodigo.getText()));
+            produtoComprado.setPrecoCusto(Double.valueOf(tfProdutoPrecoCusto.getText()));
+            produtoComprado.setQuantidadeProduto(Double.valueOf(tfProdutoQuantidade.getText()));
+
+            // testa se as informações dos produtos comprados são válidas
+            if (produtoCompradoController.validarProdutoComprado(produtoComprado)) {
+                CompraCRUD compraCRUD = new CompraCRUD();
+                ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
+
+                // envia as informações dos objetos para o bando de dados
+                compraCRUD.inserirCompra(compra);
+                produtoCompradoCRUD.inserirProdutoComprado(produtoComprado);
+
+                // limpar campos do formulario
+                limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome, tfProdutoCodigo,
+                        tfProdutoDescricao, tfProdutoPrecoCusto, tfProdutoPrecoVenda, tfProdutoQuantidade,
+                        tfCompraCodigo, tfCompraData, tfCompraVencimento);
+            }
+        }
+    }//GEN-LAST:event_btnCadastrarCompraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3431,6 +3487,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -3563,6 +3620,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfClienteRg;
     private javax.swing.JTextField tfClienteTelCel;
     private javax.swing.JTextField tfClienteTelRes;
+    private javax.swing.JTextField tfCompraCodigo;
+    private javax.swing.JTextField tfCompraData;
+    private javax.swing.JTextField tfCompraVencimento;
     private javax.swing.JTextField tfDataFinal;
     private javax.swing.JTextField tfDataInicial;
     private javax.swing.JFormattedTextField tfDataVenda;
@@ -3583,8 +3643,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfProdutoQuantidade;
     private javax.swing.JTextField tfQtdProd;
     private javax.swing.JTextField tfVendaCodigo;
-    private javax.swing.JTextField tfcodigoFornecedor1;
-    private javax.swing.JTextField tfcodigoFornecedor2;
     private javax.swing.JTabbedPane tpPrincipal;
     // End of variables declaration//GEN-END:variables
 }

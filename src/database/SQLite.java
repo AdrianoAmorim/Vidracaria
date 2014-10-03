@@ -220,6 +220,7 @@ public class SQLite {
                     + "  codProduto        INT          NOT NULL,"
                     + "  codVenda          INT          NOT NULL,"
                     + "  quantidadeProduto NUMERIC(6,2) NOT NULL,"
+                    + "  precoVenda        NUMERIC(6,2) NOT NULL,"
                     + ""
                     + "  CONSTRAINT pk_produtoVendido "
                     + "    PRIMARY KEY (codProduto, codVenda),"
