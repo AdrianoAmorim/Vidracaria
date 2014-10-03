@@ -59,8 +59,8 @@ public class ProdutoCompradoCRUD {
     }
 
     // SELECT
-    public ArrayList<ProdutoComprado> consultarProdutoComprado() {        
-        
+    public ArrayList<ProdutoComprado> consultarProdutoComprado() {
+
         PreparedStatement stmt;
         ResultSet result;
 
@@ -78,7 +78,7 @@ public class ProdutoCompradoCRUD {
                 produtoComprado.setCodCompra(result.getInt("codCompra"));
                 produtoComprado.setQuantidadeProduto(result.getDouble("quantidadeProduto"));
                 produtoComprado.setPrecoCusto(result.getDouble("precoCusto"));
- 
+
                 listaProdutoComprado.add(produtoComprado);
 
                 stmt.close();
@@ -93,13 +93,12 @@ public class ProdutoCompradoCRUD {
 
     // DELETE
     public void deletarProdutoComprado(ProdutoComprado produtoComprado) {
-        
+
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM produtoComprado WHERE codProduto = ? AND codCompra = ?;");
+            stmt = conn.prepareStatement("DELETE FROM produtoComprado WHERE codCompra = ?;");
 
-            stmt.setInt(1, produtoComprado.getCodProduto());
-            stmt.setInt(2, produtoComprado.getCodCompra());
+            stmt.setInt(1, produtoComprado.getCodCompra());
 
             stmt.executeUpdate();
             stmt.close();

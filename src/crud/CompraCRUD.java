@@ -92,6 +92,7 @@ public class CompraCRUD {
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("DELETE FROM compra WHERE codCompra = ?;");
+            
             stmt.setInt(1, compra.getCodCompra());
 
             stmt.executeUpdate();

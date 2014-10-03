@@ -1431,6 +1431,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnAlterarCompra.setText("Alterar");
 
         btnDeletarCompra.setText("Deletar");
+        btnDeletarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarCompraActionPerformed(evt);
+            }
+        });
 
         pnlDadosFornecedor.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Dados do Fornecedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(0, 0, 0)), null)); // NOI18N
 
@@ -3345,7 +3350,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCadastrarFornecedorActionPerformed
 
-    
+
     private void btnCadastrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCompraActionPerformed
         // Dados e validação da compra
         Compra compra = new Compra();
@@ -3385,6 +3390,46 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnCadastrarCompraActionPerformed
+
+    private void btnDeletarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarCompraActionPerformed
+        // Dados e validação da compra
+        Compra compra = new Compra();
+        CompraController compraController = new CompraController();
+
+        // recebe informaççoes da compra
+        compra.setCodCompra(Integer.valueOf(tfCompraCodigo.getText()));
+        compra.setCodTipoDespesa(1);
+        compra.setCodFornecedor(Integer.valueOf(tfFornecedorCodigo.getText()));
+        compra.setDataCompra(tfCompraData.getText());
+
+        // testa se as informações de compra são válidas
+        if (compraController.validarCompra(compra)) {
+            // Dados e validação do produto comprado
+            ProdutoComprado produtoComprado = new ProdutoComprado();
+            ProdutoCompradoController produtoCompradoController = new ProdutoCompradoController();
+
+            // recebe informações do produto comprado
+            produtoComprado.setCodCompra(compra.getCodCompra());
+            produtoComprado.setCodProduto(Integer.valueOf(tfProdutoCodigo.getText()));
+            produtoComprado.setPrecoCusto(Double.valueOf(tfProdutoPrecoCusto.getText()));
+            produtoComprado.setQuantidadeProduto(Double.valueOf(tfProdutoQuantidade.getText()));
+
+            // testa se as informações dos produtos comprados são válidas
+            if (produtoCompradoController.validarProdutoComprado(produtoComprado)) {
+                CompraCRUD compraCRUD = new CompraCRUD();
+                ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
+
+                // envia as informações dos objetos para o bando de dados
+                compraCRUD.deletarCompra(compra);
+                produtoCompradoCRUD.deletarProdutoComprado(produtoComprado);
+
+                // limpar campos do formulario
+                limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome, tfProdutoCodigo,
+                        tfProdutoDescricao, tfProdutoPrecoCusto, tfProdutoPrecoVenda, tfProdutoQuantidade,
+                        tfCompraCodigo, tfCompraData, tfCompraVencimento);
+            }
+        }
+    }//GEN-LAST:event_btnDeletarCompraActionPerformed
 
     /**
      * @param args the command line arguments
