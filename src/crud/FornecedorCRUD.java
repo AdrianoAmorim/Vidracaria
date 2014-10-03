@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +31,7 @@ public class FornecedorCRUD {
             stmt.executeUpdate();
             stmt.close();
 
-            System.out.println("Empresa cadastrada com sucesso!");
+            JOptionPane.showMessageDialog(null, "Fornecedor cadastrado com sucesso!");
         } catch (SQLException erroInserirFornecedor) {
             System.out.println(erroInserirFornecedor.getMessage());
         }
@@ -42,7 +43,7 @@ public class FornecedorCRUD {
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("UPDATE fornecedor SET cnpjFornecedor = ?, nomeFornecedor = ? "
-                    + "WHERE codCompra = ?;");
+                    + "WHERE codFornecedor = ?;");
 
             stmt.setString(1, fornecedor.getCnpjFornecedor());
             stmt.setString(2, fornecedor.getNomeFornecedor());
@@ -51,7 +52,7 @@ public class FornecedorCRUD {
             stmt.executeUpdate();
             stmt.close();
             conn.close();
-            System.out.println("Informações atualizadas com sucesso!");
+            JOptionPane.showMessageDialog(null, "Informações atualizadas com sucesso!");
         } catch (SQLException erroAtualizarFornecedor) {
             System.out.println(erroAtualizarFornecedor.getMessage());
         }
@@ -65,7 +66,7 @@ public class FornecedorCRUD {
         ArrayList<Fornecedor> listaFornecedor = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codFornecedor, cnpjFornecedor, nomeFornecedor FROM empresa;");
+            stmt = conn.prepareStatement("SELECT codFornecedor, cnpjFornecedor, nomeFornecedor FROM fornecedor;");
 
             result = stmt.executeQuery();
             while (result.next()) {
@@ -87,7 +88,7 @@ public class FornecedorCRUD {
     }
 
     // DELETE
-    public void deletarEmpresa(Fornecedor fornecedor) {
+    public void deletarFornecedor(Fornecedor fornecedor) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
@@ -98,8 +99,10 @@ public class FornecedorCRUD {
             stmt.executeUpdate();
             stmt.close();
             conn.close();
-        } catch (SQLException erroDeletarEmpresa) {
-            System.out.println(erroDeletarEmpresa.getMessage());
+            
+            JOptionPane.showMessageDialog(null, "Fornecedor deletado com sucesso!");
+        } catch (SQLException erroDeletarFornecedor) {
+            System.out.println(erroDeletarFornecedor.getMessage());
         }
     }
 

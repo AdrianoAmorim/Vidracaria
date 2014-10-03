@@ -34,7 +34,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         // INICIALIZAÇAO DO CODIGO DO PRODUTO
         int codProd = new ProdutoCRUD().incrementCodProduto();
-        tfProdutoCodigo.setText(Integer.toString(codProd));        
+        tfProdutoCodigo.setText(Integer.toString(codProd));
         // INICIALIZAÇÃO DA LISTA DE PRODUTOS
         this.carregarCbProduto();
         // INICIALIZAÇÃO DO CODIGO DO CLIENTE
@@ -164,14 +164,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlDadosFornecedor = new javax.swing.JPanel();
         lblCodFuncionario1 = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
-        tfcodigoFornecedor = new javax.swing.JTextField();
+        tfFornecedorCodigo = new javax.swing.JTextField();
         pnlNomeFornecedor = new javax.swing.JPanel();
         lblNomeFornecedor = new javax.swing.JLabel();
-        tfNomeFornecedor = new javax.swing.JTextField();
+        tfFornecedorNome = new javax.swing.JTextField();
         btnBuscarFornecedor = new javax.swing.JLabel();
         lblCodFuncionario2 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
-        tfCnpjFornecedor = new javax.swing.JTextField();
+        tfFornecedorCnpj = new javax.swing.JTextField();
         btnDeletarFornecedor = new javax.swing.JButton();
         btnAlterarFornecedor = new javax.swing.JButton();
         btnCadastrarFornecedor = new javax.swing.JButton();
@@ -673,7 +673,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblCodFuncionarioLayout.setHorizontalGroup(
             lblCodFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblCodFuncionarioLayout.createSequentialGroup()
-                .addContainerGap(120, Short.MAX_VALUE)
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addComponent(jLabel27)
                 .addContainerGap())
         );
@@ -710,7 +710,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblNomeFuncLayout.setHorizontalGroup(
             lblNomeFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblNomeFuncLayout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
+                .addContainerGap(124, Short.MAX_VALUE)
                 .addComponent(jLabel43)
                 .addContainerGap())
         );
@@ -734,7 +734,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblCodCargoFuncLayout.setHorizontalGroup(
             lblCodCargoFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblCodCargoFuncLayout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addComponent(jLabel44)
                 .addContainerGap())
         );
@@ -760,7 +760,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblCodEmpresaFuncLayout.setHorizontalGroup(
             lblCodEmpresaFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblCodEmpresaFuncLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addComponent(jLabel45)
                 .addContainerGap())
         );
@@ -786,7 +786,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblSalarioFuncLayout.setHorizontalGroup(
             lblSalarioFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblSalarioFuncLayout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addComponent(jLabel46)
                 .addContainerGap())
         );
@@ -1208,7 +1208,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(jPanel56, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addComponent(jPanel60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
                         .addComponent(btnDeletarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1354,7 +1354,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel23Layout.setVerticalGroup(
@@ -1436,11 +1436,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setText("Código:");
 
-        tfcodigoFornecedor.setEditable(false);
-        tfcodigoFornecedor.setBackground(new java.awt.Color(204, 255, 204));
-        tfcodigoFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfcodigoFornecedor.setForeground(new java.awt.Color(255, 0, 0));
-        tfcodigoFornecedor.setBorder(null);
+        tfFornecedorCodigo.setBackground(new java.awt.Color(204, 255, 204));
+        tfFornecedorCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfFornecedorCodigo.setForeground(new java.awt.Color(255, 0, 0));
+        tfFornecedorCodigo.setBorder(null);
 
         javax.swing.GroupLayout lblCodFuncionario1Layout = new javax.swing.GroupLayout(lblCodFuncionario1);
         lblCodFuncionario1.setLayout(lblCodFuncionario1Layout);
@@ -1450,7 +1449,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel49)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfcodigoFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(tfFornecedorCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
         lblCodFuncionario1Layout.setVerticalGroup(
@@ -1459,7 +1458,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(lblCodFuncionario1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel49)
-                    .addComponent(tfcodigoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfFornecedorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7))
         );
 
@@ -1470,8 +1469,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblNomeFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         lblNomeFornecedor.setText("Nome / Razão Social:");
 
-        tfNomeFornecedor.setBackground(new java.awt.Color(204, 204, 255));
-        tfNomeFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfFornecedorNome.setBackground(new java.awt.Color(204, 204, 255));
+        tfFornecedorNome.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         btnBuscarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/PesquisarPequeno.png"))); // NOI18N
         btnBuscarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1491,7 +1490,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(btnBuscarFornecedor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfNomeFornecedor)
+                .addComponent(tfFornecedorNome)
                 .addContainerGap())
         );
         pnlNomeFornecedorLayout.setVerticalGroup(
@@ -1502,7 +1501,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(btnBuscarFornecedor)
                     .addGroup(pnlNomeFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblNomeFornecedor)
-                        .addComponent(tfNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfFornecedorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -1513,8 +1512,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
         jLabel50.setText("CNPJ:");
 
-        tfCnpjFornecedor.setBackground(new java.awt.Color(204, 204, 255));
-        tfCnpjFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfFornecedorCnpj.setBackground(new java.awt.Color(204, 204, 255));
+        tfFornecedorCnpj.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout lblCodFuncionario2Layout = new javax.swing.GroupLayout(lblCodFuncionario2);
         lblCodFuncionario2.setLayout(lblCodFuncionario2Layout);
@@ -1524,7 +1523,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel50)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfCnpjFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfFornecedorCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         lblCodFuncionario2Layout.setVerticalGroup(
@@ -1533,19 +1532,34 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(lblCodFuncionario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
-                    .addComponent(tfCnpjFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfFornecedorCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7))
         );
 
         btnDeletarFornecedor.setText("Deletar");
+        btnDeletarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarFornecedorActionPerformed(evt);
+            }
+        });
 
         btnAlterarFornecedor.setText("Alterar");
+        btnAlterarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarFornecedorActionPerformed(evt);
+            }
+        });
 
         btnCadastrarFornecedor.setBackground(new java.awt.Color(204, 255, 204));
         btnCadastrarFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCadastrarFornecedor.setText("S");
         btnCadastrarFornecedor.setToolTipText("");
         btnCadastrarFornecedor.setPreferredSize(new java.awt.Dimension(0, 0));
+        btnCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarFornecedorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDadosFornecedorLayout = new javax.swing.GroupLayout(pnlDadosFornecedor);
         pnlDadosFornecedor.setLayout(pnlDadosFornecedorLayout);
@@ -1658,7 +1672,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -1687,7 +1701,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addContainerGap())
         );
@@ -1848,7 +1862,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel34Layout.setHorizontalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addContainerGap(105, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addContainerGap())
         );
@@ -2517,7 +2531,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)))))
+                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)))))
         );
         pnlEfetuarVendaLayout.setVerticalGroup(
             pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3186,7 +3200,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdutoActionPerformed
         Produto produto = new Produto();
-        ProdutoCRUD prodCrud = new ProdutoCRUD();
+        ProdutoController produtoController = new ProdutoController();
 
         produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
         produto.setDescricaoProduto(tfProdutoDescricao.getText());
@@ -3194,20 +3208,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
         produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
 
-        prodCrud.atualizarProduto(produto);
+        if (produtoController.validarProduto(produto)) {
+            ProdutoCRUD produtoCRUD = new ProdutoCRUD();
 
-        // limpa os dados do formulário
-        limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
-                tfProdutoPrecoVenda, tfProdutoQuantidade);
-        cbUnidadeMedida.setSelectedIndex(0);
-        //carrega comboBox de produto na venda
-        carregarCbProduto();
-        // incrementa o codigo do produto
-        tfProdutoCodigo.setText(String.valueOf(prodCrud.incrementCodProduto()));
-        btnAlterarProduto.setEnabled(false);
-        btnDeletarProduto.setEnabled(false);
-        btnAddProdutoCompra.setEnabled(false);
-        btnCadastrarProduto.setEnabled(true);
+            produtoCRUD.atualizarProduto(produto);
+
+            // limpa os dados do formulário
+            limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
+                    tfProdutoPrecoVenda, tfProdutoQuantidade);
+            cbUnidadeMedida.setSelectedIndex(0);
+            //carrega comboBox de produto na venda
+            carregarCbProduto();
+            // incrementa o codigo do produto
+            tfProdutoCodigo.setText(String.valueOf(produtoCRUD.incrementCodProduto()));
+            btnAlterarProduto.setEnabled(false);
+            btnDeletarProduto.setEnabled(false);
+            btnAddProdutoCompra.setEnabled(false);
+            btnCadastrarProduto.setEnabled(true);
+        }
     }//GEN-LAST:event_btnAlterarProdutoActionPerformed
 
     private void btnDeletarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarProdutoActionPerformed
@@ -3215,9 +3233,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ProdutoCRUD prodCrud = new ProdutoCRUD();
 
         produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
-        
+
         prodCrud.deletarProduto(produto);
-        
+
         // limpa os dados do formulário
         limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
                 tfProdutoPrecoVenda, tfProdutoQuantidade);
@@ -3230,7 +3248,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnDeletarProduto.setEnabled(false);
         btnAddProdutoCompra.setEnabled(false);
         btnCadastrarProduto.setEnabled(true);
-        
+
     }//GEN-LAST:event_btnDeletarProdutoActionPerformed
 
     private void btnBuscarProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProdutoMouseClicked
@@ -3253,9 +3271,64 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarProdutoMouseClicked
 
+
     private void btnBuscarFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarFornecedorMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnBuscarFornecedorMouseClicked
+
+    private void btnAlterarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarFornecedorActionPerformed
+        Fornecedor fornecedor = new Fornecedor();
+        FornecedorController fornecedorController = new FornecedorController();
+
+        fornecedor.setCodFornecedor(Integer.parseInt(tfFornecedorCodigo.getText()));
+        fornecedor.setCnpjFornecedor(tfFornecedorCnpj.getText());
+        fornecedor.setNomeFornecedor(tfFornecedorNome.getText());
+
+        if (fornecedorController.validarFornecedor(fornecedor)) {
+            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+
+            fornecedorCRUD.atualizarFornecedor(fornecedor);
+
+            // limpa os dados do formulário
+            limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome);
+        }
+    }//GEN-LAST:event_btnAlterarFornecedorActionPerformed
+
+    private void btnDeletarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarFornecedorActionPerformed
+        Fornecedor fornecedor = new Fornecedor();
+        FornecedorController fornecedorController = new FornecedorController();
+
+        fornecedor.setCodFornecedor(Integer.parseInt(tfFornecedorCodigo.getText()));
+        fornecedor.setCnpjFornecedor(tfFornecedorCnpj.getText());
+        fornecedor.setNomeFornecedor(tfFornecedorNome.getText());
+
+        if (fornecedorController.validarFornecedor(fornecedor)) {
+            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+
+            fornecedorCRUD.deletarFornecedor(fornecedor);
+
+            // limpa os dados do formulário
+            limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome);
+        }
+    }//GEN-LAST:event_btnDeletarFornecedorActionPerformed
+
+    private void btnCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFornecedorActionPerformed
+        Fornecedor fornecedor = new Fornecedor();
+        FornecedorController fornecedorController = new FornecedorController();
+
+        fornecedor.setCodFornecedor(Integer.parseInt(tfFornecedorCodigo.getText()));
+        fornecedor.setCnpjFornecedor(tfFornecedorCnpj.getText());
+        fornecedor.setNomeFornecedor(tfFornecedorNome.getText());
+
+        if (fornecedorController.validarFornecedor(fornecedor)) {
+            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+
+            fornecedorCRUD.inserirFornecedor(fornecedor);
+
+            // limpa os dados do formulário
+            limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome);
+        }
+    }//GEN-LAST:event_btnCadastrarFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3490,18 +3563,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfClienteRg;
     private javax.swing.JTextField tfClienteTelCel;
     private javax.swing.JTextField tfClienteTelRes;
-    private javax.swing.JTextField tfCnpjFornecedor;
     private javax.swing.JTextField tfDataFinal;
     private javax.swing.JTextField tfDataInicial;
     private javax.swing.JFormattedTextField tfDataVenda;
     private javax.swing.JTextField tfDesconto;
+    private javax.swing.JTextField tfFornecedorCnpj;
+    private javax.swing.JTextField tfFornecedorCodigo;
+    private javax.swing.JTextField tfFornecedorNome;
     private javax.swing.JTextField tfFuncionarioCodCargo;
     private javax.swing.JTextField tfFuncionarioCodEmpresa;
     private javax.swing.JTextField tfFuncionarioCodigo;
     private javax.swing.JTextField tfFuncionarioNome;
     private javax.swing.JTextField tfFuncionarioSalario;
     private javax.swing.JTextField tfNomeCl;
-    private javax.swing.JTextField tfNomeFornecedor;
     private javax.swing.JTextField tfProdutoCodigo;
     private javax.swing.JTextField tfProdutoDescricao;
     private javax.swing.JTextField tfProdutoPrecoCusto;
@@ -3509,7 +3583,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfProdutoQuantidade;
     private javax.swing.JTextField tfQtdProd;
     private javax.swing.JTextField tfVendaCodigo;
-    private javax.swing.JTextField tfcodigoFornecedor;
     private javax.swing.JTextField tfcodigoFornecedor1;
     private javax.swing.JTextField tfcodigoFornecedor2;
     private javax.swing.JTabbedPane tpPrincipal;
