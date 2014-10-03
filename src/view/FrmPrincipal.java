@@ -1429,6 +1429,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
 
         btnAlterarCompra.setText("Alterar");
+        btnAlterarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarCompraActionPerformed(evt);
+            }
+        });
 
         btnDeletarCompra.setText("Deletar");
         btnDeletarCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -3430,6 +3435,58 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnDeletarCompraActionPerformed
+
+    private void btnAlterarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarCompraActionPerformed
+        // Dados e validação da compra
+        Compra compra = new Compra();
+        CompraController compraController = new CompraController();
+
+        // recebe informaççoes da compra
+        compra.setCodCompra(Integer.valueOf(tfCompraCodigo.getText()));
+        compra.setCodTipoDespesa(1);
+        compra.setCodFornecedor(Integer.valueOf(tfFornecedorCodigo.getText()));
+        compra.setDataCompra(tfCompraData.getText());
+
+        // testa se as informações de compra são válidas
+        if (compraController.validarCompra(compra)) {
+            // Dados e validação do produto comprado
+            ProdutoComprado produtoComprado = new ProdutoComprado();
+            ProdutoCompradoController produtoCompradoController = new ProdutoCompradoController();
+
+            // recebe informações do produto comprado
+            produtoComprado.setCodCompra(compra.getCodCompra());
+            produtoComprado.setCodProduto(Integer.valueOf(tfProdutoCodigo.getText()));
+            produtoComprado.setPrecoCusto(Double.valueOf(tfProdutoPrecoCusto.getText()));
+            produtoComprado.setQuantidadeProduto(Double.valueOf(tfProdutoQuantidade.getText()));
+
+            // testa se as informações dos produtos comprados são válidas
+            if (produtoCompradoController.validarProdutoComprado(produtoComprado)) {
+                Fornecedor fornecedor = new Fornecedor();
+                FornecedorController fornecedorController = new FornecedorController();
+
+                fornecedor.setCodFornecedor(Integer.valueOf(tfFornecedorCodigo.getText()));
+                fornecedor.setCnpjFornecedor(tfFornecedorCnpj.getText());
+                fornecedor.setNomeFornecedor(tfFornecedorNome.getText());
+
+                if (fornecedorController.validarFornecedor(fornecedor)) {
+
+                    FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+                    CompraCRUD compraCRUD = new CompraCRUD();
+                    ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
+
+                    // envia as informações dos objetos para o bando de dados
+                    fornecedorCRUD.atualizarFornecedor(fornecedor);
+                    compraCRUD.atualizarCompra(compra);
+                    produtoCompradoCRUD.atualizarProdutoComprado(produtoComprado);
+
+                    // limpar campos do formulario
+                    limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome, tfProdutoCodigo,
+                            tfProdutoDescricao, tfProdutoPrecoCusto, tfProdutoPrecoVenda, tfProdutoQuantidade,
+                            tfCompraCodigo, tfCompraData, tfCompraVencimento);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnAlterarCompraActionPerformed
 
     /**
      * @param args the command line arguments
