@@ -72,6 +72,7 @@ public class ProdutoCRUD {
 
             while (result.next()) {
                 Produto produto = new Produto();
+                
                 produto.setCodProduto(result.getInt("codProduto"));
                 produto.setDescricaoProduto(result.getString("descricaoProduto"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));

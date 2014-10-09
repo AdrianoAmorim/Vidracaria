@@ -3,13 +3,8 @@ package view;
 import controller.*;
 import crud.*;
 import domain.*;
-import java.awt.Color;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Locale;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -388,7 +383,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnCadastrarCl.setBackground(new java.awt.Color(102, 0, 102));
         btnCadastrarCl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastroPqn.png"))); // NOI18N
-        btnCadastrarCl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastrarCl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCadastrarCl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarClActionPerformed(evt);
@@ -397,7 +392,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnAlterarCliente.setBackground(new java.awt.Color(255, 255, 255));
         btnAlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AlterarPq.png"))); // NOI18N
-        btnAlterarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlterarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarClienteActionPerformed(evt);
@@ -407,7 +402,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnDeletarCliente.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnDeletarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarPq.png"))); // NOI18N
-        btnDeletarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeletarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnDeletarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeletarClienteActionPerformed(evt);
@@ -415,7 +410,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         btnBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
-        btnBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarClienteMouseClicked(evt);
@@ -652,7 +647,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnAlterarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AlterarPq.png"))); // NOI18N
         btnAlterarProduto.setToolTipText("Alterar");
-        btnAlterarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlterarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAlterarProduto.setEnabled(false);
         btnAlterarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -663,7 +658,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnDeletarProduto.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarPq.png"))); // NOI18N
         btnDeletarProduto.setToolTipText("Deletar");
-        btnDeletarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeletarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnDeletarProduto.setEnabled(false);
         btnDeletarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -675,7 +670,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnAddProdutoCompra.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnAddProdutoCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         btnAddProdutoCompra.setToolTipText("Adicionar Produto na Compra");
-        btnAddProdutoCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddProdutoCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAddProdutoCompra.setEnabled(false);
         btnAddProdutoCompra.setPreferredSize(new java.awt.Dimension(0, 0));
         btnAddProdutoCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -688,7 +683,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnCadastrarProduto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastroPqn.png"))); // NOI18N
         btnCadastrarProduto.setToolTipText("Cadastrar");
-        btnCadastrarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastrarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarProdutoActionPerformed(evt);
@@ -698,7 +693,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfProdutoDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         btnBuscarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
-        btnBuscarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBuscarProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarProdutoMouseClicked(evt);
@@ -981,7 +976,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnDeletarFornecedor.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarPq.png"))); // NOI18N
         btnDeletarFornecedor.setToolTipText("Deletar");
-        btnDeletarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeletarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnDeletarFornecedor.setEnabled(false);
         btnDeletarFornecedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDeletarFornecedor.addActionListener(new java.awt.event.ActionListener() {
@@ -992,7 +987,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnAlterarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AlterarPq.png"))); // NOI18N
         btnAlterarFornecedor.setToolTipText("Alterar");
-        btnAlterarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlterarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAlterarFornecedor.setEnabled(false);
         btnAlterarFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1004,7 +999,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnCadastrarFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCadastrarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastroPqn.png"))); // NOI18N
         btnCadastrarFornecedor.setToolTipText("Cadastrar");
-        btnCadastrarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastrarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCadastrarFornecedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCadastrarFornecedor.setPreferredSize(new java.awt.Dimension(0, 0));
         btnCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
@@ -1016,7 +1011,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFornecedorNome.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         btnBuscarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
-        btnBuscarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBuscarFornecedor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarFornecedorMouseClicked(evt);
@@ -1227,7 +1222,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarLista.png"))); // NOI18N
         jLabel3.setToolTipText("Deletar Produto da Lista");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout pnlEfetuarCompraLayout = new javax.swing.GroupLayout(pnlEfetuarCompra);
         pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);

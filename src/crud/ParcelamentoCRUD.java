@@ -71,6 +71,7 @@ public class ParcelamentoCRUD {
                     + "FROM parcelamento;");
 
             result = stmt.executeQuery();
+            
             while (result.next()) {
                 Parcelamento parcelamento = new Parcelamento();
 
@@ -79,10 +80,9 @@ public class ParcelamentoCRUD {
                 parcelamento.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
 
                 listaParcelamento.add(parcelamento);
-
-                stmt.close();
-                conn.close();
             }
+            stmt.close();
+            
             return listaParcelamento;
         } catch (SQLException erroConsultarParcelamento) {
             System.out.println(erroConsultarParcelamento.getMessage());
@@ -102,7 +102,7 @@ public class ParcelamentoCRUD {
             stmt = conn.prepareStatement("SELECT quantidadeParcelas FROM parcelamento WHERE descricaoParcelamento = '" + descricaoParcelamento + "';");
 
             result = stmt.executeQuery();
-            if(result.next()) {
+            if (result.next()) {
                 parcelamento.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
 
                 stmt.close();
