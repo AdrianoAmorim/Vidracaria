@@ -3003,6 +3003,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setCodEmpresa(Integer.parseInt(tfFuncionarioCodEmpresa.getText()));
         funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
+        funcionario.setTelResidencial(tfFuncionarioTelResidencial.getText());
+        funcionario.setTelCelular(tfFuncionarioTelCelular.getText());
 
         if (funcionarioController.validarFuncionario(funcionario)) {
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
@@ -3011,7 +3013,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // limpa os dados do formulário
             limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioCodEmpresa,
-                    tfFuncionarioNome, tfFuncionarioSalario);
+                    tfFuncionarioNome, tfFuncionarioSalario, tfFuncionarioTelResidencial,
+                    tfFuncionarioTelCelular);
 
             // incrementa o codigo do funcionario
             tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario()));

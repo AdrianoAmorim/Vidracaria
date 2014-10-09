@@ -40,13 +40,15 @@ public class FuncionarioCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("INSERT INTO funcionario(codFuncionario, codCargo, codEmpresa, "
-                    + " nomeFuncionario, salarioFuncionario) VALUES (?,?,?,?,?);");
+                    + " nomeFuncionario, salarioFuncionario, telResidencial, telCelular) VALUES (?,?,?,?,?,?,?);");
 
             stmt.setInt(1, funcionario.getCodFuncionario());
             stmt.setInt(2, funcionario.getCodEmpresa());
             stmt.setInt(3, funcionario.getCodCargo());
             stmt.setString(4, funcionario.getNomeFuncionario());
             stmt.setDouble(5, funcionario.getSalarioFuncionario());
+            stmt.setString(6, funcionario.getTelResidencial());
+            stmt.setString(7, funcionario.getTelCelular());
 
             stmt.executeUpdate();
             stmt.close();
