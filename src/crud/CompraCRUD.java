@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +15,24 @@ import java.util.ArrayList;
  */
 public class CompraCRUD {
 
+        public int incrementCodCompra() {
+        PreparedStatement stmt;
+        Connection conn = new SQLite().conectar();
+        int increment = 0;
+        
+        try {
+            stmt = conn.prepareStatement("SELECT MAX(codCompra) FROM compra;");
+            ResultSet result = stmt.executeQuery();
+            increment = result.getInt(1);
+            
+            stmt.close();
+            conn.close();
+        } catch (SQLException erroIncrementCodCompra) {
+            JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo do compra");
+        }
+        return increment + 1;
+    }
+        
     // INSERT 
     public void inserirCompra(Compra compra) {
 

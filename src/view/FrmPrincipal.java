@@ -45,6 +45,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DO CODIGO DO FUNCIONARIO
         int codFunc = new FuncionarioCRUD().incrementCodFuncionario();
         tfFuncionarioCodigo.setText(String.valueOf(codFunc));
+        // INICIALIZAÇ�O DO CODIGO DA COMPRA
+        int codCompra = new CompraCRUD().incrementCodCompra();
+        tfCompraCodigo.setText(String.valueOf(codCompra));
     }
 
     /**
@@ -862,6 +865,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel62.setForeground(new java.awt.Color(0, 69, 139));
         jLabel62.setText("Data Compra:");
 
+        tfCompraCodigo.setEditable(false);
         tfCompraCodigo.setBackground(new java.awt.Color(204, 255, 204));
         tfCompraCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfCompraCodigo.setForeground(new java.awt.Color(255, 0, 0));
