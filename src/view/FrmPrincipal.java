@@ -2093,6 +2093,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cbTipoPagamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         cbTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dinheiro", "Cheque", "Cartão de Crédito" }));
         cbTipoPagamento.setToolTipText("");
+        cbTipoPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTipoPagamentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlEfetuarVendaLayout = new javax.swing.GroupLayout(pnlEfetuarVenda);
         pnlEfetuarVenda.setLayout(pnlEfetuarVendaLayout);
@@ -3334,6 +3339,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         FrmBuscarCliente buscaCli = new FrmBuscarCliente(this, true);
         buscaCli.setVisible(true);
     }//GEN-LAST:event_btnBuscarClienteMouseClicked
+
+    private void cbTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoPagamentoActionPerformed
+       lblTipoPagamento.setText(cbTipoPagamento.getSelectedItem().toString());
+    }//GEN-LAST:event_cbTipoPagamentoActionPerformed
 
     /**
      * @param args the command line arguments
