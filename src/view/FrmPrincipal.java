@@ -126,7 +126,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfCompraVencimento = new javax.swing.JTextField();
         jLabel60 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        lblTotalCompra = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         pnlDadosFornecedor = new javax.swing.JPanel();
         btnDeletarFornecedor = new javax.swing.JButton();
@@ -884,10 +884,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel26.setBackground(new java.awt.Color(255, 255, 255));
         jPanel26.setPreferredSize(new java.awt.Dimension(0, 0));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("R$ 0,00");
+        lblTotalCompra.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblTotalCompra.setForeground(new java.awt.Color(255, 0, 0));
+        lblTotalCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalCompra.setText("R$ 0,00");
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -895,14 +895,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTotalCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(lblTotalCompra)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -3072,6 +3072,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         model.addRow(new Object[]{0, tfProdutoCodigo.getText(), tfProdutoQuantidade.getText(), tfProdutoPrecoCusto.getText()});
         tblListaProdutoCompra.setModel(model);
+        
+        lblTotalCompra.setText(String.valueOf(Double.parseDouble(tfProdutoPrecoCusto.getText()) * Double.parseDouble(tfProdutoQuantidade.getText())));
+        
+        // limpa os dados do formulario
+        limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto, tfProdutoPrecoVenda, tfProdutoQuantidade);
     }//GEN-LAST:event_btnAddProdutoCompraActionPerformed
 
     private void btnAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdutoActionPerformed
@@ -3484,7 +3489,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
@@ -3555,6 +3559,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNomeFornecedor;
     private javax.swing.JLabel lblQtdParcelas;
     private javax.swing.JLabel lblTipoPagamento;
+    private javax.swing.JLabel lblTotalCompra;
     private javax.swing.JLabel lblTotalProdVenda;
     private javax.swing.JLabel lblValorTotalVenda;
     private javax.swing.JPanel pnlAdministracao;
