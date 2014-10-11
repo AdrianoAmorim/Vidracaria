@@ -28,7 +28,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnDeletarCliente.setVisible(true);
         this.btnAlterarFuncionario.setVisible(true);
         this.btnCadastrarFuncionario.setVisible(true);
-
+        this.btnProdutoDeletarListaCompra.setEnabled(false);
         // INICIALIZAÇAO DO CODIGO DO PRODUTO
         int codProd = new ProdutoCRUD().incrementCodProduto();
         tfProdutoCodigo.setText(Integer.toString(codProd));
@@ -40,14 +40,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DO CODIGO DA VENDA
         int codVend = new VendaCRUD().incrementCodVenda();
         tfVendaCodigo.setText(Integer.toString(codVend));
-        // INICIALIZAÇÃO DA LISTA DE TIPOS DE PAGAMENTO
-        this.carregarCbParcelamento();
+         // INICIALIZAÇ�O DO CODIGO DA COMPRA
+        int codCompra = new CompraCRUD().incrementCodCompra();
+        tfCompraCodigo.setText(String.valueOf(codCompra));
         // INICIALIZAÇÃO DO CODIGO DO FUNCIONARIO
         int codFunc = new FuncionarioCRUD().incrementCodFuncionario();
         tfFuncionarioCodigo.setText(String.valueOf(codFunc));
-        // INICIALIZAÇ�O DO CODIGO DA COMPRA
-        int codCompra = new CompraCRUD().incrementCodCompra();
-        tfCompraCodigo.setText(String.valueOf(codCompra));
+        // INICIALIZAÇÃO DA LISTA DE TIPOS DE PAGAMENTO
+        this.carregarCbParcelamento();
+        
+       
     }
 
     /**
@@ -149,7 +151,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel64 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblListaProdutoCompra = new javax.swing.JTable();
-        btnExcluirProdutoListaCompra = new javax.swing.JLabel();
+        btnProdutoDeletarListaCompra = new javax.swing.JLabel();
         pnlEfetuarVenda = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -221,6 +223,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel32 = new javax.swing.JPanel();
         Parcelamento1 = new javax.swing.JLabel();
         cbTipoPagamento = new javax.swing.JComboBox();
+        btnRetirarDescontoVenda = new javax.swing.JButton();
         pnlFinanceiro = new javax.swing.JPanel();
         pnlDadosContasPagar = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -887,7 +890,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblTotalCompra.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblTotalCompra.setForeground(new java.awt.Color(255, 0, 0));
         lblTotalCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTotalCompra.setText("R$ 0,00");
+        lblTotalCompra.setText("0.00");
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -895,7 +898,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTotalCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTotalCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
@@ -1016,11 +1019,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnBuscarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
         btnBuscarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscarFornecedor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBuscarFornecedorMouseClicked(evt);
-            }
-        });
 
         lblNomeFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNomeFornecedor.setForeground(new java.awt.Color(0, 69, 139));
@@ -1224,15 +1222,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tblListaProdutoCompra.getColumnModel().getColumn(3).setPreferredWidth(80);
         }
 
-        btnExcluirProdutoListaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarLista.png"))); // NOI18N
-        btnExcluirProdutoListaCompra.setToolTipText("Deletar Produto da Lista");
-        btnExcluirProdutoListaCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnExcluirProdutoListaCompra.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnProdutoDeletarListaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarLista.png"))); // NOI18N
+        btnProdutoDeletarListaCompra.setToolTipText("Deletar Produto da Lista");
+        btnProdutoDeletarListaCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProdutoDeletarListaCompra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExcluirProdutoListaCompraMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnExcluirProdutoListaCompraMouseEntered(evt);
+                btnProdutoDeletarListaCompraMouseClicked(evt);
             }
         });
 
@@ -1252,16 +1247,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarCompraLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnExcluirProdutoListaCompra)
-                                .addGap(10, 10, 10)))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnProdutoDeletarListaCompra)
+                                .addGap(10, 10, 10))
+                            .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addGap(5, 5, 5))
         );
         pnlEfetuarCompraLayout.setVerticalGroup(
@@ -1275,15 +1268,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnProdutoDeletarListaCompra))
+                            .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                                 .addComponent(pnlDadosFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExcluirProdutoListaCompra))))
+                                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1652,7 +1645,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1674,8 +1667,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel38)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2111,6 +2104,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnRetirarDescontoVenda.setText("-");
+        btnRetirarDescontoVenda.setToolTipText("Retirar Desconto");
+        btnRetirarDescontoVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetirarDescontoVendaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlEfetuarVendaLayout = new javax.swing.GroupLayout(pnlEfetuarVenda);
         pnlEfetuarVenda.setLayout(pnlEfetuarVendaLayout);
         pnlEfetuarVendaLayout.setHorizontalGroup(
@@ -2154,28 +2155,29 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                        .addGap(0, 613, Short.MAX_VALUE)
-                        .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                                    .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                                    .addComponent(jPanel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(jPanel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbTipoPagamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarVendaLayout.createSequentialGroup()
+                                .addComponent(tfDesconto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                                        .addComponent(cbParcelamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(32, 32, 32))))
-                            .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnRetirarDescontoVenda))
+                            .addComponent(cbParcelamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)))))
+                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)))
+                    .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         pnlEfetuarVendaLayout.setVerticalGroup(
             pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2216,27 +2218,30 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jSeparator1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                        .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
+                                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEfetuarVendaLayout.createSequentialGroup()
+                                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(31, 31, 31)
+                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnRetirarDescontoVenda))
+                                .addGap(38, 38, 38)
+                                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))
-                    .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
-                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
-                        .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(33, 33, 33)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
         );
@@ -2777,39 +2782,31 @@ public class FrmPrincipal extends javax.swing.JFrame {
         modelo.addRow(new Object[]{produto.getDescricaoProduto(), tfQtdProd.getText(), produto.getPrecoVenda(),
             (produto.getPrecoVenda() * Double.parseDouble(tfQtdProd.getText()))});
 
-        inserirValoresProdVenda(produto);
+        inserirValoresDetalhesVenda(produto);
         tbListProdutoVenda.setModel(modelo);
     }
 
 // Inseri os valores no detalhamento de vendas(Valor total de produtos)
-    public void inserirValoresProdVenda(Produto produto) {
+    public void inserirValoresDetalhesVenda(Produto produto) {
         //cria uma formatação para Um Double com os padroes Brasileiros
         //NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
         try {
-            double valorTotalProduto;   // valor total do produto vendido   
-            valorTotalProduto = produto.getPrecoVenda() * Double.parseDouble(tfQtdProd.getText());
-            // insere o valor total do produto vendido
-            lblTotalProdVenda.setText(String.valueOf(valorTotalProduto));
-
-            // se o valor total da venda estiver vazio, assume o valor total do produto vendido
-            if (Integer.valueOf(lblValorTotalVenda.getText()) == 0) {
-                lblValorTotalVenda.setText(String.valueOf(valorTotalProduto));
-            } else {
-                // senão, calcula o valor total da venda com descontos
-                double valorTotalVenda;
-                valorTotalVenda = Double.parseDouble(lblValorTotalVenda.getText()) - Double.parseDouble(lblDescontoVenda.getText());
-
-                // insere os valores nas respectivas labels
-                lblValorTotalVenda.setText(String.valueOf(valorTotalVenda));
-            }
+            // valor total do produto vendido   
+            double valorTotalProduto = produto.getPrecoVenda() * Double.parseDouble(tfQtdProd.getText());
+            //valor total de produtos vendidos
+            double valorTotalProdutoAtualizado = Double.parseDouble(lblTotalProdVenda.getText()) + valorTotalProduto;
+            double valorTotalVenda = Double.parseDouble(lblValorTotalVenda.getText())+ valorTotalProduto ;
+            // insere o valor total de produtos vendidos
+            lblTotalProdVenda.setText(String.valueOf(valorTotalProdutoAtualizado));
+            
+            lblValorTotalVenda.setText(String.valueOf(valorTotalVenda));
         } catch (NumberFormatException erroConversaoValorVenda) {
             JOptionPane.showMessageDialog(null, erroConversaoValorVenda.getMessage());
         }
     }
 
     // Carregar lista de tipos de pagamento
-
     public void carregarCbParcelamento() {
         ArrayList<Parcelamento> arrayParcelamento = new ArrayList<>();
         ParcelamentoCRUD parcelamentoCRUD = new ParcelamentoCRUD();
@@ -2951,10 +2948,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 lblDescontoVenda.setText(String.valueOf(descTotal + descAtual));
 
                 // recebe o atual valor total da venda
-                double totalAtual = Double.parseDouble(lblValorTotalVenda.getText());
+                double totalVendaAtual = Double.parseDouble(lblValorTotalVenda.getText());
 
                 // reajusta o valor total da venda com desconto
-                lblValorTotalVenda.setText(String.valueOf(totalAtual - Double.parseDouble(tfDesconto.getText())));
+                lblValorTotalVenda.setText(String.valueOf(totalVendaAtual - Double.parseDouble(tfDesconto.getText())));
             }
         } catch (NumberFormatException erroConversaoValorDesconto) {
             JOptionPane.showMessageDialog(null, erroConversaoValorDesconto.getMessage());
@@ -3082,14 +3079,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         model.addRow(new Object[]{0, tfProdutoCodigo.getText(), tfProdutoQuantidade.getText(), tfProdutoPrecoCusto.getText()});
         tblListaProdutoCompra.setModel(model);
-
-        lblTotalCompra.setText(String.valueOf(Double.parseDouble(tfProdutoPrecoCusto.getText()) * Double.parseDouble(tfProdutoQuantidade.getText())));
-
+        //guarda o valor total do produto adicionado 
+        Double totalProduto = Double.parseDouble(tfProdutoPrecoCusto.getText()) * Double.parseDouble(tfProdutoQuantidade.getText());
+        //adiciona o total do produto adicionado ao total geral da compra
+        Double totalGeral = Double.parseDouble(lblTotalCompra.getText()) + totalProduto;
+        //insere na label total geral
+        lblTotalCompra.setText(totalGeral.toString());
         // limpa os dados do formulario
         limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto, tfProdutoPrecoVenda, tfProdutoQuantidade);
 
-        if (btnExcluirProdutoListaCompra.isEnabled() == false) {
-            btnExcluirProdutoListaCompra.setEnabled(true);
+        if (btnProdutoDeletarListaCompra.isEnabled() == false) {
+            btnProdutoDeletarListaCompra.setEnabled(true);
         }
     }//GEN-LAST:event_btnAddProdutoCompraActionPerformed
 
@@ -3166,10 +3166,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarProdutoMouseClicked
 
-
-    private void btnBuscarFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarFornecedorMouseClicked
-
-    }//GEN-LAST:event_btnBuscarFornecedorMouseClicked
 
     private void btnAlterarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarFornecedorActionPerformed
         Fornecedor fornecedor = new Fornecedor();
@@ -3370,22 +3366,31 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblTipoPagamento.setText(cbTipoPagamento.getSelectedItem().toString());
     }//GEN-LAST:event_cbTipoPagamentoActionPerformed
 
-    private void btnExcluirProdutoListaCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirProdutoListaCompraMouseClicked
-              DefaultTableModel modelo = (DefaultTableModel) tblListaProdutoCompra.getModel();
-
+    private void btnProdutoDeletarListaCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoDeletarListaCompraMouseClicked
+        DefaultTableModel modelo = (DefaultTableModel) tblListaProdutoCompra.getModel();
+        //se houver alguma produto adicionado na lista executa as ações
         if (modelo.getRowCount() > 0) {
+            //guarda o valor total do produto a ser retirado da compra
+            Double valorProdutoRetirado = Double.parseDouble(tblListaProdutoCompra.getValueAt(tblListaProdutoCompra.getSelectedRow(), 3).toString())
+                    * Double.parseDouble(tblListaProdutoCompra.getValueAt(tblListaProdutoCompra.getSelectedRow(), 2).toString());
+            //guarda o valor total da compra atualizada com o desconto do produto retirado
+            Double valorTotalAtualizado = Double.parseDouble(lblTotalCompra.getText()) - valorProdutoRetirado;
+            //insere na label total da compra
+            lblTotalCompra.setText(valorTotalAtualizado.toString());
+            //remove da lista o item selecionado
             modelo.removeRow(tblListaProdutoCompra.getSelectedRow());
             tblListaProdutoCompra.setModel(modelo);
         } else {
-            JOptionPane.showMessageDialog(null, "Lista de Produtos Vazia !!");
-            btnExcluirProdutoListaCompra.setEnabled(false);
-        } 
+            btnProdutoDeletarListaCompra.setEnabled(false);
+        }
 
-    }//GEN-LAST:event_btnExcluirProdutoListaCompraMouseClicked
+    }//GEN-LAST:event_btnProdutoDeletarListaCompraMouseClicked
 
-    private void btnExcluirProdutoListaCompraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirProdutoListaCompraMouseEntered
-
-    }//GEN-LAST:event_btnExcluirProdutoListaCompraMouseEntered
+    private void btnRetirarDescontoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarDescontoVendaActionPerformed
+        double valorTotalVendaAtualizado = Double.parseDouble(lblDescontoVenda.getText())+ Double.parseDouble(lblValorTotalVenda.getText());
+        lblValorTotalVenda.setText(String.valueOf(valorTotalVendaAtualizado));
+        lblDescontoVenda.setText("0");
+    }//GEN-LAST:event_btnRetirarDescontoVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3454,11 +3459,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnDeletarFuncionario;
     private javax.swing.JButton btnDeletarProduto;
     private javax.swing.JButton btnEfetuarVenda;
-    private javax.swing.JLabel btnExcluirProdutoListaCompra;
     private javax.swing.JLabel btnFuncionarioBuscar;
     private javax.swing.JLabel btnFuncionarioBuscarCodCargo;
     private javax.swing.JLabel btnFuncionarioBuscarCodEmpresa;
     private javax.swing.ButtonGroup btnGroupVisualizar;
+    private javax.swing.JLabel btnProdutoDeletarListaCompra;
+    private javax.swing.JButton btnRetirarDescontoVenda;
     private javax.swing.JComboBox cbParcelamento;
     private javax.swing.JComboBox cbTipoPagamento;
     private javax.swing.JComboBox cbUnidadeMedida;
