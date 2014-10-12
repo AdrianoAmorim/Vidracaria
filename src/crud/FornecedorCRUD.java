@@ -97,8 +97,8 @@ public class FornecedorCRUD {
         }
     }
 
-    // DELETE
-    public void deletarFornecedor(Fornecedor fornecedor) {
+    // "DELETE"
+    public void desativarFornecedor(Fornecedor fornecedor) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
