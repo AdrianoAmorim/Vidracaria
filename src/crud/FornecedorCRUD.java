@@ -21,12 +21,22 @@ public class FornecedorCRUD {
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO fornecedor(codFornecedor, cnpjFornecedor, nomeFornecedor) "
-                    + "VALUES (?,?,?);");
+            stmt = conn.prepareStatement("INSERT INTO fornecedor(codFornecedor, cnpjFornecedor, nomeFornecedor,"
+                    + "endereco, bairro, uf, telFixo, telCel, email, site, vendedor, ramal) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, fornecedor.getCodFornecedor());
             stmt.setString(2, fornecedor.getCnpjFornecedor());
             stmt.setString(3, fornecedor.getNomeFornecedor());
+            stmt.setString(4, fornecedor.getEndereco());
+            stmt.setString(5, fornecedor.getBairro());
+            stmt.setString(6, fornecedor.getUf());
+            stmt.setString(7, fornecedor.getTelFixo());
+            stmt.setString(8, fornecedor.getTelCel());
+            stmt.setString(9, fornecedor.getEmail());
+            stmt.setString(10, fornecedor.getSite());
+            stmt.setString(11, fornecedor.getVendedor());
+            stmt.setString(12, fornecedor.getRamal());
 
             stmt.executeUpdate();
             stmt.close();

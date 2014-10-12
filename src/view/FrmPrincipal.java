@@ -2613,7 +2613,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 //limpa todos os JTextField do programa 
-    public void limparCampos(JTextField... args) {
+    static public void limparCampos(JTextField... args) {
         int totalCampos = args.length;
         for (int i = 0; i < totalCampos; i++) {
             args[i].setText("");

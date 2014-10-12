@@ -49,7 +49,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         lblNomeFornecedor3 = new javax.swing.JLabel();
         tfFornecedorUf = new javax.swing.JTextField();
         lblNomeFornecedor4 = new javax.swing.JLabel();
-        tfFornecedorTelResidencia = new javax.swing.JTextField();
+        tfFornecedorTelFixo = new javax.swing.JTextField();
         lblNomeFornecedor5 = new javax.swing.JLabel();
         tfFornecedorTelCelular = new javax.swing.JTextField();
         lblNomeFornecedor6 = new javax.swing.JLabel();
@@ -62,7 +62,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         btnCadastrarFornecedor = new javax.swing.JButton();
         btnAlterarFornecedor = new javax.swing.JButton();
         lblNomeFornecedor10 = new javax.swing.JLabel();
-        tfFornecedorCelularVendedor = new javax.swing.JTextField();
+        tfFornecedorRamalVendedor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -137,11 +137,11 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         lblNomeFornecedor4.setForeground(new java.awt.Color(0, 69, 139));
         lblNomeFornecedor4.setText("Telefones:");
 
-        tfFornecedorTelResidencia.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfFornecedorTelFixo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         lblNomeFornecedor5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNomeFornecedor5.setForeground(new java.awt.Color(0, 69, 139));
-        lblNomeFornecedor5.setText("Res:");
+        lblNomeFornecedor5.setText("Fixo:");
 
         tfFornecedorTelCelular.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
@@ -174,6 +174,11 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         btnCadastrarFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCadastrarFornecedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCadastrarFornecedor.setPreferredSize(new java.awt.Dimension(0, 0));
+        btnCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarFornecedorActionPerformed(evt);
+            }
+        });
 
         btnAlterarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AlterarPq.png"))); // NOI18N
         btnAlterarFornecedor.setToolTipText("Alterar");
@@ -182,9 +187,9 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
 
         lblNomeFornecedor10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNomeFornecedor10.setForeground(new java.awt.Color(0, 69, 139));
-        lblNomeFornecedor10.setText("Celular:");
+        lblNomeFornecedor10.setText("Ramal:");
 
-        tfFornecedorCelularVendedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfFornecedorRamalVendedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout pnlDadosFornecedorLayout = new javax.swing.GroupLayout(pnlDadosFornecedor);
         pnlDadosFornecedor.setLayout(pnlDadosFornecedorLayout);
@@ -208,7 +213,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                                     .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
                                         .addComponent(lblNomeFornecedor5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                                        .addComponent(tfFornecedorTelResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tfFornecedorTelFixo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(tfFornecedorEmail)
                                     .addComponent(tfFornecedorVendedor))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -235,7 +240,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                                             .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
                                                 .addComponent(lblNomeFornecedor10)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tfFornecedorCelularVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(tfFornecedorRamalVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addContainerGap(21, Short.MAX_VALUE))))
                             .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(tfFornecedorNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
@@ -279,7 +284,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeFornecedor4)
-                    .addComponent(tfFornecedorTelResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfFornecedorTelFixo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeFornecedor5)
                     .addComponent(tfFornecedorTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeFornecedor6))
@@ -294,7 +299,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                     .addComponent(lblNomeFornecedor9)
                     .addComponent(tfFornecedorVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeFornecedor10)
-                    .addComponent(tfFornecedorCelularVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfFornecedorRamalVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,6 +330,38 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFornecedorActionPerformed
+       Fornecedor fornecedor = new Fornecedor();
+       FornecedorController fornecedorController = new FornecedorController();
+       
+       // recebe os dados do fornecedor
+       fornecedor.setCodFornecedor(Integer.valueOf(tfFornecedorCodigo.getText()));
+       fornecedor.setCnpjFornecedor(tfFornecedorCnpj.getText());
+       fornecedor.setNomeFornecedor(tfFornecedorNome.getText());
+       fornecedor.setEndereco(tfFornecedorEndereco.getText());
+       fornecedor.setBairro(tfFornecedorBairro.getText());
+       fornecedor.setUf(tfFornecedorUf.getText());
+       fornecedor.setTelFixo(tfFornecedorTelFixo.getText());
+       fornecedor.setTelCel(tfFornecedorTelCelular.getText());
+       fornecedor.setEmail(tfFornecedorEmail.getText());
+       fornecedor.setSite(tfFornecedorSite.getText());
+       fornecedor.setVendedor(tfFornecedorVendedor.getText());
+       fornecedor.setRamal(tfFornecedorRamalVendedor.getText());
+       
+       // testa se os dados do fornecedor s�o v�lidos
+       if(fornecedorController.validarFornecedor(fornecedor)) {
+           FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+           
+           // cadastra o fornecedor no banco de dados
+           fornecedorCRUD.inserirFornecedor(fornecedor);
+           
+           // limpa os campos do formulario
+           FrmPrincipal.limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome,
+                   tfFornecedorEndereco, tfFornecedorBairro, tfFornecedorUf, tfFornecedorTelFixo,
+                   tfFornecedorTelCelular, tfFornecedorEmail, tfFornecedorSite, 
+                   tfFornecedorVendedor, tfFornecedorRamalVendedor);
+       }
+    }//GEN-LAST:event_btnCadastrarFornecedorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarFornecedor;
@@ -346,15 +383,15 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
     private javax.swing.JLabel lblNomeFornecedor9;
     private javax.swing.JPanel pnlDadosFornecedor;
     private javax.swing.JTextField tfFornecedorBairro;
-    private javax.swing.JTextField tfFornecedorCelularVendedor;
     private javax.swing.JTextField tfFornecedorCnpj;
     private javax.swing.JTextField tfFornecedorCodigo;
     private javax.swing.JTextField tfFornecedorEmail;
     private javax.swing.JTextField tfFornecedorEndereco;
     private javax.swing.JTextField tfFornecedorNome;
+    private javax.swing.JTextField tfFornecedorRamalVendedor;
     private javax.swing.JTextField tfFornecedorSite;
     private javax.swing.JTextField tfFornecedorTelCelular;
-    private javax.swing.JTextField tfFornecedorTelResidencia;
+    private javax.swing.JTextField tfFornecedorTelFixo;
     private javax.swing.JTextField tfFornecedorUf;
     private javax.swing.JTextField tfFornecedorVendedor;
     // End of variables declaration//GEN-END:variables
