@@ -40,16 +40,17 @@ public class TipoPagamentoCRUD {
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codTipoPagamento, descricaoTipoPagamento FROM tipoPagamento;");
             result = stmt.executeQuery();
-            
+
             while (result.next()) {
                 TipoPagamento tipoPagamento = new TipoPagamento();
                 tipoPagamento.setCodTipoPagamento(result.getInt("codTipoPagamento"));
                 tipoPagamento.setDescricaoTipoPagamento(result.getString("descricaoTipoPagamento"));
 
                 listaTiposPagamento.add(tipoPagamento);
-                stmt.close();
-                conn.close();
             }
+            stmt.close();
+            conn.close();
+            
             return listaTiposPagamento;
         } catch (SQLException erroConsultarTipoPagamento) {
             System.out.println(erroConsultarTipoPagamento.getMessage());

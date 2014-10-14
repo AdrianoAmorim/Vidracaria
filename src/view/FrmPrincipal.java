@@ -47,7 +47,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DA LISTA DE Parcelamento
         this.carregarCbParcelamento();
         // INICIALIZAÇÃO DA LISTA DE Parcelamento de compras
-        this.carregarCbParcelamentoCompra();           
+        this.carregarCbParcelamentoCompra();
+        // INICIALIZAÇ�O DAS LISTAS DE TIPOS DE PAGAMENTO
+        this.carregarCbTipoPagamento();      
     }
 
     /**
@@ -775,7 +777,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(69, Short.MAX_VALUE)
                 .addComponent(jLabel24)
                 .addGap(101, 101, 101))
         );
@@ -1408,7 +1410,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         cbTipoPagamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        cbTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dinheiro", "Cheque", "Cartão de Crédito" }));
         cbTipoPagamento.setToolTipText("");
         cbTipoPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1485,7 +1486,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)))
+                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)))
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEfetuarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2144,7 +2145,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel68.setText("Forma de Pagamento:");
 
         cbTipoPagamento1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        cbTipoPagamento1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dinheiro", "Cheque", "Cartão de Crédito" }));
         cbTipoPagamento1.setToolTipText("");
         cbTipoPagamento1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2638,7 +2638,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         //adicionando na tabela
         modelo.addRow(new Object[]{produto.getDescricaoProduto(), tfQtdProd.getText(), produto.getPrecoVenda(),
             (produto.getPrecoVenda() * Double.parseDouble(tfQtdProd.getText()))});
-
+        
         inserirValoresDetalhesVenda(produto);
         tbListProdutoVenda.setModel(modelo);
     }
@@ -2656,21 +2656,36 @@ public class FrmPrincipal extends javax.swing.JFrame {
             double valorTotalVenda = Double.parseDouble(lblValorTotalVenda.getText()) + valorTotalProduto;
             // insere o valor total de produtos vendidos
             lblTotalProdVenda.setText(String.valueOf(valorTotalProdutoAtualizado));
-
+            
             lblValorTotalVenda.setText(String.valueOf(valorTotalVenda));
         } catch (NumberFormatException erroConversaoValorVenda) {
             JOptionPane.showMessageDialog(null, erroConversaoValorVenda.getMessage());
         }
     }
 
-    // Carregar lista de tipos de pagamento
+    //  Carregar lista de tipos de pagamento
+    public void carregarCbTipoPagamento() {
+        ArrayList<TipoPagamento> arrayTipoPagamento = new ArrayList<>();
+        TipoPagamentoCRUD tipoPagamentoCRUD = new TipoPagamentoCRUD();
+        
+        arrayTipoPagamento = tipoPagamentoCRUD.consultarTipoPagamento();
+        cbTipoPagamento.removeAllItems();
+        cbTipoPagamento1.removeAllItems();
+        
+        for (TipoPagamento tipoPagamento : arrayTipoPagamento) {
+            cbTipoPagamento.addItem(tipoPagamento.getDescricaoTipoPagamento());
+            cbTipoPagamento1.addItem(tipoPagamento.getDescricaoTipoPagamento());
+        }
+    }
+
+    // Carregar lista de tipos de parcelamento de Vendas
     public void carregarCbParcelamento() {
         ArrayList<Parcelamento> arrayParcelamento = new ArrayList<>();
         ParcelamentoVendaCRUD parcelamentoCRUD = new ParcelamentoVendaCRUD();
-
+        
         arrayParcelamento = parcelamentoCRUD.consultarParcelamento();
         cbParcelamentoVenda.removeAllItems();
-
+        
         for (Parcelamento parcelamento : arrayParcelamento) {
             cbParcelamentoVenda.addItem(parcelamento.getDescricaoParcelamento());
         }
@@ -2680,10 +2695,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
     public void carregarCbParcelamentoCompra() {
         ArrayList<Parcelamento> arrayParcelamento = new ArrayList<>();
         ParcelamentoCompraCRUD parcelamentoCRUD = new ParcelamentoCompraCRUD();
-
+        
         arrayParcelamento = parcelamentoCRUD.consultarParcelamento();
         cbParcelamentoCompra.removeAllItems();
-
+        
         for (Parcelamento parcelamento : arrayParcelamento) {
             cbParcelamentoCompra.addItem(parcelamento.getDescricaoParcelamento());
         }
@@ -2691,24 +2706,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
 //Carregar combosBox produto------------------------------------
     public void carregarCbProduto() {
-
+        
         ArrayList<Produto> arrayProd = new ArrayList<>();
         ProdutoCRUD prod = new ProdutoCRUD();
-
+        
         arrayProd = prod.consultarProduto();
         cb_produtos.removeAllItems();
-
+        
         for (Produto prodd : arrayProd) {
             cb_produtos.addItem(prodd.getDescricaoProduto());
         }
-
+        
     }
 
 //Cadastrar Cliente
     private void btnCadastrarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClActionPerformed
         Cliente cliente = new Cliente();
         ClienteController cliController = new ClienteController();
-
+        
         cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
         cliente.setNomeCliente(tfClienteNome.getText());
         cliente.setEnderecoCliente(tfClienteEndereco.getText());
@@ -2743,7 +2758,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
         Cliente cliente = new Cliente();
         ClienteController clienteController = new ClienteController();
-
+        
         cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
         cliente.setCpfCliente(tfClienteCodigo.getText());
         cliente.setNomeCliente(tfClienteNome.getText());
@@ -2751,16 +2766,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cliente.setRgCliente(tfClienteRg.getText());
         cliente.setTelResidencial(tfClienteTelRes.getText());
         cliente.setTelCelular(tfClienteTelCel.getText());
-
+        
         if (clienteController.validarAtributos(cliente)) {
             ClienteCRUD clienteCrud = new ClienteCRUD();
-
+            
             clienteCrud.atualizarCliente(cliente);
 
             // limpa os dados do formulario
             limparCampos(tfClienteNome, tfClienteCodigo, tfClienteRg,
                     tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
-
+            
             this.btnAlterarCliente.setVisible(false);
             this.btnDeletarCliente.setVisible(false);
             this.btnCadastrarCl.setEnabled(true);
@@ -2772,15 +2787,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnDeletarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarClienteActionPerformed
         ClienteCRUD cliCrud = new ClienteCRUD();
         Cliente cli = new Cliente();
-
+        
         cli.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
-
+        
         cliCrud.deletarCliente(cli);
-
+        
         this.btnAlterarCliente.setVisible(false);
         this.btnDeletarCliente.setVisible(false);
         this.btnCadastrarCl.setEnabled(true);
-
+        
         limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCodigo, tfClienteRg,
                 tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
         tpPrincipal.setSelectedIndex(0);
@@ -2798,10 +2813,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnEfetuarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfetuarVendaActionPerformed
         VendaCRUD venda = new VendaCRUD();
-
+        
         tfVendaCodigo.setText(String.valueOf(venda.incrementCodVenda()));
     }//GEN-LAST:event_btnEfetuarVendaActionPerformed
-
+    
     private void tfDescontoFocusLost(java.awt.event.FocusEvent evt) {
 
         // caso a label de desconto ainda não tenha recebido nenhum valor
@@ -2832,7 +2847,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void cbParcelamentoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbParcelamentoVendaActionPerformed
         ParcelamentoVendaCRUD parcelamentoCRUD = new ParcelamentoVendaCRUD();
-
+        
         lblQtdParcelas.setText(Integer.toString(parcelamentoCRUD.consultarQuantidadeParcelas(cbParcelamentoVenda.getSelectedItem().toString())));
     }//GEN-LAST:event_cbParcelamentoVendaActionPerformed
 
@@ -2844,7 +2859,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
         Funcionario funcionario = new Funcionario();
         FuncionarioController funcionarioController = new FuncionarioController();
-
+        
         funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
         funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
         funcionario.setCodEmpresa(Integer.parseInt(tfFuncionarioCodEmpresa.getText()));
@@ -2852,10 +2867,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
         funcionario.setTelResidencial(tfFuncionarioTelResidencial.getText());
         funcionario.setTelCelular(tfFuncionarioTelCelular.getText());
-
+        
         if (funcionarioController.validarFuncionario(funcionario)) {
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
-
+            
             funcionarioCRUD.inserirFuncionario(funcionario);
 
             // limpa os dados do formulário
@@ -2871,16 +2886,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnDeletarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarFuncionarioActionPerformed
         Funcionario funcionario = new Funcionario();
         FuncionarioController funcionarioController = new FuncionarioController();
-
+        
         funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
         funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
         funcionario.setCodEmpresa(Integer.parseInt(tfFuncionarioCodEmpresa.getText()));
         funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
-
+        
         if (funcionarioController.validarFuncionario(funcionario)) {
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
-
+            
             funcionarioCRUD.deletarFuncionario(funcionario);
 
             // limpa os dados do formulário
@@ -2892,16 +2907,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarFuncionarioActionPerformed
         Funcionario funcionario = new Funcionario();
         FuncionarioController funcionarioController = new FuncionarioController();
-
+        
         funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
         funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
         funcionario.setCodEmpresa(Integer.parseInt(tfFuncionarioCodEmpresa.getText()));
         funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
-
+        
         if (funcionarioController.validarFuncionario(funcionario)) {
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
-
+            
             funcionarioCRUD.atualizarFuncionario(funcionario);
 
             // limpa os dados do formulário
@@ -2909,7 +2924,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     tfFuncionarioNome, tfFuncionarioSalario);
         }
     }//GEN-LAST:event_btnAlterarFuncionarioActionPerformed
-
+    
 
     private void btnCadastrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCompraActionPerformed
         DefaultTableModel model = (DefaultTableModel) tblListaProdutoCompra.getModel();
@@ -2932,9 +2947,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     // envia as informações da compra para o banco de dados
                     compraCRUD.inserirCompra(compra);
                 }
-
+                
                 ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
-
+                
                 ProdutoComprado produtoComprado = new ProdutoComprado();
 
                 // recebe as informações do produto comprado
@@ -2948,7 +2963,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             //zerando as linhas da tabela Produto na Compra
             model.setRowCount(0);
-
+            
         }
     }//GEN-LAST:event_btnCadastrarCompraActionPerformed
 
@@ -2960,7 +2975,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // recebe informaççoes da compra
         compra.setCodCompra(Integer.valueOf(tfCompraCodigo.getText()));
         compra.setCodTipoDespesa(1);
-
+        
         compra.setDataCompra(tfCompraCodigo.getText());
 
         // testa se as informações de compra são válidas
@@ -2976,7 +2991,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             if (produtoCompradoController.validarProdutoComprado(produtoComprado)) {
                 Fornecedor fornecedor = new Fornecedor();
                 FornecedorController fornecedorController = new FornecedorController();
-
+                
                 if (fornecedorController.validarFornecedor(fornecedor)) {
                     FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
                     CompraCRUD compraCRUD = new CompraCRUD();
@@ -2986,7 +3001,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     fornecedorCRUD.atualizarFornecedor(fornecedor);
                     compraCRUD.atualizarCompra(compra);
                     produtoCompradoCRUD.atualizarProdutoComprado(produtoComprado);
-
+                    
                 }
             }
         }
@@ -2998,7 +3013,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarClienteMouseClicked
 
     private void cbTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoPagamentoActionPerformed
-        lblTipoPagamento.setText(cbTipoPagamento.getSelectedItem().toString());
+     //   lblTipoPagamento.setText(cbTipoPagamento.getSelectedItem().toString());
     }//GEN-LAST:event_cbTipoPagamentoActionPerformed
 
     private void btnProdutoDeletarListaCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoDeletarListaCompraMouseClicked
@@ -3028,7 +3043,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRetirarDescontoVendaActionPerformed
 
     private void cbTipoPagamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoPagamento1ActionPerformed
-        // TODO add your handling code here:
+        //
     }//GEN-LAST:event_cbTipoPagamento1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -3054,13 +3069,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {
@@ -3078,7 +3093,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
         /* Create and display the form */
-
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
