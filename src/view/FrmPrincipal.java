@@ -29,8 +29,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnAlterarFuncionario.setVisible(true);
         this.btnCadastrarFuncionario.setVisible(true);
         this.btnProdutoDeletarListaCompra.setEnabled(false);
-       
-        
+
         // INICIALIZAÇÃO DA LISTA DE PRODUTOS
         this.carregarCbProduto();
         // INICIALIZAÇÃO DO CODIGO DO CLIENTE
@@ -39,7 +38,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DO CODIGO DA VENDA
         int codVend = new VendaCRUD().incrementCodVenda();
         tfVendaCodigo.setText(Integer.toString(codVend));
-         // INICIALIZAÇ�O DO CODIGO DA COMPRA
+        // INICIALIZAÇ�O DO CODIGO DA COMPRA
         int codCompra = new CompraCRUD().incrementCodCompra();
         tfCompraCodigo.setText(String.valueOf(codCompra));
         // INICIALIZAÇÃO DO CODIGO DO FUNCIONARIO
@@ -47,7 +46,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioCodigo.setText(String.valueOf(codFunc));
         // INICIALIZAÇÃO DA LISTA DE Parcelamento
         this.carregarCbParcelamento();
-        
+        // INICIALIZAÇÃO DA LISTA DE Parcelamento de compras
+        this.carregarCbParcelamentoCompra();           
     }
 
     /**
@@ -106,7 +106,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         tfQtdProd = new javax.swing.JTextField();
         btnAddProdutoVenda = new javax.swing.JButton();
-        cbParcelamento = new javax.swing.JComboBox();
+        cbParcelamentoVenda = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -716,11 +716,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        cbParcelamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        cbParcelamento.setToolTipText("");
-        cbParcelamento.addActionListener(new java.awt.event.ActionListener() {
+        cbParcelamentoVenda.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        cbParcelamentoVenda.setToolTipText("");
+        cbParcelamentoVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbParcelamentoActionPerformed(evt);
+                cbParcelamentoVendaActionPerformed(evt);
             }
         });
 
@@ -1478,7 +1478,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addComponent(tfDesconto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnRetirarDescontoVenda))
-                            .addComponent(cbParcelamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cbParcelamentoVenda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
@@ -1540,7 +1540,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addGap(36, 36, 36)
                                 .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cbParcelamentoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(31, 31, 31)
                                 .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2129,6 +2129,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         cbParcelamentoCompra.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         cbParcelamentoCompra.setToolTipText("");
+        cbParcelamentoCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbParcelamentoCompraActionPerformed(evt);
+            }
+        });
 
         jLabel64.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel64.setForeground(new java.awt.Color(0, 69, 139));
@@ -2648,10 +2653,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
             double valorTotalProduto = produto.getPrecoVenda() * Double.parseDouble(tfQtdProd.getText());
             //valor total de produtos vendidos
             double valorTotalProdutoAtualizado = Double.parseDouble(lblTotalProdVenda.getText()) + valorTotalProduto;
-            double valorTotalVenda = Double.parseDouble(lblValorTotalVenda.getText())+ valorTotalProduto ;
+            double valorTotalVenda = Double.parseDouble(lblValorTotalVenda.getText()) + valorTotalProduto;
             // insere o valor total de produtos vendidos
             lblTotalProdVenda.setText(String.valueOf(valorTotalProdutoAtualizado));
-            
+
             lblValorTotalVenda.setText(String.valueOf(valorTotalVenda));
         } catch (NumberFormatException erroConversaoValorVenda) {
             JOptionPane.showMessageDialog(null, erroConversaoValorVenda.getMessage());
@@ -2661,13 +2666,26 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // Carregar lista de tipos de pagamento
     public void carregarCbParcelamento() {
         ArrayList<Parcelamento> arrayParcelamento = new ArrayList<>();
-        ParcelamentoCRUD parcelamentoCRUD = new ParcelamentoCRUD();
+        ParcelamentoVendaCRUD parcelamentoCRUD = new ParcelamentoVendaCRUD();
 
         arrayParcelamento = parcelamentoCRUD.consultarParcelamento();
-        cbParcelamento.removeAllItems();
+        cbParcelamentoVenda.removeAllItems();
 
         for (Parcelamento parcelamento : arrayParcelamento) {
-            cbParcelamento.addItem(parcelamento.getDescricaoParcelamento());
+            cbParcelamentoVenda.addItem(parcelamento.getDescricaoParcelamento());
+        }
+    }
+
+    // carregar lista de tipos de parcelamento para compras
+    public void carregarCbParcelamentoCompra() {
+        ArrayList<Parcelamento> arrayParcelamento = new ArrayList<>();
+        ParcelamentoCompraCRUD parcelamentoCRUD = new ParcelamentoCompraCRUD();
+
+        arrayParcelamento = parcelamentoCRUD.consultarParcelamento();
+        cbParcelamentoCompra.removeAllItems();
+
+        for (Parcelamento parcelamento : arrayParcelamento) {
+            cbParcelamentoCompra.addItem(parcelamento.getDescricaoParcelamento());
         }
     }
 
@@ -2812,11 +2830,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         limparCampos(tfDesconto);
     }
 
-    private void cbParcelamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbParcelamentoActionPerformed
-        ParcelamentoCRUD parcelamentoCRUD = new ParcelamentoCRUD();
+    private void cbParcelamentoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbParcelamentoVendaActionPerformed
+        ParcelamentoVendaCRUD parcelamentoCRUD = new ParcelamentoVendaCRUD();
 
-        lblQtdParcelas.setText(Integer.toString(parcelamentoCRUD.consultarQuantidadeParcelas(cbParcelamento.getSelectedItem().toString())));
-    }//GEN-LAST:event_cbParcelamentoActionPerformed
+        lblQtdParcelas.setText(Integer.toString(parcelamentoCRUD.consultarQuantidadeParcelas(cbParcelamentoVenda.getSelectedItem().toString())));
+    }//GEN-LAST:event_cbParcelamentoVendaActionPerformed
 
     private void btnCadastrarTituloReceberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarTituloReceberActionPerformed
         FrmCadastrarRenda cadastrarRenda = new FrmCadastrarRenda(this, true);
@@ -2893,7 +2911,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarFuncionarioActionPerformed
 
 
-
     private void btnCadastrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCompraActionPerformed
         DefaultTableModel model = (DefaultTableModel) tblListaProdutoCompra.getModel();
         // Dados e validação da compra
@@ -2928,7 +2945,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 // envia as informações dos produtos comprados para o banco
                 produtoCompradoCRUD.inserirProdutoComprado(produtoComprado);
             }
-            
+
             //zerando as linhas da tabela Produto na Compra
             model.setRowCount(0);
 
@@ -2943,7 +2960,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // recebe informaççoes da compra
         compra.setCodCompra(Integer.valueOf(tfCompraCodigo.getText()));
         compra.setCodTipoDespesa(1);
-     
+
         compra.setDataCompra(tfCompraCodigo.getText());
 
         // testa se as informações de compra são válidas
@@ -2954,14 +2971,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // recebe informações do produto comprado
             produtoComprado.setCodCompra(compra.getCodCompra());
-         
 
             // testa se as informações dos produtos comprados são válidas
             if (produtoCompradoController.validarProdutoComprado(produtoComprado)) {
                 Fornecedor fornecedor = new Fornecedor();
                 FornecedorController fornecedorController = new FornecedorController();
-
-               
 
                 if (fornecedorController.validarFornecedor(fornecedor)) {
                     FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
@@ -2973,7 +2987,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     compraCRUD.atualizarCompra(compra);
                     produtoCompradoCRUD.atualizarProdutoComprado(produtoComprado);
 
-                    
                 }
             }
         }
@@ -3009,7 +3022,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProdutoDeletarListaCompraMouseClicked
 
     private void btnRetirarDescontoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarDescontoVendaActionPerformed
-        double valorTotalVendaAtualizado = Double.parseDouble(lblDescontoVenda.getText())+ Double.parseDouble(lblValorTotalVenda.getText());
+        double valorTotalVendaAtualizado = Double.parseDouble(lblDescontoVenda.getText()) + Double.parseDouble(lblValorTotalVenda.getText());
         lblValorTotalVenda.setText(String.valueOf(valorTotalVendaAtualizado));
         lblDescontoVenda.setText("0");
     }//GEN-LAST:event_btnRetirarDescontoVendaActionPerformed
@@ -3027,6 +3040,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         FrmCadastroProduto cadastrarProduto = new FrmCadastroProduto(this, true);
         cadastrarProduto.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void cbParcelamentoCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbParcelamentoCompraActionPerformed
+
+    }//GEN-LAST:event_cbParcelamentoCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3091,8 +3108,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGroupVisualizar;
     private javax.swing.JLabel btnProdutoDeletarListaCompra;
     private javax.swing.JButton btnRetirarDescontoVenda;
-    private javax.swing.JComboBox cbParcelamento;
     private javax.swing.JComboBox cbParcelamentoCompra;
+    private javax.swing.JComboBox cbParcelamentoVenda;
     private javax.swing.JComboBox cbTipoPagamento;
     private javax.swing.JComboBox cbTipoPagamento1;
     private javax.swing.JComboBox cb_produtos;

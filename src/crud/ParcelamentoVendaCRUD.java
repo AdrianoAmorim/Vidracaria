@@ -12,7 +12,9 @@ import java.util.ArrayList;
  *
  * @author rafael
  */
-public class ParcelamentoCRUD {
+
+
+public class ParcelamentoVendaCRUD {
 
     // INSERT 
     public void inserirParcelamento(Parcelamento parcelamento) {
@@ -20,7 +22,7 @@ public class ParcelamentoCRUD {
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO parcelamento(codParcelamento, descricaoParcelamento, "
+            stmt = conn.prepareStatement("INSERT INTO parcelamentoVenda(codParcelamento, descricaoParcelamento, "
                     + "quantidadeParcelas VALUES (?,?,?);");
 
             stmt.setInt(1, parcelamento.getCodParcelamento());
@@ -30,7 +32,7 @@ public class ParcelamentoCRUD {
             stmt.executeUpdate();
             stmt.close();
 
-            System.out.println("Pagamento cadastrado com sucesso!");
+            System.out.println("Parcelamento cadastrado com sucesso!");
         } catch (SQLException erroInserirParcelamento) {
             System.out.println(erroInserirParcelamento.getMessage());
         }
@@ -41,7 +43,7 @@ public class ParcelamentoCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE parcelamento SET descricaoParcelamento = ?, quantidadeParcelas = ? "
+            stmt = conn.prepareStatement("UPDATE parcelamentoVenda SET descricaoParcelamento = ?, quantidadeParcelas = ? "
                     + "WHERE codParcelamento = ?;");
 
             stmt.setString(1, parcelamento.getDescricaoParcelamento());
@@ -68,10 +70,10 @@ public class ParcelamentoCRUD {
         try (Connection conn = new SQLite().conectar()) {
 
             stmt = conn.prepareStatement("SELECT codParcelamento, descricaoParcelamento, quantidadeParcelas "
-                    + "FROM parcelamento;");
+                    + "FROM parcelamentoVenda;");
 
             result = stmt.executeQuery();
-            
+
             while (result.next()) {
                 Parcelamento parcelamento = new Parcelamento();
 
@@ -82,7 +84,7 @@ public class ParcelamentoCRUD {
                 listaParcelamento.add(parcelamento);
             }
             stmt.close();
-            
+
             return listaParcelamento;
         } catch (SQLException erroConsultarParcelamento) {
             System.out.println(erroConsultarParcelamento.getMessage());
@@ -99,7 +101,7 @@ public class ParcelamentoCRUD {
         Parcelamento parcelamento = new Parcelamento();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT quantidadeParcelas FROM parcelamento WHERE descricaoParcelamento = '" + descricaoParcelamento + "';");
+            stmt = conn.prepareStatement("SELECT quantidadeParcelas FROM parcelamentoVenda WHERE descricaoParcelamento = '" + descricaoParcelamento + "';");
 
             result = stmt.executeQuery();
             if (result.next()) {
@@ -114,21 +116,5 @@ public class ParcelamentoCRUD {
         return parcelamento.getQuantidadeParcelas();
     }
 
-    // DELETE
-    public void deletarParcelamento(Parcelamento parcelamento) {
-
-        PreparedStatement stmt;
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM parcelamento WHERE codParcelamento = ?");
-
-            stmt.setInt(1, parcelamento.getCodParcelamento());
-
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-        } catch (SQLException erroDeletarParcelamento) {
-            System.out.println(erroDeletarParcelamento.getMessage());
-        }
-
-    }
 }
+
