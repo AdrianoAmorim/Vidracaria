@@ -15,16 +15,16 @@ import javax.swing.JOptionPane;
  */
 public class FuncionarioCRUD {
 
-        public int incrementCodFuncionario() {
+    public int incrementCodFuncionario() {
         PreparedStatement stmt;
         Connection conn = new SQLite().conectar();
         int increment = 0;
-        
+
         try {
             stmt = conn.prepareStatement("SELECT MAX(codFuncionario) FROM funcionario;");
             ResultSet result = stmt.executeQuery();
             increment = result.getInt(1);
-            
+
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodFuncionario) {
@@ -32,7 +32,7 @@ public class FuncionarioCRUD {
         }
         return increment + 1;
     }
-        
+
     // INSERT 
     public void inserirFuncionario(Funcionario funcionario) {
 
@@ -40,15 +40,16 @@ public class FuncionarioCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("INSERT INTO funcionario(codFuncionario, codCargo, codEmpresa, "
-                    + " nomeFuncionario, salarioFuncionario, telResidencial, telCelular) VALUES (?,?,?,?,?,?,?);");
+                    + " nomeFuncionario, telFixo, telCel, salarioFuncionario, ativo) VALUES (?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, funcionario.getCodFuncionario());
             stmt.setInt(2, funcionario.getCodEmpresa());
             stmt.setInt(3, funcionario.getCodCargo());
             stmt.setString(4, funcionario.getNomeFuncionario());
-            stmt.setDouble(5, funcionario.getSalarioFuncionario());
-            stmt.setString(6, funcionario.getTelResidencial());
-            stmt.setString(7, funcionario.getTelCelular());
+            stmt.setString(5, funcionario.getTelFixo());
+            stmt.setString(6, funcionario.getTelCel());
+            stmt.setDouble(7, funcionario.getSalarioFuncionario());
+            stmt.setInt(8, funcionario.getAtivo());
 
             stmt.executeUpdate();
             stmt.close();
@@ -87,7 +88,7 @@ public class FuncionarioCRUD {
 
         PreparedStatement stmt;
         ResultSet result;
-        
+
         ArrayList<Funcionario> listaFuncionario = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
@@ -97,7 +98,7 @@ public class FuncionarioCRUD {
             result = stmt.executeQuery();
             while (result.next()) {
                 Funcionario funcionario = new Funcionario();
-                
+
                 funcionario.setCodFuncionario(result.getInt("codFuncionario"));
                 funcionario.setCodEmpresa(result.getInt("codEmpresa"));
                 funcionario.setCodCargo(result.getInt("codCargo"));

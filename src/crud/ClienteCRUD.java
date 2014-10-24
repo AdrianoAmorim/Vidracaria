@@ -2,6 +2,7 @@ package crud;
 
 import database.SQLite;
 import domain.Cliente;
+import domain.EnderecoCliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +20,12 @@ public class ClienteCRUD {
         PreparedStatement stmt;
         Connection conn = new SQLite().conectar();
         int increment = 0;
-        
+
         try {
             stmt = conn.prepareStatement("SELECT MAX(codCliente) FROM cliente;");
             ResultSet result = stmt.executeQuery();
             increment = result.getInt(1);
-            
+
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodCliente) {
@@ -33,263 +34,292 @@ public class ClienteCRUD {
         return increment + 1;
     }
 
-    public void inserirCliente(Cliente cliente) {
+    public void inserirCliente(Cliente cliente, EnderecoCliente enderecoCliente) {
 
         PreparedStatement stmt;
 
-        Connection conn = new SQLite().conectar();
-
-        try {
-            stmt = conn.prepareStatement("INSERT INTO cliente(codCliente, cpfCliente, nomeCliente, rgCliente, "
-                    + "enderecoCliente, telResidencial, telCelular) "
-                    + "VALUES (?,?,?,?,?,?,?);");
+        try (Connection conn = new SQLite().conectar()) {
+            conn.setAutoCommit(false);
+            
+            stmt = conn.prepareStatement("INSERT INTO cliente(codCliente, cpf, cnpj, inscricaoEstadual,"
+                    + "nome, rg, telFixo, telCel, ativo, email)"
+                    + "  VALUES (?,?,?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, cliente.getCodCliente());
-            stmt.setString(2, cliente.getCpfCliente());
-            stmt.setString(3, cliente.getNomeCliente());
-            stmt.setString(4, cliente.getRgCliente());
-            stmt.setString(5, cliente.getEnderecoCliente());
-            stmt.setString(6, cliente.getTelResidencial());
-            stmt.setString(7, cliente.getTelCelular());
+            // TIPO AINDA NÃO IMPLEMENTADO
+            // cliente.setTipoCliente(tipoCliente);        
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getCnpj());
+            stmt.setString(4, cliente.getInscricaoEstadual());
+            stmt.setString(5, cliente.getNome());
+            stmt.setString(6, cliente.getRg());
+            stmt.setString(7, cliente.getTelFixo());
+            stmt.setString(8, cliente.getTelCel());
+            stmt.setInt(9, cliente.getAtivo());
+            stmt.setString(10, cliente.getEmail());
+
             stmt.executeUpdate();
+            
+            stmt = conn.prepareStatement("INSERT INTO enderecoCliente(codCliente, endereco, numero, "
+                    + "complemento, bairro, cep, cidade, uf) "
+                    + "VALUES (?,?,?,?,?,?,?,?);");
+            
+            stmt.setInt(1, enderecoCliente.getCodCliente());
+            stmt.setString(2, enderecoCliente.getEndereco());
+            stmt.setString(3, enderecoCliente.getNumero());
+            stmt.setString(4, enderecoCliente.getComplemento());
+            stmt.setString(5, enderecoCliente.getBairro());
+            stmt.setString(6, enderecoCliente.getCep());
+            stmt.setString(7, enderecoCliente.getCidade());
+            stmt.setString(8, enderecoCliente.getUf());
+            
+            stmt.executeUpdate();
+            
+            conn.commit();
+            conn.setAutoCommit(true);
             stmt.close();
             conn.close();
 
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
         } catch (SQLException erroInserirCliente) {
-            System.out.println(erroInserirCliente.getErrorCode());
+            JOptionPane.showMessageDialog(null, erroInserirCliente.getMessage());
         }
     }
+    /*
+     public ArrayList<Cliente> consultarTodosCliente() {
 
-    public ArrayList<Cliente> consultarTodosCliente() {
+     PreparedStatement stmt;
+     ResultSet result;
+     ArrayList<Cliente> listaClientes = new ArrayList<>();
 
-        PreparedStatement stmt;
-        ResultSet result;
-        ArrayList<Cliente> listaClientes = new ArrayList<>();
+     try (Connection conn = new SQLite().conectar()) {
+     stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
+     + "enderecoCliente, telResidencial, telCelular FROM cliente;");
+     result = stmt.executeQuery();
+     while (result.next()) {
+     Cliente cliente = new Cliente();
+     cliente.setCodCliente(result.getInt("codCliente"));
+     cliente.setNomeCliente(result.getString("nomeCliente"));
+     cliente.setCpfCliente(result.getString("cpfCliente"));
+     cliente.setRgCliente(result.getString("rgCliente"));
+     cliente.setEnderecoCliente(result.getString("enderecoCliente"));
+     cliente.setTelResidencial(result.getString("telResidencial"));
+     cliente.setTelCelular(result.getString("telCelular"));
 
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
-                    + "enderecoCliente, telResidencial, telCelular FROM cliente;");
-            result = stmt.executeQuery();
-            while (result.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setCodCliente(result.getInt("codCliente"));
-                cliente.setNomeCliente(result.getString("nomeCliente"));
-                cliente.setCpfCliente(result.getString("cpfCliente"));
-                cliente.setRgCliente(result.getString("rgCliente"));
-                cliente.setEnderecoCliente(result.getString("enderecoCliente"));
-                cliente.setTelResidencial(result.getString("telResidencial"));
-                cliente.setTelCelular(result.getString("telCelular"));
+     listaClientes.add(cliente);
+     }
+     stmt.close();
 
-                listaClientes.add(cliente);
-            }
-            stmt.close();
+     return listaClientes;
+     } catch (SQLException erroConsultarCliente) {
+     System.out.println(erroConsultarCliente.getMessage());
+     return listaClientes;
+     }
+     }
+     */
 
-            return listaClientes;
-        } catch (SQLException erroConsultarCliente) {
-            System.out.println(erroConsultarCliente.getMessage());
-            return listaClientes;
-        }
-    }
+//Consulta o cliente passando todos ou um parametro/*
+    /*public ArrayList<Cliente> consultarCliente(Cliente cliente) {
 
-//Consulta o cliente passando todos ou um parametro
-    public ArrayList<Cliente> consultarCliente(Cliente cliente) {
+     PreparedStatement stmt;
+     ResultSet result;
+     ArrayList<Cliente> listCliente = new ArrayList<>();
 
-        PreparedStatement stmt;
-        ResultSet result;
-        ArrayList<Cliente> listCliente = new ArrayList<>();
+     try (Connection conn = new SQLite().conectar()) {
 
-        try (Connection conn = new SQLite().conectar()) {
+     // FALTA IMPLEMENTAR OS IFS para pesquisar utilizando todos os campos
+     stmt = conn.prepareStatement("SELECT codCliente, nomeCliente, cpfCliente, rgCliente, enderecoCliente, telResidencial, "
+     + "telCelular FROM cliente WHERE CodCliente = ?;");
 
-            // FALTA IMPLEMENTAR OS IFS para pesquisar utilizando todos os campos
-            stmt = conn.prepareStatement("SELECT codCliente, nomeCliente, cpfCliente, rgCliente, enderecoCliente, telResidencial, "
-                    + "telCelular FROM cliente WHERE CodCliente = ?;");
+     stmt.setInt(1, cliente.getCodCliente());
 
-            stmt.setInt(1, cliente.getCodCliente());
+     result = stmt.executeQuery();
 
-            result = stmt.executeQuery();
+     while (result.next()) {
+     // reseta os valores do objeto cliente
+     cliente = new Cliente();
 
-            while (result.next()) {
-                // reseta os valores do objeto cliente
-                cliente = new Cliente();
+     cliente.setCodCliente(result.getInt("codCliente"));
+     cliente.setNomeCliente(result.getString("nomeCliente"));
+     cliente.setCpfCliente(result.getString("cpfCliente"));
+     cliente.setRgCliente(result.getString("rgCliente"));
+     cliente.setEnderecoCliente(result.getString("enderecoCliente"));
+     cliente.setTelResidencial(result.getString("telResidencial"));
+     cliente.setTelCelular(result.getString("telCelular"));
 
-                cliente.setCodCliente(result.getInt("codCliente"));
-                cliente.setNomeCliente(result.getString("nomeCliente"));
-                cliente.setCpfCliente(result.getString("cpfCliente"));
-                cliente.setRgCliente(result.getString("rgCliente"));
-                cliente.setEnderecoCliente(result.getString("enderecoCliente"));
-                cliente.setTelResidencial(result.getString("telResidencial"));
-                cliente.setTelCelular(result.getString("telCelular"));
+     listCliente.add(cliente);
+     }
+     stmt.close();
+     result.close();
+     } catch (SQLException ex) {
+     JOptionPane.showMessageDialog(null, "Erro na Consulta Detalhada de Clientes.");
+     }
 
-                listCliente.add(cliente);
-            }
-            stmt.close();
-            result.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na Consulta Detalhada de Clientes.");
-        }
+     return listCliente;
+     }
 
-        return listCliente;
-    }
+     public Cliente consultarCpfCliente(String cpfCliente) {
 
-    public Cliente consultarCpfCliente(String cpfCliente) {
+     PreparedStatement stmt;
+     ResultSet result;
+     Cliente cliente = new Cliente();
+
+     try {
+     try (Connection conn = new SQLite().conectar()) {
+     stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
+     + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE cpf = '" + cpfCliente + "';");
+
+     result = stmt.executeQuery();
+     while (result.next()) {
+
+     cliente.setCodCliente(result.getInt("codCliente"));
+     cliente.setNomeCliente(result.getString("nomeCliente"));
+     cliente.setCpfCliente(result.getString("cpfCliente"));
+     cliente.setRgCliente(result.getString("rgCliente"));
+     cliente.setEnderecoCliente(result.getString("enderecoCliente"));
+     cliente.setTelResidencial(result.getString("telResidencial"));
+     cliente.setTelCelular(result.getString("telCelular"));
+     }
+     stmt.close();
+     }
+     } catch (SQLException erroConsultarCpfCliente) {
+     System.out.println(erroConsultarCpfCliente.getMessage());
+     }
+     return cliente;
+     }
+
+     public ArrayList<Cliente> consultarCpfClienteAprox(String cpfCliente) {
+
+     PreparedStatement stmt;
+     ResultSet result;
+     ArrayList<Cliente> listCliente = new ArrayList<>();
+
+     try {
+     try (Connection conn = new SQLite().conectar()) {
+     stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
+     + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE cpfCliente LIKE '" + cpfCliente + "%';");
+
+     result = stmt.executeQuery();
+     while (result.next()) {
+     Cliente cliente = new Cliente();
+     cliente.setCodCliente(result.getInt("codcliente"));
+     cliente.setNomeCliente(result.getString("nomeCliente"));
+     cliente.setCpfCliente(result.getString("cpfCliente"));
+     cliente.setRgCliente(result.getString("rgCliente"));
+     cliente.setEnderecoCliente(result.getString("enderecoCliente"));
+     cliente.setTelResidencial(result.getString("telResidencial"));
+     cliente.setTelCelular(result.getString("telCelular"));
+     listCliente.add(cliente);
+     }
+     stmt.close();
+     }
+     } catch (SQLException erroConsultarCpfCliente) {
+     System.out.println(erroConsultarCpfCliente.getMessage());
+     }
+     return listCliente;
+     }*/
+    public Cliente consultarNomeCliente(String nome) {
 
         PreparedStatement stmt;
         ResultSet result;
         Cliente cliente = new Cliente();
 
-        try {
-            try (Connection conn = new SQLite().conectar()) {
-                stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
-                        + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE cpf = '" + cpfCliente + "';");
-
-                result = stmt.executeQuery();
-                while (result.next()) {
-
-                    cliente.setCodCliente(result.getInt("codCliente"));
-                    cliente.setNomeCliente(result.getString("nomeCliente"));
-                    cliente.setCpfCliente(result.getString("cpfCliente"));
-                    cliente.setRgCliente(result.getString("rgCliente"));
-                    cliente.setEnderecoCliente(result.getString("enderecoCliente"));
-                    cliente.setTelResidencial(result.getString("telResidencial"));
-                    cliente.setTelCelular(result.getString("telCelular"));
-                }
-                stmt.close();
-            }
-        } catch (SQLException erroConsultarCpfCliente) {
-            System.out.println(erroConsultarCpfCliente.getMessage());
-        }
-        return cliente;
-    }
-
-    public ArrayList<Cliente> consultarCpfClienteAprox(String cpfCliente) {
-
-        PreparedStatement stmt;
-        ResultSet result;
-        ArrayList<Cliente> listCliente = new ArrayList<>();
-
-        try {
-            try (Connection conn = new SQLite().conectar()) {
-                stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
-                        + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE cpfCliente LIKE '" + cpfCliente + "%';");
-
-                result = stmt.executeQuery();
-                while (result.next()) {
-                    Cliente cliente = new Cliente();
-                    cliente.setCodCliente(result.getInt("codcliente"));
-                    cliente.setNomeCliente(result.getString("nomeCliente"));
-                    cliente.setCpfCliente(result.getString("cpfCliente"));
-                    cliente.setRgCliente(result.getString("rgCliente"));
-                    cliente.setEnderecoCliente(result.getString("enderecoCliente"));
-                    cliente.setTelResidencial(result.getString("telResidencial"));
-                    cliente.setTelCelular(result.getString("telCelular"));
-                    listCliente.add(cliente);
-                }
-                stmt.close();
-            }
-        } catch (SQLException erroConsultarNomeCliente) {
-            System.out.println(erroConsultarNomeCliente.getMessage());
-        }
-        return listCliente;
-    }
-
-    public Cliente consultarNomeCliente(String nomeCliente) {
-
-        PreparedStatement stmt;
-        ResultSet result;
-        Cliente cliente = new Cliente();
-
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codcliente, cpfCliente, nomeCliente, rgCliente, "
-                    + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE nomeCliente = '" + nomeCliente + "';");
+            stmt = conn.prepareStatement("SELECT codCliente, tipoCliente, cpf, cnpj, inscricaoEstadual,"
+                    + "nome, rg, telFixo, telCel, ativo, email FROM cliente WHERE nome = '" + nome + "';");
 
             result = stmt.executeQuery();
             while (result.next()) {
                 cliente.setCodCliente(result.getInt("codCliente"));
-                cliente.setNomeCliente(result.getString("nomeCliente"));
-                cliente.setCpfCliente(result.getString("cpfCliente"));
-                cliente.setRgCliente(result.getString("rgCliente"));
-                cliente.setEnderecoCliente(result.getString("enderecoCliente"));
-                cliente.setTelResidencial(result.getString("telResidencial"));
-                cliente.setTelCelular(result.getString("telCelular"));
+                // TIPO NÃO IMPLEMENTADO
+                // cliente.setTipo(result.getString("tipoCliente"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setCnpj(result.getString("cnpj"));
+                cliente.setInscricaoEstadual(result.getString("inscricaoEstadual"));
+                cliente.setNome(result.getString("nome"));
+                cliente.setRg(result.getString("rg"));
+                cliente.setTelFixo(result.getString("telFixo"));
+                cliente.setTelCel(result.getString("telCel"));
+                cliente.setAtivo(result.getInt("ativo"));
+                cliente.setEmail(result.getString("email"));
             }
             stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarNomeCliente) {
             System.out.println(erroConsultarNomeCliente.getMessage());
         }
         return cliente;
     }
 
-    public ArrayList<Cliente> consultarNomeClienteAprox(String nomeCliente) {
+    /*    public ArrayList<Cliente> consultarNomeClienteAprox(String nomeCliente) {
 
-        PreparedStatement stmt;
-        ResultSet result;
-        ArrayList<Cliente> listCliente = new ArrayList<>();
+     PreparedStatement stmt;
+     ResultSet result;
+     ArrayList<Cliente> listCliente = new ArrayList<>();
 
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
-                    + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE nomeCliente LIKE '" + nomeCliente + "%';");
+     try (Connection conn = new SQLite().conectar()) {
+     stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
+     + "enderecoCliente, telResidencial, telCelular FROM cliente WHERE nomeCliente LIKE '" + nomeCliente + "%';");
 
-            result = stmt.executeQuery();
-            while (result.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setCodCliente(result.getInt("codCliente"));
-                cliente.setNomeCliente(result.getString("nomeCliente"));
-                cliente.setCpfCliente(result.getString("cpfCliente"));
-                cliente.setRgCliente(result.getString("rgCliente"));
-                cliente.setEnderecoCliente(result.getString("enderecoCliente"));
-                cliente.setTelResidencial(result.getString("telResidencial"));
-                cliente.setTelCelular(result.getString("telCelular"));
-                listCliente.add(cliente);
-            }
-            stmt.close();
-        } catch (SQLException erroConsultarNomeCliente) {
-            System.out.println(erroConsultarNomeCliente.getMessage());
-        }
-        return listCliente;
-    }
+     result = stmt.executeQuery();
+     while (result.next()) {
+     Cliente cliente = new Cliente();
+     cliente.setCodCliente(result.getInt("codCliente"));
+     cliente.setNomeCliente(result.getString("nomeCliente"));
+     cliente.setCpfCliente(result.getString("cpfCliente"));
+     cliente.setRgCliente(result.getString("rgCliente"));
+     cliente.setEnderecoCliente(result.getString("enderecoCliente"));
+     cliente.setTelResidencial(result.getString("telResidencial"));
+     cliente.setTelCelular(result.getString("telCelular"));
+     listCliente.add(cliente);
+     }
+     stmt.close();
+     } catch (SQLException erroConsultarNomeCliente) {
+     System.out.println(erroConsultarNomeCliente.getMessage());
+     }
+     return listCliente;
+     }
 
-    public void atualizarCliente(Cliente cliente) {
+     public void atualizarCliente(Cliente cliente) {
 
-        PreparedStatement stmt;
-        ArrayList<Cliente> listCliente = new ArrayList<>();
+     PreparedStatement stmt;
+     ArrayList<Cliente> listCliente = new ArrayList<>();
 
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE cliente SET nomeCliente = ?, cpfCliente = ?, rgCliente = ?, "
-                    + "enderecoCliente = ?, telResidencial = ?, telCelular = ? WHERE codCliente = ?;");
+     try (Connection conn = new SQLite().conectar()) {
+     stmt = conn.prepareStatement("UPDATE cliente SET nomeCliente = ?, cpfCliente = ?, rgCliente = ?, "
+     + "enderecoCliente = ?, telResidencial = ?, telCelular = ? WHERE codCliente = ?;");
 
-            stmt.setString(1, cliente.getNomeCliente());
-            stmt.setString(2, cliente.getCpfCliente());
-            stmt.setString(3, cliente.getRgCliente());
-            stmt.setString(4, cliente.getEnderecoCliente());
-            stmt.setString(5, cliente.getTelResidencial());
-            stmt.setString(6, cliente.getTelCelular());
-            stmt.setInt(7, cliente.getCodCliente());
+     stmt.setString(1, cliente.getNomeCliente());
+     stmt.setString(2, cliente.getCpfCliente());
+     stmt.setString(3, cliente.getRgCliente());
+     stmt.setString(4, cliente.getEnderecoCliente());
+     stmt.setString(5, cliente.getTelResidencial());
+     stmt.setString(6, cliente.getTelCelular());
+     stmt.setInt(7, cliente.getCodCliente());
 
-            stmt.executeUpdate();
-            stmt.close();
+     stmt.executeUpdate();
+     stmt.close();
 
-            JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
-        } catch (SQLException erroAtualizarCliente) {
-            System.out.println(erroAtualizarCliente.getMessage());
-        }
-    }
+     JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
+     } catch (SQLException erroAtualizarCliente) {
+     System.out.println(erroAtualizarCliente.getMessage());
+     }
+     }
 
-    public void deletarCliente(Cliente cliente) {
+     public void deletarCliente(Cliente cliente) {
 
-        PreparedStatement stmt;
+     PreparedStatement stmt;
 
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM cliente WHERE codCliente = ?;");
-            stmt.setInt(1, cliente.getCodCliente());
+     try (Connection conn = new SQLite().conectar()) {
+     stmt = conn.prepareStatement("DELETE FROM cliente WHERE codCliente = ?;");
+     stmt.setInt(1, cliente.getCodCliente());
 
-            stmt.executeUpdate();
-            stmt.close();
+     stmt.executeUpdate();
+     stmt.close();
 
-            JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
-        } catch (SQLException erroDeletarCliente) {
-            System.out.println(erroDeletarCliente.getMessage());
-        }
-    }
-
+     JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
+     } catch (SQLException erroDeletarCliente) {
+     System.out.println(erroDeletarCliente.getMessage());
+     }
+     }*/
 }

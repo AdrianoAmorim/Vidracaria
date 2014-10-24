@@ -1,6 +1,7 @@
 package crud;
 
 import database.SQLite;
+import domain.ProdutoVendido;
 import domain.Venda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,12 +20,12 @@ public class VendaCRUD {
         PreparedStatement stmt;
         Connection conn = new SQLite().conectar();
         int increment = 0;
-        
+
         try {
             stmt = conn.prepareStatement("SELECT MAX(codVenda) FROM venda;");
             ResultSet result = stmt.executeQuery();
             increment = result.getInt(1);
-            
+
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodVenda) {
@@ -33,26 +34,46 @@ public class VendaCRUD {
         return increment + 1;
     }
 
-    public void inserirVenda(Venda venda) {
+    public void inserirVenda(Venda venda, ArrayList<ProdutoVendido> listaProdutosVendidos) {
 
-        PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO venda(codVenda, codTipoRenda, codCliente, codParcelamento, totalVenda, dataVenda) "
-                    + "VALUES(?,?,?,?,?,?);");
+            conn.setAutoCommit(false);
+
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO venda(codVenda, codParcelamento, "
+                    + "codTipoRenda, codEmpresa, codCliente, dataVenda, totalVenda) "
+                    + "VALUES(?,?,?,?,?,?,?);");
+
             stmt.setInt(1, venda.getCodVenda());
-            stmt.setInt(2, venda.getCodTipoRenda());
-            stmt.setInt(3, venda.getCodCliente());
-            stmt.setInt(4, venda.getCodParcelamento());
-            stmt.setDouble(5, venda.getTotalVenda());
+            stmt.setInt(2, venda.getCodParcelamento());
+            stmt.setInt(3, venda.getCodTipoRenda());
+            stmt.setInt(4, 1);
+            stmt.setInt(5, venda.getCodCliente());
             stmt.setString(6, venda.getDataVenda());
+            stmt.setDouble(7, venda.getTotalVenda());
 
             stmt.executeUpdate();
+
+            for (ProdutoVendido produtoVendido : listaProdutosVendidos) {
+
+                stmt = conn.prepareStatement("INSERT INTO produtoVendido(codVenda, codProduto, quantidade, precoVenda) "
+                        + "VALUES (?,?,?,?);");
+
+                stmt.setInt(1, venda.getCodVenda());
+                stmt.setInt(2, produtoVendido.getCodProduto());
+                stmt.setDouble(3, produtoVendido.getQuantidadeProduto());
+                stmt.setDouble(4, produtoVendido.getPrecoVenda());
+
+                stmt.executeUpdate();
+            }
+
             stmt.close();
-            conn.close();
-            System.out.println("Venda cadastrada com sucesso!");
-        } catch (SQLException erroInserirVenda) {
-            System.out.println(erroInserirVenda.getMessage());
+            conn.commit();
+            conn.setAutoCommit(true);
+            JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
+        } catch (SQLException erroTransacaoVenda) {
+            JOptionPane.showMessageDialog(null, erroTransacaoVenda.getMessage());
         }
+
     }
 
     public ArrayList<Venda> consultarVenda() {

@@ -38,6 +38,8 @@ public class SQLite {
             //String del = "DROP TABLE nomeTabela;";
             //stmt.executeUpdate(del);
             //stmt.close();
+            
+            conn.setAutoCommit(true);
             String empresa = "CREATE  TABLE IF NOT EXISTS Empresa ("
                     + "  codEmpresa   INT          NOT NULL,"
                     + "  cnpjEmpresa  VARCHAR(14)  NOT NULL,"

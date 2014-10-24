@@ -157,10 +157,10 @@ public class FrmBuscarClienteVenda extends javax.swing.JDialog {
             //se o campo de pesquisa nao estiver Vazio
             if (tfValorPesquisa.getText().isEmpty() == false) {
                 //carrega o Array com o resultado da consulta
-                listaCliente = clienteCrud.consultarNomeClienteAprox(tfValorPesquisa.getText());
+//                listaCliente = clienteCrud.consultarNomeClienteAprox(tfValorPesquisa.getText());
                 //Adiciona cada Cliente no modelo
                 for (Cliente cli : listaCliente) {
-                    modelo.addRow(new Object[]{cli.getNomeCliente(), cli.getCpfCliente()});
+  //                  modelo.addRow(new Object[]{cli.getNomeCliente(), cli.getCpfCliente()});
                 }
             }
         } else {
@@ -168,11 +168,11 @@ public class FrmBuscarClienteVenda extends javax.swing.JDialog {
                 //se o campo de pesquisa nao estiver Vazio
                 if (tfValorPesquisa.getText().isEmpty() == false) {
                     //carrega o Array com o resultado da consulta
-                    listaCliente = clienteCrud.consultarCpfClienteAprox(tfValorPesquisa.getText());
+    //                listaCliente = clienteCrud.consultarCpfClienteAprox(tfValorPesquisa.getText());
                     //Adiciona cada Cliente no modelo
                     for (Cliente cli : listaCliente) {
 
-                        modelo.addRow(new Object[]{cli.getNomeCliente(), cli.getCpfCliente()});
+      //                  modelo.addRow(new Object[]{cli.getNomeCliente(), cli.getCpfCliente()});
                     }
                 }
             }

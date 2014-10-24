@@ -184,18 +184,18 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
                     .addComponent(jLabel1)
                     .addComponent(tfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(tfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(tfResidencialCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(tfRgCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tfCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(tfResidencialCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel5)
-                                .addComponent(tfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(tfCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4))
                 .addGap(15, 15, 15))
         );
 
@@ -231,7 +231,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -261,18 +261,18 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         modelo.setRowCount(0);
         
         cliente.setCodCliente(Integer.valueOf(tfCodCliente.getText()));
-        cliente.setNomeCliente(tfNomeCliente.getText());
-        cliente.setCpfCliente(tfCpfCliente.getText());
-        cliente.setRgCliente(tfRgCliente.getText());
-        cliente.setTelResidencial(tfResidencialCliente.getText());
-        cliente.setTelCelular(tfCelularCliente.getText());
+//        cliente.setNomeCliente(tfNomeCliente.getText());
+  //      cliente.setCpfCliente(tfCpfCliente.getText());
+    //    cliente.setRgCliente(tfRgCliente.getText());
+      //  cliente.setTelResidencial(tfResidencialCliente.getText());
+       // cliente.setTelCelular(tfCelularCliente.getText());
         
-        listaCliente = cliCrud.consultarCliente(cliente);
+      //  listaCliente = cliCrud.consultarCliente(cliente);
         
         for (Cliente cli : listaCliente) {
 
-            modelo.addRow(new Object[]{cli.getCodCliente(), cli.getNomeCliente(), cli.getCpfCliente(), cli.getRgCliente(),
-                cli.getTelCelular(), cli.getTelResidencial()});
+        //    modelo.addRow(new Object[]{cli.getCodCliente(), cli.getNomeCliente(), cli.getCpfCliente(), cli.getRgCliente(),
+          //      cli.getTelCelular(), cli.getTelResidencial()});
         }
 
     }//GEN-LAST:event_tfNomeClienteCaretUpdate

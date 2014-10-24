@@ -15,11 +15,11 @@ import java.util.ArrayList;
 public class ProdutoVendidoCRUD {
 
     // INSERT 
-    public void inserirProdutoVendido(ProdutoVendido produtoVendido) {
+    public boolean inserirProdutoVendido(ProdutoVendido produtoVendido) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO produtoVendido(codProduto, codVenda, quantidadeProduto, precoVenda) "
+            stmt = conn.prepareStatement("INSERT INTO produtoVendido(codProduto, codVenda, quantidade, precoVenda) "
                     + "VALUES (?,?,?,?);");
 
             stmt.setInt(1, produtoVendido.getCodProduto());
@@ -30,9 +30,11 @@ public class ProdutoVendidoCRUD {
             stmt.executeUpdate();
             stmt.close();
 
-            System.out.println("Produto Comprado cadastrado com sucesso!");
+            System.out.println("Produto Vendido cadastrado com sucesso!");
+            return true;
         } catch (SQLException erroInserirProdutoVendido) {
             System.out.println(erroInserirProdutoVendido.getMessage());
+            return false;
         }
     }
 
@@ -41,7 +43,7 @@ public class ProdutoVendidoCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE produtoVendido, SET quantidadeProduto = ?, precoVenda = ?"
+            stmt = conn.prepareStatement("UPDATE produtoVendido, SET quantidade = ?, precoVenda = ?"
                     + "WHERE codProduto = ? AND codVenda = ?;");
 
             stmt.setDouble(1, produtoVendido.getQuantidadeProduto());
