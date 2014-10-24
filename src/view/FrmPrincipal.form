@@ -29,7 +29,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-36,0,0,4,-13"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-23,0,0,4,-13"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
@@ -83,7 +83,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="644" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="657" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -227,119 +227,120 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="925" max="32767" attributes="0"/>
-                          <Component id="btnAlterarCliente" min="-2" pref="38" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnCadastrarCl" min="-2" pref="38" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="btnBuscarCliente" min="-2" pref="38" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tfClienteCodigo" min="-2" pref="130" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
-                                          <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="tfClienteNome" alignment="0" min="-2" pref="496" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel56" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="tfClienteEndereco" min="-2" pref="303" max="-2" attributes="0"/>
-                                              <Component id="tfClienteEndereco1" min="-2" pref="303" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="tfClienteCidade" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
-                                                      <Component id="tfClienteBairro" min="-2" pref="290" max="-2" attributes="0"/>
-                                                      <Component id="tfClienteRg" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                                                      <Component id="tfClienteInscEstadual" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                                                      <Component id="tfClienteTelCel" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel56" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="tfClienteEndereco" min="-2" pref="303" max="-2" attributes="0"/>
+                                                  <Component id="tfClienteEndereco1" min="-2" pref="303" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="tfClienteCidade" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
+                                                          <Component id="tfClienteBairro" min="-2" pref="290" max="-2" attributes="0"/>
+                                                          <Component id="tfClienteRg" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                                          <Component id="tfClienteInscEstadual" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                                          <Component id="tfClienteTelCel" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                                      </Group>
                                                   </Group>
                                               </Group>
                                           </Group>
+                                          <Component id="tfClienteEmail" alignment="0" min="-2" pref="276" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="tfClienteCnpj" min="-2" pref="158" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="tfClienteTelRes" min="-2" pref="158" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="369" pref="369" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel66" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="tfClienteUf" min="-2" pref="70" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="btnAlterarCliente" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="tfClienteCep" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
+                                                  <Component id="tfClienteCpf" min="-2" pref="158" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel50" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
-                                      <Component id="tfClienteEmail" alignment="0" min="-2" pref="276" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="tfClienteCnpj" min="-2" pref="158" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                      <Component id="tfClienteNumero" min="-2" pref="76" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="tfClienteTelRes" min="-2" pref="158" max="-2" attributes="0"/>
+                                                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="btnBuscarCliente" min="-2" pref="38" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="369" pref="369" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="tfClienteCodigo" min="-2" pref="130" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="tfClienteUf" min="-2" pref="70" max="-2" attributes="0"/>
+                                                  <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                                                  <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel66" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="tfClienteNome" alignment="0" min="-2" pref="496" max="-2" attributes="0"/>
                                           </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="tfClienteCep" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
-                                              <Component id="tfClienteCpf" min="-2" pref="158" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel50" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="420" max="-2" attributes="0"/>
-                                          <Component id="tfClienteNumero" min="-2" pref="62" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="223" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -614,11 +615,23 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton3">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="8b" green="45" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="F&#xed;sica"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton4">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="8b" green="45" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Jur&#xed;dica"/>
                   </Properties>
                 </Component>
@@ -928,7 +941,7 @@
                       <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1034,26 +1047,26 @@
                                                   <Group type="102" attributes="0">
                                                       <Component id="jLabel72" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="tfClienteNumero1" min="-2" pref="77" max="-2" attributes="0"/>
+                                                      <Component id="tfFuncionarioNumero" min="-2" pref="77" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="tfClienteEndereco3" min="-2" pref="287" max="-2" attributes="0"/>
+                                                          <Component id="tfFuncionarioComplemento" min="-2" pref="287" max="-2" attributes="0"/>
                                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                           <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="32767" attributes="0"/>
-                                                          <Component id="tfClienteBairro1" min="-2" pref="267" max="-2" attributes="0"/>
+                                                          <Component id="tfFuncionarioBairro" min="-2" pref="267" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="tfClienteCep1" min="-2" pref="158" max="-2" attributes="0"/>
+                                                          <Component id="tfFuncionarioCep" min="-2" pref="158" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="jLabel75" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="tfClienteCidade1" min="-2" pref="290" max="-2" attributes="0"/>
+                                                          <Component id="tfFuncionarioCidade" min="-2" pref="290" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="jLabel77" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Component id="tfClienteUf1" min="-2" pref="70" max="-2" attributes="0"/>
+                                                          <Component id="tfFuncionarioUf" min="-2" pref="70" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
@@ -1064,37 +1077,39 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel46" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel78" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="btnFuncionarioBuscar" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="tfFuncionarioTelResidencial" min="-2" pref="150" max="-2" attributes="0"/>
-                                                      <Component id="tfClienteEndereco2" alignment="0" min="-2" pref="500" max="-2" attributes="0"/>
-                                                      <Component id="tfFuncionarioNome" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel46" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel78" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="btnFuncionarioBuscar" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="tfFuncionarioTelResidencial" min="-2" pref="150" max="-2" attributes="0"/>
+                                                          <Component id="tfFuncionarioLogradouro" alignment="0" min="-2" pref="500" max="-2" attributes="0"/>
+                                                          <Component id="tfFuncionarioNome" max="32767" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                                      <Component id="tfFuncionarioCodigo" min="-2" pref="160" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                                  <Component id="tfFuncionarioCodigo" max="32767" attributes="0"/>
-                                              </Group>
                                           </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="btnFuncionarioBuscarCodCargo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="tfFuncionarioCodCargo" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                              <Component id="btnFuncionarioBuscarCodCargo" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="tfFuncionarioCodCargo" min="-2" pref="110" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="429" max="32767" attributes="0"/>
@@ -1146,24 +1161,24 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfClienteEndereco2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="tfClienteNumero1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfFuncionarioLogradouro" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfFuncionarioNumero" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="jLabel72" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel73" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfClienteEndereco3" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfFuncionarioComplemento" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="jLabel74" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfClienteBairro1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfFuncionarioBairro" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel75" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfClienteCidade1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfFuncionarioCidade" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="jLabel77" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfClienteUf1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="tfClienteCep1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfFuncionarioUf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfFuncionarioCep" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="jLabel76" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1374,7 +1389,7 @@
                     <Property name="text" type="java.lang.String" value="Logradouro:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfClienteEndereco2">
+                <Component class="javax.swing.JTextField" name="tfFuncionarioLogradouro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
@@ -1392,7 +1407,7 @@
                     <Property name="text" type="java.lang.String" value="N&#xb0;:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfClienteNumero1">
+                <Component class="javax.swing.JTextField" name="tfFuncionarioNumero">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
@@ -1410,7 +1425,7 @@
                     <Property name="text" type="java.lang.String" value="Complemento:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfClienteEndereco3">
+                <Component class="javax.swing.JTextField" name="tfFuncionarioComplemento">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
@@ -1428,14 +1443,14 @@
                     <Property name="text" type="java.lang.String" value="Bairro:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfClienteBairro1">
+                <Component class="javax.swing.JTextField" name="tfFuncionarioBairro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfClienteCep1">
+                <Component class="javax.swing.JTextField" name="tfFuncionarioCep">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
@@ -1453,7 +1468,7 @@
                     <Property name="text" type="java.lang.String" value="Cidade:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfClienteCidade1">
+                <Component class="javax.swing.JTextField" name="tfFuncionarioCidade">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
@@ -1482,7 +1497,7 @@
                     <Property name="text" type="java.lang.String" value="UF:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfClienteUf1">
+                <Component class="javax.swing.JTextField" name="tfFuncionarioUf">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
@@ -3159,7 +3174,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jPanel33" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jPanel26" pref="99" max="32767" attributes="0"/>
+                                      <Component id="jPanel26" pref="111" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -4370,7 +4385,7 @@
                               <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="38" max="32767" attributes="0"/>
+                          <EmptySpace pref="51" max="32767" attributes="0"/>
                           <Component id="rbListarCOntasPagar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -4527,7 +4542,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="644" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="657" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -4565,7 +4580,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="644" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="657" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -4603,7 +4618,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="644" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="657" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -4625,7 +4640,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="654" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="667" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
