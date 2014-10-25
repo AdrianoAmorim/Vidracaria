@@ -8,6 +8,7 @@ package domain;
 public class ProdutoVendido {
     protected int codProduto;
     protected int codVenda;
+    protected int codRenda;
     protected Double quantidadeProduto;
     protected Double precoVenda;
     
@@ -26,7 +27,15 @@ public class ProdutoVendido {
     public void setCodVenda(int codVenda) {
         this.codVenda = codVenda;
     }
-    
+
+    public int getCodRenda() {
+        return codRenda;
+    }
+
+    public void setCodRenda(int codRenda) {
+        this.codRenda = codRenda;
+    }
+        
     public Double getQuantidadeProduto() {
         return quantidadeProduto;
     }

@@ -41,7 +41,7 @@ public class ParcelamentoCompraCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE parcelamentoCompra SET descricaoParcelamento = ?, quantidadeParcelas = ? "
+            stmt = conn.prepareStatement("UPDATE parcelamentoCompra SET descricao = ?, quantidadeParcelas = ? "
                     + "WHERE codParcelamento = ?;");
 
             stmt.setString(1, parcelamento.getDescricaoParcelamento());
@@ -67,7 +67,7 @@ public class ParcelamentoCompraCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
 
-            stmt = conn.prepareStatement("SELECT codParcelamento, descricaoParcelamento, quantidadeParcelas "
+            stmt = conn.prepareStatement("SELECT codParcelamento, descricao, quantidadeParcelas "
                     + "FROM parcelamentoCompra;");
 
             result = stmt.executeQuery();
@@ -76,7 +76,7 @@ public class ParcelamentoCompraCRUD {
                 Parcelamento parcelamento = new Parcelamento();
 
                 parcelamento.setCodParcelamento(result.getInt("codParcelamento"));
-                parcelamento.setDescricaoParcelamento(result.getString("descricaoParcelamento"));
+                parcelamento.setDescricaoParcelamento(result.getString("descricao"));
                 parcelamento.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
 
                 listaParcelamento.add(parcelamento);
@@ -91,7 +91,7 @@ public class ParcelamentoCompraCRUD {
     }
 
     // SELECT (Quantidade de parcelas)
-    public int consultarQuantidadeParcelas(String descricaoParcelamento) {
+    public int consultarQuantidadeParcelas(String descricao) {
 
         PreparedStatement stmt;
         ResultSet result;
@@ -99,7 +99,7 @@ public class ParcelamentoCompraCRUD {
         Parcelamento parcelamento = new Parcelamento();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT quantidadeParcelas FROM parcelamentoCompra WHERE descricaoParcelamento = '" + descricaoParcelamento + "';");
+            stmt = conn.prepareStatement("SELECT quantidadeParcelas FROM parcelamentoCompra WHERE descricao = '" + descricao + "';");
 
             result = stmt.executeQuery();
             if (result.next()) {

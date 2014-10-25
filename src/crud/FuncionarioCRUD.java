@@ -1,6 +1,7 @@
 package crud;
 
 import database.SQLite;
+import domain.Endereco;
 import domain.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,13 +35,15 @@ public class FuncionarioCRUD {
     }
 
     // INSERT 
-    public void inserirFuncionario(Funcionario funcionario) {
+    public void inserirFuncionario(Funcionario funcionario, Endereco enderecoFuncionario) {
 
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
+            conn.setAutoCommit(false);
+
             stmt = conn.prepareStatement("INSERT INTO funcionario(codFuncionario, codCargo, codEmpresa, "
-                    + " nomeFuncionario, telFixo, telCel, salarioFuncionario, ativo) VALUES (?,?,?,?,?,?,?,?);");
+                    + " nome, telFixo, telCel, salario, status) VALUES (?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, funcionario.getCodFuncionario());
             stmt.setInt(2, funcionario.getCodEmpresa());
@@ -52,8 +55,27 @@ public class FuncionarioCRUD {
             stmt.setInt(8, funcionario.getAtivo());
 
             stmt.executeUpdate();
-            stmt.close();
 
+            stmt = conn.prepareStatement("INSERT INTO enderecoFuncionario(codFuncionario, logradouro, numero, "
+                    + "complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?);");
+
+            stmt.setInt(1, enderecoFuncionario.getCod());
+            stmt.setString(2, enderecoFuncionario.getEndereco());
+            stmt.setString(3, enderecoFuncionario.getNumero());
+            stmt.setString(4, enderecoFuncionario.getComplemento());
+            stmt.setString(5, enderecoFuncionario.getBairro());
+            stmt.setString(6, enderecoFuncionario.getCep());
+            stmt.setString(7, enderecoFuncionario.getCidade());
+            stmt.setString(8, enderecoFuncionario.getUf());
+
+            stmt.executeUpdate();
+
+            conn.commit();
+            conn.setAutoCommit(true);
+
+            stmt.close();
+            conn.close();
+            
             JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso!");
         } catch (SQLException erroInserirFuncionario) {
             System.out.println(erroInserirFuncionario.getMessage());

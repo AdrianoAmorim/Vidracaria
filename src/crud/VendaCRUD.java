@@ -39,29 +39,33 @@ public class VendaCRUD {
         try (Connection conn = new SQLite().conectar()) {
             conn.setAutoCommit(false);
 
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO venda(codVenda, codParcelamento, "
-                    + "codTipoRenda, codEmpresa, codCliente, dataVenda, totalVenda) "
-                    + "VALUES(?,?,?,?,?,?,?);");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO venda(codVenda, codRenda, codParcelamento, "
+                    + "codCliente, data, desconto, totalBruto, totalLiquido, descricao) "
+                    + "VALUES(?,?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, venda.getCodVenda());
-            stmt.setInt(2, venda.getCodParcelamento());
-            stmt.setInt(3, venda.getCodTipoRenda());
-            stmt.setInt(4, 1);
-            stmt.setInt(5, venda.getCodCliente());
-            stmt.setString(6, venda.getDataVenda());
-            stmt.setDouble(7, venda.getTotalVenda());
+            stmt.setInt(2, venda.getCodRenda());
+            stmt.setInt(3, venda.getCodParcelamento());
+            stmt.setInt(4, venda.getCodCliente());
+            stmt.setString(5, venda.getDataVenda());
+            stmt.setDouble(6, venda.getTotalDesconto());
+            stmt.setDouble(7, venda.getTotalBruto());
+            stmt.setDouble(8, venda.getTotalLiquido());
+            stmt.setString(9, venda.getDescricao());
 
             stmt.executeUpdate();
 
             for (ProdutoVendido produtoVendido : listaProdutosVendidos) {
 
-                stmt = conn.prepareStatement("INSERT INTO produtoVendido(codVenda, codProduto, quantidade, precoVenda) "
-                        + "VALUES (?,?,?,?);");
+                stmt = conn.prepareStatement("INSERT INTO produtoVendido(codVenda, codProduto, codRenda, "
+                        + "quantidade, precoVenda) "
+                        + "VALUES (?,?,?,?,?);");
 
                 stmt.setInt(1, venda.getCodVenda());
                 stmt.setInt(2, produtoVendido.getCodProduto());
-                stmt.setDouble(3, produtoVendido.getQuantidadeProduto());
-                stmt.setDouble(4, produtoVendido.getPrecoVenda());
+                stmt.setInt(3, produtoVendido.getCodRenda());
+                stmt.setDouble(4, produtoVendido.getQuantidadeProduto());
+                stmt.setDouble(5, produtoVendido.getPrecoVenda());
 
                 stmt.executeUpdate();
             }
@@ -86,12 +90,13 @@ public class VendaCRUD {
             result = stmt.executeQuery();
             while (result.next()) {
                 Venda venda = new Venda();
-                venda.setCodVenda(result.getInt("codVenda"));
-                venda.setCodTipoRenda(result.getInt("codTipoRenda"));
-                venda.setCodCliente(result.getInt("codCliente"));
-                venda.setCodParcelamento(result.getInt("codParcelamento"));
-                venda.setTotalVenda(result.getDouble("totalVenda"));
-                venda.setDataVenda(result.getString("dataVenda"));
+                stmt.setInt(1, venda.getCodVenda());
+                stmt.setInt(2, venda.getCodRenda());
+                stmt.setInt(3, venda.getCodParcelamento());
+                stmt.setInt(4, venda.getCodCliente());
+                stmt.setString(5, venda.getDataVenda());
+                stmt.setDouble(6, venda.getTotalBruto());
+                stmt.setDouble(7, venda.getTotalLiquido());
 
                 listaVendas.add(venda);
                 stmt.close();
@@ -111,12 +116,13 @@ public class VendaCRUD {
             stmt = conn.prepareStatement("UPDATE venda SET codTipoRenda = ?, codCliente = ?, codParcelamento = ?, totalVenda = ?, "
                     + "dataVenda = ? WHERE codVenda = ?;");
 
-            stmt.setInt(1, venda.getCodTipoRenda());
-            stmt.setInt(2, venda.getCodCliente());
+            stmt.setInt(1, venda.getCodVenda());
+            stmt.setInt(2, venda.getCodRenda());
             stmt.setInt(3, venda.getCodParcelamento());
-            stmt.setDouble(4, venda.getTotalVenda());
+            stmt.setInt(4, venda.getCodCliente());
             stmt.setString(5, venda.getDataVenda());
-            stmt.setInt(6, venda.getCodVenda());
+            stmt.setDouble(6, venda.getTotalBruto());
+            stmt.setDouble(7, venda.getTotalLiquido());
 
             stmt.executeUpdate();
             stmt.close();

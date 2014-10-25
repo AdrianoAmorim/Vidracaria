@@ -19,7 +19,7 @@ public class TipoPagamentoCRUD {
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO tipoPagamento(codTipoPagamento, descricaoPagamento)"
+            stmt = conn.prepareStatement("INSERT INTO tipoPagamento(codTipoPagamento, descricao)"
                     + " VALUES (?, ?)");
             stmt.setInt(1, tipoPagamento.getCodTipoPagamento());
             stmt.setString(2, tipoPagamento.getDescricaoTipoPagamento());
@@ -38,13 +38,13 @@ public class TipoPagamentoCRUD {
         ResultSet result;
         ArrayList<TipoPagamento> listaTiposPagamento = new ArrayList<>();
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codTipoPagamento, descricaoTipoPagamento FROM tipoPagamento;");
+            stmt = conn.prepareStatement("SELECT codTipoPagamento, descricao FROM tipoPagamento;");
             result = stmt.executeQuery();
 
             while (result.next()) {
                 TipoPagamento tipoPagamento = new TipoPagamento();
                 tipoPagamento.setCodTipoPagamento(result.getInt("codTipoPagamento"));
-                tipoPagamento.setDescricaoTipoPagamento(result.getString("descricaoTipoPagamento"));
+                tipoPagamento.setDescricaoTipoPagamento(result.getString("descricao"));
 
                 listaTiposPagamento.add(tipoPagamento);
             }
@@ -73,21 +73,6 @@ public class TipoPagamentoCRUD {
             System.out.println("Informações atualizadas com sucesso!");
         } catch (SQLException erroAtualizarTipoPagamento) {
             System.out.println(erroAtualizarTipoPagamento.getMessage());
-        }
-    }
-
-    public void deletarTipoPagamento(TipoPagamento tipoPagamento) {
-
-        PreparedStatement stmt;
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM tipoPagamento WHERE codTipoPagamento = ?;");
-            stmt.setInt(1, tipoPagamento.getCodTipoPagamento());
-
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-        } catch (SQLException erroDeletarTipoPagamento) {
-            System.out.println(erroDeletarTipoPagamento.getMessage());
         }
     }
 

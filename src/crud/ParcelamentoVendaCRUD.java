@@ -21,7 +21,7 @@ public class ParcelamentoVendaCRUD {
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO parcelamentoVenda(codParcelamento, descricaoParcelamento, "
+            stmt = conn.prepareStatement("INSERT INTO parcelamentoVenda(codParcelamento, descricao, "
                     + "quantidadeParcelas VALUES (?,?,?);");
 
             stmt.setInt(1, parcelamento.getCodParcelamento());
@@ -42,7 +42,7 @@ public class ParcelamentoVendaCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE parcelamentoVenda SET descricaoParcelamento = ?, quantidadeParcelas = ? "
+            stmt = conn.prepareStatement("UPDATE parcelamentoVenda SET descricao = ?, quantidadeParcelas = ? "
                     + "WHERE codParcelamento = ?;");
 
             stmt.setString(1, parcelamento.getDescricaoParcelamento());
@@ -68,7 +68,7 @@ public class ParcelamentoVendaCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
 
-            stmt = conn.prepareStatement("SELECT codParcelamento, descricaoParcelamento, quantidadeParcelas "
+            stmt = conn.prepareStatement("SELECT codParcelamento, descricao, quantidadeParcelas "
                     + "FROM parcelamentoVenda;");
 
             result = stmt.executeQuery();
@@ -77,7 +77,7 @@ public class ParcelamentoVendaCRUD {
                 Parcelamento parcelamento = new Parcelamento();
 
                 parcelamento.setCodParcelamento(result.getInt("codParcelamento"));
-                parcelamento.setDescricaoParcelamento(result.getString("descricaoParcelamento"));
+                parcelamento.setDescricaoParcelamento(result.getString("descricao"));
                 parcelamento.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
 
                 listaParcelamento.add(parcelamento);
@@ -100,7 +100,7 @@ public class ParcelamentoVendaCRUD {
         Parcelamento parcelamento = new Parcelamento();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT quantidadeParcelas FROM parcelamentoVenda WHERE descricaoParcelamento = '" + descricaoParcelamento + "';");
+            stmt = conn.prepareStatement("SELECT quantidadeParcelas FROM parcelamentoVenda WHERE descricao = '" + descricaoParcelamento + "';");
 
             result = stmt.executeQuery();
             if (result.next()) {

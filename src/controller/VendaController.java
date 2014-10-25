@@ -14,7 +14,7 @@ public class VendaController {
         if (String.valueOf(venda.getCodVenda()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do codigo da venda é obrigatório.");
             return false;
-        } else if (String.valueOf(venda.getCodTipoRenda()).isEmpty()) {
+        } else if (String.valueOf(venda.getCodRenda()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do codigo do tipo de renda é obrigatório.");
             return false;
         } else if (String.valueOf(venda.getCodCliente()).isEmpty()) {
@@ -23,7 +23,7 @@ public class VendaController {
         } else if (String.valueOf(venda.getCodParcelamento()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do codigo do parcelamento é obrigatório.");
             return false;
-        } else if (String.valueOf(venda.getTotalVenda()).isEmpty()) {
+        } else if (String.valueOf(venda.getTotalLiquido()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do total da venda é obrigatório.");
             return false;
         } else if (venda.getDataVenda().isEmpty()) {

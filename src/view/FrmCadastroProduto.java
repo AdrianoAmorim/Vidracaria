@@ -5,6 +5,10 @@
  */
 package view;
 
+import controller.ProdutoController;
+import crud.ProdutoCRUD;
+import domain.Produto;
+
 /**
  *
  * @author Adriano
@@ -125,7 +129,6 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         cbUnidadeMedida.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M²", "Un" }));
         cbUnidadeMedida.setToolTipText("");
 
-        tfProdutoCodigo.setEditable(false);
         tfProdutoCodigo.setBackground(new java.awt.Color(204, 255, 204));
         tfProdutoCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfProdutoCodigo.setForeground(new java.awt.Color(255, 0, 0));
@@ -229,7 +232,24 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProdutoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoCadastrarActionPerformed
+       Produto produto = new Produto();
+       ProdutoController produtoController = new ProdutoController();
        
+       produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
+       produto.setDescricaoProduto(tfProdutoDescricao.getText());
+       produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
+       produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
+       produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
+       
+       if(produtoController.validarProduto(produto)) {
+           ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+           
+           produtoCRUD.inserirProduto(produto);          
+       }
+       
+       // limpa os campos do formulário
+       FrmPrincipal.limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
+               tfProdutoPrecoVenda, tfProdutoQuantidade);       
     }//GEN-LAST:event_btnProdutoCadastrarActionPerformed
 
  

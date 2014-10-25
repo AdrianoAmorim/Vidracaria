@@ -208,7 +208,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         btnAddProdutoVenda = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taVendaDescricao = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
         jPanel48 = new javax.swing.JPanel();
         jLabel55 = new javax.swing.JLabel();
@@ -700,7 +700,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadCliente.setLayout(pnlCadClienteLayout);
         pnlCadClienteLayout.setHorizontalGroup(
             pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1241, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadClienteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -979,11 +979,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel43))
                     .addComponent(btnFuncionarioBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfFuncionarioTelResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel47)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfFuncionarioTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel48))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfFuncionarioTelResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel47)
+                        .addComponent(jLabel48)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel71)
@@ -1005,9 +1006,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel76))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel46)
-                    .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel46))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel78)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
@@ -1061,7 +1062,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlBackup.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Funcionario.png")), pnlCadFuncionario, "Cadastro de Funcionário"); // NOI18N
@@ -1112,7 +1113,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1249,7 +1250,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCpfCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addComponent(lblCpfCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel37Layout.setVerticalGroup(
@@ -1654,12 +1655,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(3);
-        jTextArea1.setTabSize(7);
-        jScrollPane1.setViewportView(jTextArea1);
+        taVendaDescricao.setColumns(20);
+        taVendaDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        taVendaDescricao.setLineWrap(true);
+        taVendaDescricao.setRows(3);
+        taVendaDescricao.setTabSize(7);
+        jScrollPane1.setViewportView(taVendaDescricao);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 69, 139));
@@ -2089,7 +2090,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
@@ -2176,7 +2177,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCompraValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .addComponent(lblCompraValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
@@ -2346,7 +2347,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2388,7 +2389,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
         pnlEfetuarCompraLayout.setHorizontalGroup(
             pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1257, Short.MAX_VALUE)
+            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1285, Short.MAX_VALUE)
             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2448,7 +2449,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                                 .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))))
+                                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(36, 36, 36))
         );
@@ -2614,7 +2615,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(pnlPesquisaContasPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rbListarCOntasPagar)
                 .addGap(18, 18, 18)
                 .addGroup(pnlPesquisaContasPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2828,7 +2829,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //Cadastrar Cliente
     private void btnCadastrarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClActionPerformed
         Cliente cliente = new Cliente();
-        EnderecoCliente enderecoCliente = new EnderecoCliente();
+        Endereco enderecoCliente = new Endereco();
         ClienteController cliController = new ClienteController();
 
         cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
@@ -2844,7 +2845,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cliente.setAtivo(1);
         cliente.setEmail(tfClienteEmail.getText());
 
-        enderecoCliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
+        enderecoCliente.setCod(Integer.parseInt(tfClienteCodigo.getText()));
         enderecoCliente.setEndereco(tfClienteEndereco.getText());
         enderecoCliente.setNumero(tfClienteNumero.getText());
         enderecoCliente.setComplemento(tfClienteEndereco1.getText());
@@ -2917,12 +2918,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         // recebimento dos dados da venda
         venda.setCodVenda(Integer.parseInt(tfVendaCodigo.getText()));
-        venda.setCodTipoRenda(1);
+        venda.setCodRenda(1);
         venda.setCodParcelamento(parcelamento.getCodParcelamento());
         venda.setCodCliente(cliente.getCodCliente());
         venda.setDataVenda(tfVendaData.getText());
-        venda.setTotalVenda(Double.parseDouble(lblValorTotalVenda.getText()));
+        venda.setTotalBruto(Double.parseDouble(lblTotalProdVenda.getText()));
+        venda.setTotalLiquido(Double.parseDouble(lblValorTotalVenda.getText()));
         venda.setTotalDesconto(Double.parseDouble(lblDescontoVenda.getText()));
+        venda.setDescricao(taVendaDescricao.getText());
 
         // valida as informações da venda
         VendaController vendaController = new VendaController();
@@ -2938,6 +2941,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
                 // recebe as informações do produto
                 produtoVendido.setCodProduto(Integer.valueOf(tbVendaListProduto.getValueAt(i, 0).toString()));
+                produtoVendido.setCodRenda(1);
                 produtoVendido.setCodVenda(Integer.parseInt(tfVendaCodigo.getText()));
                 produtoVendido.setQuantidadeProduto(Double.parseDouble(tbVendaListProduto.getValueAt(i, 2).toString()));
                 produtoVendido.setPrecoVenda((double) tbVendaListProduto.getValueAt(i, 3));
@@ -2995,6 +2999,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
         Funcionario funcionario = new Funcionario();
+        Endereco enderecoFuncionario = new Endereco();
+
         FuncionarioController funcionarioController = new FuncionarioController();
 
         funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
@@ -3004,18 +3010,28 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setTelFixo(tfFuncionarioTelCelular.getText());
         funcionario.setTelCel(tfFuncionarioTelResidencial.getText());
         funcionario.setAtivo(1);
-
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
+
+        enderecoFuncionario.setCod(funcionario.getCodFuncionario());
+        enderecoFuncionario.setEndereco(tfFuncionarioLogradouro.getText());
+        enderecoFuncionario.setNumero(tfFuncionarioNumero.getText());
+        enderecoFuncionario.setComplemento(tfFuncionarioComplemento.getText());
+        enderecoFuncionario.setBairro(tfFuncionarioBairro.getText());
+        enderecoFuncionario.setCep(tfFuncionarioCep.getText());
+        enderecoFuncionario.setCidade(tfFuncionarioCidade.getText());
+        enderecoFuncionario.setUf(tfFuncionarioUf.getText());
 
         if (funcionarioController.validarFuncionario(funcionario)) {
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
 
-            funcionarioCRUD.inserirFuncionario(funcionario);
+            funcionarioCRUD.inserirFuncionario(funcionario, enderecoFuncionario);
 
             // limpa os dados do formulário
             limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioCodEmpresa,
                     tfFuncionarioNome, tfFuncionarioSalario, tfFuncionarioTelCelular,
-                    tfFuncionarioTelResidencial);
+                    tfFuncionarioTelResidencial, tfFuncionarioLogradouro, tfFuncionarioNumero,
+                    tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep, tfFuncionarioCidade,
+                    tfFuncionarioUf);
 
             // incrementa o codigo do funcionario
             tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario()));
@@ -3383,7 +3399,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblCompraValorTotal;
     private javax.swing.JLabel lblCpfCliente;
     private javax.swing.JLabel lblDescontoVenda;
@@ -3407,6 +3422,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbListarCOntasPagar;
     private javax.swing.ButtonGroup rgFinanceiroOpcContas;
     private javax.swing.ButtonGroup rgVendaTipoCliente;
+    private javax.swing.JTextArea taVendaDescricao;
     private javax.swing.JTable tbVendaListProduto;
     private javax.swing.JTable tblContasPagar;
     private javax.swing.JTable tblListaProdutoCompra;

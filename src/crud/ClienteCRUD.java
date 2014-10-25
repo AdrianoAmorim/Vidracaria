@@ -2,7 +2,7 @@ package crud;
 
 import database.SQLite;
 import domain.Cliente;
-import domain.EnderecoCliente;
+import domain.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +34,7 @@ public class ClienteCRUD {
         return increment + 1;
     }
 
-    public void inserirCliente(Cliente cliente, EnderecoCliente enderecoCliente) {
+    public void inserirCliente(Cliente cliente, Endereco enderecoCliente) {
 
         PreparedStatement stmt;
 
@@ -42,7 +42,7 @@ public class ClienteCRUD {
             conn.setAutoCommit(false);
             
             stmt = conn.prepareStatement("INSERT INTO cliente(codCliente, cpf, cnpj, inscricaoEstadual,"
-                    + "nome, rg, telFixo, telCel, ativo, email)"
+                    + "nome, rg, telFixo, telCel, email, status)"
                     + "  VALUES (?,?,?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, cliente.getCodCliente());
@@ -55,16 +55,18 @@ public class ClienteCRUD {
             stmt.setString(6, cliente.getRg());
             stmt.setString(7, cliente.getTelFixo());
             stmt.setString(8, cliente.getTelCel());
-            stmt.setInt(9, cliente.getAtivo());
+            stmt.setInt(9, 1);
             stmt.setString(10, cliente.getEmail());
+            // AINDA NÃO IMPLEMENTADO
+            //stmt.setInt(11, cliente.getSituacao());   
 
             stmt.executeUpdate();
             
-            stmt = conn.prepareStatement("INSERT INTO enderecoCliente(codCliente, endereco, numero, "
+            stmt = conn.prepareStatement("INSERT INTO enderecoCliente(codCliente, logradouro, numero, "
                     + "complemento, bairro, cep, cidade, uf) "
                     + "VALUES (?,?,?,?,?,?,?,?);");
             
-            stmt.setInt(1, enderecoCliente.getCodCliente());
+            stmt.setInt(1, enderecoCliente.getCod());
             stmt.setString(2, enderecoCliente.getEndereco());
             stmt.setString(3, enderecoCliente.getNumero());
             stmt.setString(4, enderecoCliente.getComplemento());
@@ -135,6 +137,8 @@ public class ClienteCRUD {
 
      result = stmt.executeQuery();
 
+    
+    
      while (result.next()) {
      // reseta os valores do objeto cliente
      cliente = new Cliente();
@@ -226,7 +230,7 @@ public class ClienteCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codCliente, tipoCliente, cpf, cnpj, inscricaoEstadual,"
-                    + "nome, rg, telFixo, telCel, ativo, email FROM cliente WHERE nome = '" + nome + "';");
+                    + "nome, rg, telFixo, telCel, status, email FROM cliente WHERE nome = '" + nome + "';");
 
             result = stmt.executeQuery();
             while (result.next()) {
@@ -240,7 +244,7 @@ public class ClienteCRUD {
                 cliente.setRg(result.getString("rg"));
                 cliente.setTelFixo(result.getString("telFixo"));
                 cliente.setTelCel(result.getString("telCel"));
-                cliente.setAtivo(result.getInt("ativo"));
+                cliente.setAtivo(result.getInt("status"));
                 cliente.setEmail(result.getString("email"));
             }
             stmt.close();

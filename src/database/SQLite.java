@@ -16,7 +16,7 @@ public class SQLite {
     public Connection conectar() {
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:projeto.sql");
+            conn = DriverManager.getConnection("jdbc:sqlite:projeto.sqlite");
         } catch (SQLException erroCon) {
             System.err.println(erroCon.getMessage());
             System.exit(0);

@@ -5,9 +5,9 @@ package domain;
  *
  * @author rafael
  */
-public class EnderecoCliente {
+public class Endereco {
     
-    protected int codCliente;
+    protected int cod;
     protected String endereco;
     protected String numero;
     protected String complemento;
@@ -16,12 +16,12 @@ public class EnderecoCliente {
     protected String cidade;
     protected String uf;
 
-    public int getCodCliente() {
-        return codCliente;
+    public int getCod() {
+        return cod;
     }
 
-    public void setCodCliente(int codCliente) {
-        this.codCliente = codCliente;
+    public void setCod(int cod) {
+        this.cod = cod;
     }
 
     public String getEndereco() {
