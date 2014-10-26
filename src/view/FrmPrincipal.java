@@ -27,7 +27,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnAlterarCliente.setVisible(true);
         this.btnAlterarFuncionario.setVisible(true);
         this.btnCadastrarFuncionario.setVisible(true);
-        this.btnProdutoDeletarListaCompra.setEnabled(false);
+        this.btnCompraDeletarProdutoLista.setEnabled(false);
 
         // INICIALIZAÇÃO DA LISTA DE PRODUTOS
         this.carregarCbProduto();
@@ -220,7 +220,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnRetirarDescontoVenda = new javax.swing.JButton();
         cbTipoPagamento = new javax.swing.JComboBox();
         Parcelamento1 = new javax.swing.JLabel();
-        btnProdutoDeletarListaVenda = new javax.swing.JLabel();
+        btnVendaDeletarProdutoLista = new javax.swing.JLabel();
         pnlEfetuarCompra = new javax.swing.JPanel();
         jPanel54 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
@@ -247,7 +247,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblListaProdutoCompra = new javax.swing.JTable();
-        btnProdutoDeletarListaCompra = new javax.swing.JLabel();
+        btnCompraDeletarProdutoLista = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel51 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
@@ -1857,12 +1857,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        btnProdutoDeletarListaVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarLista.png"))); // NOI18N
-        btnProdutoDeletarListaVenda.setToolTipText("Deletar Produto da Lista");
-        btnProdutoDeletarListaVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnProdutoDeletarListaVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVendaDeletarProdutoLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarLista.png"))); // NOI18N
+        btnVendaDeletarProdutoLista.setToolTipText("Deletar Produto da Lista");
+        btnVendaDeletarProdutoLista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVendaDeletarProdutoLista.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnProdutoDeletarListaVendaMouseClicked(evt);
+                btnVendaDeletarProdutoListaMouseClicked(evt);
             }
         });
 
@@ -1890,7 +1890,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jScrollPane3)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarVendaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnProdutoDeletarListaVenda)))
+                        .addComponent(btnVendaDeletarProdutoLista)))
                 .addContainerGap())
         );
         pnlEfetuarVendaLayout.setVerticalGroup(
@@ -1912,7 +1912,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(4, 4, 4)
-                .addComponent(btnProdutoDeletarListaVenda)
+                .addComponent(btnVendaDeletarProdutoLista)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2167,12 +2167,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tblListaProdutoCompra.getColumnModel().getColumn(3).setPreferredWidth(80);
         }
 
-        btnProdutoDeletarListaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarLista.png"))); // NOI18N
-        btnProdutoDeletarListaCompra.setToolTipText("Deletar Produto da Lista");
-        btnProdutoDeletarListaCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnProdutoDeletarListaCompra.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCompraDeletarProdutoLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarLista.png"))); // NOI18N
+        btnCompraDeletarProdutoLista.setToolTipText("Deletar Produto da Lista");
+        btnCompraDeletarProdutoLista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCompraDeletarProdutoLista.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnProdutoDeletarListaCompraMouseClicked(evt);
+                btnCompraDeletarProdutoListaMouseClicked(evt);
             }
         });
 
@@ -2502,7 +2502,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnProdutoDeletarListaCompra)
+                            .addComponent(btnCompraDeletarProdutoLista)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                                 .addComponent(btnAlterarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2539,7 +2539,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarCompraLayout.createSequentialGroup()
-                                .addComponent(btnProdutoDeletarListaCompra)
+                                .addComponent(btnCompraDeletarProdutoLista)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCadastrarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnAlterarCompra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -3242,7 +3242,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblTipoPagamento.setText(cbTipoPagamento.getSelectedItem().toString());
     }//GEN-LAST:event_cbTipoPagamentoActionPerformed
 
-    private void btnProdutoDeletarListaCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoDeletarListaCompraMouseClicked
+    private void btnCompraDeletarProdutoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompraDeletarProdutoListaMouseClicked
         DefaultTableModel modelo = (DefaultTableModel) tblListaProdutoCompra.getModel();
         //se houver alguma produto adicionado na lista executa as ações
         if (modelo.getRowCount() > 0) {
@@ -3257,10 +3257,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
             modelo.removeRow(tblListaProdutoCompra.getSelectedRow());
             tblListaProdutoCompra.setModel(modelo);
         } else {
-            btnProdutoDeletarListaCompra.setEnabled(false);
+            btnCompraDeletarProdutoLista.setEnabled(false);
         }
 
-    }//GEN-LAST:event_btnProdutoDeletarListaCompraMouseClicked
+    }//GEN-LAST:event_btnCompraDeletarProdutoListaMouseClicked
 
     private void btnRetirarDescontoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarDescontoVendaActionPerformed
         double valorTotalVendaAtualizado = Double.parseDouble(lblDescontoVenda.getText()) + Double.parseDouble(lblValorTotalVenda.getText());
@@ -3288,9 +3288,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cbParcelamentoCompraActionPerformed
 
-    private void btnProdutoDeletarListaVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoDeletarListaVendaMouseClicked
+    private void btnVendaDeletarProdutoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaDeletarProdutoListaMouseClicked
         
-    }//GEN-LAST:event_btnProdutoDeletarListaVendaMouseClicked
+    }//GEN-LAST:event_btnVendaDeletarProdutoListaMouseClicked
 
     private void btnCompraPesquisarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraPesquisarFornecedorActionPerformed
         FrmCadastrarFornecedor cadastroFornecedor = new FrmCadastrarFornecedor(this, true,true);
@@ -3356,14 +3356,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrarTituloReceber;
     private javax.swing.JLabel btnCompraBuscarFornecedor;
     private javax.swing.JButton btnCompraCadastrarFornecedor;
+    private javax.swing.JLabel btnCompraDeletarProdutoLista;
     private javax.swing.JButton btnCompraPesquisarFornecedor;
     private javax.swing.JButton btnEfetuarVenda;
     private javax.swing.JLabel btnFuncionarioBuscar;
     private javax.swing.JLabel btnFuncionarioBuscarCodCargo;
     private javax.swing.JLabel btnFuncionarioBuscarCodEmpresa;
-    private javax.swing.JLabel btnProdutoDeletarListaCompra;
-    private javax.swing.JLabel btnProdutoDeletarListaVenda;
     private javax.swing.JButton btnRetirarDescontoVenda;
+    private javax.swing.JLabel btnVendaDeletarProdutoLista;
     private javax.swing.JComboBox cbParcelamentoCompra;
     private javax.swing.JComboBox cbParcelamentoVenda;
     private javax.swing.JComboBox cbTipoPagamento;

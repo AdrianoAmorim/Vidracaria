@@ -1625,7 +1625,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btnProdutoDeletarListaVenda" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnVendaDeletarProdutoLista" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1654,7 +1654,7 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="btnProdutoDeletarListaVenda" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnVendaDeletarProdutoLista" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -3072,7 +3072,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="btnProdutoDeletarListaVenda">
+            <Component class="javax.swing.JLabel" name="btnVendaDeletarProdutoLista">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imagens/deletarLista.png"/>
@@ -3083,7 +3083,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnProdutoDeletarListaVendaMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVendaDeletarProdutoListaMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -3148,7 +3148,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btnProdutoDeletarListaCompra" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCompraDeletarProdutoLista" min="-2" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="btnAlterarCompra" min="-2" pref="65" max="-2" attributes="0"/>
@@ -3194,7 +3194,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnProdutoDeletarListaCompra" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnCompraDeletarProdutoLista" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnCadastrarCompra" min="-2" pref="65" max="-2" attributes="0"/>
                                   </Group>
@@ -3680,7 +3680,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="btnProdutoDeletarListaCompra">
+            <Component class="javax.swing.JLabel" name="btnCompraDeletarProdutoLista">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imagens/deletarLista.png"/>
@@ -3691,7 +3691,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnProdutoDeletarListaCompraMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCompraDeletarProdutoListaMouseClicked"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel4">
