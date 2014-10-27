@@ -68,6 +68,10 @@ public class VendaCRUD {
                 stmt.setDouble(5, produtoVendido.getPrecoVenda());
 
                 stmt.executeUpdate();
+                
+                stmt = conn.prepareStatement("UPDATE produto SET quantidadeEstoque = quantidadeEstoque -" + produtoVendido.getQuantidadeProduto());
+                stmt.executeUpdate();
+                
             }
 
             stmt.close();
