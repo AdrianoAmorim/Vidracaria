@@ -240,6 +240,7 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
        produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
        produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
        produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
+       produto.setStatus(1);
        
        if(produtoController.validarProduto(produto)) {
            ProdutoCRUD produtoCRUD = new ProdutoCRUD();

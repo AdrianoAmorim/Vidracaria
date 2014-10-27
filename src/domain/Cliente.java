@@ -8,7 +8,7 @@ package domain;
 public class Cliente {
 
     protected int codCliente;
-    protected char tipoCliente;
+    protected String tipoCliente;
     protected String cpf;
     protected String cnpj;
     protected String inscricaoEstadual;
@@ -16,8 +16,9 @@ public class Cliente {
     protected String rg;
     protected String telFixo;
     protected String telCel;
-    protected int ativo;
+    protected int status;
     protected String email;
+    protected int situacao;
 
     public int getCodCliente() {
         return codCliente;
@@ -27,11 +28,11 @@ public class Cliente {
         this.codCliente = codCliente;
     }
 
-    public char getTipoCliente() {
+    public String getTipoCliente() {
         return tipoCliente;
     }
 
-    public void setTipoCliente(char tipoCliente) {
+    public void setTipoCliente(String tipoCliente) {
         this.tipoCliente = tipoCliente;
     }
 
@@ -91,12 +92,12 @@ public class Cliente {
         this.telCel = telCel;
     }
 
-    public int getAtivo() {
-        return ativo;
+    public int getStatus() {
+        return status;
     }
 
-    public void setAtivo(int ativo) {
-        this.ativo = ativo;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getEmail() {
@@ -107,4 +108,11 @@ public class Cliente {
         this.email = email;
     }
 
+    public int getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(int situacao) {
+        this.situacao = situacao;
+    }
 }

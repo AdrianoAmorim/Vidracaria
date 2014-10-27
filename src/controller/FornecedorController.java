@@ -13,23 +13,11 @@ public class FornecedorController {
         if (String.valueOf(fornecedor.getCodFornecedor()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do codigo do fornecedor é obrigatório.");
             return false;
-        } else if (fornecedor.getCnpjFornecedor().isEmpty()) {
+        } else if (fornecedor.getCnpj().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do CNPJ do fornecedor é obrigatório.");
             return false;
-        } else if (fornecedor.getNomeFornecedor().isEmpty()) {
+        } else if (fornecedor.getNome().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do nome do fornecedor é obrigatório.");
-            return false;
-        }
-        else if(fornecedor.getEndereco().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento do endereço do fornecedor � obrigat�rio.");
-            return false;
-        }
-        else if(fornecedor.getBairro().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento do bairro do fornecedor � obrigat�rio.");
-            return false;
-        }
-        else if(fornecedor.getUf().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento da UF do fornecedor � obrigat�rio.");
             return false;
         }
         return true;

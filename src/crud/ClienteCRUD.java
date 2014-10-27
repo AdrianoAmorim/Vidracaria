@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,43 +39,41 @@ public class ClienteCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             conn.setAutoCommit(false);
-            
-            stmt = conn.prepareStatement("INSERT INTO cliente(codCliente, cpf, cnpj, inscricaoEstadual,"
-                    + "nome, rg, telFixo, telCel, email, status)"
-                    + "  VALUES (?,?,?,?,?,?,?,?,?,?);");
+
+            stmt = conn.prepareStatement("INSERT INTO cliente(codCliente, tipoCliente, cpf, cnpj, "
+                    + "inscricaoEstadual, nome, rg, telFixo, telCel, email, status, situacao)"
+                    + "  VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, cliente.getCodCliente());
-            // TIPO AINDA NÃO IMPLEMENTADO
-            // cliente.setTipoCliente(tipoCliente);        
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getCnpj());
-            stmt.setString(4, cliente.getInscricaoEstadual());
-            stmt.setString(5, cliente.getNome());
-            stmt.setString(6, cliente.getRg());
-            stmt.setString(7, cliente.getTelFixo());
-            stmt.setString(8, cliente.getTelCel());
-            stmt.setInt(9, 1);
+            stmt.setString(2, cliente.getTipoCliente());
+            stmt.setString(3, cliente.getCpf());
+            stmt.setString(4, cliente.getCnpj());
+            stmt.setString(5, cliente.getInscricaoEstadual());
+            stmt.setString(6, cliente.getNome());
+            stmt.setString(7, cliente.getRg());
+            stmt.setString(8, cliente.getTelFixo());
+            stmt.setString(9, cliente.getTelCel());
             stmt.setString(10, cliente.getEmail());
-            // AINDA NÃO IMPLEMENTADO
-            //stmt.setInt(11, cliente.getSituacao());   
+            stmt.setInt(11, cliente.getStatus());
+            stmt.setInt(12, cliente.getSituacao());   
 
             stmt.executeUpdate();
-            
+
             stmt = conn.prepareStatement("INSERT INTO enderecoCliente(codCliente, logradouro, numero, "
                     + "complemento, bairro, cep, cidade, uf) "
                     + "VALUES (?,?,?,?,?,?,?,?);");
-            
+
             stmt.setInt(1, enderecoCliente.getCod());
-            stmt.setString(2, enderecoCliente.getEndereco());
+            stmt.setString(2, enderecoCliente.getLogradouro());
             stmt.setString(3, enderecoCliente.getNumero());
             stmt.setString(4, enderecoCliente.getComplemento());
             stmt.setString(5, enderecoCliente.getBairro());
             stmt.setString(6, enderecoCliente.getCep());
             stmt.setString(7, enderecoCliente.getCidade());
             stmt.setString(8, enderecoCliente.getUf());
-            
+
             stmt.executeUpdate();
-            
+
             conn.commit();
             conn.setAutoCommit(true);
             stmt.close();
@@ -244,7 +241,7 @@ public class ClienteCRUD {
                 cliente.setRg(result.getString("rg"));
                 cliente.setTelFixo(result.getString("telFixo"));
                 cliente.setTelCel(result.getString("telCel"));
-                cliente.setAtivo(result.getInt("status"));
+                cliente.setStatus(result.getInt("status"));
                 cliente.setEmail(result.getString("email"));
             }
             stmt.close();

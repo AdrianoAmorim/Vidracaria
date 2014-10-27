@@ -7,64 +7,38 @@ package domain;
  */
 public class Fornecedor {
     protected int codFornecedor;
-    protected String cnpjFornecedor;
-    protected String nomeFornecedor;
-    protected String endereco;
-    protected String bairro;
-    protected String uf;
+    protected String cnpj;
+    protected String nome;
     protected String telFixo;
     protected String telCel;
     protected String email;
     protected String site;
     protected String vendedor;
     protected String ramal;
-    
+    protected int status;
+
     public int getCodFornecedor() {
         return codFornecedor;
     }
-     
+
     public void setCodFornecedor(int codFornecedor) {
         this.codFornecedor = codFornecedor;
     }
-    
-    public String getCnpjFornecedor() {
-        return cnpjFornecedor;
-    }
-    
-    public void setCnpjFornecedor(String cnpjFornecedor) {
-        this.cnpjFornecedor = cnpjFornecedor;
-    }
-    
-    public String getNomeFornecedor() {
-        return nomeFornecedor;
-    }
-    
-    public void setNomeFornecedor(String nomeFornecedor) {
-        this.nomeFornecedor = nomeFornecedor;
+
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public String getNome() {
+        return nome;
     }
 
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getTelFixo() {
@@ -114,6 +88,13 @@ public class Fornecedor {
     public void setRamal(String ramal) {
         this.ramal = ramal;
     }
-    
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
     
 }

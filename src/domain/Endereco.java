@@ -8,7 +8,7 @@ package domain;
 public class Endereco {
     
     protected int cod;
-    protected String endereco;
+    protected String logradouro;
     protected String numero;
     protected String complemento;
     protected String bairro;
@@ -24,12 +24,12 @@ public class Endereco {
         this.cod = cod;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
     public String getNumero() {

@@ -60,7 +60,7 @@ public class FuncionarioCRUD {
                     + "complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, enderecoFuncionario.getCod());
-            stmt.setString(2, enderecoFuncionario.getEndereco());
+            stmt.setString(2, enderecoFuncionario.getLogradouro());
             stmt.setString(3, enderecoFuncionario.getNumero());
             stmt.setString(4, enderecoFuncionario.getComplemento());
             stmt.setString(5, enderecoFuncionario.getBairro());

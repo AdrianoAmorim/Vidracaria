@@ -12,6 +12,7 @@ public class Produto {
     private String unidadeMedida;
     private Double quantidadeEstoque;
     private Double precoVenda;
+    private int status;
 
 
     public int getCodProduto() {
@@ -53,4 +54,13 @@ public class Produto {
     public void setPrecoVenda(Double precoVenda) {
         this.precoVenda = precoVenda;
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
 }
