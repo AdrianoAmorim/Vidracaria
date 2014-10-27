@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import controller.ProdutoController;
@@ -236,7 +232,7 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
        ProdutoController produtoController = new ProdutoController();
        
        produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
-       produto.setDescricaoProduto(tfProdutoDescricao.getText());
+       produto.setDescricao(tfProdutoDescricao.getText());
        produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
        produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
        produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());

@@ -2838,7 +2838,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Produto produto = new ProdutoCRUD().consultarNomeProduto(cb_produtos.getSelectedItem().toString());
 
         //adicionando na tabela
-        modelo.addRow(new Object[]{produto.getCodProduto(), produto.getDescricaoProduto(), tfQtdProd.getText(), produto.getPrecoVenda(),
+        modelo.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao(), tfQtdProd.getText(), produto.getPrecoVenda(),
             (produto.getPrecoVenda() * Double.parseDouble(tfQtdProd.getText()))});
 
         inserirValoresDetalhesVenda(produto);
@@ -2916,7 +2916,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cb_produtos.removeAllItems();
 
         for (Produto prodd : arrayProd) {
-            cb_produtos.addItem(prodd.getDescricaoProduto());
+            cb_produtos.addItem(prodd.getDescricao());
         }
 
     }
@@ -3115,6 +3115,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
 
         enderecoFuncionario.setCod(funcionario.getCodFuncionario());
+        enderecoFuncionario.setCodCargo(funcionario.getCodCargo());
+        enderecoFuncionario.setCodEmpresa(funcionario.getCodEmpresa());
         enderecoFuncionario.setLogradouro(tfFuncionarioLogradouro.getText());
         enderecoFuncionario.setNumero(tfFuncionarioNumero.getText());
         enderecoFuncionario.setComplemento(tfFuncionarioComplemento.getText());

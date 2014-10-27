@@ -254,7 +254,7 @@ public class FrmBuscarProduto extends javax.swing.JDialog {
         prod = prodCrud.consultarCodigoProduto(Integer.parseInt(tfCodProduto.getText()));
         
         if (prod.getCodProduto() != 0) {
-            modelo.addRow(new Object[]{prod.getCodProduto(), prod.getDescricaoProduto(), prod.getPrecoVenda()});
+            modelo.addRow(new Object[]{prod.getCodProduto(), prod.getDescricao(), prod.getPrecoVenda()});
         }else{
             JOptionPane.showMessageDialog(null, "Nao Encontrado!!");
             return;

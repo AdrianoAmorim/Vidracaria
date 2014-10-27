@@ -15,7 +15,7 @@ public class ProdutoController {
             JOptionPane.showMessageDialog(null, "O preenchimento do codigo do produto é obrigatório.");
             return false;
         }
-        if(produto.getDescricaoProduto().isEmpty()) {
+        if(produto.getDescricao().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento da descrição do produto é obrigatório.");
             return false;
         } else if(produto.getUnidadeMedida().isEmpty()) {

@@ -56,17 +56,19 @@ public class FuncionarioCRUD {
 
             stmt.executeUpdate();
 
-            stmt = conn.prepareStatement("INSERT INTO enderecoFuncionario(codFuncionario, logradouro, numero, "
-                    + "complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?);");
+            stmt = conn.prepareStatement("INSERT INTO enderecoFuncionario(codFuncionario, codCargo, codEmpresa,"
+                    + "logradouro, numero, complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, enderecoFuncionario.getCod());
-            stmt.setString(2, enderecoFuncionario.getLogradouro());
-            stmt.setString(3, enderecoFuncionario.getNumero());
-            stmt.setString(4, enderecoFuncionario.getComplemento());
-            stmt.setString(5, enderecoFuncionario.getBairro());
-            stmt.setString(6, enderecoFuncionario.getCep());
-            stmt.setString(7, enderecoFuncionario.getCidade());
-            stmt.setString(8, enderecoFuncionario.getUf());
+            stmt.setInt(2, enderecoFuncionario.getCodCargo());
+            stmt.setInt(3, enderecoFuncionario.getCodEmpresa());
+            stmt.setString(4, enderecoFuncionario.getLogradouro());
+            stmt.setString(5, enderecoFuncionario.getNumero());
+            stmt.setString(6, enderecoFuncionario.getComplemento());
+            stmt.setString(7, enderecoFuncionario.getBairro());
+            stmt.setString(8, enderecoFuncionario.getCep());
+            stmt.setString(9, enderecoFuncionario.getCidade());
+            stmt.setString(10, enderecoFuncionario.getUf());
 
             stmt.executeUpdate();
 

@@ -8,6 +8,8 @@ package domain;
 public class Endereco {
     
     protected int cod;
+    protected int codCargo;
+    protected int codEmpresa;
     protected String logradouro;
     protected String numero;
     protected String complemento;
@@ -24,6 +26,22 @@ public class Endereco {
         this.cod = cod;
     }
 
+    public int getCodCargo() {
+        return codCargo;
+    }
+
+    public void setCodCargo(int codCargo) {
+        this.codCargo = codCargo;
+    }
+
+    public int getCodEmpresa() {
+        return codEmpresa;
+    }
+
+    public void setCodEmpresa(int codEmpresa) {
+        this.codEmpresa = codEmpresa;
+    }
+    
     public String getLogradouro() {
         return logradouro;
     }
