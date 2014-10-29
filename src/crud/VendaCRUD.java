@@ -69,7 +69,9 @@ public class VendaCRUD {
 
                 stmt.executeUpdate();
                 
-                stmt = conn.prepareStatement("UPDATE produto SET quantidadeEstoque = quantidadeEstoque -" + produtoVendido.getQuantidadeProduto());
+                stmt = conn.prepareStatement("UPDATE produto SET quantidadeEstoque = quantidadeEstoque - "
+                        + "" + produtoVendido.getQuantidadeProduto() + " WHERE codProduto = " + produtoVendido.getCodProduto());
+
                 stmt.executeUpdate();
                 
             }

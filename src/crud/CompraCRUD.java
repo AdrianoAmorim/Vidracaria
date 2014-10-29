@@ -2,6 +2,7 @@ package crud;
 
 import database.SQLite;
 import domain.Compra;
+import domain.ProdutoComprado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,16 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class CompraCRUD {
 
-        public int incrementCodCompra() {
+    public int incrementCodCompra() {
         PreparedStatement stmt;
         Connection conn = new SQLite().conectar();
         int increment = 0;
-        
+
         try {
             stmt = conn.prepareStatement("SELECT MAX(codCompra) FROM compra;");
             ResultSet result = stmt.executeQuery();
             increment = result.getInt(1);
-            
+
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodCompra) {
@@ -32,27 +33,55 @@ public class CompraCRUD {
         }
         return increment + 1;
     }
-        
+
     // INSERT 
-    public void inserirCompra(Compra compra) {
+    public void inserirCompra(Compra compra, ArrayList<ProdutoComprado> listaProdutosComprados) {
 
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO compra(codCompra, codFornecedor, codTipoDespesa, dataCompra) "
-                    + "VALUES (?,?,?,?)");
+            stmt = conn.prepareStatement("INSERT INTO compra(codCompra, codDespesa, codParcelamento, "
+                    + "codFornecedor, data, descricao, totalBruto, desconto, totalLiquido) "
+                    + " VALUES (?,?,?,?,?,?,?,?,?)");
 
             stmt.setInt(1, compra.getCodCompra());
-            stmt.setInt(2, compra.getCodFornecedor());
-            stmt.setInt(3, compra.getCodTipoDespesa());
-            stmt.setString(4, compra.getDataCompra());
+            stmt.setInt(2, compra.getCodDespesa());
+            stmt.setInt(3, compra.getCodParcelamento());
+            stmt.setInt(4, compra.getCodFornecedor());
+            stmt.setString(5, compra.getData());
+            stmt.setString(6, compra.getDescricao());
+            stmt.setDouble(7, compra.getTotalBruto());
+            stmt.setDouble(8, compra.getDesconto());
+            stmt.setDouble(9, compra.getTotalLiquido());
 
             stmt.executeUpdate();
-            stmt.close();
 
-            System.out.println("Compra cadastrada com sucesso!");
+            for (ProdutoComprado produtoComprado : listaProdutosComprados) {
+
+                stmt = conn.prepareStatement("INSERT INTO produtoComprado(codCompra, codDespesa, codProduto, "
+                        + "quantidade, precoCusto) VALUES (?,?,?,?,?);");
+
+                stmt.setInt(1, produtoComprado.getCodCompra());
+                stmt.setInt(2, produtoComprado.getCodDespesa());
+                stmt.setInt(3, produtoComprado.getCodProduto());
+                stmt.setDouble(4, produtoComprado.getQuantidadeProduto());
+                stmt.setDouble(5, produtoComprado.getPrecoCusto());
+
+                stmt.executeUpdate();
+
+                stmt = conn.prepareStatement("UPDATE produto SET quantidadeEstoque = quantidadeEstoque + "
+                        + produtoComprado.getQuantidadeProduto() + " WHERE codProduto = " + produtoComprado.getCodProduto());
+
+                stmt.executeUpdate();
+            }
+            
+            stmt.close();
+            conn.commit();
+            conn.setAutoCommit(true);
+
+            JOptionPane.showMessageDialog(null, "Compra cadastrada com sucesso!");
         } catch (SQLException erroInserirCompra) {
-            System.out.println(erroInserirCompra.getMessage());
+            JOptionPane.showMessageDialog(null, erroInserirCompra.getSQLState());
         }
     }
 
@@ -65,8 +94,8 @@ public class CompraCRUD {
                     + "dataCompra = ? WHERE codCompra = ?;");
 
             stmt.setInt(1, compra.getCodFornecedor());
-            stmt.setInt(2, compra.getCodTipoDespesa());
-            stmt.setString(3, compra.getDataCompra());
+            stmt.setInt(2, compra.getCodDespesa());
+            stmt.setString(3, compra.getData());
             stmt.setInt(4, compra.getCodCompra());
 
             stmt.executeUpdate();
@@ -91,8 +120,8 @@ public class CompraCRUD {
                 Compra compra = new Compra();
                 compra.setCodCompra(result.getInt("codCompra"));
                 compra.setCodFornecedor(result.getInt("codFornecedor"));
-                compra.setCodTipoDespesa(result.getInt("codTipoDespesa"));
-                compra.setDataCompra(result.getString("dataCompra"));
+                compra.setCodDespesa(result.getInt("codTipoDespesa"));
+                compra.setData(result.getString("dataCompra"));
 
                 listaCompras.add(compra);
                 stmt.close();
@@ -111,7 +140,7 @@ public class CompraCRUD {
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("DELETE FROM compra WHERE codCompra = ?;");
-            
+
             stmt.setInt(1, compra.getCodCompra());
 
             stmt.executeUpdate();

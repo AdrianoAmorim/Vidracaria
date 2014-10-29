@@ -16,10 +16,10 @@ public class CompraController {
         } else if (String.valueOf(compra.getCodFornecedor()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do codigo do fornecedor é obrigatório.");
             return false;
-        } else if (String.valueOf(compra.getCodTipoDespesa()).isEmpty()) {
+        } else if (String.valueOf(compra.getCodDespesa()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do codigo do tipo de despesa é obrigatório.");
             return false;
-        } else if (compra.getDataCompra().isEmpty()) {
+        } else if (compra.getData().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento da data da compra é obrigatório.");
             return false;
         }

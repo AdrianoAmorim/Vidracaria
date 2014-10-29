@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -114,4 +115,31 @@ public class ParcelamentoCompraCRUD {
         return parcelamento.getQuantidadeParcelas();
     }
     
+     // pesquisa de parcelamento pela descrição
+    public Parcelamento ConsultarCodParcelamento(String descricao) {
+        PreparedStatement stmt;
+        ResultSet result;
+
+        Parcelamento parcelamento = new Parcelamento();
+
+        try (Connection conn = new SQLite().conectar()) {
+
+            stmt = conn.prepareStatement("SELECT codParcelamento, quantidadeParcelas "
+                    + "FROM parcelamentoCompra WHERE descricaoParcelamento = '" + descricao + "';");
+
+            result = stmt.executeQuery();
+            if (result.next()) {
+
+                parcelamento.setCodParcelamento(result.getInt("codParcelamento"));
+                parcelamento.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
+
+                return parcelamento;
+            }
+
+        } catch (SQLException erroConsultarCodigoParcelamento) {
+            JOptionPane.showMessageDialog(null, erroConsultarCodigoParcelamento.getSQLState());
+        }
+
+        return parcelamento;
+    }    
 }
