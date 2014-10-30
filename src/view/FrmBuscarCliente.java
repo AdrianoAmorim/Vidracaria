@@ -114,7 +114,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         jLabel4.setText("CPF:");
 
         tfCpfCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCpfCliente.setText("058.093.677-55");
         tfCpfCliente.setPreferredSize(new java.awt.Dimension(0, 0));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -122,7 +121,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         jLabel2.setText("RG:");
 
         tfRgCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfRgCliente.setText("2003.620");
         tfRgCliente.setPreferredSize(new java.awt.Dimension(0, 0));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -130,7 +128,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         jLabel6.setText("Residencial:");
 
         tfResidencialCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfResidencialCliente.setText("(28) 3518-4379");
         tfResidencialCliente.setPreferredSize(new java.awt.Dimension(0, 0));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -138,7 +135,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         jLabel5.setText("Celular:");
 
         tfCelularCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCelularCliente.setText("(28) 9 9969-1639");
         tfCelularCliente.setPreferredSize(new java.awt.Dimension(0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
