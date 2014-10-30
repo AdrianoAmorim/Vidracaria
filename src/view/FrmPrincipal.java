@@ -30,11 +30,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnClienteAlterar.setVisible(true);
         this.btnAlterarFuncionario.setVisible(true);
         this.btnCadastrarFuncionario.setVisible(true);
-        this.btnCompraDeletarProdutoLista.setEnabled(false);
 
         // INICIALIZAÇÃO DA LISTA DE PRODUTOS
-        this.carregarCbProduto(cbVendaProduto);
-        this.carregarCbProduto(cbCompraProduto);
+        carregarCbProduto(cbVendaProduto);
+        carregarCbProduto(cbCompraProduto);
+        
         // INICIALIZAÇÃO DO CODIGO DO CLIENTE
         int codCli = new ClienteCRUD().incrementCodCliente();
         tfClienteCodigo.setText(Integer.toString(codCli));
@@ -410,7 +410,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         lblClienteTelFixo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblClienteTelFixo.setForeground(new java.awt.Color(0, 69, 139));
-        lblClienteTelFixo.setText("Telefone residencial:");
+        lblClienteTelFixo.setText("Telefone fixo:");
 
         tfClienteTelCel.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
@@ -613,7 +613,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                         .addGap(142, 142, 142)
                                         .addComponent(rbClienteJuridica))
                                     .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2005,11 +2005,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         cbCompraTipoPagamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         cbCompraTipoPagamento.setToolTipText("");
-        cbCompraTipoPagamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbCompraTipoPagamentoActionPerformed(evt);
-            }
-        });
 
         lblCompraCodFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblCompraCodFornecedor.setForeground(new java.awt.Color(0, 69, 139));
@@ -2876,7 +2871,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Insere os produtos do ComboBox nas tabelas
-    public void inserirProdutosNasTabelas(JTable tabela, JComboBox cbProduto, JTextField tfQtdProduto) {
+    public void inserirProdutosNasTabelas(JTable tabela, JComboBox cbProduto, JTextField tfQtdProduto,JLabel lblTotBruto, JLabel lblTotLiquido) {
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
 
         // inicializa um produto com o retorno da consulta pelo nome do produto no comboBox
@@ -2888,7 +2883,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tabela.setModel(modelo);
 
-        inserirValoresDetalhados(produto, lblVendaTotalLiquidoValor, lblVendaTotalBrutoValor, tfQtdProduto);
+        inserirValoresDetalhados(produto, lblTotBruto, lblTotLiquido, tfQtdProduto);
     }
 
     // Insere os precos detalhados nas labels
@@ -3020,7 +3015,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
 //Adiciona os produtos que estao incluidos na venda
     private void btnAddProdutoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProdutoVendaActionPerformed
-        inserirProdutosNasTabelas(tbVendaListProduto, cbVendaProduto, tfVendaQtdProd);
+        inserirProdutosNasTabelas(tbVendaListProduto, cbVendaProduto, tfVendaQtdProd, lblVendaTotalBrutoValor, lblVendaTotalLiquidoValor);
     }//GEN-LAST:event_btnAddProdutoVendaActionPerformed
 
 //Altera o Cliente procurado
@@ -3310,23 +3305,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cbVendaTipoPagamentoActionPerformed
 
     private void btnCompraDeletarProdutoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompraDeletarProdutoListaMouseClicked
-        DefaultTableModel modelo = (DefaultTableModel) tbCompraListProduto.getModel();
-        //se houver alguma produto adicionado na lista executa as ações
-        if (modelo.getRowCount() > 0) {
-            //guarda o valor total do produto a ser retirado da compra
-            Double valorProdutoRetirado = Double.parseDouble(tbCompraListProduto.getValueAt(tbCompraListProduto.getSelectedRow(), 3).toString())
-                    * Double.parseDouble(tbCompraListProduto.getValueAt(tbCompraListProduto.getSelectedRow(), 2).toString());
-            //guarda o valor total da compra atualizada com o desconto do produto retirado
-            Double valorTotalAtualizado = Double.parseDouble(lblCompraValorTotal.getText()) - valorProdutoRetirado;
-            //insere na label total da compra
-            lblCompraValorTotal.setText(valorTotalAtualizado.toString());
-            //remove da lista o item selecionado
-            modelo.removeRow(tbCompraListProduto.getSelectedRow());
-            tbCompraListProduto.setModel(modelo);
-        } else {
-            btnCompraDeletarProdutoLista.setEnabled(false);
-        }
-
+        ((DefaultTableModel) tbCompraListProduto.getModel()).removeRow(tbCompraListProduto.getSelectedRow());
+         
+         JOptionPane.showMessageDialog(null, "Produto removido com sucesso!");
     }//GEN-LAST:event_btnCompraDeletarProdutoListaMouseClicked
 
     private void btnRetirarDescontoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarDescontoVendaActionPerformed
@@ -3334,10 +3315,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblVendaTotalLiquidoValor.setText(String.valueOf(valorTotalVendaAtualizado));
         lblVendaDescontoValor.setText("0");
     }//GEN-LAST:event_btnRetirarDescontoVendaActionPerformed
-
-    private void cbCompraTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCompraTipoPagamentoActionPerformed
-        //
-    }//GEN-LAST:event_cbCompraTipoPagamentoActionPerformed
 
     private void btnCompraCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraCadastrarFornecedorActionPerformed
         FrmCadastrarFornecedor cadastrarFornecedor = new FrmCadastrarFornecedor(this, true, false);
@@ -3352,7 +3329,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraCadastrarProdutoActionPerformed
 
     private void btnVendaDeletarProdutoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaDeletarProdutoListaMouseClicked
-
+        ((DefaultTableModel) tbVendaListProduto.getModel()).removeRow(tbVendaListProduto.getSelectedRow());
          
          JOptionPane.showMessageDialog(null, "Produto removido com sucesso!");
     }//GEN-LAST:event_btnVendaDeletarProdutoListaMouseClicked
@@ -3366,7 +3343,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraPesquisarFornecedorActionPerformed
 
     private void btnCompraAddProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAddProdutoActionPerformed
-        inserirProdutosNasTabelas(tbCompraListProduto, cbCompraProduto, tfCompraQtdProduto);
+        inserirProdutosNasTabelas(tbCompraListProduto, cbCompraProduto, tfCompraQtdProduto, lblCompraSubTotal,lblCompraTotalLiquido);
     }//GEN-LAST:event_btnCompraAddProdutoActionPerformed
 
     /**

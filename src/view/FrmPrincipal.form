@@ -341,7 +341,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="121" max="32767" attributes="0"/>
+                          <EmptySpace pref="173" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -548,7 +548,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8b" green="45" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Telefone residencial:"/>
+                    <Property name="text" type="java.lang.String" value="Telefone fixo:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="tfClienteTelCel">
@@ -3532,9 +3532,6 @@
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbCompraTipoPagamentoActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCompraCodFornecedor">
                   <Properties>
