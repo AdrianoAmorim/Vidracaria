@@ -1994,11 +1994,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         cbCompraParcelamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         cbCompraParcelamento.setToolTipText("");
-        cbCompraParcelamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbCompraParcelamentoActionPerformed(evt);
-            }
-        });
 
         lblCompraParcelamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblCompraParcelamento.setForeground(new java.awt.Color(0, 69, 139));
@@ -3356,12 +3351,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cadastrarProduto.setVisible(true);
     }//GEN-LAST:event_btnCompraCadastrarProdutoActionPerformed
 
-    private void cbCompraParcelamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCompraParcelamentoActionPerformed
-
-    }//GEN-LAST:event_cbCompraParcelamentoActionPerformed
-
     private void btnVendaDeletarProdutoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaDeletarProdutoListaMouseClicked
 
+         
+         JOptionPane.showMessageDialog(null, "Produto removido com sucesso!");
     }//GEN-LAST:event_btnVendaDeletarProdutoListaMouseClicked
 
     private void btnCompraPesquisarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraPesquisarFornecedorActionPerformed
