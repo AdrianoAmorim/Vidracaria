@@ -124,29 +124,34 @@ public class ProdutoCRUD {
 
     // SELECT NOME
     // PROVISÓRIO - ATÉ MONTAR A QUERY COM SELECT CONDICIONAL
-    public Produto consultarNomeProduto(String descricao) {
+    public ArrayList<Produto> consultarNomeProduto(String descricao) {
 
         PreparedStatement stmt;
         ResultSet result;
-        Produto produto = new Produto();
+        ArrayList<Produto> listProduto = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codProduto, descricao, unidadeMedida, "
-                    + "quantidadeEstoque, precoVenda FROM produto WHERE descricao = '" + descricao + "';");
+                    + "quantidadeEstoque, precoVenda FROM produto WHERE descricao LIKE '%" + descricao + "%';");
 
             result = stmt.executeQuery();
             while (result.next()) {
+                Produto produto = new Produto();
                 produto.setCodProduto(result.getInt("codProduto"));
                 produto.setDescricao(result.getString("descricao"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
                 produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
                 produto.setPrecoVenda(result.getDouble("precoVenda"));
+                
+                listProduto.add(produto);
             }
             stmt.close();
+            return listProduto;
         } catch (SQLException erroConsultarDescricaoProduto) {
             System.out.println(erroConsultarDescricaoProduto.getMessage());
+        return listProduto;
         }
-        return produto;
+        
     }
 
     // UPDATE
