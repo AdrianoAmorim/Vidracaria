@@ -1050,35 +1050,34 @@
                                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="tfFuncionarioSalario" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                                   <Group type="102" attributes="0">
                                                       <Component id="lblFuncionarioNumero" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Component id="tfFuncionarioNumero" min="-2" pref="77" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="tfFuncionarioComplemento" min="-2" pref="287" max="-2" attributes="0"/>
-                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Component id="lblFuncionarioBairro" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="32767" attributes="0"/>
-                                                          <Component id="tfFuncionarioBairro" min="-2" pref="267" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="tfFuncionarioCep" min="-2" pref="158" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lblFuncionarioCidade" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="tfFuncionarioCidade" min="-2" pref="290" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lblFuncionarioUf" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Component id="tfFuncionarioUf" min="-2" pref="70" max="-2" attributes="0"/>
-                                                      </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="tfFuncionarioComplemento" min="-2" pref="287" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="lblFuncionarioBairro" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="tfFuncionarioBairro" min="-2" pref="267" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="tfFuncionarioCep" min="-2" pref="158" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="lblFuncionarioCidade" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="tfFuncionarioCidade" min="-2" pref="290" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="lblFuncionarioUf" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="tfFuncionarioUf" min="-2" pref="70" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lblFuncionarioTelCel" min="-2" pref="107" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="337" max="-2" attributes="0"/>
+                                                      <Component id="lblFuncionarioTelCel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
                                                       <Component id="tfFuncionarioTelCelular" min="-2" pref="154" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -1160,11 +1159,13 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tfFuncionarioTelCelular" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="tfFuncionarioTelCelular" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="lblFuncionarioTelCel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="tfFuncionarioTelResidencial" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                                   <Component id="lblFuncionarioTelFixo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblFuncionarioTelCel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1610,31 +1611,34 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel24" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jPanel1" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnVendaCadastrar" min="-2" pref="105" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnVendaDeletarProdutoLista" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jPanel47" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jPanel46" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jPanel29" alignment="1" pref="626" max="32767" attributes="0"/>
-                                      <Component id="jPanel15" max="32767" attributes="0"/>
-                                      <Component id="jPanel48" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane3" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btnVendaDeletarProdutoLista" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jPanel47" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jPanel46" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jPanel29" alignment="1" pref="626" max="32767" attributes="0"/>
+                                          <Component id="jPanel15" max="32767" attributes="0"/>
+                                          <Component id="jPanel48" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane3" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1643,11 +1647,11 @@
                   <Group type="102" attributes="0">
                       <Component id="jPanel24" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jPanel46" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel47" min="-2" pref="229" max="-2" attributes="0"/>
+                              <Component id="jPanel47" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jPanel48" min="-2" max="-2" attributes="0"/>
@@ -1662,7 +1666,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnVendaDeletarProdutoLista" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="40" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                           <Component id="btnVendaCadastrar" min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
@@ -1814,7 +1818,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jPanel42" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanel12" max="32767" attributes="0"/>
+                                  <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jPanel36" min="-2" max="-2" attributes="0"/>
@@ -1868,7 +1872,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblVendaTotalLiquidoTitulo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="48" max="32767" attributes="0"/>
                               <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -3184,11 +3188,11 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanel33" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanel34" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jPanel33" max="32767" attributes="0"/>
+                                  <Component id="jPanel34" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jPanel26" min="-2" pref="58" max="-2" attributes="0"/>
                                   <Component id="jPanel27" min="-2" max="-2" attributes="0"/>
@@ -3196,8 +3200,8 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jPanel21" min="-2" pref="34" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="400" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnCompraDeletarProdutoLista" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -3285,7 +3289,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -3311,51 +3315,44 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="tfCompraDesconto" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <EmptySpace pref="30" max="32767" attributes="0"/>
-                                  <Component id="lblCompraProduto" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cbCompraProduto" min="-2" pref="274" max="-2" attributes="0"/>
+                                  <Component id="lblCompraParcelamento1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="tfCompraData" min="-2" pref="160" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="lblCompraDataEntrega" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="cbCompraTipoPagamento" min="-2" pref="160" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="lblCompraParcelamento" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <Component id="tfCompraCodigo" min="-2" pref="160" max="-2" attributes="0"/>
+                                                  <Component id="tfCompraData" min="-2" pref="160" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="lblCompraCodFornecedor" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblCompraDataEntrega" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="cbCompraTipoPagamento" min="-2" pref="160" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="lblCompraParcelamento" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="cbCompraParcelamento" pref="160" max="32767" attributes="0"/>
-                                              <Component id="tfCompraDataEntrega" max="32767" attributes="0"/>
-                                              <Component id="tfCompraCodigoFornecedor" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="tfCompraCodigo" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="lblCompraCodFornecedor" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="tfCompraFornecedor" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="cbCompraParcelamento" pref="160" max="32767" attributes="0"/>
+                                          <Component id="tfCompraDataEntrega" max="32767" attributes="0"/>
+                                          <Component id="tfCompraCodigoFornecedor" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="cbCompraProdutos" alignment="0" pref="160" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="tfCompraFornecedor" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnCompraAdicionarProduto" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnCompraAddProduto" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfCompraQtdProduto" min="-2" pref="41" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3390,19 +3387,14 @@
                               <Component id="lblCompraParcelamento" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblCompraFormaPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbCompraTipoPagamento" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="tfCompraQtdProduto" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="lblCompraProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbCompraProduto" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblCompraDesconto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfCompraDesconto" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="btnCompraAddProduto" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblCompraDesconto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfCompraDesconto" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="lblCompraParcelamento1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbCompraProdutos" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btnCompraAdicionarProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -3594,24 +3586,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnCompraAddProduto">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="14" style="1"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagens/add.png"/>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Adicionar Produto na venda"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCompraAddProdutoActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblCompraProduto">
+                <Component class="javax.swing.JLabel" name="lblCompraParcelamento1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="14" style="1"/>
@@ -3619,24 +3594,24 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8b" green="45" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Produto:"/>
+                    <Property name="text" type="java.lang.String" value="Produtos:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbCompraProduto">
+                <Component class="javax.swing.JComboBox" name="cbCompraProdutos">
                   <Properties>
+                    <Property name="editable" type="boolean" value="true"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfCompraQtdProduto">
+                <Component class="javax.swing.JButton" name="btnCompraAdicionarProduto">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Comic Sans MS" size="14" style="1"/>
-                    </Property>
+                    <Property name="text" type="java.lang.String" value="ADD"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -3805,7 +3780,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCompraValorTotal" max="32767" attributes="0"/>
+                          <Component id="lblCompraValorTotal" pref="387" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -3908,9 +3883,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="jPanel31" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="55" max="32767" attributes="0"/>
                           <Component id="jPanel20" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -4124,6 +4099,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Produto"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCompraInserirProdutoActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -4141,10 +4119,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCompraTotal" pref="322" max="32767" attributes="0"/>
+                          <Component id="lblCompraTotal" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCompraTotalLiquido" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -4152,11 +4128,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblCompraTotal" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblCompraTotalLiquido" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblCompraTotal" min="-2" pref="22" max="-2" attributes="0"/>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -4177,11 +4150,6 @@
                     <Property name="text" type="java.lang.String" value="TOTAL"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblCompraTotalLiquido">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0.00"/>
-                  </Properties>
-                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel34">
@@ -4196,8 +4164,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCompraSubTotal" pref="276" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                          <Component id="lblCompraSubTotal" pref="371" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -4206,7 +4174,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblCompraSubTotal" min="-2" pref="22" max="-2" attributes="0"/>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

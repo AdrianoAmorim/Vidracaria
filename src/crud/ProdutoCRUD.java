@@ -73,7 +73,7 @@ public class ProdutoCRUD {
 
             while (result.next()) {
                 Produto produto = new Produto();
-                
+
                 produto.setCodProduto(result.getInt("codProduto"));
                 produto.setDescricao(result.getString("descricao"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
@@ -93,6 +93,7 @@ public class ProdutoCRUD {
 
     // SELECT CODIGO
     // PROVISÓRIO - ATÉ MONTAR A QUERY COM SELECT CONDICIONAL
+    //Acressentei o like pra testa nem tirei pq vamos mudar essas query ne
     public Produto consultarCodigoProduto(int codProduto) {
 
         PreparedStatement stmt;
@@ -100,11 +101,12 @@ public class ProdutoCRUD {
         Produto produto = new Produto();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, descricao, unidadeMedida, "
-                    + " quantidadeEstoque, precoVenda FROM produto WHERE codProduto = '" + codProduto + "';");
+            stmt = conn.prepareStatement("SELECT codProduto, descricao, unidadeMedida,"
+                    + " quantidadeEstoque, precoVenda FROM produto WHERE codProduto LIKE '%" + codProduto + "%';");
 
             result = stmt.executeQuery();
             while (result.next()) {
+
                 produto.setCodProduto(result.getInt("codProduto"));
                 produto.setDescricao(result.getString("descricao"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
@@ -115,6 +117,7 @@ public class ProdutoCRUD {
             stmt.close();
         } catch (SQLException erroConsultarCodigoProduto) {
             System.out.println(erroConsultarCodigoProduto.getMessage());
+
         }
         return produto;
     }
@@ -146,7 +149,6 @@ public class ProdutoCRUD {
         return produto;
     }
 
-    
     // UPDATE
     public void atualizarProduto(Produto produto) {
 
