@@ -102,7 +102,7 @@ public class ProdutoCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codProduto, descricao, unidadeMedida,"
-                    + " quantidadeEstoque, precoVenda FROM produto WHERE codProduto LIKE '%" + codProduto + "%';");
+                    + " quantidadeEstoque, precoVenda FROM produto WHERE codProduto = " + codProduto + ";");
 
             result = stmt.executeQuery();
             while (result.next()) {

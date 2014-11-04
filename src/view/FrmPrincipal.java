@@ -226,57 +226,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cbVendaTipoPagamento = new javax.swing.JComboBox();
         lblVendaTipoPagamento = new javax.swing.JLabel();
         btnVendaDeletarProdutoLista = new javax.swing.JLabel();
-        pnlEfetuarCompra = new javax.swing.JPanel();
-        jPanel54 = new javax.swing.JPanel();
-        lblCompraTitulo = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jPanel22 = new javax.swing.JPanel();
-        tfCompraData = new javax.swing.JTextField();
-        lblCompraData = new javax.swing.JLabel();
-        tfCompraCodigo = new javax.swing.JTextField();
-        lblCompraCodigo = new javax.swing.JLabel();
-        tfCompraDataEntrega = new javax.swing.JTextField();
-        lblCompraDataEntrega = new javax.swing.JLabel();
-        cbCompraParcelamento = new javax.swing.JComboBox();
-        lblCompraParcelamento = new javax.swing.JLabel();
-        lblCompraFormaPagamento = new javax.swing.JLabel();
-        cbCompraTipoPagamento = new javax.swing.JComboBox();
-        lblCompraCodFornecedor = new javax.swing.JLabel();
-        tfCompraCodigoFornecedor = new javax.swing.JTextField();
-        lblCompraFornecedor = new javax.swing.JLabel();
-        tfCompraFornecedor = new javax.swing.JTextField();
-        lblCompraDesconto = new javax.swing.JLabel();
-        btnCompraBuscarFornecedor = new javax.swing.JLabel();
-        tfCompraDesconto = new javax.swing.JTextField();
-        jPanel21 = new javax.swing.JPanel();
-        lblCompraListaProdutos = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tbCompraListProduto = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        lblCompraDetalhamento = new javax.swing.JLabel();
-        jPanel26 = new javax.swing.JPanel();
-        lblCompraValorTotal = new javax.swing.JLabel();
-        btnAlterarCompra = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        lblCompraOpcoes = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        lblCompraProdutos = new javax.swing.JLabel();
-        tfCompraBuscaProduto = new javax.swing.JTextField();
-        cbCompraProdutos = new javax.swing.JComboBox();
-        btnCompraAdicionarProduto = new javax.swing.JButton();
-        btnCompraCadastrarProduto = new javax.swing.JButton();
-        btnCompraCadastrarFornecedor = new javax.swing.JButton();
-        btnCompraPesquisarProduto = new javax.swing.JButton();
-        btnCompraPesquisarFornecedor = new javax.swing.JButton();
-        tfCompraQuantidadeProduto = new javax.swing.JTextField();
-        jPanel33 = new javax.swing.JPanel();
-        lblCompraTotal = new javax.swing.JLabel();
-        jPanel34 = new javax.swing.JPanel();
-        lblCompraSubTotal = new javax.swing.JLabel();
-        jPanel27 = new javax.swing.JPanel();
-        lblCompraValorSubTotal = new javax.swing.JLabel();
-        btnCompraCadastrar = new javax.swing.JButton();
-        btnCompraDeletarProdutoLista = new javax.swing.JLabel();
         pnlFinanceiro = new javax.swing.JPanel();
         pnlFinanceiroContasPagar = new javax.swing.JPanel();
         btnFinanceiroAddPagamentoDespesa = new javax.swing.JButton();
@@ -306,6 +255,61 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel45 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
+        pnlEfetuarCompra = new javax.swing.JPanel();
+        jPanel54 = new javax.swing.JPanel();
+        lblCompraTitulo = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jPanel22 = new javax.swing.JPanel();
+        tfCompraData = new javax.swing.JTextField();
+        lblCompraData = new javax.swing.JLabel();
+        tfCompraCodigo = new javax.swing.JTextField();
+        lblCompraCodigo = new javax.swing.JLabel();
+        tfCompraDataEntrega = new javax.swing.JTextField();
+        lblCompraDataEntrega = new javax.swing.JLabel();
+        cbCompraParcelamento = new javax.swing.JComboBox();
+        lblCompraParcelamento = new javax.swing.JLabel();
+        lblCompraFormaPagamento = new javax.swing.JLabel();
+        cbCompraTipoPagamento = new javax.swing.JComboBox();
+        lblCompraCodFornecedor = new javax.swing.JLabel();
+        tfCompraCodigoFornecedor = new javax.swing.JTextField();
+        lblCompraFornecedor = new javax.swing.JLabel();
+        tfCompraFornecedor = new javax.swing.JTextField();
+        lblCompraDesconto = new javax.swing.JLabel();
+        btnCompraBuscarFornecedor = new javax.swing.JLabel();
+        tfCompraDesconto = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jPanel21 = new javax.swing.JPanel();
+        lblCompraListaProdutos = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbCompraListProduto = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        lblCompraDetalhamento = new javax.swing.JLabel();
+        jPanel26 = new javax.swing.JPanel();
+        lblCompraValorTotal = new javax.swing.JLabel();
+        btnAlterarCompra = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        lblCompraOpcoes = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        lblCompraProdutos = new javax.swing.JLabel();
+        tfCompraBuscaProduto = new javax.swing.JTextField();
+        cbCompraProdutos = new javax.swing.JComboBox();
+        btnCompraAdicionarProduto = new javax.swing.JButton();
+        btnCompraCadastrarProduto = new javax.swing.JButton();
+        btnCompraCadastrarFornecedor = new javax.swing.JButton();
+        btnCompraPesquisarProduto = new javax.swing.JButton();
+        btnCompraPesquisarFornecedor = new javax.swing.JButton();
+        tfCompraQuantidadeProduto = new javax.swing.JTextField();
+        tfCompraPrecoCustoProduto = new javax.swing.JTextField();
+        lblCompraPrecoCustoProduto = new javax.swing.JLabel();
+        lblCompraQuantidadeProduto = new javax.swing.JLabel();
+        jPanel33 = new javax.swing.JPanel();
+        lblCompraTotal = new javax.swing.JLabel();
+        jPanel34 = new javax.swing.JPanel();
+        lblCompraSubTotal = new javax.swing.JLabel();
+        jPanel27 = new javax.swing.JPanel();
+        lblCompraValorSubTotal = new javax.swing.JLabel();
+        btnCompraCadastrar = new javax.swing.JButton();
+        btnCompraDeletarProdutoLista = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema sem Nome - Vidraçaria");
@@ -1933,607 +1937,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlBackup.addTab("Venda", null, pnlEfetuarVenda, "Cadastrar Venda");
 
-        pnlEfetuarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
-
-        jPanel54.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel54.setPreferredSize(new java.awt.Dimension(393, 73));
-
-        lblCompraTitulo.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        lblCompraTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblCompraTitulo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCompraTitulo.setText("Efetuar Compra");
-        lblCompraTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/compraPq.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
-        jPanel54.setLayout(jPanel54Layout);
-        jPanel54Layout.setHorizontalGroup(
-            jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel54Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblCompraTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel54Layout.setVerticalGroup(
-            jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel54Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCompraTitulo))
-                .addGap(12, 12, 12))
-        );
-
-        jPanel22.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel22.setBorder(null);
-
-        tfCompraData.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCompraData.setForeground(new java.awt.Color(255, 0, 0));
-
-        lblCompraData.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraData.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraData.setText("Data da Compra:");
-
-        tfCompraCodigo.setEditable(false);
-        tfCompraCodigo.setBackground(new java.awt.Color(204, 255, 204));
-        tfCompraCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCompraCodigo.setForeground(new java.awt.Color(255, 0, 0));
-
-        lblCompraCodigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraCodigo.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraCodigo.setText("Código Compra:");
-
-        tfCompraDataEntrega.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCompraDataEntrega.setForeground(new java.awt.Color(255, 0, 0));
-
-        lblCompraDataEntrega.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraDataEntrega.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraDataEntrega.setText("Data de Entrega:");
-
-        cbCompraParcelamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        cbCompraParcelamento.setToolTipText("");
-
-        lblCompraParcelamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraParcelamento.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraParcelamento.setText("Parcelamento:");
-
-        lblCompraFormaPagamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraFormaPagamento.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraFormaPagamento.setText("Forma de Pagamento:");
-
-        cbCompraTipoPagamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        cbCompraTipoPagamento.setToolTipText("");
-
-        lblCompraCodFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraCodFornecedor.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraCodFornecedor.setText("Código Fornecedor:");
-
-        tfCompraCodigoFornecedor.setBackground(new java.awt.Color(204, 255, 204));
-        tfCompraCodigoFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCompraCodigoFornecedor.setForeground(new java.awt.Color(255, 0, 0));
-
-        lblCompraFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraFornecedor.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraFornecedor.setText("Fornecedor:");
-
-        tfCompraFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCompraFornecedor.setForeground(new java.awt.Color(255, 0, 0));
-
-        lblCompraDesconto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraDesconto.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraDesconto.setText("Desconto:");
-
-        btnCompraBuscarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
-
-        tfCompraDesconto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCompraDesconto.setForeground(new java.awt.Color(255, 0, 0));
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel22Layout.createSequentialGroup()
-                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCompraCodigo)
-                                .addComponent(lblCompraData)
-                                .addComponent(lblCompraFormaPagamento))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                        .addGroup(jPanel22Layout.createSequentialGroup()
-                            .addComponent(lblCompraFornecedor)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCompraBuscarFornecedor)
-                            .addGap(3, 3, 3)))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(lblCompraDesconto)
-                        .addGap(95, 95, 95)))
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel22Layout.createSequentialGroup()
-                                    .addComponent(tfCompraData, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lblCompraDataEntrega))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel22Layout.createSequentialGroup()
-                                    .addComponent(cbCompraTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lblCompraParcelamento)))
-                            .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addComponent(tfCompraCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblCompraCodFornecedor)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbCompraParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfCompraDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfCompraCodigoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(tfCompraDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCompraFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCompraCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCompraCodigo)
-                    .addComponent(lblCompraCodFornecedor)
-                    .addComponent(tfCompraCodigoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfCompraFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCompraFornecedor))
-                    .addComponent(btnCompraBuscarFornecedor))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCompraData, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCompraData)
-                    .addComponent(lblCompraDataEntrega)
-                    .addComponent(tfCompraDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbCompraParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCompraParcelamento)
-                    .addComponent(lblCompraFormaPagamento)
-                    .addComponent(cbCompraTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCompraDesconto)
-                    .addComponent(tfCompraDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel21.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel21.setPreferredSize(new java.awt.Dimension(0, 0));
-
-        lblCompraListaProdutos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblCompraListaProdutos.setForeground(new java.awt.Color(255, 255, 255));
-        lblCompraListaProdutos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCompraListaProdutos.setText("Lista de Produtos");
-        lblCompraListaProdutos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraListaProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraListaProdutos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tbCompraListProduto.setAutoCreateRowSorter(true);
-        tbCompraListProduto.setBackground(new java.awt.Color(204, 204, 255));
-        tbCompraListProduto.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        tbCompraListProduto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Cod Fornecedor", "Cod Produto", "QTD", "Valor"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tbCompraListProduto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane2.setViewportView(tbCompraListProduto);
-        if (tbCompraListProduto.getColumnModel().getColumnCount() > 0) {
-            tbCompraListProduto.getColumnModel().getColumn(0).setPreferredWidth(100);
-            tbCompraListProduto.getColumnModel().getColumn(1).setPreferredWidth(100);
-            tbCompraListProduto.getColumnModel().getColumn(2).setPreferredWidth(80);
-            tbCompraListProduto.getColumnModel().getColumn(3).setPreferredWidth(80);
-        }
-
-        jPanel4.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel4.setBorder(null);
-
-        lblCompraDetalhamento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblCompraDetalhamento.setForeground(new java.awt.Color(255, 255, 255));
-        lblCompraDetalhamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCompraDetalhamento.setText("Detalhamento da compra");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraDetalhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraDetalhamento)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel26.setPreferredSize(new java.awt.Dimension(0, 0));
-
-        lblCompraValorTotal.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
-        lblCompraValorTotal.setForeground(new java.awt.Color(255, 0, 0));
-        lblCompraValorTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblCompraValorTotal.setText("0.00");
-
-        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
-        jPanel26.setLayout(jPanel26Layout);
-        jPanel26Layout.setHorizontalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel26Layout.setVerticalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraValorTotal)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        btnAlterarCompra.setBackground(new java.awt.Color(153, 153, 255));
-        btnAlterarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
-        btnAlterarCompra.setToolTipText("Alterar Compra");
-        btnAlterarCompra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAlterarCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarCompraActionPerformed(evt);
-            }
-        });
-
-        jPanel9.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel9.setBorder(null);
-
-        lblCompraOpcoes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblCompraOpcoes.setForeground(new java.awt.Color(255, 255, 255));
-        lblCompraOpcoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCompraOpcoes.setText("Opções");
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraOpcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraOpcoes)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel10.setBackground(new java.awt.Color(204, 204, 255));
-
-        lblCompraProdutos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraProdutos.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraProdutos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCompraProdutos.setText("Adicionar Produtos");
-
-        tfCompraBuscaProduto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCompraBuscaProduto.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                tfCompraBuscaProdutoCaretUpdate(evt);
-            }
-        });
-
-        cbCompraProdutos.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        cbCompraProdutos.setToolTipText("");
-
-        btnCompraAdicionarProduto.setBackground(new java.awt.Color(153, 255, 153));
-        btnCompraAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
-        btnCompraAdicionarProduto.setToolTipText("Adiconar produona Compra");
-        btnCompraAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraAdicionarProdutoActionPerformed(evt);
-            }
-        });
-
-        btnCompraCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvarNovo1.png"))); // NOI18N
-        btnCompraCadastrarProduto.setText("Produto");
-        btnCompraCadastrarProduto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCompraCadastrarProduto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCompraCadastrarProduto.setIconTextGap(1);
-        btnCompraCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraCadastrarProdutoActionPerformed(evt);
-            }
-        });
-
-        btnCompraCadastrarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvarNovo1.png"))); // NOI18N
-        btnCompraCadastrarFornecedor.setText("Fornecedor");
-        btnCompraCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraCadastrarFornecedorActionPerformed(evt);
-            }
-        });
-
-        btnCompraPesquisarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo2.png"))); // NOI18N
-        btnCompraPesquisarProduto.setText("Produto");
-        btnCompraPesquisarProduto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCompraPesquisarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraPesquisarProdutoActionPerformed(evt);
-            }
-        });
-
-        btnCompraPesquisarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo2.png"))); // NOI18N
-        btnCompraPesquisarFornecedor.setText("Fornecedor");
-        btnCompraPesquisarFornecedor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCompraPesquisarFornecedor.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCompraPesquisarFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraPesquisarFornecedorActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCompraCadastrarFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCompraCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(104, 104, 104)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCompraPesquisarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                    .addComponent(btnCompraPesquisarFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(cbCompraProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfCompraQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addComponent(btnCompraAdicionarProduto))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCompraProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfCompraBuscaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(lblCompraProdutos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfCompraBuscaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cbCompraProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tfCompraQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnCompraAdicionarProduto)))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCompraCadastrarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCompraPesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCompraCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCompraPesquisarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel33.setBackground(new java.awt.Color(153, 153, 255));
-
-        lblCompraTotal.setBackground(new java.awt.Color(153, 153, 255));
-        lblCompraTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblCompraTotal.setForeground(new java.awt.Color(255, 255, 255));
-        lblCompraTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCompraTotal.setText("TOTAL");
-
-        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
-        jPanel33.setLayout(jPanel33Layout);
-        jPanel33Layout.setHorizontalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel33Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel33Layout.setVerticalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel33Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        jPanel34.setBackground(new java.awt.Color(153, 153, 255));
-
-        lblCompraSubTotal.setBackground(new java.awt.Color(153, 153, 255));
-        lblCompraSubTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblCompraSubTotal.setForeground(new java.awt.Color(255, 255, 255));
-        lblCompraSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCompraSubTotal.setText("SUB-TOTAL");
-
-        javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
-        jPanel34.setLayout(jPanel34Layout);
-        jPanel34Layout.setHorizontalGroup(
-            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel34Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel34Layout.setVerticalGroup(
-            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel34Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblCompraValorSubTotal.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
-        lblCompraValorSubTotal.setForeground(new java.awt.Color(255, 0, 0));
-        lblCompraValorSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblCompraValorSubTotal.setText("0.00");
-
-        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
-        jPanel27.setLayout(jPanel27Layout);
-        jPanel27Layout.setHorizontalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel27Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraValorSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel27Layout.setVerticalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel27Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCompraValorSubTotal)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        btnCompraCadastrar.setBackground(new java.awt.Color(102, 0, 102));
-        btnCompraCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvarNovo1.png"))); // NOI18N
-        btnCompraCadastrar.setToolTipText("Cadastrar Compra");
-        btnCompraCadastrar.setBorder(null);
-        btnCompraCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCompraCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraCadastrarActionPerformed(evt);
-            }
-        });
-
-        btnCompraDeletarProdutoLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarLista.png"))); // NOI18N
-        btnCompraDeletarProdutoLista.setToolTipText("Deletar Produto da Lista");
-        btnCompraDeletarProdutoLista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnCompraDeletarProdutoLista.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCompraDeletarProdutoListaMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlEfetuarCompraLayout = new javax.swing.GroupLayout(pnlEfetuarCompra);
-        pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
-        pnlEfetuarCompraLayout.setHorizontalGroup(
-            pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
-            .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)))
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                        .addGap(274, 274, 274)
-                        .addComponent(btnAlterarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                        .addComponent(btnCompraCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarCompraLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
-                            .addComponent(btnCompraDeletarProdutoLista, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(20, 20, 20))
-        );
-        pnlEfetuarCompraLayout.setVerticalGroup(
-            pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
-                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCompraDeletarProdutoLista)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAlterarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCompraCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
-
-        pnlBackup.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/compra.png")), pnlEfetuarCompra, "Efetuar Compra"); // NOI18N
-
         pnlFinanceiro.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
         pnlFinanceiroContasPagar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Contas A Pagar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(0, 0, 0)), null)); // NOI18N
@@ -2844,6 +2247,638 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         pnlBackup.addTab("tab10", jPanel45);
+
+        pnlEfetuarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+
+        jPanel54.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel54.setPreferredSize(new java.awt.Dimension(393, 73));
+
+        lblCompraTitulo.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblCompraTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblCompraTitulo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCompraTitulo.setText("Efetuar Compra");
+        lblCompraTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/compraPq.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
+        jPanel54.setLayout(jPanel54Layout);
+        jPanel54Layout.setHorizontalGroup(
+            jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel54Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblCompraTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel54Layout.setVerticalGroup(
+            jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel54Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCompraTitulo))
+                .addGap(12, 12, 12))
+        );
+
+        jPanel22.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel22.setBorder(null);
+
+        tfCompraData.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraData.setForeground(new java.awt.Color(255, 0, 0));
+
+        lblCompraData.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraData.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraData.setText("Data da Compra:");
+
+        tfCompraCodigo.setEditable(false);
+        tfCompraCodigo.setBackground(new java.awt.Color(204, 255, 204));
+        tfCompraCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraCodigo.setForeground(new java.awt.Color(255, 0, 0));
+
+        lblCompraCodigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraCodigo.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraCodigo.setText("Código Compra:");
+
+        tfCompraDataEntrega.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraDataEntrega.setForeground(new java.awt.Color(255, 0, 0));
+
+        lblCompraDataEntrega.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraDataEntrega.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraDataEntrega.setText("Data de Entrega:");
+
+        cbCompraParcelamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        cbCompraParcelamento.setToolTipText("");
+
+        lblCompraParcelamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraParcelamento.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraParcelamento.setText("Parcelamento:");
+
+        lblCompraFormaPagamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraFormaPagamento.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraFormaPagamento.setText("Forma de Pagamento:");
+
+        cbCompraTipoPagamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        cbCompraTipoPagamento.setToolTipText("");
+
+        lblCompraCodFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraCodFornecedor.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraCodFornecedor.setText("Código Fornecedor:");
+
+        tfCompraCodigoFornecedor.setBackground(new java.awt.Color(204, 255, 204));
+        tfCompraCodigoFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraCodigoFornecedor.setForeground(new java.awt.Color(255, 0, 0));
+
+        lblCompraFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraFornecedor.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraFornecedor.setText("Fornecedor:");
+
+        tfCompraFornecedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraFornecedor.setForeground(new java.awt.Color(255, 0, 0));
+
+        lblCompraDesconto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraDesconto.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraDesconto.setText("Desconto:");
+
+        btnCompraBuscarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
+
+        tfCompraDesconto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraDesconto.setForeground(new java.awt.Color(255, 0, 0));
+
+        jButton1.setText("Adicionar Produto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel22Layout.createSequentialGroup()
+                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblCompraCodigo)
+                                .addComponent(lblCompraData)
+                                .addComponent(lblCompraFormaPagamento))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                        .addGroup(jPanel22Layout.createSequentialGroup()
+                            .addComponent(lblCompraFornecedor)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCompraBuscarFornecedor)
+                            .addGap(3, 3, 3)))
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addComponent(lblCompraDesconto)
+                        .addGap(95, 95, 95)))
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfCompraFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel22Layout.createSequentialGroup()
+                                    .addComponent(tfCompraData, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lblCompraDataEntrega))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel22Layout.createSequentialGroup()
+                                    .addComponent(cbCompraTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lblCompraParcelamento)))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(tfCompraCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblCompraCodFornecedor))
+                            .addComponent(tfCompraDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbCompraParcelamento, 0, 160, Short.MAX_VALUE)
+                            .addComponent(tfCompraDataEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(tfCompraCodigoFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(121, Short.MAX_VALUE))
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfCompraCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCompraCodigo)
+                    .addComponent(lblCompraCodFornecedor)
+                    .addComponent(tfCompraCodigoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfCompraFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCompraFornecedor))
+                    .addComponent(btnCompraBuscarFornecedor))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfCompraData, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCompraData)
+                    .addComponent(lblCompraDataEntrega)
+                    .addComponent(tfCompraDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbCompraParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCompraParcelamento)
+                    .addComponent(lblCompraFormaPagamento)
+                    .addComponent(cbCompraTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCompraDesconto)
+                    .addComponent(tfCompraDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel21.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel21.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        lblCompraListaProdutos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblCompraListaProdutos.setForeground(new java.awt.Color(255, 255, 255));
+        lblCompraListaProdutos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCompraListaProdutos.setText("Lista de Produtos");
+        lblCompraListaProdutos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraListaProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraListaProdutos)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tbCompraListProduto.setAutoCreateRowSorter(true);
+        tbCompraListProduto.setBackground(new java.awt.Color(204, 204, 255));
+        tbCompraListProduto.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        tbCompraListProduto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cod Fornecedor", "Cod Produto", "QTD", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbCompraListProduto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(tbCompraListProduto);
+        if (tbCompraListProduto.getColumnModel().getColumnCount() > 0) {
+            tbCompraListProduto.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tbCompraListProduto.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tbCompraListProduto.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tbCompraListProduto.getColumnModel().getColumn(3).setPreferredWidth(80);
+        }
+
+        jPanel4.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel4.setBorder(null);
+
+        lblCompraDetalhamento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblCompraDetalhamento.setForeground(new java.awt.Color(255, 255, 255));
+        lblCompraDetalhamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCompraDetalhamento.setText("Detalhamento da compra");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraDetalhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraDetalhamento)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel26.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        lblCompraValorTotal.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
+        lblCompraValorTotal.setForeground(new java.awt.Color(255, 0, 0));
+        lblCompraValorTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCompraValorTotal.setText("0");
+
+        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
+        jPanel26.setLayout(jPanel26Layout);
+        jPanel26Layout.setHorizontalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel26Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel26Layout.setVerticalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel26Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraValorTotal)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnAlterarCompra.setBackground(new java.awt.Color(153, 153, 255));
+        btnAlterarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
+        btnAlterarCompra.setToolTipText("Alterar Compra");
+        btnAlterarCompra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAlterarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarCompraActionPerformed(evt);
+            }
+        });
+
+        jPanel9.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel9.setBorder(null);
+
+        lblCompraOpcoes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblCompraOpcoes.setForeground(new java.awt.Color(255, 255, 255));
+        lblCompraOpcoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCompraOpcoes.setText("Opções");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraOpcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraOpcoes)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel10.setBackground(new java.awt.Color(204, 204, 255));
+
+        lblCompraProdutos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraProdutos.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraProdutos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCompraProdutos.setText("Adicionar Produtos");
+
+        tfCompraBuscaProduto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraBuscaProduto.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfCompraBuscaProdutoCaretUpdate(evt);
+            }
+        });
+
+        cbCompraProdutos.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        cbCompraProdutos.setToolTipText("");
+
+        btnCompraAdicionarProduto.setBackground(new java.awt.Color(153, 255, 153));
+        btnCompraAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
+        btnCompraAdicionarProduto.setToolTipText("Adiconar produona Compra");
+        btnCompraAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraAdicionarProdutoActionPerformed(evt);
+            }
+        });
+
+        btnCompraCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvarNovo1.png"))); // NOI18N
+        btnCompraCadastrarProduto.setText("Produto");
+        btnCompraCadastrarProduto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCompraCadastrarProduto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCompraCadastrarProduto.setIconTextGap(1);
+        btnCompraCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraCadastrarProdutoActionPerformed(evt);
+            }
+        });
+
+        btnCompraCadastrarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvarNovo1.png"))); // NOI18N
+        btnCompraCadastrarFornecedor.setText("Fornecedor");
+        btnCompraCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraCadastrarFornecedorActionPerformed(evt);
+            }
+        });
+
+        btnCompraPesquisarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo2.png"))); // NOI18N
+        btnCompraPesquisarProduto.setText("Produto");
+        btnCompraPesquisarProduto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCompraPesquisarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraPesquisarProdutoActionPerformed(evt);
+            }
+        });
+
+        btnCompraPesquisarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo2.png"))); // NOI18N
+        btnCompraPesquisarFornecedor.setText("Fornecedor");
+        btnCompraPesquisarFornecedor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCompraPesquisarFornecedor.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCompraPesquisarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraPesquisarFornecedorActionPerformed(evt);
+            }
+        });
+
+        lblCompraPrecoCustoProduto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraPrecoCustoProduto.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraPrecoCustoProduto.setText("Preço de custo:");
+
+        lblCompraQuantidadeProduto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCompraQuantidadeProduto.setForeground(new java.awt.Color(0, 69, 139));
+        lblCompraQuantidadeProduto.setText("Quantidade:");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCompraCadastrarFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCompraCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCompraPesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCompraPesquisarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                                .addComponent(tfCompraBuscaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCompraPrecoCustoProduto)
+                                .addGap(12, 12, 12))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(cbCompraProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCompraQuantidadeProduto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(tfCompraPrecoCustoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(tfCompraQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                .addComponent(btnCompraAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblCompraProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(lblCompraProdutos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfCompraBuscaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCompraPrecoCustoProduto)
+                            .addComponent(tfCompraPrecoCustoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
+                        .addComponent(btnCompraAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCompraCadastrarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCompraPesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCompraCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCompraPesquisarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbCompraProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCompraQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfCompraQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel33.setBackground(new java.awt.Color(153, 153, 255));
+
+        lblCompraTotal.setBackground(new java.awt.Color(153, 153, 255));
+        lblCompraTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblCompraTotal.setForeground(new java.awt.Color(255, 255, 255));
+        lblCompraTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCompraTotal.setText("TOTAL");
+
+        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
+        jPanel33.setLayout(jPanel33Layout);
+        jPanel33Layout.setHorizontalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel33Layout.setVerticalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        jPanel34.setBackground(new java.awt.Color(153, 153, 255));
+
+        lblCompraSubTotal.setBackground(new java.awt.Color(153, 153, 255));
+        lblCompraSubTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblCompraSubTotal.setForeground(new java.awt.Color(255, 255, 255));
+        lblCompraSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCompraSubTotal.setText("SUB-TOTAL");
+
+        javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
+        jPanel34.setLayout(jPanel34Layout);
+        jPanel34Layout.setHorizontalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel34Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel34Layout.setVerticalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel34Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblCompraValorSubTotal.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
+        lblCompraValorSubTotal.setForeground(new java.awt.Color(255, 0, 0));
+        lblCompraValorSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCompraValorSubTotal.setText("0");
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraValorSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCompraValorSubTotal)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnCompraCadastrar.setBackground(new java.awt.Color(102, 0, 102));
+        btnCompraCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvarNovo1.png"))); // NOI18N
+        btnCompraCadastrar.setToolTipText("Cadastrar Compra");
+        btnCompraCadastrar.setBorder(null);
+        btnCompraCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCompraCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraCadastrarActionPerformed(evt);
+            }
+        });
+
+        btnCompraDeletarProdutoLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarLista.png"))); // NOI18N
+        btnCompraDeletarProdutoLista.setToolTipText("Deletar Produto da Lista");
+        btnCompraDeletarProdutoLista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCompraDeletarProdutoLista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCompraDeletarProdutoListaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlEfetuarCompraLayout = new javax.swing.GroupLayout(pnlEfetuarCompra);
+        pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
+        pnlEfetuarCompraLayout.setHorizontalGroup(
+            pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
+            .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
+                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(btnAlterarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addComponent(btnCompraCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarCompraLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+                            .addComponent(btnCompraDeletarProdutoLista, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(20, 20, 20))
+        );
+        pnlEfetuarCompraLayout.setVerticalGroup(
+            pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
+                .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
+                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCompraDeletarProdutoLista)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAlterarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCompraCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        pnlBackup.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/compra.png")), pnlEfetuarCompra, "Efetuar Compra"); // NOI18N
 
         getContentPane().add(pnlBackup);
 
@@ -3295,6 +3330,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cbVendaTipoPagamentoActionPerformed
 
     private void btnCompraDeletarProdutoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompraDeletarProdutoListaMouseClicked
+
         ((DefaultTableModel) tbCompraListProduto.getModel()).removeRow(tbCompraListProduto.getSelectedRow());
 
         JOptionPane.showMessageDialog(null, "Produto removido com sucesso!");
@@ -3354,15 +3390,43 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tfCompraBuscaProdutoCaretUpdate
 
     private void btnCompraAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarProdutoActionPerformed
-       ArrayList<Produto> listProduto = new ArrayList<>();
+        ArrayList<Produto> listProduto = new ArrayList<>();
         ProdutoCRUD produtoCrud = new ProdutoCRUD();
         DefaultTableModel modelo = (DefaultTableModel) tbCompraListProduto.getModel();
         listProduto = produtoCrud.consultarNomeProduto(cbCompraProdutos.getSelectedItem().toString());
-        
-        for(Produto produto: listProduto){
-            modelo.addRow(new Object[]{tfCompraCodigoFornecedor.getText(),produto.getCodProduto(),tfCompraQuantidadeProduto.getText(),produto.getPrecoVenda()});
+
+        for (Produto produto : listProduto) {
+            modelo.addRow(new Object[]{tfCompraCodigoFornecedor.getText(), produto.getCodProduto(), tfCompraQuantidadeProduto.getText(), tfCompraPrecoCustoProduto.getText()});
         }
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Cria Uma Instancia da janela de adicao de produto passando o codCompra como Parametro
+        FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.valueOf(tfCompraCodigo.getText()));
+        adicionarProduto.setVisible(true);
+
+        if (!adicionarProduto.listProdutoComprado.isEmpty()) {
+            //Guarda valor total Atual        
+            double totalAtual = Double.parseDouble(lblCompraValorTotal.getText());
+            //guarda valor do SubTotal Atual 
+            double subTotalAtual = Double.parseDouble(lblCompraValorSubTotal.getText());
+
+            DefaultTableModel modeloTabela = (DefaultTableModel) tbCompraListProduto.getModel();
+
+            //Adicionando as informaçoes dos produtos comprados e totais na janela de Compra 
+            for (ProdutoComprado produtoComprado : adicionarProduto.listProdutoComprado) {
+                double valorTotalProduto = produtoComprado.getPrecoCusto() * produtoComprado.getQuantidadeProduto();
+                totalAtual += valorTotalProduto;
+                subTotalAtual += valorTotalProduto;
+                modeloTabela.addRow(new Object[]{produtoComprado.getCodCompra(), produtoComprado.getCodProduto(), produtoComprado.getQuantidadeProduto(),
+                    produtoComprado.getPrecoCusto()});
+
+            }
+
+            lblCompraValorTotal.setText(String.valueOf(totalAtual));
+            lblCompraValorSubTotal.setText(String.valueOf(subTotalAtual));
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3442,6 +3506,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox cbVendaTipoPagamento;
     private javax.swing.JCheckBox ckbFinanceiroPeriodo;
     private javax.swing.JCheckBox ckbFinanceiroTipo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel39;
@@ -3527,7 +3592,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblCompraListaProdutos;
     private javax.swing.JLabel lblCompraOpcoes;
     private javax.swing.JLabel lblCompraParcelamento;
+    private javax.swing.JLabel lblCompraPrecoCustoProduto;
     private javax.swing.JLabel lblCompraProdutos;
+    private javax.swing.JLabel lblCompraQuantidadeProduto;
     private javax.swing.JLabel lblCompraSubTotal;
     private javax.swing.JLabel lblCompraTitulo;
     private javax.swing.JLabel lblCompraTotal;
@@ -3626,6 +3693,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfCompraDataEntrega;
     private javax.swing.JTextField tfCompraDesconto;
     private javax.swing.JTextField tfCompraFornecedor;
+    private javax.swing.JTextField tfCompraPrecoCustoProduto;
     private javax.swing.JTextField tfCompraQuantidadeProduto;
     private javax.swing.JTextField tfDesconto;
     private javax.swing.JTextField tfFinanceiroDtFinal;
