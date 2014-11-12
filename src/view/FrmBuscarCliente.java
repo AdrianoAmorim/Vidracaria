@@ -1,8 +1,11 @@
 package view;
 
 import crud.ClienteCRUD;
+import crud.ProdutoCRUD;
 import domain.Cliente;
+import domain.Produto;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -44,6 +47,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         tfResidencialCliente = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         tfCelularCliente = new javax.swing.JTextField();
+        btnBuscaClientePesquisar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel65 = new javax.swing.JLabel();
 
@@ -103,11 +107,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
         tfNomeCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfNomeCliente.setPreferredSize(new java.awt.Dimension(0, 0));
-        tfNomeCliente.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                tfNomeClienteCaretUpdate(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 69, 139));
@@ -136,6 +135,13 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
         tfCelularCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfCelularCliente.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        btnBuscaClientePesquisar.setText("Pesquisar");
+        btnBuscaClientePesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaClientePesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,6 +175,10 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBuscaClientePesquisar)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +202,9 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
                         .addComponent(tfRgCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(tfCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4))
-                .addGap(15, 15, 15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(btnBuscaClientePesquisar)
+                .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
@@ -247,36 +259,42 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfNomeClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfNomeClienteCaretUpdate
+    private void btnBuscaClientePesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaClientePesquisarActionPerformed
+        Cliente cliente = new Cliente();
+        ClienteCRUD clienteCRUD = new ClienteCRUD();
+
+        //if (Integer.valueOf(tfCodCliente.getText()) > 0) {
+        //   cliente.setCodCliente(Integer.parseInt(tfCodCliente.getText()));
+        // }
+        //cliente.setTipoCliente("");
+        cliente.setCpf(tfCpfCliente.getText());
+        //cliente.setCnpj("");
+        //cliente.setInscricaoEstadual("");
+        cliente.setNome(tfNomeCliente.getText());
+        cliente.setRg(tfRgCliente.getText());
+        cliente.setTelFixo(tfResidencialCliente.getText());
+        cliente.setTelCel(tfCelularCliente.getText());
+        //cliente.setStatus("");
+        //cliente.setEmail("");
+        //cliente.setSituacao();
+
+        ArrayList<Cliente> listaClientes = clienteCRUD.consultarTodosCliente(cliente, tfCodCliente, tfNomeCliente, tfCpfCliente,
+                tfRgCliente, tfResidencialCliente, tfCelularCliente);
+
         DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
 
-        Cliente cliente = new Cliente();
-        ClienteCRUD cliCrud = new ClienteCRUD();
-        ArrayList<Cliente> listaCliente = new ArrayList<>();
-
-        modelo.setRowCount(0);
-        
-        cliente.setCodCliente(Integer.valueOf(tfCodCliente.getText()));
-//        cliente.setNomeCliente(tfNomeCliente.getText());
-  //      cliente.setCpfCliente(tfCpfCliente.getText());
-    //    cliente.setRgCliente(tfRgCliente.getText());
-      //  cliente.setTelResidencial(tfResidencialCliente.getText());
-       // cliente.setTelCelular(tfCelularCliente.getText());
-        
-      //  listaCliente = cliCrud.consultarCliente(cliente);
-        
-        for (Cliente cli : listaCliente) {
-
-        //    modelo.addRow(new Object[]{cli.getCodCliente(), cli.getNomeCliente(), cli.getCpfCliente(), cli.getRgCliente(),
-          //      cli.getTelCelular(), cli.getTelResidencial()});
+        for (Cliente client : listaClientes) {
+            modelo.addRow(new Object[]{client.getCodCliente(), client.getNome(), client.getCpf(),
+                client.getRg(), client.getTelCel(), client.getTelFixo()});
         }
 
-    }//GEN-LAST:event_tfNomeClienteCaretUpdate
+    }//GEN-LAST:event_btnBuscaClientePesquisarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscaClientePesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

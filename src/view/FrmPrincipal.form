@@ -15,7 +15,6 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1226, 742]"/>
     </Property>
-    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -134,7 +133,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel11" pref="1270" max="32767" attributes="0"/>
+                  <Component id="jPanel11" pref="1254" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -948,7 +947,7 @@
                       <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="53" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1629,7 +1628,7 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jPanel29" alignment="1" pref="626" max="32767" attributes="0"/>
+                                          <Component id="jPanel29" alignment="1" pref="668" max="32767" attributes="0"/>
                                           <Component id="jPanel15" max="32767" attributes="0"/>
                                           <Component id="jPanel48" max="32767" attributes="0"/>
                                           <Component id="jScrollPane3" max="32767" attributes="0"/>
@@ -1665,7 +1664,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnVendaDeletarProdutoLista" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                           <Component id="btnVendaCadastrar" min="-2" pref="66" max="-2" attributes="0"/>
@@ -2104,7 +2103,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblVendaCpfNumero" pref="140" max="32767" attributes="0"/>
+                                  <Component id="lblVendaCpfNumero" pref="128" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -3790,7 +3789,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel54" pref="1270" max="32767" attributes="0"/>
+                  <Component id="jPanel54" pref="1258" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -3814,14 +3813,14 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
                               <Component id="btnAlterarCompra" min="-2" pref="65" max="-2" attributes="0"/>
-                              <EmptySpace pref="48" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnCompraCadastrar" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanel21" alignment="1" pref="441" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane2" alignment="1" pref="441" max="32767" attributes="0"/>
+                                  <Component id="jPanel21" alignment="1" pref="399" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" pref="0" max="32767" attributes="0"/>
                                   <Component id="btnCompraDeletarProdutoLista" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -3868,7 +3867,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -4730,7 +4729,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCompraTotal" max="32767" attributes="0"/>
+                          <Component id="lblCompraTotal" pref="375" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -4740,7 +4739,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblCompraTotal" min="-2" pref="22" max="-2" attributes="0"/>
-                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

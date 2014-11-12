@@ -7,7 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -55,7 +57,7 @@ public class ClienteCRUD {
             stmt.setString(9, cliente.getTelCel());
             stmt.setString(10, cliente.getEmail());
             stmt.setInt(11, cliente.getStatus());
-            stmt.setInt(12, cliente.getSituacao());   
+            stmt.setInt(12, cliente.getSituacao());
 
             stmt.executeUpdate();
 
@@ -84,38 +86,83 @@ public class ClienteCRUD {
             JOptionPane.showMessageDialog(null, erroInserirCliente.getMessage());
         }
     }
-    /*
-     public ArrayList<Cliente> consultarTodosCliente() {
 
-     PreparedStatement stmt;
-     ResultSet result;
-     ArrayList<Cliente> listaClientes = new ArrayList<>();
+    // poderia também passar uma String com o nome da tabela e um ArrayList com os campos
+    // e consegueria montar query para qualquer tabela;
+    public String montarQuery(JTextField... args) {
+        int tam = args.length;
 
-     try (Connection conn = new SQLite().conectar()) {
-     stmt = conn.prepareStatement("SELECT codCliente, cpfCliente, nomeCliente, rgCliente, "
-     + "enderecoCliente, telResidencial, telCelular FROM cliente;");
-     result = stmt.executeQuery();
-     while (result.next()) {
-     Cliente cliente = new Cliente();
-     cliente.setCodCliente(result.getInt("codCliente"));
-     cliente.setNomeCliente(result.getString("nomeCliente"));
-     cliente.setCpfCliente(result.getString("cpfCliente"));
-     cliente.setRgCliente(result.getString("rgCliente"));
-     cliente.setEnderecoCliente(result.getString("enderecoCliente"));
-     cliente.setTelResidencial(result.getString("telResidencial"));
-     cliente.setTelCelular(result.getString("telCelular"));
+        String sql = "SELECT codCliente, tipoCliente, nome, cpf, rg, cnpj, "
+                + "inscricaoEstadual, telFixo, telCel, email, status, situacao "
+                + "FROM cliente ";
 
-     listaClientes.add(cliente);
-     }
-     stmt.close();
+        args[0].setName("codCliente");
+        args[1].setName("nome");
+        args[2].setName("cpf");
+        args[3].setName("rg");
+        args[4].setName("telFixo");
+        args[5].setName("telCel");
 
-     return listaClientes;
-     } catch (SQLException erroConsultarCliente) {
-     System.out.println(erroConsultarCliente.getMessage());
-     return listaClientes;
-     }
-     }
-     */
+        // percorre os JTextFields até encontrar um preenchido
+        for (int i = 0; i < tam; i++) {
+            // quando encontrar um JTextField não vazio (preenchido)
+            if (!args[i].getText().isEmpty()) {
+                // incrementa a query de acordo com o nome e conteúdo do JTExtField
+                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText() + "%'";
+                // percorre novamente o vetor em busca de outro JTextField preenchido
+                for (int j = 0; j < tam; j++) {
+                    // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
+                    if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
+                        // incrementa a query de acordo com o nome e conteúdo do JTextField
+                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText() + "%'";
+                        
+                        // retorna a query montada
+                        return sql;
+                    }
+                }
+            }
+        }
+        // instrução para burlar o erro do compilador - nunca chega até aqui
+        return sql;
+    }    
+
+    public ArrayList<Cliente> consultarTodosCliente(Cliente cliente, JTextField... args) {
+
+        PreparedStatement stmt;
+        ResultSet result;
+        ArrayList<Cliente> listaClientes = new ArrayList<>();
+
+        try (Connection conn = new SQLite().conectar()) {
+
+            int i = 0;
+
+            stmt = conn.prepareStatement(montarQuery(args));
+
+            result = stmt.executeQuery();
+
+            while (result.next()) {
+                Cliente novoCliente = new Cliente();
+
+                novoCliente.setCodCliente(result.getInt("codCliente"));
+                novoCliente.setNome(result.getString("nome"));
+                novoCliente.setCpf(result.getString("cpf"));
+                novoCliente.setRg(result.getString("rg"));
+                novoCliente.setTelFixo(result.getString("telFixo"));
+                novoCliente.setTelCel(result.getString("telCel"));
+                novoCliente.setEmail(result.getString("email"));
+                novoCliente.setStatus(result.getInt("status"));
+                novoCliente.setSituacao(result.getInt("situacao"));
+
+                listaClientes.add(novoCliente);
+            }
+            stmt.close();
+
+            return listaClientes;
+        } catch (SQLException erroConsultarCliente) {
+            System.out.println(erroConsultarCliente.getMessage());
+            return listaClientes;
+        }
+    }
 
 //Consulta o cliente passando todos ou um parametro/*
     /*public ArrayList<Cliente> consultarCliente(Cliente cliente) {
