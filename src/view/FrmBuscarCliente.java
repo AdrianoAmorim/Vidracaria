@@ -1,11 +1,8 @@
 package view;
 
 import crud.ClienteCRUD;
-import crud.ProdutoCRUD;
 import domain.Cliente;
-import domain.Produto;
 import java.util.ArrayList;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -260,32 +257,16 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscaClientePesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaClientePesquisarActionPerformed
-        Cliente cliente = new Cliente();
         ClienteCRUD clienteCRUD = new ClienteCRUD();
 
-        //if (Integer.valueOf(tfCodCliente.getText()) > 0) {
-        //   cliente.setCodCliente(Integer.parseInt(tfCodCliente.getText()));
-        // }
-        //cliente.setTipoCliente("");
-        cliente.setCpf(tfCpfCliente.getText());
-        //cliente.setCnpj("");
-        //cliente.setInscricaoEstadual("");
-        cliente.setNome(tfNomeCliente.getText());
-        cliente.setRg(tfRgCliente.getText());
-        cliente.setTelFixo(tfResidencialCliente.getText());
-        cliente.setTelCel(tfCelularCliente.getText());
-        //cliente.setStatus("");
-        //cliente.setEmail("");
-        //cliente.setSituacao();
-
-        ArrayList<Cliente> listaClientes = clienteCRUD.consultarTodosCliente(cliente, tfCodCliente, tfNomeCliente, tfCpfCliente,
+        ArrayList<Cliente> listaClientes = clienteCRUD.consultarCliente(tfCodCliente, tfNomeCliente, tfCpfCliente,
                 tfRgCliente, tfResidencialCliente, tfCelularCliente);
 
         DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
 
         for (Cliente client : listaClientes) {
             modelo.addRow(new Object[]{client.getCodCliente(), client.getNome(), client.getCpf(),
-                client.getRg(), client.getTelCel(), client.getTelFixo()});
+                client.getRg(), client.getTelFixo(), client.getTelCel()});
         }
 
     }//GEN-LAST:event_btnBuscaClientePesquisarActionPerformed

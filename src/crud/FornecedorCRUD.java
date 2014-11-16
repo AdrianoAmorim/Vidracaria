@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -44,7 +45,7 @@ public class FornecedorCRUD {
             stmt = conn.prepareStatement("INSERT INTO enderecoFornecedor(codFornecedor, logradouro, numero, "
                     + "complemento, bairro, cep, cidade, uf) "
                     + "VALUES (?,?,?,?,?,?,?,?);");
-            
+
             stmt.setInt(1, enderecoFornecedor.getCod());
             stmt.setString(2, enderecoFornecedor.getLogradouro());
             stmt.setString(3, enderecoFornecedor.getNumero());
@@ -53,9 +54,9 @@ public class FornecedorCRUD {
             stmt.setString(6, enderecoFornecedor.getCep());
             stmt.setString(7, enderecoFornecedor.getCidade());
             stmt.setString(8, enderecoFornecedor.getUf());
-            
+
             stmt.executeUpdate();
-            
+
             conn.commit();
             conn.setAutoCommit(true);
             stmt.close();
@@ -88,32 +89,71 @@ public class FornecedorCRUD {
         }
     }
 
-    // SELECT
-    public ArrayList<Fornecedor> consultarFornecedor() {
+    public String prepararQueryPesquisarFornecedor(JTextField... args) {
+        int tam = args.length;
+
+        String sql = "SELECT codFornecedor, cnpj, nome, telFixo, telCel, email, "
+                + "site, vendedor, ramal, status FROM fornecedor ";
+
+        args[0].setName("codFornecedor");
+        args[1].setName("cnpj");
+        args[2].setName("nome");
+
+        // percorre os JTextFields até encontrar um preenchido
+        for (int i = 0; i < tam; i++) {
+            // quando encontrar um JTextField não vazio (preenchido)
+            if (!args[i].getText().isEmpty()) {
+                // incrementa a query de acordo com o nome e conteúdo do JTExtField
+                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%'";
+                // percorre novamente o vetor em busca de outro JTextField preenchido
+                for (int j = 0; j < tam; j++) {
+                    // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
+                    if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
+                        // incrementa a query de acordo com o nome e conteúdo do JTextField
+                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%'";
+
+                        // retorna a query montada
+                        return sql;
+                    }
+                }
+            }
+        }
+        // instrução para burlar o erro do compilador - nunca chega até aqui
+        return sql;
+    }
+
+    public ArrayList<Fornecedor> consultarFornecedores(JTextField... args) {
 
         PreparedStatement stmt;
         ResultSet result;
-        ArrayList<Fornecedor> listaFornecedor = new ArrayList<>();
+        ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codFornecedor, cnpjFornecedor, nomeFornecedor FROM fornecedor;");
+
+            int i = 0;
+
+            stmt = conn.prepareStatement(prepararQueryPesquisarFornecedor(args));
 
             result = stmt.executeQuery();
+
             while (result.next()) {
-                Fornecedor fornecedor = new Fornecedor();
-                fornecedor.setCodFornecedor(fornecedor.getCodFornecedor());
-                fornecedor.setCnpj(fornecedor.getCnpj());
-                fornecedor.setNome(fornecedor.getNome());
+                Fornecedor novoFornecedor = new Fornecedor();
 
-                listaFornecedor.add(fornecedor);
+                novoFornecedor.setCodFornecedor(result.getInt("codFornecedor"));
+                novoFornecedor.setCnpj(result.getString("cnpj"));
+                novoFornecedor.setNome(result.getString("nome"));
+                novoFornecedor.setTelFixo(result.getString("telFixo"));
+                novoFornecedor.setTelCel(result.getString("telCel"));
+                novoFornecedor.setEmail(result.getString("email"));
 
-                stmt.close();
-                conn.close();
+                listaFornecedores.add(novoFornecedor);
             }
-            return listaFornecedor;
+            stmt.close();
+
+            return listaFornecedores;
         } catch (SQLException erroConsultarFornecedor) {
             System.out.println(erroConsultarFornecedor.getMessage());
-            return listaFornecedor;
+            return listaFornecedores;
         }
     }
 

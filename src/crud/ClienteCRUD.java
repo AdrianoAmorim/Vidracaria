@@ -87,14 +87,17 @@ public class ClienteCRUD {
         }
     }
 
-    // poderia também passar uma String com o nome da tabela e um ArrayList com os campos
-    // e consegueria montar query para qualquer tabela;
-    public String montarQuery(JTextField... args) {
+    public String prepararQueryPesquisarClientes(JTextField... args) {
         int tam = args.length;
 
         String sql = "SELECT codCliente, tipoCliente, nome, cpf, rg, cnpj, "
                 + "inscricaoEstadual, telFixo, telCel, email, status, situacao "
                 + "FROM cliente ";
+
+        // remove os espaços em branco nas extremidades dos campos
+        for (int i = 0; i < tam; i++) {
+            args[i].setText(args[i].getText().trim());
+        }
 
         args[0].setName("codCliente");
         args[1].setName("nome");
@@ -115,7 +118,7 @@ public class ClienteCRUD {
                     if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
                         // incrementa a query de acordo com o nome e conteúdo do JTextField
                         sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText() + "%'";
-                        
+
                         // retorna a query montada
                         return sql;
                     }
@@ -124,9 +127,9 @@ public class ClienteCRUD {
         }
         // instrução para burlar o erro do compilador - nunca chega até aqui
         return sql;
-    }    
+    }
 
-    public ArrayList<Cliente> consultarTodosCliente(Cliente cliente, JTextField... args) {
+    public ArrayList<Cliente> consultarCliente(JTextField... args) {
 
         PreparedStatement stmt;
         ResultSet result;
@@ -136,7 +139,7 @@ public class ClienteCRUD {
 
             int i = 0;
 
-            stmt = conn.prepareStatement(montarQuery(args));
+            stmt = conn.prepareStatement(prepararQueryPesquisarClientes(args));
 
             result = stmt.executeQuery();
 
