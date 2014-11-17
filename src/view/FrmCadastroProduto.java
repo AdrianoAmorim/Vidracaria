@@ -1,9 +1,11 @@
-
 package view;
 
 import controller.ProdutoController;
 import crud.ProdutoCRUD;
 import domain.Produto;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -53,9 +55,9 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         pnlProdutoOpBusca = new javax.swing.JPanel();
         tfBuscaProdutoOpCod = new javax.swing.JTextField();
         tfBuscaProdutoOpDescricao = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jlBuscaProdutoResult = new javax.swing.JList();
         cbBuscaProdutoOpCategoria = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jlCadastroProdutoResultConsulta = new javax.swing.JList();
         pnlProdutoTituloOpBusca = new javax.swing.JPanel();
         jLabel53 = new javax.swing.JLabel();
 
@@ -232,10 +234,10 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
                     .addComponent(cbProdutoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel58)
                     .addComponent(cbUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnProdutoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProdutoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnProdutoAlterar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProdutoCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
 
@@ -244,20 +246,27 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         tfBuscaProdutoOpCod.setBackground(new java.awt.Color(204, 255, 204));
         tfBuscaProdutoOpCod.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfBuscaProdutoOpCod.setForeground(java.awt.Color.lightGray);
-        tfBuscaProdutoOpCod.setText("Codigo");
+        tfBuscaProdutoOpCod.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfBuscaProdutoOpCodCaretUpdate(evt);
+            }
+        });
 
         tfBuscaProdutoOpDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfBuscaProdutoOpDescricao.setForeground(java.awt.Color.lightGray);
         tfBuscaProdutoOpDescricao.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        tfBuscaProdutoOpDescricao.setText("Descrição");
         tfBuscaProdutoOpDescricao.setToolTipText("");
-
-        jlBuscaProdutoResult.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jlBuscaProdutoResult);
+        tfBuscaProdutoOpDescricao.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfBuscaProdutoOpDescricaoCaretUpdate(evt);
+            }
+        });
 
         cbBuscaProdutoOpCategoria.setBackground(new java.awt.Color(204, 204, 255));
         cbBuscaProdutoOpCategoria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbBuscaProdutoOpCategoria.setToolTipText("");
+
+        jScrollPane1.setViewportView(jlCadastroProdutoResultConsulta);
 
         javax.swing.GroupLayout pnlProdutoOpBuscaLayout = new javax.swing.GroupLayout(pnlProdutoOpBusca);
         pnlProdutoOpBusca.setLayout(pnlProdutoOpBuscaLayout);
@@ -267,11 +276,13 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(pnlProdutoOpBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfBuscaProdutoOpDescricao)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pnlProdutoOpBuscaLayout.createSequentialGroup()
                         .addComponent(tfBuscaProdutoOpCod, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 86, Short.MAX_VALUE))
-                    .addComponent(cbBuscaProdutoOpCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cbBuscaProdutoOpCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProdutoOpBuscaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlProdutoOpBuscaLayout.setVerticalGroup(
@@ -283,9 +294,9 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
                 .addComponent(tfBuscaProdutoOpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cbBuscaProdutoOpCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlProdutoTituloOpBusca.setBackground(new java.awt.Color(153, 153, 255));
@@ -344,29 +355,65 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         setBounds(0, 0, 1009, 575);
     }// </editor-fold>//GEN-END:initComponents
 
+    private ArrayList<Produto> pesquisarProdutoCaretUpdate(JTextField campo) {
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+        ArrayList<Produto> listaProdutos = new ArrayList<>();
+
+        if (!campo.getText().isEmpty()) {
+            listaProdutos = produtoCRUD.consultarProdutos(tfBuscaProdutoOpCod, tfBuscaProdutoOpDescricao);
+        }
+        return listaProdutos;
+    }
+
     private void btnProdutoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoCadastrarActionPerformed
-       Produto produto = new Produto();
-       ProdutoController produtoController = new ProdutoController();
-       
-       produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
-       produto.setDescricao(tfProdutoDescricao.getText());
-       produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
-       produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
-       produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
-       produto.setStatus(1);
-       
-       if(produtoController.validarProduto(produto)) {
-           ProdutoCRUD produtoCRUD = new ProdutoCRUD();
-           
-           produtoCRUD.inserirProduto(produto);          
-       }
-       
-       // limpa os campos do formulário
-       FrmPrincipal.limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
-               tfProdutoPrecoVenda, tfProdutoQuantidade);       
+        Produto produto = new Produto();
+        ProdutoController produtoController = new ProdutoController();
+
+        produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
+        produto.setDescricao(tfProdutoDescricao.getText());
+        produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
+        produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
+        produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
+        produto.setStatus(1);
+
+        if (produtoController.validarProduto(produto)) {
+            ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+
+            produtoCRUD.inserirProduto(produto);
+        }
+
+        // limpa os campos do formulário
+        FrmPrincipal.limparCampos(tfProdutoCodigo, tfProdutoDescricao, tfProdutoPrecoCusto,
+                tfProdutoPrecoVenda, tfProdutoQuantidade);
     }//GEN-LAST:event_btnProdutoCadastrarActionPerformed
 
- 
+    private void tfBuscaProdutoOpCodCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscaProdutoOpCodCaretUpdate
+        DefaultListModel listModelo = new DefaultListModel();
+        jlCadastroProdutoResultConsulta.setModel(listModelo);
+
+        listModelo.removeAllElements();
+
+        if (!tfBuscaProdutoOpCod.getText().isEmpty()) {
+            for (Produto produto : this.pesquisarProdutoCaretUpdate(tfBuscaProdutoOpCod)) {
+                listModelo.addElement(produto.getDescricao());
+            }
+        }
+    }//GEN-LAST:event_tfBuscaProdutoOpCodCaretUpdate
+
+    private void tfBuscaProdutoOpDescricaoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscaProdutoOpDescricaoCaretUpdate
+        DefaultListModel listModelo = new DefaultListModel();
+        jlCadastroProdutoResultConsulta.setModel(listModelo);
+
+        listModelo.removeAllElements();
+
+        if (!tfBuscaProdutoOpDescricao.getText().isEmpty()) {
+            for (Produto produto : this.pesquisarProdutoCaretUpdate(tfBuscaProdutoOpDescricao)) {
+                listModelo.addElement(produto.getDescricao());
+            }
+        }
+    }//GEN-LAST:event_tfBuscaProdutoOpDescricaoCaretUpdate
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProdutoAlterar;
     private javax.swing.JButton btnProdutoCadastrar;
@@ -385,7 +432,7 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList jlBuscaProdutoResult;
+    private javax.swing.JList jlCadastroProdutoResultConsulta;
     private javax.swing.JPanel pnlProdutoOpBusca;
     private javax.swing.JPanel pnlProdutoTituloOpBusca;
     private javax.swing.JTextField tfBuscaProdutoOpCod;

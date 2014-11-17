@@ -2974,7 +2974,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ArrayList<Produto> arrayProd = new ArrayList<>();
         ProdutoCRUD prod = new ProdutoCRUD();
 
-        arrayProd = prod.consultarProduto();
+        arrayProd = prod.consultarProdutos();
         cbProdutos.removeAllItems();
 
         for (Produto prodd : arrayProd) {

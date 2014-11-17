@@ -10,7 +10,7 @@ import domain.Produto;
 import domain.ProdutoComprado;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -217,9 +217,19 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private ArrayList<Produto> pesquisarProdutoCaretUpdate(JTextField campo) {
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+        ArrayList<Produto> listaProdutos = new ArrayList<>();
+
+        if (!campo.getText().isEmpty()) {
+            listaProdutos = produtoCRUD.consultarProdutos(tfAdicionarProdutoCodigo, tfAdicionarProdutoDescricao);
+        }
+        return listaProdutos;
+    }
+
     private void btnAdicionarProdutoInserirTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoInserirTabelaActionPerformed
         DefaultTableModel modeloTabela = (DefaultTableModel) jtAdicionarProdutoListaProdutoComprado.getModel();
-        ArrayList<Produto> listProduto =new ProdutoCRUD().consultarNomeProduto(jlAdicionarProdutoResultConsulta.getSelectedValue().toString());
+        ArrayList<Produto> listProduto = new ProdutoCRUD().consultarNomeProduto(jlAdicionarProdutoResultConsulta.getSelectedValue().toString());
 
         for (Produto produto : listProduto) {
             modeloTabela.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao(), tfAdicionarProdutoQuantidade.getText(),
@@ -246,28 +256,26 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosing
 
     private void tfAdicionarProdutoCodigoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfAdicionarProdutoCodigoCaretUpdate
-        Produto produto;
         DefaultListModel listModelo = new DefaultListModel();
         jlAdicionarProdutoResultConsulta.setModel(listModelo);
 
         listModelo.removeAllElements();
 
         if (!tfAdicionarProdutoCodigo.getText().isEmpty()) {
-            produto = new ProdutoCRUD().consultarCodigoProduto(Integer.valueOf(tfAdicionarProdutoCodigo.getText()));
-            listModelo.addElement(produto.getDescricao());
+            for (Produto produto : this.pesquisarProdutoCaretUpdate(tfAdicionarProdutoCodigo)) {
+                listModelo.addElement(produto.getDescricao());
+            }
         }
     }//GEN-LAST:event_tfAdicionarProdutoCodigoCaretUpdate
 
     private void tfAdicionarProdutoDescricaoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfAdicionarProdutoDescricaoCaretUpdate
-        ArrayList<Produto> listProduto = new ProdutoCRUD().consultarNomeProduto(tfAdicionarProdutoDescricao.getText());
         DefaultListModel listModelo = new DefaultListModel();
         jlAdicionarProdutoResultConsulta.setModel(listModelo);
 
         listModelo.removeAllElements();
 
         if (!tfAdicionarProdutoDescricao.getText().isEmpty()) {
-
-            for (Produto produto : listProduto) {
+            for (Produto produto : this.pesquisarProdutoCaretUpdate(tfAdicionarProdutoDescricao)) {
                 listModelo.addElement(produto.getDescricao());
             }
         }

@@ -1,8 +1,11 @@
 package view;
 
 import crud.ClienteCRUD;
+import crud.FornecedorCRUD;
 import domain.Cliente;
+import domain.Fornecedor;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -97,6 +100,11 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         tfCodCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfCodCliente.setForeground(new java.awt.Color(255, 0, 0));
         tfCodCliente.setPreferredSize(new java.awt.Dimension(0, 0));
+        tfCodCliente.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfCodClienteCaretUpdate(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 69, 139));
@@ -104,6 +112,11 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
         tfNomeCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfNomeCliente.setPreferredSize(new java.awt.Dimension(0, 0));
+        tfNomeCliente.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfNomeClienteCaretUpdate(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 69, 139));
@@ -111,6 +124,11 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
         tfCpfCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfCpfCliente.setPreferredSize(new java.awt.Dimension(0, 0));
+        tfCpfCliente.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfCpfClienteCaretUpdate(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 69, 139));
@@ -118,6 +136,11 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
         tfRgCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfRgCliente.setPreferredSize(new java.awt.Dimension(0, 0));
+        tfRgCliente.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfRgClienteCaretUpdate(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 69, 139));
@@ -125,6 +148,11 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
         tfResidencialCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfResidencialCliente.setPreferredSize(new java.awt.Dimension(0, 0));
+        tfResidencialCliente.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfResidencialClienteCaretUpdate(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 69, 139));
@@ -132,6 +160,11 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
         tfCelularCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfCelularCliente.setPreferredSize(new java.awt.Dimension(0, 0));
+        tfCelularCliente.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfCelularClienteCaretUpdate(evt);
+            }
+        });
 
         btnBuscaClientePesquisar.setText("Pesquisar");
         btnBuscaClientePesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +289,17 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private ArrayList<Cliente> pesquisarClienteCaretUpdate(JTextField campo) {
+        ClienteCRUD clienteCRUD = new ClienteCRUD();
+        ArrayList<Cliente> listaClientes = new ArrayList<>();
+
+        if (!campo.getText().isEmpty()) {
+            listaClientes = clienteCRUD.consultarCliente(tfCodCliente, tfNomeCliente,
+                    tfRgCliente, tfCpfCliente, tfResidencialCliente, tfCelularCliente);
+        }
+        return listaClientes;
+    }
+
     private void btnBuscaClientePesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaClientePesquisarActionPerformed
         ClienteCRUD clienteCRUD = new ClienteCRUD();
 
@@ -270,6 +314,60 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_btnBuscaClientePesquisarActionPerformed
+
+    private void tfCodClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCodClienteCaretUpdate
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
+
+        for (Cliente cliente : this.pesquisarClienteCaretUpdate(tfCodCliente)) {
+            modelo.addRow(new Object[]{cliente.getCodCliente(), cliente.getNome(), cliente.getCpf(),
+                cliente.getRg(), cliente.getTelFixo(), cliente.getTelCel()});
+        }
+    }//GEN-LAST:event_tfCodClienteCaretUpdate
+
+    private void tfNomeClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfNomeClienteCaretUpdate
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
+
+        for (Cliente cliente : this.pesquisarClienteCaretUpdate(tfNomeCliente)) {
+            modelo.addRow(new Object[]{cliente.getCodCliente(), cliente.getNome(), cliente.getCpf(),
+                cliente.getRg(), cliente.getTelFixo(), cliente.getTelCel()});
+        }
+    }//GEN-LAST:event_tfNomeClienteCaretUpdate
+
+    private void tfCpfClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCpfClienteCaretUpdate
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
+
+        for (Cliente cliente : this.pesquisarClienteCaretUpdate(tfCpfCliente)) {
+            modelo.addRow(new Object[]{cliente.getCodCliente(), cliente.getNome(), cliente.getCpf(),
+                cliente.getRg(), cliente.getTelFixo(), cliente.getTelCel()});
+        }
+    }//GEN-LAST:event_tfCpfClienteCaretUpdate
+
+    private void tfRgClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfRgClienteCaretUpdate
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
+
+        for (Cliente cliente : this.pesquisarClienteCaretUpdate(tfRgCliente)) {
+            modelo.addRow(new Object[]{cliente.getCodCliente(), cliente.getNome(), cliente.getCpf(),
+                cliente.getRg(), cliente.getTelFixo(), cliente.getTelCel()});
+        }
+    }//GEN-LAST:event_tfRgClienteCaretUpdate
+
+    private void tfResidencialClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfResidencialClienteCaretUpdate
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
+
+        for (Cliente cliente : this.pesquisarClienteCaretUpdate(tfResidencialCliente)) {
+            modelo.addRow(new Object[]{cliente.getCodCliente(), cliente.getNome(), cliente.getCpf(),
+                cliente.getRg(), cliente.getTelFixo(), cliente.getTelCel()});
+        }
+    }//GEN-LAST:event_tfResidencialClienteCaretUpdate
+
+    private void tfCelularClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCelularClienteCaretUpdate
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
+
+        for (Cliente cliente : this.pesquisarClienteCaretUpdate(tfCelularCliente)) {
+            modelo.addRow(new Object[]{cliente.getCodCliente(), cliente.getNome(), cliente.getCpf(),
+                cliente.getRg(), cliente.getTelFixo(), cliente.getTelCel()});
+        }
+    }//GEN-LAST:event_tfCelularClienteCaretUpdate
 
     /**
      * @param args the command line arguments

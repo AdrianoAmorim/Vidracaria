@@ -94,11 +94,6 @@ public class ClienteCRUD {
                 + "inscricaoEstadual, telFixo, telCel, email, status, situacao "
                 + "FROM cliente ";
 
-        // remove os espaços em branco nas extremidades dos campos
-        for (int i = 0; i < tam; i++) {
-            args[i].setText(args[i].getText().trim());
-        }
-
         args[0].setName("codCliente");
         args[1].setName("nome");
         args[2].setName("cpf");
@@ -111,13 +106,13 @@ public class ClienteCRUD {
             // quando encontrar um JTextField não vazio (preenchido)
             if (!args[i].getText().isEmpty()) {
                 // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText() + "%'";
+                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%'";
                 // percorre novamente o vetor em busca de outro JTextField preenchido
                 for (int j = 0; j < tam; j++) {
                     // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
                     if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
                         // incrementa a query de acordo com o nome e conteúdo do JTextField
-                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText() + "%'";
+                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%'";
 
                         // retorna a query montada
                         return sql;

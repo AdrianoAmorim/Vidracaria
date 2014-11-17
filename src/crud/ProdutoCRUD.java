@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -57,17 +58,54 @@ public class ProdutoCRUD {
             System.out.println(erroInserirProduto.getMessage());
         }
     }
+    
+        public String prepararQueryPesquisarProduto(JTextField... args) {
+        int tam = args.length;
+
+        String sql = "SELECT codProduto, unidadeMedida, quantidadeEstoque, descricao, precoVenda, status "
+                + "FROM produto ";
+                
+        args[0].setName("codProduto");
+        args[1].setName("descricao");
+
+        // percorre os JTextFields até encontrar um preenchido
+        for (int i = 0; i < tam; i++) {
+            // quando encontrar um JTextField não vazio (preenchido)
+            if (!args[i].getText().isEmpty()) {
+                // incrementa a query de acordo com o nome e conteúdo do JTExtField
+                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%'";
+                // percorre novamente o vetor em busca de outro JTextField preenchido
+                for (int j = 0; j < tam; j++) {
+                    // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
+                    if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
+                        // incrementa a query de acordo com o nome e conteúdo do JTextField
+                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%'";
+
+                        // retorna a query montada
+                        return sql;
+                    }
+                }
+            }
+        }
+        // instrução para burlar o erro do compilador - nunca chega até aqui
+        return sql;
+    }
 
     // SELECT
-    public ArrayList<Produto> consultarProduto() {
+    public ArrayList<Produto> consultarProdutos(JTextField ...args) {
 
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Produto> listaProdutos = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, descricao, unidadeMedida, "
-                    + "quantidadeEstoque, precoVenda FROM produto;");
+            
+            if(args.length != 0) {
+            stmt = conn.prepareStatement(prepararQueryPesquisarProduto(args));
+            }
+            else {
+                stmt = conn.prepareStatement("SELECT * FROM produto");
+            }
 
             result = stmt.executeQuery();
 
