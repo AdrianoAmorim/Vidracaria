@@ -352,7 +352,7 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 1009, 575);
+        setBounds(0, 0, 1035, 575);
     }// </editor-fold>//GEN-END:initComponents
 
     private ArrayList<Produto> pesquisarProdutoCaretUpdate(JTextField campo) {
