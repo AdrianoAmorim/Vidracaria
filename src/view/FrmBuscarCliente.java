@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmBuscarCliente extends javax.swing.JDialog {
 
+    Cliente cliente = new Cliente();
+
     /**
      * Creates new form FrmBuscarCliente
      */
@@ -74,6 +76,11 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbBuscarClienteMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbBuscarCliente);
@@ -314,7 +321,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     private void tfCodClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCodClienteCaretUpdate
         DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
         modelo.setRowCount(0);
-        
+
         for (Cliente cliente : this.pesquisarClienteCaretUpdate(tfCodCliente)) {
             modelo.addRow(new Object[]{cliente.getCodCliente(), cliente.getNome(), cliente.getCpf(),
                 cliente.getRg(), cliente.getTelFixo(), cliente.getTelCel()});
@@ -366,6 +373,14 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
                 cliente.getRg(), cliente.getTelFixo(), cliente.getTelCel()});
         }
     }//GEN-LAST:event_tfCelularClienteCaretUpdate
+
+    private void tbBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscarClienteMouseClicked
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
+        ClienteCRUD clienteCrud = new ClienteCRUD();
+
+        this.cliente = clienteCrud.consultarNomeCliente(modelo.getValueAt(tbBuscarCliente.getSelectedRow(), 1).toString());
+        this.dispose();
+    }//GEN-LAST:event_tbBuscarClienteMouseClicked
 
     /**
      * @param args the command line arguments

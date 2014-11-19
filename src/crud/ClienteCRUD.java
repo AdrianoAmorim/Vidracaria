@@ -278,7 +278,7 @@ public class ClienteCRUD {
             while (result.next()) {
                 cliente.setCodCliente(result.getInt("codCliente"));
                 // TIPO NÃO IMPLEMENTADO
-                // cliente.setTipo(result.getString("tipoCliente"));
+                cliente.setTipoCliente(result.getString("tipoCliente"));
                 cliente.setCpf(result.getString("cpf"));
                 cliente.setCnpj(result.getString("cnpj"));
                 cliente.setInscricaoEstadual(result.getString("inscricaoEstadual"));
