@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
@@ -87,7 +88,7 @@ public class ClienteCRUD {
         }
     }
 
-    public String prepararQueryPesquisarClientes(JTextField... args) {
+    public String prepararQueryPesquisarClientes(String tipoCliente, JTextField... args) {
         int tam = args.length;
 
         String sql = "SELECT codCliente, tipoCliente, nome, cpf, rg, cnpj, "
@@ -100,7 +101,7 @@ public class ClienteCRUD {
         args[3].setName("rg");
         args[4].setName("telFixo");
         args[5].setName("telCel");
-
+        
         // percorre os JTextFields até encontrar um preenchido
         for (int i = 0; i < tam; i++) {
             // quando encontrar um JTextField não vazio (preenchido)
@@ -112,19 +113,16 @@ public class ClienteCRUD {
                     // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
                     if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
                         // incrementa a query de acordo com o nome e conteúdo do JTextField
-                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%'";
-
-                        // retorna a query montada
-                        return sql;
+                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%';";
                     }
                 }
             }
         }
-        // instrução para burlar o erro do compilador - nunca chega até aqui
+        sql+= "AND tipoCliente = '" + tipoCliente + "' ;";
         return sql;
     }
 
-    public ArrayList<Cliente> consultarCliente(JTextField... args) {
+    public ArrayList<Cliente> consultarCliente(String tipoCliente, JTextField... args) {
 
         PreparedStatement stmt;
         ResultSet result;
@@ -134,7 +132,7 @@ public class ClienteCRUD {
 
             int i = 0;
 
-            stmt = conn.prepareStatement(prepararQueryPesquisarClientes(args));
+            stmt = conn.prepareStatement(prepararQueryPesquisarClientes(tipoCliente, args));
 
             result = stmt.executeQuery();
 

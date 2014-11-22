@@ -5,6 +5,7 @@ import crud.FornecedorCRUD;
 import domain.Cliente;
 import domain.Fornecedor;
 import java.util.ArrayList;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -310,9 +311,17 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     private ArrayList<Cliente> pesquisarClienteCaretUpdate(JTextField campo) {
         ClienteCRUD clienteCRUD = new ClienteCRUD();
         ArrayList<Cliente> listaClientes = new ArrayList<>();
+        String tipoCliente;
+        
+        if(rbTipoJuridicaCliente.isSelected()) {
+            tipoCliente = "J";
+        }
+        else {
+            tipoCliente = "F";
+        }
 
         if (!campo.getText().isEmpty()) {
-            listaClientes = clienteCRUD.consultarCliente(tfCodCliente, tfNomeCliente,
+            listaClientes = clienteCRUD.consultarCliente(tipoCliente, tfCodCliente, tfNomeCliente,
                     tfCpfCliente, tfRgCliente, tfResidencialCliente, tfCelularCliente);
         }
         return listaClientes;
@@ -326,7 +335,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
             modelo.addRow(new Object[]{cliente.getCodCliente(), cliente.getNome(), cliente.getCpf(),
                 cliente.getRg(), cliente.getTelFixo(), cliente.getTelCel()});
         }
-
     }//GEN-LAST:event_tfCodClienteCaretUpdate
 
     private void tfNomeClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfNomeClienteCaretUpdate

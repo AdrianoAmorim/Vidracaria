@@ -1,6 +1,7 @@
 package crud;
 
 import database.SQLite;
+import domain.Cliente;
 import domain.Endereco;
 import domain.Funcionario;
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -77,7 +79,7 @@ public class FuncionarioCRUD {
 
             stmt.close();
             conn.close();
-            
+
             JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso!");
         } catch (SQLException erroInserirFuncionario) {
             System.out.println(erroInserirFuncionario.getMessage());
@@ -107,37 +109,69 @@ public class FuncionarioCRUD {
         }
     }
 
-    // SELECT
-    public ArrayList<Funcionario> consultarFuncionario() {
+    public String prepararQueryPesquisarFuncionarios(JTextField... args) {
+        int tam = args.length;
 
+        String sql = "SELECT codFuncionario, codCargo, codEmpresa, nome, telFixo, telCel,"
+                + "salario, status FROM funcionario ";
+
+        args[0].setName("codFuncionario");
+        args[1].setName("nome");
+        args[2].setName("codCargo");
+
+        // percorre os JTextFields até encontrar um preenchido
+        for (int i = 0; i < tam; i++) {
+            // quando encontrar um JTextField não vazio (preenchido)
+            if (!args[i].getText().isEmpty()) {
+                // incrementa a query de acordo com o nome e conteúdo do JTExtField
+                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%'";
+                // percorre novamente o vetor em busca de outro JTextField preenchido
+                for (int j = 0; j < tam; j++) {
+                    // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
+                    if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
+                        // incrementa a query de acordo com o nome e conteúdo do JTextField
+                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%';";
+                    }
+                }
+            }
+        }
+        return sql;
+    }
+
+    // SELECT
+    public ArrayList<Funcionario> consultarFuncionario(JTextField... args) {
         PreparedStatement stmt;
         ResultSet result;
-
-        ArrayList<Funcionario> listaFuncionario = new ArrayList<>();
+        ArrayList<Funcionario> listaFuncionarios = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codFuncionario, codEmpresa, codCargo, nomeFuncionario, salarioFuncionario "
-                    + "FROM funcionario;");
+
+            int i = 0;
+
+            stmt = conn.prepareStatement(prepararQueryPesquisarFuncionarios(args));
 
             result = stmt.executeQuery();
+
             while (result.next()) {
                 Funcionario funcionario = new Funcionario();
 
                 funcionario.setCodFuncionario(result.getInt("codFuncionario"));
-                funcionario.setCodEmpresa(result.getInt("codEmpresa"));
                 funcionario.setCodCargo(result.getInt("codCargo"));
-                funcionario.setNomeFuncionario(result.getString("nomeFuncionario"));
-                funcionario.setSalarioFuncionario(result.getDouble("salarioFuncionario"));
+                funcionario.setCodEmpresa(result.getInt("codEmpresa"));
+                funcionario.setNomeFuncionario(result.getString("nome"));
+                funcionario.setTelFixo(result.getString("telFixo"));
+                funcionario.setTelCel(result.getString("telCel"));
+                funcionario.setSalarioFuncionario(result.getDouble("salario"));
+                funcionario.setAtivo(result.getInt("status"));
 
-                listaFuncionario.add(funcionario);
-
-                stmt.close();
-                conn.close();
+                listaFuncionarios.add(funcionario);
             }
-            return listaFuncionario;
+            stmt.close();
+
+            return listaFuncionarios;
         } catch (SQLException erroConsultarFuncionario) {
             System.out.println(erroConsultarFuncionario.getMessage());
-            return listaFuncionario;
+            return listaFuncionarios;
         }
     }
 

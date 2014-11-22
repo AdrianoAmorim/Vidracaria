@@ -1,18 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
+import crud.FuncionarioCRUD;
 import domain.Funcionario;
+import java.util.ArrayList;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Adriano
  */
 public class FrmBuscarFuncionario extends javax.swing.JDialog {
+
     Funcionario funcionario = new Funcionario();
+
     /**
      * Creates new form FrmBuscarFuncionario
      */
@@ -193,16 +194,46 @@ public class FrmBuscarFuncionario extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfBuscarFuncionarioCodigoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscarFuncionarioCodigoCaretUpdate
+    private ArrayList<Funcionario> pesquisarFuncionarioCaretUpdate(JTextField campo) {
+        FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+        ArrayList<Funcionario> listaFuncionarios = new ArrayList<>();
 
+        if (!campo.getText().isEmpty()) {
+            listaFuncionarios = funcionarioCRUD.consultarFuncionario(tfBuscarFuncionarioCodigo,
+                    tfBuscarFuncionarioNome, tfBuscarFuncionarioCargo);
+        }
+        return listaFuncionarios;
+    }
+
+
+    private void tfBuscarFuncionarioCodigoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscarFuncionarioCodigoCaretUpdate
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
+        modelo.setRowCount(0);
+
+        for (Funcionario funcionario : this.pesquisarFuncionarioCaretUpdate(tfBuscarFuncionarioCodigo)) {
+            modelo.addRow(new Object[]{funcionario.getCodFuncionario(), funcionario.getNomeFuncionario(),
+                funcionario.getTelCel(), funcionario.getTelFixo()});
+        }
     }//GEN-LAST:event_tfBuscarFuncionarioCodigoCaretUpdate
 
     private void tfBuscarFuncionarioNomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscarFuncionarioNomeCaretUpdate
- 
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
+        modelo.setRowCount(0);
+
+        for (Funcionario funcionario : this.pesquisarFuncionarioCaretUpdate(tfBuscarFuncionarioNome)) {
+            modelo.addRow(new Object[]{funcionario.getCodFuncionario(), funcionario.getNomeFuncionario(),
+                funcionario.getTelCel(), funcionario.getTelFixo()});
+        }
     }//GEN-LAST:event_tfBuscarFuncionarioNomeCaretUpdate
 
     private void tfBuscarFuncionarioCargoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscarFuncionarioCargoCaretUpdate
+        DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
+        modelo.setRowCount(0);
 
+        for (Funcionario funcionario : this.pesquisarFuncionarioCaretUpdate(tfBuscarFuncionarioCargo)) {
+            modelo.addRow(new Object[]{funcionario.getCodFuncionario(), funcionario.getNomeFuncionario(),
+                funcionario.getTelCel(), funcionario.getTelFixo()});
+        }
     }//GEN-LAST:event_tfBuscarFuncionarioCargoCaretUpdate
 
     /**
