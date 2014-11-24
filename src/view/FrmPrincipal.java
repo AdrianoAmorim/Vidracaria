@@ -32,8 +32,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.btnCadastrarFuncionario.setVisible(true);
 
         // INICIALIZAÇÃO DA LISTA DE PRODUTOS
-       
-
         // INICIALIZAÇÃO DO CODIGO DO CLIENTE
         int codCli = new ClienteCRUD().incrementCodCliente();
         tfClienteCodigo.setText(Integer.toString(codCli));
@@ -679,7 +677,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(tfClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnClienteCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
@@ -711,12 +709,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadCliente.setLayout(pnlCadClienteLayout);
         pnlCadClienteLayout.setHorizontalGroup(
             pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1254, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadClienteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 1232, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlCadClienteLayout.setVerticalGroup(
@@ -1173,7 +1171,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         lblVendaTotalLiquidoTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblVendaTotalLiquidoTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblVendaTotalLiquidoTitulo.setText("TOTAL:");
+        lblVendaTotalLiquidoTitulo.setText("Sub Total:");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1265,7 +1263,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblVendaCpfNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addComponent(lblVendaCpfNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel37Layout.setVerticalGroup(
@@ -1415,7 +1413,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         lblVendaTotalBrutoTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblVendaTotalBrutoTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblVendaTotalBrutoTitulo.setText("Total Produtos:");
+        lblVendaTotalBrutoTitulo.setText("Total:");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
@@ -1889,7 +1887,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnVendaDeletarProdutoLista, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnVendaCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1902,7 +1900,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jPanel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane3)
-                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE))))
+                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlEfetuarVendaLayout.setVerticalGroup(
@@ -2764,7 +2762,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
         pnlEfetuarCompraLayout.setHorizontalGroup(
             pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
+            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1254, Short.MAX_VALUE)
             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2789,7 +2787,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarCompraLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                            .addComponent(jPanel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(btnCompraDeletarProdutoLista, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(20, 20, 20))
@@ -3398,20 +3396,36 @@ public class FrmPrincipal extends javax.swing.JFrame {
         //Cria Uma Instancia da janela de adicao de produto passando o codCompra como Parametro
         FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfVendaCodigo.getText()), pnlEfetuarVenda.getName());
         adicionarProduto.setVisible(true);
-        DefaultTableModel modelo = (DefaultTableModel) tbVendaListProduto.getModel();
-        ArrayList<ProdutoVendido> listProdutoVendido = new ArrayList<>();
-        listProdutoVendido = adicionarProduto.listProdutoVendido;
 
-        for (ProdutoVendido produto : listProdutoVendido) {
-            modelo.addRow(new Object[]{produto.getCodProduto(), produto.getQuantidadeProduto(), produto.getPrecoVenda(),
-                produto.getPrecoVenda() * produto.getQuantidadeProduto()});
+        if (!adicionarProduto.listProdutoVendido.isEmpty()) {
+            //Guarda valor total Atual
+            double totalAtual = Double.parseDouble(lblVendaTotalBrutoValor.getText());
+            //guarda valor do SubTotal Atual 
+            double subTotalAtual = Double.parseDouble(lblVendaTotalLiquidoValor.getText());
+
+            DefaultTableModel modeloTabela = (DefaultTableModel) tbVendaListProduto.getModel();
+
+            //Adicionando as informaçoes dos produtos comprados e totais na janela de Compra 
+            for (ProdutoVendido produtoVendido : adicionarProduto.listProdutoVendido) {
+                double valorTotalProduto = produtoVendido.getPrecoVenda() * produtoVendido.getQuantidadeProduto();
+                totalAtual += valorTotalProduto;
+                subTotalAtual += valorTotalProduto;
+                modeloTabela.addRow(new Object[]{produtoVendido.getCodVenda(), produtoVendido.getCodProduto(), produtoVendido.getQuantidadeProduto(),
+                    produtoVendido.getPrecoVenda()});
+            }
+            
+            for (ProdutoVendido produto : adicionarProduto.listProdutoVendido) {
+                modeloTabela.addRow(new Object[]{produto.getCodProduto(), produto.getQuantidadeProduto(), produto.getPrecoVenda(),
+                    produto.getPrecoVenda() * produto.getQuantidadeProduto()});
+            }
+            
+            lblVendaTotalBrutoValor.setText(String.valueOf(totalAtual));
+            lblVendaTotalLiquidoValor.setText(String.valueOf(subTotalAtual));
         }
-
-
     }//GEN-LAST:event_btnVendaAdicionarProdutoActionPerformed
 
     private void btnCompraBuscarFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompraBuscarFornecedorMouseClicked
-        FrmAdicionarFornecedor addFornecedor = new FrmAdicionarFornecedor(this, true);
+        FrmAdicionarFuncionarioOUFornecedor addFornecedor = new FrmAdicionarFuncionarioOUFornecedor(this, true);
         addFornecedor.setVisible(true);
     }//GEN-LAST:event_btnCompraBuscarFornecedorMouseClicked
 

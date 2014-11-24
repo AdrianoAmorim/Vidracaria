@@ -27,16 +27,24 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmAdicionarProduto
+     * @param parent
+     * @param modal
+     * @param codigo
+     * @param operacao
      */
     public FrmAdicionarProduto(java.awt.Frame parent, boolean modal, int codigo, String operacao) {
         super(parent, modal);
         initComponents();
         this.codigo = codigo;
         this.operacao = operacao;
-        if (operacao.equals("pnlVenda")) {
-            this.tfAdicionarProdutoPrecoCusto.setVisible(false);
-        } else if (operacao.equals("pnlCompra")) {
-            this.tfAdicionarProdutoPrecoCusto.setVisible(true);
+
+        switch (operacao) {
+            case "pnlVenda":
+                this.tfAdicionarProdutoPrecoCusto.setVisible(false);
+                break;
+            case "pnlCompra":
+                this.tfAdicionarProdutoPrecoCusto.setVisible(true);
+                break;
         }
     }
 

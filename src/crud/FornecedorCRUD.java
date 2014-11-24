@@ -96,8 +96,8 @@ public class FornecedorCRUD {
                 + "site, vendedor, ramal, status FROM fornecedor ";
 
         args[0].setName("codFornecedor");
-        args[1].setName("cnpj");
-        args[2].setName("nome");
+        args[1].setName("nome");
+        args[2].setName("cnpj");
 
         // percorre os JTextFields até encontrar um preenchido
         for (int i = 0; i < tam; i++) {

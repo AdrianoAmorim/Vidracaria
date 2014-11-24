@@ -17,6 +17,9 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmCadastrarFornecedor
+     * @param parent
+     * @param modal
+     * @param op
      */
     public FrmCadastrarFornecedor(java.awt.Frame parent, boolean modal, boolean op) {
         super(parent, modal);
@@ -614,7 +617,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
     private void tfBuscaFornecedorOpCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscaFornecedorOpCodFocusGained
         tfBuscaFornecedorOpCod.setForeground(Color.red);
         tfBuscaFornecedorOpCod.setText("");
-
+        
     }//GEN-LAST:event_tfBuscaFornecedorOpCodFocusGained
 
     private void tfBuscaFornecedorOpCodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscaFornecedorOpCodFocusLost
