@@ -165,6 +165,11 @@ public class FrmBuscarFuncionario extends javax.swing.JDialog {
             }
         });
         tbBuscaFuncionarioResult.setPreferredSize(new java.awt.Dimension(200, 64));
+        tbBuscaFuncionarioResult.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbBuscaFuncionarioResultMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbBuscaFuncionarioResult);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,6 +240,12 @@ public class FrmBuscarFuncionario extends javax.swing.JDialog {
                 funcionario.getTelCel(), funcionario.getTelFixo()});
         }
     }//GEN-LAST:event_tfBuscarFuncionarioCargoCaretUpdate
+
+    private void tbBuscaFuncionarioResultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscaFuncionarioResultMouseClicked
+        FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+        this.funcionario = funcionarioCRUD.consultarFuncionario(tfBuscarFuncionarioCodigo, tfBuscarFuncionarioNome, tfBuscarFuncionarioCargo).get(0);
+        this.dispose();
+    }//GEN-LAST:event_tbBuscaFuncionarioResultMouseClicked
 
     /**
      * @param args the command line arguments

@@ -248,8 +248,8 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="tfClienteEndereco" min="-2" pref="303" max="-2" attributes="0"/>
-                                                  <Component id="tfClienteEndereco1" min="-2" pref="303" max="-2" attributes="0"/>
+                                                  <Component id="tfClienteLogradouro" min="-2" pref="303" max="-2" attributes="0"/>
+                                                  <Component id="tfClienteComplemento" min="-2" pref="303" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -383,7 +383,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblClienteLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfClienteEndereco" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfClienteLogradouro" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="lblClienteNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfClienteNumero" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
@@ -392,7 +392,7 @@
                               <Component id="lblClienteBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfClienteBairro" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="lblClienteComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfClienteEndereco1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfClienteComplemento" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -506,7 +506,7 @@
                     <Property name="text" type="java.lang.String" value="CPF:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfClienteEndereco">
+                <Component class="javax.swing.JTextField" name="tfClienteLogradouro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
@@ -777,7 +777,7 @@
                     <Property name="text" type="java.lang.String" value="Complemento:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfClienteEndereco1">
+                <Component class="javax.swing.JTextField" name="tfClienteComplemento">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>
@@ -1076,6 +1076,8 @@
                                   <Component id="btnFuncionarioBuscarCodCargo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="tfFuncionarioCodCargo" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="tfFuncionarioDescricaoCargo" min="-2" pref="110" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -1118,7 +1120,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="448" max="32767" attributes="0"/>
+                          <EmptySpace pref="396" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1135,6 +1137,7 @@
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="tfFuncionarioCodCargo" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                                   <Component id="lblFuncionarioCodCargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfFuncionarioDescricaoCargo" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                               <Component id="btnFuncionarioBuscarCodCargo" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1198,7 +1201,7 @@
                                   <Component id="btnCadastrarFuncionario" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="126" max="32767" attributes="0"/>
+                          <EmptySpace pref="78" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1514,6 +1517,13 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="tfFuncionarioEmail">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Comic Sans MS" size="14" style="1"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="tfFuncionarioDescricaoCargo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Comic Sans MS" size="14" style="1"/>

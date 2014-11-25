@@ -78,7 +78,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfClienteNome = new javax.swing.JTextField();
         lblClienteLogradouro = new javax.swing.JLabel();
         lblClienteCpf = new javax.swing.JLabel();
-        tfClienteEndereco = new javax.swing.JTextField();
+        tfClienteLogradouro = new javax.swing.JTextField();
         tfClienteCpf = new javax.swing.JTextField();
         tfClienteRg = new javax.swing.JTextField();
         lblClienteRg = new javax.swing.JLabel();
@@ -105,7 +105,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfClienteNumero = new javax.swing.JTextField();
         tfClienteUf = new javax.swing.JTextField();
         lblClienteComplemento = new javax.swing.JLabel();
-        tfClienteEndereco1 = new javax.swing.JTextField();
+        tfClienteComplemento = new javax.swing.JTextField();
         lblClienteCidade = new javax.swing.JLabel();
         tfClienteCidade = new javax.swing.JTextField();
         lblClienteCep = new javax.swing.JLabel();
@@ -153,6 +153,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblFuncionarioStatus = new javax.swing.JLabel();
         lblFuncionarioStatus1 = new javax.swing.JLabel();
         tfFuncionarioEmail = new javax.swing.JTextField();
+        tfFuncionarioDescricaoCargo = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         lblFuncionarioDadosFuncionario = new javax.swing.JLabel();
         pnlEfetuarVenda = new javax.swing.JPanel();
@@ -387,7 +388,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblClienteCpf.setForeground(new java.awt.Color(0, 69, 139));
         lblClienteCpf.setText("CPF:");
 
-        tfClienteEndereco.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfClienteLogradouro.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         tfClienteCpf.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
@@ -489,7 +490,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblClienteComplemento.setForeground(new java.awt.Color(0, 69, 139));
         lblClienteComplemento.setText("Complemento:");
 
-        tfClienteEndereco1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfClienteComplemento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         lblClienteCidade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblClienteCidade.setForeground(new java.awt.Color(0, 69, 139));
@@ -536,8 +537,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel23Layout.createSequentialGroup()
                                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tfClienteEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfClienteEndereco1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tfClienteLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfClienteComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblClienteNumero)
@@ -634,7 +635,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClienteLogradouro)
-                    .addComponent(tfClienteEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfClienteLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblClienteNumero)
                     .addComponent(tfClienteNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -642,7 +643,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(lblClienteBairro)
                     .addComponent(tfClienteBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblClienteComplemento)
-                    .addComponent(tfClienteEndereco1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfClienteComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClienteUf)
@@ -887,6 +888,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfFuncionarioEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
+        tfFuncionarioDescricaoCargo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -929,7 +932,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(btnFuncionarioBuscarCodCargo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfFuncionarioCodCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tfFuncionarioCodCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfFuncionarioDescricaoCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblFuncionarioComplemento)
@@ -963,7 +968,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addComponent(lblFuncionarioUf)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(448, Short.MAX_VALUE))
+                .addContainerGap(396, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -976,7 +981,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfFuncionarioCodCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblFuncionarioCodCargo))
+                        .addComponent(lblFuncionarioCodCargo)
+                        .addComponent(tfFuncionarioDescricaoCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnFuncionarioBuscarCodCargo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1026,7 +1032,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jPanel8.setBackground(new java.awt.Color(153, 153, 255));
@@ -2961,9 +2967,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cliente.setSituacao(1);
 
         enderecoCliente.setCod(Integer.parseInt(tfClienteCodigo.getText()));
-        enderecoCliente.setLogradouro(tfClienteEndereco.getText());
+        enderecoCliente.setLogradouro(tfClienteLogradouro.getText());
         enderecoCliente.setNumero(tfClienteNumero.getText());
-        enderecoCliente.setComplemento(tfClienteEndereco1.getText());
+        enderecoCliente.setComplemento(tfClienteComplemento.getText());
         enderecoCliente.setBairro(tfClienteBairro.getText());
         enderecoCliente.setCep(tfClienteCep.getText());
         enderecoCliente.setCidade(tfClienteCidade.getText());
@@ -2976,9 +2982,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // limpa os dados do formulário
             limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCpf, tfClienteRg,
-                    tfClienteEndereco, tfClienteCep, tfClienteBairro, tfClienteCidade,
+                    tfClienteLogradouro, tfClienteCep, tfClienteBairro, tfClienteCidade,
                     tfClienteUf, tfClienteTelRes, tfClienteTelCel, tfClienteNumero,
-                    tfClienteEndereco1, tfClienteCnpj, tfClienteInscEstadual,
+                    tfClienteComplemento, tfClienteCnpj, tfClienteInscEstadual,
                     tfClienteEmail);
 
             // incrementa o codigo do cliente
@@ -2998,7 +3004,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //            clienteCrud.atualizarCliente(cliente);
             // limpa os dados do formulario
             limparCampos(tfClienteNome, tfClienteCodigo, tfClienteRg,
-                    tfClienteEndereco, tfClienteTelRes, tfClienteTelCel);
+                    tfClienteLogradouro, tfClienteTelRes, tfClienteTelCel);
 
             this.btnClienteAlterar.setVisible(false);
 
@@ -3267,6 +3273,38 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnClienteBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteBuscarClienteMouseClicked
         FrmBuscarCliente buscaCli = new FrmBuscarCliente(this, true);
         buscaCli.setVisible(true);
+        rbClienteFisica.setSelected(false);
+        rbClienteJuridica.setSelected(false);
+
+        FrmPrincipal.limparCampos(tfClienteCodigo, tfClienteNome, tfClienteLogradouro,
+                tfClienteNumero, tfClienteComplemento, tfClienteBairro,
+                tfClienteCep, tfClienteCidade, tfClienteUf, tfClienteCpf, tfClienteRg,
+                tfClienteCnpj, tfClienteInscEstadual, tfClienteTelRes, tfClienteTelCel,
+                tfClienteEmail);
+
+        tfClienteCodigo.setText(String.valueOf(buscaCli.cliente.getCodCliente()));
+        // radio button (tipo de cliente)
+        if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("F")) {
+            rbClienteFisica.setSelected(true);
+            tfClienteCpf.setText(buscaCli.cliente.getCpf());
+            tfClienteRg.setText(buscaCli.cliente.getRg());
+        } else {
+            rbClienteJuridica.setSelected(true);
+            tfClienteCnpj.setText(buscaCli.cliente.getCnpj());
+            tfClienteInscEstadual.setText(buscaCli.cliente.getInscricaoEstadual());
+        }
+
+        tfClienteNome.setText(buscaCli.cliente.getNome());
+        tfClienteLogradouro.setText(buscaCli.cliente.getLogradouro());
+        tfClienteNumero.setText(buscaCli.cliente.getNumero());
+        tfClienteComplemento.setText(buscaCli.cliente.getComplemento());
+        tfClienteBairro.setText(buscaCli.cliente.getBairro());
+        tfClienteCep.setText(buscaCli.cliente.getCep());
+        tfClienteCidade.setText(buscaCli.cliente.getCidade());
+        tfClienteTelRes.setText(buscaCli.cliente.getTelFixo());
+        tfClienteTelCel.setText(buscaCli.cliente.getTelCel());
+        tfClienteUf.setText(buscaCli.cliente.getUf());
+        tfClienteEmail.setText(buscaCli.cliente.getEmail());
     }//GEN-LAST:event_btnClienteBuscarClienteMouseClicked
 
     private void cbVendaTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaTipoPagamentoActionPerformed
@@ -3349,10 +3387,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
 
+
     private void btnFuncionarioBuscarCodCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionarioBuscarCodCargoMouseClicked
         FrmBuscaCargo buscaCargo = new FrmBuscaCargo(this, true);
-
         buscaCargo.setVisible(true);
+
+        tfFuncionarioCodCargo.setText(String.valueOf(buscaCargo.cargo.getCodigoCargo()));
+        tfFuncionarioDescricaoCargo.setText(buscaCargo.cargo.getDescricaoCargo());
     }//GEN-LAST:event_btnFuncionarioBuscarCodCargoMouseClicked
 
     private void tfCompraDescontoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCompraDescontoFocusLost
@@ -3390,6 +3431,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnFuncionarioBuscarNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionarioBuscarNomeMouseClicked
         FrmBuscarFuncionario buscarFuncionario = new FrmBuscarFuncionario(this, true);
         buscarFuncionario.setVisible(true);
+
+        tfFuncionarioCodigo.setText(String.valueOf(buscarFuncionario.funcionario.getCodFuncionario()));
+        tfFuncionarioCodCargo.setText(String.valueOf(buscarFuncionario.funcionario.getCodCargo()));
+// FALTA IMPLEMENTAR        
+//tfFuncionarioDescricaoCargo.setText(buscarFuncionario.funcionario.
+        tfFuncionarioNome.setText(buscarFuncionario.funcionario.getNomeFuncionario());
+        tfFuncionarioTelResidencial.setText(buscarFuncionario.funcionario.getTelFixo());
+        tfFuncionarioTelCelular.setText(buscarFuncionario.funcionario.getTelCel());
+        tfFuncionarioEmail.setText(buscarFuncionario.funcionario.getEmail());
+        tfFuncionarioLogradouro.setText(buscarFuncionario.funcionario.getLogradouro());
+        tfFuncionarioNumero.setText(buscarFuncionario.funcionario.getNumero());
+        tfFuncionarioComplemento.setText(buscarFuncionario.funcionario.getComplemento());
+        tfFuncionarioCep.setText(buscarFuncionario.funcionario.getCep());
+        tfFuncionarioCidade.setText(buscarFuncionario.funcionario.getCidade());
+        tfFuncionarioUf.setText(buscarFuncionario.funcionario.getUf());
     }//GEN-LAST:event_btnFuncionarioBuscarNomeMouseClicked
 
     private void btnVendaAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaAdicionarProdutoActionPerformed
@@ -3410,15 +3466,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 double valorTotalProduto = produtoVendido.getPrecoVenda() * produtoVendido.getQuantidadeProduto();
                 totalAtual += valorTotalProduto;
                 subTotalAtual += valorTotalProduto;
-                modeloTabela.addRow(new Object[]{produtoVendido.getCodVenda(), produtoVendido.getCodProduto(), produtoVendido.getQuantidadeProduto(),
-                    produtoVendido.getPrecoVenda()});
+                modeloTabela.addRow(new Object[]{produtoVendido.getCodProduto(), produtoVendido.getQuantidadeProduto(),
+                    produtoVendido.getPrecoVenda(), produtoVendido.getPrecoVenda() * produtoVendido.getQuantidadeProduto()});
             }
-            
-            for (ProdutoVendido produto : adicionarProduto.listProdutoVendido) {
-                modeloTabela.addRow(new Object[]{produto.getCodProduto(), produto.getQuantidadeProduto(), produto.getPrecoVenda(),
-                    produto.getPrecoVenda() * produto.getQuantidadeProduto()});
-            }
-            
+
             lblVendaTotalBrutoValor.setText(String.valueOf(totalAtual));
             lblVendaTotalLiquidoValor.setText(String.valueOf(subTotalAtual));
         }
@@ -3671,11 +3722,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfClienteCidade;
     private javax.swing.JTextField tfClienteCnpj;
     private javax.swing.JTextField tfClienteCodigo;
+    private javax.swing.JTextField tfClienteComplemento;
     private javax.swing.JTextField tfClienteCpf;
     private javax.swing.JTextField tfClienteEmail;
-    private javax.swing.JTextField tfClienteEndereco;
-    private javax.swing.JTextField tfClienteEndereco1;
     private javax.swing.JTextField tfClienteInscEstadual;
+    private javax.swing.JTextField tfClienteLogradouro;
     private javax.swing.JTextField tfClienteNome;
     private javax.swing.JTextField tfClienteNumero;
     private javax.swing.JTextField tfClienteRg;
@@ -3697,6 +3748,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfFuncionarioCodCargo;
     private javax.swing.JTextField tfFuncionarioCodigo;
     private javax.swing.JTextField tfFuncionarioComplemento;
+    private javax.swing.JTextField tfFuncionarioDescricaoCargo;
     private javax.swing.JTextField tfFuncionarioEmail;
     private javax.swing.JTextField tfFuncionarioLogradouro;
     private javax.swing.JTextField tfFuncionarioNome;

@@ -112,8 +112,9 @@ public class FuncionarioCRUD {
     public String prepararQueryPesquisarFuncionarios(JTextField... args) {
         int tam = args.length;
 
-        String sql = "SELECT codFuncionario, codCargo, codEmpresa, nome, telFixo, telCel,"
-                + "salario, status FROM funcionario ";
+        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel,"
+                + "f.salario, f.status, ef.logradouro, ef.numero, ef.complemento, ef.bairro, ef.cep, ef.cidade, ef.uf"
+                + " FROM funcionario f NATURAL INNER JOIN enderecoFuncionario ef ";
 
         args[0].setName("codFuncionario");
         args[1].setName("nome");
@@ -163,6 +164,16 @@ public class FuncionarioCRUD {
                 funcionario.setTelCel(result.getString("telCel"));
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
                 funcionario.setAtivo(result.getInt("status"));
+                funcionario.setLogradouro(result.getString("logradouro"));
+                funcionario.setNumero(result.getString("numero"));
+                funcionario.setComplemento(result.getString("complemento"));
+                funcionario.setBairro(result.getString("bairro"));
+                funcionario.setCep(result.getString("cep"));
+                funcionario.setCidade(result.getString("cidade"));
+                funcionario.setUf(result.getString("uf"));
+                
+                
+                
 
                 listaFuncionarios.add(funcionario);
             }

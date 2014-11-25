@@ -4,7 +4,7 @@ package domain;
  *
  * @author rafael
  */
-public class Funcionario {
+public class Funcionario extends Endereco {
 
     protected int codFuncionario;
     protected int codCargo;
@@ -12,8 +12,16 @@ public class Funcionario {
     protected String nomeFuncionario;
     protected String telFixo;
     protected String telCel;
+    protected String email;
     protected Double salarioFuncionario;
     protected int ativo;
+    protected String logradouro;
+    protected String numero;
+    protected String complemento;
+    protected String bairro;
+    protected String cep;
+    protected String cidade;
+    protected String uf;
 
     public int getCodFuncionario() {
         return codFuncionario;
@@ -39,6 +47,15 @@ public class Funcionario {
         this.codEmpresa = codEmpresa;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
     public String getNomeFuncionario() {
         return nomeFuncionario;
     }
@@ -79,5 +96,4 @@ public class Funcionario {
         this.ativo = ativo;
     }
 
-    
 }

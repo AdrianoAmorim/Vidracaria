@@ -2,7 +2,6 @@ package crud;
 
 import database.SQLite;
 import domain.Cargo;
-import domain.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -118,22 +117,6 @@ public class CargoCRUD {
         } catch (SQLException erroConsultarCargo) {
             System.out.println(erroConsultarCargo.getMessage());
             return listaCargos;
-        }
-    }
-
-    // DELETE
-    public void deletarCargo(Cargo cargo) {
-
-        PreparedStatement stmt;
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM cargo WHERE codCargo = ?;");
-            stmt.setInt(1, cargo.getCodigoCargo());
-
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-        } catch (SQLException erroDeletarCargo) {
-            System.out.println(erroDeletarCargo.getMessage());
         }
     }
 }

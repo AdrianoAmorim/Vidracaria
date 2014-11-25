@@ -2,7 +2,6 @@ package view;
 
 import crud.CargoCRUD;
 import domain.Cargo;
-import domain.Produto;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JTextField;
@@ -12,6 +11,8 @@ import javax.swing.JTextField;
  * @author Adriano
  */
 public class FrmBuscaCargo extends javax.swing.JDialog {
+
+    Cargo cargo = new Cargo();
 
     /**
      * Creates new form FrmBuscaCargo
@@ -66,6 +67,11 @@ public class FrmBuscaCargo extends javax.swing.JDialog {
             }
         });
 
+        jlBuscaCargoResultConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlBuscaCargoResultConsultaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jlBuscaCargoResultConsulta);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -195,6 +201,13 @@ public class FrmBuscaCargo extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_tfBuscaCargoCodigoCaretUpdate
+
+    private void jlBuscaCargoResultConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBuscaCargoResultConsultaMouseClicked
+        CargoCRUD cargoCRUD = new CargoCRUD();
+
+        this.cargo = cargoCRUD.consultarCargo(tfBuscaCargoCodigo, tfBuscaCargoDescricao).get(0);
+        this.dispose();
+    }//GEN-LAST:event_jlBuscaCargoResultConsultaMouseClicked
 
     /**
      * @param args the command line arguments

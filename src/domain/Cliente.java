@@ -1,11 +1,10 @@
-
 package domain;
 
 /**
  *
  * @author debian
  */
-public class Cliente {
+public class Cliente extends Endereco {
 
     protected int codCliente;
     protected String tipoCliente;
@@ -19,6 +18,13 @@ public class Cliente {
     protected int status;
     protected String email;
     protected int situacao;
+    protected String logradouro;
+    protected String numero;
+    protected String complemento;
+    protected String bairro;
+    protected String cep;
+    protected String cidade;
+    protected String uf;
 
     public int getCodCliente() {
         return codCliente;

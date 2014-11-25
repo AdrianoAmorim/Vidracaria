@@ -5,7 +5,7 @@ package domain;
  *
  * @author rafael
  */
-public class Fornecedor {
+public class Fornecedor extends Endereco {
     protected int codFornecedor;
     protected String cnpj;
     protected String nome;
@@ -16,6 +16,13 @@ public class Fornecedor {
     protected String vendedor;
     protected String ramal;
     protected int status;
+    protected String logradouro;
+    protected String numero;
+    protected String complemento;
+    protected String bairro;
+    protected String cep;
+    protected String cidade;
+    protected String uf;    
 
     public int getCodFornecedor() {
         return codFornecedor;

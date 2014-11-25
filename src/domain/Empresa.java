@@ -5,11 +5,18 @@ package domain;
  *
  * @author rafael
  */
-public class Empresa {
+public class Empresa extends Endereco {
     protected int codEmpresa;
     protected String cnpjEmpresa;
     protected String razaoSocial;
     protected String nomeFantasia;
+    protected String logradouro;
+    protected String numero;
+    protected String complemento;
+    protected String bairro;
+    protected String cep;
+    protected String cidade;
+    protected String uf;
 
     public int getCodEmpresa() {
         return codEmpresa;
