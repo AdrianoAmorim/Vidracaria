@@ -10,14 +10,14 @@ import javax.swing.JTextField;
  *
  * @author Adriano
  */
-public class FrmBuscaCargo extends javax.swing.JDialog {
+public class FrmBuscarCargo extends javax.swing.JDialog {
 
     Cargo cargo = new Cargo();
 
     /**
      * Creates new form FrmBuscaCargo
      */
-    public FrmBuscaCargo(java.awt.Frame parent, boolean modal) {
+    public FrmBuscarCargo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -226,20 +226,21 @@ public class FrmBuscaCargo extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmBuscaCargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBuscarCargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmBuscaCargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBuscarCargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmBuscaCargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBuscarCargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmBuscaCargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBuscarCargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmBuscaCargo dialog = new FrmBuscaCargo(new javax.swing.JFrame(), true);
+                FrmBuscarCargo dialog = new FrmBuscarCargo(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

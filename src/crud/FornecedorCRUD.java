@@ -92,8 +92,11 @@ public class FornecedorCRUD {
     public String prepararQueryPesquisarFornecedor(JTextField... args) {
         int tam = args.length;
 
-        String sql = "SELECT codFornecedor, cnpj, nome, telFixo, telCel, email, "
-                + "site, vendedor, ramal, status FROM fornecedor ";
+        String sql = "SELECT f.codFornecedor, f.cnpj, f.nome, f.telFixo, "
+                + "f.telCel, f.email, f.site, f.vendedor, f.ramal, "
+                + "f.status, ef.logradouro, ef.numero, ef.complemento, "
+                + "ef.bairro, ef.cep, ef.cidade, ef.uf FROM fornecedor f "
+                + "NATURAL INNER JOIN enderecoFornecedor ef ";
 
         args[0].setName("codFornecedor");
         args[1].setName("nome");
@@ -137,16 +140,27 @@ public class FornecedorCRUD {
             result = stmt.executeQuery();
 
             while (result.next()) {
-                Fornecedor novoFornecedor = new Fornecedor();
+                Fornecedor fornecedor = new Fornecedor();
 
-                novoFornecedor.setCodFornecedor(result.getInt("codFornecedor"));
-                novoFornecedor.setCnpj(result.getString("cnpj"));
-                novoFornecedor.setNome(result.getString("nome"));
-                novoFornecedor.setTelFixo(result.getString("telFixo"));
-                novoFornecedor.setTelCel(result.getString("telCel"));
-                novoFornecedor.setEmail(result.getString("email"));
+                fornecedor.setCodFornecedor(result.getInt("codFornecedor"));
+                fornecedor.setCnpj(result.getString("cnpj"));
+                fornecedor.setNome(result.getString("nome"));
+                fornecedor.setTelFixo(result.getString("telFixo"));
+                fornecedor.setTelCel(result.getString("telCel"));
+                fornecedor.setEmail(result.getString("email"));
+                fornecedor.setSite(result.getString("site"));
+                fornecedor.setVendedor(result.getString("vendedor"));
+                fornecedor.setRamal(result.getString("ramal"));
+                fornecedor.setStatus(Integer.parseInt(result.getString("status")));
+                fornecedor.setLogradouro(result.getString("logradouro"));
+                fornecedor.setNumero(result.getString("numero"));
+                fornecedor.setComplemento(result.getString("complemento"));
+                fornecedor.setBairro(result.getString("bairro"));
+                fornecedor.setCep(result.getString("cep"));
+                fornecedor.setCidade(result.getString("cidade"));
+                fornecedor.setUf(result.getString("uf"));
 
-                listaFornecedores.add(novoFornecedor);
+                listaFornecedores.add(fornecedor);
             }
             stmt.close();
 
@@ -157,23 +171,42 @@ public class FornecedorCRUD {
         }
     }
 
-    // "DELETE"
-    public void desativarFornecedor(Fornecedor fornecedor) {
-
+    public Fornecedor consultarFornecedorPorNome(String nome) {
+        Fornecedor fornecedor = new Fornecedor();
         PreparedStatement stmt;
+        ResultSet result;
+
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM fornecedor WHERE codFornecedor = ?;");
 
-            stmt.setInt(1, fornecedor.getCodFornecedor());
+            stmt = conn.prepareStatement("SELECT f.codFornecedor, f.cnpj, f.nome,"
+                    + "f.telFixo, f.telCel, f.email, f.site, f.vendedor, f.ramal, "
+                    + "f.status, ef.logradouro, ef.numero, ef.complemento, ef.bairro, "
+                    + "ef.cep, ef.cidade, ef.uf FROM fornecedor f NATURAL INNER JOIN enderecoFornecedor ef WHERE nome = '" + nome + "';");
+            
+            result = stmt.executeQuery();
 
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-
-            JOptionPane.showMessageDialog(null, "Fornecedor deletado com sucesso!");
-        } catch (SQLException erroDeletarFornecedor) {
-            System.out.println(erroDeletarFornecedor.getMessage());
+            while (result.next()) {
+                fornecedor.setCodFornecedor(result.getInt("codFornecedor"));
+                fornecedor.setCnpj(result.getString("cnpj"));
+                fornecedor.setNome(result.getString("nome"));
+                fornecedor.setTelFixo(result.getString("telFixo"));
+                fornecedor.setTelCel(result.getString("telCel"));
+                fornecedor.setEmail(result.getString("email"));
+                fornecedor.setSite(result.getString("site"));
+                fornecedor.setVendedor(result.getString("vendedor"));
+                fornecedor.setRamal(result.getString("ramal"));
+                fornecedor.setStatus(result.getInt("status"));
+                fornecedor.setLogradouro(result.getString("logradouro"));
+                fornecedor.setNumero(result.getString("numero"));
+                fornecedor.setComplemento(result.getString("complemento"));
+                fornecedor.setBairro(result.getString("bairro"));
+                fornecedor.setCep(result.getString("cep"));
+                fornecedor.setCidade(result.getString("cidade"));
+                fornecedor.setUf(result.getString("uf"));
+            }
+        } catch (SQLException erroConsultarFuncPorNome) {
+            JOptionPane.showMessageDialog(null, erroConsultarFuncPorNome.getMessage());
         }
+        return fornecedor;
     }
-
 }

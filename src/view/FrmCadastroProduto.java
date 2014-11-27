@@ -12,7 +12,8 @@ import javax.swing.JTextField;
  * @author Adriano
  */
 public class FrmCadastroProduto extends javax.swing.JDialog {
-
+    Produto produto = new Produto();
+    
     /**
      * Creates new form FrmCadastroProduto
      */
@@ -266,6 +267,11 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         cbBuscaProdutoOpCategoria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbBuscaProdutoOpCategoria.setToolTipText("");
 
+        jlCadastroProdutoResultConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlCadastroProdutoResultConsultaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jlCadastroProdutoResultConsulta);
 
         javax.swing.GroupLayout pnlProdutoOpBuscaLayout = new javax.swing.GroupLayout(pnlProdutoOpBusca);
@@ -412,6 +418,18 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_tfBuscaProdutoOpDescricaoCaretUpdate
+
+    private void jlCadastroProdutoResultConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCadastroProdutoResultConsultaMouseClicked
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+
+        this.produto = produtoCRUD.consultarProdutos(tfBuscaProdutoOpCod, tfBuscaProdutoOpDescricao).get(0);
+        
+        tfProdutoCodigo.setText(String.valueOf(produto.getCodProduto()));
+        tfProdutoDescricao.setText(produto.getDescricao());
+        tfProdutoPrecoVenda.setText(String.valueOf(produto.getPrecoVenda()));
+        tfProdutoQuantidade.setText(String.valueOf(produto.getQuantidadeEstoque()));
+        //cbUnidadeMedida.setSelectedIndex(WIDTH);                
+    }//GEN-LAST:event_jlCadastroProdutoResultConsultaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

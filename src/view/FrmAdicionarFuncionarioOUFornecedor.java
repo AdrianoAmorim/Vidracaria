@@ -5,10 +5,8 @@ import crud.FuncionarioCRUD;
 import domain.Fornecedor;
 import domain.Funcionario;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -16,15 +14,29 @@ import javax.swing.table.TableModel;
  */
 public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
 
+    Fornecedor fornecedor = new Fornecedor();
+    Funcionario funcionario = new Funcionario();
+    int indice = 0;
+
     /**
      * Creates new form FrmBuscarFornecedor
      */
-    public FrmAdicionarFuncionarioOUFornecedor(java.awt.Frame parent, boolean modal) {
+    public FrmAdicionarFuncionarioOUFornecedor(java.awt.Frame parent, boolean modal, int indice) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-    }
 
+        this.indice = indice;
+
+        if (indice == 2) {
+           lblFuncOuForn.setText("Cargo:");
+           this.setTitle("Pesquisar Funcionario");
+        } else if (indice == 3) {
+            lblFuncOuForn.setText("Cargo:");
+            this.setTitle("Pesquisar Vendedor");
+        }
+    }   
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -140,6 +152,11 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
             }
         });
         tbBuscaFuncionarioResult.setPreferredSize(new java.awt.Dimension(200, 64));
+        tbBuscaFuncionarioResult.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbBuscaFuncionarioResultMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbBuscaFuncionarioResult);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -157,7 +174,7 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rgTipoClienteBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rgTipoClienteBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -187,7 +204,6 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
 
                 listaFornecedores = fornecedorCRUD.consultarFornecedores(tfBuscarFuncionarioCodigo,
                         tfBuscarFuncionarioNome, tfBuscarFuncionarioCargo);
-
             }
         }
         return listaFornecedores;
@@ -244,6 +260,22 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tfBuscarFuncionarioCargoCaretUpdate
 
+    private void tbBuscaFuncionarioResultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscaFuncionarioResultMouseClicked
+        if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
+            DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
+            FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+
+            this.funcionario = funcionarioCRUD.consultarFuncionarioPorNome(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString());
+            this.dispose();
+        } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
+            DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
+            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+
+            this.fornecedor = fornecedorCRUD.consultarFornecedorPorNome(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString());
+            this.dispose();
+        }
+    }//GEN-LAST:event_tbBuscaFuncionarioResultMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -286,7 +318,7 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmAdicionarFuncionarioOUFornecedor dialog = new FrmAdicionarFuncionarioOUFornecedor(new javax.swing.JFrame(), true);
+                FrmAdicionarFuncionarioOUFornecedor dialog = new FrmAdicionarFuncionarioOUFornecedor(new javax.swing.JFrame(), true, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

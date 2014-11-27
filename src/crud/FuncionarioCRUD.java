@@ -1,7 +1,6 @@
 package crud;
 
 import database.SQLite;
-import domain.Cliente;
 import domain.Endereco;
 import domain.Funcionario;
 import java.sql.Connection;
@@ -171,9 +170,6 @@ public class FuncionarioCRUD {
                 funcionario.setCep(result.getString("cep"));
                 funcionario.setCidade(result.getString("cidade"));
                 funcionario.setUf(result.getString("uf"));
-                
-                
-                
 
                 listaFuncionarios.add(funcionario);
             }
@@ -186,22 +182,39 @@ public class FuncionarioCRUD {
         }
     }
 
-    // DELETE
-    public void deletarFuncionario(Funcionario funcionario) {
-
+    public Funcionario consultarFuncionarioPorNome(String nome) {
+        Funcionario funcionario = new Funcionario();
         PreparedStatement stmt;
+        ResultSet result;
+
+        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel,"
+                + "f.salario, f.status, ef.logradouro, ef.numero, ef.complemento, ef.bairro, ef.cep, ef.cidade, ef.uf"
+                + " FROM funcionario f NATURAL INNER JOIN enderecoFuncionario ef WHERE f.nome = '" + nome + "';";
+
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM funcionario WHERE codFuncionario = ?;");
+            stmt = conn.prepareStatement(sql);
+            result = stmt.executeQuery();
 
-            stmt.setInt(1, funcionario.getCodFuncionario());
-
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-            JOptionPane.showMessageDialog(null, "O funcionario foi removido com sucesso!");
-        } catch (SQLException erroDeletarFuncionario) {
-            System.out.println(erroDeletarFuncionario.getMessage());
+            while (result.next()) {
+                funcionario.setCodFuncionario(result.getInt("codFuncionario"));
+                funcionario.setCodCargo(result.getInt("codCargo"));
+                funcionario.setCodEmpresa(result.getInt("codEmpresa"));
+                funcionario.setNomeFuncionario(result.getString("nome"));
+                funcionario.setTelFixo(result.getString("telFixo"));
+                funcionario.setTelCel(result.getString("telCel"));
+                funcionario.setSalarioFuncionario(result.getDouble("salario"));
+                funcionario.setAtivo(result.getInt("status"));
+                funcionario.setLogradouro(result.getString("logradouro"));
+                funcionario.setNumero(result.getString("numero"));
+                funcionario.setComplemento(result.getString("complemento"));
+                funcionario.setBairro(result.getString("bairro"));
+                funcionario.setCep(result.getString("cep"));
+                funcionario.setCidade(result.getString("cidade"));
+                funcionario.setUf(result.getString("uf"));
+            }
+        } catch (SQLException erroConsultarFuncPorNome) {
+            JOptionPane.showMessageDialog(null, erroConsultarFuncPorNome.getMessage());
         }
+        return funcionario;
     }
-
 }

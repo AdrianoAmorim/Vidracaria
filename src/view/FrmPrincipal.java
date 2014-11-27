@@ -65,7 +65,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         rgFinanceiroOpcContas = new javax.swing.ButtonGroup();
         rgVendaTipoCliente = new javax.swing.ButtonGroup();
         rgClienteTipo = new javax.swing.ButtonGroup();
-        pnlBackup = new javax.swing.JTabbedPane();
+        pnlTabbedPrincipal = new javax.swing.JTabbedPane();
         jPanel49 = new javax.swing.JPanel();
         pnlCadCliente = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -306,9 +306,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1226, 742));
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        pnlBackup.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        pnlBackup.setMinimumSize(new java.awt.Dimension(1210, 497));
-        pnlBackup.setPreferredSize(new java.awt.Dimension(1280, 768));
+        pnlTabbedPrincipal.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        pnlTabbedPrincipal.setMinimumSize(new java.awt.Dimension(1210, 497));
+        pnlTabbedPrincipal.setPreferredSize(new java.awt.Dimension(1280, 768));
 
         jPanel49.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
@@ -323,7 +323,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGap(0, 680, Short.MAX_VALUE)
         );
 
-        pnlBackup.addTab("Principal", jPanel49);
+        pnlTabbedPrincipal.addTab("Principal", jPanel49);
 
         pnlCadCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlCadCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -729,7 +729,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(72, Short.MAX_VALUE))
         );
 
-        pnlBackup.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407887820_clients.png")), pnlCadCliente, "Cadastro de Cliente"); // NOI18N
+        pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407887820_clients.png")), pnlCadCliente, "Cadastro de Cliente"); // NOI18N
 
         pnlCadFuncionario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
@@ -1083,7 +1083,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlBackup.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Funcionario.png")), pnlCadFuncionario, "Cadastro de Funcionário"); // NOI18N
+        pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Funcionario.png")), pnlCadFuncionario, "Cadastro de Funcionário"); // NOI18N
 
         pnlEfetuarVenda.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlEfetuarVenda.setMinimumSize(new java.awt.Dimension(1210, 497));
@@ -1937,7 +1937,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(130, 130, 130))
         );
 
-        pnlBackup.addTab("Venda", null, pnlEfetuarVenda, "Cadastrar Venda");
+        pnlTabbedPrincipal.addTab("Venda", null, pnlEfetuarVenda, "Cadastrar Venda");
 
         pnlFinanceiro.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
@@ -2142,7 +2142,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlBackup.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Financeiro.png")), pnlFinanceiro, "Financeiro"); // NOI18N
+        pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Financeiro.png")), pnlFinanceiro, "Financeiro"); // NOI18N
 
         pnlRelatorios.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
@@ -2157,7 +2157,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGap(0, 680, Short.MAX_VALUE)
         );
 
-        pnlBackup.addTab("Relatorios", pnlRelatorios);
+        pnlTabbedPrincipal.addTab("Relatorios", pnlRelatorios);
 
         pnlEstoque.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
@@ -2172,7 +2172,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGap(0, 680, Short.MAX_VALUE)
         );
 
-        pnlBackup.addTab("Estoque", pnlEstoque);
+        pnlTabbedPrincipal.addTab("Estoque", pnlEstoque);
 
         pnlAdministracao.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
@@ -2187,7 +2187,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGap(0, 680, Short.MAX_VALUE)
         );
 
-        pnlBackup.addTab("Administração", pnlAdministracao);
+        pnlTabbedPrincipal.addTab("Administração", pnlAdministracao);
 
         jPanel13.setBackground(new java.awt.Color(204, 204, 255));
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 2, true), "Cadastrar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 69, 139))); // NOI18N
@@ -2248,7 +2248,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addContainerGap(302, Short.MAX_VALUE)))
         );
 
-        pnlBackup.addTab("tab10", jPanel45);
+        pnlTabbedPrincipal.addTab("tab10", jPanel45);
 
         pnlEfetuarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlEfetuarCompra.setName("pnlCompra"); // NOI18N
@@ -2833,9 +2833,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlBackup.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/compra.png")), pnlEfetuarCompra, "Efetuar Compra"); // NOI18N
+        pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/compra.png")), pnlEfetuarCompra, "Efetuar Compra"); // NOI18N
 
-        getContentPane().add(pnlBackup);
+        getContentPane().add(pnlTabbedPrincipal);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2989,7 +2989,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // incrementa o codigo do cliente
             tfClienteCodigo.setText(Integer.toString(cliCrud.incrementCodCliente()));
-            pnlBackup.setSelectedIndex(0);
+            pnlTabbedPrincipal.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnClienteCadastrarActionPerformed
 
@@ -3001,7 +3001,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         if (clienteController.validarAtributos(cliente)) {
             ClienteCRUD clienteCrud = new ClienteCRUD();
 
-//            clienteCrud.atualizarCliente(cliente);
             // limpa os dados do formulario
             limparCampos(tfClienteNome, tfClienteCodigo, tfClienteRg,
                     tfClienteLogradouro, tfClienteTelRes, tfClienteTelCel);
@@ -3009,7 +3008,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             this.btnClienteAlterar.setVisible(false);
 
             this.btnClienteCadastrar.setEnabled(true);
-            pnlBackup.setSelectedIndex(0);
+            pnlTabbedPrincipal.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnClienteAlterarActionPerformed
 
@@ -3329,6 +3328,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cadastrarFornecedor.setSize(860, 543);
         cadastrarFornecedor.setTitle("Cadastrar Fornecedor");
         cadastrarFornecedor.setVisible(true);
+        
+        
     }//GEN-LAST:event_btnCompraCadastrarFornecedorActionPerformed
 
     private void btnCompraCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraCadastrarProdutoActionPerformed
@@ -3389,7 +3390,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
 
     private void btnFuncionarioBuscarCodCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionarioBuscarCodCargoMouseClicked
-        FrmBuscaCargo buscaCargo = new FrmBuscaCargo(this, true);
+        FrmBuscarCargo buscaCargo = new FrmBuscarCargo(this, true);
         buscaCargo.setVisible(true);
 
         tfFuncionarioCodCargo.setText(String.valueOf(buscaCargo.cargo.getCodigoCargo()));
@@ -3424,18 +3425,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraRetirarDescontoActionPerformed
 
     private void btnVendaBuscarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaBuscarFuncionarioActionPerformed
-        FrmBuscarFuncionario buscarFuncionario = new FrmBuscarFuncionario(this, true);
+        FrmAdicionarFuncionarioOUFornecedor buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());
         buscarFuncionario.setVisible(true);
+
+        tfVendaNomeFuncionario.setText(buscarFuncionario.funcionario.getNomeFuncionario());
     }//GEN-LAST:event_btnVendaBuscarFuncionarioActionPerformed
 
     private void btnFuncionarioBuscarNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionarioBuscarNomeMouseClicked
-        FrmBuscarFuncionario buscarFuncionario = new FrmBuscarFuncionario(this, true);
+        FrmAdicionarFuncionarioOUFornecedor buscarFuncionario;
+
+        buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());;
         buscarFuncionario.setVisible(true);
 
         tfFuncionarioCodigo.setText(String.valueOf(buscarFuncionario.funcionario.getCodFuncionario()));
         tfFuncionarioCodCargo.setText(String.valueOf(buscarFuncionario.funcionario.getCodCargo()));
-// FALTA IMPLEMENTAR        
-//tfFuncionarioDescricaoCargo.setText(buscarFuncionario.funcionario.
         tfFuncionarioNome.setText(buscarFuncionario.funcionario.getNomeFuncionario());
         tfFuncionarioTelResidencial.setText(buscarFuncionario.funcionario.getTelFixo());
         tfFuncionarioTelCelular.setText(buscarFuncionario.funcionario.getTelCel());
@@ -3476,8 +3479,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVendaAdicionarProdutoActionPerformed
 
     private void btnCompraBuscarFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompraBuscarFornecedorMouseClicked
-        FrmAdicionarFuncionarioOUFornecedor addFornecedor = new FrmAdicionarFuncionarioOUFornecedor(this, true);
-        addFornecedor.setVisible(true);
+        FrmAdicionarFuncionarioOUFornecedor buscaFornecedor = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());
+        buscaFornecedor.setVisible(true);
+
+        tfCompraCodigoFornecedor.setText(String.valueOf(buscaFornecedor.fornecedor.getCodFornecedor()));
+        tfCompraFornecedor.setText(buscaFornecedor.fornecedor.getNome());
     }//GEN-LAST:event_btnCompraBuscarFornecedorMouseClicked
 
     /**
@@ -3694,7 +3700,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblVendaTotalLiquidoTitulo;
     private javax.swing.JLabel lblVendaTotalLiquidoValor;
     private javax.swing.JPanel pnlAdministracao;
-    private javax.swing.JTabbedPane pnlBackup;
     private javax.swing.JPanel pnlCadCliente;
     private javax.swing.JPanel pnlCadFuncionario;
     private javax.swing.JPanel pnlEfetuarCompra;
@@ -3705,6 +3710,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFinanceiroContasReceber;
     private javax.swing.JPanel pnlPesquisaContasPagar;
     private javax.swing.JPanel pnlRelatorios;
+    private javax.swing.JTabbedPane pnlTabbedPrincipal;
     private javax.swing.JRadioButton rbClienteFisica;
     private javax.swing.JRadioButton rbClienteJuridica;
     private javax.swing.JRadioButton rbFinanceiroListarTodasContas;

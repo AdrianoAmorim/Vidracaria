@@ -58,13 +58,13 @@ public class ProdutoCRUD {
             System.out.println(erroInserirProduto.getMessage());
         }
     }
-    
-        public String prepararQueryPesquisarProduto(JTextField... args) {
+
+    public String prepararQueryPesquisarProduto(JTextField... args) {
         int tam = args.length;
 
         String sql = "SELECT codProduto, unidadeMedida, quantidadeEstoque, descricao, precoVenda, status "
                 + "FROM produto ";
-                
+
         args[0].setName("codProduto");
         args[1].setName("descricao");
 
@@ -92,20 +92,15 @@ public class ProdutoCRUD {
     }
 
     // SELECT
-    public ArrayList<Produto> consultarProdutos(JTextField ...args) {
+    public ArrayList<Produto> consultarProdutos(JTextField... args) {
 
         PreparedStatement stmt;
         ResultSet result;
         ArrayList<Produto> listaProdutos = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            
-            if(args.length != 0) {
+
             stmt = conn.prepareStatement(prepararQueryPesquisarProduto(args));
-            }
-            else {
-                stmt = conn.prepareStatement("SELECT * FROM produto");
-            }
 
             result = stmt.executeQuery();
 
@@ -129,9 +124,7 @@ public class ProdutoCRUD {
         }
     }
 
-    // SELECT CODIGO
-    // PROVISÓRIO - ATÉ MONTAR A QUERY COM SELECT CONDICIONAL
-    //Acressentei o like pra testa nem tirei pq vamos mudar essas query ne
+    // SELECT
     public Produto consultarCodigoProduto(int codProduto) {
 
         PreparedStatement stmt;
@@ -180,16 +173,16 @@ public class ProdutoCRUD {
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
                 produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
                 produto.setPrecoVenda(result.getDouble("precoVenda"));
-                
+
                 listProduto.add(produto);
             }
             stmt.close();
             return listProduto;
         } catch (SQLException erroConsultarDescricaoProduto) {
             System.out.println(erroConsultarDescricaoProduto.getMessage());
-        return listProduto;
+            return listProduto;
         }
-        
+
     }
 
     // UPDATE
