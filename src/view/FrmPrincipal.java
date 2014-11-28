@@ -2998,18 +2998,44 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         ClienteController clienteController = new ClienteController();
 
-        if (clienteController.validarAtributos(cliente)) {
-            ClienteCRUD clienteCrud = new ClienteCRUD();
-
-            // limpa os dados do formulario
-            limparCampos(tfClienteNome, tfClienteCodigo, tfClienteRg,
-                    tfClienteLogradouro, tfClienteTelRes, tfClienteTelCel);
-
-            this.btnClienteAlterar.setVisible(false);
-
-            this.btnClienteCadastrar.setEnabled(true);
-            pnlTabbedPrincipal.setSelectedIndex(0);
+        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
+        
+        if (rbClienteFisica.isSelected()) {
+            cliente.setTipoCliente("F");
+            cliente.setCpf(tfClienteCpf.getText());
+            cliente.setRg(tfClienteRg.getText());
+        } else {
+            cliente.setTipoCliente("J");
+            cliente.setCnpj(tfClienteCnpj.getText());
+            cliente.setInscricaoEstadual(tfClienteInscEstadual.getText());
         }
+        
+        cliente.setNome(tfClienteNome.getText());
+        cliente.setLogradouro(tfClienteLogradouro.getText());
+        cliente.setNumero(tfClienteNumero.getText());
+        cliente.setComplemento(tfClienteComplemento.getText());
+        cliente.setBairro(tfClienteBairro.getText());
+        cliente.setCep(tfClienteCep.getText());
+        cliente.setCidade(tfClienteCidade.getText());
+        cliente.setTelFixo(tfClienteTelRes.getText());
+        cliente.setTelCel(tfClienteTelCel.getText());
+        cliente.setEmail(tfClienteEmail.getText());
+
+        ClienteCRUD clienteCrud = new ClienteCRUD();
+        clienteCrud.atualizarCliente(cliente);
+
+        // limpa os dados do formulário
+        limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCpf, tfClienteRg,
+                tfClienteLogradouro, tfClienteCep, tfClienteBairro, tfClienteCidade,
+                tfClienteUf, tfClienteTelRes, tfClienteTelCel, tfClienteNumero,
+                tfClienteComplemento, tfClienteCnpj, tfClienteInscEstadual,
+                tfClienteEmail);
+
+        this.btnClienteAlterar.setVisible(false);
+        this.btnClienteCadastrar.setEnabled(true);
+
+        pnlTabbedPrincipal.setSelectedIndex(0);
+
     }//GEN-LAST:event_btnClienteAlterarActionPerformed
 
     private void btnVendaBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaBuscarClienteActionPerformed
@@ -3019,7 +3045,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfVendaNomeCliente.setText(buscaCliente.cliente.getNome());
         lblVendaClienteNome.setText(buscaCliente.cliente.getNome());
         lblVendaCpfNumero.setText(buscaCliente.cliente.getCpf());
-
     }//GEN-LAST:event_btnVendaBuscarClienteActionPerformed
 
     private void btnVendaCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaCadastrarActionPerformed
@@ -3292,7 +3317,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tfClienteCnpj.setText(buscaCli.cliente.getCnpj());
             tfClienteInscEstadual.setText(buscaCli.cliente.getInscricaoEstadual());
         }
-
         tfClienteNome.setText(buscaCli.cliente.getNome());
         tfClienteLogradouro.setText(buscaCli.cliente.getLogradouro());
         tfClienteNumero.setText(buscaCli.cliente.getNumero());
@@ -3328,8 +3352,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cadastrarFornecedor.setSize(860, 543);
         cadastrarFornecedor.setTitle("Cadastrar Fornecedor");
         cadastrarFornecedor.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_btnCompraCadastrarFornecedorActionPerformed
 
     private void btnCompraCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraCadastrarProdutoActionPerformed
@@ -3446,9 +3470,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioLogradouro.setText(buscarFuncionario.funcionario.getLogradouro());
         tfFuncionarioNumero.setText(buscarFuncionario.funcionario.getNumero());
         tfFuncionarioComplemento.setText(buscarFuncionario.funcionario.getComplemento());
+        tfFuncionarioBairro.setText(buscarFuncionario.funcionario.getBairro());
         tfFuncionarioCep.setText(buscarFuncionario.funcionario.getCep());
         tfFuncionarioCidade.setText(buscarFuncionario.funcionario.getCidade());
         tfFuncionarioUf.setText(buscarFuncionario.funcionario.getUf());
+        tfFuncionarioSalario.setText(String.valueOf(buscarFuncionario.funcionario.getSalarioFuncionario()));
     }//GEN-LAST:event_btnFuncionarioBuscarNomeMouseClicked
 
     private void btnVendaAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaAdicionarProdutoActionPerformed

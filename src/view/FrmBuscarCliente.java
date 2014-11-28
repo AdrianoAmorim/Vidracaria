@@ -1,11 +1,8 @@
 package view;
 
 import crud.ClienteCRUD;
-import crud.FornecedorCRUD;
 import domain.Cliente;
-import domain.Fornecedor;
 import java.util.ArrayList;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
