@@ -40,6 +40,8 @@ public class CompraCRUD {
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
+            conn.setAutoCommit(false);
+            
             stmt = conn.prepareStatement("INSERT INTO compra(codCompra, codDespesa, codParcelamento, "
                     + "codFornecedor, data, descricao, totalBruto, desconto, totalLiquido) "
                     + " VALUES (?,?,?,?,?,?,?,?,?)");
@@ -81,7 +83,7 @@ public class CompraCRUD {
 
             JOptionPane.showMessageDialog(null, "Compra cadastrada com sucesso!");
         } catch (SQLException erroInserirCompra) {
-            JOptionPane.showMessageDialog(null, erroInserirCompra.getSQLState());
+            JOptionPane.showMessageDialog(null, erroInserirCompra.getMessage());
         }
     }
 

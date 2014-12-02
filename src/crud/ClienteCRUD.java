@@ -143,6 +143,8 @@ public class ClienteCRUD {
                 cliente.setNome(result.getString("nome"));
                 cliente.setCpf(result.getString("cpf"));
                 cliente.setRg(result.getString("rg"));
+                cliente.setCnpj(result.getString("cnpj"));
+                cliente.setInscricaoEstadual(result.getString("inscricaoEstadual"));
                 cliente.setTelFixo(result.getString("telFixo"));
                 cliente.setTelCel(result.getString("telCel"));
                 cliente.setEmail(result.getString("email"));
@@ -188,6 +190,8 @@ public class ClienteCRUD {
                 cliente.setNome(result.getString("nome"));
                 cliente.setCpf(result.getString("cpf"));
                 cliente.setRg(result.getString("rg"));
+                cliente.setCnpj(result.getString("cnpj"));
+                cliente.setInscricaoEstadual(result.getString("inscricaoEstadual"));
                 cliente.setTelFixo(result.getString("telFixo"));
                 cliente.setTelCel(result.getString("telCel"));
                 cliente.setEmail(result.getString("email"));
@@ -217,21 +221,34 @@ public class ClienteCRUD {
 
             conn.setAutoCommit(false);
 
-            stmt = conn.prepareStatement("UPDATE cliente SET tipoCliente = '" + cliente.getTipoCliente() + "', "
-                    + "cpf = '" + cliente.getCpf() + "', cnpj = '" + cliente.getCnpj() + "', "
-                    + "inscricaoEstadual = '" + cliente.getInscricaoEstadual() + "' , nome = '" + cliente.getNome() + "', "
-                    + "rg = '" + cliente.getRg() + "', telFixo = '" + cliente.getTelFixo() + "', "
-                    + "telCel = '" + cliente.getTelCel() + "', email = '" + cliente.getEmail() + "', "
-                    + "status = " + cliente.getStatus() + ", situacao = " + cliente.getSituacao() + " "
-                    + "WHERE codCliente = " + cliente.getCodCliente() + ";");
+            stmt = conn.prepareStatement("UPDATE cliente SET tipoCliente = ?, cpf = ?, cnpj = ?, inscricaoEstadual = ?, "
+                    + "nome = ?, rg = ?, telFixo = ?, telCel = ?, email = ?, status = ?"
+                    + "WHERE codCliente = ?;");
 
+            stmt.setString(1, cliente.getTipoCliente());
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getCnpj());
+            stmt.setString(4, cliente.getInscricaoEstadual());
+            stmt.setString(5, cliente.getNome());
+            stmt.setString(6, cliente.getRg());
+            stmt.setString(7, cliente.getTelFixo());
+            stmt.setString(8, cliente.getTelCel());
+            stmt.setString(9, cliente.getEmail());
+            stmt.setInt(10, cliente.getStatus());
             stmt.executeUpdate();
 
-            stmt = conn.prepareStatement("UPDATE enderecoCliente SET logradouro = '" + cliente.getLogradouro() + "', "
-                    + "numero = " + cliente.getNumero() + ", complemento = '" + cliente.getComplemento() + "', "
-                    + "bairro = '" + cliente.getBairro() + "', cep = '" + cliente.getCep() + "', "
-                    + "cidade = '" + cliente.getCidade() + "', uf = '" + cliente.getUf() + "' "
-                    + "WHERE codCliente = " + cliente.getCodCliente() + ";");
+            stmt = conn.prepareStatement("UPDATE enderecoCliente SET logradouro = ?, "
+                    + "numero = ?, complemento = ?, bairro = ?, cep = ?, cidade = ?, uf = ? "
+                    + "WHERE codCliente = ?;"); 
+            
+            stmt.setString(1, cliente.getLogradouro());
+            stmt.setString(2, cliente.getNumero());
+            stmt.setString(3, cliente.getComplemento());
+            stmt.setString(4, cliente.getBairro());
+            stmt.setString(5, cliente.getCep());
+            stmt.setString(6, cliente.getCidade());
+            stmt.setString(7, cliente.getUf());
+            stmt.setInt(8, cliente.getCodCliente());
 
             stmt.executeUpdate();
             

@@ -1,7 +1,6 @@
 package crud;
 
 import database.SQLite;
-import domain.Endereco;
 import domain.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,7 +35,7 @@ public class FuncionarioCRUD {
     }
 
     // INSERT 
-    public void inserirFuncionario(Funcionario funcionario, Endereco enderecoFuncionario) {
+    public void inserirFuncionario(Funcionario funcionario) {
 
         PreparedStatement stmt;
 
@@ -60,16 +59,16 @@ public class FuncionarioCRUD {
             stmt = conn.prepareStatement("INSERT INTO enderecoFuncionario(codFuncionario, codCargo, codEmpresa,"
                     + "logradouro, numero, complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?,?,?);");
 
-            stmt.setInt(1, enderecoFuncionario.getCod());
-            stmt.setInt(2, enderecoFuncionario.getCodCargo());
-            stmt.setInt(3, enderecoFuncionario.getCodEmpresa());
-            stmt.setString(4, enderecoFuncionario.getLogradouro());
-            stmt.setString(5, enderecoFuncionario.getNumero());
-            stmt.setString(6, enderecoFuncionario.getComplemento());
-            stmt.setString(7, enderecoFuncionario.getBairro());
-            stmt.setString(8, enderecoFuncionario.getCep());
-            stmt.setString(9, enderecoFuncionario.getCidade());
-            stmt.setString(10, enderecoFuncionario.getUf());
+            stmt.setInt(1, funcionario.getCod());
+            stmt.setInt(2, funcionario.getCodCargo());
+            stmt.setInt(3, funcionario.getCodEmpresa());
+            stmt.setString(4, funcionario.getLogradouro());
+            stmt.setString(5, funcionario.getNumero());
+            stmt.setString(6, funcionario.getComplemento());
+            stmt.setString(7, funcionario.getBairro());
+            stmt.setString(8, funcionario.getCep());
+            stmt.setString(9, funcionario.getCidade());
+            stmt.setString(10, funcionario.getUf());
 
             stmt.executeUpdate();
 
@@ -89,17 +88,45 @@ public class FuncionarioCRUD {
     public void atualizarFuncionario(Funcionario funcionario) {
 
         PreparedStatement stmt;
-        try (Connection conn = new SQLite().conectar()) {
+        Connection conn = new SQLite().conectar();
+        try {
+            conn.setAutoCommit(false);
+            
             stmt = conn.prepareStatement("UPDATE funcionario SET codEmpresa = ?, codCargo = ?, "
-                    + "nomeFuncionario = ?, salarioFuncionario = ? WHERE codFuncionario = ?;");
+                    + "nome = ?, telFixo = ?, telCel = ?, salario = ?, status = ? "
+                    + "WHERE codFuncionario = ?;");
 
             stmt.setInt(1, funcionario.getCodEmpresa());
             stmt.setInt(2, funcionario.getCodCargo());
             stmt.setString(3, funcionario.getNomeFuncionario());
-            stmt.setDouble(4, funcionario.getSalarioFuncionario());
-            stmt.setInt(5, funcionario.getCodFuncionario());
+            stmt.setString(4, funcionario.getTelFixo());
+            stmt.setString(5, funcionario.getTelCel());
+            stmt.setDouble(6, funcionario.getSalarioFuncionario());
+            stmt.setInt(7, funcionario.getAtivo());
+            stmt.setInt(8, funcionario.getCodFuncionario());
 
             stmt.executeUpdate();
+            
+            stmt = conn.prepareStatement("UPDATE enderecoFuncionario SET codEmpresa = ?, codCargo = ?, "
+                    + "logradouro = ?, numero = ?, complemento = ?, bairro = ?, cep = ?, cidade = ?, uf = ? "
+                    + "WHERE codFuncionario = ?;"); 
+            
+            stmt.setInt(1, funcionario.getCodEmpresa());
+            stmt.setInt(2, funcionario.getCodCargo());
+            stmt.setString(3, funcionario.getLogradouro());
+            stmt.setString(4, funcionario.getNumero());
+            stmt.setString(5, funcionario.getComplemento());
+            stmt.setString(6, funcionario.getBairro());
+            stmt.setString(7, funcionario.getCep());
+            stmt.setString(8, funcionario.getCidade());
+            stmt.setString(9, funcionario.getUf());
+            stmt.setInt(10, funcionario.getCodFuncionario());
+            
+            stmt.executeUpdate();
+            
+            conn.commit();
+            conn.setAutoCommit(true);
+            
             stmt.close();
             conn.close();
             JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso !");

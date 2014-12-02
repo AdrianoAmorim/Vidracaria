@@ -65,6 +65,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         rgFinanceiroOpcContas = new javax.swing.ButtonGroup();
         rgVendaTipoCliente = new javax.swing.ButtonGroup();
         rgClienteTipo = new javax.swing.ButtonGroup();
+        rgClienteStatus = new javax.swing.ButtonGroup();
+        rgFuncionarioStatus = new javax.swing.ButtonGroup();
         pnlTabbedPrincipal = new javax.swing.JTabbedPane();
         jPanel49 = new javax.swing.JPanel();
         pnlCadCliente = new javax.swing.JPanel();
@@ -111,8 +113,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblClienteCep = new javax.swing.JLabel();
         tfClienteCep = new javax.swing.JTextField();
         lblClienteStatus = new javax.swing.JLabel();
-        lblClienteSituacao = new javax.swing.JLabel();
-        lblClienteUltimasCompras = new javax.swing.JLabel();
+        rbClienteStatusAtiv = new javax.swing.JRadioButton();
+        rbClienteStatusInat = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         lblClienteDadosCliente = new javax.swing.JLabel();
         pnlCadFuncionario = new javax.swing.JPanel();
@@ -154,11 +156,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblFuncionarioStatus1 = new javax.swing.JLabel();
         tfFuncionarioEmail = new javax.swing.JTextField();
         tfFuncionarioDescricaoCargo = new javax.swing.JTextField();
+        rbFuncionarioStatusAtiv = new javax.swing.JRadioButton();
+        rbFuncionarioStatusInat = new javax.swing.JRadioButton();
         jPanel8 = new javax.swing.JPanel();
         lblFuncionarioDadosFuncionario = new javax.swing.JLabel();
         pnlEfetuarVenda = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tbVendaListProduto = new javax.swing.JTable();
         jPanel29 = new javax.swing.JPanel();
         lblVendaListaProdutos = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -223,6 +225,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cbVendaTipoPagamento = new javax.swing.JComboBox();
         lblVendaTipoPagamento = new javax.swing.JLabel();
         btnVendaDeletarProdutoLista = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbVendaListProduto = new javax.swing.JTable();
         pnlFinanceiro = new javax.swing.JPanel();
         pnlFinanceiroContasPagar = new javax.swing.JPanel();
         btnFinanceiroAddPagamentoDespesa = new javax.swing.JButton();
@@ -249,9 +253,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlRelatorios = new javax.swing.JPanel();
         pnlEstoque = new javax.swing.JPanel();
         pnlAdministracao = new javax.swing.JPanel();
-        jPanel45 = new javax.swing.JPanel();
-        jPanel13 = new javax.swing.JPanel();
-        jPanel31 = new javax.swing.JPanel();
         pnlEfetuarCompra = new javax.swing.JPanel();
         jPanel54 = new javax.swing.JPanel();
         lblCompraTitulo = new javax.swing.JLabel();
@@ -300,6 +301,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblCompraValorSubTotal = new javax.swing.JLabel();
         btnCompraCadastrar = new javax.swing.JButton();
         btnCompraDeletarProdutoLista = new javax.swing.JLabel();
+        jPanel45 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema sem Nome - Vidraçaria");
@@ -440,11 +442,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
         rbClienteFisica.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rbClienteFisica.setForeground(new java.awt.Color(0, 69, 139));
         rbClienteFisica.setText("Física");
+        rbClienteFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbClienteFisicaActionPerformed(evt);
+            }
+        });
 
         rgClienteTipo.add(rbClienteJuridica);
         rbClienteJuridica.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rbClienteJuridica.setForeground(new java.awt.Color(0, 69, 139));
         rbClienteJuridica.setText("Jurídica");
+        rbClienteJuridica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbClienteJuridicaActionPerformed(evt);
+            }
+        });
 
         lblClienteCnpj.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblClienteCnpj.setForeground(new java.awt.Color(0, 69, 139));
@@ -508,13 +520,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblClienteStatus.setForeground(new java.awt.Color(0, 69, 139));
         lblClienteStatus.setText("Status:");
 
-        lblClienteSituacao.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblClienteSituacao.setForeground(new java.awt.Color(0, 69, 139));
-        lblClienteSituacao.setText("Situação:");
+        rgClienteStatus.add(rbClienteStatusAtiv);
+        rbClienteStatusAtiv.setText("Ativo");
+        rbClienteStatusAtiv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbClienteStatusAtivActionPerformed(evt);
+            }
+        });
 
-        lblClienteUltimasCompras.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblClienteUltimasCompras.setForeground(new java.awt.Color(0, 69, 139));
-        lblClienteUltimasCompras.setText("Ultimas Compras:");
+        rgClienteStatus.add(rbClienteStatusInat);
+        rbClienteStatusInat.setText("Inativo");
+        rbClienteStatusInat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbClienteStatusInatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -542,20 +562,26 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblClienteNumero)
-                                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                                .addComponent(btnClienteCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                                .addComponent(lblClienteBairro)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(tfClienteCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tfClienteBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tfClienteRg, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tfClienteInscEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tfClienteTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGroup(jPanel23Layout.createSequentialGroup()
+                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(jPanel23Layout.createSequentialGroup()
+                                                    .addComponent(btnClienteCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(jPanel23Layout.createSequentialGroup()
+                                                    .addComponent(lblClienteBairro)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(tfClienteCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tfClienteBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tfClienteRg, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tfClienteInscEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tfClienteTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(lblClienteStatus))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(rbClienteStatusInat)
+                                                .addComponent(rbClienteStatusAtiv)))))
                                 .addComponent(tfClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel23Layout.createSequentialGroup()
                                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -568,14 +594,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(lblClienteTelCel)))
                                     .addGap(369, 369, 369)
-                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblClienteStatus)
-                                        .addComponent(lblClienteSituacao)
-                                        .addComponent(lblClienteUltimasCompras)
-                                        .addGroup(jPanel23Layout.createSequentialGroup()
-                                            .addComponent(lblClienteUf)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tfClienteUf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(lblClienteUf)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfClienteUf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel23Layout.createSequentialGroup()
                                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(tfClienteCep, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -583,8 +604,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblClienteRg)
-                                        .addComponent(lblClienteCidade))))
-                            .addGap(82, 82, 82))
+                                        .addComponent(lblClienteCidade)))))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tfClienteNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel23Layout.createSequentialGroup()
@@ -606,7 +626,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                         .addGap(142, 142, 142)
                                         .addComponent(rbClienteJuridica))
                                     .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -615,24 +635,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClienteCodigo)
                     .addComponent(tfClienteCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblClienteStatus))
+                    .addComponent(lblClienteStatus)
+                    .addComponent(rbClienteStatusAtiv))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(rbClienteJuridica, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblClienteTipo)
-                            .addComponent(lblClienteSituacao)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbClienteJuridica)
+                            .addComponent(rbClienteStatusInat))
+                        .addComponent(lblClienteTipo))
                     .addComponent(rbClienteFisica, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblClienteNome))
-                        .addComponent(lblClienteUltimasCompras))
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblClienteNome))
                     .addComponent(btnClienteBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClienteLogradouro)
                     .addComponent(tfClienteLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -678,7 +697,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(tfClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnClienteCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
@@ -890,6 +909,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfFuncionarioDescricaoCargo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
+        rgFuncionarioStatus.add(rbFuncionarioStatusAtiv);
+        rbFuncionarioStatusAtiv.setText("Ativo");
+        rbFuncionarioStatusAtiv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbFuncionarioStatusAtivActionPerformed(evt);
+            }
+        });
+
+        rgFuncionarioStatus.add(rbFuncionarioStatusInat);
+        rbFuncionarioStatusInat.setText("Inativo");
+        rbFuncionarioStatusInat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbFuncionarioStatusInatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -903,8 +938,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblFuncionarioCodigo)
                             .addComponent(lblFuncionarioTelFixo)
-                            .addComponent(lblFuncionarioLogradouro)
-                            .addComponent(lblFuncionarioStatus))
+                            .addComponent(lblFuncionarioLogradouro))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGap(7, 7, 7)
@@ -942,12 +976,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(lblFuncionarioSalario))
                         .addGap(50, 50, 50)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42)
-                                .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                                 .addComponent(lblFuncionarioNumero)
                                 .addGap(18, 18, 18)
@@ -967,7 +996,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblFuncionarioUf)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(tfFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(lblFuncionarioStatus)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbFuncionarioStatusInat)
+                            .addComponent(rbFuncionarioStatusAtiv))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(396, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -1002,37 +1041,41 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(lblFuncionarioStatus1)
                     .addComponent(tfFuncionarioEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFuncionarioLogradouro)
+                    .addComponent(tfFuncionarioLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfFuncionarioNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFuncionarioNumero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFuncionarioComplemento)
+                    .addComponent(tfFuncionarioComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFuncionarioBairro)
+                    .addComponent(tfFuncionarioBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFuncionarioCidade)
+                    .addComponent(tfFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFuncionarioUf)
+                    .addComponent(tfFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFuncionarioCep))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFuncionarioSalario))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFuncionarioStatus)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(rbFuncionarioStatusAtiv)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbFuncionarioStatusInat))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFuncionarioLogradouro)
-                            .addComponent(tfFuncionarioLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfFuncionarioNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFuncionarioNumero))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFuncionarioComplemento)
-                            .addComponent(tfFuncionarioComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFuncionarioBairro)
-                            .addComponent(tfFuncionarioBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFuncionarioCidade)
-                            .addComponent(tfFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFuncionarioUf)
-                            .addComponent(tfFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFuncionarioCep))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFuncionarioSalario))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblFuncionarioStatus))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11))))
         );
 
         jPanel8.setBackground(new java.awt.Color(153, 153, 255));
@@ -1089,35 +1132,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlEfetuarVenda.setMinimumSize(new java.awt.Dimension(1210, 497));
         pnlEfetuarVenda.setName("pnlVenda"); // NOI18N
         pnlEfetuarVenda.setPreferredSize(new java.awt.Dimension(1210, 497));
-
-        tbVendaListProduto.setAutoCreateRowSorter(true);
-        tbVendaListProduto.setBackground(new java.awt.Color(204, 204, 255));
-        tbVendaListProduto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tbVendaListProduto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "codigo", "QTD", "Valor Unitario", "Valor Total"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tbVendaListProduto.setPreferredSize(new java.awt.Dimension(600, 0));
-        tbVendaListProduto.setSelectionBackground(new java.awt.Color(78, 198, 187));
-        tbVendaListProduto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane3.setViewportView(tbVendaListProduto);
-        if (tbVendaListProduto.getColumnModel().getColumnCount() > 0) {
-            tbVendaListProduto.getColumnModel().getColumn(1).setPreferredWidth(100);
-            tbVendaListProduto.getColumnModel().getColumn(2).setPreferredWidth(100);
-            tbVendaListProduto.getColumnModel().getColumn(3).setPreferredWidth(100);
-        }
 
         jPanel29.setBackground(new java.awt.Color(153, 153, 255));
         jPanel29.setPreferredSize(new java.awt.Dimension(0, 0));
@@ -1755,7 +1769,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                     .addComponent(lblVendaDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jPanel48.setBackground(new java.awt.Color(153, 153, 255));
@@ -1883,6 +1897,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        tbVendaListProduto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "codProduto", "Quantidade", "PreçoUnitario", "Total"
+            }
+        ));
+        jScrollPane3.setViewportView(tbVendaListProduto);
+
         javax.swing.GroupLayout pnlEfetuarVendaLayout = new javax.swing.GroupLayout(pnlEfetuarVenda);
         pnlEfetuarVenda.setLayout(pnlEfetuarVendaLayout);
         pnlEfetuarVendaLayout.setHorizontalGroup(
@@ -1905,8 +1932,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE))))
+                            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlEfetuarVendaLayout.setVerticalGroup(
@@ -1914,11 +1941,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                 .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                         .addComponent(jPanel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                         .addComponent(jPanel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1926,7 +1953,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
@@ -2188,67 +2215,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         pnlTabbedPrincipal.addTab("Administração", pnlAdministracao);
-
-        jPanel13.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 2, true), "Cadastrar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 69, 139))); // NOI18N
-        jPanel13.setForeground(new java.awt.Color(0, 69, 139));
-        jPanel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 371, Short.MAX_VALUE)
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jPanel31.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 2, true), "Pesquisar / Alterar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 69, 139))); // NOI18N
-        jPanel31.setForeground(new java.awt.Color(0, 69, 139));
-        jPanel31.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
-        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
-        jPanel31.setLayout(jPanel31Layout);
-        jPanel31Layout.setHorizontalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
-        );
-        jPanel31Layout.setVerticalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 62, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
-        jPanel45.setLayout(jPanel45Layout);
-        jPanel45Layout.setHorizontalGroup(
-            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel45Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(697, Short.MAX_VALUE))
-            .addGroup(jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel45Layout.createSequentialGroup()
-                    .addGap(625, 625, 625)
-                    .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(235, Short.MAX_VALUE)))
-        );
-        jPanel45Layout.setVerticalGroup(
-            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel45Layout.createSequentialGroup()
-                .addContainerGap(286, Short.MAX_VALUE)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(279, 279, 279))
-            .addGroup(jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel45Layout.createSequentialGroup()
-                    .addGap(301, 301, 301)
-                    .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(302, Short.MAX_VALUE)))
-        );
-
-        pnlTabbedPrincipal.addTab("tab10", jPanel45);
 
         pnlEfetuarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlEfetuarCompra.setName("pnlCompra"); // NOI18N
@@ -2835,6 +2801,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/compra.png")), pnlEfetuarCompra, "Efetuar Compra"); // NOI18N
 
+        javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
+        jPanel45.setLayout(jPanel45Layout);
+        jPanel45Layout.setHorizontalGroup(
+            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1264, Short.MAX_VALUE)
+        );
+        jPanel45Layout.setVerticalGroup(
+            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 672, Short.MAX_VALUE)
+        );
+
+        pnlTabbedPrincipal.addTab("tab10", jPanel45);
+
         getContentPane().add(pnlTabbedPrincipal);
 
         pack();
@@ -2962,9 +2941,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cliente.setRg(tfClienteRg.getText());
         cliente.setTelFixo(tfClienteTelRes.getText());
         cliente.setTelCel(tfClienteTelCel.getText());
-        cliente.setStatus(1);
         cliente.setEmail(tfClienteEmail.getText());
-        cliente.setSituacao(1);
+
+        // definição do status do cliente
+        if (rbClienteStatusAtiv.isSelected()) {
+            // ativo
+            cliente.setStatus(1);
+        } else if (rbClienteStatusInat.isSelected()) {
+            // inativo
+            cliente.setStatus(0);
+        }
 
         enderecoCliente.setCod(Integer.parseInt(tfClienteCodigo.getText()));
         enderecoCliente.setLogradouro(tfClienteLogradouro.getText());
@@ -2980,6 +2966,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
             ClienteCRUD cliCrud = new ClienteCRUD();
             cliCrud.inserirCliente(cliente, enderecoCliente);
 
+            pnlTabbedPrincipal.setSelectedIndex(0);
+
             // limpa os dados do formulário
             limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCpf, tfClienteRg,
                     tfClienteLogradouro, tfClienteCep, tfClienteBairro, tfClienteCidade,
@@ -2989,7 +2977,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // incrementa o codigo do cliente
             tfClienteCodigo.setText(Integer.toString(cliCrud.incrementCodCliente()));
-            pnlTabbedPrincipal.setSelectedIndex(0);
+
+            rbClienteFisica.setSelected(false);
+            rbClienteJuridica.setSelected(false);
+            tfClienteCpf.setEnabled(true);
+            tfClienteRg.setEnabled(true);
+            tfClienteCnpj.setEnabled(true);
+            tfClienteInscEstadual.setEnabled(true);
         }
     }//GEN-LAST:event_btnClienteCadastrarActionPerformed
 
@@ -2999,7 +2993,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ClienteController clienteController = new ClienteController();
 
         cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
-        
+
         if (rbClienteFisica.isSelected()) {
             cliente.setTipoCliente("F");
             cliente.setCpf(tfClienteCpf.getText());
@@ -3009,7 +3003,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             cliente.setCnpj(tfClienteCnpj.getText());
             cliente.setInscricaoEstadual(tfClienteInscEstadual.getText());
         }
-        
+
         cliente.setNome(tfClienteNome.getText());
         cliente.setLogradouro(tfClienteLogradouro.getText());
         cliente.setNumero(tfClienteNumero.getText());
@@ -3017,12 +3011,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cliente.setBairro(tfClienteBairro.getText());
         cliente.setCep(tfClienteCep.getText());
         cliente.setCidade(tfClienteCidade.getText());
+        cliente.setUf(tfClienteUf.getText());
         cliente.setTelFixo(tfClienteTelRes.getText());
         cliente.setTelCel(tfClienteTelCel.getText());
         cliente.setEmail(tfClienteEmail.getText());
 
+        // definição do status do cliente
+        if (rbClienteStatusAtiv.isSelected()) {
+            // ativo
+            cliente.setStatus(1);
+        } else if (rbClienteStatusInat.isSelected()) {
+            // inativo
+            cliente.setStatus(0);
+        }
+
         ClienteCRUD clienteCrud = new ClienteCRUD();
         clienteCrud.atualizarCliente(cliente);
+
+        pnlTabbedPrincipal.setSelectedIndex(0);
 
         // limpa os dados do formulário
         limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCpf, tfClienteRg,
@@ -3031,11 +3037,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 tfClienteComplemento, tfClienteCnpj, tfClienteInscEstadual,
                 tfClienteEmail);
 
-        this.btnClienteAlterar.setVisible(false);
-        this.btnClienteCadastrar.setEnabled(true);
-
-        pnlTabbedPrincipal.setSelectedIndex(0);
-
+        rbClienteFisica.setSelected(false);
+        rbClienteJuridica.setSelected(false);
+        tfClienteCpf.setEnabled(true);
+        tfClienteRg.setEnabled(true);
+        tfClienteCnpj.setEnabled(true);
+        tfClienteInscEstadual.setEnabled(true);
     }//GEN-LAST:event_btnClienteAlterarActionPerformed
 
     private void btnVendaBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaBuscarClienteActionPerformed
@@ -3138,7 +3145,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
         Funcionario funcionario = new Funcionario();
-        Endereco enderecoFuncionario = new Endereco();
 
         FuncionarioController funcionarioController = new FuncionarioController();
 
@@ -3148,24 +3154,32 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
         funcionario.setTelFixo(tfFuncionarioTelCelular.getText());
         funcionario.setTelCel(tfFuncionarioTelResidencial.getText());
-        funcionario.setAtivo(1);
-        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
+        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText().replaceAll(",", ".")));
 
-        enderecoFuncionario.setCod(funcionario.getCodFuncionario());
-        enderecoFuncionario.setCodCargo(funcionario.getCodCargo());
-        enderecoFuncionario.setCodEmpresa(funcionario.getCodEmpresa());
-        enderecoFuncionario.setLogradouro(tfFuncionarioLogradouro.getText());
-        enderecoFuncionario.setNumero(tfFuncionarioNumero.getText());
-        enderecoFuncionario.setComplemento(tfFuncionarioComplemento.getText());
-        enderecoFuncionario.setBairro(tfFuncionarioBairro.getText());
-        enderecoFuncionario.setCep(tfFuncionarioCep.getText());
-        enderecoFuncionario.setCidade(tfFuncionarioCidade.getText());
-        enderecoFuncionario.setUf(tfFuncionarioUf.getText());
+        // definição do status do funcionario
+        if (rbFuncionarioStatusAtiv.isSelected()) {
+            // ativo
+            funcionario.setAtivo(1);
+        } else if (rbFuncionarioStatusInat.isSelected()) {
+            // inativo
+            funcionario.setAtivo(0);
+        }
+
+        funcionario.setCod(funcionario.getCodFuncionario());
+        funcionario.setCodCargo(funcionario.getCodCargo());
+        funcionario.setCodEmpresa(funcionario.getCodEmpresa());
+        funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
+        funcionario.setNumero(tfFuncionarioNumero.getText());
+        funcionario.setComplemento(tfFuncionarioComplemento.getText());
+        funcionario.setBairro(tfFuncionarioBairro.getText());
+        funcionario.setCep(tfFuncionarioCep.getText());
+        funcionario.setCidade(tfFuncionarioCidade.getText());
+        funcionario.setUf(tfFuncionarioUf.getText());
 
         if (funcionarioController.validarFuncionario(funcionario)) {
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
 
-            funcionarioCRUD.inserirFuncionario(funcionario, enderecoFuncionario);
+            funcionarioCRUD.inserirFuncionario(funcionario);
 
             // limpa os dados do formulário
             limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo,
@@ -3187,7 +3201,26 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
         funcionario.setCodEmpresa(1);
         funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
-        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
+        funcionario.setTelFixo(tfFuncionarioTelResidencial.getText());
+        funcionario.setTelCel(tfFuncionarioTelCelular.getText());
+        funcionario.setEmail(tfFuncionarioEmail.getText());
+        funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
+        funcionario.setNumero(tfFuncionarioNumero.getText());
+        funcionario.setComplemento(tfFuncionarioComplemento.getText());
+        funcionario.setBairro(tfFuncionarioBairro.getText());
+        funcionario.setCep(tfFuncionarioCep.getText());
+        funcionario.setCidade(tfFuncionarioCidade.getText());
+        funcionario.setUf(tfFuncionarioUf.getText());
+        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText().replaceAll(",", ".")));
+
+        // definição do status do funcionario
+        if (rbFuncionarioStatusAtiv.isSelected()) {
+            // ativo
+            funcionario.setAtivo(1);
+        } else if (rbFuncionarioStatusInat.isSelected()) {
+            // inativo
+            funcionario.setAtivo(0);
+        }
 
         if (funcionarioController.validarFuncionario(funcionario)) {
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
@@ -3195,8 +3228,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             funcionarioCRUD.atualizarFuncionario(funcionario);
 
             // limpa os dados do formulário
-            limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo,
-                    tfFuncionarioNome, tfFuncionarioSalario);
+            limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
+                    tfFuncionarioTelResidencial, tfFuncionarioTelCelular, tfFuncionarioEmail,
+                    tfFuncionarioLogradouro, tfFuncionarioNumero, tfFuncionarioComplemento,
+                    tfFuncionarioBairro, tfFuncionarioCep, tfFuncionarioCidade, tfFuncionarioUf,
+                    tfFuncionarioSalario);
         }
     }//GEN-LAST:event_btnAlterarFuncionarioActionPerformed
 
@@ -3218,9 +3254,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         compra.setData(tfCompraData.getText());
         // FALTA IMPLEMENTAR O CAMPO DE DESCRICAO, TOTAL BRUTO,TOTAL LIQUIDO
         compra.setDescricao("NÃO IMPLEMENTADO !");
-        compra.setTotalBruto(0.472);
+        compra.setTotalBruto(Double.parseDouble(lblCompraValorSubTotal.getText()));
         compra.setDesconto(Double.parseDouble(tfCompraDesconto.getText()));
-        compra.setTotalLiquido(0.47);
+        compra.setTotalLiquido(Double.parseDouble(lblCompraValorTotal.getText()));
 
         // testa se as informações de compra são válidas
         if (compraController.validarCompra(compra)) {
@@ -3246,8 +3282,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             // efetua as transações da venda correspondente aos produtos da lista
             compraCRUD.inserirCompra(compra, listaProdutosComprados);
 
-            //zerando as linhas da tabela Produto na Compra
-            // model.setRowCount(0); // não tem isso em venda, é necessário mesmo ?
             // incrementa o valor do codigo da venda
             tfCompraCodigo.setText(String.valueOf(compraCRUD.incrementCodCompra()));
 
@@ -3299,6 +3333,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         buscaCli.setVisible(true);
         rbClienteFisica.setSelected(false);
         rbClienteJuridica.setSelected(false);
+        tfClienteCpf.setEnabled(true);
+        tfClienteRg.setEnabled(true);
+        tfClienteCnpj.setEnabled(true);
+        tfClienteInscEstadual.setEnabled(true);
 
         FrmPrincipal.limparCampos(tfClienteCodigo, tfClienteNome, tfClienteLogradouro,
                 tfClienteNumero, tfClienteComplemento, tfClienteBairro,
@@ -3307,16 +3345,27 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 tfClienteEmail);
 
         tfClienteCodigo.setText(String.valueOf(buscaCli.cliente.getCodCliente()));
-        // radio button (tipo de cliente)
+
         if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("F")) {
+            // preenche os campos de pessoa física
             rbClienteFisica.setSelected(true);
             tfClienteCpf.setText(buscaCli.cliente.getCpf());
             tfClienteRg.setText(buscaCli.cliente.getRg());
-        } else {
+
+            // bloqueia os campos de pessoa jurídica
+            tfClienteCnpj.setEnabled(false);
+            tfClienteInscEstadual.setEnabled(false);
+        } else if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("J")) {
+            // preenche os campos de pessoa jurídica
             rbClienteJuridica.setSelected(true);
             tfClienteCnpj.setText(buscaCli.cliente.getCnpj());
             tfClienteInscEstadual.setText(buscaCli.cliente.getInscricaoEstadual());
+
+            // bloqueia os campos de pessoa física
+            tfClienteCpf.setEnabled(false);
+            tfClienteRg.setEnabled(false);
         }
+
         tfClienteNome.setText(buscaCli.cliente.getNome());
         tfClienteLogradouro.setText(buscaCli.cliente.getLogradouro());
         tfClienteNumero.setText(buscaCli.cliente.getNumero());
@@ -3328,6 +3377,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfClienteTelCel.setText(buscaCli.cliente.getTelCel());
         tfClienteUf.setText(buscaCli.cliente.getUf());
         tfClienteEmail.setText(buscaCli.cliente.getEmail());
+
+        // definição do status do cliente
+        if (buscaCli.cliente.getStatus() == 0) {
+            rbClienteStatusInat.setSelected(true);
+        } else if (buscaCli.cliente.getStatus() == 1) {
+            rbClienteStatusAtiv.setSelected(true);
+        }
     }//GEN-LAST:event_btnClienteBuscarClienteMouseClicked
 
     private void cbVendaTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaTipoPagamentoActionPerformed
@@ -3475,6 +3531,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioCidade.setText(buscarFuncionario.funcionario.getCidade());
         tfFuncionarioUf.setText(buscarFuncionario.funcionario.getUf());
         tfFuncionarioSalario.setText(String.valueOf(buscarFuncionario.funcionario.getSalarioFuncionario()));
+
+        // define o status do funcionário
+        if (buscarFuncionario.funcionario.getAtivo() == 1) {
+            // ativo
+            rbFuncionarioStatusAtiv.setSelected(true);
+        } else if (buscarFuncionario.funcionario.getAtivo() == 0) {
+            // inativo
+            rbFuncionarioStatusInat.setSelected(true);
+        }
     }//GEN-LAST:event_btnFuncionarioBuscarNomeMouseClicked
 
     private void btnVendaAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaAdicionarProdutoActionPerformed
@@ -3511,6 +3576,86 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfCompraCodigoFornecedor.setText(String.valueOf(buscaFornecedor.fornecedor.getCodFornecedor()));
         tfCompraFornecedor.setText(buscaFornecedor.fornecedor.getNome());
     }//GEN-LAST:event_btnCompraBuscarFornecedorMouseClicked
+
+    private void rbClienteFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbClienteFisicaActionPerformed
+        int op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja alterar o tipo do cliente?");
+        if (op == 0) {
+            // opção "sim"
+
+            // bloqueia campos de pessoa jurídica
+            tfClienteCnpj.setText("");
+            tfClienteCnpj.setEnabled(false);
+            tfClienteInscEstadual.setText("");
+            tfClienteInscEstadual.setEnabled(false);
+
+            // habilita campos de pessoa física
+            tfClienteCpf.setEnabled(true);
+            tfClienteRg.setEnabled(true);
+        } else {
+            // opção "não" ou "cancelar"
+            rbClienteJuridica.setSelected(true);
+        }
+    }//GEN-LAST:event_rbClienteFisicaActionPerformed
+
+    private void rbClienteJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbClienteJuridicaActionPerformed
+        int op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja alterar o tipo do cliente?");
+        if (op == 0) {
+            // opção "sim"
+
+            // bloqueia campos de pessoa física
+            tfClienteCpf.setText("");
+            tfClienteCpf.setEnabled(false);
+            tfClienteRg.setText("");
+            tfClienteRg.setEnabled(false);
+
+            // habilita campos de pessoa jurídica
+            tfClienteCnpj.setEnabled(true);
+            tfClienteInscEstadual.setEnabled(true);
+        } else {
+            // opção "não" ou "cancelar"
+            rbClienteFisica.setSelected(true);
+        }
+    }//GEN-LAST:event_rbClienteJuridicaActionPerformed
+
+    private void rbClienteStatusAtivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbClienteStatusAtivActionPerformed
+        int op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja ativar o cliente?");
+        if (op == 0) {
+            // opção "sim"
+
+        } else {
+            rbClienteStatusInat.setSelected(true);
+        }
+    }//GEN-LAST:event_rbClienteStatusAtivActionPerformed
+
+    private void rbClienteStatusInatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbClienteStatusInatActionPerformed
+        int op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja desativar o cliente?");
+        if (op == 0) {
+            // opção "sim"
+
+        } else {
+            rbClienteStatusAtiv.setSelected(true);
+        }
+    }//GEN-LAST:event_rbClienteStatusInatActionPerformed
+
+    private void rbFuncionarioStatusAtivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFuncionarioStatusAtivActionPerformed
+        int op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja ativar o funcionario?");
+        if (op == 0) {
+            // opção "sim"
+
+        } else {
+            rbFuncionarioStatusInat.setSelected(true);
+        }
+    }//GEN-LAST:event_rbFuncionarioStatusAtivActionPerformed
+
+    private void rbFuncionarioStatusInatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFuncionarioStatusInatActionPerformed
+        int op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja desativar o funcionario?");
+        if (op == 0) {
+            // opção "sim"
+
+        } else {
+            rbFuncionarioStatusAtiv.setSelected(true);
+        }
+    }//GEN-LAST:event_rbFuncionarioStatusInatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3599,7 +3744,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
@@ -3612,7 +3756,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
@@ -3655,14 +3798,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblClienteNome;
     private javax.swing.JLabel lblClienteNumero;
     private javax.swing.JLabel lblClienteRg;
-    private javax.swing.JLabel lblClienteSituacao;
     private javax.swing.JLabel lblClienteStatus;
     private javax.swing.JLabel lblClienteTelCel;
     private javax.swing.JLabel lblClienteTelFixo;
     private javax.swing.JLabel lblClienteTipo;
     private javax.swing.JLabel lblClienteTitulo;
     private javax.swing.JLabel lblClienteUf;
-    private javax.swing.JLabel lblClienteUltimasCompras;
     private javax.swing.JLabel lblCompraCodFornecedor;
     private javax.swing.JLabel lblCompraCodigo;
     private javax.swing.JLabel lblCompraData;
@@ -3739,11 +3880,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane pnlTabbedPrincipal;
     private javax.swing.JRadioButton rbClienteFisica;
     private javax.swing.JRadioButton rbClienteJuridica;
+    private javax.swing.JRadioButton rbClienteStatusAtiv;
+    private javax.swing.JRadioButton rbClienteStatusInat;
     private javax.swing.JRadioButton rbFinanceiroListarTodasContas;
     private javax.swing.JRadioButton rbFinanceiroPagar;
     private javax.swing.JRadioButton rbFinanceiroReceber;
+    private javax.swing.JRadioButton rbFuncionarioStatusAtiv;
+    private javax.swing.JRadioButton rbFuncionarioStatusInat;
+    private javax.swing.ButtonGroup rgClienteStatus;
     private javax.swing.ButtonGroup rgClienteTipo;
     private javax.swing.ButtonGroup rgFinanceiroOpcContas;
+    private javax.swing.ButtonGroup rgFuncionarioStatus;
     private javax.swing.ButtonGroup rgVendaTipoCliente;
     private javax.swing.JTextArea taVendaDescricao;
     private javax.swing.JTable tbCompraListProduto;

@@ -125,7 +125,7 @@ public class ParcelamentoCompraCRUD {
         try (Connection conn = new SQLite().conectar()) {
 
             stmt = conn.prepareStatement("SELECT codParcelamento, quantidadeParcelas "
-                    + "FROM parcelamentoCompra WHERE descricaoParcelamento = '" + descricao + "';");
+                    + "FROM parcelamentoCompra WHERE descricao = '" + descricao + "';");
 
             result = stmt.executeQuery();
             if (result.next()) {

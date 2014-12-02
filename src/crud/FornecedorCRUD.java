@@ -1,7 +1,6 @@
 package crud;
 
 import database.SQLite;
-import domain.Endereco;
 import domain.Fornecedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +17,7 @@ import javax.swing.JTextField;
 public class FornecedorCRUD {
 
     // INSERT 
-    public void inserirFornecedor(Fornecedor fornecedor, Endereco enderecoFornecedor) {
+    public void inserirFornecedor(Fornecedor fornecedor) {
 
         PreparedStatement stmt;
 
@@ -46,14 +45,14 @@ public class FornecedorCRUD {
                     + "complemento, bairro, cep, cidade, uf) "
                     + "VALUES (?,?,?,?,?,?,?,?);");
 
-            stmt.setInt(1, enderecoFornecedor.getCod());
-            stmt.setString(2, enderecoFornecedor.getLogradouro());
-            stmt.setString(3, enderecoFornecedor.getNumero());
-            stmt.setString(4, enderecoFornecedor.getComplemento());
-            stmt.setString(5, enderecoFornecedor.getBairro());
-            stmt.setString(6, enderecoFornecedor.getCep());
-            stmt.setString(7, enderecoFornecedor.getCidade());
-            stmt.setString(8, enderecoFornecedor.getUf());
+            stmt.setInt(1, fornecedor.getCod());
+            stmt.setString(2, fornecedor.getLogradouro());
+            stmt.setString(3, fornecedor.getNumero());
+            stmt.setString(4, fornecedor.getComplemento());
+            stmt.setString(5, fornecedor.getBairro());
+            stmt.setString(6, fornecedor.getCep());
+            stmt.setString(7, fornecedor.getCidade());
+            stmt.setString(8, fornecedor.getUf());
 
             stmt.executeUpdate();
 
@@ -73,14 +72,43 @@ public class FornecedorCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE fornecedor SET cnpjFornecedor = ?, nomeFornecedor = ? "
-                    + "WHERE codFornecedor = ?;");
+            conn.setAutoCommit(false);
+
+            stmt = conn.prepareStatement("UPDATE fornecedor SET cnpj = ?, nome = ?, "
+                    + "telFixo = ?, telCel = ?, email = ?, site = ?, vendedor = ?, "
+                    + "ramal = ?, status = ? WHERE codFornecedor = ?;");
 
             stmt.setString(1, fornecedor.getCnpj());
             stmt.setString(2, fornecedor.getNome());
-            stmt.setInt(3, fornecedor.getCodFornecedor());
+            stmt.setString(3, fornecedor.getTelFixo());
+            stmt.setString(4, fornecedor.getTelCel());
+            stmt.setString(5, fornecedor.getEmail());
+            stmt.setString(6, fornecedor.getSite());
+            stmt.setString(7, fornecedor.getVendedor());
+            stmt.setString(8, fornecedor.getRamal());
+            stmt.setInt(9, fornecedor.getStatus());
+            stmt.setInt(10, fornecedor.getCodFornecedor());
 
             stmt.executeUpdate();
+
+            stmt = conn.prepareStatement("UPDATE enderecoFornecedor SET logradouro = ?, "
+                    + "numero = ?, complemento = ?, bairro = ?, cep = ?, cidade = ?, uf = ? "
+                    + "WHERE codFornecedor = ?;");
+
+            stmt.setString(1, fornecedor.getLogradouro());
+            stmt.setString(2, fornecedor.getNumero());
+            stmt.setString(3, fornecedor.getComplemento());
+            stmt.setString(4, fornecedor.getBairro());
+            stmt.setString(5, fornecedor.getCep());
+            stmt.setString(6, fornecedor.getCidade());
+            stmt.setString(7, fornecedor.getUf());
+            stmt.setInt(8, fornecedor.getCodFornecedor());
+
+            stmt.executeUpdate();
+            
+            conn.commit();
+            conn.setAutoCommit(true);
+
             stmt.close();
             conn.close();
             JOptionPane.showMessageDialog(null, "Informações atualizadas com sucesso!");
@@ -151,7 +179,7 @@ public class FornecedorCRUD {
                 fornecedor.setSite(result.getString("site"));
                 fornecedor.setVendedor(result.getString("vendedor"));
                 fornecedor.setRamal(result.getString("ramal"));
-                fornecedor.setStatus(Integer.parseInt(result.getString("status")));
+                fornecedor.setStatus(result.getInt("status"));
                 fornecedor.setLogradouro(result.getString("logradouro"));
                 fornecedor.setNumero(result.getString("numero"));
                 fornecedor.setComplemento(result.getString("complemento"));
@@ -182,7 +210,7 @@ public class FornecedorCRUD {
                     + "f.telFixo, f.telCel, f.email, f.site, f.vendedor, f.ramal, "
                     + "f.status, ef.logradouro, ef.numero, ef.complemento, ef.bairro, "
                     + "ef.cep, ef.cidade, ef.uf FROM fornecedor f NATURAL INNER JOIN enderecoFornecedor ef WHERE nome = '" + nome + "';");
-            
+
             result = stmt.executeQuery();
 
             while (result.next()) {
