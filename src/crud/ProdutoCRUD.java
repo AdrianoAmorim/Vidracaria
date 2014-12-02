@@ -112,6 +112,7 @@ public class ProdutoCRUD {
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
                 produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
                 produto.setPrecoVenda(result.getDouble("precoVenda"));
+                produto.setStatus(result.getInt("status"));
 
                 listaProdutos.add(produto);
             }
@@ -191,14 +192,15 @@ public class ProdutoCRUD {
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE produto SET descricaoProduto = ?, unidadeMedida = ?, quantidadeEstoque = ?, "
-                    + "precoVenda = ? WHERE codProduto = ?;");
+            stmt = conn.prepareStatement("UPDATE produto SET descricao = ?, unidadeMedida = ?, quantidadeEstoque = ?, "
+                    + "precoVenda = ?, status = ? WHERE codProduto = ?;");
 
             stmt.setString(1, produto.getDescricao());
             stmt.setString(2, produto.getUnidadeMedida());
             stmt.setDouble(3, produto.getQuantidadeEstoque());
             stmt.setDouble(4, produto.getPrecoVenda());
-            stmt.setInt(5, produto.getCodProduto());
+            stmt.setInt(5, produto.getStatus());
+            stmt.setInt(6, produto.getCodProduto());
 
             stmt.executeUpdate();
             stmt.close();

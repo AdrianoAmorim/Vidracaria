@@ -195,6 +195,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel24 = new javax.swing.JPanel();
         lblVendaTitulo = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        tfBuscaVenda = new javax.swing.JTextField();
         btnVendaCadastrar = new javax.swing.JButton();
         jPanel46 = new javax.swing.JPanel();
         lblVendaDados = new javax.swing.JLabel();
@@ -219,11 +221,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         cbVendaParcelamento = new javax.swing.JComboBox();
         lblVendaParcelamento = new javax.swing.JLabel();
-        tfDesconto = new javax.swing.JTextField();
         lblVendaDesconto = new javax.swing.JLabel();
         btnRetirarDescontoVenda = new javax.swing.JButton();
         cbVendaTipoPagamento = new javax.swing.JComboBox();
         lblVendaTipoPagamento = new javax.swing.JLabel();
+        cbVendaParcelamento1 = new javax.swing.JComboBox();
+        tfDesconto1 = new javax.swing.JTextField();
         btnVendaDeletarProdutoLista = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbVendaListProduto = new javax.swing.JTable();
@@ -257,6 +260,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel54 = new javax.swing.JPanel();
         lblCompraTitulo = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
+        jLabel573 = new javax.swing.JLabel();
+        tfBuscaCompra = new javax.swing.JTextField();
         jPanel22 = new javax.swing.JPanel();
         tfCompraData = new javax.swing.JTextField();
         lblCompraData = new javax.swing.JLabel();
@@ -1583,6 +1588,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Untitled-1.png"))); // NOI18N
 
+        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel56.setText("PESQUISAR + (LUPINHA): ");
+
+        tfBuscaVenda.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfBuscaVenda.setPreferredSize(new java.awt.Dimension(125, 49));
+
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
@@ -1592,7 +1605,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel32)
                 .addGap(18, 18, 18)
                 .addComponent(lblVendaTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(361, 361, 361)
+                .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfBuscaVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(177, 177, 177))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1600,7 +1617,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel32)
-                    .addComponent(lblVendaTitulo))
+                    .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblVendaTitulo)
+                        .addComponent(jLabel56)
+                        .addComponent(tfBuscaVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -1786,15 +1806,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel48Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                .addGap(293, 293, 293))
         );
         jPanel48Layout.setVerticalGroup(
             jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel48Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel55)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel15.setBackground(new java.awt.Color(204, 204, 255));
@@ -1811,14 +1831,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblVendaParcelamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblVendaParcelamento.setForeground(new java.awt.Color(0, 69, 139));
         lblVendaParcelamento.setText("Parcelamento:");
-
-        tfDesconto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfDesconto.setPreferredSize(new java.awt.Dimension(125, 49));
-        tfDesconto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfDescontoFocusLost(evt);
-            }
-        });
 
         lblVendaDesconto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblVendaDesconto.setForeground(new java.awt.Color(0, 69, 139));
@@ -1845,6 +1857,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblVendaTipoPagamento.setForeground(new java.awt.Color(0, 69, 139));
         lblVendaTipoPagamento.setText("Tipo Pagamento:");
 
+        cbVendaParcelamento1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        cbVendaParcelamento1.setToolTipText("");
+        cbVendaParcelamento1.setPreferredSize(new java.awt.Dimension(125, 49));
+        cbVendaParcelamento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbVendaParcelamento1ActionPerformed(evt);
+            }
+        });
+
+        tfDesconto1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfDesconto1.setPreferredSize(new java.awt.Dimension(125, 49));
+        tfDesconto1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfDesconto1FocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
@@ -1859,17 +1888,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(lblVendaDesconto)
                         .addGap(60, 60, 60)
-                        .addComponent(tfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfDesconto1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(lblVendaParcelamento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                        .addComponent(cbVendaParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbVendaParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(btnRetirarDescontoVenda)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbVendaParcelamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103))))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1883,8 +1914,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVendaDesconto)
-                    .addComponent(tfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRetirarDescontoVenda))
+                    .addComponent(btnRetirarDescontoVenda)
+                    .addComponent(tfDesconto1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbVendaParcelamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -2230,6 +2262,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/compraPq.png"))); // NOI18N
 
+        jLabel573.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel573.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel573.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel573.setText("PESQUISAR + (LUPINHA): ");
+
+        tfBuscaCompra.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfBuscaCompra.setPreferredSize(new java.awt.Dimension(125, 49));
+
         javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
         jPanel54.setLayout(jPanel54Layout);
         jPanel54Layout.setHorizontalGroup(
@@ -2238,8 +2278,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblCompraTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblCompraTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel573, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfBuscaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         jPanel54Layout.setVerticalGroup(
             jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2247,7 +2291,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCompraTitulo))
+                    .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel573)
+                            .addComponent(tfBuscaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblCompraTitulo)))
                 .addGap(12, 12, 12))
         );
 
@@ -3110,10 +3158,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // insere somente o valor passado no tfDesconto
         try {
             if (lblVendaDescontoValor.getText().isEmpty()) {
-                lblVendaDescontoValor.setText(String.valueOf(tfDesconto.getText()));
+                lblVendaDescontoValor.setText(String.valueOf(tfBuscaVenda.getText()));
             } else {
                 // recebe o valor atual inserido no campo de desconto
-                double descAtual = Double.parseDouble(tfDesconto.getText());
+                double descAtual = Double.parseDouble(tfBuscaVenda.getText());
                 // recebe o valor total do desconto até o momento
                 double descTotal = Double.parseDouble(lblVendaDescontoValor.getText());
                 // reajusta o novo valor total do desconto 
@@ -3123,13 +3171,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 double totalVendaAtual = Double.parseDouble(lblVendaTotalLiquidoValor.getText());
 
                 // reajusta o valor total da venda com desconto
-                lblVendaTotalLiquidoValor.setText(String.valueOf(totalVendaAtual - Double.parseDouble(tfDesconto.getText())));
+                lblVendaTotalLiquidoValor.setText(String.valueOf(totalVendaAtual - Double.parseDouble(tfBuscaVenda.getText())));
             }
         } catch (NumberFormatException erroConversaoValorDesconto) {
             JOptionPane.showMessageDialog(null, erroConversaoValorDesconto.getMessage());
         }
         // limpa o campo de desconto
-        limparCampos(tfDesconto);
+        limparCampos(tfBuscaVenda);
     }
 
     private void cbVendaParcelamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaParcelamentoActionPerformed
@@ -3318,7 +3366,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     CompraCRUD compraCRUD = new CompraCRUD();
                     ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
 
-                    // envia as informações dos objetos para o bando de dados
+                    // envia as informações dos objetos para o banco de dados
                     fornecedorCRUD.atualizarFornecedor(fornecedor);
                     compraCRUD.atualizarCompra(compra);
                     produtoCompradoCRUD.atualizarProdutoComprado(produtoComprado);
@@ -3657,6 +3705,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rbFuncionarioStatusInatActionPerformed
 
+    private void cbVendaParcelamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaParcelamento1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbVendaParcelamento1ActionPerformed
+
+    private void tfDesconto1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDesconto1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfDesconto1FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -3731,6 +3787,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox cbCompraTipoPagamento;
     private javax.swing.JComboBox cbFinanceiroTipo;
     private javax.swing.JComboBox cbVendaParcelamento;
+    private javax.swing.JComboBox cbVendaParcelamento1;
     private javax.swing.JComboBox cbVendaTipoPagamento;
     private javax.swing.JCheckBox ckbFinanceiroPeriodo;
     private javax.swing.JCheckBox ckbFinanceiroTipo;
@@ -3739,6 +3796,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel573;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -3896,6 +3955,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tbCompraListProduto;
     private javax.swing.JTable tbFinanceiroContas;
     private javax.swing.JTable tbVendaListProduto;
+    private javax.swing.JTextField tfBuscaCompra;
+    private javax.swing.JTextField tfBuscaVenda;
     private javax.swing.JTextField tfClienteBairro;
     private javax.swing.JTextField tfClienteCep;
     private javax.swing.JTextField tfClienteCidade;
@@ -3918,7 +3979,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfCompraDataEntrega;
     private javax.swing.JTextField tfCompraDesconto;
     private javax.swing.JTextField tfCompraFornecedor;
-    private javax.swing.JTextField tfDesconto;
+    private javax.swing.JTextField tfDesconto1;
     private javax.swing.JTextField tfFinanceiroDtFinal;
     private javax.swing.JTextField tfFinanceiroDtInicial;
     private javax.swing.JTextField tfFuncionarioBairro;

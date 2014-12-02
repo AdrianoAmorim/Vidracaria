@@ -75,10 +75,11 @@ public class VendaCRUD {
                 stmt.executeUpdate();
                 
             }
-
             stmt.close();
+            
             conn.commit();
             conn.setAutoCommit(true);
+            
             JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
         } catch (SQLException erroTransacaoVenda) {
             JOptionPane.showMessageDialog(null, erroTransacaoVenda.getMessage());
