@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,29 +33,61 @@ public class TipoPagamentoCRUD {
         }
     }
 
+    public TipoPagamento consultarTipoPagamento(int codTipoPagamento) {
+
+        PreparedStatement stmt;
+        ResultSet result;
+        TipoPagamento tipoPagamento = new TipoPagamento();
+
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("SELECT codTipoPagamento, descricao FROM tipoPagamento "
+                    + "WHERE codTipoPagamento = " + codTipoPagamento + ";");
+
+            result = stmt.executeQuery();
+
+            while (result.next()) {
+                tipoPagamento.setCodTipoPagamento(result.getInt("codTipoPagamento"));
+                tipoPagamento.setDescricaoTipoPagamento(result.getString("descricao"));
+            }
+
+            stmt.close();
+            conn.close();
+
+            return tipoPagamento;
+        } catch (SQLException erroConsultarTipoPagamento) {
+            JOptionPane.showMessageDialog(null, erroConsultarTipoPagamento.getMessage());
+            return tipoPagamento;
+        }
+    }
+
     public ArrayList<TipoPagamento> consultarTipoPagamento() {
 
         PreparedStatement stmt;
         ResultSet result;
-        ArrayList<TipoPagamento> listaTiposPagamento = new ArrayList<>();
+
+        ArrayList listaTipoPagamento = new ArrayList<>();
+
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codTipoPagamento, descricao FROM tipoPagamento;");
+
             result = stmt.executeQuery();
 
             while (result.next()) {
                 TipoPagamento tipoPagamento = new TipoPagamento();
+
                 tipoPagamento.setCodTipoPagamento(result.getInt("codTipoPagamento"));
                 tipoPagamento.setDescricaoTipoPagamento(result.getString("descricao"));
 
-                listaTiposPagamento.add(tipoPagamento);
+                listaTipoPagamento.add(listaTipoPagamento);
             }
+
             stmt.close();
             conn.close();
-            
-            return listaTiposPagamento;
+
+            return listaTipoPagamento;
         } catch (SQLException erroConsultarTipoPagamento) {
-            System.out.println(erroConsultarTipoPagamento.getMessage());
-            return listaTiposPagamento;
+            JOptionPane.showMessageDialog(null, erroConsultarTipoPagamento.getMessage());
+            return listaTipoPagamento;
         }
     }
 

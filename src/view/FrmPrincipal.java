@@ -225,8 +225,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnRetirarDescontoVenda = new javax.swing.JButton();
         cbVendaTipoPagamento = new javax.swing.JComboBox();
         lblVendaTipoPagamento = new javax.swing.JLabel();
-        cbVendaParcelamento1 = new javax.swing.JComboBox();
-        tfDesconto1 = new javax.swing.JTextField();
+        tfVendaDesconto = new javax.swing.JTextField();
         btnVendaDeletarProdutoLista = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbVendaListProduto = new javax.swing.JTable();
@@ -1595,6 +1594,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfBuscaVenda.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfBuscaVenda.setPreferredSize(new java.awt.Dimension(125, 49));
+        tfBuscaVenda.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfBuscaVendaCaretUpdate(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -1857,22 +1861,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblVendaTipoPagamento.setForeground(new java.awt.Color(0, 69, 139));
         lblVendaTipoPagamento.setText("Tipo Pagamento:");
 
-        cbVendaParcelamento1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        cbVendaParcelamento1.setToolTipText("");
-        cbVendaParcelamento1.setPreferredSize(new java.awt.Dimension(125, 49));
-        cbVendaParcelamento1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbVendaParcelamento1ActionPerformed(evt);
-            }
-        });
-
-        tfDesconto1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfDesconto1.setPreferredSize(new java.awt.Dimension(125, 49));
-        tfDesconto1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfDesconto1FocusLost(evt);
-            }
-        });
+        tfVendaDesconto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfVendaDesconto.setPreferredSize(new java.awt.Dimension(125, 49));
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1888,7 +1878,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(lblVendaDesconto)
                         .addGap(60, 60, 60)
-                        .addComponent(tfDesconto1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfVendaDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
@@ -1898,9 +1888,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(btnRetirarDescontoVenda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbVendaParcelamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))))
+                        .addGap(103, 366, Short.MAX_VALUE))))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1915,8 +1903,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVendaDesconto)
                     .addComponent(btnRetirarDescontoVenda)
-                    .addComponent(tfDesconto1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbVendaParcelamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfVendaDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -1931,10 +1918,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tbVendaListProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "codProduto", "Quantidade", "PreçoUnitario", "Total"
@@ -2367,11 +2351,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfCompraDesconto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfCompraDesconto.setForeground(new java.awt.Color(255, 0, 0));
-        tfCompraDesconto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfCompraDescontoFocusLost(evt);
-            }
-        });
 
         btnCompraRetirarDesconto.setText("-");
         btnCompraRetirarDesconto.addActionListener(new java.awt.event.ActionListener() {
@@ -2994,10 +2973,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // definição do status do cliente
         if (rbClienteStatusAtiv.isSelected()) {
             // ativo
-            cliente.setStatus(1);
+            cliente.setStatus(true);
         } else if (rbClienteStatusInat.isSelected()) {
             // inativo
-            cliente.setStatus(0);
+            cliente.setStatus(false);
         }
 
         enderecoCliente.setCod(Integer.parseInt(tfClienteCodigo.getText()));
@@ -3067,10 +3046,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // definição do status do cliente
         if (rbClienteStatusAtiv.isSelected()) {
             // ativo
-            cliente.setStatus(1);
+            cliente.setStatus(true);
         } else if (rbClienteStatusInat.isSelected()) {
             // inativo
-            cliente.setStatus(0);
+            cliente.setStatus(false);
         }
 
         ClienteCRUD clienteCrud = new ClienteCRUD();
@@ -3108,7 +3087,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // inicializa um objeto parcelamento de acordo com o parcelamento selecionado na no ComboBox
         Parcelamento parcelamento = new ParcelamentoVendaCRUD().ConsultarCodParcelamento(cbVendaParcelamento.getSelectedItem().toString());
         // inicializa um objeto cliente de acordo com o cliente selecionado
-        Cliente cliente = new ClienteCRUD().consultarNomeCliente(tfVendaNomeCliente.getText());
+        Cliente cliente = new ClienteCRUD().consultarCliente(tfVendaNomeCliente.getText()).get(0);
 
         // recebimento dos dados da venda
         venda.setCodVenda(Integer.parseInt(tfVendaCodigo.getText()));
@@ -3207,10 +3186,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // definição do status do funcionario
         if (rbFuncionarioStatusAtiv.isSelected()) {
             // ativo
-            funcionario.setAtivo(1);
+            funcionario.setAtivo(true);
         } else if (rbFuncionarioStatusInat.isSelected()) {
             // inativo
-            funcionario.setAtivo(0);
+            funcionario.setAtivo(false);
         }
 
         funcionario.setCod(funcionario.getCodFuncionario());
@@ -3264,10 +3243,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // definição do status do funcionario
         if (rbFuncionarioStatusAtiv.isSelected()) {
             // ativo
-            funcionario.setAtivo(1);
+            funcionario.setAtivo(true);
         } else if (rbFuncionarioStatusInat.isSelected()) {
             // inativo
-            funcionario.setAtivo(0);
+            funcionario.setAtivo(false);
         }
 
         if (funcionarioController.validarFuncionario(funcionario)) {
@@ -3427,11 +3406,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfClienteEmail.setText(buscaCli.cliente.getEmail());
 
         // definição do status do cliente
-        if (buscaCli.cliente.getStatus() == 0) {
+        if (buscaCli.cliente.isStatus()) {
             rbClienteStatusInat.setSelected(true);
-        } else if (buscaCli.cliente.getStatus() == 1) {
+        } else {
             rbClienteStatusAtiv.setSelected(true);
-        }
+        }        
     }//GEN-LAST:event_btnClienteBuscarClienteMouseClicked
 
     private void cbVendaTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaTipoPagamentoActionPerformed
@@ -3525,19 +3504,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioDescricaoCargo.setText(buscaCargo.cargo.getDescricaoCargo());
     }//GEN-LAST:event_btnFuncionarioBuscarCodCargoMouseClicked
 
-    private void tfCompraDescontoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCompraDescontoFocusLost
-        Double novoDesconto = Double.parseDouble(tfCompraDesconto.getText());
-        Double totalAtual = Double.parseDouble(lblCompraValorTotal.getText());
-        totalAtual -= novoDesconto;
-
-        if (totalAtual >= 0) {
-            lblCompraValorTotal.setText(String.valueOf(totalAtual));
-        } else {
-            JOptionPane.showMessageDialog(null, "Valor de desconto inválido!");
-            tfCompraDesconto.setText("");
-        }
-    }//GEN-LAST:event_tfCompraDescontoFocusLost
-
     private void btnCompraRetirarDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraRetirarDescontoActionPerformed
         Double totalAtual = Double.parseDouble(lblCompraValorTotal.getText());
         Double subTotalAtual = Double.parseDouble(lblCompraValorSubTotal.getText());
@@ -3581,16 +3547,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioSalario.setText(String.valueOf(buscarFuncionario.funcionario.getSalarioFuncionario()));
 
         // define o status do funcionário
-        if (buscarFuncionario.funcionario.getAtivo() == 1) {
+        if (buscarFuncionario.funcionario.getAtivo()) {
             // ativo
             rbFuncionarioStatusAtiv.setSelected(true);
-        } else if (buscarFuncionario.funcionario.getAtivo() == 0) {
+        } else {
             // inativo
             rbFuncionarioStatusInat.setSelected(true);
         }
     }//GEN-LAST:event_btnFuncionarioBuscarNomeMouseClicked
 
     private void btnVendaAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaAdicionarProdutoActionPerformed
+
         //Cria Uma Instancia da janela de adicao de produto passando o codCompra como Parametro
         FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfVendaCodigo.getText()), pnlEfetuarVenda.getName());
         adicionarProduto.setVisible(true);
@@ -3705,13 +3672,40 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rbFuncionarioStatusInatActionPerformed
 
-    private void cbVendaParcelamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaParcelamento1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbVendaParcelamento1ActionPerformed
+    private void tfBuscaVendaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscaVendaCaretUpdate
+        VendaCRUD vendaCRUD = new VendaCRUD();
+        ClienteCRUD clienteCRUD = new ClienteCRUD();
+        FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+        TipoPagamentoCRUD tipoPagamentoCRUD = new TipoPagamentoCRUD();
+        ParcelamentoVendaCRUD parcelamentoVendaCRUD = new ParcelamentoVendaCRUD();
 
-    private void tfDesconto1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDesconto1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfDesconto1FocusLost
+        Venda venda = vendaCRUD.consultarVenda(Integer.parseInt(tfBuscaVenda.getText()));
+        Cliente cliente = clienteCRUD.consultarCliente("", venda.getCodCliente());
+        Funcionario funcionario = funcionarioCRUD.consultarFuncionario("", venda.getCodVendedor());
+        TipoPagamento tipoPagamento = tipoPagamentoCRUD.consultarTipoPagamento(venda.getCodTipoPagamento());
+        Parcelamento parcelamento = parcelamentoVendaCRUD.consultarParcelamento(venda.getCodParcelamento());
+
+        // campos à esquerda da tela
+        tfVendaCodigo.setText(String.valueOf(venda.getCodVenda()));
+        tfVendaData.setText(venda.getDataVenda());
+        tfVendaNomeFuncionario.setText(funcionario.getNomeFuncionario());
+        tfVendaNomeCliente.setText(cliente.getNome());
+        taVendaDescricao.setText(venda.getDescricao());
+
+        // comboBoxes
+        cbVendaTipoPagamento.setSelectedItem(tipoPagamento.getDescricaoTipoPagamento());
+        cbVendaParcelamento.setSelectedItem(parcelamento.getDescricaoParcelamento());
+
+        // campos na parte inferior da tela
+        lblVendaCliente.setText(cliente.getNome());
+        lblVendaCpfNumero.setText(cliente.getNome());
+        lblVendaTipoPagamento.setText(tipoPagamento.getDescricaoTipoPagamento());
+        lblVendaParcelasQtd.setText(String.valueOf(parcelamento.getQuantidadeParcelas()));
+        lblVendaDescontoValor.setText(String.valueOf(venda.getTotalDesconto()));
+        lblVendaTotalBrutoValor.setText(String.valueOf(venda.getTotalBruto()));
+        lblVendaTotalLiquidoValor.setText(String.valueOf(venda.getTotalLiquido()));
+
+    }//GEN-LAST:event_tfBuscaVendaCaretUpdate
 
     /**
      * @param args the command line arguments
@@ -3787,7 +3781,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox cbCompraTipoPagamento;
     private javax.swing.JComboBox cbFinanceiroTipo;
     private javax.swing.JComboBox cbVendaParcelamento;
-    private javax.swing.JComboBox cbVendaParcelamento1;
     private javax.swing.JComboBox cbVendaTipoPagamento;
     private javax.swing.JCheckBox ckbFinanceiroPeriodo;
     private javax.swing.JCheckBox ckbFinanceiroTipo;
@@ -3979,7 +3972,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfCompraDataEntrega;
     private javax.swing.JTextField tfCompraDesconto;
     private javax.swing.JTextField tfCompraFornecedor;
-    private javax.swing.JTextField tfDesconto1;
     private javax.swing.JTextField tfFinanceiroDtFinal;
     private javax.swing.JTextField tfFinanceiroDtInicial;
     private javax.swing.JTextField tfFuncionarioBairro;
@@ -3999,6 +3991,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfFuncionarioUf;
     private javax.swing.JTextField tfVendaCodigo;
     private javax.swing.JFormattedTextField tfVendaData;
+    private javax.swing.JTextField tfVendaDesconto;
     private javax.swing.JTextField tfVendaNomeCliente;
     private javax.swing.JTextField tfVendaNomeFuncionario;
     // End of variables declaration//GEN-END:variables

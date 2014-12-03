@@ -24,7 +24,10 @@ public class VendaCRUD {
         try {
             stmt = conn.prepareStatement("SELECT MAX(codVenda) FROM venda;");
             ResultSet result = stmt.executeQuery();
-            increment = result.getInt(1);
+
+            if (result.next()) {
+                increment = result.getInt(1);
+            }
 
             stmt.close();
             conn.close();
@@ -68,18 +71,18 @@ public class VendaCRUD {
                 stmt.setDouble(5, produtoVendido.getPrecoVenda());
 
                 stmt.executeUpdate();
-                
+
                 stmt = conn.prepareStatement("UPDATE produto SET quantidadeEstoque = quantidadeEstoque - "
                         + "" + produtoVendido.getQuantidadeProduto() + " WHERE codProduto = " + produtoVendido.getCodProduto());
 
                 stmt.executeUpdate();
-                
+
             }
             stmt.close();
-            
+
             conn.commit();
             conn.setAutoCommit(true);
-            
+
             JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
         } catch (SQLException erroTransacaoVenda) {
             JOptionPane.showMessageDialog(null, erroTransacaoVenda.getMessage());
@@ -87,32 +90,36 @@ public class VendaCRUD {
 
     }
 
-    public ArrayList<Venda> consultarVenda() {
+    public Venda consultarVenda(int codigoVenda) {
 
         PreparedStatement stmt;
         ResultSet result;
-        ArrayList<Venda> listaVendas = new ArrayList<>();
+
+        Venda venda = new Venda();
+
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codVenda, codTipoRenda, codCliente, codParcelamento, totalVenda, dataVenda FROM venda;");
+            stmt = conn.prepareStatement("SELECT * FROM venda "
+                    + "WHERE codVenda = " + codigoVenda + ";");
+
             result = stmt.executeQuery();
             while (result.next()) {
-                Venda venda = new Venda();
                 stmt.setInt(1, venda.getCodVenda());
                 stmt.setInt(2, venda.getCodRenda());
                 stmt.setInt(3, venda.getCodParcelamento());
                 stmt.setInt(4, venda.getCodCliente());
                 stmt.setString(5, venda.getDataVenda());
-                stmt.setDouble(6, venda.getTotalBruto());
-                stmt.setDouble(7, venda.getTotalLiquido());
+                stmt.setDouble(6, venda.getTotalDesconto());
+                stmt.setString(7, venda.getDescricao());
+                stmt.setDouble(8, venda.getTotalBruto());
+                stmt.setDouble(9, venda.getTotalLiquido());
 
-                listaVendas.add(venda);
                 stmt.close();
                 conn.close();
             }
-            return listaVendas;
+            return venda;
         } catch (SQLException erroConsultarVenda) {
-            System.out.println(erroConsultarVenda.getMessage());
-            return listaVendas;
+            JOptionPane.showMessageDialog(null, erroConsultarVenda.getMessage());
+            return venda;
         }
     }
 
@@ -139,20 +146,4 @@ public class VendaCRUD {
             System.out.println(erroAtualizarVenda.getMessage());
         }
     }
-
-    public void deletarVenda(Venda venda) {
-
-        PreparedStatement stmt;
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("DELETE FROM venda WHERE codVenda = ?;");
-            stmt.setInt(1, venda.getCodVenda());
-
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-        } catch (SQLException erroDeletarVenda) {
-            System.out.println(erroDeletarVenda.getMessage());
-        }
-    }
-
 }

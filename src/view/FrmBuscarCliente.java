@@ -383,7 +383,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
         ClienteCRUD clienteCrud = new ClienteCRUD();
 
-        this.cliente = clienteCrud.consultarNomeCliente(modelo.getValueAt(tbBuscarCliente.getSelectedRow(), 1).toString());
+        this.cliente = clienteCrud.consultarCliente(modelo.getValueAt(tbBuscarCliente.getSelectedRow(), 1).toString(), 0);
         this.dispose();
     }//GEN-LAST:event_tbBuscarClienteMouseClicked
 

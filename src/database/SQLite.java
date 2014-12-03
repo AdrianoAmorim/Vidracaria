@@ -14,13 +14,21 @@ public class SQLite {
 
     public Connection conectar() {
         try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:bd_projeto.sqlite");
-        } catch (SQLException erroCon) {
-            System.err.println(erroCon.getMessage());
-            System.exit(0);
-        } catch (ClassNotFoundException erroConexao) {
-            System.out.println(erroConexao.getMessage());
+            // conexão com SQLite
+            // Class.forName("org.sqlite.JDBC");
+            //conn = DriverManager.getConnection("jdbc:sqlite:bd_projeto.sqlite");
+
+            // conexão com PostgreSQL
+            Class.forName("org.postgresql.Driver");
+
+            String user = "postgres";
+            String pass = "mudar@senha";
+            String url = "jdbc:postgresql://localhost:5433/bdProjeto";
+
+            Connection conn = DriverManager.getConnection(url , user , pass);
+            return conn;
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.print(ex.getMessage());
         }
         return conn;
     }

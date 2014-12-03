@@ -24,7 +24,10 @@ public class CompraCRUD {
         try {
             stmt = conn.prepareStatement("SELECT MAX(codCompra) FROM compra;");
             ResultSet result = stmt.executeQuery();
-            increment = result.getInt(1);
+  
+            if(result.next()) {
+                increment = result.getInt(1);
+            }
 
             stmt.close();
             conn.close();

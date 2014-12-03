@@ -12,7 +12,7 @@ public class Produto {
     private String unidadeMedida;
     private Double quantidadeEstoque;
     private Double precoVenda;
-    private int status;
+    private Boolean status;
 
 
     public int getCodProduto() {
@@ -55,12 +55,11 @@ public class Produto {
         this.precoVenda = precoVenda;
     }
 
-    public int getStatus() {
+    public Boolean isStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
-    
 }

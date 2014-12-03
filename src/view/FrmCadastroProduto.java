@@ -419,10 +419,10 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         // define o status do produto
         if (rbProdutoStatusAtiv.isSelected()) {
             // ativo
-            produto.setStatus(1);
+            produto.setStatus(true);
         } else if (rbProdutoStatusInat.isSelected()) {
             // inativo
-            produto.setStatus(0);
+            produto.setStatus(false);
         }
 
         if (produtoController.validarProduto(produto)) {
@@ -473,11 +473,11 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         tfProdutoQuantidade.setText(String.valueOf(produto.getQuantidadeEstoque()));
         
         // define o status do produto
-        if (produto.getStatus() == 0) {
+        if (produto.isStatus()) {
             // inativo
             rbProdutoStatusInat.setSelected(true);
         }
-        else if (produto.getStatus() == 1) {
+        else {
             // ativo
             rbProdutoStatusAtiv.setSelected(true);
         }
@@ -515,10 +515,10 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         // define o status do produto
         if (rbProdutoStatusAtiv.isSelected()) {
             // ativo
-            produto.setStatus(1);
+            produto.setStatus(true);
         } else if (rbProdutoStatusInat.isSelected()) {
             // inativo
-            produto.setStatus(0);
+            produto.setStatus(false);
         }
 
         if (produtoController.validarProduto(produto)) {

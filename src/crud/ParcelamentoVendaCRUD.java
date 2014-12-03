@@ -59,6 +59,35 @@ public class ParcelamentoVendaCRUD {
     }
 
     // SELECT
+    public Parcelamento consultarParcelamento(int codParcelamento) {
+
+        PreparedStatement stmt;
+        ResultSet result;
+
+        Parcelamento parcelamentoVenda = new Parcelamento();
+
+        try (Connection conn = new SQLite().conectar()) {
+
+            stmt = conn.prepareStatement("SELECT codParcelamento, descricao, quantidadeParcelas "
+                    + "FROM parcelamentoVenda WHERE codParcelamento = " + codParcelamento + ";");
+
+            result = stmt.executeQuery();
+
+            while (result.next()) {
+                parcelamentoVenda.setCodParcelamento(result.getInt("codParcelamento"));
+                parcelamentoVenda.setDescricaoParcelamento(result.getString("descricao"));
+                parcelamentoVenda.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
+            }
+            stmt.close();
+
+            return parcelamentoVenda;
+        } catch (SQLException erroConsultarParcelamento) {
+            System.out.println(erroConsultarParcelamento.getMessage());
+            return parcelamentoVenda;
+        }
+    }
+
+    // SELECT
     public ArrayList<Parcelamento> consultarParcelamento() {
 
         PreparedStatement stmt;
@@ -72,7 +101,7 @@ public class ParcelamentoVendaCRUD {
                     + "FROM parcelamentoVenda;");
 
             result = stmt.executeQuery();
-
+            
             while (result.next()) {
                 Parcelamento parcelamento = new Parcelamento();
 
@@ -83,7 +112,7 @@ public class ParcelamentoVendaCRUD {
                 listaParcelamento.add(parcelamento);
             }
             stmt.close();
-
+            
             return listaParcelamento;
         } catch (SQLException erroConsultarParcelamento) {
             System.out.println(erroConsultarParcelamento.getMessage());

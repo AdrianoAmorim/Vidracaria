@@ -15,9 +15,8 @@ public class Cliente extends Endereco {
     protected String rg;
     protected String telFixo;
     protected String telCel;
-    protected int status;
+    protected boolean status;
     protected String email;
-    protected int situacao;
     protected String logradouro;
     protected String numero;
     protected String complemento;
@@ -98,14 +97,6 @@ public class Cliente extends Endereco {
         this.telCel = telCel;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -114,11 +105,12 @@ public class Cliente extends Endereco {
         this.email = email;
     }
 
-    public int getSituacao() {
-        return situacao;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setSituacao(int situacao) {
-        this.situacao = situacao;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
+
 }

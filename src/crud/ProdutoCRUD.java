@@ -48,7 +48,7 @@ public class ProdutoCRUD {
             stmt.setString(3, produto.getUnidadeMedida());
             stmt.setDouble(4, produto.getQuantidadeEstoque());
             stmt.setDouble(5, produto.getPrecoVenda());
-            stmt.setInt(6, produto.getStatus());
+            stmt.setBoolean(6, produto.isStatus());
 
             stmt.executeUpdate();
             stmt.close();
@@ -112,7 +112,7 @@ public class ProdutoCRUD {
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
                 produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
                 produto.setPrecoVenda(result.getDouble("precoVenda"));
-                produto.setStatus(result.getInt("status"));
+                produto.setStatus(result.getBoolean("status"));
 
                 listaProdutos.add(produto);
             }
@@ -199,7 +199,7 @@ public class ProdutoCRUD {
             stmt.setString(2, produto.getUnidadeMedida());
             stmt.setDouble(3, produto.getQuantidadeEstoque());
             stmt.setDouble(4, produto.getPrecoVenda());
-            stmt.setInt(5, produto.getStatus());
+            stmt.setBoolean(5, produto.isStatus());
             stmt.setInt(6, produto.getCodProduto());
 
             stmt.executeUpdate();

@@ -265,7 +265,7 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
             DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
 
-            this.funcionario = funcionarioCRUD.consultarFuncionarioPorNome(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString());
+            this.funcionario = funcionarioCRUD.consultarFuncionario(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString(), 0);
             this.dispose();
         } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
             DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();

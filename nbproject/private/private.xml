@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/view/FrmCadastroProduto.java</file>
+            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/crud/VendaCRUD.java</file>
+            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/domain/Venda.java</file>
             <file>file:/home/workspace/GitHub/projeto/vidracaria/src/view/FrmPrincipal.java</file>
-            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/domain/Produto.java</file>
-            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/view/FrmCadastrarFornecedor.java</file>
-            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/crud/ProdutoCRUD.java</file>
+            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/view/FrmAdicionarFuncionarioOUFornecedor.java</file>
+            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/crud/CompraCRUD.java</file>
+            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/crud/FuncionarioCRUD.java</file>
+            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/crud/TipoPagamentoCRUD.java</file>
+            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/view/FrmBuscarCliente.java</file>
+            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/crud/ParcelamentoCompraCRUD.java</file>
+            <file>file:/home/workspace/GitHub/projeto/vidracaria/src/crud/ClienteCRUD.java</file>
         </group>
     </open-files>
 </project-private>

@@ -37,9 +37,11 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
         switch (operacao) {
             case "pnlVenda":
                 this.tfAdicionarProdutoPrecoCusto.setVisible(false);
+                this.lblAddProdutoPrecoCusto.setVisible(false);
                 break;
             case "pnlCompra":
                 this.tfAdicionarProdutoPrecoCusto.setVisible(true);
+                this.lblAddProdutoPrecoCusto.setVisible(true);
                 break;
         }
     }
@@ -66,7 +68,7 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
         jtAdicionarProdutoListaProduto = new javax.swing.JTable();
         lblCompraFornecedor = new javax.swing.JLabel();
         lblCompraFornecedor1 = new javax.swing.JLabel();
-        lblCompraFornecedor2 = new javax.swing.JLabel();
+        lblAddProdutoPrecoCusto = new javax.swing.JLabel();
         lblCompraFornecedor3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -156,9 +158,9 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
         lblCompraFornecedor1.setForeground(new java.awt.Color(0, 69, 139));
         lblCompraFornecedor1.setText("Descrição");
 
-        lblCompraFornecedor2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCompraFornecedor2.setForeground(new java.awt.Color(0, 69, 139));
-        lblCompraFornecedor2.setText("Preço Custo:");
+        lblAddProdutoPrecoCusto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblAddProdutoPrecoCusto.setForeground(new java.awt.Color(0, 69, 139));
+        lblAddProdutoPrecoCusto.setText("Preço Custo:");
 
         lblCompraFornecedor3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblCompraFornecedor3.setForeground(new java.awt.Color(0, 69, 139));
@@ -187,7 +189,7 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                                     .addGap(66, 66, 66)
                                     .addComponent(tfAdicionarProdutoQuantidade))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(lblCompraFornecedor2)
+                                    .addComponent(lblAddProdutoPrecoCusto)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tfAdicionarProdutoPrecoCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -204,7 +206,7 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCompraFornecedor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfAdicionarProdutoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCompraFornecedor1)
@@ -215,7 +217,7 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfAdicionarProdutoPrecoCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCompraFornecedor2))
+                            .addComponent(lblAddProdutoPrecoCusto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfAdicionarProdutoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,9 +332,9 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList jlAdicionarProdutoResultConsulta;
     private javax.swing.JTable jtAdicionarProdutoListaProduto;
+    private javax.swing.JLabel lblAddProdutoPrecoCusto;
     private javax.swing.JLabel lblCompraFornecedor;
     private javax.swing.JLabel lblCompraFornecedor1;
-    private javax.swing.JLabel lblCompraFornecedor2;
     private javax.swing.JLabel lblCompraFornecedor3;
     private javax.swing.JLabel lblCompraListaProdutos;
     private javax.swing.JTextField tfAdicionarProdutoCodigo;

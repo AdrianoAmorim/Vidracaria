@@ -9,7 +9,9 @@ public class Venda {
     protected int codVenda;
     protected int codRenda;
     protected int codParcelamento;
+    private int codTipoPagamento;
     protected int codCliente;
+    private int codVendedor;
     protected String dataVenda;
     protected Double totalDesconto;
     protected String descricao;
@@ -32,6 +34,14 @@ public class Venda {
         this.codCliente = codCliente;
     }
 
+    public int getCodVendedor() {
+        return codVendedor;
+    }
+
+    public void setCodVendedor(int codVendedor) {
+        this.codVendedor = codVendedor;
+    }
+
     public int getCodParcelamento() {
         return codParcelamento;
     }
@@ -40,6 +50,14 @@ public class Venda {
         this.codParcelamento = codParcelamento;
     }
 
+    public int getCodTipoPagamento() {
+        return codTipoPagamento;
+    }
+
+    public void setCodTipoPagamento(int codTipoPagamento) {
+        this.codTipoPagamento = codTipoPagamento;
+    }
+    
     public Double getTotalDesconto() {
         return totalDesconto;
     }

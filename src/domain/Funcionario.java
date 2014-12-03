@@ -14,7 +14,7 @@ public class Funcionario extends Endereco {
     protected String telCel;
     protected String email;
     protected Double salarioFuncionario;
-    protected int ativo;
+    protected Boolean ativo;
     protected String logradouro;
     protected String numero;
     protected String complemento;
@@ -88,11 +88,11 @@ public class Funcionario extends Endereco {
         this.salarioFuncionario = salarioFuncionario;
     }
 
-    public int getAtivo() {
+    public Boolean getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(int ativo) {
+    public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
 
