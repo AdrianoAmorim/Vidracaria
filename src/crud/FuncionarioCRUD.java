@@ -66,7 +66,7 @@ public class FuncionarioCRUD {
             stmt.setInt(2, funcionario.getCodCargo());
             stmt.setInt(3, funcionario.getCodEmpresa());
             stmt.setString(4, funcionario.getLogradouro());
-            stmt.setString(5, funcionario.getNumero());
+            stmt.setInt(5, funcionario.getNumero());
             stmt.setString(6, funcionario.getComplemento());
             stmt.setString(7, funcionario.getBairro());
             stmt.setString(8, funcionario.getCep());
@@ -117,7 +117,7 @@ public class FuncionarioCRUD {
             stmt.setInt(1, funcionario.getCodEmpresa());
             stmt.setInt(2, funcionario.getCodCargo());
             stmt.setString(3, funcionario.getLogradouro());
-            stmt.setString(4, funcionario.getNumero());
+            stmt.setInt(4, funcionario.getNumero());
             stmt.setString(5, funcionario.getComplemento());
             stmt.setString(6, funcionario.getBairro());
             stmt.setString(7, funcionario.getCep());
@@ -154,7 +154,12 @@ public class FuncionarioCRUD {
             // quando encontrar um JTextField não vazio (preenchido)
             if (!args[i].getText().isEmpty()) {
                 // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%'";
+                if (args[i].getName().equalsIgnoreCase("codFuncionario")) {
+                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+                } else {
+                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
+                }
+
                 // percorre novamente o vetor em busca de outro JTextField preenchido
                 for (int j = 0; j < tam; j++) {
                     // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
@@ -194,7 +199,7 @@ public class FuncionarioCRUD {
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
                 funcionario.setAtivo(result.getBoolean("status"));
                 funcionario.setLogradouro(result.getString("logradouro"));
-                funcionario.setNumero(result.getString("numero"));
+                funcionario.setNumero(result.getInt("numero"));
                 funcionario.setComplemento(result.getString("complemento"));
                 funcionario.setBairro(result.getString("bairro"));
                 funcionario.setCep(result.getString("cep"));
@@ -236,7 +241,7 @@ public class FuncionarioCRUD {
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
                 funcionario.setAtivo(result.getBoolean("status"));
                 funcionario.setLogradouro(result.getString("logradouro"));
-                funcionario.setNumero(result.getString("numero"));
+                funcionario.setNumero(result.getInt("numero"));
                 funcionario.setComplemento(result.getString("complemento"));
                 funcionario.setBairro(result.getString("bairro"));
                 funcionario.setCep(result.getString("cep"));

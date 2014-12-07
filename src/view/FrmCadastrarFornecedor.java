@@ -642,7 +642,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
 
         fornecedor.setCod(Integer.valueOf(tfFornecedorCodigo.getText()));
         fornecedor.setLogradouro(tfFornecedorLogradouro.getText());
-        fornecedor.setNumero(tfFornecedorNumero.getText());
+        fornecedor.setNumero(Integer.parseInt(tfFornecedorNumero.getText()));
         fornecedor.setComplemento(tfFornecedorComplemento.getText());
         fornecedor.setBairro(tfFornecedorBairro.getText());
         fornecedor.setCep(tfFornecedorCep.getText());
@@ -751,7 +751,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         tfFornecedorCnpj.setText(String.valueOf(fornecedor.getCnpj()));
         tfFornecedorNome.setText(String.valueOf(fornecedor.getNome()));
         tfFornecedorLogradouro.setText(fornecedor.getLogradouro());
-        tfFornecedorNumero.setText(fornecedor.getNumero());
+        tfFornecedorNumero.setText(String.valueOf(fornecedor.getNumero()));
         tfFornecedorComplemento.setText(fornecedor.getComplemento());
         tfFornecedorBairro.setText(fornecedor.getBairro());
         tfFornecedorCep.setText(fornecedor.getCep());
@@ -815,7 +815,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         }
 
         fornecedor.setLogradouro(tfFornecedorLogradouro.getText());
-        fornecedor.setNumero(tfFornecedorNumero.getText());
+        fornecedor.setNumero(Integer.parseInt(tfFornecedorNumero.getText()));
         fornecedor.setComplemento(tfFornecedorComplemento.getText());
         fornecedor.setBairro(tfFornecedorBairro.getText());
         fornecedor.setCep(tfFornecedorCep.getText());

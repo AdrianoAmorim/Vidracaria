@@ -16,6 +16,28 @@ import javax.swing.JTextField;
  */
 public class FornecedorCRUD {
 
+    public int incrementCodCliente() {
+        PreparedStatement stmt;
+        Connection conn = new SQLite().conectar();
+        int increment = 0;
+
+        try {
+            stmt = conn.prepareStatement("SELECT last_value FROM cliente_codCliente_seq;");
+
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                increment = result.getInt(1);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException erroIncrementCodCliente) {
+            JOptionPane.showMessageDialog(null, erroIncrementCodCliente.getMessage());
+        }
+        return increment + 1;
+    }
+
     // INSERT 
     public void inserirFornecedor(Fornecedor fornecedor) {
 
@@ -47,7 +69,7 @@ public class FornecedorCRUD {
 
             stmt.setInt(1, fornecedor.getCod());
             stmt.setString(2, fornecedor.getLogradouro());
-            stmt.setString(3, fornecedor.getNumero());
+            stmt.setInt(3, fornecedor.getNumero());
             stmt.setString(4, fornecedor.getComplemento());
             stmt.setString(5, fornecedor.getBairro());
             stmt.setString(6, fornecedor.getCep());
@@ -96,7 +118,7 @@ public class FornecedorCRUD {
                     + "WHERE codFornecedor = ?;");
 
             stmt.setString(1, fornecedor.getLogradouro());
-            stmt.setString(2, fornecedor.getNumero());
+            stmt.setInt(2, fornecedor.getNumero());
             stmt.setString(3, fornecedor.getComplemento());
             stmt.setString(4, fornecedor.getBairro());
             stmt.setString(5, fornecedor.getCep());
@@ -105,7 +127,7 @@ public class FornecedorCRUD {
             stmt.setInt(8, fornecedor.getCodFornecedor());
 
             stmt.executeUpdate();
-            
+
             conn.commit();
             conn.setAutoCommit(true);
 
@@ -135,7 +157,12 @@ public class FornecedorCRUD {
             // quando encontrar um JTextField não vazio (preenchido)
             if (!args[i].getText().isEmpty()) {
                 // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%'";
+                if (args[i].getName().equalsIgnoreCase("codFornecedor")) {
+                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+                } else {
+                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
+                }
+
                 // percorre novamente o vetor em busca de outro JTextField preenchido
                 for (int j = 0; j < tam; j++) {
                     // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
@@ -181,7 +208,7 @@ public class FornecedorCRUD {
                 fornecedor.setRamal(result.getString("ramal"));
                 fornecedor.setStatus(result.getInt("status"));
                 fornecedor.setLogradouro(result.getString("logradouro"));
-                fornecedor.setNumero(result.getString("numero"));
+                fornecedor.setNumero(result.getInt("numero"));
                 fornecedor.setComplemento(result.getString("complemento"));
                 fornecedor.setBairro(result.getString("bairro"));
                 fornecedor.setCep(result.getString("cep"));
@@ -225,7 +252,7 @@ public class FornecedorCRUD {
                 fornecedor.setRamal(result.getString("ramal"));
                 fornecedor.setStatus(result.getInt("status"));
                 fornecedor.setLogradouro(result.getString("logradouro"));
-                fornecedor.setNumero(result.getString("numero"));
+                fornecedor.setNumero(result.getInt("numero"));
                 fornecedor.setComplemento(result.getString("complemento"));
                 fornecedor.setBairro(result.getString("bairro"));
                 fornecedor.setCep(result.getString("cep"));

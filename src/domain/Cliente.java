@@ -18,7 +18,7 @@ public class Cliente extends Endereco {
     protected boolean status;
     protected String email;
     protected String logradouro;
-    protected String numero;
+    protected int numero;
     protected String complemento;
     protected String bairro;
     protected String cep;

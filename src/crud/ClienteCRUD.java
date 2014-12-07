@@ -23,7 +23,7 @@ public class ClienteCRUD {
         int increment = 0;
 
         try {
-            stmt = conn.prepareStatement("SELECT MAX(codCliente) FROM cliente;");
+            stmt = conn.prepareStatement("SELECT last_value FROM cliente_codCliente_seq;");
 
             ResultSet result = stmt.executeQuery();
 
@@ -70,7 +70,7 @@ public class ClienteCRUD {
 
             stmt.setInt(1, enderecoCliente.getCod());
             stmt.setString(2, enderecoCliente.getLogradouro());
-            stmt.setString(3, enderecoCliente.getNumero());
+            stmt.setInt(3, enderecoCliente.getNumero());
             stmt.setString(4, enderecoCliente.getComplemento());
             stmt.setString(5, enderecoCliente.getBairro());
             stmt.setString(6, enderecoCliente.getCep());
@@ -94,36 +94,71 @@ public class ClienteCRUD {
         int tam = args.length;
 
         String sql = "SELECT c.codCliente, c.tipoCliente, c.nome, c.cpf, c.rg, c.cnpj, "
-                + "c.inscricaoEstadual, c.telFixo, c.telCel, c.email, c.status, c.situacao, "
+                + "c.inscricaoEstadual, c.telFixo, c.telCel, c.email, c.status, "
                 + "ec.logradouro, ec.numero, ec.complemento, ec.bairro, ec.cep, ec.cidade, "
                 + "ec.uf FROM cliente c NATURAL INNER JOIN enderecoCliente ec ";
 
         args[0].setName("codCliente");
         args[1].setName("nome");
-        args[2].setName("cpf");
-        args[3].setName("rg");
-        args[4].setName("telFixo");
-        args[5].setName("telCel");
+        if (tipoCliente.equalsIgnoreCase("F")) {
+            args[2].setName("cpf");
+            args[3].setName("rg");
+        } else if (tipoCliente.equalsIgnoreCase("J")) {
+            args[2].setName("cnpj");
+            args[3].setName("inscricaoestadual");
+        }
+        args[4].setName("telfixo");
+        args[5].setName("telcel");
 
         // percorre os JTextFields até encontrar um preenchido
         for (int i = 0; i < tam; i++) {
             // quando encontrar um JTextField não vazio (preenchido)
             if (!args[i].getText().isEmpty()) {
-                // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%'";
-                // percorre novamente o vetor em busca de outro JTextField preenchido
-                for (int j = 0; j < tam; j++) {
-                    // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
-                    if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
-                        // incrementa a query de acordo com o nome e conteúdo do JTextField
-                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%';";
+                // caso o parametro seja o codCliente é necessário usar (Cast)
+                if (args[i].getName().equalsIgnoreCase("codCliente")) {
+                    // incrementa a query de acordo com o nome e conteúdo do JTExtField
+                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+                    JOptionPane.showMessageDialog(null, "pesquisando por: " + args[i].getName() + " --> " + sql);
+
+                    // percorre novamente o vetor em busca de outro JTextField preenchido
+                    for (int j = 0; j < tam; j++) {
+                        // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
+                        if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
+                            // incrementa a query de acordo com o nome e conteúdo do JTextField
+                            if (args[j].getName().equalsIgnoreCase("codCliente")) {
+                                sql += "AND " + args[j].getName() + " = " + Integer.parseInt(args[j].getText().trim()) + " ";
+                                JOptionPane.showMessageDialog(null, "pesquisando por: " + args[j].getName() + " --> " + sql);
+                            } else {
+                                sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
+                                JOptionPane.showMessageDialog(null, "pesquisando por: " + args[j].getName() + " --> " + sql);
+                            }
+                        }
+                    }
+                } else {
+                    // caso o parametro não seja codCliente
+                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
+
+                    // percorre novamente o vetor em busca de outro JTextField preenchido
+                    for (int j = 0; j < tam; j++) {
+                        // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
+                        if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
+                            // incrementa a query de acordo com o nome e conteúdo do JTextField
+                            if (args[j].getName().equalsIgnoreCase("codCliente")) {
+                                sql += "AND " + args[j].getName() + " = " + Integer.parseInt(args[j].getText().trim()) + " ";
+                            } else {
+                                sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
+                            }
+                        }
                     }
                 }
             }
+
+            if (!tipoCliente.isEmpty()) {
+                sql += "AND tipoCliente = '" + tipoCliente + "' ;";
+            }
+            i = tam;
         }
-        if (!tipoCliente.isEmpty()) {
-            sql += "AND tipoCliente = '" + tipoCliente + "' ;";
-        }
+
         return sql;
     }
 
@@ -134,9 +169,6 @@ public class ClienteCRUD {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-
-            int i = 0;
-
             stmt = conn.prepareStatement(prepararQueryPesquisarClientes(tipoCliente, args));
 
             result = stmt.executeQuery();
@@ -145,6 +177,7 @@ public class ClienteCRUD {
                 Cliente cliente = new Cliente();
 
                 cliente.setCodCliente(result.getInt("codCliente"));
+                cliente.setTipoCliente(result.getString("tipoCliente"));
                 cliente.setNome(result.getString("nome"));
                 cliente.setCpf(result.getString("cpf"));
                 cliente.setRg(result.getString("rg"));
@@ -155,7 +188,7 @@ public class ClienteCRUD {
                 cliente.setEmail(result.getString("email"));
                 cliente.setStatus(result.getBoolean("status"));
                 cliente.setLogradouro(result.getString("logradouro"));
-                cliente.setNumero(result.getString("numero"));
+                cliente.setNumero(result.getInt("numero"));
                 cliente.setComplemento(result.getString("complemento"));
                 cliente.setBairro(result.getString("bairro"));
                 cliente.setCep(result.getString("cep"));
@@ -168,7 +201,7 @@ public class ClienteCRUD {
 
             return listaClientes;
         } catch (SQLException erroConsultarCliente) {
-            System.out.println(erroConsultarCliente.getMessage());
+            JOptionPane.showMessageDialog(null, erroConsultarCliente.getMessage());
             return listaClientes;
         }
     }
@@ -182,10 +215,10 @@ public class ClienteCRUD {
         try (Connection conn = new SQLite().conectar()) {
 
             stmt = conn.prepareStatement("SELECT c.codCliente, c.tipoCliente, c.nome, c.cpf, c.rg, c.cnpj, "
-                    + "c.inscricaoEstadual, c.telFixo, c.telCel, c.email, c.status, c.situacao, "
+                    + "c.inscricaoEstadual, c.telFixo, c.telCel, c.email, c.status, "
                     + "ec.logradouro, ec.numero, ec.complemento, ec.bairro, ec.cep, ec.cidade, "
                     + "ec.uf FROM cliente c NATURAL INNER JOIN enderecoCliente ec "
-                    + "WHERE c.nome = '" + nome + "' OR c.codigoCliente = " + codigoCliente + ";");
+                    + "WHERE c.nome = '" + nome + "' OR c.codCliente = " + codigoCliente + ";");
 
             result = stmt.executeQuery();
             while (result.next()) {
@@ -201,7 +234,7 @@ public class ClienteCRUD {
                 cliente.setEmail(result.getString("email"));
                 cliente.setStatus(result.getBoolean("status"));
                 cliente.setLogradouro(result.getString("logradouro"));
-                cliente.setNumero(result.getString("numero"));
+                cliente.setNumero(result.getInt("numero"));
                 cliente.setComplemento(result.getString("complemento"));
                 cliente.setBairro(result.getString("bairro"));
                 cliente.setCep(result.getString("cep"));
@@ -238,6 +271,7 @@ public class ClienteCRUD {
             stmt.setString(8, cliente.getTelCel());
             stmt.setString(9, cliente.getEmail());
             stmt.setBoolean(10, cliente.isStatus());
+            stmt.setInt(11, cliente.getCodCliente());
             stmt.executeUpdate();
 
             stmt = conn.prepareStatement("UPDATE enderecoCliente SET logradouro = ?, "
@@ -245,7 +279,7 @@ public class ClienteCRUD {
                     + "WHERE codCliente = ?;");
 
             stmt.setString(1, cliente.getLogradouro());
-            stmt.setString(2, cliente.getNumero());
+            stmt.setInt(2, cliente.getNumero());
             stmt.setString(3, cliente.getComplemento());
             stmt.setString(4, cliente.getBairro());
             stmt.setString(5, cliente.getCep());

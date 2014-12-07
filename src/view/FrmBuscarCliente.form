@@ -152,7 +152,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBuscaClienteDoc1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTipoBuscaCliente" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -165,7 +165,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblBuscaClienteDoc2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="rbTipoFisicaCliente" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -174,11 +174,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="rbTipoJuridicaCliente" min="-2" max="-2" attributes="0"/>
                               <Component id="tfRgCliente" min="-2" pref="104" max="-2" attributes="0"/>
-                              <Component id="tfNomeCliente" min="-2" pref="466" max="-2" attributes="0"/>
+                              <Component id="tfNomeCliente" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <EmptySpace pref="130" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -200,10 +200,10 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBuscaClienteDoc2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tfRgCliente" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="tfCpfCliente" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBuscaClienteDoc1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -276,7 +276,7 @@
             <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="tfNomeClienteCaretUpdate"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="lblBuscaClienteDoc1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
@@ -300,7 +300,7 @@
             <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="tfCpfClienteCaretUpdate"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lblBuscaClienteDoc2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
@@ -379,6 +379,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="F&#xed;sica"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbTipoFisicaClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbTipoJuridicaCliente">
           <Properties>
@@ -387,6 +390,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Juridica"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbTipoJuridicaClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTipoBuscaCliente">
           <Properties>

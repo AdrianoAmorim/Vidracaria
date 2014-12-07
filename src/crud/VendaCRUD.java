@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author debian
+ * @author rafael
  */
 public class VendaCRUD {
 

@@ -69,7 +69,11 @@ public class CargoCRUD {
             // quando encontrar um JTextField não vazio (preenchido)
             if (!args[i].getText().isEmpty()) {
                 // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%'";
+                if (args[i].getName().equalsIgnoreCase("codCargo")) {
+                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+                } else {
+                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
+                }
                 // percorre novamente o vetor em busca de outro JTextField preenchido
                 for (int j = 0; j < tam; j++) {
                     // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)

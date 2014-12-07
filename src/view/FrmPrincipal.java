@@ -2846,7 +2846,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//limpa todos os JTextField do programa 
+    // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
         int totalCampos = args.length;
         for (int i = 0; i < totalCampos; i++) {
@@ -2854,7 +2854,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }
 
-    // Insere os produtos do ComboBox nas tabelas
+    // reseta os textos de JTables
+    static public void limparTabela(JTable tabela) {
+        for (int i = 0; i < tabela.getColumnCount(); i++) {
+            tabela.getColumnModel().getColumn(i).setHeaderValue("");
+        }
+    }
+
+// Insere os produtos do ComboBox nas tabelas
     public void inserirProdutosNasTabelas(JTable tabela, JComboBox cbProduto, JTextField tfQtdProduto, JLabel lblTotBruto, JLabel lblTotLiquido) {
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
 
@@ -2981,7 +2988,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         enderecoCliente.setCod(Integer.parseInt(tfClienteCodigo.getText()));
         enderecoCliente.setLogradouro(tfClienteLogradouro.getText());
-        enderecoCliente.setNumero(tfClienteNumero.getText());
+        enderecoCliente.setNumero(Integer.parseInt(tfClienteNumero.getText()));
         enderecoCliente.setComplemento(tfClienteComplemento.getText());
         enderecoCliente.setBairro(tfClienteBairro.getText());
         enderecoCliente.setCep(tfClienteCep.getText());
@@ -3032,8 +3039,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
 
         cliente.setNome(tfClienteNome.getText());
+
         cliente.setLogradouro(tfClienteLogradouro.getText());
-        cliente.setNumero(tfClienteNumero.getText());
+        cliente.setNumero(Integer.parseInt(tfClienteNumero.getText()));
         cliente.setComplemento(tfClienteComplemento.getText());
         cliente.setBairro(tfClienteBairro.getText());
         cliente.setCep(tfClienteCep.getText());
@@ -3075,6 +3083,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnVendaBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaBuscarClienteActionPerformed
         FrmBuscarCliente buscaCliente = new FrmBuscarCliente(this, true);
         buscaCliente.setVisible(true);
+
         //seta o nome do Cliente no TextField
         tfVendaNomeCliente.setText(buscaCliente.cliente.getNome());
         lblVendaClienteNome.setText(buscaCliente.cliente.getNome());
@@ -3196,7 +3205,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setCodCargo(funcionario.getCodCargo());
         funcionario.setCodEmpresa(funcionario.getCodEmpresa());
         funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
-        funcionario.setNumero(tfFuncionarioNumero.getText());
+        funcionario.setNumero(Integer.parseInt(tfFuncionarioNumero.getText()));
         funcionario.setComplemento(tfFuncionarioComplemento.getText());
         funcionario.setBairro(tfFuncionarioBairro.getText());
         funcionario.setCep(tfFuncionarioCep.getText());
@@ -3232,7 +3241,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setTelCel(tfFuncionarioTelCelular.getText());
         funcionario.setEmail(tfFuncionarioEmail.getText());
         funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
-        funcionario.setNumero(tfFuncionarioNumero.getText());
+        funcionario.setNumero(Integer.parseInt(tfFuncionarioNumero.getText()));
         funcionario.setComplemento(tfFuncionarioComplemento.getText());
         funcionario.setBairro(tfFuncionarioBairro.getText());
         funcionario.setCep(tfFuncionarioCep.getText());
@@ -3373,29 +3382,31 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfClienteCodigo.setText(String.valueOf(buscaCli.cliente.getCodCliente()));
 
-        if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("F")) {
-            // preenche os campos de pessoa física
-            rbClienteFisica.setSelected(true);
-            tfClienteCpf.setText(buscaCli.cliente.getCpf());
-            tfClienteRg.setText(buscaCli.cliente.getRg());
+        if (buscaCli.cliente.getCodCliente() != 0) {
+            if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("F")) {
+                // preenche os campos de pessoa física
+                rbClienteFisica.setSelected(true);
+                tfClienteCpf.setText(buscaCli.cliente.getCpf());
+                tfClienteRg.setText(buscaCli.cliente.getRg());
 
-            // bloqueia os campos de pessoa jurídica
-            tfClienteCnpj.setEnabled(false);
-            tfClienteInscEstadual.setEnabled(false);
-        } else if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("J")) {
-            // preenche os campos de pessoa jurídica
-            rbClienteJuridica.setSelected(true);
-            tfClienteCnpj.setText(buscaCli.cliente.getCnpj());
-            tfClienteInscEstadual.setText(buscaCli.cliente.getInscricaoEstadual());
+                // bloqueia os campos de pessoa jurídica
+                tfClienteCnpj.setEnabled(false);
+                tfClienteInscEstadual.setEnabled(false);
+            } else if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("J")) {
+                // preenche os campos de pessoa jurídica
+                rbClienteJuridica.setSelected(true);
+                tfClienteCnpj.setText(buscaCli.cliente.getCnpj());
+                tfClienteInscEstadual.setText(buscaCli.cliente.getInscricaoEstadual());
 
-            // bloqueia os campos de pessoa física
-            tfClienteCpf.setEnabled(false);
-            tfClienteRg.setEnabled(false);
+                // bloqueia os campos de pessoa física
+                tfClienteCpf.setEnabled(false);
+                tfClienteRg.setEnabled(false);
+            }
         }
 
         tfClienteNome.setText(buscaCli.cliente.getNome());
         tfClienteLogradouro.setText(buscaCli.cliente.getLogradouro());
-        tfClienteNumero.setText(buscaCli.cliente.getNumero());
+        tfClienteNumero.setText(String.valueOf(buscaCli.cliente.getNumero()));
         tfClienteComplemento.setText(buscaCli.cliente.getComplemento());
         tfClienteBairro.setText(buscaCli.cliente.getBairro());
         tfClienteCep.setText(buscaCli.cliente.getCep());
@@ -3410,7 +3421,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             rbClienteStatusInat.setSelected(true);
         } else {
             rbClienteStatusAtiv.setSelected(true);
-        }        
+        }
     }//GEN-LAST:event_btnClienteBuscarClienteMouseClicked
 
     private void cbVendaTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaTipoPagamentoActionPerformed
@@ -3495,7 +3506,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
 
-
     private void btnFuncionarioBuscarCodCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionarioBuscarCodCargoMouseClicked
         FrmBuscarCargo buscaCargo = new FrmBuscarCargo(this, true);
         buscaCargo.setVisible(true);
@@ -3538,7 +3548,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioTelCelular.setText(buscarFuncionario.funcionario.getTelCel());
         tfFuncionarioEmail.setText(buscarFuncionario.funcionario.getEmail());
         tfFuncionarioLogradouro.setText(buscarFuncionario.funcionario.getLogradouro());
-        tfFuncionarioNumero.setText(buscarFuncionario.funcionario.getNumero());
+        tfFuncionarioNumero.setText(String.valueOf(buscarFuncionario.funcionario.getNumero()));
         tfFuncionarioComplemento.setText(buscarFuncionario.funcionario.getComplemento());
         tfFuncionarioBairro.setText(buscarFuncionario.funcionario.getBairro());
         tfFuncionarioCep.setText(buscarFuncionario.funcionario.getCep());

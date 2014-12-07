@@ -11,7 +11,7 @@ public class Endereco {
     protected int codCargo;
     protected int codEmpresa;
     protected String logradouro;
-    protected String numero;
+    protected int numero;
     protected String complemento;
     protected String bairro;
     protected String cep;
@@ -50,11 +50,11 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
