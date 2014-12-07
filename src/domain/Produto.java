@@ -8,6 +8,7 @@ package domain;
 public class Produto {
 
     private int codProduto;
+    private int codCategoria;
     private String descricao;
     private String unidadeMedida;
     private Double quantidadeEstoque;
@@ -21,6 +22,14 @@ public class Produto {
 
     public void setCodProduto(int codProduto) {
         this.codProduto = codProduto;
+    }
+
+    public int getCodCategoria() {
+        return codCategoria;
+    }
+
+    public void setCodCategoria(int codCategoria) {
+        this.codCategoria = codCategoria;
     }
 
     public String getDescricao() {

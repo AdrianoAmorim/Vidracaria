@@ -1,8 +1,11 @@
 package view;
 
 import controller.FornecedorController;
+import crud.CidadeCRUD;
+import crud.EstadoCRUD;
 import crud.FornecedorCRUD;
-import domain.Endereco;
+import domain.Cidade;
+import domain.Estado;
 import domain.Fornecedor;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -31,6 +34,31 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         this.setLocationRelativeTo(this);
         this.pnlFornecedorOpBusca.setVisible(op);
         this.pnlFornecedorTituloOpBusca.setVisible(op);
+        
+        this.carregarCbUf();
+        this.carregarCbCidades();
+    }
+    
+        // Carrega lista de Ufs
+    public void carregarCbUf() {
+        EstadoCRUD estadoCRUD = new EstadoCRUD();
+
+        cbFornecedorUf.removeAllItems();
+        
+        for (Estado estado : estadoCRUD.consultarEstado()) {
+            cbFornecedorUf.addItem(estado.getUf());
+        }
+    }
+
+    // Carrega lista de Cidades
+    public void carregarCbCidades() {
+        CidadeCRUD cidadeCRUD = new CidadeCRUD();
+
+        cbFornecedorCidade.removeAllItems();
+        
+        for (Cidade cidade : cidadeCRUD.consultarCidade(cbFornecedorUf.getSelectedItem().toString())) {
+            cbFornecedorCidade.addItem(cidade.getNome());
+        }
     }
 
     /**
@@ -83,6 +111,8 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         jLabel57 = new javax.swing.JLabel();
         rbFornecedortatusAtiv = new javax.swing.JRadioButton();
         rbFornecedorStatusInat = new javax.swing.JRadioButton();
+        cbFornecedorCidade = new javax.swing.JComboBox();
+        cbFornecedorUf = new javax.swing.JComboBox();
         pnlFornecedorOpBusca = new javax.swing.JPanel();
         tfBuscaFornecedorOpCod = new javax.swing.JTextField();
         tfBuscaFornecedorOpCnpj = new javax.swing.JTextField();
@@ -281,6 +311,15 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
             }
         });
 
+        cbFornecedorCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbFornecedorUf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbFornecedorUf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFornecedorUfActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlDadosFornecedorLayout = new javax.swing.GroupLayout(pnlDadosFornecedor);
         pnlDadosFornecedor.setLayout(pnlDadosFornecedorLayout);
         pnlDadosFornecedorLayout.setHorizontalGroup(
@@ -289,12 +328,70 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
-                        .addComponent(jLabel57)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbFornecedorStatusInat)
-                            .addComponent(rbFornecedortatusAtiv)))
-                    .addComponent(lblNomeFornecedor9)
+                            .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
+                                .addComponent(jLabel57)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbFornecedorStatusInat)
+                                    .addComponent(rbFornecedortatusAtiv)))
+                            .addComponent(lblNomeFornecedor9)
+                            .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
+                                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNomeFornecedor)
+                                    .addComponent(lblNomeFornecedor1)
+                                    .addComponent(lblNomeFornecedor4)
+                                    .addComponent(lblNomeFornecedor7)
+                                    .addComponent(lblNomeFornecedor14))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosFornecedorLayout.createSequentialGroup()
+                                        .addComponent(tfFornecedorLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblNomeFornecedor13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tfFornecedorNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
+                                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(tfFornecedorEmail)
+                                            .addComponent(tfFornecedorVendedor)
+                                            .addComponent(tfFornecedorCep, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                                            .addComponent(tfFornecedorTelFixo, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
+                                                .addGap(63, 63, 63)
+                                                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
+                                                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(lblNomeFornecedor8)
+                                                            .addComponent(lblNomeFornecedor6))
+                                                        .addGap(43, 43, 43)
+                                                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(tfFornecedorTelCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                                                            .addComponent(tfFornecedorSite)))
+                                                    .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
+                                                        .addComponent(lblNomeFornecedor11)
+                                                        .addGap(43, 43, 43)
+                                                        .addComponent(tfFornecedorCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(lblNomeFornecedor3)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(tfFornecedorUf, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
+                                                        .addComponent(btnCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(btnAlterarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(58, 58, 58))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
+                                                        .addComponent(lblNomeFornecedor10)
+                                                        .addGap(49, 49, 49)
+                                                        .addComponent(tfFornecedorRamalVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(132, 132, 132))))))
+                                    .addComponent(tfFornecedorNome))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
                         .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel49)
@@ -302,63 +399,12 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfFornecedorCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                            .addComponent(tfFornecedorCodigo)))
-                    .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
-                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNomeFornecedor)
-                            .addComponent(lblNomeFornecedor1)
-                            .addComponent(lblNomeFornecedor4)
-                            .addComponent(lblNomeFornecedor7)
-                            .addComponent(lblNomeFornecedor14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tfFornecedorCodigo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosFornecedorLayout.createSequentialGroup()
-                                .addComponent(tfFornecedorLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNomeFornecedor13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfFornecedorNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
-                                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tfFornecedorEmail)
-                                    .addComponent(tfFornecedorVendedor)
-                                    .addComponent(tfFornecedorCep, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                                    .addComponent(tfFornecedorTelFixo, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
-                                        .addGap(63, 63, 63)
-                                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
-                                                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblNomeFornecedor8)
-                                                    .addComponent(lblNomeFornecedor6))
-                                                .addGap(43, 43, 43)
-                                                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(tfFornecedorTelCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                                                    .addComponent(tfFornecedorSite)))
-                                            .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
-                                                .addComponent(lblNomeFornecedor11)
-                                                .addGap(43, 43, 43)
-                                                .addComponent(tfFornecedorCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lblNomeFornecedor3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tfFornecedorUf, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
-                                                .addComponent(btnCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnAlterarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(58, 58, 58))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
-                                                .addComponent(lblNomeFornecedor10)
-                                                .addGap(49, 49, 49)
-                                                .addComponent(tfFornecedorRamalVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(132, 132, 132))))))
-                            .addComponent(tfFornecedorNome))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cbFornecedorCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbFornecedorUf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(187, 187, 187))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblNomeFornecedor12)
@@ -374,13 +420,19 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
             pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel49)
-                    .addComponent(tfFornecedorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel50)
-                    .addComponent(tfFornecedorCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
+                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel49)
+                            .addComponent(tfFornecedorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel50)
+                            .addComponent(tfFornecedorCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
+                        .addComponent(cbFornecedorUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbFornecedorCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfFornecedorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -419,7 +471,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                                 .addComponent(rbFornecedortatusAtiv)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbFornecedorStatusInat)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(13, Short.MAX_VALUE))
                     .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addComponent(tfFornecedorEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -836,10 +888,16 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAlterarFornecedorActionPerformed
 
+    private void cbFornecedorUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFornecedorUfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFornecedorUfActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarFornecedor;
     private javax.swing.JButton btnCadastrarFornecedor;
     private javax.swing.JComboBox cbBuscaFornecedorOpCidade;
+    private javax.swing.JComboBox cbFornecedorCidade;
+    private javax.swing.JComboBox cbFornecedorUf;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;

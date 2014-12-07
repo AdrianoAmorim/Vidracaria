@@ -40,15 +40,16 @@ public class ProdutoCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO produto(codProduto, descricao, unidadeMedida, "
-                    + "quantidadeEstoque, precoVenda, status) VALUES (?,?,?,?,?,?)");
+            stmt = conn.prepareStatement("INSERT INTO produto(codProduto, codCategoria, descricao, unidadeMedida, "
+                    + "quantidadeEstoque, precoVenda, status) VALUES (?,?,?,?,?,?,?)");
 
             stmt.setInt(1, produto.getCodProduto());
-            stmt.setString(2, produto.getDescricao());
-            stmt.setString(3, produto.getUnidadeMedida());
-            stmt.setDouble(4, produto.getQuantidadeEstoque());
-            stmt.setDouble(5, produto.getPrecoVenda());
-            stmt.setBoolean(6, produto.isStatus());
+            stmt.setInt(2, produto.getCodCategoria());
+            stmt.setString(3, produto.getDescricao());
+            stmt.setString(4, produto.getUnidadeMedida());
+            stmt.setDouble(5, produto.getQuantidadeEstoque());
+            stmt.setDouble(6, produto.getPrecoVenda());
+            stmt.setBoolean(7, produto.isStatus());
 
             stmt.executeUpdate();
             stmt.close();
@@ -59,10 +60,10 @@ public class ProdutoCRUD {
         }
     }
 
-    public String prepararQueryPesquisarProduto(JTextField... args) {
+    public String prepararQueryPesquisarProduto(String categoria, JTextField... args) {
         int tam = args.length;
 
-        String sql = "SELECT codProduto, unidadeMedida, quantidadeEstoque, descricao, precoVenda, status "
+        String sql = "SELECT codProduto, codCategoria, unidadeMedida, quantidadeEstoque, descricao, precoVenda, status "
                 + "FROM produto ";
 
         args[0].setName("codProduto");
@@ -84,12 +85,14 @@ public class ProdutoCRUD {
                     // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
                     if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
                         // incrementa a query de acordo com o nome e conteúdo do JTextField
-                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%'";
+                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
 
                         // retorna a query montada
                         return sql;
                     }
                 }
+
+                sql += "AND categoria = '" + categoria + "';";
             }
         }
         // instrução para burlar o erro do compilador - nunca chega até aqui
@@ -97,7 +100,7 @@ public class ProdutoCRUD {
     }
 
     // SELECT
-    public ArrayList<Produto> consultarProdutos(JTextField... args) {
+    public ArrayList<Produto> consultarProdutos(String categoria, JTextField... args) {
 
         PreparedStatement stmt;
         ResultSet result;
@@ -105,7 +108,7 @@ public class ProdutoCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
 
-            stmt = conn.prepareStatement(prepararQueryPesquisarProduto(args));
+            stmt = conn.prepareStatement(prepararQueryPesquisarProduto(categoria, args));
 
             result = stmt.executeQuery();
 
@@ -113,6 +116,44 @@ public class ProdutoCRUD {
                 Produto produto = new Produto();
 
                 produto.setCodProduto(result.getInt("codProduto"));
+                produto.setCodCategoria(result.getInt("codCategoria"));
+                produto.setDescricao(result.getString("descricao"));
+                produto.setUnidadeMedida(result.getString("unidadeMedida"));
+                produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
+                produto.setPrecoVenda(result.getDouble("precoVenda"));
+                produto.setStatus(result.getBoolean("status"));
+
+                listaProdutos.add(produto);
+            }
+            stmt.close();
+
+            return listaProdutos;
+        } catch (SQLException erroConsultarProduto) {
+            System.out.println(erroConsultarProduto.getMessage());
+            return listaProdutos;
+        }
+    }
+
+    public ArrayList<Produto> consultarProdutos() {
+
+        PreparedStatement stmt;
+        ResultSet result;
+        ArrayList<Produto> listaProdutos = new ArrayList<>();
+
+        try (Connection conn = new SQLite().conectar()) {
+
+            String sql = "SELECT codProduto, codCategoria, unidadeMedida, quantidadeEstoque, descricao, precoVenda, status "
+                    + "FROM produto ";
+
+            stmt = conn.prepareStatement(sql);
+
+            result = stmt.executeQuery();
+
+            while (result.next()) {
+                Produto produto = new Produto();
+
+                produto.setCodProduto(result.getInt("codProduto"));
+                produto.setCodCategoria(result.getInt("codCategoria"));
                 produto.setDescricao(result.getString("descricao"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
                 produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));

@@ -1,4 +1,3 @@
-
 package view;
 
 import crud.ProdutoCRUD;
@@ -23,6 +22,7 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmAdicionarProduto
+     *
      * @param parent
      * @param modal
      * @param codigo
@@ -70,6 +70,8 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
         lblCompraFornecedor1 = new javax.swing.JLabel();
         lblAddProdutoPrecoCusto = new javax.swing.JLabel();
         lblCompraFornecedor3 = new javax.swing.JLabel();
+        cbAddProdutoCategoria = new javax.swing.JComboBox();
+        jLabel592 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("frmAdicionarProduto"); // NOI18N
@@ -166,23 +168,34 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
         lblCompraFornecedor3.setForeground(new java.awt.Color(0, 69, 139));
         lblCompraFornecedor3.setText("Quantidade:");
 
+        cbAddProdutoCategoria.setBackground(new java.awt.Color(204, 204, 255));
+        cbAddProdutoCategoria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbAddProdutoCategoria.setToolTipText("");
+
+        jLabel592.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel592.setForeground(new java.awt.Color(0, 69, 139));
+        jLabel592.setText("Categoria:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 44, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnAdicionarProdutoInserirTabela)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(tfAdicionarProdutoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tfAdicionarProdutoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblCompraFornecedor)
-                                .addComponent(lblCompraFornecedor1))
+                                .addComponent(lblCompraFornecedor1)
+                                .addComponent(jLabel592)
+                                .addComponent(cbAddProdutoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblCompraFornecedor3)
@@ -213,7 +226,11 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                         .addGap(4, 4, 4)
                         .addComponent(tfAdicionarProdutoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel592)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbAddProdutoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfAdicionarProdutoPrecoCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,23 +241,30 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                             .addComponent(lblCompraFornecedor3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAdicionarProdutoInserirTabela))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private ArrayList<Produto> pesquisarProdutoCaretUpdate(JTextField campo) {
+    private void pesquisarProdutoCaretUpdate() {
         ProdutoCRUD produtoCRUD = new ProdutoCRUD();
         ArrayList<Produto> listaProdutos = new ArrayList<>();
+        String categoria = cbAddProdutoCategoria.getSelectedItem().toString();
+        
+        listaProdutos = produtoCRUD.consultarProdutos(categoria, tfAdicionarProdutoCodigo, tfAdicionarProdutoDescricao);
 
-        if (!campo.getText().isEmpty()) {
-            listaProdutos = produtoCRUD.consultarProdutos(tfAdicionarProdutoCodigo, tfAdicionarProdutoDescricao);
+        DefaultListModel listModelo = new DefaultListModel();
+        jlAdicionarProdutoResultConsulta.setModel(listModelo);
+
+        listModelo.removeAllElements();
+
+        if (!tfAdicionarProdutoCodigo.getText().isEmpty()) {
+            for (Produto produto : listaProdutos) {
+                listModelo.addElement(produto.getDescricao());
+            }
         }
-        return listaProdutos;
     }
 
     private void btnAdicionarProdutoInserirTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoInserirTabelaActionPerformed
@@ -252,10 +276,10 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                 modeloTabela.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao(), tfAdicionarProdutoQuantidade.getText(),
                     produto.getPrecoVenda()});
             }
-        }else if(this.operacao.equalsIgnoreCase("pnlCompra")){
+        } else if (this.operacao.equalsIgnoreCase("pnlCompra")) {
             for (Produto produto : listProduto) {
                 modeloTabela.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao(), tfAdicionarProdutoQuantidade.getText(),
-                   tfAdicionarProdutoPrecoCusto.getText()});
+                    tfAdicionarProdutoPrecoCusto.getText()});
             }
         }
     }//GEN-LAST:event_btnAdicionarProdutoInserirTabelaActionPerformed
@@ -277,7 +301,7 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                 this.listProdutoVendido.add(produtoVendido);
             }
         } else if (operacao.equalsIgnoreCase("pnlCompra")) {
-// lista dos produtos Comprados
+            // lista dos produtos Comprados
             for (int i = 0; i < jtAdicionarProdutoListaProduto.getRowCount(); i++) {
                 ProdutoComprado produtoComprado = new ProdutoComprado();
 
@@ -296,29 +320,11 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosing
 
     private void tfAdicionarProdutoCodigoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfAdicionarProdutoCodigoCaretUpdate
-        DefaultListModel listModelo = new DefaultListModel();
-        jlAdicionarProdutoResultConsulta.setModel(listModelo);
-
-        listModelo.removeAllElements();
-
-        if (!tfAdicionarProdutoCodigo.getText().isEmpty()) {
-            for (Produto produto : this.pesquisarProdutoCaretUpdate(tfAdicionarProdutoCodigo)) {
-                listModelo.addElement(produto.getDescricao());
-            }
-        }
+        this.pesquisarProdutoCaretUpdate();
     }//GEN-LAST:event_tfAdicionarProdutoCodigoCaretUpdate
 
     private void tfAdicionarProdutoDescricaoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfAdicionarProdutoDescricaoCaretUpdate
-        DefaultListModel listModelo = new DefaultListModel();
-        jlAdicionarProdutoResultConsulta.setModel(listModelo);
-
-        listModelo.removeAllElements();
-
-        if (!tfAdicionarProdutoDescricao.getText().isEmpty()) {
-            for (Produto produto : this.pesquisarProdutoCaretUpdate(tfAdicionarProdutoDescricao)) {
-                listModelo.addElement(produto.getDescricao());
-            }
-        }
+        this.pesquisarProdutoCaretUpdate();
     }//GEN-LAST:event_tfAdicionarProdutoDescricaoCaretUpdate
 
     /**
@@ -327,6 +333,8 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarProdutoInserirTabela;
+    private javax.swing.JComboBox cbAddProdutoCategoria;
+    private javax.swing.JLabel jLabel592;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -38,7 +38,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DO CODIGO DA VENDA
         int codVend = new VendaCRUD().incrementCodVenda();
         tfVendaCodigo.setText(Integer.toString(codVend));
-        // INICIALIZAÇ�O DO CODIGO DA COMPRA
+        // INICIALIZAÇÃO DO CODIGO DA COMPRA
         int codCompra = new CompraCRUD().incrementCodCompra();
         tfCompraCodigo.setText(String.valueOf(codCompra));
         // INICIALIZAÇÃO DO CODIGO DO FUNCIONARIO
@@ -48,8 +48,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.carregarCbParcelamentoVenda();
         // INICIALIZAÇÃO DA LISTA DE Parcelamento de compras
         this.carregarCbParcelamentoCompra();
-        // INICIALIZAÇ�O DAS LISTAS DE TIPOS DE PAGAMENTO
+        // INICIALIZAÇÃO DAS LISTAS DE TIPOS DE PAGAMENTO
         this.carregarCbTipoPagamento();
+        // INICIALIZAÇÃO DA LISTA DE UFS
+        this.carregarCbUf();
+        // INICIALIZAÇÃO DA LISTA DE CIDADES
+        this.carregarCbCidades();
     }
 
     /**
@@ -115,6 +119,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblClienteStatus = new javax.swing.JLabel();
         rbClienteStatusAtiv = new javax.swing.JRadioButton();
         rbClienteStatusInat = new javax.swing.JRadioButton();
+        cbClienteUf = new javax.swing.JComboBox();
+        cbClienteCidade = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
         lblClienteDadosCliente = new javax.swing.JLabel();
         pnlCadFuncionario = new javax.swing.JPanel();
@@ -158,6 +164,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioDescricaoCargo = new javax.swing.JTextField();
         rbFuncionarioStatusAtiv = new javax.swing.JRadioButton();
         rbFuncionarioStatusInat = new javax.swing.JRadioButton();
+        cbFuncionarioUf = new javax.swing.JComboBox();
+        cbFuncionarioCidade = new javax.swing.JComboBox();
         jPanel8 = new javax.swing.JPanel();
         lblFuncionarioDadosFuncionario = new javax.swing.JLabel();
         pnlEfetuarVenda = new javax.swing.JPanel();
@@ -354,7 +362,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel30)
                 .addGap(18, 18, 18)
-                .addComponent(lblClienteTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblClienteTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -540,6 +548,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        cbClienteUf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbClienteUf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbClienteUfActionPerformed(evt);
+            }
+        });
+
+        cbClienteCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
@@ -547,90 +564,99 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblClienteCnpj)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel23Layout.createSequentialGroup()
-                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblClienteCpf)
-                                .addComponent(lblClienteTelFixo)
-                                .addComponent(lblClienteEmail)
-                                .addComponent(lblClienteCep)
-                                .addComponent(lblClienteComplemento)
-                                .addComponent(lblClienteLogradouro))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel23Layout.createSequentialGroup()
-                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tfClienteLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfClienteComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblClienteNumero)
-                                        .addGroup(jPanel23Layout.createSequentialGroup()
-                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jPanel23Layout.createSequentialGroup()
-                                                    .addComponent(btnClienteCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jPanel23Layout.createSequentialGroup()
-                                                    .addComponent(lblClienteBairro)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(tfClienteCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(tfClienteBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(tfClienteRg, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(tfClienteInscEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(tfClienteTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addComponent(lblClienteStatus))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(rbClienteStatusInat)
-                                                .addComponent(rbClienteStatusAtiv)))))
-                                .addComponent(tfClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel23Layout.createSequentialGroup()
-                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel23Layout.createSequentialGroup()
-                                            .addComponent(tfClienteCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblClienteInscricaoEstadual))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel23Layout.createSequentialGroup()
-                                            .addComponent(tfClienteTelRes, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblClienteTelCel)))
-                                    .addGap(369, 369, 369)
-                                    .addComponent(lblClienteUf)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tfClienteUf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel23Layout.createSequentialGroup()
-                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(tfClienteCep, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblClienteRg)
-                                        .addComponent(lblClienteCidade)))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tfClienteNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblClienteCpf)
+                            .addComponent(lblClienteTelFixo)
+                            .addComponent(lblClienteEmail)
+                            .addComponent(lblClienteCep)
+                            .addComponent(lblClienteComplemento)
+                            .addComponent(lblClienteLogradouro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tfClienteCep, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblClienteRg))
+                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel23Layout.createSequentialGroup()
+                                    .addComponent(tfClienteCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblClienteInscricaoEstadual))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel23Layout.createSequentialGroup()
+                                    .addComponent(tfClienteTelRes, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblClienteTelCel)))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel23Layout.createSequentialGroup()
+                                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tfClienteLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfClienteComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                                        .addComponent(lblClienteUf)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfClienteUf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(17, 17, 17)))
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblClienteNumero)
+                                    .addGroup(jPanel23Layout.createSequentialGroup()
+                                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                                .addComponent(btnClienteCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(lblClienteStatus))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rbClienteStatusInat)
+                                            .addComponent(rbClienteStatusAtiv)))
                                     .addGroup(jPanel23Layout.createSequentialGroup()
                                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblClienteCodigo)
-                                            .addComponent(lblClienteTipo))
-                                        .addGap(91, 91, 91))
-                                    .addGroup(jPanel23Layout.createSequentialGroup()
-                                        .addComponent(lblClienteNome)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnClienteBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                            .addComponent(lblClienteBairro)
+                                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(lblClienteCidade)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tfClienteRg, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfClienteInscEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfClienteTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfClienteNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(jPanel23Layout.createSequentialGroup()
+                                                    .addComponent(tfClienteCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(cbClienteCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel23Layout.createSequentialGroup()
+                                                    .addComponent(tfClienteBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(26, 26, 26)
+                                                    .addComponent(cbClienteUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
                                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfClienteCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel23Layout.createSequentialGroup()
-                                        .addComponent(rbClienteFisica)
-                                        .addGap(142, 142, 142)
-                                        .addComponent(rbClienteJuridica))
-                                    .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(298, Short.MAX_VALUE))
+                                    .addComponent(lblClienteCodigo)
+                                    .addComponent(lblClienteTipo))
+                                .addGap(91, 91, 91))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(lblClienteNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnClienteBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfClienteCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(rbClienteFisica)
+                                .addGap(142, 142, 142)
+                                .addComponent(rbClienteJuridica))
+                            .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblClienteCnpj))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -666,15 +692,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(lblClienteBairro)
                     .addComponent(tfClienteBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblClienteComplemento)
-                    .addComponent(tfClienteComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfClienteComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbClienteUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClienteUf)
                     .addComponent(tfClienteUf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfClienteCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblClienteCidade)
                     .addComponent(lblClienteCep)
-                    .addComponent(tfClienteCep, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfClienteCep, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblClienteCidade)
+                    .addComponent(cbClienteCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel23Layout.createSequentialGroup()
@@ -749,7 +777,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407887820_clients.png")), pnlCadCliente, "Cadastro de Cliente"); // NOI18N
@@ -929,6 +957,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        cbFuncionarioUf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbFuncionarioUf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFuncionarioUfActionPerformed(evt);
+            }
+        });
+
+        cbFuncionarioCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -980,7 +1017,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(lblFuncionarioSalario))
                         .addGap(50, 50, 50)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                                 .addComponent(lblFuncionarioNumero)
                                 .addGap(18, 18, 18)
@@ -992,15 +1028,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tfFuncionarioBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblFuncionarioCidade)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblFuncionarioCidade))
+                                    .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(tfFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblFuncionarioUf)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(cbFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cbFuncionarioUf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(tfFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblFuncionarioUf)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tfFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(lblFuncionarioStatus)
                         .addGap(18, 18, 18)
@@ -1064,22 +1108,30 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(tfFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFuncionarioCep))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFuncionarioSalario))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFuncionarioStatus)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(rbFuncionarioStatusAtiv)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rbFuncionarioStatusInat))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFuncionarioSalario))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFuncionarioStatus)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(11, 11, 11))))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11))))
+                            .addComponent(rbFuncionarioStatusAtiv)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(cbFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbFuncionarioStatusInat))))
         );
 
         jPanel8.setBackground(new java.awt.Color(153, 153, 255));
@@ -2897,16 +2949,40 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }
 
+    // Carrega lista de Ufs
+    public void carregarCbUf() {
+        EstadoCRUD estadoCRUD = new EstadoCRUD();
+
+        cbClienteUf.removeAllItems();
+        cbFuncionarioUf.removeAllItems();
+        
+        for (Estado estado : estadoCRUD.consultarEstado()) {
+            cbClienteUf.addItem(estado.getUf());
+            cbFuncionarioUf.addItem(estado.getUf());
+        }
+    }
+
+    // Carrega lista de Cidades
+    public void carregarCbCidades() {
+        CidadeCRUD cidadeCRUD = new CidadeCRUD();
+
+        cbClienteCidade.removeAllItems();
+        cbFuncionarioCidade.removeAllItems();
+        
+        for (Cidade cidade : cidadeCRUD.consultarCidade(cbClienteUf.getSelectedItem().toString())) {
+            cbClienteCidade.addItem(cidade.getNome());
+            cbFuncionarioCidade.addItem(cidade.getNome());
+        }
+    }
+
     //  Carregar lista de tipos de pagamento
     public void carregarCbTipoPagamento() {
-        ArrayList<TipoPagamento> arrayTipoPagamento = new ArrayList<>();
         TipoPagamentoCRUD tipoPagamentoCRUD = new TipoPagamentoCRUD();
 
-        arrayTipoPagamento = tipoPagamentoCRUD.consultarTipoPagamento();
         cbVendaTipoPagamento.removeAllItems();
         cbCompraTipoPagamento.removeAllItems();
 
-        for (TipoPagamento tipoPagamento : arrayTipoPagamento) {
+        for (TipoPagamento tipoPagamento : tipoPagamentoCRUD.consultarTipoPagamento()) {
             cbVendaTipoPagamento.addItem(tipoPagamento.getDescricaoTipoPagamento());
             cbCompraTipoPagamento.addItem(tipoPagamento.getDescricaoTipoPagamento());
         }
@@ -2914,43 +2990,35 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Carregar lista de tipos de parcelamento de Vendas
     public void carregarCbParcelamentoVenda() {
-        ArrayList<Parcelamento> arrayParcelamento = new ArrayList<>();
         ParcelamentoVendaCRUD parcelamentoCRUD = new ParcelamentoVendaCRUD();
 
-        arrayParcelamento = parcelamentoCRUD.consultarParcelamento();
         cbVendaParcelamento.removeAllItems();
 
-        for (Parcelamento parcelamento : arrayParcelamento) {
+        for (Parcelamento parcelamento : parcelamentoCRUD.consultarParcelamento()) {
             cbVendaParcelamento.addItem(parcelamento.getDescricaoParcelamento());
         }
     }
 
     // carregar lista de tipos de parcelamento para compras
     public void carregarCbParcelamentoCompra() {
-        ArrayList<Parcelamento> arrayParcelamento = new ArrayList<>();
         ParcelamentoCompraCRUD parcelamentoCRUD = new ParcelamentoCompraCRUD();
 
-        arrayParcelamento = parcelamentoCRUD.consultarParcelamento();
         cbCompraParcelamento.removeAllItems();
 
-        for (Parcelamento parcelamento : arrayParcelamento) {
+        for (Parcelamento parcelamento : parcelamentoCRUD.consultarParcelamento()) {
             cbCompraParcelamento.addItem(parcelamento.getDescricaoParcelamento());
         }
     }
 
 //Carregar combosBox produto------------------------------------
     public void carregarCbProduto(JComboBox cbProdutos) {
-
-        ArrayList<Produto> arrayProd = new ArrayList<>();
         ProdutoCRUD prod = new ProdutoCRUD();
 
-        arrayProd = prod.consultarProdutos();
         cbProdutos.removeAllItems();
 
-        for (Produto prodd : arrayProd) {
+        for (Produto prodd : prod.consultarProdutos()) {
             cbProdutos.addItem(prodd.getDescricao());
         }
-
     }
 
 //Cadastrar Cliente
@@ -3717,6 +3785,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tfBuscaVendaCaretUpdate
 
+    private void cbClienteUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbClienteUfActionPerformed
+        
+    }//GEN-LAST:event_cbClienteUfActionPerformed
+
+    private void cbFuncionarioUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFuncionarioUfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFuncionarioUfActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3787,9 +3863,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnVendaBuscarFuncionario;
     private javax.swing.JButton btnVendaCadastrar;
     private javax.swing.JLabel btnVendaDeletarProdutoLista;
+    private javax.swing.JComboBox cbClienteCidade;
+    private javax.swing.JComboBox cbClienteUf;
     private javax.swing.JComboBox cbCompraParcelamento;
     private javax.swing.JComboBox cbCompraTipoPagamento;
     private javax.swing.JComboBox cbFinanceiroTipo;
+    private javax.swing.JComboBox cbFuncionarioCidade;
+    private javax.swing.JComboBox cbFuncionarioUf;
     private javax.swing.JComboBox cbVendaParcelamento;
     private javax.swing.JComboBox cbVendaTipoPagamento;
     private javax.swing.JCheckBox ckbFinanceiroPeriodo;

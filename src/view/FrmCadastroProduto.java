@@ -1,8 +1,9 @@
 package view;
 
-import controller.ClienteController;
 import controller.ProdutoController;
+import crud.CategoriaCRUD;
 import crud.ProdutoCRUD;
+import domain.Categoria;
 import domain.Produto;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -26,6 +27,8 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         this.setLocationRelativeTo(this);
         pnlProdutoOpBusca.setVisible(op);
         pnlProdutoTituloOpBusca.setVisible(op);
+
+        this.carregarCbCategoria();
     }
 
     /**
@@ -396,12 +399,26 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         setBounds(0, 0, 1034, 575);
     }// </editor-fold>//GEN-END:initComponents
 
+    //  Carregar lista de tipos de pagamento
+    public void carregarCbCategoria() {
+        ArrayList<Categoria> arrayCategorias = new ArrayList<>();
+        CategoriaCRUD categoriaCRUD = new CategoriaCRUD();
+
+        arrayCategorias = categoriaCRUD.consultarCategoria();
+        cbProdutoCategoria.removeAllItems();
+
+        for (Categoria categoria : arrayCategorias) {
+            cbProdutoCategoria.addItem(categoria.getDescricao());
+        }
+    }
+
     private ArrayList<Produto> pesquisarProdutoCaretUpdate(JTextField campo) {
         ProdutoCRUD produtoCRUD = new ProdutoCRUD();
         ArrayList<Produto> listaProdutos = new ArrayList<>();
+        String categoria = cbProdutoCategoria.getSelectedItem().toString();
 
         if (!campo.getText().isEmpty()) {
-            listaProdutos = produtoCRUD.consultarProdutos(tfBuscaProdutoOpCod, tfBuscaProdutoOpDescricao);
+            listaProdutos = produtoCRUD.consultarProdutos(categoria, tfBuscaProdutoOpCod, tfBuscaProdutoOpDescricao);
         }
         return listaProdutos;
     }
@@ -409,8 +426,10 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
     private void btnProdutoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoCadastrarActionPerformed
         Produto produto = new Produto();
         ProdutoController produtoController = new ProdutoController();
+        CategoriaCRUD categoriaCRUD = new CategoriaCRUD();
 
         produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
+        produto.setCodCategoria(categoriaCRUD.consultarNomeCategoria(cbProdutoCategoria.getSelectedItem().toString()).getCodCategoria());
         produto.setDescricao(tfProdutoDescricao.getText());
         produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
         produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
@@ -464,24 +483,24 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
 
     private void jlCadastroProdutoResultConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCadastroProdutoResultConsultaMouseClicked
         ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+        String categoria = cbProdutoCategoria.getSelectedItem().toString();
 
-        this.produto = produtoCRUD.consultarProdutos(tfBuscaProdutoOpCod, tfBuscaProdutoOpDescricao).get(0);
+        this.produto = produtoCRUD.consultarProdutos(categoria, tfBuscaProdutoOpCod, tfBuscaProdutoOpDescricao).get(0);
 
         tfProdutoCodigo.setText(String.valueOf(produto.getCodProduto()));
         tfProdutoDescricao.setText(produto.getDescricao());
         tfProdutoPrecoVenda.setText(String.valueOf(produto.getPrecoVenda()));
         tfProdutoQuantidade.setText(String.valueOf(produto.getQuantidadeEstoque()));
-        
+
         // define o status do produto
         if (produto.isStatus()) {
             // inativo
             rbProdutoStatusInat.setSelected(true);
-        }
-        else {
+        } else {
             // ativo
             rbProdutoStatusAtiv.setSelected(true);
         }
-                
+
     }//GEN-LAST:event_jlCadastroProdutoResultConsultaMouseClicked
 
     private void rbProdutoStatusAtivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbProdutoStatusAtivActionPerformed
@@ -506,9 +525,10 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         Produto produto = new Produto();
         ProdutoController produtoController = new ProdutoController();
 
+        produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
+        produto.setCodCategoria(Integer.parseInt(cbProdutoCategoria.getSelectedItem().toString()));
         produto.setDescricao(tfProdutoDescricao.getText());
         produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
-        produto.setCodProduto(Integer.parseInt(tfProdutoCodigo.getText()));
         produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
         produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
 
@@ -526,11 +546,11 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
 
             produtoCRUD.atualizarProduto(produto);
         }
-        
+
         // limpa os campos do formulario
-        FrmPrincipal.limparCampos(tfProdutoCodigo, tfProdutoDescricao, 
+        FrmPrincipal.limparCampos(tfProdutoCodigo, tfProdutoDescricao,
                 tfProdutoPrecoVenda, tfProdutoQuantidade);
-        
+
         // reseta os radio buttons
         rbProdutoStatusAtiv.setSelected(false);
         rbProdutoStatusInat.setSelected(false);
