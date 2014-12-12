@@ -24,8 +24,8 @@ public class CompraCRUD {
         try {
             stmt = conn.prepareStatement("SELECT MAX(codCompra) FROM compra;");
             ResultSet result = stmt.executeQuery();
-  
-            if(result.next()) {
+
+            if (result.next()) {
                 increment = result.getInt(1);
             }
 
@@ -44,20 +44,19 @@ public class CompraCRUD {
 
         try (Connection conn = new SQLite().conectar()) {
             conn.setAutoCommit(false);
-            
+
             stmt = conn.prepareStatement("INSERT INTO compra(codCompra, codDespesa, codParcelamento, "
-                    + "codFornecedor, data, descricao, totalBruto, desconto, totalLiquido) "
-                    + " VALUES (?,?,?,?,?,?,?,?,?)");
+                    + "codFornecedor, data, totalBruto, desconto, totalLiquido) "
+                    + " VALUES (?,?,?,?,?,?,?,?)");
 
             stmt.setInt(1, compra.getCodCompra());
             stmt.setInt(2, compra.getCodDespesa());
             stmt.setInt(3, compra.getCodParcelamento());
             stmt.setInt(4, compra.getCodFornecedor());
             stmt.setString(5, compra.getData());
-            stmt.setString(6, compra.getDescricao());
-            stmt.setDouble(7, compra.getTotalBruto());
-            stmt.setDouble(8, compra.getDesconto());
-            stmt.setDouble(9, compra.getTotalLiquido());
+            stmt.setDouble(6, compra.getTotalBruto());
+            stmt.setDouble(7, compra.getDesconto());
+            stmt.setDouble(8, compra.getTotalLiquido());
 
             stmt.executeUpdate();
 
@@ -78,11 +77,15 @@ public class CompraCRUD {
                         + produtoComprado.getQuantidadeProduto() + " WHERE codProduto = " + produtoComprado.getCodProduto());
 
                 stmt.executeUpdate();
+
+                conn.commit();
             }
-            
-            stmt.close();
+
             conn.commit();
             conn.setAutoCommit(true);
+            
+            stmt.close();
+            conn.close();
 
             JOptionPane.showMessageDialog(null, "Compra cadastrada com sucesso!");
         } catch (SQLException erroInserirCompra) {

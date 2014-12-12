@@ -1,12 +1,15 @@
 package view;
 
+import crud.CategoriaCRUD;
 import crud.ProdutoCRUD;
+import crud.ProdutoCompradoCRUD;
+import crud.ProdutoVendidoCRUD;
+import domain.Categoria;
 import domain.Produto;
 import domain.ProdutoComprado;
 import domain.ProdutoVendido;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,13 +23,10 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
     int codigo;
     String operacao;
 
+    ArrayList<ProdutoVendido> produtoVendido = new ArrayList<>();
+
     /**
      * Creates new form FrmAdicionarProduto
-     *
-     * @param parent
-     * @param modal
-     * @param codigo
-     * @param operacao
      */
     public FrmAdicionarProduto(java.awt.Frame parent, boolean modal, int codigo, String operacao) {
         super(parent, modal);
@@ -44,6 +44,8 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                 this.lblAddProdutoPrecoCusto.setVisible(true);
                 break;
         }
+
+        this.carregarCbCategoria();
     }
 
     /**
@@ -65,7 +67,7 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
         jPanel21 = new javax.swing.JPanel();
         lblCompraListaProdutos = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtAdicionarProdutoListaProduto = new javax.swing.JTable();
+        tbAdicionarProdutoListaProduto = new javax.swing.JTable();
         lblCompraFornecedor = new javax.swing.JLabel();
         lblCompraFornecedor1 = new javax.swing.JLabel();
         lblAddProdutoPrecoCusto = new javax.swing.JLabel();
@@ -100,6 +102,11 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
             }
         });
 
+        jlAdicionarProdutoResultConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlAdicionarProdutoResultConsultaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jlAdicionarProdutoResultConsulta);
 
         jPanel21.setBackground(new java.awt.Color(153, 153, 255));
@@ -127,7 +134,7 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jtAdicionarProdutoListaProduto.setModel(new javax.swing.table.DefaultTableModel(
+        tbAdicionarProdutoListaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -143,13 +150,13 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jtAdicionarProdutoListaProduto);
-        if (jtAdicionarProdutoListaProduto.getColumnModel().getColumnCount() > 0) {
-            jtAdicionarProdutoListaProduto.getColumnModel().getColumn(0).setPreferredWidth(60);
-            jtAdicionarProdutoListaProduto.getColumnModel().getColumn(1).setResizable(false);
-            jtAdicionarProdutoListaProduto.getColumnModel().getColumn(1).setPreferredWidth(120);
-            jtAdicionarProdutoListaProduto.getColumnModel().getColumn(2).setPreferredWidth(80);
-            jtAdicionarProdutoListaProduto.getColumnModel().getColumn(3).setPreferredWidth(80);
+        jScrollPane2.setViewportView(tbAdicionarProdutoListaProduto);
+        if (tbAdicionarProdutoListaProduto.getColumnModel().getColumnCount() > 0) {
+            tbAdicionarProdutoListaProduto.getColumnModel().getColumn(0).setPreferredWidth(60);
+            tbAdicionarProdutoListaProduto.getColumnModel().getColumn(1).setResizable(false);
+            tbAdicionarProdutoListaProduto.getColumnModel().getColumn(1).setPreferredWidth(120);
+            tbAdicionarProdutoListaProduto.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tbAdicionarProdutoListaProduto.getColumnModel().getColumn(3).setPreferredWidth(80);
         }
 
         lblCompraFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -248,11 +255,23 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //  Carregar lista de tipos de pagamento
+    public void carregarCbCategoria() {
+        CategoriaCRUD categoriaCRUD = new CategoriaCRUD();
+
+        ArrayList<Categoria> arrayCategorias = categoriaCRUD.consultarCategoria();
+        cbAddProdutoCategoria.removeAllItems();
+
+        for (Categoria categoria : arrayCategorias) {
+            cbAddProdutoCategoria.addItem(categoria.getDescricao());
+        }
+    }
+
     private void pesquisarProdutoCaretUpdate() {
         ProdutoCRUD produtoCRUD = new ProdutoCRUD();
         ArrayList<Produto> listaProdutos = new ArrayList<>();
         String categoria = cbAddProdutoCategoria.getSelectedItem().toString();
-        
+
         listaProdutos = produtoCRUD.consultarProdutos(categoria, tfAdicionarProdutoCodigo, tfAdicionarProdutoDescricao);
 
         DefaultListModel listModelo = new DefaultListModel();
@@ -268,7 +287,7 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
     }
 
     private void btnAdicionarProdutoInserirTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoInserirTabelaActionPerformed
-        DefaultTableModel modeloTabela = (DefaultTableModel) jtAdicionarProdutoListaProduto.getModel();
+        DefaultTableModel modeloTabela = (DefaultTableModel) tbAdicionarProdutoListaProduto.getModel();
         ArrayList<Produto> listProduto = new ProdutoCRUD().consultarNomeProduto(jlAdicionarProdutoResultConsulta.getSelectedValue().toString());
 
         if (this.operacao.equalsIgnoreCase("pnlVenda")) {
@@ -285,32 +304,32 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAdicionarProdutoInserirTabelaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        //testa se a operação e de Compra ou venda caso seja venda Executa
+        //testa se a operação e de Compra ou venda
         if (operacao.equalsIgnoreCase("pnlVenda")) {
-            for (int i = 0; i < jtAdicionarProdutoListaProduto.getRowCount(); i++) {
+            for (int i = 0; i < tbAdicionarProdutoListaProduto.getRowCount(); i++) {
                 ProdutoVendido produtoVendido = new ProdutoVendido();
 
                 // recebe as informações do produto
-                produtoVendido.setCodProduto(Integer.valueOf(jtAdicionarProdutoListaProduto.getValueAt(i, 0).toString()));
+                produtoVendido.setCodProduto(Integer.valueOf(tbAdicionarProdutoListaProduto.getValueAt(i, 0).toString()));
                 produtoVendido.setCodRenda(1);
                 produtoVendido.setCodVenda(this.codigo);
-                produtoVendido.setQuantidadeProduto(Double.parseDouble(jtAdicionarProdutoListaProduto.getValueAt(i, 2).toString()));
-                produtoVendido.setPrecoVenda(Double.parseDouble(jtAdicionarProdutoListaProduto.getValueAt(i, 3).toString()));
+                produtoVendido.setQuantidadeProduto(Double.parseDouble(tbAdicionarProdutoListaProduto.getValueAt(i, 2).toString()));
+                produtoVendido.setPrecoVenda(Double.parseDouble(tbAdicionarProdutoListaProduto.getValueAt(i, 3).toString()));
 
                 // adiciona o produto na lista de Produtos vendidos
                 this.listProdutoVendido.add(produtoVendido);
             }
         } else if (operacao.equalsIgnoreCase("pnlCompra")) {
             // lista dos produtos Comprados
-            for (int i = 0; i < jtAdicionarProdutoListaProduto.getRowCount(); i++) {
+            for (int i = 0; i < tbAdicionarProdutoListaProduto.getRowCount(); i++) {
                 ProdutoComprado produtoComprado = new ProdutoComprado();
 
                 // recebe as informações do produto
-                produtoComprado.setCodProduto(Integer.valueOf(jtAdicionarProdutoListaProduto.getValueAt(i, 0).toString()));
+                produtoComprado.setCodProduto(Integer.valueOf(tbAdicionarProdutoListaProduto.getValueAt(i, 0).toString()));
                 produtoComprado.setCodDespesa(1);
                 produtoComprado.setCodCompra(this.codigo);
-                produtoComprado.setQuantidadeProduto(Double.parseDouble(jtAdicionarProdutoListaProduto.getValueAt(i, 2).toString()));
-                produtoComprado.setPrecoCusto(Double.parseDouble(jtAdicionarProdutoListaProduto.getValueAt(i, 3).toString()));
+                produtoComprado.setQuantidadeProduto(Double.parseDouble(tbAdicionarProdutoListaProduto.getValueAt(i, 2).toString()));
+                produtoComprado.setPrecoCusto(Double.parseDouble(tbAdicionarProdutoListaProduto.getValueAt(i, 3).toString()));
 
                 // adiciona o produto na lista
                 this.listProdutoComprado.add(produtoComprado);
@@ -327,10 +346,38 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
         this.pesquisarProdutoCaretUpdate();
     }//GEN-LAST:event_tfAdicionarProdutoDescricaoCaretUpdate
 
+    private void jlAdicionarProdutoResultConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAdicionarProdutoResultConsultaMouseClicked
+        //testa se a operação e de Compra ou venda
+        if (operacao.equalsIgnoreCase("pnlVenda")) {
+            DefaultTableModel modeloTabela = (DefaultTableModel) tbAdicionarProdutoListaProduto.getModel();
+            ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+            ProdutoVendidoCRUD produtoVendidoCRUD = new ProdutoVendidoCRUD();
+
+            for (ProdutoVendido produtoVendido : produtoVendidoCRUD.consultarProdutoVendido()) {
+                String descricao = produtoCRUD.consultarCodigoProduto(produtoVendido.getCodProduto()).getDescricao();
+
+                modeloTabela.addRow(new Object[]{produtoVendido.getCodProduto(), descricao,
+                    produtoVendido.getQuantidadeProduto(), produtoVendido.getPrecoVenda()});
+            }
+
+        } else if (operacao.equalsIgnoreCase("pnlCompra")) {
+            ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
+            DefaultTableModel modeloTabela = (DefaultTableModel) tbAdicionarProdutoListaProduto.getModel();
+            ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+
+            for (ProdutoComprado produtoComprado : produtoCompradoCRUD.consultarProdutoComprado()) {
+                String descricao = produtoCRUD.consultarCodigoProduto(produtoComprado.getCodProduto()).getDescricao();
+                
+                modeloTabela.addRow(new Object[]{produtoComprado.getCodProduto(), descricao,
+                    produtoComprado.getQuantidadeProduto(), produtoComprado.getPrecoCusto()});
+
+            }
+        }
+    }//GEN-LAST:event_jlAdicionarProdutoResultConsultaMouseClicked
+
     /**
      * @param args the command line arguments
      */
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarProdutoInserirTabela;
     private javax.swing.JComboBox cbAddProdutoCategoria;
@@ -339,12 +386,12 @@ public class FrmAdicionarProduto extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList jlAdicionarProdutoResultConsulta;
-    private javax.swing.JTable jtAdicionarProdutoListaProduto;
     private javax.swing.JLabel lblAddProdutoPrecoCusto;
     private javax.swing.JLabel lblCompraFornecedor;
     private javax.swing.JLabel lblCompraFornecedor1;
     private javax.swing.JLabel lblCompraFornecedor3;
     private javax.swing.JLabel lblCompraListaProdutos;
+    private javax.swing.JTable tbAdicionarProdutoListaProduto;
     private javax.swing.JTextField tfAdicionarProdutoCodigo;
     private javax.swing.JTextField tfAdicionarProdutoDescricao;
     private javax.swing.JTextField tfAdicionarProdutoPrecoCusto;

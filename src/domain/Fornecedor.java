@@ -15,7 +15,7 @@ public class Fornecedor extends Endereco {
     protected String site;
     protected String vendedor;
     protected String ramal;
-    protected int status;
+    protected Boolean status;
     protected String logradouro;
     protected String numero;
     protected String complemento;
@@ -96,11 +96,11 @@ public class Fornecedor extends Endereco {
         this.ramal = ramal;
     }
 
-    public int getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
     

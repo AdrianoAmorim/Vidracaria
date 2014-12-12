@@ -11,7 +11,6 @@ public class Compra {
     protected int codParcelamento;
     protected int codFornecedor;
     protected String data;
-    protected String descricao;
     protected Double totalBruto;
     protected Double desconto;
     protected Double totalLiquido;
@@ -54,14 +53,6 @@ public class Compra {
 
     public void setData(String data) {
         this.data = data;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public Double getTotalBruto() {

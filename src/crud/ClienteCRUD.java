@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import view.FrmPrincipal;
 
 /**
  *
@@ -91,7 +92,6 @@ public class ClienteCRUD {
     }
 
     public String prepararQueryPesquisarClientes(String tipoCliente, JTextField... args) {
-        int tam = args.length;
 
         String sql = "SELECT c.codCliente, c.tipoCliente, c.nome, c.cpf, c.rg, c.cnpj, "
                 + "c.inscricaoEstadual, c.telFixo, c.telCel, c.email, c.status, "
@@ -109,28 +109,32 @@ public class ClienteCRUD {
         }
         args[4].setName("telfixo");
         args[5].setName("telcel");
+        
+        // remoção das mascaras
+        args[2].setText(FrmPrincipal.desmascarar(args[2].getText()));
+        args[3].setText(FrmPrincipal.desmascarar(args[3].getText()));
+        args[4].setText(FrmPrincipal.desmascarar(args[4].getText()));
+        args[5].setText(FrmPrincipal.desmascarar(args[5].getText()));
+                
 
         // percorre os JTextFields até encontrar um preenchido
-        for (int i = 0; i < tam; i++) {
+        for (int i = 0; i < args.length; i++) {
             // quando encontrar um JTextField não vazio (preenchido)
             if (!args[i].getText().isEmpty()) {
                 // caso o parametro seja o codCliente é necessário usar (Cast)
                 if (args[i].getName().equalsIgnoreCase("codCliente")) {
                     // incrementa a query de acordo com o nome e conteúdo do JTExtField
                     sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
-                    JOptionPane.showMessageDialog(null, "pesquisando por: " + args[i].getName() + " --> " + sql);
 
                     // percorre novamente o vetor em busca de outro JTextField preenchido
-                    for (int j = 0; j < tam; j++) {
+                    for (int j = 0; j < args.length; j++) {
                         // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
                         if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
                             // incrementa a query de acordo com o nome e conteúdo do JTextField
                             if (args[j].getName().equalsIgnoreCase("codCliente")) {
                                 sql += "AND " + args[j].getName() + " = " + Integer.parseInt(args[j].getText().trim()) + " ";
-                                JOptionPane.showMessageDialog(null, "pesquisando por: " + args[j].getName() + " --> " + sql);
                             } else {
                                 sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
-                                JOptionPane.showMessageDialog(null, "pesquisando por: " + args[j].getName() + " --> " + sql);
                             }
                         }
                     }
@@ -139,7 +143,7 @@ public class ClienteCRUD {
                     sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
 
                     // percorre novamente o vetor em busca de outro JTextField preenchido
-                    for (int j = 0; j < tam; j++) {
+                    for (int j = 0; j < args.length; j++) {
                         // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
                         if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
                             // incrementa a query de acordo com o nome e conteúdo do JTextField
@@ -156,7 +160,7 @@ public class ClienteCRUD {
             if (!tipoCliente.isEmpty()) {
                 sql += "AND tipoCliente = '" + tipoCliente + "' ;";
             }
-            i = tam;
+            i = args.length;
         }
 
         return sql;
@@ -201,7 +205,7 @@ public class ClienteCRUD {
 
             return listaClientes;
         } catch (SQLException erroConsultarCliente) {
-            JOptionPane.showMessageDialog(null, erroConsultarCliente.getMessage());
+            System.out.println(erroConsultarCliente.getMessage());
             return listaClientes;
         }
     }

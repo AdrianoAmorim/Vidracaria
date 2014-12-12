@@ -19,7 +19,7 @@ public class ProdutoCompradoCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO ProdutoComprado(codProduto, codCompra, quantidadeProduto, precoCusto) "
+            stmt = conn.prepareStatement("INSERT INTO ProdutoComprado(codProduto, codCompra, quantidade, precoCusto) "
                     + "VALUES (?,?,?,?);");
 
             stmt.setInt(1, produtoComprado.getCodProduto());
@@ -41,7 +41,7 @@ public class ProdutoCompradoCRUD {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE produtoComprado SET quantidadeProduto = ?, precoCusto = ? "
+            stmt = conn.prepareStatement("UPDATE produtoComprado SET quantidade = ?, precoCusto = ? "
                     + "WHERE codProduto = ? AND codCompra = ?;");
 
             stmt.setDouble(1, produtoComprado.getQuantidadeProduto());
@@ -67,7 +67,7 @@ public class ProdutoCompradoCRUD {
         ArrayList<ProdutoComprado> listaProdutoComprado = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, codCompra, quantidadeProduto, precoCusto "
+            stmt = conn.prepareStatement("SELECT codProduto, codCompra, quantidade, precoCusto "
                     + "FROM produtoComprado;");
 
             result = stmt.executeQuery();
@@ -76,7 +76,7 @@ public class ProdutoCompradoCRUD {
 
                 produtoComprado.setCodProduto(result.getInt("codProduto"));
                 produtoComprado.setCodCompra(result.getInt("codCompra"));
-                produtoComprado.setQuantidadeProduto(result.getDouble("quantidadeProduto"));
+                produtoComprado.setQuantidadeProduto(result.getDouble("quantidade"));
                 produtoComprado.setPrecoCusto(result.getDouble("precoCusto"));
 
                 listaProdutoComprado.add(produtoComprado);

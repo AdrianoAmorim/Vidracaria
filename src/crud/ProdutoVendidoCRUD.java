@@ -69,7 +69,7 @@ public class ProdutoVendidoCRUD {
         ArrayList<ProdutoVendido> listaProdutoVendido = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, codCompra, quantidadeProduto, precoVenda "
+            stmt = conn.prepareStatement("SELECT codProduto, codCompra, quantidade, precoVenda "
                     + "FROM produtoVendido;");
 
             result = stmt.executeQuery();
@@ -78,7 +78,7 @@ public class ProdutoVendidoCRUD {
 
                 produtoVendido.setCodProduto(result.getInt("codProduto"));
                 produtoVendido.setCodVenda(result.getInt("codCompra"));
-                produtoVendido.setQuantidadeProduto(result.getDouble("quantidadeProduto"));
+                produtoVendido.setQuantidadeProduto(result.getDouble("quantidade"));
                 produtoVendido.setPrecoVenda(result.getDouble("precoVenda"));
                 
                 listaProdutoVendido.add(produtoVendido);

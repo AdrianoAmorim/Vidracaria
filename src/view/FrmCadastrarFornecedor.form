@@ -129,87 +129,84 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Component id="lblNomeFornecedor" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeFornecedor1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="rbFornecedorStatusInat" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="rbFornecedortatusAtiv" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rbFornecedortatusAtiv" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rbFornecedorStatusInat" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="lblNomeFornecedor9" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeFornecedor9" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeFornecedor7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeFornecedor14" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblNomeFornecedor" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNomeFornecedor1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNomeFornecedor4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNomeFornecedor7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNomeFornecedor14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="tfFornecedorLogradouro" min="-2" pref="380" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="tfFornecedorLogradouro" min="-2" pref="380" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblNomeFornecedor13" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="tfFornecedorNumero" min="-2" pref="81" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="tfFornecedorEmail" max="32767" attributes="0"/>
-                                              <Component id="tfFornecedorVendedor" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="tfFornecedorCep" alignment="0" pref="216" max="32767" attributes="0"/>
-                                              <Component id="tfFornecedorTelFixo" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
+                                  <Component id="lblNomeFornecedor13" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="tfFornecedorNumero" min="-2" pref="81" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="tfFornecedorVendedor" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="btnCadastrarFornecedor" min="-2" pref="38" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="btnAlterarFornecedor" min="-2" pref="38" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="lblNomeFornecedor10" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                                  <Component id="tfFornecedorRamalVendedor" min="-2" pref="165" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="lblNomeFornecedor6" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="lblNomeFornecedor11" min="-2" max="-2" attributes="0"/>
                                                       <Group type="102" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="lblNomeFornecedor8" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="lblNomeFornecedor6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="tfFornecedorTelCelular" pref="216" max="32767" attributes="0"/>
-                                                              <Component id="tfFornecedorSite" max="32767" attributes="0"/>
-                                                          </Group>
+                                                          <Component id="lblNomeFornecedor8" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="lblNomeFornecedor11" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                                           <Component id="tfFornecedorCidade" min="-2" pref="216" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="lblNomeFornecedor3" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="tfFornecedorUf" min="-2" pref="46" max="-2" attributes="0"/>
                                                       </Group>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="btnCadastrarFornecedor" min="-2" pref="38" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="btnAlterarFornecedor" min="-2" pref="38" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="lblNomeFornecedor10" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                                          <Component id="tfFornecedorRamalVendedor" min="-2" pref="165" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Component id="tfFornecedorTelCel" min="-2" pref="152" max="-2" attributes="0"/>
+                                                              <Component id="tfFornecedorSite" min="-2" pref="216" max="-2" attributes="0"/>
+                                                          </Group>
                                                       </Group>
                                                   </Group>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <Component id="tfFornecedorNome" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="tfFornecedorNome" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -219,9 +216,9 @@
                               <Component id="jLabel50" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="tfFornecedorCnpj" pref="154" max="32767" attributes="0"/>
-                              <Component id="tfFornecedorCodigo" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tfFornecedorCodigo" min="-2" pref="154" max="-2" attributes="0"/>
+                              <Component id="tfFornecedorCnpj" min="-2" pref="152" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -232,15 +229,30 @@
                       </Group>
                   </Group>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblNomeFornecedor12" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblNomeFornecedor12" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNomeFornecedor4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="tfFornecedorComplemento" max="32767" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblNomeFornecedor2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                  <Component id="tfFornecedorBairro" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="tfFornecedorComplemento" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lblNomeFornecedor2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="tfFornecedorBairro" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tfFornecedorTelFixo" min="-2" pref="152" max="-2" attributes="0"/>
+                              <Component id="tfFornecedorCep" min="-2" pref="152" max="-2" attributes="0"/>
+                              <Component id="tfFornecedorEmail" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -258,7 +270,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfFornecedorCnpj" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfFornecedorCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -273,84 +285,87 @@
                       <Component id="lblNomeFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblNomeFornecedor1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfFornecedorLogradouro" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="lblNomeFornecedor13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfFornecedorNumero" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="lblNomeFornecedor2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfFornecedorBairro" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblNomeFornecedor1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfFornecedorLogradouro" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="lblNomeFornecedor13" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="tfFornecedorNumero" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="tfFornecedorComplemento" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="lblNomeFornecedor12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNomeFornecedor2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="tfFornecedorBairro" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblNomeFornecedor14" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfFornecedorCep" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblNomeFornecedor4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfFornecedorTelFixo" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblNomeFornecedor7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="lblNomeFornecedor9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="rbFornecedortatusAtiv" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="rbFornecedorStatusInat" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                          <Component id="tfFornecedorEmail" min="-2" pref="31" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="tfFornecedorVendedor" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="lblNomeFornecedor7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblNomeFornecedor9" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="rbFornecedortatusAtiv" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblNomeFornecedor11" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfFornecedorCidade" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="lblNomeFornecedor11" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblNomeFornecedor3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfFornecedorUf" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tfFornecedorTelCelular" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="lblNomeFornecedor6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblNomeFornecedor8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfFornecedorSite" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblNomeFornecedor10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfFornecedorRamalVendedor" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="tfFornecedorCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeFornecedor14" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnCadastrarFornecedor" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="btnAlterarFornecedor" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="tfFornecedorTelFixo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNomeFornecedor4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="tfFornecedorTelCel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNomeFornecedor6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Component id="tfFornecedorEmail" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tfFornecedorVendedor" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblNomeFornecedor8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfFornecedorSite" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblNomeFornecedor10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfFornecedorRamalVendedor" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="btnCadastrarFornecedor" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
+                                          <Component id="btnAlterarFornecedor" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
+                                          <Component id="rbFornecedorStatusInat" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -375,14 +390,6 @@
               <Color blue="8b" green="45" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nome / Raz&#xe3;o Social:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfFornecedorCnpj">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="14" style="1"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel50">
@@ -490,22 +497,6 @@
               <Color blue="8b" green="45" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Telefone Fixo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfFornecedorTelFixo">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="14" style="1"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfFornecedorTelCelular">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="14" style="1"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblNomeFornecedor6">
@@ -701,14 +692,6 @@
             <Property name="text" type="java.lang.String" value="CEP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfFornecedorCep">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="14" style="1"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel57">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -765,9 +748,26 @@
               </StringArray>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbFornecedorUfActionPerformed"/>
-          </Events>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="tfFornecedorCep">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;##.###-###&quot;))"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="tfFornecedorTelFixo">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;(##)####-####&quot;))"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="tfFornecedorTelCel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;(##)#####-####&quot;))"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="tfFornecedorCnpj">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;##.###.###/####-##&quot;))"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -792,7 +792,6 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="cbBuscaFornecedorOpCidade" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="230" max="-2" attributes="0"/>
@@ -812,9 +811,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="tfBuscaFornecedorOpNome" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="cbBuscaFornecedorOpCidade" min="-2" pref="31" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="247" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="296" max="-2" attributes="0"/>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -871,13 +868,6 @@
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfBuscaFornecedorOpNomeFocusGained"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfBuscaFornecedorOpNomeFocusLost"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cbBuscaFornecedorOpCidade">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

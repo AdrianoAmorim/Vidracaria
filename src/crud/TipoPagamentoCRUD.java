@@ -65,7 +65,7 @@ public class TipoPagamentoCRUD {
         PreparedStatement stmt;
         ResultSet result;
 
-        ArrayList listaTipoPagamento = new ArrayList<>();
+        ArrayList<TipoPagamento> listaTipoPagamento = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("SELECT codTipoPagamento, descricao FROM tipoPagamento;");
@@ -78,7 +78,7 @@ public class TipoPagamentoCRUD {
                 tipoPagamento.setCodTipoPagamento(result.getInt("codTipoPagamento"));
                 tipoPagamento.setDescricaoTipoPagamento(result.getString("descricao"));
 
-                listaTipoPagamento.add(listaTipoPagamento);
+                listaTipoPagamento.add(tipoPagamento);
             }
 
             stmt.close();

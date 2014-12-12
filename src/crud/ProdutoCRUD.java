@@ -63,8 +63,8 @@ public class ProdutoCRUD {
     public String prepararQueryPesquisarProduto(String categoria, JTextField... args) {
         int tam = args.length;
 
-        String sql = "SELECT codProduto, codCategoria, unidadeMedida, quantidadeEstoque, descricao, precoVenda, status "
-                + "FROM produto ";
+        String sql = "SELECT p.codProduto, p.codCategoria, p.unidadeMedida, p.quantidadeEstoque, p.descricao, p.precoVenda, p.status "
+                + "FROM produto p CROSS JOIN categoria c WHERE p.codCategoria = c.codCategoria ";
 
         args[0].setName("codProduto");
         args[1].setName("descricao");
@@ -73,29 +73,47 @@ public class ProdutoCRUD {
         for (int i = 0; i < tam; i++) {
             // quando encontrar um JTextField não vazio (preenchido)
             if (!args[i].getText().isEmpty()) {
-                // incrementa a query de acordo com o nome e conteúdo do JTExtField
+                // caso o parametro seja o codCliente é necessário usar (Cast)
                 if (args[i].getName().equalsIgnoreCase("codProduto")) {
-                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+                    // incrementa a query de acordo com o nome e conteúdo do JTExtField
+                    sql += "AND " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+
+                    // percorre novamente o vetor em busca de outro JTextField preenchido
+                    for (int j = 0; j < tam; j++) {
+                        // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
+                        if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
+                            // incrementa a query de acordo com o nome e conteúdo do JTextField
+                            if (args[j].getName().equalsIgnoreCase("codProduto")) {
+                                sql += "AND " + args[j].getName() + " = " + Integer.parseInt(args[j].getText().trim()) + " ";
+                            } else {
+                                sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
+                            }
+                        }
+                    }
                 } else {
-                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
-                }
+                    // caso o parametro não seja codCliente
+                    sql += "AND " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
 
-                // percorre novamente o vetor em busca de outro JTextField preenchido
-                for (int j = 0; j < tam; j++) {
-                    // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
-                    if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
-                        // incrementa a query de acordo com o nome e conteúdo do JTextField
-                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
-
-                        // retorna a query montada
-                        return sql;
+                    // percorre novamente o vetor em busca de outro JTextField preenchido
+                    for (int j = 0; j < tam; j++) {
+                        // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
+                        if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
+                            // incrementa a query de acordo com o nome e conteúdo do JTextField
+                            if (args[j].getName().equalsIgnoreCase("codProduto")) {
+                                sql += "AND " + args[j].getName() + " = " + Integer.parseInt(args[j].getText().trim()) + " ";
+                            } else {
+                                sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
+                            }
+                        }
                     }
                 }
-
-                sql += "AND categoria = '" + categoria + "';";
             }
+
+            if (!categoria.isEmpty()) {
+                sql += "AND c.descricao = '" + categoria + "' ;";
+            }
+            i = tam;
         }
-        // instrução para burlar o erro do compilador - nunca chega até aqui
         return sql;
     }
 

@@ -59,7 +59,7 @@ public class FornecedorCRUD {
             stmt.setString(7, fornecedor.getSite());
             stmt.setString(8, fornecedor.getVendedor());
             stmt.setString(9, fornecedor.getRamal());
-            stmt.setInt(10, fornecedor.getStatus());
+            stmt.setBoolean(10, fornecedor.getStatus());
 
             stmt.executeUpdate();
 
@@ -108,7 +108,7 @@ public class FornecedorCRUD {
             stmt.setString(6, fornecedor.getSite());
             stmt.setString(7, fornecedor.getVendedor());
             stmt.setString(8, fornecedor.getRamal());
-            stmt.setInt(9, fornecedor.getStatus());
+            stmt.setBoolean(9, fornecedor.getStatus());
             stmt.setInt(10, fornecedor.getCodFornecedor());
 
             stmt.executeUpdate();
@@ -206,7 +206,7 @@ public class FornecedorCRUD {
                 fornecedor.setSite(result.getString("site"));
                 fornecedor.setVendedor(result.getString("vendedor"));
                 fornecedor.setRamal(result.getString("ramal"));
-                fornecedor.setStatus(result.getInt("status"));
+                fornecedor.setStatus(result.getBoolean("status"));
                 fornecedor.setLogradouro(result.getString("logradouro"));
                 fornecedor.setNumero(result.getInt("numero"));
                 fornecedor.setComplemento(result.getString("complemento"));
@@ -250,7 +250,7 @@ public class FornecedorCRUD {
                 fornecedor.setSite(result.getString("site"));
                 fornecedor.setVendedor(result.getString("vendedor"));
                 fornecedor.setRamal(result.getString("ramal"));
-                fornecedor.setStatus(result.getInt("status"));
+                fornecedor.setStatus(result.getBoolean("status"));
                 fornecedor.setLogradouro(result.getString("logradouro"));
                 fornecedor.setNumero(result.getInt("numero"));
                 fornecedor.setComplemento(result.getString("complemento"));
