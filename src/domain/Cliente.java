@@ -17,14 +17,7 @@ public class Cliente extends Endereco {
     protected String telCel;
     protected boolean status;
     protected String email;
-    protected String logradouro;
-    protected int numero;
-    protected String complemento;
-    protected String bairro;
-    protected String cep;
-    protected String cidade;
-    protected String uf;
-
+   
     public int getCodCliente() {
         return codCliente;
     }
