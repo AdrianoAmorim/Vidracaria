@@ -43,14 +43,14 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         lblBuscaClienteDoc1 = new javax.swing.JLabel();
         lblBuscaClienteDoc2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        tfResidencialCliente = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        tfCelularCliente = new javax.swing.JTextField();
         rbTipoFisicaCliente = new javax.swing.JRadioButton();
         rbTipoJuridicaCliente = new javax.swing.JRadioButton();
         lblTipoBuscaCliente = new javax.swing.JLabel();
-        tfCpfCliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("###.###.###-##"));
-        tfRgCliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("#.###.###"));
+        tfDoc1Cliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("###.###.###-##"));
+        tfDoc2Cliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("#.###.###"));
+        tfCelularCliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("(##)#####-####"));
+        tfResidencialCliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("(##)####-####"));
         jPanel5 = new javax.swing.JPanel();
         jLabel65 = new javax.swing.JLabel();
 
@@ -138,27 +138,12 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         jLabel6.setForeground(new java.awt.Color(0, 69, 139));
         jLabel6.setText("Residencial:");
 
-        tfResidencialCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfResidencialCliente.setPreferredSize(new java.awt.Dimension(0, 0));
-        tfResidencialCliente.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                tfResidencialClienteCaretUpdate(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 69, 139));
         jLabel5.setText("Celular:");
 
-        tfCelularCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCelularCliente.setPreferredSize(new java.awt.Dimension(0, 0));
-        tfCelularCliente.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                tfCelularClienteCaretUpdate(evt);
-            }
-        });
-
         buttonGroup1.add(rbTipoFisicaCliente);
+        rbTipoFisicaCliente.setSelected(true);
         rbTipoFisicaCliente.setText("Física");
         rbTipoFisicaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +162,19 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         lblTipoBuscaCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTipoBuscaCliente.setForeground(new java.awt.Color(0, 69, 139));
         lblTipoBuscaCliente.setText("Tipo:");
+
+        tfDoc1Cliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
+        tfDoc1Cliente.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfDoc1ClienteCaretUpdate(evt);
+            }
+        });
+
+        tfDoc2Cliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
+
+        tfCelularCliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
+
+        tfResidencialCliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
 
         javax.swing.GroupLayout rgTipoClienteBuscaLayout = new javax.swing.GroupLayout(rgTipoClienteBusca);
         rgTipoClienteBusca.setLayout(rgTipoClienteBuscaLayout);
@@ -198,7 +196,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
                                 .addGap(24, 24, 24)
                                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tfCodCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                    .addComponent(tfCpfCliente))
+                                    .addComponent(tfDoc1Cliente))
                                 .addGap(18, 18, 18)
                                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -208,22 +206,22 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
                             .addComponent(rbTipoJuridicaCliente)
                             .addComponent(tfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(rgTipoClienteBuscaLayout.createSequentialGroup()
-                                .addComponent(tfRgCliente)
+                                .addComponent(tfDoc2Cliente)
                                 .addGap(222, 222, 222))))
                     .addGroup(rgTipoClienteBuscaLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfResidencialCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfResidencialCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         rgTipoClienteBuscaLayout.setVerticalGroup(
             rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rgTipoClienteBuscaLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbTipoFisicaCliente)
                     .addComponent(rbTipoJuridicaCliente)
@@ -238,17 +236,16 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBuscaClienteDoc2)
                     .addComponent(lblBuscaClienteDoc1)
-                    .addComponent(tfCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfRgCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfDoc1Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDoc2Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(tfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(tfResidencialCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24))
+                        .addComponent(tfResidencialCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6))
+                .addGap(27, 27, 27))
         );
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
@@ -315,7 +312,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         }
 
         listaClientes = clienteCRUD.consultarCliente(tipoCliente, tfCodCliente, tfNomeCliente,
-                tfCpfCliente, tfRgCliente, tfResidencialCliente, tfCelularCliente);
+                tfDoc1Cliente, tfDoc2Cliente, tfResidencialCliente, tfCelularCliente);
 
         DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
         modelo.setRowCount(0);
@@ -339,14 +336,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         this.pesquisarClienteCaretUpdate();
     }//GEN-LAST:event_tfNomeClienteCaretUpdate
 
-    private void tfResidencialClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfResidencialClienteCaretUpdate
-        this.pesquisarClienteCaretUpdate();
-    }//GEN-LAST:event_tfResidencialClienteCaretUpdate
-
-    private void tfCelularClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCelularClienteCaretUpdate
-        this.pesquisarClienteCaretUpdate();
-    }//GEN-LAST:event_tfCelularClienteCaretUpdate
-
     private void tbBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscarClienteMouseClicked
         DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
         ClienteCRUD clienteCrud = new ClienteCRUD();
@@ -358,13 +347,13 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     private void rbTipoJuridicaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTipoJuridicaClienteActionPerformed
         lblBuscaClienteDoc1.setText("CNPJ:");
         tbBuscarCliente.getColumnModel().getColumn(2).setHeaderValue("CNPJ");
-        tfCpfCliente.setValue(null);
-        tfCpfCliente.setFormatterFactory(new DefaultFormatterFactory(FrmPrincipal.MascararCampos("##.###.###/####-##")));
+        tfDoc1Cliente.setValue(null);
+        tfDoc1Cliente.setFormatterFactory(new DefaultFormatterFactory(FrmPrincipal.MascararCampos("##.###.###/####-##")));
 
         lblBuscaClienteDoc2.setText("Inscricao Estadual:");
         tbBuscarCliente.getColumnModel().getColumn(3).setHeaderValue("Inscrição Estadual");
-        tfRgCliente.setValue(null);
-        tfRgCliente.setFormatterFactory(new DefaultFormatterFactory(FrmPrincipal.MascararCampos("##.###.##-#")));
+        tfDoc2Cliente.setValue(null);
+        tfDoc2Cliente.setFormatterFactory(new DefaultFormatterFactory(FrmPrincipal.MascararCampos("##.###.##-#")));
 
         tbBuscarCliente.getTableHeader().resizeAndRepaint();
     }//GEN-LAST:event_rbTipoJuridicaClienteActionPerformed
@@ -372,16 +361,20 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     private void rbTipoFisicaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTipoFisicaClienteActionPerformed
         lblBuscaClienteDoc1.setText("CPF:");
         tbBuscarCliente.getColumnModel().getColumn(2).setHeaderValue("CPF");
-        tfCpfCliente.setValue(null);
-        tfCpfCliente.setFormatterFactory(new DefaultFormatterFactory(FrmPrincipal.MascararCampos("###.###.###-##")));
+        tfDoc1Cliente.setValue(null);
+        tfDoc1Cliente.setFormatterFactory(new DefaultFormatterFactory(FrmPrincipal.MascararCampos("###.###.###-##")));
 
         lblBuscaClienteDoc2.setText("RG:");
         tbBuscarCliente.getColumnModel().getColumn(3).setHeaderValue("RG");
-        tfRgCliente.setValue(null);
-        tfRgCliente.setFormatterFactory(new DefaultFormatterFactory(FrmPrincipal.MascararCampos("#.###.###")));
+        tfDoc2Cliente.setValue(null);
+        tfDoc2Cliente.setFormatterFactory(new DefaultFormatterFactory(FrmPrincipal.MascararCampos("#.###.###")));
 
         tbBuscarCliente.getTableHeader().resizeAndRepaint();
     }//GEN-LAST:event_rbTipoFisicaClienteActionPerformed
+
+    private void tfDoc1ClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfDoc1ClienteCaretUpdate
+        this.pesquisarClienteCaretUpdate();
+    }//GEN-LAST:event_tfDoc1ClienteCaretUpdate
 
     /**
      * @param args the command line arguments
@@ -402,11 +395,11 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbTipoJuridicaCliente;
     private javax.swing.JPanel rgTipoClienteBusca;
     private javax.swing.JTable tbBuscarCliente;
-    private javax.swing.JTextField tfCelularCliente;
+    private javax.swing.JFormattedTextField tfCelularCliente;
     private javax.swing.JTextField tfCodCliente;
-    private javax.swing.JFormattedTextField tfCpfCliente;
+    private javax.swing.JFormattedTextField tfDoc1Cliente;
+    private javax.swing.JFormattedTextField tfDoc2Cliente;
     private javax.swing.JTextField tfNomeCliente;
-    private javax.swing.JTextField tfResidencialCliente;
-    private javax.swing.JFormattedTextField tfRgCliente;
+    private javax.swing.JFormattedTextField tfResidencialCliente;
     // End of variables declaration//GEN-END:variables
 }

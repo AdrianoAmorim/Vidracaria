@@ -155,7 +155,7 @@
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="tfCodCliente" pref="136" max="32767" attributes="0"/>
-                                      <Component id="tfCpfCliente" max="32767" attributes="0"/>
+                                      <Component id="tfDoc1Cliente" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -169,7 +169,7 @@
                               <Component id="rbTipoJuridicaCliente" min="-2" max="-2" attributes="0"/>
                               <Component id="tfNomeCliente" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="tfRgCliente" max="32767" attributes="0"/>
+                                  <Component id="tfDoc2Cliente" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -177,11 +177,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tfResidencialCliente" min="-2" pref="132" max="-2" attributes="0"/>
+                          <Component id="tfResidencialCliente" min="-2" pref="158" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="tfCelularCliente" min="-2" pref="156" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tfCelularCliente" min="-2" pref="158" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="135" max="32767" attributes="0"/>
@@ -191,7 +191,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace pref="35" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="rbTipoFisicaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbTipoJuridicaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -208,21 +208,19 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblBuscaClienteDoc2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblBuscaClienteDoc1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfCpfCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfRgCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfDoc1Cliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfDoc2Cliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfCelularCliente" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="tfResidencialCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfCelularCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfResidencialCliente" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -315,19 +313,6 @@
             <Property name="text" type="java.lang.String" value="Residencial:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfResidencialCliente">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="14" style="1"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[0, 0]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="tfResidencialClienteCaretUpdate"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -339,24 +324,12 @@
             <Property name="text" type="java.lang.String" value="Celular:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfCelularCliente">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="14" style="1"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[0, 0]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="tfCelularClienteCaretUpdate"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JRadioButton" name="rbTipoFisicaCliente">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
             </Property>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="F&#xed;sica"/>
           </Properties>
           <Events>
@@ -385,14 +358,39 @@
             <Property name="text" type="java.lang.String" value="Tipo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="tfCpfCliente">
+        <Component class="javax.swing.JFormattedTextField" name="tfDoc1Cliente">
+          <Properties>
+            <Property name="focusLostBehavior" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="tfDoc1ClienteCaretUpdate"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;###.###.###-##&quot;))"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="tfRgCliente">
+        <Component class="javax.swing.JFormattedTextField" name="tfDoc2Cliente">
+          <Properties>
+            <Property name="focusLostBehavior" type="int" value="0"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;#.###.###&quot;))"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="tfCelularCliente">
+          <Properties>
+            <Property name="focusLostBehavior" type="int" value="0"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;(##)#####-####&quot;))"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="tfResidencialCliente">
+          <Properties>
+            <Property name="focusLostBehavior" type="int" value="0"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;(##)####-####&quot;))"/>
           </AuxValues>
         </Component>
       </SubComponents>

@@ -96,73 +96,34 @@ public class ClienteCRUD {
         String sql = "SELECT c.codCliente, c.tipoCliente, c.nome, c.cpf, c.rg, c.cnpj, "
                 + "c.inscricaoEstadual, c.telFixo, c.telCel, c.email, c.status, "
                 + "ec.logradouro, ec.numero, ec.complemento, ec.bairro, ec.cep, ec.cidade, "
-                + "ec.uf FROM cliente c NATURAL INNER JOIN enderecoCliente ec ";
+                + "ec.uf FROM cliente c CROSS JOIN enderecoCliente ec "
+                + "WHERE c.codCliente = ec.codCliente AND c.tipoCliente = '" + tipoCliente + "' ";
 
-        args[0].setName("codCliente");
-        args[1].setName("nome");
+        args[0].setName("c.codCliente");
+        args[1].setName("c.nome");
         if (tipoCliente.equalsIgnoreCase("F")) {
-            args[2].setName("cpf");
-            args[3].setName("rg");
+            args[2].setName("c.cpf");
+            args[3].setName("c.rg");
         } else if (tipoCliente.equalsIgnoreCase("J")) {
-            args[2].setName("cnpj");
-            args[3].setName("inscricaoestadual");
+            args[2].setName("c.cnpj");
+            args[3].setName("c.inscricaoestadual");
         }
-        args[4].setName("telfixo");
-        args[5].setName("telcel");
-        
-        // remoção das mascaras
-        args[2].setText(FrmPrincipal.desmascarar(args[2].getText()));
-        args[3].setText(FrmPrincipal.desmascarar(args[3].getText()));
-        args[4].setText(FrmPrincipal.desmascarar(args[4].getText()));
-        args[5].setText(FrmPrincipal.desmascarar(args[5].getText()));
-                
+        args[4].setName("c.telfixo");
+        args[5].setName("c.telcel");
 
-        // percorre os JTextFields até encontrar um preenchido
+        // percorre todos os JTextFields
         for (int i = 0; i < args.length; i++) {
-            // quando encontrar um JTextField não vazio (preenchido)
-            if (!args[i].getText().isEmpty()) {
-                // caso o parametro seja o codCliente é necessário usar (Cast)
-                if (args[i].getName().equalsIgnoreCase("codCliente")) {
-                    // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
-
-                    // percorre novamente o vetor em busca de outro JTextField preenchido
-                    for (int j = 0; j < args.length; j++) {
-                        // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
-                        if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
-                            // incrementa a query de acordo com o nome e conteúdo do JTextField
-                            if (args[j].getName().equalsIgnoreCase("codCliente")) {
-                                sql += "AND " + args[j].getName() + " = " + Integer.parseInt(args[j].getText().trim()) + " ";
-                            } else {
-                                sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
-                            }
-                        }
-                    }
-                } else {
-                    // caso o parametro não seja codCliente
-                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
-
-                    // percorre novamente o vetor em busca de outro JTextField preenchido
-                    for (int j = 0; j < args.length; j++) {
-                        // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
-                        if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
-                            // incrementa a query de acordo com o nome e conteúdo do JTextField
-                            if (args[j].getName().equalsIgnoreCase("codCliente")) {
-                                sql += "AND " + args[j].getName() + " = " + Integer.parseInt(args[j].getText().trim()) + " ";
-                            } else {
-                                sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
-                            }
-                        }
-                    }
-                }
+            if (args[i].getName().equalsIgnoreCase("c.codCliente") && !FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
+                // caso o parametro seja o codCliente é necessário usar (Cast) e comparação exata (=)
+                sql += "AND " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+            } else if (!FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
+                // demais parametros não usam cast e são comparados por aproximação (%LIKE%)
+                sql += "AND " + args[i].getName() + " LIKE '%" + FrmPrincipal.desmascarar(args[i].getText()).trim() + "%' ";
             }
-
-            if (!tipoCliente.isEmpty()) {
-                sql += "AND tipoCliente = '" + tipoCliente + "' ;";
-            }
-            i = args.length;
         }
 
+        sql += ";";
+        System.out.println(sql);
         return sql;
     }
 
