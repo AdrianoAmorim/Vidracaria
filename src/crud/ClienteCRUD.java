@@ -18,18 +18,29 @@ import view.FrmPrincipal;
  */
 public class ClienteCRUD {
 
-    public int incrementCodCliente() {
-        PreparedStatement stmt;
+    public int incrementCodCliente(String operacao) {
+        PreparedStatement stmt = null;
         Connection conn = new SQLite().conectar();
-        int increment = 0;
+        int increment = 0;        
 
         try {
-            stmt = conn.prepareStatement("SELECT last_value + 1 FROM cliente_codCliente_seq;");
+            String sql = "";
+            
+            if (operacao.equalsIgnoreCase("inicializar")) {
+                // seleciona o valor do próximo cliente a ser cadastrado
+                sql = "SELECT last_value +1 FROM cliente_codCliente_seq;";
+            } else if (operacao.equalsIgnoreCase("incrementar")) {
+                // incrementa o codigo do próximo cliente
+                sql = "select nextval('cliente_codCliente_seq');";
+            }
 
+            stmt = conn.prepareStatement(sql);
+            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
                 increment = result.getInt(1);
+                return increment;
             }
 
             stmt.close();

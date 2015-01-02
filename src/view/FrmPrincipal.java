@@ -34,7 +34,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         // INICIALIZAÇÃO DA LISTA DE PRODUTOS
         // INICIALIZAÇÃO DO CODIGO DO CLIENTE
-        int codCli = new ClienteCRUD().incrementCodCliente();
+        int codCli = new ClienteCRUD().incrementCodCliente("inicializar");
         tfClienteCodigo.setText(Integer.toString(codCli));
         // INICIALIZAÇÃO DO CODIGO DA VENDA
         int codVend = new VendaCRUD().incrementCodVenda();
@@ -3292,7 +3292,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             carregarCbUf();
 
             // incrementa o codigo do cliente
-            tfClienteCodigo.setText(Integer.toString(cliCrud.incrementCodCliente()));
+            tfClienteCodigo.setText(Integer.toString(new ClienteCRUD().incrementCodCliente("incrementar")));
 
             rbClienteFisica.setSelected(false);
             rbClienteJuridica.setSelected(false);
@@ -3320,7 +3320,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         carregarCbCidades();
         cbClienteUf.removeAllItems();
         carregarCbUf();
-                
+        
+        tfClienteCodigo.setText(String.valueOf(new ClienteCRUD().incrementCodCliente("inicializar")));
     }//GEN-LAST:event_btnClienteLimparActionPerformed
 
     // reseta os textos de TextFields 
