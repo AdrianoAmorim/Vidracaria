@@ -123,7 +123,6 @@ public class ClienteCRUD {
         }
 
         sql += ";";
-        System.out.println(sql);
         return sql;
     }
 

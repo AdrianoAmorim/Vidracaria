@@ -52,9 +52,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DAS LISTAS DE TIPOS DE PAGAMENTO
         this.carregarCbTipoPagamento();
         // INICIALIZAÇÃO DA LISTA DE UFS
-        //this.carregarCbUf();
+        this.carregarCbUf();
         // INICIALIZAÇÃO DA LISTA DE CIDADES
-        //this.carregarCbCidades();
+        this.carregarCbCidades();
     }
 
     /**
@@ -118,7 +118,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfClienteInscEstadual = new javax.swing.JFormattedTextField(MascararCampos("##.###.##-#"));
         tfClienteTelCel = new javax.swing.JFormattedTextField(MascararCampos("(##)#####-####"));
         tfClienteTelRes = new javax.swing.JFormattedTextField(MascararCampos("(##)####-####"));
-        tfClienteCnpj = new javax.swing.JFormattedTextField(MascararCampos("###.###.###-##"));
+        tfClienteCnpj = new javax.swing.JFormattedTextField(MascararCampos("##.###.###/####-##"));
+        cbClienteUf = new javax.swing.JComboBox();
+        cbClienteCidade = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
         lblClienteDadosCliente = new javax.swing.JLabel();
         pnlCadFuncionario = new javax.swing.JPanel();
@@ -162,6 +164,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioTelResidencial = new javax.swing.JFormattedTextField(MascararCampos("(##)####-####"));
         tfFuncionarioTelCelular = new javax.swing.JFormattedTextField(MascararCampos("(##)#####-####"));
         tfFuncionarioCep = new javax.swing.JFormattedTextField(MascararCampos("##.###-###"));
+        cbFuncionarioUf = new javax.swing.JComboBox();
+        cbFuncionarioCidade = new javax.swing.JComboBox();
         jPanel8 = new javax.swing.JPanel();
         lblFuncionarioDadosFuncionario = new javax.swing.JLabel();
         pnlEfetuarVenda = new javax.swing.JPanel();
@@ -501,6 +505,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfClienteCnpj.setEnabled(false);
 
+        cbClienteUf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbClienteCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
@@ -591,10 +599,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfClienteCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addComponent(rbClienteFisica)
-                                .addGap(142, 142, 142)
-                                .addComponent(rbClienteJuridica))
-                            .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel23Layout.createSequentialGroup()
+                                        .addComponent(rbClienteFisica)
+                                        .addGap(142, 142, 142)
+                                        .addComponent(rbClienteJuridica))
+                                    .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cbClienteCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbClienteUf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(lblClienteCnpj))
                 .addContainerGap(315, Short.MAX_VALUE))
         );
@@ -609,19 +623,26 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(rbClienteStatusAtiv))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbClienteJuridica)
-                            .addComponent(rbClienteStatusInat))
-                        .addComponent(lblClienteTipo))
-                    .addComponent(rbClienteFisica, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblClienteNome))
-                    .addComponent(btnClienteBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rbClienteJuridica)
+                                    .addComponent(rbClienteStatusInat))
+                                .addComponent(lblClienteTipo))
+                            .addComponent(rbClienteFisica, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblClienteNome))
+                            .addComponent(btnClienteBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                        .addComponent(cbClienteUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbClienteCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClienteLogradouro)
                     .addComponent(tfClienteLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -891,6 +912,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        cbFuncionarioUf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbFuncionarioCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -907,10 +932,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(lblFuncionarioLogradouro))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(tfFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(162, 162, 162))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnFuncionarioBuscarNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -926,7 +947,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                                 .addComponent(lblFuncionarioTelCel)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(tfFuncionarioTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(tfFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cbFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbFuncionarioUf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(176, 176, 176))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(lblFuncionarioCodCargo)
                         .addGap(24, 24, 24)
@@ -980,17 +1009,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFuncionarioCodigo)
-                    .addComponent(tfFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfFuncionarioCodCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblFuncionarioCodCargo)
-                        .addComponent(tfFuncionarioDescricaoCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnFuncionarioBuscarCodCargo))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFuncionarioCodigo)
+                            .addComponent(tfFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tfFuncionarioCodCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblFuncionarioCodCargo)
+                                .addComponent(tfFuncionarioDescricaoCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnFuncionarioBuscarCodCargo)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cbFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -3080,32 +3116,34 @@ public class FrmPrincipal extends javax.swing.JFrame {
         FrmBuscarCliente buscaCli = new FrmBuscarCliente(this, true);
         buscaCli.setVisible(true);
 
-        // ACREDITO NÃO SER NECESSÁRIO LIMPAR OS CAMPOS ANTES DE PREENCHE-LOS
-        /*FrmPrincipal.limparCampos(tfClienteCodigo, tfClienteNome, tfClienteLogradouro,
-         tfClienteNumero, tfClienteComplemento, tfClienteBairro,
-         tfClienteCep, tfClienteCidade, tfClienteUf, tfClienteCpf, tfClienteRg,
-         tfClienteInscEstadual, tfClienteInscEstadual, tfClienteTelRes, tfClienteTelCel,
-         tfClienteEmail);*/
         if (buscaCli.cliente.getCodCliente() != 0) {
-            
+
             tfClienteCodigo.setText(String.valueOf(buscaCli.cliente.getCodCliente()));
-            
+
             if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("F")) {
-                // preenche os campos de pessoa física
+                // habilita e preenche os campos de pessoa física
+                tfClienteCpf.setEnabled(true);
+                tfClienteRg.setEnabled(true);
                 rbClienteFisica.setSelected(true);
                 tfClienteCpf.setText(buscaCli.cliente.getCpf());
                 tfClienteRg.setText(buscaCli.cliente.getRg());
 
-                // bloqueia os campos de pessoa jurídica
+                // limpa e bloqueia os campos de pessoa jurídica
+                tfClienteInscEstadual.setText(null);
+                tfClienteCnpj.setText(null);
                 tfClienteInscEstadual.setEnabled(false);
                 tfClienteCnpj.setEnabled(false);
             } else if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("J")) {
-                // preenche os campos de pessoa jurídica
+                // habilita e preenche os campos de pessoa jurídica
+                tfClienteCnpj.setEnabled(true);
+                tfClienteInscEstadual.setEnabled(true);
                 rbClienteJuridica.setSelected(true);
                 tfClienteCnpj.setText(buscaCli.cliente.getCnpj());
                 tfClienteInscEstadual.setText(buscaCli.cliente.getInscricaoEstadual());
 
-                // bloqueia os campos de pessoa física
+                // limpa e bloqueia os campos de pessoa física
+                tfClienteCpf.setText(null);
+                tfClienteRg.setText(null);
                 tfClienteCpf.setEnabled(false);
                 tfClienteRg.setEnabled(false);
             }
@@ -3144,7 +3182,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             cliente.setRg(FrmPrincipal.desmascarar(tfClienteRg.getText()));
         } else {
             cliente.setTipoCliente("J");
-            cliente.setCnpj(FrmPrincipal.desmascarar(tfClienteInscEstadual.getText()));
+            cliente.setCnpj(FrmPrincipal.desmascarar(tfClienteCnpj.getText()));
             cliente.setInscricaoEstadual(FrmPrincipal.desmascarar(tfClienteInscEstadual.getText()));
         }
 
@@ -3179,14 +3217,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCpf, tfClienteRg,
                 tfClienteLogradouro, tfClienteCep, tfClienteBairro, tfClienteCidade,
                 tfClienteUf, tfClienteTelRes, tfClienteTelCel, tfClienteNumero,
-                tfClienteComplemento, tfClienteInscEstadual, tfClienteInscEstadual,
+                tfClienteComplemento, tfClienteCnpj, tfClienteInscEstadual,
                 tfClienteEmail);
 
         rbClienteFisica.setSelected(false);
         rbClienteJuridica.setSelected(false);
         tfClienteCpf.setEnabled(true);
         tfClienteRg.setEnabled(true);
-        tfClienteInscEstadual.setEnabled(true);
+        tfClienteCnpj.setEnabled(true);
         tfClienteInscEstadual.setEnabled(true);
     }//GEN-LAST:event_btnClienteAlterarActionPerformed
 
@@ -3206,7 +3244,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
 
         cliente.setCpf(FrmPrincipal.desmascarar(tfClienteCpf.getText()));
-        cliente.setCnpj(FrmPrincipal.desmascarar(tfClienteInscEstadual.getText()));
+        cliente.setCnpj(FrmPrincipal.desmascarar(tfClienteCnpj.getText()));
         cliente.setInscricaoEstadual(FrmPrincipal.desmascarar(tfClienteInscEstadual.getText()));
         cliente.setRg(FrmPrincipal.desmascarar(tfClienteRg.getText()));
         cliente.setNome(tfClienteNome.getText());
@@ -3243,7 +3281,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             limparCampos(tfClienteCodigo, tfClienteNome, tfClienteCpf, tfClienteRg,
                     tfClienteLogradouro, tfClienteCep, tfClienteBairro, tfClienteCidade,
                     tfClienteUf, tfClienteTelRes, tfClienteTelCel, tfClienteNumero,
-                    tfClienteComplemento, tfClienteInscEstadual, tfClienteInscEstadual,
+                    tfClienteComplemento, tfClienteCnpj, tfClienteInscEstadual,
                     tfClienteEmail);
 
             // incrementa o codigo do cliente
@@ -3253,7 +3291,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             rbClienteJuridica.setSelected(false);
             tfClienteCpf.setEnabled(true);
             tfClienteRg.setEnabled(true);
-            tfClienteInscEstadual.setEnabled(true);
+            tfClienteCnpj.setEnabled(true);
             tfClienteInscEstadual.setEnabled(true);
         }
     }//GEN-LAST:event_btnClienteCadastrarActionPerformed
@@ -3328,30 +3366,31 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Carrega lista de Ufs
-/*    public void carregarCbUf() {
-     EstadoCRUD estadoCRUD = new EstadoCRUD();
+    public void carregarCbUf() {
+        EstadoCRUD estadoCRUD = new EstadoCRUD();
 
-     cbClienteUf.removeAllItems();
-     cbFuncionarioUf.removeAllItems();
-        
-     for (Estado estado : estadoCRUD.consultarEstado()) {
-     cbClienteUf.addItem(estado.getUf());
-     cbFuncionarioUf.addItem(estado.getUf());
-     }
-     }
+        cbClienteUf.removeAllItems();
+        cbFuncionarioUf.removeAllItems();
 
-     // Carrega lista de Cidades
-     public void carregarCbCidades() {
-     CidadeCRUD cidadeCRUD = new CidadeCRUD();
+        for (Estado estado : estadoCRUD.consultarEstado()) {
+            cbClienteUf.addItem(estado.getUf());
+            cbFuncionarioUf.addItem(estado.getUf());
+        }
+    }
 
-     cbClienteCidade.removeAllItems();
-     cbFuncionarioCidade.removeAllItems();
-        
-     for (Cidade cidade : cidadeCRUD.consultarCidade(cbClienteUf.getSelectedItem().toString())) {
-     cbClienteCidade.addItem(cidade.getNome());
-     cbFuncionarioCidade.addItem(cidade.getNome());
-     }
-     }*/
+    // Carrega lista de Cidades
+    public void carregarCbCidades() {
+        CidadeCRUD cidadeCRUD = new CidadeCRUD();
+
+        cbClienteCidade.removeAllItems();
+        cbFuncionarioCidade.removeAllItems();
+
+        for (Cidade cidade : cidadeCRUD.consultarCidade(cbClienteUf.getSelectedItem().toString())) {
+            cbClienteCidade.addItem(cidade.getNome());
+            cbFuncionarioCidade.addItem(cidade.getNome());
+        }
+    }
+
     //  Carregar lista de tipos de pagamento
     public void carregarCbTipoPagamento() {
         TipoPagamentoCRUD tipoPagamentoCRUD = new TipoPagamentoCRUD();
@@ -3496,9 +3535,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnVendaBuscarFuncionario;
     private javax.swing.JButton btnVendaCadastrar;
     private javax.swing.JLabel btnVendaDeletarProdutoLista;
+    private javax.swing.JComboBox cbClienteCidade;
+    private javax.swing.JComboBox cbClienteUf;
     private javax.swing.JComboBox cbCompraParcelamento;
     private javax.swing.JComboBox cbCompraTipoPagamento;
     private javax.swing.JComboBox cbFinanceiroTipo;
+    private javax.swing.JComboBox cbFuncionarioCidade;
+    private javax.swing.JComboBox cbFuncionarioUf;
     private javax.swing.JComboBox cbVendaParcelamento;
     private javax.swing.JComboBox cbVendaTipoPagamento;
     private javax.swing.JCheckBox ckbFinanceiroPeriodo;
