@@ -99,12 +99,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel11" pref="1254" max="32767" attributes="0"/>
+                  <Component id="jPanel11" pref="1265" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jPanel5" max="32767" attributes="0"/>
-                          <Component id="jPanel23" pref="1232" max="32767" attributes="0"/>
+                          <Component id="jPanel23" pref="1245" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -184,9 +184,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[1254, 509]"/>
@@ -414,7 +411,7 @@
                                   <Component id="btnClienteAlterar" min="-2" pref="38" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="30" max="32767" attributes="0"/>
+                          <EmptySpace pref="56" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -534,7 +531,7 @@
                       <Image iconType="3" name="/imagens/cadastroPqn.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Default"/>
+                      <Color id="Cursor Padr&#xe3;o"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -550,7 +547,7 @@
                       <Image iconType="3" name="/imagens/AlterarPq.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Default"/>
+                      <Color id="Cursor Padr&#xe3;o"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -563,7 +560,7 @@
                       <Image iconType="3" name="/imagens/buscarNovo02.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Default"/>
+                      <Color id="Cursor Padr&#xe3;o"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -828,7 +825,11 @@
                         <StringItem index="3" value="Item 4"/>
                       </StringArray>
                     </Property>
+                    <Property name="name" type="java.lang.String" value="cbClienteUf" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbClienteUfItemStateChanged"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbClienteCidade">
                   <Properties>
@@ -840,6 +841,7 @@
                         <StringItem index="3" value="Item 4"/>
                       </StringArray>
                     </Property>
+                    <Property name="name" type="java.lang.String" value="cbClienteCidade" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnClienteLimpar">
@@ -851,7 +853,7 @@
                       <Image iconType="3" name="/imagens/deletarNovo1.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Default"/>
+                      <Color id="Cursor Padr&#xe3;o"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -864,9 +866,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
                 </Property>
               </Properties>
 
@@ -1024,9 +1023,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
                 </Property>
               </Properties>
 
@@ -1593,7 +1589,11 @@
                         <StringItem index="3" value="Item 4"/>
                       </StringArray>
                     </Property>
+                    <Property name="name" type="java.lang.String" value="cbFuncionarioUf" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbFuncionarioUfItemStateChanged"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbFuncionarioCidade">
                   <Properties>
@@ -1605,6 +1605,7 @@
                         <StringItem index="3" value="Item 4"/>
                       </StringArray>
                     </Property>
+                    <Property name="name" type="java.lang.String" value="cbFuncionarioCidade" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1613,9 +1614,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
                 </Property>
               </Properties>
 
@@ -1803,7 +1801,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblVendaListaProdutos" pref="527" max="32767" attributes="0"/>
+                          <Component id="lblVendaListaProdutos" pref="531" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1931,9 +1929,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
                 </Property>
               </Properties>
 
@@ -2347,7 +2342,7 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Deletar Produto da Lista"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Default"/>
+                  <Color id="Cursor Padr&#xe3;o"/>
                 </Property>
               </Properties>
               <Events>
@@ -2700,7 +2695,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jPanel54" alignment="0" pref="1289" max="32767" attributes="0"/>
+                          <Component id="jPanel54" alignment="0" pref="1277" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2892,9 +2887,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
                 </Property>
               </Properties>
 
@@ -3281,9 +3273,6 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
                 </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
               </Properties>
 
               <Layout>
@@ -3336,7 +3325,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCompraValorTotal" pref="375" max="32767" attributes="0"/>
+                          <Component id="lblCompraValorTotal" pref="379" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -3346,7 +3335,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblCompraValorTotal" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3385,9 +3374,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
                 </Property>
               </Properties>
 
@@ -3690,7 +3676,7 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Deletar Produto da Lista"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Default"/>
+                  <Color id="Cursor Padr&#xe3;o"/>
                 </Property>
               </Properties>
               <Events>
@@ -3864,7 +3850,6 @@
                             </EtchetBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="18" style="1"/>
-                          <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </CompoundBorder>
@@ -3980,7 +3965,6 @@
                             </EtchetBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="18" style="1"/>
-                          <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </CompoundBorder>
@@ -4033,9 +4017,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
                 </Property>
               </Properties>
 

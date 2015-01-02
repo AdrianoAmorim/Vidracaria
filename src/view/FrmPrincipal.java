@@ -3,6 +3,7 @@ package view;
 import controller.*;
 import crud.*;
 import domain.*;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -54,7 +55,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DA LISTA DE UFS
         this.carregarCbUf();
         // INICIALIZAÇÃO DA LISTA DE CIDADES
-        this.carregarCbCidades();
+        // this.carregarCbCidades();
     }
 
     /**
@@ -303,7 +304,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlTabbedPrincipal.setMinimumSize(new java.awt.Dimension(1210, 497));
         pnlTabbedPrincipal.setPreferredSize(new java.awt.Dimension(1280, 768));
 
-        pnlCadCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlCadCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlCadCliente.setForeground(new java.awt.Color(255, 255, 255));
         pnlCadCliente.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         pnlCadCliente.setMinimumSize(new java.awt.Dimension(802, 426));
@@ -340,7 +341,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         jPanel23.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel23.setBorder(null);
         jPanel23.setPreferredSize(new java.awt.Dimension(1254, 509));
 
         tfClienteCodigo.setEditable(false);
@@ -501,8 +501,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfClienteCnpj.setEnabled(false);
 
         cbClienteUf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbClienteUf.setName("cbClienteUf"); // NOI18N
+        cbClienteUf.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbClienteUfItemStateChanged(evt);
+            }
+        });
 
         cbClienteCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbClienteCidade.setName("cbClienteCidade"); // NOI18N
 
         btnClienteLimpar.setBackground(new java.awt.Color(255, 255, 255));
         btnClienteLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarNovo1.png"))); // NOI18N
@@ -684,11 +691,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(tfClienteTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel5.setBorder(null);
 
         lblClienteDadosCliente.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblClienteDadosCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -716,12 +722,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadCliente.setLayout(pnlCadClienteLayout);
         pnlCadClienteLayout.setHorizontalGroup(
             pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1254, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadClienteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 1232, Short.MAX_VALUE))
+                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 1245, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlCadClienteLayout.setVerticalGroup(
@@ -737,7 +743,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407887820_clients.png")), pnlCadCliente, "Cadastro de Cliente"); // NOI18N
 
-        pnlCadFuncionario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlCadFuncionario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
         jPanel44.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -771,7 +777,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         jPanel7.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel7.setBorder(null);
 
         tfFuncionarioCodigo.setBackground(new java.awt.Color(204, 255, 204));
         tfFuncionarioCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -907,8 +912,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         cbFuncionarioUf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbFuncionarioUf.setName("cbFuncionarioUf"); // NOI18N
+        cbFuncionarioUf.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbFuncionarioUfItemStateChanged(evt);
+            }
+        });
 
         cbFuncionarioCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbFuncionarioCidade.setName("cbFuncionarioCidade"); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1079,7 +1091,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         jPanel8.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel8.setBorder(null);
 
         lblFuncionarioDadosFuncionario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblFuncionarioDadosFuncionario.setForeground(new java.awt.Color(255, 255, 255));
@@ -1128,7 +1139,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Funcionario.png")), pnlCadFuncionario, "Cadastro de Funcionário"); // NOI18N
 
-        pnlEfetuarVenda.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlEfetuarVenda.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlEfetuarVenda.setMinimumSize(new java.awt.Dimension(1210, 497));
         pnlEfetuarVenda.setName("pnlVenda"); // NOI18N
         pnlEfetuarVenda.setPreferredSize(new java.awt.Dimension(1210, 497));
@@ -1147,7 +1158,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblVendaListaProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+                .addComponent(lblVendaListaProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel29Layout.setVerticalGroup(
@@ -1215,7 +1226,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         jPanel46.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel46.setBorder(null);
 
         lblVendaDados.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblVendaDados.setForeground(new java.awt.Color(255, 255, 255));
@@ -1685,7 +1695,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1408033473_cashbox.png")), pnlEfetuarVenda, "Cadastrar Venda"); // NOI18N
 
-        pnlEfetuarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlEfetuarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlEfetuarCompra.setName("pnlCompra"); // NOI18N
 
         jPanel54.setBackground(new java.awt.Color(153, 153, 255));
@@ -1737,7 +1747,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         jPanel22.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel22.setBorder(null);
 
         lblCompraData.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblCompraData.setForeground(new java.awt.Color(0, 69, 139));
@@ -1936,7 +1945,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel4.setBorder(null);
 
         lblCompraDetalhamento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblCompraDetalhamento.setForeground(new java.awt.Color(255, 255, 255));
@@ -1974,7 +1982,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCompraValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                .addComponent(lblCompraValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
@@ -1982,7 +1990,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblCompraValorTotal)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         btnAlterarCompra.setBackground(new java.awt.Color(153, 153, 255));
@@ -1996,7 +2004,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         jPanel9.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel9.setBorder(null);
 
         lblCompraOpcoes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblCompraOpcoes.setForeground(new java.awt.Color(255, 255, 255));
@@ -2249,7 +2256,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarCompraLayout.createSequentialGroup()
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel54, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1289, Short.MAX_VALUE)
+                    .addComponent(jPanel54, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1277, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEfetuarCompraLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2325,9 +2332,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/compra.png")), pnlEfetuarCompra, "Efetuar Compra"); // NOI18N
 
-        pnlFinanceiro.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlFinanceiro.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
-        pnlFinanceiroContasPagar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Contas A Pagar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(0, 0, 0)), null)); // NOI18N
+        pnlFinanceiroContasPagar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Contas A Pagar", 0, 2, new java.awt.Font("Tahoma", 1, 18)), null)); // NOI18N
 
         btnFinanceiroAddPagamentoDespesa.setText("Efetuar Pagamento");
 
@@ -2385,7 +2392,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlFinanceiroContasReceber.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Contas A Receber", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(0, 0, 0)), null)); // NOI18N
+        pnlFinanceiroContasReceber.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Contas A Receber", 0, 2, new java.awt.Font("Tahoma", 1, 18)), null)); // NOI18N
 
         btnAddPagamentoRenda.setText("Efetuar Recebimento");
 
@@ -2418,7 +2425,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         pnlPesquisaContasPagar.setBackground(new java.awt.Color(204, 204, 255));
-        pnlPesquisaContasPagar.setBorder(null);
 
         tbFinanceiroContas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2530,7 +2536,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Financeiro.png")), pnlFinanceiro, "Financeiro"); // NOI18N
 
-        pnlAdministracao.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlAdministracao.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
         javax.swing.GroupLayout pnlAdministracaoLayout = new javax.swing.GroupLayout(pnlAdministracao);
         pnlAdministracao.setLayout(pnlAdministracaoLayout);
@@ -2917,7 +2923,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnFuncionarioBuscarNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionarioBuscarNomeMouseClicked
         FrmAdicionarFuncionarioOUFornecedor buscarFuncionario;
 
-        buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());;
+        buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());
         buscarFuncionario.setVisible(true);
 
         tfFuncionarioCodigo.setText(String.valueOf(buscarFuncionario.funcionario.getCodFuncionario()));
@@ -3152,9 +3158,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tfClienteTelRes.setText(buscaCli.cliente.getTelFixo());
             tfClienteTelCel.setText(buscaCli.cliente.getTelCel());
             tfClienteEmail.setText(buscaCli.cliente.getEmail());
+            
             // comboboxes 
-            cbClienteCidade.getModel().setSelectedItem(buscaCli.cliente.getCidade());
             cbClienteUf.getModel().setSelectedItem(buscaCli.cliente.getUf());
+            cbClienteCidade.getModel().setSelectedItem(buscaCli.cliente.getCidade());
 
             // definição do status do cliente
             if (buscaCli.cliente.isStatus()) {
@@ -3217,7 +3224,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         // resetar comboboxes
         cbClienteCidade.removeAllItems();
-        carregarCbCidades();
+        //carregarCbCidades();
         cbClienteUf.removeAllItems();
         carregarCbUf();
 
@@ -3287,7 +3294,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // resetar comboboxes
             cbClienteCidade.removeAllItems();
-            carregarCbCidades();
+            //carregarCbCidades();
             cbClienteUf.removeAllItems();
             carregarCbUf();
 
@@ -3305,24 +3312,39 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // botão para resetar todos os atributos do cadastro de clientes
     private void btnClienteLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteLimparActionPerformed
-        
+
         // resetar os JTextFields
         limparCampos(tfClienteNome, tfClienteLogradouro, tfClienteNumero, tfClienteComplemento,
                 tfClienteBairro, tfClienteCep, tfClienteCpf, tfClienteRg, tfClienteCnpj, tfClienteInscEstadual,
                 tfClienteTelRes, tfClienteTelCel, tfClienteEmail);
-        
+
         // resetar os JRadioButtons
         rbClienteStatusAtiv.setSelected(true);
         rbClienteFisica.setSelected(true);
-        
+
         // resetar os JComboBoxes
         cbClienteCidade.removeAllItems();
-        carregarCbCidades();
+        //carregarCbCidades();
         cbClienteUf.removeAllItems();
         carregarCbUf();
-        
+
         tfClienteCodigo.setText(String.valueOf(new ClienteCRUD().incrementCodCliente("inicializar")));
     }//GEN-LAST:event_btnClienteLimparActionPerformed
+   
+    //carrega as cidades de acordo com o ESTADO selecionado - CLIENTE
+    private void cbClienteUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbClienteUfItemStateChanged
+        
+        if (evt.getStateChange() == 1) {
+            carregarCbCidades(cbClienteCidade,cbClienteUf.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbClienteUfItemStateChanged
+
+//carrega as cidades de acordo com o ESTADO selecionado - FUNCIONARIO
+    private void cbFuncionarioUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbFuncionarioUfItemStateChanged
+      if (evt.getStateChange() == 1) {
+            carregarCbCidades(cbFuncionarioCidade,cbFuncionarioUf.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbFuncionarioUfItemStateChanged
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
@@ -3406,16 +3428,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }
 
-    // Carrega lista de Cidades
-    public void carregarCbCidades() {
+    // Carrega lista de Cidades - Acrescentei o combo q quero carregae
+    // de Qual estado sera as Cidade (passado pelo parametro)
+    public void carregarCbCidades(JComboBox cb,String uf) {
         CidadeCRUD cidadeCRUD = new CidadeCRUD();
-
-        cbClienteCidade.removeAllItems();
-        cbFuncionarioCidade.removeAllItems();
-
-        for (Cidade cidade : cidadeCRUD.consultarCidade(cbClienteUf.getSelectedItem().toString())) {
-            cbClienteCidade.addItem(cidade.getNome());
-            cbFuncionarioCidade.addItem(cidade.getNome());
+        
+        cb.removeAllItems();
+       
+        for (Cidade cidade : cidadeCRUD.consultarCidade(uf)) {
+           cb.addItem(cidade.getNome());    
         }
     }
 

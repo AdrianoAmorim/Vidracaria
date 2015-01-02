@@ -25,8 +25,9 @@ public class CidadeCRUD {
             stmt = conn.prepareStatement("SELECT c.codCidade, c.nome, c.codEstado "
                     + "FROM cidade c CROSS JOIN estado e "
                     + "WHERE c.codEstado = e.codEstado "
+                    + "AND e.uf = '" + uf + "'"
                     + "ORDER BY c.nome;");
-                    //+ "AND e.uf = '" + uf + "';");
+                    
             
             result = stmt.executeQuery();
             
