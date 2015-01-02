@@ -24,7 +24,7 @@ public class ClienteCRUD {
         int increment = 0;
 
         try {
-            stmt = conn.prepareStatement("SELECT last_value FROM cliente_codCliente_seq;");
+            stmt = conn.prepareStatement("SELECT last_value + 1 FROM cliente_codCliente_seq;");
 
             ResultSet result = stmt.executeQuery();
 
@@ -37,7 +37,7 @@ public class ClienteCRUD {
         } catch (SQLException erroIncrementCodCliente) {
             JOptionPane.showMessageDialog(null, erroIncrementCodCliente.getMessage());
         }
-        return increment + 1;
+        return increment;
     }
 
     public void inserirCliente(Cliente cliente, Endereco enderecoCliente) {
