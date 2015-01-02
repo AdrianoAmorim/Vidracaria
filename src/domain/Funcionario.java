@@ -13,6 +13,9 @@ public class Funcionario extends Endereco {
     protected String telFixo;
     protected String telCel;
     protected String email;
+    protected String cpf;
+    protected String rg;
+    protected String dtNascimento;
     protected Double salarioFuncionario;
     protected Boolean ativo;
     protected String logradouro;
@@ -55,7 +58,30 @@ public class Funcionario extends Endereco {
         this.email = email;
     }
 
-    
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getDtNascimento() {
+        return dtNascimento;
+    }
+
+    public void setDtNascimento(String dtNascimento) {
+        this.dtNascimento = dtNascimento;
+    }
+
     public String getNomeFuncionario() {
         return nomeFuncionario;
     }

@@ -3,6 +3,7 @@ package crud;
 import database.SQLite;
 import domain.Funcionario;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,32 +47,35 @@ public class FuncionarioCRUD {
             conn.setAutoCommit(false);
 
             stmt = conn.prepareStatement("INSERT INTO funcionario(codFuncionario, codCargo, codEmpresa, "
-                    + " nome, telFixo, telCel, salario, status) VALUES (?,?,?,?,?,?,?,?);");
+                    + " nome, telFixo, telCel, cpf, rg, salario, status, email) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, funcionario.getCodFuncionario());
-            stmt.setInt(2, funcionario.getCodEmpresa());
-            stmt.setInt(3, funcionario.getCodCargo());
+            stmt.setInt(2, funcionario.getCodCargo());
+            stmt.setInt(3, funcionario.getCodEmpresa());
             stmt.setString(4, funcionario.getNomeFuncionario());
             stmt.setString(5, funcionario.getTelFixo());
             stmt.setString(6, funcionario.getTelCel());
-            stmt.setDouble(7, funcionario.getSalarioFuncionario());
-            stmt.setBoolean(8, funcionario.getAtivo());
+            stmt.setString(7, funcionario.getCpf());
+            stmt.setString(8, funcionario.getRg());
+            //stmt.setDate(9,Date.valueOf(funcionario.getDtNascimento()));
+            stmt.setDouble(9, funcionario.getSalarioFuncionario());
+            stmt.setBoolean(10, funcionario.getAtivo());
+            stmt.setString(11, funcionario.getEmail());
 
             stmt.executeUpdate();
 
-            stmt = conn.prepareStatement("INSERT INTO enderecoFuncionario(codFuncionario, codCargo, codEmpresa,"
-                    + "logradouro, numero, complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?,?,?);");
+            stmt = conn.prepareStatement("INSERT INTO enderecoFuncionario(codFuncionario, codEmpresa,"
+                    + "logradouro, numero, complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, funcionario.getCod());
-            stmt.setInt(2, funcionario.getCodCargo());
-            stmt.setInt(3, funcionario.getCodEmpresa());
-            stmt.setString(4, funcionario.getLogradouro());
-            stmt.setInt(5, funcionario.getNumero());
-            stmt.setString(6, funcionario.getComplemento());
-            stmt.setString(7, funcionario.getBairro());
-            stmt.setString(8, funcionario.getCep());
-            stmt.setString(9, funcionario.getCidade());
-            stmt.setString(10, funcionario.getUf());
+            stmt.setInt(2, funcionario.getCodEmpresa());
+            stmt.setString(3, funcionario.getLogradouro());
+            stmt.setInt(4, funcionario.getNumero());
+            stmt.setString(5, funcionario.getComplemento());
+            stmt.setString(6, funcionario.getBairro());
+            stmt.setString(7, funcionario.getCep());
+            stmt.setString(8, funcionario.getCidade());
+            stmt.setString(9, funcionario.getUf());
 
             stmt.executeUpdate();
 
@@ -96,7 +100,7 @@ public class FuncionarioCRUD {
             conn.setAutoCommit(false);
 
             stmt = conn.prepareStatement("UPDATE funcionario SET codEmpresa = ?, codCargo = ?, "
-                    + "nome = ?, telFixo = ?, telCel = ?, salario = ?, status = ? "
+                    + "nome = ?, telFixo = ?, telCel = ?, salario = ?, status = ? , email = ?"
                     + "WHERE codFuncionario = ?;");
 
             stmt.setInt(1, funcionario.getCodEmpresa());
@@ -106,24 +110,24 @@ public class FuncionarioCRUD {
             stmt.setString(5, funcionario.getTelCel());
             stmt.setDouble(6, funcionario.getSalarioFuncionario());
             stmt.setBoolean(7, funcionario.getAtivo());
-            stmt.setInt(8, funcionario.getCodFuncionario());
+            stmt.setString(8, funcionario.getEmail());
+            stmt.setInt(9, funcionario.getCodFuncionario());
 
             stmt.executeUpdate();
 
-            stmt = conn.prepareStatement("UPDATE enderecoFuncionario SET codEmpresa = ?, codCargo = ?, "
+            stmt = conn.prepareStatement("UPDATE enderecoFuncionario SET codEmpresa = ?,"
                     + "logradouro = ?, numero = ?, complemento = ?, bairro = ?, cep = ?, cidade = ?, uf = ? "
                     + "WHERE codFuncionario = ?;");
 
             stmt.setInt(1, funcionario.getCodEmpresa());
-            stmt.setInt(2, funcionario.getCodCargo());
-            stmt.setString(3, funcionario.getLogradouro());
-            stmt.setInt(4, funcionario.getNumero());
-            stmt.setString(5, funcionario.getComplemento());
-            stmt.setString(6, funcionario.getBairro());
-            stmt.setString(7, funcionario.getCep());
-            stmt.setString(8, funcionario.getCidade());
-            stmt.setString(9, funcionario.getUf());
-            stmt.setInt(10, funcionario.getCodFuncionario());
+            stmt.setString(2, funcionario.getLogradouro());
+            stmt.setInt(3, funcionario.getNumero());
+            stmt.setString(4, funcionario.getComplemento());
+            stmt.setString(5, funcionario.getBairro());
+            stmt.setString(6, funcionario.getCep());
+            stmt.setString(7, funcionario.getCidade());
+            stmt.setString(8, funcionario.getUf());
+            stmt.setInt(9, funcionario.getCodFuncionario());
 
             stmt.executeUpdate();
 
@@ -141,8 +145,8 @@ public class FuncionarioCRUD {
     public String prepararQueryPesquisarFuncionarios(JTextField... args) {
         int tam = args.length;
 
-        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel,"
-                + "f.salario, f.status, ef.logradouro, ef.numero, ef.complemento, ef.bairro, ef.cep, ef.cidade, ef.uf"
+        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel, f.cpf, f.rg, f.dtnascimento,"
+                + "f.salario, f.status, f.email, ef.logradouro, ef.numero, ef.complemento, ef.bairro, ef.cep, ef.cidade, ef.uf"
                 + " FROM funcionario f NATURAL INNER JOIN enderecoFuncionario ef ";
 
         args[0].setName("codFuncionario");
@@ -196,8 +200,13 @@ public class FuncionarioCRUD {
                 funcionario.setNomeFuncionario(result.getString("nome"));
                 funcionario.setTelFixo(result.getString("telFixo"));
                 funcionario.setTelCel(result.getString("telCel"));
+                
+                funcionario.setCpf(result.getString("cpf"));
+                funcionario.setRg(result.getString("rg"));
+                
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
                 funcionario.setAtivo(result.getBoolean("status"));
+                funcionario.setEmail(result.getString("email"));
                 funcionario.setLogradouro(result.getString("logradouro"));
                 funcionario.setNumero(result.getInt("numero"));
                 funcionario.setComplemento(result.getString("complemento"));

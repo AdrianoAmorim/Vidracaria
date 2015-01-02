@@ -210,9 +210,9 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         tabelaModelo.setRowCount(0);
 
         if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
-            for (Funcionario funcionario : this.pesquisarFuncionarioCaretUpdate(tfBuscarFuncionarioCodigo)) {
-                tabelaModelo.addRow(new Object[]{funcionario.getCodFuncionario(), funcionario.getNomeFuncionario(),
-                    funcionario.getTelCel(), funcionario.getTelFixo()});
+            for (Funcionario func : this.pesquisarFuncionarioCaretUpdate(tfBuscarFuncionarioCodigo)) {
+                tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
+                    func.getTelCel(), func.getTelFixo()});
             }
         } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
             for (Fornecedor fornecedor : this.pesquisarFornecedorCaretUpdate(tfBuscarFuncionarioCodigo)) {
@@ -227,9 +227,9 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         tabelaModelo.setRowCount(0);
 
         if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
-            for (Funcionario funcionario : this.pesquisarFuncionarioCaretUpdate(tfBuscarFuncionarioNome)) {
-                tabelaModelo.addRow(new Object[]{funcionario.getCodFuncionario(), funcionario.getNomeFuncionario(),
-                    funcionario.getTelCel(), funcionario.getTelFixo()});
+            for (Funcionario func : this.pesquisarFuncionarioCaretUpdate(tfBuscarFuncionarioNome)) {
+                tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
+                    func.getTelCel(), func.getTelFixo()});
             }
         } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
             for (Fornecedor fornecedor : this.pesquisarFornecedorCaretUpdate(tfBuscarFuncionarioNome)) {
