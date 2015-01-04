@@ -28,7 +28,7 @@ public class ClienteCRUD {
             
             if (operacao.equalsIgnoreCase("inicializar")) {
                 // seleciona o valor do próximo cliente a ser cadastrado
-                sql = "SELECT last_value +1 FROM cliente_codCliente_seq;";
+                sql = "SELECT last_value FROM cliente_codCliente_seq;";
             } else if (operacao.equalsIgnoreCase("incrementar")) {
                 // incrementa o codigo do próximo cliente
                 sql = "select nextval('cliente_codCliente_seq');";

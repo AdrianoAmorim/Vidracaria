@@ -164,6 +164,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="tfBuscarFuncionarioCargo">
+          <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="tfBuscarFuncionarioCargoCaretUpdate"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField()"/>
           </AuxValues>

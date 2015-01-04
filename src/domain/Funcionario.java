@@ -8,7 +8,6 @@ public class Funcionario extends Endereco {
 
     protected int codFuncionario;
     protected int codCargo;
-    protected int codEmpresa;
     protected String nomeFuncionario;
     protected String telFixo;
     protected String telCel;
@@ -18,13 +17,6 @@ public class Funcionario extends Endereco {
     protected String dtNascimento;
     protected Double salarioFuncionario;
     protected Boolean ativo;
-    protected String logradouro;
-    protected String numero;
-    protected String complemento;
-    protected String bairro;
-    protected String cep;
-    protected String cidade;
-    protected String uf;
 
     public int getCodFuncionario() {
         return codFuncionario;
@@ -40,14 +32,6 @@ public class Funcionario extends Endereco {
 
     public void setCodCargo(int codCargo) {
         this.codCargo = codCargo;
-    }
-
-    public int getCodEmpresa() {
-        return codEmpresa;
-    }
-
-    public void setCodEmpresa(int codEmpresa) {
-        this.codEmpresa = codEmpresa;
     }
 
     public String getEmail() {

@@ -16,25 +16,37 @@ import javax.swing.JOptionPane;
  */
 public class VendaCRUD {
 
-    public int incrementCodVenda() {
-        PreparedStatement stmt;
+    public int incrementCodVenda(String operacao) {
+        PreparedStatement stmt = null;
         Connection conn = new SQLite().conectar();
-        int increment = 0;
+        int increment = 0;        
 
         try {
-            stmt = conn.prepareStatement("SELECT MAX(codVenda) FROM venda;");
+            String sql = "";
+            
+            if (operacao.equalsIgnoreCase("inicializar")) {
+                // seleciona o valor do próximo cliente a ser cadastrado
+                sql = "SELECT last_value FROM venda_codVenda_seq;";
+            } else if (operacao.equalsIgnoreCase("incrementar")) {
+                // incrementa o codigo do próximo cliente
+                sql = "select nextval('venda_codVenda_seq');";
+            }
+
+            stmt = conn.prepareStatement(sql);
+            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
                 increment = result.getInt(1);
+                return increment;
             }
 
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodVenda) {
-            JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo da venda");
+            JOptionPane.showMessageDialog(null, erroIncrementCodVenda.getMessage());
         }
-        return increment + 1;
+        return increment;
     }
 
     public void inserirVenda(Venda venda, ArrayList<ProdutoVendido> listaProdutosVendidos) {

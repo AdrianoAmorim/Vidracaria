@@ -38,13 +38,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         int codCli = new ClienteCRUD().incrementCodCliente("inicializar");
         tfClienteCodigo.setText(Integer.toString(codCli));
         // INICIALIZAÇÃO DO CODIGO DA VENDA
-        int codVend = new VendaCRUD().incrementCodVenda();
+        int codVend = new VendaCRUD().incrementCodVenda("inicializar");
         tfVendaCodigo.setText(Integer.toString(codVend));
         // INICIALIZAÇÃO DO CODIGO DA COMPRA
-        int codCompra = new CompraCRUD().incrementCodCompra();
+        int codCompra = new CompraCRUD().incrementCodCompra("inicializar");
         tfCompraCodigo.setText(String.valueOf(codCompra));
         // INICIALIZAÇÃO DO CODIGO DO FUNCIONARIO
-        int codFunc = new FuncionarioCRUD().incrementCodFuncionario();
+        int codFunc = new FuncionarioCRUD().incrementCodFuncionario("inicializar");
         tfFuncionarioCodigo.setText(String.valueOf(codFunc));
         // INICIALIZAÇÃO DA LISTA DE Parcelamento
         this.carregarCbParcelamentoVenda();
@@ -306,7 +306,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlTabbedPrincipal.setMinimumSize(new java.awt.Dimension(1210, 497));
         pnlTabbedPrincipal.setPreferredSize(new java.awt.Dimension(1280, 768));
 
-        pnlCadCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlCadCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlCadCliente.setForeground(new java.awt.Color(255, 255, 255));
         pnlCadCliente.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         pnlCadCliente.setMinimumSize(new java.awt.Dimension(802, 426));
@@ -693,7 +693,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(tfClienteTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
@@ -724,12 +724,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadCliente.setLayout(pnlCadClienteLayout);
         pnlCadClienteLayout.setHorizontalGroup(
             pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1254, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadClienteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 1245, Short.MAX_VALUE))
+                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 1232, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlCadClienteLayout.setVerticalGroup(
@@ -745,7 +745,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1407887820_clients.png")), pnlCadCliente, "Cadastro de Cliente"); // NOI18N
 
-        pnlCadFuncionario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlCadFuncionario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
         jPanel44.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -894,6 +894,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioDescricaoCargo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
         rgFuncionarioStatus.add(rbFuncionarioStatusAtiv);
+        rbFuncionarioStatusAtiv.setSelected(true);
         rbFuncionarioStatusAtiv.setText("Ativo");
         rbFuncionarioStatusAtiv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -961,7 +962,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                             .addComponent(tfFuncionarioTelResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(212, 212, 212)
                                             .addComponent(lblFuncionarioTelCel)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(tfFuncionarioTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel7Layout.createSequentialGroup()
                                             .addComponent(tfFuncionarioLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1002,36 +1003,38 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                     .addComponent(lblFuncionarioNumero)
                                     .addGap(18, 18, 18)
                                     .addComponent(tfFuncionarioNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addComponent(tfFuncionarioComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(lblFuncionarioBairro)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfFuncionarioBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(tfFuncionarioComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblFuncionarioBairro)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tfFuncionarioBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel7Layout.createSequentialGroup()
-                                            .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblFuncionarioCidade)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(cbFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
                                     .addComponent(lblFuncionarioUf)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(cbFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblFuncionarioCidade)
+                                    .addGap(8, 8, 8)
+                                    .addComponent(cbFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addComponent(lblFuncionarioStatus)
                             .addGap(18, 18, 18)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(rbFuncionarioStatusInat)
-                                .addComponent(rbFuncionarioStatusAtiv))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(rbFuncionarioStatusInat)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(rbFuncionarioStatusAtiv)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1054,11 +1057,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(lblFuncionarioNome))
                     .addComponent(btnFuncionarioBuscarNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFuncionarioTelFixo)
-                    .addComponent(lblFuncionarioTelCel)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfFuncionarioTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfFuncionarioTelResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblFuncionarioTelFixo)
+                        .addComponent(lblFuncionarioTelCel)
+                        .addComponent(tfFuncionarioTelResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFuncionarioEmail)
@@ -1086,11 +1090,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(tfFuncionarioBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFuncionarioCidade)
                             .addComponent(lblFuncionarioUf)
                             .addComponent(lblFuncionarioCep)
                             .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbFuncionarioUf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFuncionarioCidade)
                             .addComponent(cbFuncionarioCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -1163,7 +1167,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Funcionario.png")), pnlCadFuncionario, "Cadastro de Funcionário"); // NOI18N
 
-        pnlEfetuarVenda.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlEfetuarVenda.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlEfetuarVenda.setMinimumSize(new java.awt.Dimension(1210, 497));
         pnlEfetuarVenda.setName("pnlVenda"); // NOI18N
         pnlEfetuarVenda.setPreferredSize(new java.awt.Dimension(1210, 497));
@@ -1182,7 +1186,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblVendaListaProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                .addComponent(lblVendaListaProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel29Layout.setVerticalGroup(
@@ -1719,7 +1723,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1408033473_cashbox.png")), pnlEfetuarVenda, "Cadastrar Venda"); // NOI18N
 
-        pnlEfetuarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlEfetuarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
         pnlEfetuarCompra.setName("pnlCompra"); // NOI18N
 
         jPanel54.setBackground(new java.awt.Color(153, 153, 255));
@@ -2006,7 +2010,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCompraValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                .addComponent(lblCompraValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
@@ -2014,7 +2018,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblCompraValorTotal)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnAlterarCompra.setBackground(new java.awt.Color(153, 153, 255));
@@ -2280,7 +2284,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEfetuarCompraLayout.createSequentialGroup()
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel54, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1277, Short.MAX_VALUE)
+                    .addComponent(jPanel54, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1289, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEfetuarCompraLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2356,9 +2360,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/compra.png")), pnlEfetuarCompra, "Efetuar Compra"); // NOI18N
 
-        pnlFinanceiro.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlFinanceiro.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
-        pnlFinanceiroContasPagar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Contas A Pagar", 0, 2, new java.awt.Font("Tahoma", 1, 18)), null)); // NOI18N
+        pnlFinanceiroContasPagar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Contas A Pagar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18)), null)); // NOI18N
 
         btnFinanceiroAddPagamentoDespesa.setText("Efetuar Pagamento");
 
@@ -2416,7 +2420,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlFinanceiroContasReceber.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Contas A Receber", 0, 2, new java.awt.Font("Tahoma", 1, 18)), null)); // NOI18N
+        pnlFinanceiroContasReceber.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 255), new java.awt.Color(204, 204, 255)), "Contas A Receber", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18)), null)); // NOI18N
 
         btnAddPagamentoRenda.setText("Efetuar Recebimento");
 
@@ -2560,7 +2564,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/Financeiro.png")), pnlFinanceiro, "Financeiro"); // NOI18N
 
-        pnlAdministracao.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(0), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
+        pnlAdministracao.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true)));
 
         javax.swing.GroupLayout pnlAdministracaoLayout = new javax.swing.GroupLayout(pnlAdministracao);
         pnlAdministracao.setLayout(pnlAdministracaoLayout);
@@ -2645,7 +2649,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             compraCRUD.inserirCompra(compra, listaProdutosComprados);
 
             // incrementa o valor do codigo da venda
-            tfCompraCodigo.setText(String.valueOf(compraCRUD.incrementCodCompra()));
+            tfCompraCodigo.setText(String.valueOf(compraCRUD.incrementCodCompra("incrementar")));
 
         }
     }//GEN-LAST:event_btnCompraCadastrarActionPerformed
@@ -2886,7 +2890,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             vendaCRUD.inserirVenda(venda, listaProdutosVendidos);
 
             // incrementa o valor do codigo da venda
-            tfVendaCodigo.setText(String.valueOf(vendaCRUD.incrementCodVenda()));
+            tfVendaCodigo.setText(String.valueOf(vendaCRUD.incrementCodVenda("incrementar")));
         }
     }//GEN-LAST:event_btnVendaCadastrarActionPerformed
 
@@ -2949,34 +2953,37 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());
         buscarFuncionario.setVisible(true);
+                
+        if (buscarFuncionario.funcionario.getCodFuncionario() != 0) {
 
-        tfFuncionarioCodigo.setText(String.valueOf(buscarFuncionario.funcionario.getCodFuncionario()));
-        tfFuncionarioCodCargo.setText(String.valueOf(buscarFuncionario.funcionario.getCodCargo()));
-        tfFuncionarioNome.setText(buscarFuncionario.funcionario.getNomeFuncionario());
-        tfFuncionarioTelResidencial.setText(buscarFuncionario.funcionario.getTelFixo());
-        tfFuncionarioTelCelular.setText(buscarFuncionario.funcionario.getTelCel());
-        tfFuncionarioCpf.setText(buscarFuncionario.funcionario.getCpf());
-        tfFuncionarioRg.setText(buscarFuncionario.funcionario.getRg());
-        tfFuncionarioEmail.setText(buscarFuncionario.funcionario.getEmail());
-        tfFuncionarioLogradouro.setText(buscarFuncionario.funcionario.getLogradouro());
-        tfFuncionarioNumero.setText(String.valueOf(buscarFuncionario.funcionario.getNumero()));
-        tfFuncionarioComplemento.setText(buscarFuncionario.funcionario.getComplemento());
-        tfFuncionarioBairro.setText(buscarFuncionario.funcionario.getBairro());
-        tfFuncionarioCep.setText(buscarFuncionario.funcionario.getCep());
+            tfFuncionarioCodigo.setText(String.valueOf(buscarFuncionario.funcionario.getCodFuncionario()));
+            tfFuncionarioCodCargo.setText(String.valueOf(buscarFuncionario.funcionario.getCodCargo()));
+            tfFuncionarioNome.setText(buscarFuncionario.funcionario.getNomeFuncionario());
+            tfFuncionarioTelResidencial.setText(buscarFuncionario.funcionario.getTelFixo());
+            tfFuncionarioTelCelular.setText(buscarFuncionario.funcionario.getTelCel());
+            tfFuncionarioCpf.setText(buscarFuncionario.funcionario.getCpf());
+            tfFuncionarioRg.setText(buscarFuncionario.funcionario.getRg());
+            tfFuncionarioEmail.setText(buscarFuncionario.funcionario.getEmail());
+            tfFuncionarioLogradouro.setText(buscarFuncionario.funcionario.getLogradouro());
+            tfFuncionarioNumero.setText(String.valueOf(buscarFuncionario.funcionario.getNumero()));
+            tfFuncionarioComplemento.setText(buscarFuncionario.funcionario.getComplemento());
+            tfFuncionarioBairro.setText(buscarFuncionario.funcionario.getBairro());
+            tfFuncionarioCep.setText(buscarFuncionario.funcionario.getCep());
 
-        tfFuncionarioSalario.setText(String.valueOf(buscarFuncionario.funcionario.getSalarioFuncionario()));
+            tfFuncionarioSalario.setText(String.valueOf(buscarFuncionario.funcionario.getSalarioFuncionario()));
 
-        // comboboxes 
-        cbFuncionarioUf.getModel().setSelectedItem(buscarFuncionario.funcionario.getUf());
-        cbFuncionarioCidade.getModel().setSelectedItem(buscarFuncionario.funcionario.getCidade());
+            // comboboxes 
+            cbFuncionarioUf.getModel().setSelectedItem(buscarFuncionario.funcionario.getUf());
+            cbFuncionarioCidade.getModel().setSelectedItem(buscarFuncionario.funcionario.getCidade());
 
-        // define o status do funcionário
-        if (buscarFuncionario.funcionario.getAtivo()) {
-            // ativo
-            rbFuncionarioStatusAtiv.setSelected(true);
-        } else {
-            // inativo
-            rbFuncionarioStatusInat.setSelected(true);
+            // define o status do funcionário
+            if (buscarFuncionario.funcionario.getAtivo()) {
+                // ativo
+                rbFuncionarioStatusAtiv.setSelected(true);
+            } else {
+                // inativo
+                rbFuncionarioStatusInat.setSelected(true);
+            }
         }
     }//GEN-LAST:event_btnFuncionarioBuscarNomeMouseClicked
 
@@ -3000,9 +3007,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setTelCel(FrmPrincipal.desmascarar(tfFuncionarioTelCelular.getText()));
         funcionario.setCpf(FrmPrincipal.desmascarar(tfFuncionarioCpf.getText()));
         funcionario.setRg(FrmPrincipal.desmascarar(tfFuncionarioRg.getText()));
-        
+
         // funcionario.setDtNascimento(tfFuncionarioDtNascimento.getText());
-        
         funcionario.setEmail(tfFuncionarioEmail.getText());
         funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
         funcionario.setNumero(Integer.parseInt(tfFuncionarioNumero.getText()));
@@ -3049,8 +3055,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setEmail(tfFuncionarioEmail.getText());
         funcionario.setCpf(FrmPrincipal.desmascarar(tfFuncionarioCpf.getText()));
         funcionario.setRg(FrmPrincipal.desmascarar(tfFuncionarioRg.getText()));
-       
-       // funcionario.setDtNascimento(tfFuncionarioDtNascimento.getText());
+
+        // funcionario.setDtNascimento(tfFuncionarioDtNascimento.getText());
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText().replaceAll(",", ".")));
 
         // definição do status do funcionario
@@ -3087,8 +3093,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
             cbFuncionarioCidade.removeAllItems();
             cbFuncionarioUf.removeAllItems();
             carregarCbUf();
+            
             // incrementa o codigo do funcionario
-            tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario()));
+            tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("incrementar")));
         }
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
 

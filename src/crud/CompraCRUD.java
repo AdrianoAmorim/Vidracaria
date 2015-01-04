@@ -16,25 +16,38 @@ import javax.swing.JOptionPane;
  */
 public class CompraCRUD {
 
-    public int incrementCodCompra() {
-        PreparedStatement stmt;
+    public int incrementCodCompra(String operacao) {
+        PreparedStatement stmt = null;
         Connection conn = new SQLite().conectar();
         int increment = 0;
 
         try {
-            stmt = conn.prepareStatement("SELECT MAX(codCompra) FROM compra;");
+            String sql = "";
+
+            if (operacao.equalsIgnoreCase("inicializar")) {
+                // seleciona o valor do próximo cliente a ser cadastrado
+                sql = "SELECT last_value FROM compra_codCompra_seq;";
+            } else if (operacao.equalsIgnoreCase("incrementar")) {
+                // incrementa o codigo do próximo cliente
+                sql = "select nextval('compra_codCompra_seq');";
+            }
+
+            stmt = conn.prepareStatement(sql);
+            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
                 increment = result.getInt(1);
+                return increment;
             }
 
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodCompra) {
-            JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo do compra");
+            JOptionPane.showMessageDialog(null, erroIncrementCodCompra.getMessage());
         }
-        return increment + 1;
+        return increment;
+
     }
 
     // INSERT 
@@ -83,7 +96,7 @@ public class CompraCRUD {
 
             conn.commit();
             conn.setAutoCommit(true);
-            
+
             stmt.close();
             conn.close();
 

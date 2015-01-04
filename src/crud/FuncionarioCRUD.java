@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import view.FrmPrincipal;
 
 /**
  *
@@ -17,25 +18,37 @@ import javax.swing.JTextField;
  */
 public class FuncionarioCRUD {
 
-    public int incrementCodFuncionario() {
-        PreparedStatement stmt;
+    public int incrementCodFuncionario(String operacao) {
+        PreparedStatement stmt = null;
         Connection conn = new SQLite().conectar();
         int increment = 0;
 
         try {
-            stmt = conn.prepareStatement("SELECT MAX(codFuncionario) FROM funcionario;");
+            String sql = "";
+
+            if (operacao.equalsIgnoreCase("inicializar")) {
+                // seleciona o valor do próximo cliente a ser cadastrado
+                sql = "SELECT last_value FROM funcionario_codFuncionario_seq;";
+            } else if (operacao.equalsIgnoreCase("incrementar")) {
+                // incrementa o codigo do próximo cliente
+                sql = "select nextval('funcionario_codFuncionario_seq');";
+            }
+
+            stmt = conn.prepareStatement(sql);
+            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
                 increment = result.getInt(1);
+                return increment;
             }
 
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodFuncionario) {
-            JOptionPane.showMessageDialog(null, erroIncrementCodFuncionario.getSQLState());
+            JOptionPane.showMessageDialog(null, erroIncrementCodFuncionario.getMessage());
         }
-        return increment + 1;
+        return increment;
     }
 
     // INSERT 
@@ -145,39 +158,34 @@ public class FuncionarioCRUD {
     public String prepararQueryPesquisarFuncionarios(JTextField... args) {
         int tam = args.length;
 
-        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel, f.cpf, f.rg, f.dtnascimento,"
-                + "f.salario, f.status, f.email, ef.logradouro, ef.numero, ef.complemento, ef.bairro, ef.cep, ef.cidade, ef.uf"
-                + " FROM funcionario f NATURAL INNER JOIN enderecoFuncionario ef ";
+        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel, f.cpf, f.rg, f.dtnascimento, "
+                + "f.salario, f.status, f.email, ef.logradouro, ef.numero, ef.complemento, ef.bairro, ef.cep, ef.cidade, ef.uf "
+                + "FROM funcionario f CROSS JOIN enderecoFuncionario ef "
+                + "WHERE f.codFuncionario = ef.codFuncionario ";
 
-        args[0].setName("codFuncionario");
-        args[1].setName("nome");
-        args[2].setName("codCargo");
+        args[0].setName("f.codFuncionario");
+        args[1].setName("f.nome");
+        args[2].setName("f.codCargo");
 
-        // percorre os JTextFields até encontrar um preenchido
-        for (int i = 0; i < tam; i++) {
-            // quando encontrar um JTextField não vazio (preenchido)
-            if (!args[i].getText().isEmpty()) {
-                // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                if (args[i].getName().equalsIgnoreCase("codFuncionario")) {
-                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
-                } else {
-                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
-                }
+        // percorre todos os JTextFields
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].getName().equalsIgnoreCase("f.codFuncionario") && !FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()
+                    || args[i].getName().equalsIgnoreCase("f.codCargo") && !FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
 
-                // percorre novamente o vetor em busca de outro JTextField preenchido
-                for (int j = 0; j < tam; j++) {
-                    // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
-                    if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
-                        // incrementa a query de acordo com o nome e conteúdo do JTextField
-                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%';";
-                    }
-                }
+                // caso o parametro seja o codFuncionario ou codCargo 
+                // é necessário usar (Cast) e comparação exata (=)
+                sql += "AND " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+            } else if (!FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
+                // demais parametros não usam cast e são comparados por aproximação (%LIKE%)
+                sql += "AND " + args[i].getName() + " LIKE '%" + FrmPrincipal.desmascarar(args[i].getText()).trim() + "%' ";
             }
         }
+
+        sql += ";";
         return sql;
     }
 
-    // SELECT
+// SELECT
     public ArrayList<Funcionario> consultarFuncionario(JTextField... args) {
         PreparedStatement stmt;
         ResultSet result;
@@ -199,11 +207,10 @@ public class FuncionarioCRUD {
                 funcionario.setCodEmpresa(result.getInt("codEmpresa"));
                 funcionario.setNomeFuncionario(result.getString("nome"));
                 funcionario.setTelFixo(result.getString("telFixo"));
-                funcionario.setTelCel(result.getString("telCel"));
-                
+                funcionario.setTelCel(result.getString("telCel"));                
+
                 funcionario.setCpf(result.getString("cpf"));
-                funcionario.setRg(result.getString("rg"));
-                
+                funcionario.setRg(result.getString("rg"));                
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
                 funcionario.setAtivo(result.getBoolean("status"));
                 funcionario.setEmail(result.getString("email"));
@@ -231,10 +238,11 @@ public class FuncionarioCRUD {
         PreparedStatement stmt;
         ResultSet result;
 
-        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel,"
-                + "f.salario, f.status, ef.logradouro, ef.numero, ef.complemento, ef.bairro, ef.cep, ef.cidade, ef.uf"
-                + " FROM funcionario f NATURAL INNER JOIN enderecoFuncionario ef "
-                + "WHERE f.nome = '" + nome + "' OR f.codFuncionario = " + codigoFuncionario + ";";
+        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel, f.email, "
+                + "f.cpf, f.rg, f.dtnascimento, f.salario, f.status, ef.logradouro, ef.numero, ef.complemento, "
+                + "ef.bairro, ef.cep, ef.cidade, ef.uf "
+                + "FROM funcionario f NATURAL INNER JOIN enderecoFuncionario ef "
+                + "WHERE f.nome = '" + nome + "' OR f.codFuncionario = " + codigoFuncionario + " ";
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement(sql);
@@ -247,6 +255,10 @@ public class FuncionarioCRUD {
                 funcionario.setNomeFuncionario(result.getString("nome"));
                 funcionario.setTelFixo(result.getString("telFixo"));
                 funcionario.setTelCel(result.getString("telCel"));
+                funcionario.setEmail(result.getString("email"));
+                funcionario.setCpf(result.getString("cpf"));
+                funcionario.setRg(result.getString("rg"));
+                funcionario.setDtNascimento(result.getString("dtnascimento"));
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
                 funcionario.setAtivo(result.getBoolean("status"));
                 funcionario.setLogradouro(result.getString("logradouro"));
