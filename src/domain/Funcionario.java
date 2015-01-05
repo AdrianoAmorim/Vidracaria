@@ -1,5 +1,7 @@
 package domain;
 
+import java.sql.Date;
+
 /**
  *
  * @author rafael
@@ -14,7 +16,7 @@ public class Funcionario extends Endereco {
     protected String email;
     protected String cpf;
     protected String rg;
-    protected String dtNascimento;
+    protected Date dtNascimento;
     protected Double salarioFuncionario;
     protected Boolean ativo;
 
@@ -58,11 +60,11 @@ public class Funcionario extends Endereco {
         this.rg = rg;
     }
 
-    public String getDtNascimento() {
+    public Date getDtNascimento() {
         return dtNascimento;
     }
 
-    public void setDtNascimento(String dtNascimento) {
+    public void setDtNascimento(Date dtNascimento) {
         this.dtNascimento = dtNascimento;
     }
 

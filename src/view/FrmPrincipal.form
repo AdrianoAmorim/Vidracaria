@@ -1107,16 +1107,14 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="tfFuncionarioNumero" min="-2" pref="77" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="tfFuncionarioComplemento" min="-2" pref="287" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="lblFuncionarioBairro" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                                  <Component id="tfFuncionarioBairro" min="-2" pref="267" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="tfFuncionarioSalario" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="tfFuncionarioComplemento" min="-2" pref="287" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="lblFuncionarioBairro" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Component id="tfFuncionarioBairro" min="-2" pref="267" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="tfFuncionarioSalario" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="tfFuncionarioCep" min="-2" pref="158" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1134,15 +1132,10 @@
                                       <Component id="lblFuncionarioStatus" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="rbFuncionarioStatusInat" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="rbFuncionarioStatusAtiv" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="30" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="rbFuncionarioStatusInat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rbFuncionarioStatusAtiv" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="btnCadastrarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnAlterarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>

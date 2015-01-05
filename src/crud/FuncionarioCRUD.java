@@ -113,7 +113,8 @@ public class FuncionarioCRUD {
             conn.setAutoCommit(false);
 
             stmt = conn.prepareStatement("UPDATE funcionario SET codEmpresa = ?, codCargo = ?, "
-                    + "nome = ?, telFixo = ?, telCel = ?, salario = ?, status = ? , email = ?"
+                    + "nome = ?, telFixo = ?, telCel = ?, cpf = ?, rg = ?, dtnascimento = ?, "
+                    + "salario = ?, status = ? , email = ? "
                     + "WHERE codFuncionario = ?;");
 
             stmt.setInt(1, funcionario.getCodEmpresa());
@@ -121,10 +122,13 @@ public class FuncionarioCRUD {
             stmt.setString(3, funcionario.getNomeFuncionario());
             stmt.setString(4, funcionario.getTelFixo());
             stmt.setString(5, funcionario.getTelCel());
-            stmt.setDouble(6, funcionario.getSalarioFuncionario());
-            stmt.setBoolean(7, funcionario.getAtivo());
-            stmt.setString(8, funcionario.getEmail());
-            stmt.setInt(9, funcionario.getCodFuncionario());
+            stmt.setString(6, funcionario.getCpf());
+            stmt.setString(7, funcionario.getRg());
+            stmt.setDate(8, funcionario.getDtNascimento());
+            stmt.setDouble(9, funcionario.getSalarioFuncionario());
+            stmt.setBoolean(10, funcionario.getAtivo());
+            stmt.setString(11, funcionario.getEmail());
+            stmt.setInt(12, funcionario.getCodFuncionario());
 
             stmt.executeUpdate();
 
@@ -241,8 +245,9 @@ public class FuncionarioCRUD {
         String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel, f.email, "
                 + "f.cpf, f.rg, f.dtnascimento, f.salario, f.status, ef.logradouro, ef.numero, ef.complemento, "
                 + "ef.bairro, ef.cep, ef.cidade, ef.uf "
-                + "FROM funcionario f NATURAL INNER JOIN enderecoFuncionario ef "
-                + "WHERE f.nome = '" + nome + "' OR f.codFuncionario = " + codigoFuncionario + " ";
+                + "FROM funcionario f CROSS JOIN enderecoFuncionario ef "
+                + "WHERE f.codFuncionario = ef.codFuncionario "
+                + "AND f.nome = '" + nome + "' OR f.codFuncionario = " + codigoFuncionario + " ";
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement(sql);
@@ -258,7 +263,7 @@ public class FuncionarioCRUD {
                 funcionario.setEmail(result.getString("email"));
                 funcionario.setCpf(result.getString("cpf"));
                 funcionario.setRg(result.getString("rg"));
-                funcionario.setDtNascimento(result.getString("dtnascimento"));
+                funcionario.setDtNascimento(result.getDate("dtnascimento"));
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
                 funcionario.setAtivo(result.getBoolean("status"));
                 funcionario.setLogradouro(result.getString("logradouro"));

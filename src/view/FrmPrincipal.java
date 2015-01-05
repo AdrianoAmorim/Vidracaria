@@ -3,8 +3,12 @@ package view;
 import controller.*;
 import crud.*;
 import domain.*;
-import java.awt.event.ItemEvent;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -1003,14 +1007,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                     .addComponent(lblFuncionarioNumero)
                                     .addGap(18, 18, 18)
                                     .addComponent(tfFuncionarioNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(tfFuncionarioComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblFuncionarioBairro)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tfFuncionarioBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(tfFuncionarioComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(lblFuncionarioBairro)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tfFuncionarioBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tfFuncionarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                                     .addComponent(tfFuncionarioCep, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
@@ -1025,12 +1028,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(lblFuncionarioStatus)
                             .addGap(18, 18, 18)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addComponent(rbFuncionarioStatusInat)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addComponent(rbFuncionarioStatusAtiv)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(rbFuncionarioStatusInat)
+                                .addComponent(rbFuncionarioStatusAtiv))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -2953,7 +2953,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());
         buscarFuncionario.setVisible(true);
-                
+
         if (buscarFuncionario.funcionario.getCodFuncionario() != 0) {
 
             tfFuncionarioCodigo.setText(String.valueOf(buscarFuncionario.funcionario.getCodFuncionario()));
@@ -2963,6 +2963,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tfFuncionarioTelCelular.setText(buscarFuncionario.funcionario.getTelCel());
             tfFuncionarioCpf.setText(buscarFuncionario.funcionario.getCpf());
             tfFuncionarioRg.setText(buscarFuncionario.funcionario.getRg());
+
+            tfFuncionarioDtNascimento.setText(String.valueOf(buscarFuncionario.funcionario.getDtNascimento()));
+            
             tfFuncionarioEmail.setText(buscarFuncionario.funcionario.getEmail());
             tfFuncionarioLogradouro.setText(buscarFuncionario.funcionario.getLogradouro());
             tfFuncionarioNumero.setText(String.valueOf(buscarFuncionario.funcionario.getNumero()));
@@ -3007,8 +3010,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setTelCel(FrmPrincipal.desmascarar(tfFuncionarioTelCelular.getText()));
         funcionario.setCpf(FrmPrincipal.desmascarar(tfFuncionarioCpf.getText()));
         funcionario.setRg(FrmPrincipal.desmascarar(tfFuncionarioRg.getText()));
-
-        // funcionario.setDtNascimento(tfFuncionarioDtNascimento.getText());
+        funcionario.setDtNascimento(new java.sql.Date(converterDatas("saida", tfFuncionarioDtNascimento.getText()).getTime()));
         funcionario.setEmail(tfFuncionarioEmail.getText());
         funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
         funcionario.setNumero(Integer.parseInt(tfFuncionarioNumero.getText()));
@@ -3034,10 +3036,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
             funcionarioCRUD.atualizarFuncionario(funcionario);
 
             // limpa os dados do formulário
-            limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
-                    tfFuncionarioTelResidencial, tfFuncionarioTelCelular, tfFuncionarioEmail,
-                    tfFuncionarioLogradouro, tfFuncionarioNumero, tfFuncionarioComplemento,
-                    tfFuncionarioBairro, tfFuncionarioCep, tfFuncionarioSalario);
+            limparCampos(tfFuncionarioCodCargo, tfFuncionarioNome, tfFuncionarioTelResidencial,
+                    tfFuncionarioTelCelular, tfFuncionarioEmail, tfFuncionarioCpf, tfFuncionarioRg,
+                    tfFuncionarioDtNascimento, tfFuncionarioLogradouro, tfFuncionarioNumero,
+                    tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep, tfFuncionarioSalario);
+
+            // resetar comboboxes
+            cbFuncionarioCidade.removeAllItems();
+            //carregarCbCidades();
+            cbFuncionarioUf.removeAllItems();
+            carregarCbUf();
+
+            // formatação padrão do formulário
+            rbFuncionarioStatusAtiv.setSelected(true);
         }
     }//GEN-LAST:event_btnAlterarFuncionarioActionPerformed
 
@@ -3085,15 +3096,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
             funcionarioCRUD.inserirFuncionario(funcionario);
 
             // limpa os dados do formulário
-            limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo,
-                    tfFuncionarioNome, tfFuncionarioSalario, tfFuncionarioTelCelular,
-                    tfFuncionarioTelResidencial, tfFuncionarioEmail, tfFuncionarioCpf, tfFuncionarioRg, tfFuncionarioDtNascimento,
-                    tfFuncionarioLogradouro, tfFuncionarioNumero, tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep);
+            limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
+                    tfFuncionarioSalario, tfFuncionarioTelCelular, tfFuncionarioTelResidencial,
+                    tfFuncionarioEmail, tfFuncionarioCpf, tfFuncionarioRg, tfFuncionarioDtNascimento,
+                    tfFuncionarioLogradouro, tfFuncionarioNumero, tfFuncionarioComplemento,
+                    tfFuncionarioBairro, tfFuncionarioCep);
 
             cbFuncionarioCidade.removeAllItems();
             cbFuncionarioUf.removeAllItems();
             carregarCbUf();
-            
+
             // incrementa o codigo do funcionario
             tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("incrementar")));
         }
@@ -3275,12 +3287,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cbClienteUf.removeAllItems();
         carregarCbUf();
 
-        rbClienteFisica.setSelected(false);
+        // formatação padrão do formulário
+        rbClienteFisica.setSelected(true);
         rbClienteJuridica.setSelected(false);
+
         tfClienteCpf.setEnabled(true);
         tfClienteRg.setEnabled(true);
-        tfClienteCnpj.setEnabled(true);
-        tfClienteInscEstadual.setEnabled(true);
+        tfClienteCnpj.setEnabled(false);
+        tfClienteInscEstadual.setEnabled(false);
     }//GEN-LAST:event_btnClienteAlterarActionPerformed
 
 //Cadastrar Cliente
@@ -3348,12 +3362,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
             // incrementa o codigo do cliente
             tfClienteCodigo.setText(Integer.toString(new ClienteCRUD().incrementCodCliente("incrementar")));
 
-            rbClienteFisica.setSelected(false);
+            // formatação padrão do formulário
+            rbClienteFisica.setSelected(true);
             rbClienteJuridica.setSelected(false);
+
             tfClienteCpf.setEnabled(true);
             tfClienteRg.setEnabled(true);
-            tfClienteCnpj.setEnabled(true);
-            tfClienteInscEstadual.setEnabled(true);
+            tfClienteCnpj.setEnabled(false);
+            tfClienteInscEstadual.setEnabled(false);
         }
     }//GEN-LAST:event_btnClienteCadastrarActionPerformed
 
@@ -3424,6 +3440,28 @@ public class FrmPrincipal extends javax.swing.JFrame {
         String textoFormatado;
         textoFormatado = textoMascarado.trim().replace("-", "").replace(".", "").replace("/", "").replace("(", "").replace(")", "");
         return textoFormatado;
+    }
+
+    // converte um data String para Date
+    static public java.util.Date converterDatas(String operacao, String data) {
+        java.util.Date dataFormatada = null;
+        DateFormat df = null;
+
+        if (operacao.equalsIgnoreCase("saida")) {
+            // usado para enviar do sistema para o banco de dados
+            df = new SimpleDateFormat("dd/MM/yyyy");
+        } else if (operacao.equalsIgnoreCase("entrada")) {
+            // usado para enviar do banco de dados para o sistema
+            df = new SimpleDateFormat("yyyy/MM/dd");
+        }
+
+        try {
+            dataFormatada = new java.util.Date(df.parse(data).getTime());
+        } catch (ParseException erroConverterDatas) {
+            JOptionPane.showMessageDialog(null, erroConverterDatas.getMessage());
+        }
+
+        return dataFormatada;
     }
 
 // Insere os produtos do ComboBox nas tabelas
