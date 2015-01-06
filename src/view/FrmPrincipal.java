@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -130,7 +131,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblFuncionarioTitulo = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        tfFuncionarioCodigo = new javax.swing.JTextField();
         lblFuncionarioCodigo = new javax.swing.JLabel();
         tfFuncionarioCodCargo = new javax.swing.JTextField();
         lblFuncionarioCodCargo = new javax.swing.JLabel();
@@ -158,7 +158,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblFuncionarioStatus = new javax.swing.JLabel();
         lblFuncionarioEmail = new javax.swing.JLabel();
         tfFuncionarioEmail = new javax.swing.JTextField();
-        tfFuncionarioDescricaoCargo = new javax.swing.JTextField();
         rbFuncionarioStatusAtiv = new javax.swing.JRadioButton();
         rbFuncionarioStatusInat = new javax.swing.JRadioButton();
         tfFuncionarioTelResidencial = new javax.swing.JFormattedTextField(MascararCampos("(##)####-####"));
@@ -172,6 +171,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioCpf = new javax.swing.JFormattedTextField(MascararCampos("###.###.###-##"));
         tfFuncionarioRg = new javax.swing.JFormattedTextField(MascararCampos("#.###.###"));
         tfFuncionarioDtNascimento = new javax.swing.JFormattedTextField(MascararCampos("##/##/####"));
+        tfFuncionarioCodigo = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         lblFuncionarioDadosFuncionario = new javax.swing.JLabel();
         pnlEfetuarVenda = new javax.swing.JPanel();
@@ -784,10 +784,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(204, 204, 255));
 
-        tfFuncionarioCodigo.setBackground(new java.awt.Color(204, 255, 204));
-        tfFuncionarioCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfFuncionarioCodigo.setForeground(new java.awt.Color(255, 0, 0));
-
         lblFuncionarioCodigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblFuncionarioCodigo.setForeground(new java.awt.Color(0, 69, 139));
         lblFuncionarioCodigo.setText("Código:");
@@ -895,8 +891,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfFuncionarioEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
-        tfFuncionarioDescricaoCargo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-
         rgFuncionarioStatus.add(rbFuncionarioStatusAtiv);
         rbFuncionarioStatusAtiv.setSelected(true);
         rbFuncionarioStatusAtiv.setText("Ativo");
@@ -939,6 +933,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tfFuncionarioCpf.setPreferredSize(new java.awt.Dimension(6, 31));
 
+        tfFuncionarioCodigo.setEditable(false);
+        tfFuncionarioCodigo.setBackground(new java.awt.Color(204, 255, 204));
+        tfFuncionarioCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfFuncionarioCodigo.setBorder(null);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -952,50 +951,35 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(lblFuncionarioNome)
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblFuncionarioCodigo)
                                 .addComponent(lblFuncionarioTelFixo)
                                 .addComponent(lblFuncionarioLogradouro))
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnFuncionarioBuscarNome)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfFuncionarioNome)
-                                        .addGroup(jPanel7Layout.createSequentialGroup()
-                                            .addComponent(tfFuncionarioTelResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(212, 212, 212)
-                                            .addComponent(lblFuncionarioTelCel)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(tfFuncionarioTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel7Layout.createSequentialGroup()
-                                            .addComponent(tfFuncionarioLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(jPanel7Layout.createSequentialGroup()
-                                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                                    .addComponent(tfFuncionarioCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(lblFuncionarioRg)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(tfFuncionarioRg, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(tfFuncionarioEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblFuncionarioNascimento)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tfFuncionarioDtNascimento))))
-                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addGap(55, 55, 55)
-                                    .addComponent(tfFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))))
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addComponent(lblFuncionarioCodCargo)
-                            .addGap(24, 24, 24)
-                            .addComponent(btnFuncionarioBuscarCodCargo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnFuncionarioBuscarNome)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tfFuncionarioCodCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(tfFuncionarioDescricaoCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfFuncionarioNome)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(tfFuncionarioTelResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(212, 212, 212)
+                                    .addComponent(lblFuncionarioTelCel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tfFuncionarioTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(tfFuncionarioLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                            .addComponent(tfFuncionarioCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(lblFuncionarioRg)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(tfFuncionarioRg, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tfFuncionarioEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblFuncionarioNascimento)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfFuncionarioDtNascimento))))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblFuncionarioComplemento)
@@ -1033,7 +1017,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(lblFuncionarioCodCargo)
+                                    .addGap(24, 24, 24)
+                                    .addComponent(btnFuncionarioBuscarCodCargo))
+                                .addComponent(lblFuncionarioCodigo))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfFuncionarioCodCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(380, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -1043,12 +1038,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFuncionarioCodigo)
                     .addComponent(tfFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfFuncionarioCodCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblFuncionarioCodCargo)
-                        .addComponent(tfFuncionarioDescricaoCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblFuncionarioCodCargo))
                     .addComponent(btnFuncionarioBuscarCodCargo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1161,7 +1155,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 502, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2964,8 +2958,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tfFuncionarioCpf.setText(buscarFuncionario.funcionario.getCpf());
             tfFuncionarioRg.setText(buscarFuncionario.funcionario.getRg());
 
-            tfFuncionarioDtNascimento.setText(String.valueOf(buscarFuncionario.funcionario.getDtNascimento()));
-            
+            tfFuncionarioDtNascimento.setText(buscarFuncionario.funcionario.getDtNascimento().toString().replace("-", ""));
+
             tfFuncionarioEmail.setText(buscarFuncionario.funcionario.getEmail());
             tfFuncionarioLogradouro.setText(buscarFuncionario.funcionario.getLogradouro());
             tfFuncionarioNumero.setText(String.valueOf(buscarFuncionario.funcionario.getNumero()));
@@ -2995,7 +2989,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         buscaCargo.setVisible(true);
 
         tfFuncionarioCodCargo.setText(String.valueOf(buscaCargo.cargo.getCodigoCargo()));
-        tfFuncionarioDescricaoCargo.setText(buscaCargo.cargo.getDescricaoCargo());
+        tfFuncionarioCodigo.setText(buscaCargo.cargo.getDescricaoCargo());
     }//GEN-LAST:event_btnFuncionarioBuscarCodCargoMouseClicked
 
     private void btnAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarFuncionarioActionPerformed
@@ -3066,8 +3060,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setEmail(tfFuncionarioEmail.getText());
         funcionario.setCpf(FrmPrincipal.desmascarar(tfFuncionarioCpf.getText()));
         funcionario.setRg(FrmPrincipal.desmascarar(tfFuncionarioRg.getText()));
-
-        // funcionario.setDtNascimento(tfFuncionarioDtNascimento.getText());
+        funcionario.setDtNascimento(new java.sql.Date(converterDatas("saida", tfFuncionarioDtNascimento.getText()).getTime()));
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText().replaceAll(",", ".")));
 
         // definição do status do funcionario
@@ -3443,20 +3436,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // converte um data String para Date
-    static public java.util.Date converterDatas(String operacao, String data) {
-        java.util.Date dataFormatada = null;
+    static public Date converterDatas(String operacao, String data) {
+        Date dataFormatada = null;
         DateFormat df = null;
 
         if (operacao.equalsIgnoreCase("saida")) {
             // usado para enviar do sistema para o banco de dados
             df = new SimpleDateFormat("dd/MM/yyyy");
-        } else if (operacao.equalsIgnoreCase("entrada")) {
-            // usado para enviar do banco de dados para o sistema
-            df = new SimpleDateFormat("yyyy/MM/dd");
         }
+        /* CORRIGIR - NÃO FUNCIONA COMO ESPERADO
+        else if (operacao.equalsIgnoreCase("entrada")) {
+            // usado para enviar do banco de dados para o sistema
+            df = new SimpleDateFormat("ddMMyyyy");
+        } */
 
         try {
-            dataFormatada = new java.util.Date(df.parse(data).getTime());
+            dataFormatada = df.parse(data);
         } catch (ParseException erroConverterDatas) {
             JOptionPane.showMessageDialog(null, erroConverterDatas.getMessage());
         }
@@ -3857,7 +3852,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tfFuncionarioCodigo;
     private javax.swing.JTextField tfFuncionarioComplemento;
     private javax.swing.JFormattedTextField tfFuncionarioCpf;
-    private javax.swing.JTextField tfFuncionarioDescricaoCargo;
     private javax.swing.JFormattedTextField tfFuncionarioDtNascimento;
     private javax.swing.JTextField tfFuncionarioEmail;
     private javax.swing.JTextField tfFuncionarioLogradouro;

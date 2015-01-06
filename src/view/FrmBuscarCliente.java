@@ -37,7 +37,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         tbBuscarCliente = new javax.swing.JTable();
         rgTipoClienteBusca = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        tfCodCliente = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         tfNomeCliente = new javax.swing.JTextField();
         lblBuscaClienteDoc1 = new javax.swing.JLabel();
@@ -51,6 +50,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         tfDoc2Cliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("#.###.###"));
         tfCelularCliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("(##)#####-####"));
         tfResidencialCliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("(##)####-####"));
+        tfCodCliente = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("######"));
         jPanel5 = new javax.swing.JPanel();
         jLabel65 = new javax.swing.JLabel();
 
@@ -103,16 +103,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 69, 139));
         jLabel7.setText("Código:");
-
-        tfCodCliente.setBackground(new java.awt.Color(204, 255, 204));
-        tfCodCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfCodCliente.setForeground(new java.awt.Color(255, 0, 0));
-        tfCodCliente.setPreferredSize(new java.awt.Dimension(0, 0));
-        tfCodCliente.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                tfCodClienteCaretUpdate(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 69, 139));
@@ -176,6 +166,14 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
 
         tfResidencialCliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
 
+        tfCodCliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
+        tfCodCliente.setPreferredSize(new java.awt.Dimension(6, 31));
+        tfCodCliente.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfCodClienteCaretUpdate(evt);
+            }
+        });
+
         javax.swing.GroupLayout rgTipoClienteBuscaLayout = new javax.swing.GroupLayout(rgTipoClienteBusca);
         rgTipoClienteBusca.setLayout(rgTipoClienteBuscaLayout);
         rgTipoClienteBuscaLayout.setHorizontalGroup(
@@ -193,10 +191,10 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
                                 .addGap(29, 29, 29)
                                 .addComponent(rbTipoFisicaCliente))
                             .addGroup(rgTipoClienteBuscaLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfCodCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                    .addComponent(tfDoc1Cliente))
+                                .addGap(23, 23, 23)
+                                .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tfDoc1Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -228,10 +226,10 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
                     .addComponent(lblTipoBuscaCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(tfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(tfCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBuscaClienteDoc2)
@@ -328,10 +326,6 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         }
     }
 
-    private void tfCodClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCodClienteCaretUpdate
-        this.pesquisarClienteCaretUpdate();
-    }//GEN-LAST:event_tfCodClienteCaretUpdate
-
     private void tfNomeClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfNomeClienteCaretUpdate
         this.pesquisarClienteCaretUpdate();
     }//GEN-LAST:event_tfNomeClienteCaretUpdate
@@ -376,6 +370,10 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         this.pesquisarClienteCaretUpdate();
     }//GEN-LAST:event_tfDoc1ClienteCaretUpdate
 
+    private void tfCodClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCodClienteCaretUpdate
+        this.pesquisarClienteCaretUpdate();
+    }//GEN-LAST:event_tfCodClienteCaretUpdate
+
     /**
      * @param args the command line arguments
      */
@@ -396,7 +394,7 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     private javax.swing.JPanel rgTipoClienteBusca;
     private javax.swing.JTable tbBuscarCliente;
     private javax.swing.JFormattedTextField tfCelularCliente;
-    private javax.swing.JTextField tfCodCliente;
+    private javax.swing.JFormattedTextField tfCodCliente;
     private javax.swing.JFormattedTextField tfDoc1Cliente;
     private javax.swing.JFormattedTextField tfDoc2Cliente;
     private javax.swing.JTextField tfNomeCliente;

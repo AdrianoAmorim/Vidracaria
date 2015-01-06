@@ -51,11 +51,11 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
 
         rgTipoClienteBusca = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        tfBuscarFuncionarioCodigo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         tfBuscarFuncionarioNome = new javax.swing.JTextField();
         lblFuncOuForn = new javax.swing.JLabel();
         tfBuscarFuncionarioCargo = new javax.swing.JFormattedTextField();
+        tfBuscarFuncionarioCodigo = new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos("######"));
         jScrollPane1 = new javax.swing.JScrollPane();
         tbBuscaFuncionarioResult = new javax.swing.JTable();
 
@@ -67,16 +67,6 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 69, 139));
         jLabel7.setText("Código:");
-
-        tfBuscarFuncionarioCodigo.setBackground(new java.awt.Color(204, 255, 204));
-        tfBuscarFuncionarioCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfBuscarFuncionarioCodigo.setForeground(new java.awt.Color(255, 0, 0));
-        tfBuscarFuncionarioCodigo.setPreferredSize(new java.awt.Dimension(0, 0));
-        tfBuscarFuncionarioCodigo.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                tfBuscarFuncionarioCodigoCaretUpdate(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 69, 139));
@@ -100,6 +90,14 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
             }
         });
 
+        tfBuscarFuncionarioCodigo.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
+        tfBuscarFuncionarioCodigo.setPreferredSize(new java.awt.Dimension(6, 31));
+        tfBuscarFuncionarioCodigo.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfBuscarFuncionarioCodigoCaretUpdate(evt);
+            }
+        });
+
         javax.swing.GroupLayout rgTipoClienteBuscaLayout = new javax.swing.GroupLayout(rgTipoClienteBusca);
         rgTipoClienteBusca.setLayout(rgTipoClienteBuscaLayout);
         rgTipoClienteBuscaLayout.setHorizontalGroup(
@@ -112,18 +110,18 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
                     .addComponent(jLabel1))
                 .addGap(29, 29, 29)
                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfBuscarFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfBuscarFuncionarioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfBuscarFuncionarioCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfBuscarFuncionarioCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfBuscarFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         rgTipoClienteBuscaLayout.setVerticalGroup(
             rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rgTipoClienteBuscaLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfBuscarFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGap(25, 25, 25)
+                .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(tfBuscarFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -207,23 +205,6 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         return listaFornecedores;
     }
 
-    private void tfBuscarFuncionarioCodigoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscarFuncionarioCodigoCaretUpdate
-        DefaultTableModel tabelaModelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
-        tabelaModelo.setRowCount(0);
-
-        if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
-            for (Funcionario func : this.pesquisarFuncionarioCaretUpdate()) {
-                tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
-                    func.getTelCel(), func.getTelFixo()});
-            }
-        } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
-            for (Fornecedor fornecedor : this.pesquisarFornecedorCaretUpdate()) {
-                tabelaModelo.addRow(new Object[]{fornecedor.getCodFornecedor(), fornecedor.getNome(),
-                    fornecedor.getTelCel(), fornecedor.getTelFixo()});
-            }
-        }
-    }//GEN-LAST:event_tfBuscarFuncionarioCodigoCaretUpdate
-
     private void tfBuscarFuncionarioNomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscarFuncionarioNomeCaretUpdate
         DefaultTableModel tabelaModelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
         tabelaModelo.setRowCount(0);
@@ -274,6 +255,23 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_tfBuscarFuncionarioCargoCaretUpdate
+
+    private void tfBuscarFuncionarioCodigoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscarFuncionarioCodigoCaretUpdate
+        DefaultTableModel tabelaModelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
+        tabelaModelo.setRowCount(0);
+
+        if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
+            for (Funcionario func : this.pesquisarFuncionarioCaretUpdate()) {
+                tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
+                    func.getTelCel(), func.getTelFixo()});
+            }
+        } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
+            for (Fornecedor fornecedor : this.pesquisarFornecedorCaretUpdate()) {
+                tabelaModelo.addRow(new Object[]{fornecedor.getCodFornecedor(), fornecedor.getNome(),
+                    fornecedor.getTelCel(), fornecedor.getTelFixo()});
+            }
+        }
+    }//GEN-LAST:event_tfBuscarFuncionarioCodigoCaretUpdate
 
     /**
      * @param args the command line arguments
@@ -337,7 +335,7 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
     private javax.swing.JPanel rgTipoClienteBusca;
     private javax.swing.JTable tbBuscaFuncionarioResult;
     private javax.swing.JFormattedTextField tfBuscarFuncionarioCargo;
-    private javax.swing.JTextField tfBuscarFuncionarioCodigo;
+    private javax.swing.JFormattedTextField tfBuscarFuncionarioCodigo;
     private javax.swing.JTextField tfBuscarFuncionarioNome;
     // End of variables declaration//GEN-END:variables
 }
