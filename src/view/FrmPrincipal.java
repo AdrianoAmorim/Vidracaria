@@ -172,6 +172,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioRg = new javax.swing.JFormattedTextField(MascararCampos("#.###.###"));
         tfFuncionarioDtNascimento = new javax.swing.JFormattedTextField(MascararCampos("##/##/####"));
         tfFuncionarioCodigo = new javax.swing.JTextField();
+        btnFuncionarioLimpar = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         lblFuncionarioDadosFuncionario = new javax.swing.JLabel();
         pnlEfetuarVenda = new javax.swing.JPanel();
@@ -938,6 +939,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tfFuncionarioCodigo.setBorder(null);
 
+        btnFuncionarioLimpar.setBackground(new java.awt.Color(255, 255, 255));
+        btnFuncionarioLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarNovo1.png"))); // NOI18N
+        btnFuncionarioLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnFuncionarioLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFuncionarioLimparActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -1017,7 +1027,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnFuncionarioLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(2, 2, 2))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel7Layout.createSequentialGroup()
@@ -1102,7 +1115,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(btnAlterarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnFuncionarioLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(11, 11, 11))))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGap(61, 61, 61)
@@ -2958,7 +2972,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tfFuncionarioCpf.setText(buscarFuncionario.funcionario.getCpf());
             tfFuncionarioRg.setText(buscarFuncionario.funcionario.getRg());
 
-            tfFuncionarioDtNascimento.setText(buscarFuncionario.funcionario.getDtNascimento().toString().replace("-", ""));
+            tfFuncionarioDtNascimento.setText(buscarFuncionario.funcionario.getDtNascimento());
 
             tfFuncionarioEmail.setText(buscarFuncionario.funcionario.getEmail());
             tfFuncionarioLogradouro.setText(buscarFuncionario.funcionario.getLogradouro());
@@ -3004,7 +3018,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setTelCel(FrmPrincipal.desmascarar(tfFuncionarioTelCelular.getText()));
         funcionario.setCpf(FrmPrincipal.desmascarar(tfFuncionarioCpf.getText()));
         funcionario.setRg(FrmPrincipal.desmascarar(tfFuncionarioRg.getText()));
-        funcionario.setDtNascimento(new java.sql.Date(converterDatas("saida", tfFuncionarioDtNascimento.getText()).getTime()));
+        funcionario.setDtNascimento(tfFuncionarioDtNascimento.getText().replace("/", ""));
         funcionario.setEmail(tfFuncionarioEmail.getText());
         funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
         funcionario.setNumero(Integer.parseInt(tfFuncionarioNumero.getText()));
@@ -3043,6 +3057,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // formatação padrão do formulário
             rbFuncionarioStatusAtiv.setSelected(true);
+
+            // reinicia o codigo do funcionario
+            tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("inicializar")));
         }
     }//GEN-LAST:event_btnAlterarFuncionarioActionPerformed
 
@@ -3060,7 +3077,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setEmail(tfFuncionarioEmail.getText());
         funcionario.setCpf(FrmPrincipal.desmascarar(tfFuncionarioCpf.getText()));
         funcionario.setRg(FrmPrincipal.desmascarar(tfFuncionarioRg.getText()));
-        funcionario.setDtNascimento(new java.sql.Date(converterDatas("saida", tfFuncionarioDtNascimento.getText()).getTime()));
+        funcionario.setDtNascimento(tfFuncionarioDtNascimento.getText().replace("/", ""));
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText().replaceAll(",", ".")));
 
         // definição do status do funcionario
@@ -3402,6 +3419,28 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbFuncionarioUfItemStateChanged
 
+    private void btnFuncionarioLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioLimparActionPerformed
+        FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+
+        // limpa os dados do formulário
+        limparCampos(tfFuncionarioCodCargo, tfFuncionarioNome, tfFuncionarioTelResidencial,
+                tfFuncionarioTelCelular, tfFuncionarioEmail, tfFuncionarioCpf, tfFuncionarioRg,
+                tfFuncionarioDtNascimento, tfFuncionarioLogradouro, tfFuncionarioNumero,
+                tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep, tfFuncionarioSalario);
+
+        // resetar comboboxes
+        cbFuncionarioCidade.removeAllItems();
+        //carregarCbCidades();
+        cbFuncionarioUf.removeAllItems();
+        carregarCbUf();
+
+        // formatação padrão do formulário
+        rbFuncionarioStatusAtiv.setSelected(true);
+
+        // reinicia o codigo do funcionario
+        tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("inicializar")));
+    }//GEN-LAST:event_btnFuncionarioLimparActionPerformed
+
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
         int totalCampos = args.length;
@@ -3436,22 +3475,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // converte um data String para Date
-    static public Date converterDatas(String operacao, String data) {
+    static public Date converterDatas(String data, String padrao) {
         Date dataFormatada = null;
-        DateFormat df = null;
+        DateFormat dateFormat = null;
 
-        if (operacao.equalsIgnoreCase("saida")) {
-            // usado para enviar do sistema para o banco de dados
-            df = new SimpleDateFormat("dd/MM/yyyy");
-        }
-        /* CORRIGIR - NÃO FUNCIONA COMO ESPERADO
-        else if (operacao.equalsIgnoreCase("entrada")) {
-            // usado para enviar do banco de dados para o sistema
-            df = new SimpleDateFormat("ddMMyyyy");
-        } */
+        // atribui o padrão a ser usado no dateFormat
+        dateFormat = new SimpleDateFormat(padrao);
 
         try {
-            dataFormatada = df.parse(data);
+            dataFormatada = dateFormat.parse(data);
         } catch (ParseException erroConverterDatas) {
             JOptionPane.showMessageDialog(null, erroConverterDatas.getMessage());
         }
@@ -3659,6 +3691,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnFinanceiroAddTituloRenda;
     private javax.swing.JLabel btnFuncionarioBuscarCodCargo;
     private javax.swing.JLabel btnFuncionarioBuscarNome;
+    private javax.swing.JButton btnFuncionarioLimpar;
     private javax.swing.JButton btnRetirarDescontoVenda;
     private javax.swing.JButton btnVendaAdicionarProduto;
     private javax.swing.JButton btnVendaBuscarCliente;

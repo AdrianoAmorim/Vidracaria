@@ -16,7 +16,7 @@ public class Funcionario extends Endereco {
     protected String email;
     protected String cpf;
     protected String rg;
-    protected Date dtNascimento;
+    protected String dtNascimento;
     protected Double salarioFuncionario;
     protected Boolean ativo;
 
@@ -60,11 +60,11 @@ public class Funcionario extends Endereco {
         this.rg = rg;
     }
 
-    public Date getDtNascimento() {
+    public String getDtNascimento() {
         return dtNascimento;
     }
 
-    public void setDtNascimento(Date dtNascimento) {
+    public void setDtNascimento(String dtNascimento) {
         this.dtNascimento = dtNascimento;
     }
 

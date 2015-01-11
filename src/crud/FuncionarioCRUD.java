@@ -60,7 +60,8 @@ public class FuncionarioCRUD {
             conn.setAutoCommit(false);
 
             stmt = conn.prepareStatement("INSERT INTO funcionario(codFuncionario, codCargo, codEmpresa, "
-                    + " nome, telFixo, telCel, cpf, rg, salario, status, email) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+                    + " nome, telFixo, telCel, cpf, rg, TO_DATE(?, 'ddMMyyyy'), salario, status, email) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
 
             stmt.setInt(1, funcionario.getCodFuncionario());
             stmt.setInt(2, funcionario.getCodCargo());
@@ -70,10 +71,10 @@ public class FuncionarioCRUD {
             stmt.setString(6, funcionario.getTelCel());
             stmt.setString(7, funcionario.getCpf());
             stmt.setString(8, funcionario.getRg());
-            //stmt.setDate(9,Date.valueOf(funcionario.getDtNascimento()));
-            stmt.setDouble(9, funcionario.getSalarioFuncionario());
-            stmt.setBoolean(10, funcionario.getAtivo());
-            stmt.setString(11, funcionario.getEmail());
+            stmt.setString(9, (funcionario.getDtNascimento()));
+            stmt.setDouble(10, funcionario.getSalarioFuncionario());
+            stmt.setBoolean(11, funcionario.getAtivo());
+            stmt.setString(12, funcionario.getEmail());
 
             stmt.executeUpdate();
 
@@ -113,9 +114,9 @@ public class FuncionarioCRUD {
             conn.setAutoCommit(false);
 
             stmt = conn.prepareStatement("UPDATE funcionario SET codEmpresa = ?, codCargo = ?, "
-                    + "nome = ?, telFixo = ?, telCel = ?, cpf = ?, rg = ?, dtnascimento = ?, "
-                    + "salario = ?, status = ? , email = ? "
-                    + "WHERE codFuncionario = ?;");
+                    + "nome = ?, telFixo = ?, telCel = ?, cpf = ?, rg = ?, "
+                    + "dtnascimento = TO_DATE(? , 'ddMMyyyy'), salario = ?, "
+                    + "status = ? , email = ? WHERE codFuncionario = ?;");
 
             stmt.setInt(1, funcionario.getCodEmpresa());
             stmt.setInt(2, funcionario.getCodCargo());
@@ -124,7 +125,7 @@ public class FuncionarioCRUD {
             stmt.setString(5, funcionario.getTelCel());
             stmt.setString(6, funcionario.getCpf());
             stmt.setString(7, funcionario.getRg());
-            stmt.setDate(8, funcionario.getDtNascimento());
+            stmt.setString(8, funcionario.getDtNascimento());
             stmt.setDouble(9, funcionario.getSalarioFuncionario());
             stmt.setBoolean(10, funcionario.getAtivo());
             stmt.setString(11, funcionario.getEmail());
@@ -162,8 +163,9 @@ public class FuncionarioCRUD {
     public String prepararQueryPesquisarFuncionarios(JTextField... args) {
         int tam = args.length;
 
-        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel, f.cpf, f.rg, f.dtnascimento, "
-                + "f.salario, f.status, f.email, ef.logradouro, ef.numero, ef.complemento, ef.bairro, ef.cep, ef.cidade, ef.uf "
+        String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel, "
+                + "f.cpf, f.rg, TO_CHAR(f.dtnascimento, 'ddMMyyyy') AS dtnascimento, f.salario, f.status, f.email, "
+                + "ef.logradouro, ef.numero, ef.complemento, ef.bairro, ef.cep, ef.cidade, ef.uf "
                 + "FROM funcionario f CROSS JOIN enderecoFuncionario ef "
                 + "WHERE f.codFuncionario = ef.codFuncionario ";
 
@@ -212,7 +214,7 @@ public class FuncionarioCRUD {
                 funcionario.setNomeFuncionario(result.getString("nome"));
                 funcionario.setTelFixo(result.getString("telFixo"));
                 funcionario.setTelCel(result.getString("telCel"));                
-
+                funcionario.setDtNascimento(result.getString("dtnascimento"));
                 funcionario.setCpf(result.getString("cpf"));
                 funcionario.setRg(result.getString("rg"));                
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
@@ -243,7 +245,7 @@ public class FuncionarioCRUD {
         ResultSet result;
 
         String sql = "SELECT f.codFuncionario, f.codCargo, f.codEmpresa, f.nome, f.telFixo, f.telCel, f.email, "
-                + "f.cpf, f.rg, f.dtnascimento, f.salario, f.status, ef.logradouro, ef.numero, ef.complemento, "
+                + "f.cpf, f.rg, TO_CHAR(f.dtnascimento, 'ddMMyyyy') AS dtnascimento, f.salario, f.status, ef.logradouro, ef.numero, ef.complemento, "
                 + "ef.bairro, ef.cep, ef.cidade, ef.uf "
                 + "FROM funcionario f CROSS JOIN enderecoFuncionario ef "
                 + "WHERE f.codFuncionario = ef.codFuncionario "
@@ -263,7 +265,7 @@ public class FuncionarioCRUD {
                 funcionario.setEmail(result.getString("email"));
                 funcionario.setCpf(result.getString("cpf"));
                 funcionario.setRg(result.getString("rg"));
-                funcionario.setDtNascimento(result.getDate("dtnascimento"));
+                funcionario.setDtNascimento(result.getString("dtnascimento"));
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
                 funcionario.setAtivo(result.getBoolean("status"));
                 funcionario.setLogradouro(result.getString("logradouro"));
