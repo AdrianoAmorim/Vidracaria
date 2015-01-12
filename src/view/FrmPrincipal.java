@@ -6,9 +6,7 @@ import domain.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -2663,31 +2661,38 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraCadastrarActionPerformed
 
     private void btnCompraAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarProdutoActionPerformed
-        //Cria Uma Instancia da janela de adicao de produto passando o codCompra como Parametro
-        FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfCompraCodigo.getText()), pnlEfetuarCompra.getName());
-        adicionarProduto.setVisible(true);
+        FrmCadastroProduto cadastrarProduto = new FrmCadastroProduto(this, true);
+        cadastrarProduto.setSize(785, 575);
+        cadastrarProduto.setTitle("Cadastrar Produto");
+        cadastrarProduto.setVisible(true);
 
-        if (!adicionarProduto.listProdutoComprado.isEmpty()) {
-            //Guarda valor total Atual
-            double totalAtual = Double.parseDouble(lblCompraValorTotal.getText());
-            //guarda valor do SubTotal Atual
-            double subTotalAtual = Double.parseDouble(lblCompraValorSubTotal.getText());
+        // COMO ERA FEITO ANTES
+        /*Cria Uma Instancia da janela de adcao de produto passando o codCompra como Parametro
+         FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfCompraCodigo.getText()), pnlEfetuarCompra.getName());
+         adicionarProduto.setVisible(true);
 
-            DefaultTableModel modeloTabela = (DefaultTableModel) tbCompraListProduto.getModel();
+         if (!adicionarProduto.listProdutoComprado.isEmpty()) {
+         //Guarda valor total Atual
+         double totalAtual = Double.parseDouble(lblCompraValorTotal.getText());
+         //guarda valor do SubTotal Atual
+         double subTotalAtual = Double.parseDouble(lblCompraValorSubTotal.getText());
 
-            //Adicionando as informaçoes dos produtos comprados e totais na janela de Compra
-            for (ProdutoComprado produtoComprado : adicionarProduto.listProdutoComprado) {
-                double valorTotalProduto = produtoComprado.getPrecoCusto() * produtoComprado.getQuantidadeProduto();
-                totalAtual += valorTotalProduto;
-                subTotalAtual += valorTotalProduto;
-                modeloTabela.addRow(new Object[]{produtoComprado.getCodCompra(), produtoComprado.getCodProduto(), produtoComprado.getQuantidadeProduto(),
-                    produtoComprado.getPrecoCusto()});
+         DefaultTableModel modeloTabela = (DefaultTableModel) tbCompraListProduto.getModel();
 
-            }
+         //Adicionando as informaçoes dos produtos comprados e totais na janela de Compra
+         for (ProdutoComprado produtoComprado : adicionarProduto.listProdutoComprado) {
+         double valorTotalProduto = produtoComprado.getPrecoCusto() * produtoComprado.getQuantidadeProduto();
+         totalAtual += valorTotalProduto;
+         subTotalAtual += valorTotalProduto;
+         modeloTabela.addRow(new Object[]{produtoComprado.getCodCompra(), produtoComprado.getCodProduto(), produtoComprado.getQuantidadeProduto(),
+         produtoComprado.getPrecoCusto()});
 
-            lblCompraValorTotal.setText(String.valueOf(totalAtual));
-            lblCompraValorSubTotal.setText(String.valueOf(subTotalAtual));
-        }
+         }
+
+         lblCompraValorTotal.setText(String.valueOf(totalAtual));
+         lblCompraValorSubTotal.setText(String.valueOf(subTotalAtual));
+         }*/
+
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
 
     private void btnCompraPesquisarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraPesquisarFornecedorActionPerformed
@@ -2698,7 +2703,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraPesquisarFornecedorActionPerformed
 
     private void btnCompraPesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraPesquisarProdutoActionPerformed
-        FrmCadastroProduto cadastroProduto = new FrmCadastroProduto(this, true, true);
+        FrmCadastroProduto cadastroProduto = new FrmCadastroProduto(this, true);
 
         cadastroProduto.setSize(1050, 575);
         cadastroProduto.setTitle("Pesquisar Produtos");
@@ -2713,7 +2718,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraCadastrarFornecedorActionPerformed
 
     private void btnCompraCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraCadastrarProdutoActionPerformed
-        FrmCadastroProduto cadastrarProduto = new FrmCadastroProduto(this, true, false);
+        FrmCadastroProduto cadastrarProduto = new FrmCadastroProduto(this, true);
         cadastrarProduto.setSize(785, 575);
         cadastrarProduto.setTitle("Cadastrar Produto");
         cadastrarProduto.setVisible(true);
@@ -3003,7 +3008,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         buscaCargo.setVisible(true);
 
         tfFuncionarioCodCargo.setText(String.valueOf(buscaCargo.cargo.getCodigoCargo()));
-        tfFuncionarioCodigo.setText(buscaCargo.cargo.getDescricaoCargo());
     }//GEN-LAST:event_btnFuncionarioBuscarCodCargoMouseClicked
 
     private void btnAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarFuncionarioActionPerformed
@@ -3103,21 +3107,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
         if (funcionarioController.validarFuncionario(funcionario)) {
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
 
-            funcionarioCRUD.inserirFuncionario(funcionario);
+            if (funcionarioCRUD.inserirFuncionario(funcionario)) {
 
-            // limpa os dados do formulário
-            limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
-                    tfFuncionarioSalario, tfFuncionarioTelCelular, tfFuncionarioTelResidencial,
-                    tfFuncionarioEmail, tfFuncionarioCpf, tfFuncionarioRg, tfFuncionarioDtNascimento,
-                    tfFuncionarioLogradouro, tfFuncionarioNumero, tfFuncionarioComplemento,
-                    tfFuncionarioBairro, tfFuncionarioCep);
+                // limpa os dados do formulário
+                limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
+                        tfFuncionarioSalario, tfFuncionarioTelCelular, tfFuncionarioTelResidencial,
+                        tfFuncionarioEmail, tfFuncionarioCpf, tfFuncionarioRg, tfFuncionarioDtNascimento,
+                        tfFuncionarioLogradouro, tfFuncionarioNumero, tfFuncionarioComplemento,
+                        tfFuncionarioBairro, tfFuncionarioCep);
 
-            cbFuncionarioCidade.removeAllItems();
-            cbFuncionarioUf.removeAllItems();
-            carregarCbUf();
+                cbFuncionarioCidade.removeAllItems();
+                cbFuncionarioUf.removeAllItems();
+                carregarCbUf();
 
-            // incrementa o codigo do funcionario
-            tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("incrementar")));
+                // incrementa o codigo do funcionario
+                tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("incrementar")));
+            }
         }
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
 
@@ -3365,7 +3370,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // resetar comboboxes
             cbClienteCidade.removeAllItems();
-            //carregarCbCidades();
             cbClienteUf.removeAllItems();
             carregarCbUf();
 

@@ -3,7 +3,6 @@ package crud;
 import database.SQLite;
 import domain.Funcionario;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,7 +51,7 @@ public class FuncionarioCRUD {
     }
 
     // INSERT 
-    public void inserirFuncionario(Funcionario funcionario) {
+    public Boolean inserirFuncionario(Funcionario funcionario) {
 
         PreparedStatement stmt;
 
@@ -100,9 +99,11 @@ public class FuncionarioCRUD {
             conn.close();
 
             JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso!");
+            return true;
         } catch (SQLException erroInserirFuncionario) {
             System.out.println(erroInserirFuncionario.getMessage());
         }
+        return false;
     }
 
     // UPDATE
@@ -213,10 +214,10 @@ public class FuncionarioCRUD {
                 funcionario.setCodEmpresa(result.getInt("codEmpresa"));
                 funcionario.setNomeFuncionario(result.getString("nome"));
                 funcionario.setTelFixo(result.getString("telFixo"));
-                funcionario.setTelCel(result.getString("telCel"));                
+                funcionario.setTelCel(result.getString("telCel"));
                 funcionario.setDtNascimento(result.getString("dtnascimento"));
                 funcionario.setCpf(result.getString("cpf"));
-                funcionario.setRg(result.getString("rg"));                
+                funcionario.setRg(result.getString("rg"));
                 funcionario.setSalarioFuncionario(result.getDouble("salario"));
                 funcionario.setAtivo(result.getBoolean("status"));
                 funcionario.setEmail(result.getString("email"));

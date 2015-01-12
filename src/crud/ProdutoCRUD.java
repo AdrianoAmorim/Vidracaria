@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import view.FrmPrincipal;
 
 /**
  *
@@ -16,23 +17,37 @@ import javax.swing.JTextField;
  */
 public class ProdutoCRUD {
 
-    // metodo para controlar, pelo Java, a função de Auto Increment do Produto.
-    public int incrementCodProduto() {
-        PreparedStatement stmt;
+    public int incrementCodProduto(String operacao) {
+        PreparedStatement stmt = null;
         Connection conn = new SQLite().conectar();
         int increment = 0;
 
         try {
-            stmt = conn.prepareStatement("SELECT MAX(codProduto) FROM produto;");
+            String sql = "";
+
+            if (operacao.equalsIgnoreCase("inicializar")) {
+                // seleciona o valor do próximo cliente a ser cadastrado
+                sql = "SELECT last_value FROM produto_codProduto_seq;";
+            } else if (operacao.equalsIgnoreCase("incrementar")) {
+                // incrementa o codigo do próximo cliente
+                sql = "select nextval('produto_codProduto_seq');";
+            }
+
+            stmt = conn.prepareStatement(sql);
+            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
-            increment = result.getInt(1);
+
+            if (result.next()) {
+                increment = result.getInt(1);
+                return increment;
+            }
 
             stmt.close();
             conn.close();
-        } catch (SQLException erroIncrementCodProduto) {
-            JOptionPane.showMessageDialog(null, "Erro ao incrementar o codigo do produto");
+        } catch (SQLException erroIncrementCodFuncionario) {
+            JOptionPane.showMessageDialog(null, erroIncrementCodFuncionario.getMessage());
         }
-        return increment + 1;
+        return increment;
     }
 
     // INSERT
@@ -64,56 +79,24 @@ public class ProdutoCRUD {
         int tam = args.length;
 
         String sql = "SELECT p.codProduto, p.codCategoria, p.unidadeMedida, p.quantidadeEstoque, p.descricao, p.precoVenda, p.status "
-                + "FROM produto p CROSS JOIN categoria c WHERE p.codCategoria = c.codCategoria ";
+                + "FROM produto p CROSS JOIN categoria c WHERE p.codCategoria = c.codCategoria "
+                + "AND c.descricao = '" + categoria + "' ";
 
-        args[0].setName("codProduto");
-        args[1].setName("descricao");
+        args[0].setName("p.codProduto");
+        args[1].setName("p.descricao");
 
-        // percorre os JTextFields até encontrar um preenchido
-        for (int i = 0; i < tam; i++) {
-            // quando encontrar um JTextField não vazio (preenchido)
-            if (!args[i].getText().isEmpty()) {
-                // caso o parametro seja o codCliente é necessário usar (Cast)
-                if (args[i].getName().equalsIgnoreCase("codProduto")) {
-                    // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                    sql += "AND " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
-
-                    // percorre novamente o vetor em busca de outro JTextField preenchido
-                    for (int j = 0; j < tam; j++) {
-                        // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
-                        if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
-                            // incrementa a query de acordo com o nome e conteúdo do JTextField
-                            if (args[j].getName().equalsIgnoreCase("codProduto")) {
-                                sql += "AND " + args[j].getName() + " = " + Integer.parseInt(args[j].getText().trim()) + " ";
-                            } else {
-                                sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
-                            }
-                        }
-                    }
-                } else {
-                    // caso o parametro não seja codCliente
-                    sql += "AND " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
-
-                    // percorre novamente o vetor em busca de outro JTextField preenchido
-                    for (int j = 0; j < tam; j++) {
-                        // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
-                        if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
-                            // incrementa a query de acordo com o nome e conteúdo do JTextField
-                            if (args[j].getName().equalsIgnoreCase("codProduto")) {
-                                sql += "AND " + args[j].getName() + " = " + Integer.parseInt(args[j].getText().trim()) + " ";
-                            } else {
-                                sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%' ";
-                            }
-                        }
-                    }
-                }
+        // percorre todos os JTextFields
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].getName().equalsIgnoreCase("p.codProduto") && !args[i].getText().trim().isEmpty()) {
+                // caso o parametro seja o codCliente é necessário usar (Cast) e comparação exata (=)
+                sql += "AND " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+            } else if (!FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
+                // demais parametros não usam cast e são comparados por aproximação (%LIKE%)
+                sql += "AND " + args[i].getName() + " LIKE '%" + FrmPrincipal.desmascarar(args[i].getText()).trim() + "%' ";
             }
-
-            if (!categoria.isEmpty()) {
-                sql += "AND c.descricao = '" + categoria + "' ;";
-            }
-            i = tam;
         }
+
+        sql += ";";
         return sql;
     }
 
@@ -197,19 +180,22 @@ public class ProdutoCRUD {
         Produto produto = new Produto();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, descricao, unidadeMedida,"
-                    + " quantidadeEstoque, precoVenda FROM produto WHERE codProduto = " + codProduto + ";");
+            stmt = conn.prepareStatement("SELECT p.codProduto, p.codcategoria, p.descricao, "
+                    + "p.unidadeMedida, p.quantidadeEstoque, p.precoVenda, p.status "
+                    + "FROM produto p CROSS JOIN categoria c WHERE p.codCategoria = c.codCategoria "
+                    + "AND p.codProduto = " + codProduto + ";");
 
             result = stmt.executeQuery();
             while (result.next()) {
-
                 produto.setCodProduto(result.getInt("codProduto"));
+                produto.setCodCategoria(result.getInt("codCategoria"));
                 produto.setDescricao(result.getString("descricao"));
                 produto.setUnidadeMedida(result.getString("unidadeMedida"));
                 produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
                 produto.setPrecoVenda(result.getDouble("precoVenda"));
-
+                produto.setStatus(result.getBoolean("status"));
             }
+
             stmt.close();
         } catch (SQLException erroConsultarCodigoProduto) {
             System.out.println(erroConsultarCodigoProduto.getMessage());

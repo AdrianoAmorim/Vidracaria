@@ -65,6 +65,29 @@ public class CategoriaCRUD {
             return listaCategoria;
         }
     }
+    
+       // SELECT
+    public Categoria consultarCategoria(int codCategoria) {
+        PreparedStatement stmt;
+        ResultSet result;
+        Categoria categoria = new Categoria();
+
+        try (Connection conn = new SQLite().conectar()) {
+            stmt = conn.prepareStatement("SELECT codcategoria, descricao"
+                    + "FROM categoria WHERE codCategoria = " + codCategoria + ";");
+
+            result = stmt.executeQuery();
+            while (result.next()) {
+                categoria.setCodCategoria(result.getInt("codCategoria"));
+                categoria.setDescricao(result.getString("descricao"));
+            }
+            stmt.close();
+        } catch (SQLException erroConsultarCodigoProduto) {
+            System.out.println(erroConsultarCodigoProduto.getMessage());
+        }
+        return categoria;
+    }
+
 
     // SELECT (por nome)
     public Categoria consultarNomeCategoria(String descricao) {
