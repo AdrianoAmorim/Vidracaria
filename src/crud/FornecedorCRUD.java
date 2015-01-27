@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import view.FrmPrincipal;
 
 /**
  *
@@ -148,34 +149,38 @@ public class FornecedorCRUD {
                 + "ef.bairro, ef.cep, ef.cidade, ef.uf FROM fornecedor f "
                 + "NATURAL INNER JOIN enderecoFornecedor ef ";
 
-        args[0].setName("codFornecedor");
-        args[1].setName("nome");
-        args[2].setName("cnpj");
+        args[0].setName("f.codFornecedor");
+        args[1].setName("f.nome");
+        args[2].setName("f.cnpj");
 
         // percorre os JTextFields até encontrar um preenchido
         for (int i = 0; i < tam; i++) {
             // quando encontrar um JTextField não vazio (preenchido)
-            if (!args[i].getText().isEmpty()) {
+            //Acrescentei o desmascarar pq tava entrando sempre o cnpj
+            if (!FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
                 // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                if (args[i].getName().equalsIgnoreCase("codFornecedor")) {
-                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+                if (args[i].getName().equalsIgnoreCase("f.codFornecedor")) {
+                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";      
                 } else {
-                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
+                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";               
                 }
 
+                /*
                 // percorre novamente o vetor em busca de outro JTextField preenchido
                 for (int j = 0; j < tam; j++) {
                     // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
                     if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
                         // incrementa a query de acordo com o nome e conteúdo do JTextField
                         sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%'";
-
+                        
                         // retorna a query montada
                         return sql;
                     }
                 }
+                */
             }
         }
+        sql += ";";
         // instrução para burlar o erro do compilador - nunca chega até aqui
         return sql;
     }

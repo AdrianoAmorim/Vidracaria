@@ -661,8 +661,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(rbClienteFisica)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tfClienteNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblClienteNome))
                     .addComponent(btnClienteBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2899,7 +2899,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnFuncionarioBuscarCodCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionarioBuscarCodCargoMouseClicked
         FrmBuscarCargo buscaCargo = new FrmBuscarCargo(this, true);
         buscaCargo.setVisible(true);
-
         tfFuncionarioCodCargo.setText(String.valueOf(buscaCargo.cargo.getCodigoCargo()));
     }//GEN-LAST:event_btnFuncionarioBuscarCodCargoMouseClicked
 
@@ -3341,7 +3340,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnCompraAdicionarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarFornecedorActionPerformed
         FrmCadastrarFornecedor cadFornecedor = new FrmCadastrarFornecedor(this, true);
         cadFornecedor.setVisible(true);
-        
+        //seta o fornecedor escolhido nos Textfield
+       tfCompraCodigoFornecedor.setText(String.valueOf(cadFornecedor.fornecedor.getCodFornecedor()));
+       tfCompraFornecedor.setText(String.valueOf(cadFornecedor.fornecedor.getNome()));
     }//GEN-LAST:event_btnCompraAdicionarFornecedorActionPerformed
 
     private void btnVendaBuscarVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaBuscarVendedorMouseClicked

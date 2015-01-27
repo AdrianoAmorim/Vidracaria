@@ -343,9 +343,9 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Component id="tfClienteNome" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="lblClienteNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblClienteNome" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="btnClienteBuscarCliente" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
