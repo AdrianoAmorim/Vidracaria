@@ -3340,20 +3340,25 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnCompraAdicionarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarFornecedorActionPerformed
         FrmCadastrarFornecedor cadFornecedor = new FrmCadastrarFornecedor(this, true);
         cadFornecedor.setVisible(true);
-        //seta o fornecedor escolhido nos Textfield
-       tfCompraCodigoFornecedor.setText(String.valueOf(cadFornecedor.fornecedor.getCodFornecedor()));
-       tfCompraFornecedor.setText(String.valueOf(cadFornecedor.fornecedor.getNome()));
+        
+        //verifica se foi selecionado algum fornecedor se SIM seta as Informações
+        if (cadFornecedor.fornecedor.getCodFornecedor() != 0) {
+            //seta o fornecedor escolhido nos Textfield
+            tfCompraCodigoFornecedor.setText(String.valueOf(cadFornecedor.fornecedor.getCodFornecedor()));
+            tfCompraFornecedor.setText(String.valueOf(cadFornecedor.fornecedor.getNome()));
+        }
+
     }//GEN-LAST:event_btnCompraAdicionarFornecedorActionPerformed
 
     private void btnVendaBuscarVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaBuscarVendedorMouseClicked
-          FrmAdicionarFuncionarioOUFornecedor buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());
+        FrmAdicionarFuncionarioOUFornecedor buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());
         buscarFuncionario.setVisible(true);
 
         tfVendaNomeFuncionario.setText(buscarFuncionario.funcionario.getNomeFuncionario());
     }//GEN-LAST:event_btnVendaBuscarVendedorMouseClicked
 
     private void btnVendaBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaBuscarClienteMouseClicked
-         FrmBuscarCliente buscaCliente = new FrmBuscarCliente(this, true);
+        FrmBuscarCliente buscaCliente = new FrmBuscarCliente(this, true);
         buscaCliente.setVisible(true);
 
         //seta o nome do Cliente no TextField
@@ -3427,6 +3432,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
             args[i].setText("");
         }
     }
+    
+    static public void desabilitarCampos(JTextField... args){
+        for(JTextField campo : args){
+            campo.setEnabled(false);
+        } 
+    }
+    
+    static public void desabilitarCampos(JComboBox... args){
+      for(JComboBox campo : args){
+            campo.setEnabled(false);
+        }   
+    }
+        
+    
 
     // reseta os textos de JTables
     static public void limparTabela(JTable tabela) {
