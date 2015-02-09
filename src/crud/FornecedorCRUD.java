@@ -17,26 +17,37 @@ import view.FrmPrincipal;
  */
 public class FornecedorCRUD {
 
-    public int incrementCodCliente() {
-        PreparedStatement stmt;
+    public int incrementCodFornecedor(String operacao) {
+    PreparedStatement stmt = null;
         Connection conn = new SQLite().conectar();
         int increment = 0;
 
         try {
-            stmt = conn.prepareStatement("SELECT last_value FROM cliente_codCliente_seq;");
+            String sql = "";
 
+            if (operacao.equalsIgnoreCase("inicializar")) {
+                // seleciona o valor do próximo cliente a ser cadastrado
+                sql = "SELECT last_value FROM fornecedor_codFornecedor_seq;";
+            } else if (operacao.equalsIgnoreCase("incrementar")) {
+                // incrementa o codigo do próximo cliente
+                sql = "select nextval('fornecedor_codFornecedor_seq');";
+            }
+
+            stmt = conn.prepareStatement(sql);
+            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
                 increment = result.getInt(1);
+                return increment;
             }
 
             stmt.close();
             conn.close();
-        } catch (SQLException erroIncrementCodCliente) {
-            JOptionPane.showMessageDialog(null, erroIncrementCodCliente.getMessage());
+        } catch (SQLException erroIncrementCodFornecedor) {
+            JOptionPane.showMessageDialog(null, erroIncrementCodFornecedor.getMessage());
         }
-        return increment + 1;
+        return increment;
     }
 
     // INSERT 

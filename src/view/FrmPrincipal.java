@@ -56,7 +56,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DAS LISTAS DE TIPOS DE PAGAMENTO
         this.carregarCbTipoPagamento();
         // INICIALIZAÇÃO DA LISTA DE UFS
-        this.carregarCbUf();
+        this.carregarCbUf(cbClienteUf);
+        this.carregarCbUf(cbFuncionarioUf);
     }
 
     /**
@@ -2947,9 +2948,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // resetar comboboxes
             cbFuncionarioCidade.removeAllItems();
-            //carregarCbCidades();
+            carregarCbCidades(cbFuncionarioCidade, cbFuncionarioUf.getSelectedItem().toString());
             cbFuncionarioUf.removeAllItems();
-            carregarCbUf();
+            carregarCbUf(cbFuncionarioUf);
 
             // formatação padrão do formulário
             rbFuncionarioStatusAtiv.setSelected(true);
@@ -3010,7 +3011,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
                 cbFuncionarioCidade.removeAllItems();
                 cbFuncionarioUf.removeAllItems();
-                carregarCbUf();
+                carregarCbUf(cbFuncionarioUf);
 
                 // incrementa o codigo do funcionario
                 tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("incrementar")));
@@ -3189,10 +3190,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 tfClienteInscEstadual, tfClienteEmail);
 
         // resetar comboboxes
-        cbClienteCidade.removeAllItems();
-        //carregarCbCidades();
         cbClienteUf.removeAllItems();
-        carregarCbUf();
+        carregarCbUf(cbClienteUf);
+        cbClienteCidade.removeAllItems();
+        carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
 
         // formatação padrão do formulário
         rbClienteFisica.setSelected(true);
@@ -3261,9 +3262,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     tfClienteEmail);
 
             // resetar comboboxes
-            cbClienteCidade.removeAllItems();
             cbClienteUf.removeAllItems();
-            carregarCbUf();
+            carregarCbUf(cbClienteUf);
+            cbClienteCidade.removeAllItems();
+            carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
 
             // incrementa o codigo do cliente
             tfClienteCodigo.setText(Integer.toString(new ClienteCRUD().incrementCodCliente("incrementar")));
@@ -3291,11 +3293,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         rbClienteStatusAtiv.setSelected(true);
         rbClienteFisica.setSelected(true);
 
-        // resetar os JComboBoxes
-        cbClienteCidade.removeAllItems();
-        //carregarCbCidades();
+        // resetar comboboxes
         cbClienteUf.removeAllItems();
-        carregarCbUf();
+        carregarCbUf(cbClienteUf);
+        cbClienteCidade.removeAllItems();
+        carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
 
         tfClienteCodigo.setText(String.valueOf(new ClienteCRUD().incrementCodCliente("inicializar")));
     }//GEN-LAST:event_btnClienteLimparActionPerformed
@@ -3325,10 +3327,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep, tfFuncionarioSalario);
 
         // resetar comboboxes
-        cbFuncionarioCidade.removeAllItems();
-        //carregarCbCidades();
-        cbFuncionarioUf.removeAllItems();
-        carregarCbUf();
+        cbClienteUf.removeAllItems();
+        carregarCbUf(cbClienteUf);
+        cbClienteCidade.removeAllItems();
+        carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
 
         // formatação padrão do formulário
         rbFuncionarioStatusAtiv.setSelected(true);
@@ -3340,7 +3342,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnCompraAdicionarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarFornecedorActionPerformed
         FrmCadastrarFornecedor cadFornecedor = new FrmCadastrarFornecedor(this, true);
         cadFornecedor.setVisible(true);
-        
+
         //verifica se foi selecionado algum fornecedor se SIM seta as Informações
         if (cadFornecedor.fornecedor.getCodFornecedor() != 0) {
             //seta o fornecedor escolhido nos Textfield
@@ -3432,20 +3434,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
             args[i].setText("");
         }
     }
-    
-    static public void desabilitarCampos(JTextField... args){
-        for(JTextField campo : args){
+
+    static public void desabilitarCampos(JTextField... args) {
+        for (JTextField campo : args) {
             campo.setEnabled(false);
-        } 
+        }
     }
-    
-    static public void desabilitarCampos(JComboBox... args){
-      for(JComboBox campo : args){
+
+    static public void desabilitarCampos(JComboBox... args) {
+        for (JComboBox campo : args) {
             campo.setEnabled(false);
-        }   
+        }
     }
-        
-    
 
     // reseta os textos de JTables
     static public void limparTabela(JTable tabela) {
@@ -3526,21 +3526,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Carrega lista de Ufs
-    public void carregarCbUf() {
+    public static void carregarCbUf(JComboBox cb) {
         EstadoCRUD estadoCRUD = new EstadoCRUD();
 
-        cbClienteUf.removeAllItems();
-        cbFuncionarioUf.removeAllItems();
+        cb.removeAllItems();
 
         for (Estado estado : estadoCRUD.consultarEstado()) {
-            cbClienteUf.addItem(estado.getUf());
-            cbFuncionarioUf.addItem(estado.getUf());
+            cb.addItem(estado.getUf());
         }
     }
 
     // Carrega lista de Cidades - Acrescentei o combo q quero carregae
     // de Qual estado sera as Cidade (passado pelo parametro)
-    public void carregarCbCidades(JComboBox cb, String uf) {
+    public static void carregarCbCidades(JComboBox cb, String uf) {
         CidadeCRUD cidadeCRUD = new CidadeCRUD();
 
         cb.removeAllItems();

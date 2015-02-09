@@ -4,17 +4,12 @@ import controller.FornecedorController;
 import crud.CidadeCRUD;
 import crud.EstadoCRUD;
 import crud.FornecedorCRUD;
-import crud.ProdutoCRUD;
 import domain.Cidade;
 import domain.Estado;
 import domain.Fornecedor;
-import domain.Produto;
-import java.awt.Color;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,9 +31,9 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(this);
         this.carregarCbUf();
-        FrmPrincipal.desabilitarCampos(tfFornecedorBairro,tfFornecedorCep,tfFornecedorComplemento,tfFornecedorEmail,tfFornecedorLogradouro,
-        tfFornecedorNumero,tfFornecedorRamalVendedor,tfFornecedorSite,tfFornecedorTelCel,tfFornecedorTelFixo,tfFornecedorVendedor);
-        FrmPrincipal.desabilitarCampos(cbFornecedorCidade,cbFornecedorUf);
+        FrmPrincipal.desabilitarCampos(tfFornecedorBairro, tfFornecedorCep, tfFornecedorComplemento, tfFornecedorEmail, tfFornecedorLogradouro,
+                tfFornecedorNumero, tfFornecedorRamalVendedor, tfFornecedorSite, tfFornecedorTelCel, tfFornecedorTelFixo, tfFornecedorVendedor);
+        FrmPrincipal.desabilitarCampos(cbFornecedorCidade, cbFornecedorUf);
     }
 
     // Carrega lista de Ufs
@@ -134,7 +129,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbAdicionarFornecedorResultBusca = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cb_novoFornecedor = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -153,7 +148,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, 1209, Short.MAX_VALUE)
+                .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -376,9 +371,14 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
             }
         });
 
-        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(0, 69, 139));
-        jCheckBox1.setText("Novo Fornecedor");
+        cb_novoFornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cb_novoFornecedor.setForeground(new java.awt.Color(0, 69, 139));
+        cb_novoFornecedor.setText("Novo Fornecedor");
+        cb_novoFornecedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cb_novoFornecedorMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDadosFornecedorLayout = new javax.swing.GroupLayout(pnlDadosFornecedor);
         pnlDadosFornecedor.setLayout(pnlDadosFornecedorLayout);
@@ -457,7 +457,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                                         .addComponent(tfFornecedorTelCel, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosFornecedorLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox1))))
+                                .addComponent(cb_novoFornecedor))))
                     .addGroup(pnlDadosFornecedorLayout.createSequentialGroup()
                         .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel49)
@@ -486,7 +486,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                         .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel49)
                             .addComponent(tfFornecedorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1))
+                            .addComponent(cb_novoFornecedor))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlDadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel50)
@@ -713,7 +713,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         //se  o campo nao estiver vazio realiza a pesquisa
         String campo = FrmPrincipal.desmascarar(tfFornecedorCnpj.getText()).trim();
         System.out.println(campo);
-        if (! campo.isEmpty()) {
+        if (!campo.isEmpty()) {
             this.pesquisarFornecedorCaretUpdate();
             //senao limpa a tabela de resultados
         } else {
@@ -738,20 +738,93 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
     }//GEN-LAST:event_tbAdicionarFornecedorResultBuscaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- DefaultTableModel modelo = (DefaultTableModel) tbAdicionarFornecedorResultBusca.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tbAdicionarFornecedorResultBusca.getModel();
         FornecedorCRUD fornecedorCrud = new FornecedorCRUD();
         //pega o fornecedor escolhido na tabela e passa para variavel global
         this.fornecedor = fornecedorCrud.consultarFornecedorPorNome(modelo.getValueAt(tbAdicionarFornecedorResultBusca.getSelectedRow(), 0).toString());
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cb_novoFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_novoFornecedorMouseClicked
+        if (cb_novoFornecedor.isSelected()) {
+            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+            tfFornecedorCodigo.setText(String.valueOf(fornecedorCRUD.incrementCodFornecedor("inicializar")));
+            tfFornecedorCodigo.setEditable(false);
+
+            btnAlterarFornecedor.setEnabled(false);
+            btnCadastrarFornecedor.setEnabled(true);
+
+            // limpa e bloqueia a tabela
+            FrmPrincipal.limparTabela(tbAdicionarFornecedorResultBusca);
+            tbAdicionarFornecedorResultBusca.setEnabled(false);
+
+            // habilita os campos para cadastro
+            tfFornecedorTelFixo.setEnabled(true);
+            tfFornecedorTelCel.setEnabled(true);
+            tfFornecedorLogradouro.setEnabled(true);
+            tfFornecedorNumero.setEnabled(true);
+            tfFornecedorComplemento.setEnabled(true);
+            tfFornecedorBairro.setEnabled(true);
+            tfFornecedorCep.setEnabled(true);
+            cbFornecedorCidade.setEnabled(true);
+            cbFornecedorUf.setEnabled(true);
+            tfFornecedorEmail.setEnabled(true);
+            tfFornecedorSite.setEnabled(true);
+            tfFornecedorVendedor.setEnabled(true);
+            tfFornecedorRamalVendedor.setEnabled(true);
+            rbFornecedortatusAtiv.setEnabled(true);
+            rbFornecedorStatusInat.setEnabled(true);
+
+            tbAdicionarFornecedorResultBusca.removeAll();
+            tbAdicionarFornecedorResultBusca.setEnabled(false);
+        } else {
+            tfFornecedorCodigo.setText("");
+            tfFornecedorCodigo.setEditable(true);
+
+            btnAlterarFornecedor.setEnabled(true);
+            btnCadastrarFornecedor.setEnabled(false);
+
+            // limpa os campos para cadastro
+            FrmPrincipal.limparCampos(tfFornecedorTelFixo, tfFornecedorTelCel, tfFornecedorLogradouro,
+                    tfFornecedorNumero, tfFornecedorComplemento, tfFornecedorBairro, tfFornecedorCep,
+                    tfFornecedorEmail, tfFornecedorSite, tfFornecedorVendedor, tfFornecedorRamalVendedor);
+
+            // resetar comboboxes
+            cbFornecedorUf.removeAllItems();
+            FrmPrincipal.carregarCbUf(cbFornecedorUf);
+            cbFornecedorCidade.removeAllItems();
+            FrmPrincipal.carregarCbCidades(cbFornecedorCidade, cbFornecedorUf.getSelectedItem().toString());
+
+            // limpa e desbloqueia a tabela
+            FrmPrincipal.limparTabela(tbAdicionarFornecedorResultBusca);
+            tbAdicionarFornecedorResultBusca.setEnabled(true);
+
+            // desabilita os campos para cadastro
+            tfFornecedorTelFixo.setEnabled(false);
+            tfFornecedorTelCel.setEnabled(false);
+            tfFornecedorLogradouro.setEnabled(false);
+            tfFornecedorNumero.setEnabled(false);
+            tfFornecedorComplemento.setEnabled(false);
+            tfFornecedorBairro.setEnabled(false);
+            tfFornecedorCep.setEnabled(false);
+            cbFornecedorCidade.setEnabled(false);
+            cbFornecedorUf.setEnabled(false);
+            tfFornecedorEmail.setEnabled(false);
+            tfFornecedorSite.setEnabled(false);
+            tfFornecedorVendedor.setEnabled(false);
+            tfFornecedorRamalVendedor.setEnabled(false);
+            rbFornecedortatusAtiv.setEnabled(false);
+            rbFornecedorStatusInat.setEnabled(false);
+        }
+    }//GEN-LAST:event_cb_novoFornecedorMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarFornecedor;
     private javax.swing.JButton btnCadastrarFornecedor;
     private javax.swing.JComboBox cbFornecedorCidade;
     private javax.swing.JComboBox cbFornecedorUf;
+    private javax.swing.JCheckBox cb_novoFornecedor;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;

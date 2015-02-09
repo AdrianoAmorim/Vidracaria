@@ -99,12 +99,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel11" pref="1270" max="32767" attributes="0"/>
+                  <Component id="jPanel11" pref="1254" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jPanel5" max="32767" attributes="0"/>
-                          <Component id="jPanel23" max="32767" attributes="0"/>
+                          <Component id="jPanel23" pref="1232" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -206,7 +206,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="lblClienteNome" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="57" max="32767" attributes="0"/>
                                       <Component id="btnClienteBuscarCliente" min="-2" pref="38" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   </Group>
@@ -535,7 +535,7 @@
                       <Image iconType="3" name="/imagens/cadastroPqn.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Padr&#xe3;o"/>
+                      <Color id="Cursor Default"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -551,7 +551,7 @@
                       <Image iconType="3" name="/imagens/AlterarPq.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Padr&#xe3;o"/>
+                      <Color id="Cursor Default"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -564,7 +564,7 @@
                       <Image iconType="3" name="/imagens/buscarNovo02.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Padr&#xe3;o"/>
+                      <Color id="Cursor Default"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -902,7 +902,7 @@
                       <Image iconType="3" name="/imagens/deletarNovo1.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Padr&#xe3;o"/>
+                      <Color id="Cursor Default"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1751,7 +1751,7 @@
                       <Image iconType="3" name="/imagens/deletarNovo1.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Padr&#xe3;o"/>
+                      <Color id="Cursor Default"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1890,7 +1890,7 @@
                       </Group>
                       <EmptySpace pref="76" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jPanel24" alignment="0" pref="1270" max="32767" attributes="0"/>
+                  <Component id="jPanel24" alignment="0" pref="1254" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1954,7 +1954,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblVendaListaProdutos" pref="539" max="32767" attributes="0"/>
+                          <Component id="lblVendaListaProdutos" pref="527" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -2542,7 +2542,7 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Deletar Produto da Lista"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Padr&#xe3;o"/>
+                  <Color id="Cursor Default"/>
                 </Property>
               </Properties>
               <Events>
@@ -2938,14 +2938,14 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jPanel27" pref="374" max="32767" attributes="0"/>
+                                  <Component id="jPanel27" pref="386" max="32767" attributes="0"/>
                                   <Component id="jPanel34" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jPanel4" max="32767" attributes="0"/>
-                                  <Component id="jPanel22" pref="647" max="32767" attributes="0"/>
+                                  <Component id="jPanel22" pref="659" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2963,7 +2963,7 @@
                       </Group>
                       <EmptySpace pref="108" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jPanel54" alignment="0" pref="1270" max="32767" attributes="0"/>
+                  <Component id="jPanel54" alignment="0" pref="1254" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -2985,7 +2985,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jPanel22" min="-2" pref="320" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" pref="26" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -3441,7 +3441,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCompraListaProdutos" pref="491" max="32767" attributes="0"/>
+                          <Component id="lblCompraListaProdutos" pref="479" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -3602,7 +3602,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCompraValorTotal" pref="363" max="32767" attributes="0"/>
+                          <Component id="lblCompraValorTotal" pref="351" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -3612,7 +3612,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblCompraValorTotal" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="10" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3699,7 +3699,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblCompraSubTotal" min="-2" pref="22" max="-2" attributes="0"/>
-                          <EmptySpace pref="9" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3765,7 +3765,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblCompraValorSubTotal" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="10" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3792,7 +3792,7 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Deletar Produto da Lista"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Padr&#xe3;o"/>
+                  <Color id="Cursor Default"/>
                 </Property>
               </Properties>
               <Events>
