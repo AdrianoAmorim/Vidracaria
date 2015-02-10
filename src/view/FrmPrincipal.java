@@ -3434,19 +3434,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
             args[i].setText("");
         }
     }
-
-    static public void desabilitarCampos(JTextField... args) {
+    //desabilita campos dos tipos JtextField ou JCOmbo ou RadioButton
+    static public void habilitarDesabilitarCampos(boolean status,JTextField... args) {
         for (JTextField campo : args) {
-            campo.setEnabled(false);
+            campo.setEnabled(status);
         }
     }
 
-    static public void desabilitarCampos(JComboBox... args) {
+    static public void habilitarDesabilitarCampos(boolean status,JComboBox... args) {
         for (JComboBox campo : args) {
             campo.setEnabled(false);
         }
     }
-
+    //-------------------------------------------------------
     // reseta os textos de JTables
     static public void limparTabela(JTable tabela) {
         for (int i = 0; i < tabela.getColumnCount(); i++) {
