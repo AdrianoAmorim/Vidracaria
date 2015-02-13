@@ -387,20 +387,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnClienteCadastrar.setBackground(new java.awt.Color(102, 0, 102));
         btnClienteCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastroPqn.png"))); // NOI18N
         btnClienteCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnClienteCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClienteCadastrarActionPerformed(evt);
-            }
-        });
 
         btnClienteAlterar.setBackground(new java.awt.Color(255, 255, 255));
         btnClienteAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AlterarPq.png"))); // NOI18N
         btnClienteAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnClienteAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClienteAlterarActionPerformed(evt);
-            }
-        });
 
         btnClienteBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
         btnClienteBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -536,11 +526,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnClienteLimpar.setBackground(new java.awt.Color(255, 255, 255));
         btnClienteLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarNovo1.png"))); // NOI18N
         btnClienteLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnClienteLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClienteLimparActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -749,12 +734,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadCliente.setLayout(pnlCadClienteLayout);
         pnlCadClienteLayout.setHorizontalGroup(
             pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadClienteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
+                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlCadClienteLayout.setVerticalGroup(
@@ -829,20 +814,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnCadastrarFuncionario.setBackground(new java.awt.Color(102, 0, 102));
         btnCadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastroPqn.png"))); // NOI18N
-        btnCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarFuncionarioActionPerformed(evt);
-            }
-        });
 
         btnAlterarFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         btnAlterarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AlterarPq.png"))); // NOI18N
         btnAlterarFuncionario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAlterarFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarFuncionarioActionPerformed(evt);
-            }
-        });
 
         lblFuncionarioTelFixo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblFuncionarioTelFixo.setForeground(new java.awt.Color(0, 69, 139));
@@ -981,11 +956,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnFuncionarioLimpar.setBackground(new java.awt.Color(255, 255, 255));
         btnFuncionarioLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarNovo1.png"))); // NOI18N
         btnFuncionarioLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnFuncionarioLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFuncionarioLimparActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1502,7 +1472,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(btnVendaAdicionarProduto)
                     .addComponent(lblVendaDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel28.setBackground(new java.awt.Color(255, 255, 255));
@@ -1687,11 +1657,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnVendaCadastrar.setToolTipText("Cadastrar Compra");
         btnVendaCadastrar.setBorder(null);
         btnVendaCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVendaCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVendaCadastrarActionPerformed(evt);
-            }
-        });
 
         btnVendaAlterar.setBackground(new java.awt.Color(153, 153, 255));
         btnVendaAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
@@ -1976,8 +1941,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                             .addComponent(lblCompraParcelamento)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(cbCompraParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCompraAdicionarProduto)
                     .addComponent(btnCompraAdicionarFornecedor))
@@ -2003,8 +1967,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(tfCompraFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCompraAdicionarFornecedor))
                 .addGap(7, 7, 7)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbCompraParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel22Layout.createSequentialGroup()
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbCompraTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2015,8 +1978,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(tfCompraDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCompraAdicionarDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCompraRetirarDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCompraDesconto))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                            .addComponent(lblCompraDesconto)))
+                    .addComponent(cbCompraParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 255));
@@ -2083,7 +2047,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCompraTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(lblCompraTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel33Layout.setVerticalGroup(
@@ -2109,7 +2073,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCompraSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(lblCompraSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel34Layout.setVerticalGroup(
@@ -2134,7 +2098,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCompraValorSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(lblCompraValorSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel27Layout.setVerticalGroup(
@@ -2168,7 +2132,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTotalDesconto, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(lblTotalDesconto, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel35Layout.setVerticalGroup(
@@ -2236,21 +2200,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnCompraCadastrar.setToolTipText("Cadastrar Compra");
         btnCompraCadastrar.setBorder(null);
         btnCompraCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCompraCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraCadastrarActionPerformed(evt);
-            }
-        });
 
         btnCompraAlterar.setBackground(new java.awt.Color(153, 153, 255));
         btnCompraAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
         btnCompraAlterar.setToolTipText("Alterar Compra");
         btnCompraAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCompraAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraAlterarActionPerformed(evt);
-            }
-        });
 
         jPanel40.setBackground(new java.awt.Color(153, 153, 255));
         jPanel40.setPreferredSize(new java.awt.Dimension(264, 34));
@@ -2282,7 +2236,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
         pnlEfetuarCompraLayout.setHorizontalGroup(
             pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2304,7 +2258,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCompraCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCompraAlterar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 973, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addComponent(btnCompraDeletarProdutoLista)
@@ -2594,56 +2548,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Produto removido com sucesso!");
     }//GEN-LAST:event_btnCompraDeletarProdutoListaMouseClicked
 
-    private void btnCompraCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraCadastrarActionPerformed
-        DefaultTableModel model = (DefaultTableModel) tbCompraListProduto.getModel();
-
-        // Dados e validação da compra
-        Compra compra = new Compra();
-        Parcelamento parcelamento = new ParcelamentoCompraCRUD().ConsultarCodParcelamento(cbCompraParcelamento.getSelectedItem().toString());
-
-        CompraController compraController = new CompraController();
-
-        // recebe informaçoes da compra
-        compra.setCodCompra(Integer.parseInt(tfCompraCodigo.getText()));
-        compra.setCodDespesa(1);
-        compra.setCodParcelamento(parcelamento.getCodParcelamento());
-        compra.setCodFornecedor(1);
-
-        compra.setData(tfCompraData.getText());
-        compra.setTotalBruto(Double.parseDouble(lblCompraValorSubTotal.getText()));
-        compra.setDesconto(Double.parseDouble(lblValorTotalDesconto.getText()));
-        compra.setTotalLiquido(Double.parseDouble(lblCompraValorTotal.getText()));
-
-        // testa se as informações de compra são válidas
-        if (compraController.validarCompra(compra)) {
-            CompraCRUD compraCRUD = new CompraCRUD();
-
-            ArrayList<ProdutoComprado> listaProdutosComprados = new ArrayList<>();
-
-            // lista dos produtos Comprados
-            for (int i = 0; i < tbCompraListProduto.getRowCount(); i++) {
-                ProdutoComprado produtoComprado = new ProdutoComprado();
-
-                // recebe as informações do produto
-                produtoComprado.setCodProduto(Integer.valueOf(tbCompraListProduto.getValueAt(i, 0).toString()));
-                produtoComprado.setCodDespesa(1);
-                produtoComprado.setCodCompra(Integer.parseInt(tfCompraCodigo.getText()));
-                produtoComprado.setQuantidadeProduto(Double.parseDouble(tbCompraListProduto.getValueAt(i, 2).toString()));
-                produtoComprado.setPrecoCusto(Double.parseDouble(tbCompraListProduto.getValueAt(i, 3).toString()));
-
-                // adiciona o produto na lista
-                listaProdutosComprados.add(produtoComprado);
-            }
-
-            // efetua as transações da venda correspondente aos produtos da lista
-            compraCRUD.inserirCompra(compra, listaProdutosComprados);
-
-            // incrementa o valor do codigo da venda
-            tfCompraCodigo.setText(String.valueOf(compraCRUD.incrementCodCompra("incrementar")));
-
-        }
-    }//GEN-LAST:event_btnCompraCadastrarActionPerformed
-
     private void btnCompraAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarProdutoActionPerformed
         FrmCadastroProduto cadastrarProduto = new FrmCadastroProduto(this, true);
         cadastrarProduto.setTitle("Cadastrar Produto");
@@ -2677,46 +2581,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
          }*/
 
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
-
-    private void btnCompraAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAlterarActionPerformed
-        // Dados e validação da compra
-        Compra compra = new Compra();
-        CompraController compraController = new CompraController();
-
-        // recebe informaççoes da compra
-        compra.setCodCompra(Integer.valueOf(tfCompraCodigo.getText()));
-        compra.setCodDespesa(1);
-
-        compra.setData(tfCompraCodigo.getText());
-
-        // testa se as informações de compra são válidas
-        if (compraController.validarCompra(compra)) {
-            // Dados e validação do produto comprado
-            ProdutoComprado produtoComprado = new ProdutoComprado();
-            ProdutoCompradoController produtoCompradoController = new ProdutoCompradoController();
-
-            // recebe informações do produto comprado
-            produtoComprado.setCodCompra(compra.getCodCompra());
-
-            // testa se as informações dos produtos comprados são válidas
-            if (produtoCompradoController.validarProdutoComprado(produtoComprado)) {
-                Fornecedor fornecedor = new Fornecedor();
-                FornecedorController fornecedorController = new FornecedorController();
-
-                if (fornecedorController.validarFornecedor(fornecedor)) {
-                    FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
-                    CompraCRUD compraCRUD = new CompraCRUD();
-                    ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
-
-                    // envia as informações dos objetos para o banco de dados
-                    fornecedorCRUD.atualizarFornecedor(fornecedor);
-                    compraCRUD.atualizarCompra(compra);
-                    produtoCompradoCRUD.atualizarProdutoComprado(produtoComprado);
-
-                }
-            }
-        }
-    }//GEN-LAST:event_btnCompraAlterarActionPerformed
 
     private void btnCompraRetirarDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraRetirarDescontoActionPerformed
         Double totalAtual = Double.parseDouble(lblCompraValorTotal.getText());
@@ -2888,122 +2752,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioCodCargo.setText(String.valueOf(buscaCargo.cargo.getCodigoCargo()));
     }//GEN-LAST:event_btnFuncionarioBuscarCodCargoMouseClicked
 
-    private void btnAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarFuncionarioActionPerformed
-        Funcionario funcionario = new Funcionario();
-        FuncionarioController funcionarioController = new FuncionarioController();
-
-        funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
-        funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
-        funcionario.setCodEmpresa(1);
-        funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
-        funcionario.setTelFixo(FrmPrincipal.desmascarar(tfFuncionarioTelResidencial.getText()));
-        funcionario.setTelCel(FrmPrincipal.desmascarar(tfFuncionarioTelCelular.getText()));
-        funcionario.setCpf(FrmPrincipal.desmascarar(tfFuncionarioCpf.getText()));
-        funcionario.setRg(FrmPrincipal.desmascarar(tfFuncionarioRg.getText()));
-        funcionario.setDtNascimento(tfFuncionarioDtNascimento.getText().replace("/", ""));
-        funcionario.setEmail(tfFuncionarioEmail.getText());
-        funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
-        funcionario.setNumero(Integer.parseInt(tfFuncionarioNumero.getText()));
-        funcionario.setComplemento(tfFuncionarioComplemento.getText());
-        funcionario.setBairro(tfFuncionarioBairro.getText());
-        funcionario.setCep(FrmPrincipal.desmascarar(tfFuncionarioCep.getText()));
-        funcionario.setCidade(cbFuncionarioCidade.getSelectedItem().toString());
-        funcionario.setUf(cbFuncionarioUf.getSelectedItem().toString());
-        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText().replaceAll(",", ".")));
-
-        // definição do status do funcionario
-        if (rbFuncionarioStatusAtiv.isSelected()) {
-            // ativo
-            funcionario.setAtivo(true);
-        } else if (rbFuncionarioStatusInat.isSelected()) {
-            // inativo
-            funcionario.setAtivo(false);
-        }
-
-        if (funcionarioController.validarFuncionario(funcionario)) {
-            FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
-
-            funcionarioCRUD.atualizarFuncionario(funcionario);
-
-            // limpa os dados do formulário
-            limparCampos(tfFuncionarioCodCargo, tfFuncionarioNome, tfFuncionarioTelResidencial,
-                    tfFuncionarioTelCelular, tfFuncionarioEmail, tfFuncionarioCpf, tfFuncionarioRg,
-                    tfFuncionarioDtNascimento, tfFuncionarioLogradouro, tfFuncionarioNumero,
-                    tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep, tfFuncionarioSalario);
-
-            // resetar comboboxes
-            cbFuncionarioCidade.removeAllItems();
-            carregarCbCidades(cbFuncionarioCidade, cbFuncionarioUf.getSelectedItem().toString());
-            cbFuncionarioUf.removeAllItems();
-            carregarCbUf(cbFuncionarioUf);
-
-            // formatação padrão do formulário
-            rbFuncionarioStatusAtiv.setSelected(true);
-
-            // reinicia o codigo do funcionario
-            tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("inicializar")));
-        }
-    }//GEN-LAST:event_btnAlterarFuncionarioActionPerformed
-
-    private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
-        Funcionario funcionario = new Funcionario();
-
-        FuncionarioController funcionarioController = new FuncionarioController();
-
-        funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
-        funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
-        funcionario.setCodEmpresa(1);
-        funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
-        funcionario.setTelFixo(FrmPrincipal.desmascarar(tfFuncionarioTelCelular.getText()));
-        funcionario.setTelCel(FrmPrincipal.desmascarar(tfFuncionarioTelResidencial.getText()));
-        funcionario.setEmail(tfFuncionarioEmail.getText());
-        funcionario.setCpf(FrmPrincipal.desmascarar(tfFuncionarioCpf.getText()));
-        funcionario.setRg(FrmPrincipal.desmascarar(tfFuncionarioRg.getText()));
-        funcionario.setDtNascimento(tfFuncionarioDtNascimento.getText().replace("/", ""));
-        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText().replaceAll(",", ".")));
-
-        // definição do status do funcionario
-        if (rbFuncionarioStatusAtiv.isSelected()) {
-            // ativo
-            funcionario.setAtivo(true);
-        } else if (rbFuncionarioStatusInat.isSelected()) {
-            // inativo
-            funcionario.setAtivo(false);
-        }
-
-        funcionario.setCod(funcionario.getCodFuncionario());
-        funcionario.setCodCargo(funcionario.getCodCargo());
-        funcionario.setCodEmpresa(funcionario.getCodEmpresa());
-        funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
-        funcionario.setNumero(Integer.parseInt(tfFuncionarioNumero.getText()));
-        funcionario.setComplemento(tfFuncionarioComplemento.getText());
-        funcionario.setBairro(tfFuncionarioBairro.getText());
-        funcionario.setCep(FrmPrincipal.desmascarar(tfFuncionarioCep.getText()));
-        funcionario.setCidade(cbFuncionarioCidade.getSelectedItem().toString());
-        funcionario.setUf(cbFuncionarioUf.getSelectedItem().toString());
-
-        if (funcionarioController.validarFuncionario(funcionario)) {
-            FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
-
-            if (funcionarioCRUD.inserirFuncionario(funcionario)) {
-
-                // limpa os dados do formulário
-                limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
-                        tfFuncionarioSalario, tfFuncionarioTelCelular, tfFuncionarioTelResidencial,
-                        tfFuncionarioEmail, tfFuncionarioCpf, tfFuncionarioRg, tfFuncionarioDtNascimento,
-                        tfFuncionarioLogradouro, tfFuncionarioNumero, tfFuncionarioComplemento,
-                        tfFuncionarioBairro, tfFuncionarioCep);
-
-                cbFuncionarioCidade.removeAllItems();
-                cbFuncionarioUf.removeAllItems();
-                carregarCbUf(cbFuncionarioUf);
-
-                // incrementa o codigo do funcionario
-                tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("incrementar")));
-            }
-        }
-    }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
-
     private void rbClienteStatusInatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbClienteStatusInatActionPerformed
         int op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja desativar o cliente?");
         if (op == 0) {
@@ -3124,169 +2872,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnClienteBuscarClienteMouseClicked
 
-//Altera o Cliente procurado
-    private void btnClienteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteAlterarActionPerformed
-        Cliente cliente = new Cliente();
-        ClienteController clienteController = new ClienteController();
-
-        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
-
-        if (rbClienteFisica.isSelected()) {
-            cliente.setTipoCliente("F");
-            cliente.setCpf(FrmPrincipal.desmascarar(tfClienteCpf.getText()));
-            cliente.setRg(FrmPrincipal.desmascarar(tfClienteRg.getText()));
-        } else {
-            cliente.setTipoCliente("J");
-            cliente.setCnpj(FrmPrincipal.desmascarar(tfClienteCnpj.getText()));
-            cliente.setInscricaoEstadual(FrmPrincipal.desmascarar(tfClienteInscEstadual.getText()));
-        }
-
-        cliente.setNome(tfClienteNome.getText());
-
-        cliente.setLogradouro(tfClienteLogradouro.getText());
-        cliente.setNumero(Integer.parseInt(tfClienteNumero.getText()));
-        cliente.setComplemento(tfClienteComplemento.getText());
-        cliente.setBairro(tfClienteBairro.getText());
-        cliente.setCep(FrmPrincipal.desmascarar(tfClienteCep.getText()));
-        cliente.setCidade(cbClienteCidade.getSelectedItem().toString());
-        cliente.setUf(cbClienteUf.getSelectedItem().toString());
-        cliente.setTelFixo(FrmPrincipal.desmascarar(tfClienteTelRes.getText()));
-        cliente.setTelCel(FrmPrincipal.desmascarar(tfClienteTelCel.getText()));
-        cliente.setEmail(tfClienteEmail.getText());
-
-        // definição do status do cliente
-        if (rbClienteStatusAtiv.isSelected()) {
-            // ativo
-            cliente.setStatus(true);
-        } else if (rbClienteStatusInat.isSelected()) {
-            // inativo
-            cliente.setStatus(false);
-        }
-
-        ClienteCRUD clienteCrud = new ClienteCRUD();
-        clienteCrud.atualizarCliente(cliente);
-
-        pnlTabbedPrincipal.setSelectedIndex(0);
-
-        // limpa os dados do formulário
-        limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
-                tfClienteLogradouro, tfClienteCep, tfClienteBairro, tfClienteTelRes,
-                tfClienteTelCel, tfClienteNumero, tfClienteComplemento, tfClienteCnpj,
-                tfClienteInscEstadual, tfClienteEmail);
-
-        // resetar comboboxes
-        cbClienteUf.removeAllItems();
-        carregarCbUf(cbClienteUf);
-        cbClienteCidade.removeAllItems();
-        carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
-
-        // formatação padrão do formulário
-        rbClienteFisica.setSelected(true);
-        rbClienteJuridica.setSelected(false);
-
-        tfClienteCpf.setEnabled(true);
-        tfClienteRg.setEnabled(true);
-        tfClienteCnpj.setEnabled(false);
-        tfClienteInscEstadual.setEnabled(false);
-    }//GEN-LAST:event_btnClienteAlterarActionPerformed
-
-//Cadastrar Cliente
-    private void btnClienteCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteCadastrarActionPerformed
-        Cliente cliente = new Cliente();
-        Endereco enderecoCliente = new Endereco();
-        ClienteController cliController = new ClienteController();
-
-        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
-
-        // TIPO DE CLIENTE
-        if (rbClienteFisica.isSelected()) {
-            cliente.setTipoCliente(rbClienteFisica.getText().substring(0, 1));
-        } else if (rbClienteJuridica.isSelected()) {
-            cliente.setTipoCliente(rbClienteJuridica.getText().substring(0, 1));
-        }
-
-        cliente.setCpf(FrmPrincipal.desmascarar(tfClienteCpf.getText()));
-        cliente.setCnpj(FrmPrincipal.desmascarar(tfClienteCnpj.getText()));
-        cliente.setInscricaoEstadual(FrmPrincipal.desmascarar(tfClienteInscEstadual.getText()));
-        cliente.setRg(FrmPrincipal.desmascarar(tfClienteRg.getText()));
-        cliente.setNome(tfClienteNome.getText());
-        cliente.setTelFixo(FrmPrincipal.desmascarar(tfClienteTelRes.getText()));
-        cliente.setTelCel(FrmPrincipal.desmascarar(tfClienteTelCel.getText()));
-        cliente.setEmail(tfClienteEmail.getText());
-
-        // definição do status do cliente
-        if (rbClienteStatusAtiv.isSelected()) {
-            // ativo
-            cliente.setStatus(true);
-        } else if (rbClienteStatusInat.isSelected()) {
-            // inativo
-            cliente.setStatus(false);
-        }
-
-        enderecoCliente.setCod(Integer.parseInt(tfClienteCodigo.getText()));
-        enderecoCliente.setLogradouro(tfClienteLogradouro.getText());
-        enderecoCliente.setNumero(Integer.parseInt(tfClienteNumero.getText()));
-        enderecoCliente.setComplemento(tfClienteComplemento.getText());
-        enderecoCliente.setBairro(tfClienteBairro.getText());
-        enderecoCliente.setCep(FrmPrincipal.desmascarar(tfClienteCep.getText()));
-        enderecoCliente.setCidade(cbClienteCidade.getSelectedItem().toString());
-        enderecoCliente.setUf(cbClienteUf.getSelectedItem().toString());
-
-        // se os atributos forem todos válidos passa o cliente para o crud
-        if (cliController.validarAtributos(cliente)) {
-            ClienteCRUD cliCrud = new ClienteCRUD();
-            cliCrud.inserirCliente(cliente, enderecoCliente);
-
-            pnlTabbedPrincipal.setSelectedIndex(0);
-
-            // limpa os dados do formulário
-            limparCampos(tfClienteNome, tfClienteCpf, tfClienteRg,
-                    tfClienteLogradouro, tfClienteCep, tfClienteBairro,
-                    tfClienteTelRes, tfClienteTelCel, tfClienteNumero,
-                    tfClienteComplemento, tfClienteCnpj, tfClienteInscEstadual,
-                    tfClienteEmail);
-
-            // resetar comboboxes
-            cbClienteUf.removeAllItems();
-            carregarCbUf(cbClienteUf);
-            cbClienteCidade.removeAllItems();
-            carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
-
-            // incrementa o codigo do cliente
-            tfClienteCodigo.setText(Integer.toString(new ClienteCRUD().incrementCodCliente("incrementar")));
-
-            // formatação padrão do formulário
-            rbClienteFisica.setSelected(true);
-            rbClienteJuridica.setSelected(false);
-
-            tfClienteCpf.setEnabled(true);
-            tfClienteRg.setEnabled(true);
-            tfClienteCnpj.setEnabled(false);
-            tfClienteInscEstadual.setEnabled(false);
-        }
-    }//GEN-LAST:event_btnClienteCadastrarActionPerformed
-
-    // botão para resetar todos os atributos do cadastro de clientes
-    private void btnClienteLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteLimparActionPerformed
-
-        // resetar os JTextFields
-        limparCampos(tfClienteNome, tfClienteLogradouro, tfClienteNumero, tfClienteComplemento,
-                tfClienteBairro, tfClienteCep, tfClienteCpf, tfClienteRg, tfClienteCnpj, tfClienteInscEstadual,
-                tfClienteTelRes, tfClienteTelCel, tfClienteEmail);
-
-        // resetar os JRadioButtons
-        rbClienteStatusAtiv.setSelected(true);
-        rbClienteFisica.setSelected(true);
-
-        // resetar comboboxes
-        cbClienteUf.removeAllItems();
-        carregarCbUf(cbClienteUf);
-        cbClienteCidade.removeAllItems();
-        carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
-
-        tfClienteCodigo.setText(String.valueOf(new ClienteCRUD().incrementCodCliente("inicializar")));
-    }//GEN-LAST:event_btnClienteLimparActionPerformed
-
     //carrega as cidades de acordo com o ESTADO selecionado - CLIENTE
     private void cbClienteUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbClienteUfItemStateChanged
 
@@ -3301,28 +2886,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             carregarCbCidades(cbFuncionarioCidade, cbFuncionarioUf.getSelectedItem().toString());
         }
     }//GEN-LAST:event_cbFuncionarioUfItemStateChanged
-
-    private void btnFuncionarioLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioLimparActionPerformed
-        FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
-
-        // limpa os dados do formulário
-        limparCampos(tfFuncionarioCodCargo, tfFuncionarioNome, tfFuncionarioTelResidencial,
-                tfFuncionarioTelCelular, tfFuncionarioEmail, tfFuncionarioCpf, tfFuncionarioRg,
-                tfFuncionarioDtNascimento, tfFuncionarioLogradouro, tfFuncionarioNumero,
-                tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep, tfFuncionarioSalario);
-
-        // resetar comboboxes
-        cbClienteUf.removeAllItems();
-        carregarCbUf(cbClienteUf);
-        cbClienteCidade.removeAllItems();
-        carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
-
-        // formatação padrão do formulário
-        rbFuncionarioStatusAtiv.setSelected(true);
-
-        // reinicia o codigo do funcionario
-        tfFuncionarioCodigo.setText(String.valueOf(funcionarioCRUD.incrementCodFuncionario("inicializar")));
-    }//GEN-LAST:event_btnFuncionarioLimparActionPerformed
 
     private void btnCompraAdicionarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarFornecedorActionPerformed
         FrmCadastrarFornecedor cadFornecedor = new FrmCadastrarFornecedor(this, true);
@@ -3361,56 +2924,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnVendaAdicionarDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaAdicionarDescontoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVendaAdicionarDescontoActionPerformed
-
-    private void btnVendaCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaCadastrarActionPerformed
-        Venda venda = new Venda();
-
-        // inicializa um objeto parcelamento de acordo com o parcelamento selecionado na no ComboBox
-        Parcelamento parcelamento = new ParcelamentoVendaCRUD().ConsultarCodParcelamento(cbVendaParcelamento.getSelectedItem().toString());
-        // inicializa um objeto cliente de acordo com o cliente selecionado
-        Cliente cliente = new ClienteCRUD().consultarCliente(tfVendaNomeCliente.getText()).get(0);
-
-        // recebimento dos dados da venda
-        venda.setCodVenda(Integer.parseInt(tfVendaCodigo.getText()));
-        venda.setCodRenda(1);
-        venda.setCodParcelamento(parcelamento.getCodParcelamento());
-        venda.setCodCliente(cliente.getCodCliente());
-        venda.setDataVenda(tfVendaData.getText());
-        //venda.setTotalBruto(Double.parseDouble(lblVendaTotalBrutoValor.getText()));
-        //venda.setTotalLiquido(Double.parseDouble(lblVendaTotalLiquidoValor.getText()));
-//        venda.setTotalDesconto(Double.parseDouble(lblVendaDescontoValor.getText()));
-        venda.setDescricao(taVendaDescricao.getText());
-
-        // valida as informações da venda
-        VendaController vendaController = new VendaController();
-
-        if (vendaController.validarVenda(venda)) {
-            VendaCRUD vendaCRUD = new VendaCRUD();
-
-            ArrayList<ProdutoVendido> listaProdutosVendidos = new ArrayList<>();
-
-            // lista dos produtos vendidos
-            for (int i = 0; i < tbVendaListProduto.getRowCount(); i++) {
-                ProdutoVendido produtoVendido = new ProdutoVendido();
-
-                // recebe as informações do produto
-                produtoVendido.setCodProduto(Integer.valueOf(tbVendaListProduto.getValueAt(i, 0).toString()));
-                produtoVendido.setCodRenda(1);
-                produtoVendido.setCodVenda(Integer.parseInt(tfVendaCodigo.getText()));
-                produtoVendido.setQuantidadeProduto(Double.parseDouble(tbVendaListProduto.getValueAt(i, 2).toString()));
-                produtoVendido.setPrecoVenda((double) tbVendaListProduto.getValueAt(i, 3));
-
-                // adiciona o produto na lista
-                listaProdutosVendidos.add(produtoVendido);
-            }
-
-            // efetua as transações da venda correspondente aos produtos da lista
-            vendaCRUD.inserirVenda(venda, listaProdutosVendidos);
-
-            // incrementa o valor do codigo da venda
-            tfVendaCodigo.setText(String.valueOf(vendaCRUD.incrementCodVenda("incrementar")));
-        }
-    }//GEN-LAST:event_btnVendaCadastrarActionPerformed
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
