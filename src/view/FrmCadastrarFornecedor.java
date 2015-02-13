@@ -636,7 +636,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
             fornecedor.setStatus(false);
         }
 
-        fornecedor.setCod(Integer.valueOf(tfFornecedorCodigo.getText()));
+        fornecedor.setCodFornecedor(Integer.valueOf(tfFornecedorCodigo.getText()));
         fornecedor.setLogradouro(tfFornecedorLogradouro.getText());
         fornecedor.setNumero(Integer.parseInt(tfFornecedorNumero.getText()));
         fornecedor.setComplemento(tfFornecedorComplemento.getText());

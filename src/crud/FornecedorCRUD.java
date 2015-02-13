@@ -79,7 +79,7 @@ public class FornecedorCRUD {
                     + "complemento, bairro, cep, cidade, uf) "
                     + "VALUES (?,?,?,?,?,?,?,?);");
 
-            stmt.setInt(1, fornecedor.getCod());
+            stmt.setInt(1, fornecedor.getCodFornecedor());
             stmt.setString(2, fornecedor.getLogradouro());
             stmt.setInt(3, fornecedor.getNumero());
             stmt.setString(4, fornecedor.getComplemento());

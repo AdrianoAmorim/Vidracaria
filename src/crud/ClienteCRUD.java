@@ -51,28 +51,27 @@ public class ClienteCRUD {
         return increment;
     }
 
-    public void inserirCliente(Cliente cliente, Endereco enderecoCliente) {
+    public boolean inserirCliente(Cliente cliente) {
 
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
             conn.setAutoCommit(false);
 
-            stmt = conn.prepareStatement("INSERT INTO cliente(codCliente, tipoCliente, cpf, cnpj, "
+            stmt = conn.prepareStatement("INSERT INTO cliente(tipoCliente, cpf, cnpj, "
                     + "inscricaoEstadual, nome, rg, telFixo, telCel, email, status)"
-                    + "  VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+                    + "  VALUES (?,?,?,?,?,?,?,?,?,?);");
 
-            stmt.setInt(1, cliente.getCodCliente());
-            stmt.setString(2, cliente.getTipoCliente());
-            stmt.setString(3, cliente.getCpf());
-            stmt.setString(4, cliente.getCnpj());
-            stmt.setString(5, cliente.getInscricaoEstadual());
-            stmt.setString(6, cliente.getNome());
-            stmt.setString(7, cliente.getRg());
-            stmt.setString(8, cliente.getTelFixo());
-            stmt.setString(9, cliente.getTelCel());
-            stmt.setString(10, cliente.getEmail());
-            stmt.setBoolean(11, cliente.isStatus());
+            stmt.setString(1, cliente.getTipoCliente());
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getCnpj());
+            stmt.setString(4, cliente.getInscricaoEstadual());
+            stmt.setString(5, cliente.getNome());
+            stmt.setString(6, cliente.getRg());
+            stmt.setString(7, cliente.getTelFixo());
+            stmt.setString(8, cliente.getTelCel());
+            stmt.setString(9, cliente.getEmail());
+            stmt.setBoolean(10, cliente.isStatus());
 
             stmt.executeUpdate();
 
@@ -80,14 +79,14 @@ public class ClienteCRUD {
                     + "complemento, bairro, cep, cidade, uf) "
                     + "VALUES (?,?,?,?,?,?,?,?);");
 
-            stmt.setInt(1, enderecoCliente.getCod());
-            stmt.setString(2, enderecoCliente.getLogradouro());
-            stmt.setInt(3, enderecoCliente.getNumero());
-            stmt.setString(4, enderecoCliente.getComplemento());
-            stmt.setString(5, enderecoCliente.getBairro());
-            stmt.setString(6, enderecoCliente.getCep());
-            stmt.setString(7, enderecoCliente.getCidade());
-            stmt.setString(8, enderecoCliente.getUf());
+            stmt.setInt(1, cliente.getCodCliente());
+            stmt.setString(2, cliente.getLogradouro());
+            stmt.setInt(3, cliente.getNumero());
+            stmt.setString(4, cliente.getComplemento());
+            stmt.setString(5, cliente.getBairro());
+            stmt.setString(6, cliente.getCep());
+            stmt.setString(7, cliente.getCidade());
+            stmt.setString(8, cliente.getUf());
 
             stmt.executeUpdate();
 
@@ -97,8 +96,10 @@ public class ClienteCRUD {
             conn.close();
 
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
+            return true;
         } catch (SQLException erroInserirCliente) {
             JOptionPane.showMessageDialog(null, erroInserirCliente.getMessage());
+            return false;
         }
     }
 
@@ -224,7 +225,7 @@ public class ClienteCRUD {
         return cliente;
     }
 
-    public void atualizarCliente(Cliente cliente) {
+    public boolean atualizarCliente(Cliente cliente) {
 
         PreparedStatement stmt;
 
@@ -271,9 +272,10 @@ public class ClienteCRUD {
             conn.close();
 
             JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
-
+            return true;
         } catch (SQLException erroAtualizarCliente) {
             JOptionPane.showMessageDialog(null, erroAtualizarCliente.getMessage());
+            return false;
         }
     }
 

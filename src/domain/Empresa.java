@@ -6,10 +6,19 @@ package domain;
  * @author rafael
  */
 public class Empresa extends Endereco {
+    protected int codEmpresa;
     protected String cnpjEmpresa;
     protected String razaoSocial;
     protected String nomeFantasia;
 
+    public int getCodEmpresa() {
+        return codEmpresa;
+    }
+
+    public void setCodEmpresa(int codEmpresa) {
+        this.codEmpresa = codEmpresa;
+    }
+    
     public String getCnpjEmpresa() {
         return cnpjEmpresa;
     }

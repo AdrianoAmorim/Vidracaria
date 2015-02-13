@@ -10,6 +10,7 @@ public class Funcionario extends Endereco {
 
     protected int codFuncionario;
     protected int codCargo;
+    protected int codEmpresa;
     protected String nomeFuncionario;
     protected String telFixo;
     protected String telCel;
@@ -36,6 +37,14 @@ public class Funcionario extends Endereco {
         this.codCargo = codCargo;
     }
 
+    public int getCodEmpresa() {
+        return codEmpresa;
+    }
+
+    public void setCodEmpresa(int codEmpresa) {
+        this.codEmpresa = codEmpresa;
+    }
+   
     public String getEmail() {
         return email;
     }

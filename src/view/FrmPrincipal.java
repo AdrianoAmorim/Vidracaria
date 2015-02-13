@@ -387,10 +387,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnClienteCadastrar.setBackground(new java.awt.Color(102, 0, 102));
         btnClienteCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastroPqn.png"))); // NOI18N
         btnClienteCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnClienteCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteCadastrarActionPerformed(evt);
+            }
+        });
 
         btnClienteAlterar.setBackground(new java.awt.Color(255, 255, 255));
         btnClienteAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AlterarPq.png"))); // NOI18N
         btnClienteAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnClienteAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteAlterarActionPerformed(evt);
+            }
+        });
 
         btnClienteBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
         btnClienteBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1349,11 +1359,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnVendaRetirarDesconto.setText("-");
         btnVendaRetirarDesconto.setToolTipText("Retirar Desconto");
-        btnVendaRetirarDesconto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVendaRetirarDescontoActionPerformed(evt);
-            }
-        });
 
         btnVendaBuscarVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
         btnVendaBuscarVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1374,11 +1379,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnVendaAdicionarDesconto.setText("+");
         btnVendaAdicionarDesconto.setToolTipText("Retirar Desconto");
-        btnVendaAdicionarDesconto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVendaAdicionarDescontoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
         jPanel47.setLayout(jPanel47Layout);
@@ -1870,11 +1870,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfCompraDesconto.setForeground(new java.awt.Color(255, 0, 0));
 
         btnCompraRetirarDesconto.setText("-");
-        btnCompraRetirarDesconto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraRetirarDescontoActionPerformed(evt);
-            }
-        });
 
         tfCompraData.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
@@ -1893,11 +1888,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         btnCompraAdicionarDesconto.setText("+");
-        btnCompraAdicionarDesconto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraAdicionarDescontoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -2582,21 +2572,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
 
-    private void btnCompraRetirarDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraRetirarDescontoActionPerformed
-        Double totalAtual = Double.parseDouble(lblCompraValorTotal.getText());
-        Double subTotalAtual = Double.parseDouble(lblCompraValorSubTotal.getText());
-        totalAtual += Double.parseDouble(tfCompraDesconto.getText());
-
-        // se a remoção do desconto não ultrapassar o valor do sub-total, efetua a alteração
-        if (totalAtual <= subTotalAtual) {
-            lblCompraValorTotal.setText(String.valueOf(totalAtual));
-            lblValorTotalDesconto.setText(String.valueOf(tfCompraDesconto.getText()));
-        } else {
-            JOptionPane.showMessageDialog(null, "Valor de desconto inválido!");
-            tfCompraDesconto.setText("");
-        }
-    }//GEN-LAST:event_btnCompraRetirarDescontoActionPerformed
-
     private void btnFinanceiroAddTituloRendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanceiroAddTituloRendaActionPerformed
         FrmCadastrarRenda cadastrarRenda = new FrmCadastrarRenda(this, true);
         cadastrarRenda.setVisible(true);
@@ -2611,12 +2586,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void cbVendaTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaTipoPagamentoActionPerformed
         //    lblTipoPagamento.setText(cbVendaTipoPagamento.getSelectedItem().toString());
     }//GEN-LAST:event_cbVendaTipoPagamentoActionPerformed
-
-    private void btnVendaRetirarDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaRetirarDescontoActionPerformed
-//        double valorTotalVendaAtualizado = Double.parseDouble(lblVendaDescontoValor.getText()) + Double.parseDouble(lblVendaTotalLiquidoValor.getText());
-        //    lblVendaTotalLiquidoValor.setText(String.valueOf(valorTotalVendaAtualizado));
-        //    lblVendaDescontoValor.setText("0");
-    }//GEN-LAST:event_btnVendaRetirarDescontoActionPerformed
 
     private void cbVendaParcelamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaParcelamentoActionPerformed
         ParcelamentoVendaCRUD parcelamentoCRUD = new ParcelamentoVendaCRUD();
@@ -2865,9 +2834,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             // definição do status do cliente
             if (buscaCli.cliente.isStatus()) {
-                rbClienteStatusInat.setSelected(true);
-            } else {
+                // ativo
                 rbClienteStatusAtiv.setSelected(true);
+            } else {
+                // inativo
+                rbClienteStatusInat.setSelected(true);
             }
         }
     }//GEN-LAST:event_btnClienteBuscarClienteMouseClicked
@@ -2917,13 +2888,132 @@ public class FrmPrincipal extends javax.swing.JFrame {
         //lblVendaCpfNumero.setText(buscaCliente.cliente.getCpf());
     }//GEN-LAST:event_btnVendaBuscarClienteMouseClicked
 
-    private void btnCompraAdicionarDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarDescontoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCompraAdicionarDescontoActionPerformed
+    private void btnClienteCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteCadastrarActionPerformed
+        Cliente cliente = new Cliente();
+        ClienteController clienteController = new ClienteController();
 
-    private void btnVendaAdicionarDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaAdicionarDescontoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVendaAdicionarDescontoActionPerformed
+        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
+        cliente.setNome(tfClienteNome.getText());
+        if (rbClienteFisica.isSelected()) {
+            // pessoa física
+            cliente.setTipoCliente("F");
+            cliente.setCpf(desmascarar(tfClienteCpf.getText()));
+            cliente.setRg(desmascarar(tfClienteRg.getText()));
+        } else {
+            // pessoa jurídica
+            cliente.setTipoCliente("J");
+            cliente.setCnpj(desmascarar(tfClienteCnpj.getText()));
+            cliente.setInscricaoEstadual(desmascarar(tfClienteInscEstadual.getText()));
+        }
+        cliente.setTelFixo(desmascarar(tfClienteTelRes.getText()));
+        cliente.setTelCel(desmascarar(tfClienteTelCel.getText()));
+        cliente.setEmail(tfClienteEmail.getText());
+        cliente.setLogradouro(tfClienteLogradouro.getText());
+        cliente.setNumero(Integer.parseInt(tfClienteNumero.getText()));
+        cliente.setComplemento(tfClienteComplemento.getText());
+        cliente.setBairro(tfClienteBairro.getText());
+        cliente.setCep(desmascarar(tfClienteCep.getText()));
+        cliente.setUf(cbClienteUf.getSelectedItem().toString());
+        cliente.setCidade(cbClienteCidade.getSelectedItem().toString());
+        if (rbClienteStatusAtiv.isSelected()) {
+            // cliente ativo
+            cliente.setStatus(true);
+        } else {
+            // cliente inativo
+            cliente.setStatus(false);
+        }
+
+        // validação do objeto cliente
+        if (clienteController.validarAtributos(cliente)) {
+            // se o objeto for válido, envia para o banco de dados
+            ClienteCRUD clienteCRUD = new ClienteCRUD();
+            // se o objeto for inserido com sucesso no banco de dados
+            if (clienteCRUD.inserirCliente(cliente)) {
+            // limpa os campos do formulário
+                limparCampos(tfClienteCodigo, tfClienteNome, tfClienteTelRes, tfClienteTelCel,
+                        tfClienteEmail, tfClienteCpf, tfClienteRg, tfClienteCnpj, tfClienteInscEstadual,
+                        tfClienteLogradouro, tfClienteNumero, tfClienteComplemento, tfClienteBairro,
+                        tfClienteCep);
+
+                // resetar radioButtons (pessoa física / ativo)
+                rbClienteJuridica.setSelected(false);
+                rbClienteFisica.setSelected(true);
+                rbClienteStatusInat.setSelected(false);
+                rbClienteStatusAtiv.setSelected(true);
+
+                // resetar comboBoxes
+                carregarCbUf(cbClienteUf);
+                carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
+                
+                // reinicia o codigo do cliente
+                tfClienteCodigo.setText(String.valueOf(clienteCRUD.incrementCodCliente("inicializar")));
+            }
+        }
+
+    }//GEN-LAST:event_btnClienteCadastrarActionPerformed
+
+    private void btnClienteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteAlterarActionPerformed
+        Cliente cliente = new Cliente();
+        ClienteController clienteController = new ClienteController();
+
+        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
+        cliente.setNome(tfClienteNome.getText());
+        if (rbClienteFisica.isSelected()) {
+            // pessoa física
+            cliente.setTipoCliente("F");
+            cliente.setCpf(desmascarar(tfClienteCpf.getText()));
+            cliente.setRg(desmascarar(tfClienteRg.getText()));
+        } else {
+            // pessoa jurídica
+            cliente.setTipoCliente("J");
+            cliente.setCnpj(desmascarar(tfClienteCnpj.getText()));
+            cliente.setInscricaoEstadual(desmascarar(tfClienteInscEstadual.getText()));
+        }
+        cliente.setTelFixo(desmascarar(tfClienteTelRes.getText()));
+        cliente.setTelCel(desmascarar(tfClienteTelCel.getText()));
+        cliente.setEmail(tfClienteEmail.getText());
+        cliente.setLogradouro(tfClienteLogradouro.getText());
+        cliente.setNumero(Integer.parseInt(tfClienteNumero.getText()));
+        cliente.setComplemento(tfClienteComplemento.getText());
+        cliente.setBairro(tfClienteBairro.getText());
+        cliente.setCep(desmascarar(tfClienteCep.getText()));
+        cliente.setUf(cbClienteUf.getSelectedItem().toString());
+        cliente.setCidade(cbClienteCidade.getSelectedItem().toString());
+        if (rbClienteStatusAtiv.isSelected()) {
+            // cliente ativo
+            cliente.setStatus(true);
+        } else {
+            // cliente inativo
+            cliente.setStatus(false);
+        }
+
+        // validação do objeto cliente
+        if (clienteController.validarAtributos(cliente)) {
+            // se o objeto for válido, envia para o banco de dados
+            ClienteCRUD clienteCRUD = new ClienteCRUD();
+            // se o objeto for inserido com sucesso no banco de dados
+            if (clienteCRUD.atualizarCliente(cliente)) {
+            // limpa os campos do formulário
+                limparCampos(tfClienteCodigo, tfClienteNome, tfClienteTelRes, tfClienteTelCel,
+                        tfClienteEmail, tfClienteCpf, tfClienteRg, tfClienteCnpj, tfClienteInscEstadual,
+                        tfClienteLogradouro, tfClienteNumero, tfClienteComplemento, tfClienteBairro,
+                        tfClienteCep);
+
+                // resetar radioButtons (pessoa física / ativo)
+                rbClienteJuridica.setSelected(false);
+                rbClienteFisica.setSelected(true);
+                rbClienteStatusInat.setSelected(false);
+                rbClienteStatusAtiv.setSelected(true);
+
+                // resetar comboBoxes
+                carregarCbUf(cbClienteUf);
+                carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
+                
+                // reseta o codigo do cliente
+                tfClienteCodigo.setText(String.valueOf(clienteCRUD.incrementCodCliente("inicializar")));
+            }
+        }
+    }//GEN-LAST:event_btnClienteAlterarActionPerformed
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
@@ -2940,7 +3030,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }
 
-     //habilita ou desabilita campos dos tipos JtextField ou JCOmbo ou RadioButton
+    //habilita ou desabilita campos dos tipos JtextField ou JCOmbo ou RadioButton
     static public void habilitarDesabilitarComponente(boolean status, JTextField... args) {
         for (JTextField campo : args) {
             campo.setEnabled(status);
@@ -2958,7 +3048,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             campo.setEnabled(status);
         }
     }
-    
+
     static public void habilitarDesabilitarComponente(boolean status, JButton... args) {
         for (JButton campo : args) {
             campo.setEnabled(status);
@@ -2966,7 +3056,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     //-------------------------------------------------------
-    
     // Cria uma máscara para ser utilizada em JFormattedTextFields
     static public MaskFormatter MascararCampos(String Mascara) {
         MaskFormatter maskFormatter = new MaskFormatter();

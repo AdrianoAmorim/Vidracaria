@@ -80,7 +80,7 @@ public class FuncionarioCRUD {
             stmt = conn.prepareStatement("INSERT INTO enderecoFuncionario(codFuncionario, codEmpresa,"
                     + "logradouro, numero, complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?,?);");
 
-            stmt.setInt(1, funcionario.getCod());
+            stmt.setInt(1, funcionario.getCodFuncionario());
             stmt.setInt(2, funcionario.getCodEmpresa());
             stmt.setString(3, funcionario.getLogradouro());
             stmt.setInt(4, funcionario.getNumero());

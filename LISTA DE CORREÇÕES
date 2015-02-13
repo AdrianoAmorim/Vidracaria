@@ -1,0 +1,39 @@
+
+CADASTRO DE CLIENTE
+* campo de cnpj não enquadra o cnpj completo.
+
+* erro no auto increment
+
+
+PESQUISA DE CLIENTES
+
+* a pesquisa não funciona corretamente com todos os campos simultaneamente.
+  em conjunto funcionam só codigo, nome e cpf/cnpj.
+
+
+CADASTRO DE FUNCIONARIOS
+
+* cadastrar funcionario não está funcionando.
+
+* pesquisa de funcionários não funciona.
+
+CADASTRO DE PRODUTOS
+
+* ao cadastrar 2 produtos consecutivos o incremento pulou 2 numeros 
+  cadastrados os funcionarios 1 e 2 e o codigo atual é 4.
+
+* pesquisar produtos não funciona.
+
+* não tem opção de deletar produtos
+
+
+CADASTRO DE FORNECEDOR
+
+* cnpj não se enquadra por completo no campo.
+
+* não cadastra fornecedor --> erros de SQL
+
+* não reseta os comboboxes de cidade/uf após clicar em cadastrar.
+
+* 
+

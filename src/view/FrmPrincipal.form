@@ -541,6 +541,9 @@
                       <Color id="Cursor Default"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClienteCadastrarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnClienteAlterar">
                   <Properties>
@@ -554,6 +557,9 @@
                       <Color id="Cursor Default"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClienteAlterarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="btnClienteBuscarCliente">
                   <Properties>
@@ -2388,9 +2394,6 @@
                     <Property name="text" type="java.lang.String" value="-"/>
                     <Property name="toolTipText" type="java.lang.String" value="Retirar Desconto"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVendaRetirarDescontoActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="btnVendaBuscarVendedor">
                   <Properties>
@@ -2424,9 +2427,6 @@
                     <Property name="text" type="java.lang.String" value="+"/>
                     <Property name="toolTipText" type="java.lang.String" value="Retirar Desconto"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVendaAdicionarDescontoActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3314,9 +3314,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCompraRetirarDescontoActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="tfCompraData">
                   <Properties>
@@ -3348,9 +3345,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="+"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCompraAdicionarDescontoActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
