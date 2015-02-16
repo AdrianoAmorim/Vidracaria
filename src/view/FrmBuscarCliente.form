@@ -354,6 +354,9 @@
           <Properties>
             <Property name="focusLostBehavior" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfDoc2ClienteActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;#.###.###&quot;))"/>
           </AuxValues>
@@ -362,6 +365,9 @@
           <Properties>
             <Property name="focusLostBehavior" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCelularClienteActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;(##)#####-####&quot;))"/>
           </AuxValues>
@@ -370,6 +376,9 @@
           <Properties>
             <Property name="focusLostBehavior" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfResidencialClienteActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(FrmPrincipal.MascararCampos(&quot;(##)####-####&quot;))"/>
           </AuxValues>

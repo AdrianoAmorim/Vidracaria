@@ -161,10 +161,25 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
         });
 
         tfDoc2Cliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
+        tfDoc2Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfDoc2ClienteActionPerformed(evt);
+            }
+        });
 
         tfCelularCliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
+        tfCelularCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCelularClienteActionPerformed(evt);
+            }
+        });
 
         tfResidencialCliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
+        tfResidencialCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfResidencialClienteActionPerformed(evt);
+            }
+        });
 
         tfCodCliente.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
         tfCodCliente.setPreferredSize(new java.awt.Dimension(6, 31));
@@ -373,6 +388,18 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     private void tfCodClienteCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCodClienteCaretUpdate
         this.pesquisarClienteCaretUpdate();
     }//GEN-LAST:event_tfCodClienteCaretUpdate
+
+    private void tfDoc2ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDoc2ClienteActionPerformed
+        this.pesquisarClienteCaretUpdate();
+    }//GEN-LAST:event_tfDoc2ClienteActionPerformed
+
+    private void tfResidencialClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfResidencialClienteActionPerformed
+        this.pesquisarClienteCaretUpdate();
+    }//GEN-LAST:event_tfResidencialClienteActionPerformed
+
+    private void tfCelularClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCelularClienteActionPerformed
+        this.pesquisarClienteCaretUpdate();
+    }//GEN-LAST:event_tfCelularClienteActionPerformed
 
     /**
      * @param args the command line arguments

@@ -18,37 +18,54 @@ import view.FrmPrincipal;
  */
 public class ClienteCRUD {
 
-    public int incrementCodCliente(String operacao) {
-        PreparedStatement stmt = null;
-        Connection conn = new SQLite().conectar();
-        int increment = 0;        
+    public int ultimoIncrementCliente() {
 
-        try {
-            String sql = "";
-            
-            if (operacao.equalsIgnoreCase("inicializar")) {
-                // seleciona o valor do próximo cliente a ser cadastrado
-                sql = "SELECT last_value FROM cliente_codCliente_seq;";
-            } else if (operacao.equalsIgnoreCase("incrementar")) {
-                // incrementa o codigo do próximo cliente
-                sql = "select nextval('cliente_codCliente_seq');";
-            }
+        try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            int increment = 0;
+
+            // conta as linhas da tabela
+            String sql = "SELECT COUNT(codCliente) FROM cliente";
 
             stmt = conn.prepareStatement(sql);
-            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
-                increment = result.getInt(1);
-                return increment;
-            }
+                int linhas = result.getInt(1);
 
+                // quando a tabela está vazia
+                if (linhas == 0) {
+                    sql = "SELECT last_value FROM cliente_codCliente_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1);
+                        // retorna somente o last_value
+                        return increment;
+                    }
+                } else {
+                    // quando a tabela não está vazia
+                    sql = "SELECT last_value FROM cliente_codCliente_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1) + 1;
+                        // retorna o last_value + 1
+                        return increment;
+                    }
+                }
+            }
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodCliente) {
             JOptionPane.showMessageDialog(null, erroIncrementCodCliente.getMessage());
         }
-        return increment;
+        // em caso de erros não tratados
+        return 0;
     }
 
     public boolean inserirCliente(Cliente cliente) {
@@ -75,20 +92,23 @@ public class ClienteCRUD {
 
             stmt.executeUpdate();
 
-            stmt = conn.prepareStatement("INSERT INTO enderecoCliente(codCliente, logradouro, numero, "
-                    + "complemento, bairro, cep, cidade, uf) "
-                    + "VALUES (?,?,?,?,?,?,?,?);");
+            System.out.println(stmt);
 
-            stmt.setInt(1, cliente.getCodCliente());
-            stmt.setString(2, cliente.getLogradouro());
-            stmt.setInt(3, cliente.getNumero());
-            stmt.setString(4, cliente.getComplemento());
-            stmt.setString(5, cliente.getBairro());
-            stmt.setString(6, cliente.getCep());
-            stmt.setString(7, cliente.getCidade());
-            stmt.setString(8, cliente.getUf());
+            stmt = conn.prepareStatement("INSERT INTO enderecoCliente(logradouro, numero, "
+                    + "complemento, bairro, cep, cidade, uf) "
+                    + "VALUES (?,?,?,?,?,?,?);");
+
+            stmt.setString(1, cliente.getLogradouro());
+            stmt.setInt(2, cliente.getNumero());
+            stmt.setString(3, cliente.getComplemento());
+            stmt.setString(4, cliente.getBairro());
+            stmt.setString(5, cliente.getCep());
+            stmt.setString(6, cliente.getCidade());
+            stmt.setString(7, cliente.getUf());
 
             stmt.executeUpdate();
+
+            System.out.println(stmt);
 
             conn.commit();
             conn.setAutoCommit(true);
@@ -135,6 +155,8 @@ public class ClienteCRUD {
         }
 
         sql += ";";
+        System.out.println(sql);
+
         return sql;
     }
 

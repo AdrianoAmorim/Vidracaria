@@ -39,18 +39,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         // INICIALIZAÇÃO DA LISTA DE PRODUTOS
         // INICIALIZAÇÃO DO CODIGO DO CLIENTE
-        int codCli = new ClienteCRUD().incrementCodCliente("inicializar");
-        tfClienteCodigo.setText(Integer.toString(codCli));
+        tfClienteCodigo.setText(Integer.toString(new ClienteCRUD().ultimoIncrementCliente()));
         // INICIALIZAÇÃO DO CODIGO DA VENDA
-        int codVend = new VendaCRUD().incrementCodVenda("inicializar");
-        tfVendaCodigo.setText(Integer.toString(codVend));
+        tfVendaCodigo.setText(Integer.toString(new VendaCRUD().incrementCodVenda("inicializar")));
         // INICIALIZAÇÃO DO CODIGO DA COMPRA
-        int codCompra = new CompraCRUD().incrementCodCompra("inicializar");
-        tfCompraCodigo.setText(String.valueOf(codCompra));
+        tfCompraCodigo.setText(String.valueOf(new CompraCRUD().incrementCodCompra("inicializar")));
         // INICIALIZAÇÃO DO CODIGO DO FUNCIONARIO
-        int codFunc = new FuncionarioCRUD().incrementCodFuncionario("inicializar");
-        tfFuncionarioCodigo.setText(String.valueOf(codFunc));
-        // INICIALIZAÇÃO DA LISTA DE Parcelamento
+        tfFuncionarioCodigo.setText(String.valueOf(new FuncionarioCRUD().incrementCodFuncionario("inicializar")));
+
+        // INICIALIZAÇÃO DA LISTA DE PARCELAMENTO
         this.carregarCbParcelamentoVenda();
         // INICIALIZAÇÃO DA LISTA DE Parcelamento de compras
         this.carregarCbParcelamentoCompra();
@@ -536,6 +533,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnClienteLimpar.setBackground(new java.awt.Color(255, 255, 255));
         btnClienteLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarNovo1.png"))); // NOI18N
         btnClienteLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnClienteLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -2787,8 +2789,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         if (buscaCli.cliente.getCodCliente() != 0) {
 
-            tfClienteCodigo.setText(String.valueOf(buscaCli.cliente.getCodCliente()));
-
             if (buscaCli.cliente.getTipoCliente().equalsIgnoreCase("F")) {
                 // habilita e preenche os campos de pessoa física
                 tfClienteCpf.setEnabled(true);
@@ -2892,7 +2892,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         ClienteController clienteController = new ClienteController();
 
-        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
         cliente.setNome(tfClienteNome.getText());
         if (rbClienteFisica.isSelected()) {
             // pessoa física
@@ -2929,8 +2928,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
             ClienteCRUD clienteCRUD = new ClienteCRUD();
             // se o objeto for inserido com sucesso no banco de dados
             if (clienteCRUD.inserirCliente(cliente)) {
-            // limpa os campos do formulário
-                limparCampos(tfClienteCodigo, tfClienteNome, tfClienteTelRes, tfClienteTelCel,
+
+                // limpa os campos do formulário
+                limparCampos(tfClienteNome, tfClienteTelRes, tfClienteTelCel,
                         tfClienteEmail, tfClienteCpf, tfClienteRg, tfClienteCnpj, tfClienteInscEstadual,
                         tfClienteLogradouro, tfClienteNumero, tfClienteComplemento, tfClienteBairro,
                         tfClienteCep);
@@ -2944,9 +2944,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 // resetar comboBoxes
                 carregarCbUf(cbClienteUf);
                 carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
-                
-                // reinicia o codigo do cliente
-                tfClienteCodigo.setText(String.valueOf(clienteCRUD.incrementCodCliente("inicializar")));
+
+                // reinicia o campo de codigo
+                tfClienteCodigo.setText(Integer.toString(clienteCRUD.ultimoIncrementCliente()));
             }
         }
 
@@ -2956,7 +2956,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         ClienteController clienteController = new ClienteController();
 
-        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
         cliente.setNome(tfClienteNome.getText());
         if (rbClienteFisica.isSelected()) {
             // pessoa física
@@ -2993,8 +2992,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
             ClienteCRUD clienteCRUD = new ClienteCRUD();
             // se o objeto for inserido com sucesso no banco de dados
             if (clienteCRUD.atualizarCliente(cliente)) {
-            // limpa os campos do formulário
-                limparCampos(tfClienteCodigo, tfClienteNome, tfClienteTelRes, tfClienteTelCel,
+                // limpa os campos do formulário
+                limparCampos(tfClienteNome, tfClienteTelRes, tfClienteTelCel,
                         tfClienteEmail, tfClienteCpf, tfClienteRg, tfClienteCnpj, tfClienteInscEstadual,
                         tfClienteLogradouro, tfClienteNumero, tfClienteComplemento, tfClienteBairro,
                         tfClienteCep);
@@ -3008,12 +3007,35 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 // resetar comboBoxes
                 carregarCbUf(cbClienteUf);
                 carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
-                
-                // reseta o codigo do cliente
-                tfClienteCodigo.setText(String.valueOf(clienteCRUD.incrementCodCliente("inicializar")));
+
+                // reinicia o campo de codigo
+                tfClienteCodigo.setText(Integer.toString(clienteCRUD.ultimoIncrementCliente()));
             }
         }
     }//GEN-LAST:event_btnClienteAlterarActionPerformed
+
+    private void btnClienteLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteLimparActionPerformed
+        ClienteCRUD clienteCRUD = new ClienteCRUD();
+
+        // limpa os campos do formulário
+        limparCampos(tfClienteCodigo, tfClienteNome, tfClienteTelRes, tfClienteTelCel,
+                tfClienteEmail, tfClienteCpf, tfClienteRg, tfClienteCnpj, tfClienteInscEstadual,
+                tfClienteLogradouro, tfClienteNumero, tfClienteComplemento, tfClienteBairro,
+                tfClienteCep);
+
+        // resetar radioButtons (pessoa física / ativo)
+        rbClienteJuridica.setSelected(false);
+        rbClienteFisica.setSelected(true);
+        rbClienteStatusInat.setSelected(false);
+        rbClienteStatusAtiv.setSelected(true);
+
+        // resetar comboBoxes
+        carregarCbUf(cbClienteUf);
+        carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
+
+        // reinicia o campo de codigo
+        tfClienteCodigo.setText(Integer.toString(clienteCRUD.ultimoIncrementCliente()));
+    }//GEN-LAST:event_btnClienteLimparActionPerformed
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
