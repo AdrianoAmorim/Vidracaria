@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -40,12 +39,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DA LISTA DE PRODUTOS
         // INICIALIZAÇÃO DO CODIGO DO CLIENTE
         tfClienteCodigo.setText(Integer.toString(new ClienteCRUD().ultimoIncrementCliente()));
+        // INICIALIZAÇÃO DO CODIGO DO FUNCIONARIO
+        tfFuncionarioCodigo.setText(String.valueOf(new FuncionarioCRUD().ultimoIncrementFuncionario()));
+
         // INICIALIZAÇÃO DO CODIGO DA VENDA
         tfVendaCodigo.setText(Integer.toString(new VendaCRUD().incrementCodVenda("inicializar")));
         // INICIALIZAÇÃO DO CODIGO DA COMPRA
         tfCompraCodigo.setText(String.valueOf(new CompraCRUD().incrementCodCompra("inicializar")));
-        // INICIALIZAÇÃO DO CODIGO DO FUNCIONARIO
-        tfFuncionarioCodigo.setText(String.valueOf(new FuncionarioCRUD().incrementCodFuncionario("inicializar")));
 
         // INICIALIZAÇÃO DA LISTA DE PARCELAMENTO
         this.carregarCbParcelamentoVenda();
@@ -826,6 +826,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnCadastrarFuncionario.setBackground(new java.awt.Color(102, 0, 102));
         btnCadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastroPqn.png"))); // NOI18N
+        btnCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarFuncionarioActionPerformed(evt);
+            }
+        });
 
         btnAlterarFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         btnAlterarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AlterarPq.png"))); // NOI18N
@@ -2892,6 +2897,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         ClienteController clienteController = new ClienteController();
 
+        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
         cliente.setNome(tfClienteNome.getText());
         if (rbClienteFisica.isSelected()) {
             // pessoa física
@@ -2914,14 +2920,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cliente.setCep(desmascarar(tfClienteCep.getText()));
         cliente.setUf(cbClienteUf.getSelectedItem().toString());
         cliente.setCidade(cbClienteCidade.getSelectedItem().toString());
-        if (rbClienteStatusAtiv.isSelected()) {
-            // cliente ativo
-            cliente.setStatus(true);
-        } else {
-            // cliente inativo
-            cliente.setStatus(false);
-        }
-
+        cliente.setStatus(rbClienteStatusAtiv.isSelected());
+        
         // validação do objeto cliente
         if (clienteController.validarAtributos(cliente)) {
             // se o objeto for válido, envia para o banco de dados
@@ -2956,6 +2956,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         ClienteController clienteController = new ClienteController();
 
+        cliente.setCodCliente(Integer.parseInt(tfClienteCodigo.getText()));
         cliente.setNome(tfClienteNome.getText());
         if (rbClienteFisica.isSelected()) {
             // pessoa física
@@ -2978,13 +2979,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cliente.setCep(desmascarar(tfClienteCep.getText()));
         cliente.setUf(cbClienteUf.getSelectedItem().toString());
         cliente.setCidade(cbClienteCidade.getSelectedItem().toString());
-        if (rbClienteStatusAtiv.isSelected()) {
-            // cliente ativo
-            cliente.setStatus(true);
-        } else {
-            // cliente inativo
-            cliente.setStatus(false);
-        }
+        cliente.setStatus(rbClienteStatusAtiv.isSelected());
 
         // validação do objeto cliente
         if (clienteController.validarAtributos(cliente)) {
@@ -3008,7 +3003,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 carregarCbUf(cbClienteUf);
                 carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
 
-                // reinicia o campo de codigo
+                // reinicia o campo de código
                 tfClienteCodigo.setText(Integer.toString(clienteCRUD.ultimoIncrementCliente()));
             }
         }
@@ -3036,6 +3031,57 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // reinicia o campo de codigo
         tfClienteCodigo.setText(Integer.toString(clienteCRUD.ultimoIncrementCliente()));
     }//GEN-LAST:event_btnClienteLimparActionPerformed
+
+    private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
+        Funcionario funcionario = new Funcionario();
+        FuncionarioController funcionarioController = new FuncionarioController();
+        
+        funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
+        funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
+        funcionario.setCodEmpresa(1);
+        funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
+        funcionario.setTelFixo(desmascarar(tfFuncionarioTelResidencial.getText()));
+        funcionario.setTelCel(desmascarar(tfFuncionarioTelCelular.getText()));
+        funcionario.setEmail(tfFuncionarioEmail.getText());
+        funcionario.setCpf(desmascarar(tfFuncionarioCpf.getText()));
+        funcionario.setRg(desmascarar(tfFuncionarioRg.getText()));
+        funcionario.setDtNascimento(desmascarar(tfFuncionarioDtNascimento.getText()));
+        funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
+        funcionario.setNumero(Integer.parseInt(tfFuncionarioNumero.getText()));
+        funcionario.setComplemento(tfFuncionarioComplemento.getText());
+        funcionario.setBairro(tfFuncionarioBairro.getText());
+        funcionario.setCep(desmascarar(tfFuncionarioCep.getText()));
+        funcionario.setUf(cbFuncionarioUf.getSelectedItem().toString());
+        funcionario.setCidade(cbFuncionarioCidade.getSelectedItem().toString());
+        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
+        funcionario.setAtivo(rbFuncionarioStatusAtiv.isSelected());        
+        
+        // validação do objeto funcionario
+        if(funcionarioController.validarFuncionario(funcionario)) {
+            // se o objeto for válido, envia para o banco de dados
+            FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+            // se o objeto for inserido com sucesso no banco de dados
+            if(funcionarioCRUD.inserirFuncionario(funcionario)) {
+                // limpa os campos do formulário
+                limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
+                        tfFuncionarioTelResidencial, tfFuncionarioTelCelular, tfFuncionarioEmail,
+                        tfFuncionarioCpf, tfFuncionarioRg, tfFuncionarioDtNascimento, tfFuncionarioLogradouro,
+                        tfFuncionarioNumero, tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep,
+                        tfFuncionarioSalario);
+                
+                // resetar os radioButtons
+                rbFuncionarioStatusAtiv.setSelected(true);
+                rbFuncionarioStatusInat.setSelected(false);
+                
+                // resetar os comboBoxes
+                carregarCbUf(cbFuncionarioUf);
+                carregarCbCidades(cbFuncionarioCidade, cbFuncionarioUf.getSelectedItem().toString());
+                
+                // reinicia o campo de código
+                tfFuncionarioCodigo.setText(Integer.toString(funcionarioCRUD.ultimoIncrementFuncionario()));
+            }            
+        }
+    }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
@@ -3092,7 +3138,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // remove os elementos inseridos pelas mascaras nos JFormattedTextField
     static public String desmascarar(String textoMascarado) {
         String textoFormatado;
-        textoFormatado = textoMascarado.trim().replace("-", "").replace(".", "").replace("/", "").replace("(", "").replace(")", "");
+        textoFormatado = textoMascarado.trim().replace("-", "").replace(".", "").replace("/", "").replace("(", "").replace(")", "").replace("'", "");
         return textoFormatado;
     }
 

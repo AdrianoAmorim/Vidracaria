@@ -2,7 +2,6 @@ package crud;
 
 import database.SQLite;
 import domain.Cliente;
-import domain.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -155,8 +154,6 @@ public class ClienteCRUD {
         }
 
         sql += ";";
-        System.out.println(sql);
-
         return sql;
     }
 

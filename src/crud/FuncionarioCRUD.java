@@ -17,80 +17,95 @@ import view.FrmPrincipal;
  */
 public class FuncionarioCRUD {
 
-    public int incrementCodFuncionario(String operacao) {
-        PreparedStatement stmt = null;
-        Connection conn = new SQLite().conectar();
-        int increment = 0;
+    public int ultimoIncrementFuncionario() {
 
-        try {
-            String sql = "";
+        try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            int increment = 0;
 
-            if (operacao.equalsIgnoreCase("inicializar")) {
-                // seleciona o valor do próximo cliente a ser cadastrado
-                sql = "SELECT last_value FROM funcionario_codFuncionario_seq;";
-            } else if (operacao.equalsIgnoreCase("incrementar")) {
-                // incrementa o codigo do próximo cliente
-                sql = "select nextval('funcionario_codFuncionario_seq');";
-            }
+            // conta as linhas da tabela
+            String sql = "SELECT COUNT(codFuncionario) FROM funcionario";
 
             stmt = conn.prepareStatement(sql);
-            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
-                increment = result.getInt(1);
-                return increment;
-            }
+                int linhas = result.getInt(1);
 
+                // quando a tabela está vazia
+                if (linhas == 0) {
+                    sql = "SELECT last_value FROM funcionario_codFuncionario_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1);
+                        // retorna somente o last_value
+                        return increment;
+                    }
+                } else {
+                    // quando a tabela não está vazia
+                    sql = "SELECT last_value FROM funcionario_codFuncionario_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1) + 1;
+                        // retorna o last_value + 1
+                        return increment;
+                    }
+                }
+            }
             stmt.close();
             conn.close();
-        } catch (SQLException erroIncrementCodFuncionario) {
-            JOptionPane.showMessageDialog(null, erroIncrementCodFuncionario.getMessage());
+        } catch (SQLException erroIncrementCodFuncioario) {
+            JOptionPane.showMessageDialog(null, erroIncrementCodFuncioario.getMessage());
         }
-        return increment;
+        // em caso de erros não tratados
+        return 0;
     }
 
     // INSERT 
     public Boolean inserirFuncionario(Funcionario funcionario) {
-
-        PreparedStatement stmt;
-
         try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
             conn.setAutoCommit(false);
 
-            stmt = conn.prepareStatement("INSERT INTO funcionario(codFuncionario, codCargo, codEmpresa, "
-                    + " nome, telFixo, telCel, cpf, rg, TO_DATE(?, 'ddMMyyyy'), salario, status, email) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
+            stmt = conn.prepareStatement("INSERT INTO funcionario(codCargo, codEmpresa, "
+                    + "nome, telFixo, telCel, cpf, rg, salario, status, email) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?);");
 
-            stmt.setInt(1, funcionario.getCodFuncionario());
-            stmt.setInt(2, funcionario.getCodCargo());
-            stmt.setInt(3, funcionario.getCodEmpresa());
-            stmt.setString(4, funcionario.getNomeFuncionario());
-            stmt.setString(5, funcionario.getTelFixo());
-            stmt.setString(6, funcionario.getTelCel());
-            stmt.setString(7, funcionario.getCpf());
-            stmt.setString(8, funcionario.getRg());
-            stmt.setString(9, (funcionario.getDtNascimento()));
-            stmt.setDouble(10, funcionario.getSalarioFuncionario());
-            stmt.setBoolean(11, funcionario.getAtivo());
-            stmt.setString(12, funcionario.getEmail());
-
-            stmt.executeUpdate();
-
-            stmt = conn.prepareStatement("INSERT INTO enderecoFuncionario(codFuncionario, codEmpresa,"
-                    + "logradouro, numero, complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?,?);");
-
-            stmt.setInt(1, funcionario.getCodFuncionario());
+            stmt.setInt(1, funcionario.getCodCargo());
             stmt.setInt(2, funcionario.getCodEmpresa());
-            stmt.setString(3, funcionario.getLogradouro());
-            stmt.setInt(4, funcionario.getNumero());
-            stmt.setString(5, funcionario.getComplemento());
-            stmt.setString(6, funcionario.getBairro());
-            stmt.setString(7, funcionario.getCep());
-            stmt.setString(8, funcionario.getCidade());
-            stmt.setString(9, funcionario.getUf());
+            stmt.setString(3, funcionario.getNomeFuncionario());
+            stmt.setString(4, funcionario.getTelFixo());
+            stmt.setString(5, funcionario.getTelCel());
+            stmt.setString(6, funcionario.getCpf());
+            stmt.setString(7, funcionario.getRg());
+            //stmt.setString(8, funcionario.getDtNascimento()); // ṔROBLEMA NA DATA
+            stmt.setDouble(8, funcionario.getSalarioFuncionario());
+            stmt.setBoolean(9, funcionario.getAtivo());
+            stmt.setString(10, funcionario.getEmail());
 
             stmt.executeUpdate();
+
+            stmt = conn.prepareStatement("INSERT INTO enderecoFuncionario(codEmpresa,"
+                    + "logradouro, numero, complemento, bairro, cep, cidade, uf) VALUES (?,?,?,?,?,?,?,?);");
+
+            stmt.setInt(1, funcionario.getCodEmpresa());
+            stmt.setString(2, funcionario.getLogradouro());
+            stmt.setInt(3, funcionario.getNumero());
+            stmt.setString(4, funcionario.getComplemento());
+            stmt.setString(5, funcionario.getBairro());
+            stmt.setString(6, funcionario.getCep());
+            stmt.setString(7, funcionario.getCidade());
+            stmt.setString(8, funcionario.getUf());
+
+            stmt.executeUpdate();
+
+            System.out.println(stmt);
 
             conn.commit();
             conn.setAutoCommit(true);
