@@ -1,21 +1,30 @@
+* banco de dados
+	funcionario-> campo dtnascimento deve ser alterado para not null.
+
 
 CADASTRO DE CLIENTE
 * campo de cnpj não enquadra o cnpj completo.
 
-* erro no auto increment
 
-
-PESQUISA DE CLIENTES
+PESQUISA DE CLIENTE
 
 * a pesquisa não funciona corretamente com todos os campos simultaneamente.
   em conjunto funcionam só codigo, nome e cpf/cnpj.
 
 
-CADASTRO DE FUNCIONARIOS
-
-* cadastrar funcionario não está funcionando.
+CADASTRO DE FUNCIONARIO
 
 * pesquisa de funcionários não funciona.
+
+CADASTRO DE FORNECEDOR
+
+* campo de cnpj não enquadra o cnpj completo.
+* radioButtons ativo/inativo não estão habilitados por padrão.
+
+PESQUISA DE FORNECEDOR
+
+* não pesquisa por cnpj.
+* após pesquisar a primeira vez só funciona novamente após reabrir a janela. 
 
 CADASTRO DE PRODUTOS
 
