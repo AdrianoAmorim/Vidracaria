@@ -2557,15 +2557,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnCompraAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarProdutoActionPerformed
         FrmCadastroProduto cadastrarProduto = new FrmCadastroProduto(this, true);
-        cadastrarProduto.setTitle("Cadastrar Produto");
+        //cadastrarProduto.setTitle("Cadastrar Produto");
         cadastrarProduto.setVisible(true);
 
         // COMO ERA FEITO ANTES
-        /*Cria Uma Instancia da janela de adcao de produto passando o codCompra como Parametro
-         FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfCompraCodigo.getText()), pnlEfetuarCompra.getName());
-         adicionarProduto.setVisible(true);
+        //Cria Uma Instancia da janela de adiçã de produto passando o codCompra como Parametro
+        //FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfCompraCodigo.getText()), pnlEfetuarCompra.getName());
+        //adicionarProduto.setVisible(true);
 
-         if (!adicionarProduto.listProdutoComprado.isEmpty()) {
+         //if (!adicionarProduto.listProdutoComprado.isEmpty()) {
          //Guarda valor total Atual
          double totalAtual = Double.parseDouble(lblCompraValorTotal.getText());
          //guarda valor do SubTotal Atual
@@ -2574,19 +2574,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
          DefaultTableModel modeloTabela = (DefaultTableModel) tbCompraListProduto.getModel();
 
          //Adicionando as informaçoes dos produtos comprados e totais na janela de Compra
-         for (ProdutoComprado produtoComprado : adicionarProduto.listProdutoComprado) {
+         /*for (ProdutoComprado produtoComprado : adicionarProduto.listProdutoComprado) {
          double valorTotalProduto = produtoComprado.getPrecoCusto() * produtoComprado.getQuantidadeProduto();
          totalAtual += valorTotalProduto;
          subTotalAtual += valorTotalProduto;
          modeloTabela.addRow(new Object[]{produtoComprado.getCodCompra(), produtoComprado.getCodProduto(), produtoComprado.getQuantidadeProduto(),
          produtoComprado.getPrecoCusto()});
 
-         }
+//         }*/
 
          lblCompraValorTotal.setText(String.valueOf(totalAtual));
          lblCompraValorSubTotal.setText(String.valueOf(subTotalAtual));
-         }*/
-
+         
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
 
     private void btnFinanceiroAddTituloRendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanceiroAddTituloRendaActionPerformed

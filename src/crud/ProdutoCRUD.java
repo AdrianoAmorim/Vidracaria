@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import view.FrmPrincipal;
 
 /**
  *
@@ -17,61 +16,79 @@ import view.FrmPrincipal;
  */
 public class ProdutoCRUD {
 
-    public int incrementCodProduto(String operacao) {
-        PreparedStatement stmt = null;
-        Connection conn = new SQLite().conectar();
-        int increment = 0;
+    public int ultimoIncrementProduto() {
 
-        try {
-            String sql = "";
+        try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            int increment = 0;
 
-            if (operacao.equalsIgnoreCase("inicializar")) {
-                // seleciona o valor do próximo cliente a ser cadastrado
-                sql = "SELECT last_value FROM produto_codProduto_seq;";
-            } else if (operacao.equalsIgnoreCase("incrementar")) {
-                // incrementa o codigo do próximo cliente
-                sql = "select nextval('produto_codProduto_seq');";
-            }
+            // conta as linhas da tabela
+            String sql = "SELECT COUNT(codProduto) FROM produto";
 
             stmt = conn.prepareStatement(sql);
-            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
-                increment = result.getInt(1);
-                return increment;
-            }
+                int linhas = result.getInt(1);
 
+                // quando a tabela está vazia
+                if (linhas == 0) {
+                    sql = "SELECT last_value FROM produto_codProduto_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1);
+                        // retorna somente o last_value
+                        return increment;
+                    }
+                } else {
+                    // quando a tabela não está vazia
+                    sql = "SELECT last_value FROM produto_codProduto_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1) + 1;
+                        // retorna o last_value + 1
+                        return increment;
+                    }
+                }
+            }
             stmt.close();
             conn.close();
-        } catch (SQLException erroIncrementCodFuncionario) {
-            JOptionPane.showMessageDialog(null, erroIncrementCodFuncionario.getMessage());
+        } catch (SQLException erroIncrementCodProdutor) {
+            JOptionPane.showMessageDialog(null, erroIncrementCodProdutor.getMessage());
         }
-        return increment;
+        // em caso de erros não tratados
+        return 0;
     }
 
     // INSERT
-    public void inserirProduto(Produto produto) {
+    public boolean inserirProduto(Produto produto) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("INSERT INTO produto(codProduto, codCategoria, descricao, unidadeMedida, "
-                    + "quantidadeEstoque, precoVenda, status) VALUES (?,?,?,?,?,?,?)");
+            stmt = conn.prepareStatement("INSERT INTO produto(codCategoria, descricao, unidadeMedida, "
+                    + "quantidadeEstoque, precoVenda, status) VALUES (?,?,?,?,?,?)");
 
-            stmt.setInt(1, produto.getCodProduto());
-            stmt.setInt(2, produto.getCodCategoria());
-            stmt.setString(3, produto.getDescricao());
-            stmt.setString(4, produto.getUnidadeMedida());
-            stmt.setDouble(5, produto.getQuantidadeEstoque());
-            stmt.setDouble(6, produto.getPrecoVenda());
-            stmt.setBoolean(7, produto.isStatus());
+            stmt.setInt(1, produto.getCodCategoria());
+            stmt.setString(2, produto.getDescricao());
+            stmt.setString(3, produto.getUnidadeMedida());
+            stmt.setDouble(4, produto.getQuantidadeEstoque());
+            stmt.setDouble(5, produto.getPrecoVenda());
+            stmt.setBoolean(6, produto.isStatus());
 
             stmt.executeUpdate();
             stmt.close();
 
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+            return true;
         } catch (SQLException erroInserirProduto) {
-            System.out.println(erroInserirProduto.getMessage());
+            JOptionPane.showMessageDialog(null, erroInserirProduto.getMessage());
+            return false;
         }
     }
 
@@ -90,9 +107,9 @@ public class ProdutoCRUD {
             if (args[i].getName().equalsIgnoreCase("p.codProduto") && !args[i].getText().trim().isEmpty()) {
                 // caso o parametro seja o codCliente é necessário usar (Cast) e comparação exata (=)
                 sql += "AND " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
-            } else if (!FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
+            } else if (!args[i].getText().isEmpty()) {
                 // demais parametros não usam cast e são comparados por aproximação (%LIKE%)
-                sql += "AND " + args[i].getName() + " LIKE '%" + FrmPrincipal.desmascarar(args[i].getText()).trim() + "%' ";
+                sql += "AND " + args[i].getName() + " LIKE '%" + args[i].getText() + "%' ";
             }
         }
 

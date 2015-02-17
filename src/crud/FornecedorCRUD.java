@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import view.FrmPrincipal;
 
 /**
  *
@@ -187,7 +186,7 @@ public class FornecedorCRUD {
         for (int i = 0; i < tam; i++) {
             // quando encontrar um JTextField não vazio (preenchido)
             //Acrescentei o desmascarar pq tava entrando sempre o cnpj
-            if (!FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
+            if (!args[i].getText().isEmpty()) {
                 // incrementa a query de acordo com o nome e conteúdo do JTExtField
                 if (args[i].getName().equalsIgnoreCase("f.codFornecedor")) {
                     sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";

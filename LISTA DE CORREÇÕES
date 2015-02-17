@@ -1,6 +1,14 @@
 * banco de dados
 	funcionario-> campo dtnascimento deve ser alterado para not null.
 
+* geral
+	adicionar botões de deletar
+		-> testa se o banco de dados lança erros de dependencia
+		-> se sim avisa e oferece a opçãoa de inativar
+		-> senão, deleta.
+
+	botões de limpar -> trocar icone por icone de 'vassourinha' kkk
+
 
 CADASTRO DE CLIENTE
 * campo de cnpj não enquadra o cnpj completo.
@@ -26,14 +34,11 @@ PESQUISA DE FORNECEDOR
 * não pesquisa por cnpj.
 * após pesquisar a primeira vez só funciona novamente após reabrir a janela. 
 
-CADASTRO DE PRODUTOS
 
-* ao cadastrar 2 produtos consecutivos o incremento pulou 2 numeros 
-  cadastrados os funcionarios 1 e 2 e o codigo atual é 4.
+PESQUISA DE PRODUTOS
 
-* pesquisar produtos não funciona.
 
-* não tem opção de deletar produtos
+
 
 
 CADASTRO DE FORNECEDOR

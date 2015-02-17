@@ -410,17 +410,15 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         FrmPrincipal.limparCampos(tfProdutoCodigo, tfProdutoDescricao,
                 tfProdutoPrecoVenda, tfProdutoQuantidade);
 
-        // incrementa o codigo do Produto
-        tfProdutoCodigo.setText(Integer.toString(new ProdutoCRUD().incrementCodProduto("incrementar")));
-
         // formatação padrão do formulário
         cbProdutoCategoria.removeAll();
         carregarCbCategoria();
-        cbUnidadeMedida.removeAll();
-        // falta criar um carregarCbUnidadeMedida()
         cb_novoProduto.setSelected(false);
         rbProdutoStatusAtiv.setSelected(true);
         rbProdutoStatusInat.setSelected(false);
+
+        // reseta o campo de codigo
+        tfProdutoCodigo.setEditable(true);
     }//GEN-LAST:event_btnProdutoCadastrarActionPerformed
 
     private void rbProdutoStatusAtivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbProdutoStatusAtivActionPerformed
@@ -482,11 +480,21 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
     private void cb_novoProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_novoProdutoMouseClicked
         if (cb_novoProduto.isSelected()) {
             ProdutoCRUD produtoCRUD = new ProdutoCRUD();
-            tfProdutoCodigo.setText(String.valueOf(produtoCRUD.incrementCodProduto("inicializar")));
+            tfProdutoCodigo.setText(String.valueOf(produtoCRUD.ultimoIncrementProduto()));
             tfProdutoCodigo.setEditable(false);
 
             btnProdutoAlterar.setEnabled(false);
             btnProdutoCadastrar.setEnabled(true);
+
+            // limpar campos do formulário
+            FrmPrincipal.limparCampos(tfProdutoDescricao, tfProdutoPrecoVenda, tfProdutoQuantidade);
+
+            // resetar comboBox
+            carregarCbCategoria();
+
+            // resetar radioButtons
+            rbProdutoStatusInat.setSelected(false);
+            rbProdutoStatusAtiv.setSelected(true);
         } else {
             tfProdutoCodigo.setText("");
             tfProdutoCodigo.setEditable(true);
