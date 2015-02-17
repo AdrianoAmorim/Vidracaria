@@ -74,8 +74,8 @@ public class FuncionarioCRUD {
             conn.setAutoCommit(false);
 
             stmt = conn.prepareStatement("INSERT INTO funcionario(codCargo, codEmpresa, "
-                    + "nome, telFixo, telCel, cpf, rg, salario, status, email) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?);");
+                    + "nome, telFixo, telCel, cpf, rg, dtnascimento, salario, status, email) "
+                    + "VALUES (?,?,?,?,?,?,?, TO_DATE(? , 'DDMMYYYY'),?,?,?);");
 
             stmt.setInt(1, funcionario.getCodCargo());
             stmt.setInt(2, funcionario.getCodEmpresa());
@@ -84,10 +84,10 @@ public class FuncionarioCRUD {
             stmt.setString(5, funcionario.getTelCel());
             stmt.setString(6, funcionario.getCpf());
             stmt.setString(7, funcionario.getRg());
-            //stmt.setString(8, funcionario.getDtNascimento()); // ṔROBLEMA NA DATA
-            stmt.setDouble(8, funcionario.getSalarioFuncionario());
-            stmt.setBoolean(9, funcionario.getAtivo());
-            stmt.setString(10, funcionario.getEmail());
+            stmt.setString(8, funcionario.getDtNascimento());
+            stmt.setDouble(9, funcionario.getSalarioFuncionario());
+            stmt.setBoolean(10, funcionario.getAtivo());
+            stmt.setString(11, funcionario.getEmail());
 
             stmt.executeUpdate();
 
@@ -104,9 +104,6 @@ public class FuncionarioCRUD {
             stmt.setString(8, funcionario.getUf());
 
             stmt.executeUpdate();
-
-            System.out.println(stmt);
-
             conn.commit();
             conn.setAutoCommit(true);
 
@@ -116,13 +113,13 @@ public class FuncionarioCRUD {
             JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso!");
             return true;
         } catch (SQLException erroInserirFuncionario) {
-            System.out.println(erroInserirFuncionario.getMessage());
+            JOptionPane.showMessageDialog(null, erroInserirFuncionario.getMessage());
+            return false;
         }
-        return false;
     }
 
     // UPDATE
-    public void atualizarFuncionario(Funcionario funcionario) {
+    public boolean atualizarFuncionario(Funcionario funcionario) {
 
         PreparedStatement stmt;
         Connection conn = new SQLite().conectar();
@@ -131,7 +128,7 @@ public class FuncionarioCRUD {
 
             stmt = conn.prepareStatement("UPDATE funcionario SET codEmpresa = ?, codCargo = ?, "
                     + "nome = ?, telFixo = ?, telCel = ?, cpf = ?, rg = ?, "
-                    + "dtnascimento = TO_DATE(? , 'ddMMyyyy'), salario = ?, "
+                    + "dtnascimento = TO_DATE(? , 'DDMMYYYY'), salario = ?, "
                     + "status = ? , email = ? WHERE codFuncionario = ?;");
 
             stmt.setInt(1, funcionario.getCodEmpresa());
@@ -171,8 +168,10 @@ public class FuncionarioCRUD {
             stmt.close();
             conn.close();
             JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso !");
+            return true;
         } catch (SQLException erroAtualizarFuncionario) {
-            System.out.println(erroAtualizarFuncionario.getMessage());
+            JOptionPane.showMessageDialog(null, erroAtualizarFuncionario.getMessage());
+            return false;
         }
     }
 
@@ -250,7 +249,7 @@ public class FuncionarioCRUD {
 
             return listaFuncionarios;
         } catch (SQLException erroConsultarFuncionario) {
-            System.out.println(erroConsultarFuncionario.getMessage());
+            JOptionPane.showMessageDialog(null, erroConsultarFuncionario.getMessage());
             return listaFuncionarios;
         }
     }

@@ -1,5 +1,6 @@
 package view;
 
+import com.sun.java.swing.plaf.windows.resources.windows;
 import controller.FornecedorController;
 import crud.CidadeCRUD;
 import crud.EstadoCRUD;
@@ -36,7 +37,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                 tfFornecedorNumero, tfFornecedorRamalVendedor, tfFornecedorSite, tfFornecedorTelCel, tfFornecedorTelFixo, tfFornecedorVendedor);
         FrmPrincipal.habilitarDesabilitarComponente(false, cbFornecedorCidade, cbFornecedorUf);
         FrmPrincipal.habilitarDesabilitarComponente(false, rbFornecedorStatusInat, rbFornecedortatusAtiv);
-        FrmPrincipal.habilitarDesabilitarComponente(false, btnFornecedorAlterar,btnFornecedorCadastrar,btnFornecedorAdicionar);
+        FrmPrincipal.habilitarDesabilitarComponente(false, btnFornecedorAlterar, btnFornecedorCadastrar, btnFornecedorAdicionar);
     }
 
     // Carrega lista de Ufs
@@ -611,57 +612,6 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void btnFornecedorCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFornecedorCadastrarActionPerformed
-        Fornecedor fornecedor = new Fornecedor();
-
-        FornecedorController fornecedorController = new FornecedorController();
-
-        // recebe os dados do fornecedor
-        fornecedor.setCodFornecedor(Integer.valueOf(tfFornecedorCodigo.getText()));
-        fornecedor.setCnpj(tfFornecedorCnpj.getText());
-        fornecedor.setNome(tfFornecedorNome.getText());
-        fornecedor.setTelFixo(tfFornecedorTelFixo.getText());
-        fornecedor.setTelCel(tfFornecedorTelCel.getText());
-        fornecedor.setEmail(tfFornecedorEmail.getText());
-        fornecedor.setSite(tfFornecedorSite.getText());
-        fornecedor.setVendedor(tfFornecedorVendedor.getText());
-        fornecedor.setRamal(tfFornecedorRamalVendedor.getText());
-
-        // define o status do fornecedor
-        if (rbFornecedortatusAtiv.isSelected()) {
-            // ativo
-            fornecedor.setStatus(true);
-        } else if (rbFornecedorStatusInat.isSelected()) {
-            // inativo
-            fornecedor.setStatus(false);
-        }
-
-        fornecedor.setCodFornecedor(Integer.valueOf(tfFornecedorCodigo.getText()));
-        fornecedor.setLogradouro(tfFornecedorLogradouro.getText());
-        fornecedor.setNumero(Integer.parseInt(tfFornecedorNumero.getText()));
-        fornecedor.setComplemento(tfFornecedorComplemento.getText());
-        fornecedor.setBairro(tfFornecedorBairro.getText());
-        fornecedor.setCep(tfFornecedorCep.getText());
-        fornecedor.setCidade(cbFornecedorCidade.getSelectedItem().toString());
-        fornecedor.setUf(cbFornecedorUf.getSelectedItem().toString());
-
-        // testa se os dados do fornecedor são válidos
-        if (fornecedorController.validarFornecedor(fornecedor)) {
-            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
-
-            // cadastra o fornecedor no banco de dados
-            fornecedorCRUD.inserirFornecedor(fornecedor);
-
-            // limpa os campos do formulario
-            FrmPrincipal.limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome,
-                    tfFornecedorLogradouro, tfFornecedorBairro, tfFornecedorTelFixo,
-                    tfFornecedorTelCel, tfFornecedorEmail, tfFornecedorSite,
-                    tfFornecedorVendedor, tfFornecedorRamalVendedor, tfFornecedorCep,
-                    tfFornecedorNumero, tfFornecedorComplemento);
-        }
-    }//GEN-LAST:event_btnFornecedorCadastrarActionPerformed
-
-
     private void rbFornecedortatusAtivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFornecedortatusAtivActionPerformed
         int op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja ativar o fornecedor?");
         if (op == 0) {
@@ -679,50 +629,6 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
             rbFornecedortatusAtiv.setSelected(true);
         }
     }//GEN-LAST:event_rbFornecedorStatusInatActionPerformed
-
-    private void btnFornecedorAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFornecedorAlterarActionPerformed
-        Fornecedor fornecedor = new Fornecedor();
-
-        fornecedor.setCodFornecedor(Integer.parseInt(tfFornecedorCodigo.getText()));
-        fornecedor.setCnpj(tfFornecedorCnpj.getText());
-        fornecedor.setNome(tfFornecedorNome.getText());
-        fornecedor.setTelFixo(tfFornecedorTelFixo.getText());
-        fornecedor.setTelCel(tfFornecedorTelCel.getText());
-        fornecedor.setEmail(tfFornecedorEmail.getText());
-        fornecedor.setSite(tfFornecedorSite.getText());
-        fornecedor.setVendedor(tfFornecedorVendedor.getText());
-        fornecedor.setRamal(tfFornecedorRamalVendedor.getText());
-
-        // define o status do fornecedor
-        if (rbFornecedortatusAtiv.isSelected()) {
-            // ativo
-            fornecedor.setStatus(true);
-        } else if (rbFornecedorStatusInat.isSelected()) {
-            // inativo
-            fornecedor.setStatus(false
-            );
-        }
-
-        fornecedor.setLogradouro(tfFornecedorLogradouro.getText());
-        fornecedor.setNumero(Integer.parseInt(tfFornecedorNumero.getText()));
-        fornecedor.setComplemento(tfFornecedorComplemento.getText());
-        fornecedor.setBairro(tfFornecedorBairro.getText());
-        fornecedor.setCep(tfFornecedorCep.getText());
-        fornecedor.setCidade(cbFornecedorCidade.getSelectedItem().toString());
-        fornecedor.setUf(cbFornecedorUf.getSelectedItem().toString());
-
-        FornecedorController fornecedorController = new FornecedorController();
-        if (fornecedorController.validarFornecedor(fornecedor)) {
-            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
-
-            fornecedorCRUD.atualizarFornecedor(fornecedor);
-
-            FrmPrincipal.limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome,
-                    tfFornecedorTelFixo, tfFornecedorTelCel, tfFornecedorEmail, tfFornecedorSite,
-                    tfFornecedorVendedor, tfFornecedorRamalVendedor, tfFornecedorLogradouro,
-                    tfFornecedorNumero, tfFornecedorComplemento, tfFornecedorBairro, tfFornecedorCep);
-        }
-    }//GEN-LAST:event_btnFornecedorAlterarActionPerformed
 
     private void cbFornecedorUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbFornecedorUfItemStateChanged
         if (evt.getStateChange() == 1) {
@@ -745,7 +651,6 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel) tbAdicionarFornecedorResultBusca.getModel();
         //se  o campo nao estiver vazio e nao estiver marcado para criar Novo Fornecedor  realiza a pesquisa
         String campo = FrmPrincipal.desmascarar(tfFornecedorCnpj.getText()).trim();
-        System.out.println(campo);
         if (!campo.isEmpty() && !cb_novoFornecedor.isSelected() && !btnFornecedorAlterar.isEnabled()) {
             this.pesquisarFornecedorCaretUpdate();
             //senao limpa a tabela de resultados
@@ -766,29 +671,55 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
     }//GEN-LAST:event_tfFornecedorNomeCaretUpdate
 
     private void tbAdicionarFornecedorResultBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAdicionarFornecedorResultBuscaMouseClicked
+        // habilita todos os componentes que estavam bloqueados
         FrmPrincipal.habilitarDesabilitarComponente(true, tfFornecedorBairro, tfFornecedorCep, tfFornecedorComplemento, tfFornecedorEmail, tfFornecedorLogradouro,
                 tfFornecedorNumero, tfFornecedorRamalVendedor, tfFornecedorSite, tfFornecedorTelCel, tfFornecedorTelFixo, tfFornecedorVendedor);
         FrmPrincipal.habilitarDesabilitarComponente(true, cbFornecedorCidade, cbFornecedorUf);
         FrmPrincipal.habilitarDesabilitarComponente(true, rbFornecedorStatusInat, rbFornecedortatusAtiv);
-        FrmPrincipal.habilitarDesabilitarComponente(true, btnFornecedorAlterar,btnFornecedorAdicionar);
-        
-        
+        FrmPrincipal.habilitarDesabilitarComponente(true, btnFornecedorAlterar, btnFornecedorAdicionar);
 
+        // extrai do banco de dados as informações referentes ao cliente selecionado na tabela
+        fornecedor = new FornecedorCRUD().consultarFornecedor(tbAdicionarFornecedorResultBusca.getValueAt(tbAdicionarFornecedorResultBusca.getSelectedRow(), tbAdicionarFornecedorResultBusca.getSelectedColumn()).toString(), 0);
+
+        // preenche os campos do formulário com os dados do cliente
+        tfFornecedorCodigo.setText(Integer.toString(fornecedor.getCodFornecedor()));
+        tfFornecedorCnpj.setText(fornecedor.getCnpj());
+        tfFornecedorNome.setText(fornecedor.getNome());
+        tfFornecedorTelFixo.setText(fornecedor.getTelFixo());
+        tfFornecedorTelCel.setText(fornecedor.getTelCel());
+        tfFornecedorLogradouro.setText(fornecedor.getLogradouro());
+        tfFornecedorNumero.setText(Integer.toString(fornecedor.getNumero()));
+        tfFornecedorComplemento.setText(fornecedor.getComplemento());
+        tfFornecedorBairro.setText(fornecedor.getBairro());
+        tfFornecedorCep.setText(fornecedor.getCep());
+        tfFornecedorEmail.setText(fornecedor.getEmail());
+        tfFornecedorSite.setText(fornecedor.getSite());
+        tfFornecedorVendedor.setText(fornecedor.getVendedor());
+        tfFornecedorRamalVendedor.setText(fornecedor.getRamal());
+
+        // preenche os comboBoxes
+        cbFornecedorUf.getModel().setSelectedItem(fornecedor.getUf());
+        cbFornecedorCidade.getModel().setSelectedItem(fornecedor.getCidade());
+
+        // define o status
+        if (fornecedor.getStatus()) {
+            // ativo
+            rbFornecedortatusAtiv.setSelected(true);
+            rbFornecedorStatusInat.setSelected(false);
+
+        } else {
+            // inativo
+            rbFornecedorStatusInat.setSelected(true);
+            rbFornecedortatusAtiv.setSelected(false);
+        }
+    
     }//GEN-LAST:event_tbAdicionarFornecedorResultBuscaMouseClicked
-
-    private void btnFornecedorAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFornecedorAdicionarActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) tbAdicionarFornecedorResultBusca.getModel();
-        FornecedorCRUD fornecedorCrud = new FornecedorCRUD();
-        //pega o fornecedor escolhido na tabela e passa para variavel global
-        this.fornecedor = fornecedorCrud.consultarFornecedorPorNome(modelo.getValueAt(tbAdicionarFornecedorResultBusca.getSelectedRow(), 0).toString());
-        this.dispose();
-    }//GEN-LAST:event_btnFornecedorAdicionarActionPerformed
 
     private void cb_novoFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_novoFornecedorMouseClicked
         if (cb_novoFornecedor.isSelected()) {
 
             FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
-            tfFornecedorCodigo.setText(String.valueOf(fornecedorCRUD.incrementCodFornecedor("inicializar")));
+            tfFornecedorCodigo.setText(String.valueOf(fornecedorCRUD.ultimoIncrementFornecedor()));
             tfFornecedorCodigo.setEditable(false);
 
             btnFornecedorAlterar.setEnabled(false);
@@ -803,7 +734,6 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
             tbAdicionarFornecedorResultBusca.removeAll();
             tbAdicionarFornecedorResultBusca.setEnabled(false);
         } else {
-
             tfFornecedorCodigo.setText("");
             tfFornecedorCodigo.setEditable(true);
 
@@ -833,7 +763,104 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_cb_novoFornecedorMouseClicked
 
-   
+    private void btnFornecedorCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFornecedorCadastrarActionPerformed
+        Fornecedor fornecedor = new Fornecedor();
+        FornecedorController fornecedorController = new FornecedorController();
+
+        fornecedor.setCodFornecedor(Integer.parseInt(tfFornecedorCodigo.getText()));
+        fornecedor.setCnpj(FrmPrincipal.desmascarar(tfFornecedorCnpj.getText()));
+        fornecedor.setNome(tfFornecedorNome.getText());
+        fornecedor.setTelFixo(FrmPrincipal.desmascarar(tfFornecedorTelFixo.getText()));
+        fornecedor.setTelCel(FrmPrincipal.desmascarar(tfFornecedorTelCel.getText()));
+        fornecedor.setLogradouro(tfFornecedorLogradouro.getText());
+        fornecedor.setNumero(Integer.parseInt(tfFornecedorNumero.getText()));
+        fornecedor.setComplemento(tfFornecedorComplemento.getText());
+        fornecedor.setBairro(tfFornecedorBairro.getText());
+        fornecedor.setCep(FrmPrincipal.desmascarar(tfFornecedorCep.getText()));
+        fornecedor.setCidade(cbFornecedorCidade.getSelectedItem().toString());
+        fornecedor.setUf(cbFornecedorUf.getSelectedItem().toString());
+        fornecedor.setEmail(tfFornecedorEmail.getText());
+        fornecedor.setSite(tfFornecedorSite.getText());
+        fornecedor.setVendedor(tfFornecedorSite.getText());
+        fornecedor.setRamal(tfFornecedorRamalVendedor.getText());
+        fornecedor.setStatus(rbFornecedortatusAtiv.isSelected());
+
+        if (fornecedorController.validarFornecedor(fornecedor)) {
+            // se o objeto for válido, envia para o banco de dados
+            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+            // se o objeto for inserido com sucesso no banco de dados
+            if (fornecedorCRUD.inserirFornecedor(fornecedor)) {
+                // limpa os campos do formulário
+                FrmPrincipal.limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome,
+                        tfFornecedorTelFixo, tfFornecedorTelCel, tfFornecedorLogradouro, tfFornecedorNumero,
+                        tfFornecedorComplemento, tfFornecedorBairro, tfFornecedorCep, tfFornecedorEmail,
+                        tfFornecedorSite, tfFornecedorVendedor, tfFornecedorRamalVendedor);
+
+                // reseta os radioButtons
+                rbFornecedortatusAtiv.setSelected(true);
+                rbFornecedorStatusInat.setSelected(false);
+
+                // reseta o checkBox
+                cb_novoFornecedor.setSelected(false);
+
+                // reseta os comboBoxes
+                FrmPrincipal.carregarCbUf(cbFornecedorUf);
+                FrmPrincipal.carregarCbCidades(cbFornecedorCidade, cbFornecedorUf.getSelectedItem().toString());
+            }
+        }
+    }//GEN-LAST:event_btnFornecedorCadastrarActionPerformed
+
+    private void btnFornecedorAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFornecedorAlterarActionPerformed
+        Fornecedor fornecedor = new Fornecedor();
+        FornecedorController fornecedorController = new FornecedorController();
+
+        fornecedor.setCodFornecedor(Integer.parseInt(tfFornecedorCodigo.getText()));
+        fornecedor.setCnpj(FrmPrincipal.desmascarar(tfFornecedorCnpj.getText()));
+        fornecedor.setNome(tfFornecedorNome.getText());
+        fornecedor.setTelFixo(FrmPrincipal.desmascarar(tfFornecedorTelFixo.getText()));
+        fornecedor.setTelCel(FrmPrincipal.desmascarar(tfFornecedorTelCel.getText()));
+        fornecedor.setLogradouro(tfFornecedorLogradouro.getText());
+        fornecedor.setNumero(Integer.parseInt(tfFornecedorNumero.getText()));
+        fornecedor.setComplemento(tfFornecedorComplemento.getText());
+        fornecedor.setBairro(tfFornecedorBairro.getText());
+        fornecedor.setCep(FrmPrincipal.desmascarar(tfFornecedorCep.getText()));
+        fornecedor.setCidade(cbFornecedorCidade.getSelectedItem().toString());
+        fornecedor.setUf(cbFornecedorUf.getSelectedItem().toString());
+        fornecedor.setEmail(tfFornecedorEmail.getText());
+        fornecedor.setSite(tfFornecedorSite.getText());
+        fornecedor.setVendedor(tfFornecedorSite.getText());
+        fornecedor.setRamal(tfFornecedorRamalVendedor.getText());
+        fornecedor.setStatus(rbFornecedortatusAtiv.isSelected());
+
+        if (fornecedorController.validarFornecedor(fornecedor)) {
+            // se o objeto for válido, envia para o banco de dados
+            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+            // se o objeto for inserido com sucesso no banco de dados
+            if (fornecedorCRUD.atualizarFornecedor(fornecedor)) {
+                // limpa os campos do formulário
+                FrmPrincipal.limparCampos(tfFornecedorCodigo, tfFornecedorCnpj, tfFornecedorNome,
+                        tfFornecedorTelFixo, tfFornecedorTelCel, tfFornecedorLogradouro, tfFornecedorNumero,
+                        tfFornecedorComplemento, tfFornecedorBairro, tfFornecedorCep, tfFornecedorEmail,
+                        tfFornecedorSite, tfFornecedorVendedor, tfFornecedorRamalVendedor);
+
+                // reseta os radioButtons
+                rbFornecedortatusAtiv.setSelected(true);
+                rbFornecedorStatusInat.setSelected(false);
+
+                // reseta o checkBox
+                cb_novoFornecedor.setSelected(false);
+
+                // reseta os comboBoxes
+                FrmPrincipal.carregarCbUf(cbFornecedorUf);
+                FrmPrincipal.carregarCbCidades(cbFornecedorCidade, cbFornecedorUf.getSelectedItem().toString());
+            }
+        }
+    }//GEN-LAST:event_btnFornecedorAlterarActionPerformed
+
+    private void btnFornecedorAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFornecedorAdicionarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnFornecedorAdicionarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bordaFornecedorPesquisa;

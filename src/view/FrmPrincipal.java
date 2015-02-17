@@ -715,7 +715,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(btnClienteLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnClienteCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
@@ -746,12 +746,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadCliente.setLayout(pnlCadClienteLayout);
         pnlCadClienteLayout.setHorizontalGroup(
             pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadClienteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE))
+                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlCadClienteLayout.setVerticalGroup(
@@ -835,6 +835,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnAlterarFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         btnAlterarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AlterarPq.png"))); // NOI18N
         btnAlterarFuncionario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAlterarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarFuncionarioActionPerformed(evt);
+            }
+        });
 
         lblFuncionarioTelFixo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblFuncionarioTelFixo.setForeground(new java.awt.Color(0, 69, 139));
@@ -973,6 +978,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnFuncionarioLimpar.setBackground(new java.awt.Color(255, 255, 255));
         btnFuncionarioLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/deletarNovo1.png"))); // NOI18N
         btnFuncionarioLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnFuncionarioLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFuncionarioLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1699,7 +1709,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlEfetuarVenda.setLayout(pnlEfetuarVendaLayout);
         pnlEfetuarVendaLayout.setHorizontalGroup(
             pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, 1061, Short.MAX_VALUE)
+            .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(pnlEfetuarVendaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlEfetuarVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1977,7 +1987,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(btnCompraRetirarDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCompraDesconto)))
                     .addComponent(cbCompraParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 255));
@@ -2044,7 +2054,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCompraTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addComponent(lblCompraTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel33Layout.setVerticalGroup(
@@ -2070,7 +2080,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCompraSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addComponent(lblCompraSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel34Layout.setVerticalGroup(
@@ -2095,7 +2105,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCompraValorSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addComponent(lblCompraValorSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel27Layout.setVerticalGroup(
@@ -2129,7 +2139,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTotalDesconto, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addComponent(lblTotalDesconto, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel35Layout.setVerticalGroup(
@@ -2233,7 +2243,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
         pnlEfetuarCompraLayout.setHorizontalGroup(
             pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
+            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2714,9 +2724,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             // define o status do funcionário
             if (buscarFuncionario.funcionario.getAtivo()) {
                 // ativo
+                rbFuncionarioStatusInat.setSelected(false);
                 rbFuncionarioStatusAtiv.setSelected(true);
             } else {
                 // inativo
+                rbFuncionarioStatusInat.setSelected(false);
                 rbFuncionarioStatusInat.setSelected(true);
             }
         }
@@ -2921,7 +2933,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         cliente.setUf(cbClienteUf.getSelectedItem().toString());
         cliente.setCidade(cbClienteCidade.getSelectedItem().toString());
         cliente.setStatus(rbClienteStatusAtiv.isSelected());
-        
+
         // validação do objeto cliente
         if (clienteController.validarAtributos(cliente)) {
             // se o objeto for válido, envia para o banco de dados
@@ -3035,7 +3047,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
         Funcionario funcionario = new Funcionario();
         FuncionarioController funcionarioController = new FuncionarioController();
-        
+
         funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
         funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
         funcionario.setCodEmpresa(1);
@@ -3054,34 +3066,107 @@ public class FrmPrincipal extends javax.swing.JFrame {
         funcionario.setUf(cbFuncionarioUf.getSelectedItem().toString());
         funcionario.setCidade(cbFuncionarioCidade.getSelectedItem().toString());
         funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
-        funcionario.setAtivo(rbFuncionarioStatusAtiv.isSelected());        
-        
+        funcionario.setAtivo(rbFuncionarioStatusAtiv.isSelected());
+
         // validação do objeto funcionario
-        if(funcionarioController.validarFuncionario(funcionario)) {
+        if (funcionarioController.validarFuncionario(funcionario)) {
             // se o objeto for válido, envia para o banco de dados
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
             // se o objeto for inserido com sucesso no banco de dados
-            if(funcionarioCRUD.inserirFuncionario(funcionario)) {
+            if (funcionarioCRUD.inserirFuncionario(funcionario)) {
                 // limpa os campos do formulário
                 limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
                         tfFuncionarioTelResidencial, tfFuncionarioTelCelular, tfFuncionarioEmail,
                         tfFuncionarioCpf, tfFuncionarioRg, tfFuncionarioDtNascimento, tfFuncionarioLogradouro,
                         tfFuncionarioNumero, tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep,
                         tfFuncionarioSalario);
-                
+
                 // resetar os radioButtons
                 rbFuncionarioStatusAtiv.setSelected(true);
                 rbFuncionarioStatusInat.setSelected(false);
-                
+
                 // resetar os comboBoxes
                 carregarCbUf(cbFuncionarioUf);
                 carregarCbCidades(cbFuncionarioCidade, cbFuncionarioUf.getSelectedItem().toString());
-                
+
                 // reinicia o campo de código
                 tfFuncionarioCodigo.setText(Integer.toString(funcionarioCRUD.ultimoIncrementFuncionario()));
-            }            
+            }
         }
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
+
+    private void btnAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarFuncionarioActionPerformed
+        Funcionario funcionario = new Funcionario();
+        FuncionarioController funcionarioController = new FuncionarioController();
+
+        funcionario.setCodFuncionario(Integer.parseInt(tfFuncionarioCodigo.getText()));
+        funcionario.setCodCargo(Integer.parseInt(tfFuncionarioCodCargo.getText()));
+        funcionario.setCodEmpresa(1);
+        funcionario.setNomeFuncionario(tfFuncionarioNome.getText());
+        funcionario.setTelFixo(desmascarar(tfFuncionarioTelResidencial.getText()));
+        funcionario.setTelCel(desmascarar(tfFuncionarioTelCelular.getText()));
+        funcionario.setEmail(tfFuncionarioEmail.getText());
+        funcionario.setCpf(desmascarar(tfFuncionarioCpf.getText()));
+        funcionario.setRg(desmascarar(tfFuncionarioRg.getText()));
+        funcionario.setDtNascimento(desmascarar(tfFuncionarioDtNascimento.getText()));
+        funcionario.setLogradouro(tfFuncionarioLogradouro.getText());
+        funcionario.setNumero(Integer.parseInt(tfFuncionarioNumero.getText()));
+        funcionario.setComplemento(tfFuncionarioComplemento.getText());
+        funcionario.setBairro(tfFuncionarioBairro.getText());
+        funcionario.setCep(desmascarar(tfFuncionarioCep.getText()));
+        funcionario.setUf(cbFuncionarioUf.getSelectedItem().toString());
+        funcionario.setCidade(cbFuncionarioCidade.getSelectedItem().toString());
+        funcionario.setSalarioFuncionario(Double.parseDouble(tfFuncionarioSalario.getText()));
+        funcionario.setAtivo(rbFuncionarioStatusAtiv.isSelected());
+
+        // validação do objeto funcionario
+        if (funcionarioController.validarFuncionario(funcionario)) {
+            // se o objeto for válido, envia para o banco de dados
+            FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+            // se o objeto for inserido com sucesso no banco de dados
+            if (funcionarioCRUD.atualizarFuncionario(funcionario)) {
+                // limpa os campos do formulário
+                limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
+                        tfFuncionarioTelResidencial, tfFuncionarioTelCelular, tfFuncionarioEmail,
+                        tfFuncionarioCpf, tfFuncionarioRg, tfFuncionarioDtNascimento, tfFuncionarioLogradouro,
+                        tfFuncionarioNumero, tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep,
+                        tfFuncionarioSalario);
+
+                // resetar os radioButtons
+                rbFuncionarioStatusAtiv.setSelected(true);
+                rbFuncionarioStatusInat.setSelected(false);
+
+                // resetar os comboBoxes
+                carregarCbUf(cbFuncionarioUf);
+                carregarCbCidades(cbFuncionarioCidade, cbFuncionarioUf.getSelectedItem().toString());
+
+                // reinicia o campo de código
+                tfFuncionarioCodigo.setText(Integer.toString(funcionarioCRUD.ultimoIncrementFuncionario()));
+            }
+        }
+    }//GEN-LAST:event_btnAlterarFuncionarioActionPerformed
+
+    private void btnFuncionarioLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioLimparActionPerformed
+        FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+        
+        // limpa os campos do formulário
+        limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
+                tfFuncionarioTelResidencial, tfFuncionarioTelCelular, tfFuncionarioEmail,
+                tfFuncionarioCpf, tfFuncionarioRg, tfFuncionarioDtNascimento, tfFuncionarioLogradouro,
+                tfFuncionarioNumero, tfFuncionarioComplemento, tfFuncionarioBairro, tfFuncionarioCep,
+                tfFuncionarioSalario);
+
+        // resetar os radioButtons
+        rbFuncionarioStatusAtiv.setSelected(true);
+        rbFuncionarioStatusInat.setSelected(false);
+
+        // resetar os comboBoxes
+        carregarCbUf(cbFuncionarioUf);
+        carregarCbCidades(cbFuncionarioCidade, cbFuncionarioUf.getSelectedItem().toString());
+
+        // reinicia o campo de código
+        tfFuncionarioCodigo.setText(Integer.toString(funcionarioCRUD.ultimoIncrementFuncionario()));
+    }//GEN-LAST:event_btnFuncionarioLimparActionPerformed
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {

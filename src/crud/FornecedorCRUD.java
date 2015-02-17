@@ -17,76 +17,91 @@ import view.FrmPrincipal;
  */
 public class FornecedorCRUD {
 
-    public int incrementCodFornecedor(String operacao) {
-    PreparedStatement stmt = null;
-        Connection conn = new SQLite().conectar();
-        int increment = 0;
+    public int ultimoIncrementFornecedor() {
 
-        try {
-            String sql = "";
+        try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            int increment = 0;
 
-            if (operacao.equalsIgnoreCase("inicializar")) {
-                // seleciona o valor do próximo cliente a ser cadastrado
-                sql = "SELECT last_value FROM fornecedor_codFornecedor_seq;";
-            } else if (operacao.equalsIgnoreCase("incrementar")) {
-                // incrementa o codigo do próximo cliente
-                sql = "select nextval('fornecedor_codFornecedor_seq');";
-            }
+            // conta as linhas da tabela
+            String sql = "SELECT COUNT(codFornecedor) FROM fornecedor";
 
             stmt = conn.prepareStatement(sql);
-            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
-                increment = result.getInt(1);
-                return increment;
-            }
+                int linhas = result.getInt(1);
 
+                // quando a tabela está vazia
+                if (linhas == 0) {
+                    sql = "SELECT last_value FROM fornecedor_codFornecedor_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1);
+                        // retorna somente o last_value
+                        return increment;
+                    }
+                } else {
+                    // quando a tabela não está vazia
+                    sql = "SELECT last_value FROM fornecedor_codFornecedor_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1) + 1;
+                        // retorna o last_value + 1
+                        return increment;
+                    }
+                }
+            }
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodFornecedor) {
             JOptionPane.showMessageDialog(null, erroIncrementCodFornecedor.getMessage());
         }
-        return increment;
+        // em caso de erros não tratados
+        return 0;
     }
 
     // INSERT 
-    public void inserirFornecedor(Fornecedor fornecedor) {
+    public boolean inserirFornecedor(Fornecedor fornecedor) {
 
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
             conn.setAutoCommit(false);
 
-            stmt = conn.prepareStatement("INSERT INTO fornecedor(codFornecedor, cnpj, nome,"
+            stmt = conn.prepareStatement("INSERT INTO fornecedor(cnpj, nome,"
                     + "telFixo, telCel, email, site, vendedor, ramal, status) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?);");
+                    + "VALUES (?,?,?,?,?,?,?,?,?);");
 
-            stmt.setInt(1, fornecedor.getCodFornecedor());
-            stmt.setString(2, fornecedor.getCnpj());
-            stmt.setString(3, fornecedor.getNome());
-            stmt.setString(4, fornecedor.getTelFixo());
-            stmt.setString(5, fornecedor.getTelCel());
-            stmt.setString(6, fornecedor.getEmail());
-            stmt.setString(7, fornecedor.getSite());
-            stmt.setString(8, fornecedor.getVendedor());
-            stmt.setString(9, fornecedor.getRamal());
-            stmt.setBoolean(10, fornecedor.getStatus());
+            stmt.setString(1, fornecedor.getCnpj());
+            stmt.setString(2, fornecedor.getNome());
+            stmt.setString(3, fornecedor.getTelFixo());
+            stmt.setString(4, fornecedor.getTelCel());
+            stmt.setString(5, fornecedor.getEmail());
+            stmt.setString(6, fornecedor.getSite());
+            stmt.setString(7, fornecedor.getVendedor());
+            stmt.setString(8, fornecedor.getRamal());
+            stmt.setBoolean(9, fornecedor.getStatus());
 
             stmt.executeUpdate();
 
-            stmt = conn.prepareStatement("INSERT INTO enderecoFornecedor(codFornecedor, logradouro, numero, "
+            stmt = conn.prepareStatement("INSERT INTO enderecoFornecedor(logradouro, numero, "
                     + "complemento, bairro, cep, cidade, uf) "
-                    + "VALUES (?,?,?,?,?,?,?,?);");
+                    + "VALUES (?,?,?,?,?,?,?);");
 
-            stmt.setInt(1, fornecedor.getCodFornecedor());
-            stmt.setString(2, fornecedor.getLogradouro());
-            stmt.setInt(3, fornecedor.getNumero());
-            stmt.setString(4, fornecedor.getComplemento());
-            stmt.setString(5, fornecedor.getBairro());
-            stmt.setString(6, fornecedor.getCep());
-            stmt.setString(7, fornecedor.getCidade());
-            stmt.setString(8, fornecedor.getUf());
+            stmt.setString(1, fornecedor.getLogradouro());
+            stmt.setInt(2, fornecedor.getNumero());
+            stmt.setString(3, fornecedor.getComplemento());
+            stmt.setString(4, fornecedor.getBairro());
+            stmt.setString(5, fornecedor.getCep());
+            stmt.setString(6, fornecedor.getCidade());
+            stmt.setString(7, fornecedor.getUf());
 
             stmt.executeUpdate();
 
@@ -96,13 +111,15 @@ public class FornecedorCRUD {
             conn.close();
 
             JOptionPane.showMessageDialog(null, "Fornecedor cadastrado com sucesso!");
+            return true;
         } catch (SQLException erroInserirFornecedor) {
-            System.out.println(erroInserirFornecedor.getMessage());
+            JOptionPane.showMessageDialog(null, erroInserirFornecedor.getMessage());
+            return false;
         }
     }
 
     // UPDATE
-    public void atualizarFornecedor(Fornecedor fornecedor) {
+    public boolean atualizarFornecedor(Fornecedor fornecedor) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
@@ -146,8 +163,10 @@ public class FornecedorCRUD {
             stmt.close();
             conn.close();
             JOptionPane.showMessageDialog(null, "Informações atualizadas com sucesso!");
+            return true;
         } catch (SQLException erroAtualizarFornecedor) {
-            System.out.println(erroAtualizarFornecedor.getMessage());
+            JOptionPane.showMessageDialog(null, erroAtualizarFornecedor.getMessage());
+            return false;
         }
     }
 
@@ -171,24 +190,24 @@ public class FornecedorCRUD {
             if (!FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
                 // incrementa a query de acordo com o nome e conteúdo do JTExtField
                 if (args[i].getName().equalsIgnoreCase("f.codFornecedor")) {
-                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";      
+                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
                 } else {
-                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";               
+                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
                 }
 
                 /*
-                // percorre novamente o vetor em busca de outro JTextField preenchido
-                for (int j = 0; j < tam; j++) {
-                    // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
-                    if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
-                        // incrementa a query de acordo com o nome e conteúdo do JTextField
-                        sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%'";
+                 // percorre novamente o vetor em busca de outro JTextField preenchido
+                 for (int j = 0; j < tam; j++) {
+                 // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
+                 if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
+                 // incrementa a query de acordo com o nome e conteúdo do JTextField
+                 sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%'";
                         
-                        // retorna a query montada
-                        return sql;
-                    }
-                }
-                */
+                 // retorna a query montada
+                 return sql;
+                 }
+                 }
+                 */
             }
         }
         sql += ";";
@@ -234,6 +253,7 @@ public class FornecedorCRUD {
                 listaFornecedores.add(fornecedor);
             }
             stmt.close();
+            conn.close();
 
             return listaFornecedores;
         } catch (SQLException erroConsultarFornecedor) {
@@ -242,17 +262,18 @@ public class FornecedorCRUD {
         }
     }
 
-    public Fornecedor consultarFornecedorPorNome(String nome) {
+    public Fornecedor consultarFornecedor(String nome, int codigo) {
         Fornecedor fornecedor = new Fornecedor();
-        PreparedStatement stmt;
-        ResultSet result;
-
         try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            ResultSet result;
 
             stmt = conn.prepareStatement("SELECT f.codFornecedor, f.cnpj, f.nome,"
                     + "f.telFixo, f.telCel, f.email, f.site, f.vendedor, f.ramal, "
                     + "f.status, ef.logradouro, ef.numero, ef.complemento, ef.bairro, "
-                    + "ef.cep, ef.cidade, ef.uf FROM fornecedor f NATURAL INNER JOIN enderecoFornecedor ef WHERE nome = '" + nome + "';");
+                    + "ef.cep, ef.cidade, ef.uf FROM fornecedor f CROSS JOIN enderecoFornecedor ef "
+                    + "WHERE f.codFornecedor = ef.codFornecedor "
+                    + "AND f.nome = '" + nome + "' OR f.codFornecedor = " + codigo +";");
 
             result = stmt.executeQuery();
 
@@ -275,6 +296,8 @@ public class FornecedorCRUD {
                 fornecedor.setCidade(result.getString("cidade"));
                 fornecedor.setUf(result.getString("uf"));
             }
+            stmt.close();
+            conn.close();
         } catch (SQLException erroConsultarFuncPorNome) {
             JOptionPane.showMessageDialog(null, erroConsultarFuncPorNome.getMessage());
         }

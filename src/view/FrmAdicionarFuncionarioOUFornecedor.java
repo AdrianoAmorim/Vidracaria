@@ -233,7 +233,7 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
             DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
             FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
 
-            this.fornecedor = fornecedorCRUD.consultarFornecedorPorNome(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString());
+            this.fornecedor = fornecedorCRUD.consultarFornecedor(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString(), 0);
             this.dispose();
         }
     }//GEN-LAST:event_tbBuscaFuncionarioResultMouseClicked
