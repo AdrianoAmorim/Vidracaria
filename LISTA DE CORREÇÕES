@@ -45,13 +45,3 @@ ADICIONAR PRODUTOS NA COMPRA
   ao tentar acessar a lista para usar na janela de compras.
 
 
-CADASTRO DE FORNECEDOR
-
-* cnpj não se enquadra por completo no campo.
-
-* não cadastra fornecedor --> erros de SQL
-
-* não reseta os comboboxes de cidade/uf após clicar em cadastrar.
-
-* 
-
