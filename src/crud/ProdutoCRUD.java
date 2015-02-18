@@ -190,17 +190,17 @@ public class ProdutoCRUD {
     }
 
     // SELECT
-    public Produto consultarCodigoProduto(int codProduto) {
-
-        PreparedStatement stmt;
-        ResultSet result;
+    public Produto consultarProduto(String descricao, int codProduto) {
         Produto produto = new Produto();
 
         try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            ResultSet result;
+
             stmt = conn.prepareStatement("SELECT p.codProduto, p.codcategoria, p.descricao, "
                     + "p.unidadeMedida, p.quantidadeEstoque, p.precoVenda, p.status "
                     + "FROM produto p CROSS JOIN categoria c WHERE p.codCategoria = c.codCategoria "
-                    + "AND p.codProduto = " + codProduto + ";");
+                    + "AND p.codProduto = " + codProduto + " OR p.descricao = '" + descricao + "';");
 
             result = stmt.executeQuery();
             while (result.next()) {
@@ -215,42 +215,9 @@ public class ProdutoCRUD {
 
             stmt.close();
         } catch (SQLException erroConsultarCodigoProduto) {
-            System.out.println(erroConsultarCodigoProduto.getMessage());
-
+            JOptionPane.showMessageDialog(null, erroConsultarCodigoProduto.getMessage());
         }
         return produto;
-    }
-
-    // SELECT NOME
-    // PROVISÓRIO - ATÉ MONTAR A QUERY COM SELECT CONDICIONAL
-    public ArrayList<Produto> consultarNomeProduto(String descricao) {
-
-        PreparedStatement stmt;
-        ResultSet result;
-        ArrayList<Produto> listProduto = new ArrayList<>();
-
-        try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, descricao, unidadeMedida, "
-                    + "quantidadeEstoque, precoVenda FROM produto WHERE descricao LIKE '%" + descricao + "%';");
-
-            result = stmt.executeQuery();
-            while (result.next()) {
-                Produto produto = new Produto();
-                produto.setCodProduto(result.getInt("codProduto"));
-                produto.setDescricao(result.getString("descricao"));
-                produto.setUnidadeMedida(result.getString("unidadeMedida"));
-                produto.setQuantidadeEstoque(result.getDouble("quantidadeEstoque"));
-                produto.setPrecoVenda(result.getDouble("precoVenda"));
-
-                listProduto.add(produto);
-            }
-            stmt.close();
-            return listProduto;
-        } catch (SQLException erroConsultarDescricaoProduto) {
-            System.out.println(erroConsultarDescricaoProduto.getMessage());
-            return listProduto;
-        }
-
     }
 
     // UPDATE

@@ -6,7 +6,6 @@ import domain.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -2556,36 +2555,28 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraDeletarProdutoListaMouseClicked
 
     private void btnCompraAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarProdutoActionPerformed
-        FrmCadastroProduto cadastrarProduto = new FrmCadastroProduto(this, true);
-        //cadastrarProduto.setTitle("Cadastrar Produto");
-        cadastrarProduto.setVisible(true);
-
-        // COMO ERA FEITO ANTES
         //Cria Uma Instancia da janela de adiçã de produto passando o codCompra como Parametro
-        //FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfCompraCodigo.getText()), pnlEfetuarCompra.getName());
-        //adicionarProduto.setVisible(true);
+        FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfCompraCodigo.getText()), pnlEfetuarCompra.getName());
+        adicionarProduto.setVisible(true);
 
-         //if (!adicionarProduto.listProdutoComprado.isEmpty()) {
-         //Guarda valor total Atual
-         double totalAtual = Double.parseDouble(lblCompraValorTotal.getText());
-         //guarda valor do SubTotal Atual
-         double subTotalAtual = Double.parseDouble(lblCompraValorSubTotal.getText());
+        if (!adicionarProduto.listProdutoComprado.isEmpty()) {
+            DefaultTableModel modeloTabela = (DefaultTableModel) tbCompraListProduto.getModel();
 
-         DefaultTableModel modeloTabela = (DefaultTableModel) tbCompraListProduto.getModel();
+            // Adicionando as informaçoes dos produtos comprados na tabela de compra
+            for (ProdutoComprado produtoComprado : adicionarProduto.listProdutoComprado) {
+                ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+                //double valorTotalProduto = produtoComprado.getPrecoCusto() * produtoComprado.getQuantidadeProduto();
+                //totalAtual += valorTotalProduto;
+                //subTotalAtual += valorTotalProduto;
 
-         //Adicionando as informaçoes dos produtos comprados e totais na janela de Compra
-         /*for (ProdutoComprado produtoComprado : adicionarProduto.listProdutoComprado) {
-         double valorTotalProduto = produtoComprado.getPrecoCusto() * produtoComprado.getQuantidadeProduto();
-         totalAtual += valorTotalProduto;
-         subTotalAtual += valorTotalProduto;
-         modeloTabela.addRow(new Object[]{produtoComprado.getCodCompra(), produtoComprado.getCodProduto(), produtoComprado.getQuantidadeProduto(),
-         produtoComprado.getPrecoCusto()});
-
-//         }*/
-
-         lblCompraValorTotal.setText(String.valueOf(totalAtual));
-         lblCompraValorSubTotal.setText(String.valueOf(subTotalAtual));
-         
+                modeloTabela.addRow(new Object[]{produtoComprado.getCodProduto(),
+                    produtoCRUD.consultarProduto("", produtoComprado.getCodProduto()).getDescricao(),
+                    produtoComprado.getQuantidadeProduto(),
+                    produtoComprado.getPrecoCusto()});
+            }
+        }
+        //lblCompraValorTotal.setText(String.valueOf(totalAtual));
+        //lblCompraValorSubTotal.setText(String.valueOf(subTotalAtual));
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
 
     private void btnFinanceiroAddTituloRendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanceiroAddTituloRendaActionPerformed
@@ -3147,7 +3138,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnFuncionarioLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioLimparActionPerformed
         FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
-        
+
         // limpa os campos do formulário
         limparCampos(tfFuncionarioCodigo, tfFuncionarioCodCargo, tfFuncionarioNome,
                 tfFuncionarioTelResidencial, tfFuncionarioTelCelular, tfFuncionarioEmail,
@@ -3241,24 +3232,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
 
         return dataFormatada;
-    }
-
-// Insere os produtos do ComboBox nas tabelas
-    public void inserirProdutosNasTabelas(JTable tabela, JComboBox cbProduto, JTextField tfQtdProduto, JLabel lblTotBruto, JLabel lblTotLiquido) {
-        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
-
-        // inicializa um produto com o retorno da consulta pelo nome do produto no comboBox
-        ArrayList<Produto> listProduto = new ProdutoCRUD().consultarNomeProduto(cbProduto.getSelectedItem().toString());
-
-        //adicionando na tabela
-        for (Produto produto : listProduto) {
-
-            modelo.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao(), tfQtdProduto.getText(), produto.getPrecoVenda(),
-                (produto.getPrecoVenda() * Double.parseDouble(tfQtdProduto.getText()))});
-            inserirValoresDetalhados(produto, lblTotBruto, lblTotLiquido, tfQtdProduto);
-        }
-        tabela.setModel(modelo);
-
     }
 
     // Insere os precos detalhados nas labels

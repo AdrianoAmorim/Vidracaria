@@ -36,7 +36,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnAdicionarProdutoInserirTabela" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAdicionarProdutoTabela" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Component id="tfAdicionarProdutoCodigo" min="-2" pref="114" max="-2" attributes="0"/>
                               <Component id="tfAdicionarProdutoDescricao" min="-2" pref="230" max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
                           <Component id="lblCompraFornecedor3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAdicionarProdutoInserirTabela" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAdicionarProdutoTabela" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -119,12 +119,12 @@
         <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="tfAdicionarProdutoDescricaoCaretUpdate"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAdicionarProdutoInserirTabela">
+    <Component class="javax.swing.JButton" name="btnAdicionarProdutoTabela">
       <Properties>
         <Property name="text" type="java.lang.String" value="Adicionar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdicionarProdutoInserirTabelaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdicionarProdutoTabelaActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -134,14 +134,14 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="jlAdicionarProdutoResultConsulta">
+        <Component class="javax.swing.JList" name="jlAddProdutosResultQuery">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlAdicionarProdutoResultConsultaMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlAddProdutosResultQueryMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

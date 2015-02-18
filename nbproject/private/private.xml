@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/workspace/GitHub/projeto/current/vidracaria/src/database/SQLite.java</file>
+            <file>file:/home/workspace/GitHub/projeto/current/vidracaria/src/crud/ProdutoCRUD.java</file>
+            <file>file:/home/workspace/GitHub/projeto/current/vidracaria/src/view/FrmAdicionarProduto.java</file>
             <file>file:/home/workspace/GitHub/projeto/current/vidracaria/src/view/FrmPrincipal.java</file>
-            <file>file:/home/workspace/GitHub/projeto/current/vidracaria/src/view/FrmCadastroProduto.java</file>
-            <file>file:/home/workspace/GitHub/projeto/current/vidracaria/src/view/FrmCadastrarFornecedor.java</file>
         </group>
     </open-files>
 </project-private>

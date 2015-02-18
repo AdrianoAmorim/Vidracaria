@@ -37,8 +37,12 @@ PESQUISA DE FORNECEDOR
 
 PESQUISA DE PRODUTOS
 
+* faltam alguns testes mais bem analisados.
 
+ADICIONAR PRODUTOS NA COMPRA
 
+* adiciona da lista para a tabela na janela de Add, mas lança um NullPointerException
+  ao tentar acessar a lista para usar na janela de compras.
 
 
 CADASTRO DE FORNECEDOR

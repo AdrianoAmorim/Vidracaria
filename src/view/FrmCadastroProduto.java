@@ -510,7 +510,7 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         ProdutoCRUD produtoCRUD = new ProdutoCRUD();
         CategoriaCRUD categoriaCRUD = new CategoriaCRUD();
 
-        this.produto = produtoCRUD.consultarCodigoProduto((int) modelo.getValueAt(tbBuscarProduto.getSelectedRow(), 0));
+        this.produto = produtoCRUD.consultarProduto("", (int) modelo.getValueAt(tbBuscarProduto.getSelectedRow(), 0));
         tfProdutoCodigo.setText(String.valueOf(produto.getCodProduto()));
         tfProdutoDescricao.setText(produto.getDescricao());
         tfProdutoPrecoVenda.setText(String.valueOf(produto.getPrecoVenda()));
