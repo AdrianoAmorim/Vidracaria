@@ -254,27 +254,30 @@ public class ProdutoCRUD {
     }
 
     // UPDATE
-    public void atualizarProduto(Produto produto) {
+    public boolean atualizarProduto(Produto produto) {
 
         PreparedStatement stmt;
 
         try (Connection conn = new SQLite().conectar()) {
             stmt = conn.prepareStatement("UPDATE produto SET descricao = ?, unidadeMedida = ?, quantidadeEstoque = ?, "
-                    + "precoVenda = ?, status = ? WHERE codProduto = ?;");
+                    + "codCategoria = ?, precoVenda = ?, status = ? WHERE codProduto = ?;");
 
             stmt.setString(1, produto.getDescricao());
             stmt.setString(2, produto.getUnidadeMedida());
             stmt.setDouble(3, produto.getQuantidadeEstoque());
-            stmt.setDouble(4, produto.getPrecoVenda());
-            stmt.setBoolean(5, produto.isStatus());
-            stmt.setInt(6, produto.getCodProduto());
+            stmt.setInt(4, produto.getCodCategoria());
+            stmt.setDouble(5, produto.getPrecoVenda());
+            stmt.setBoolean(6, produto.isStatus());
+            stmt.setInt(7, produto.getCodProduto());
 
             stmt.executeUpdate();
             stmt.close();
 
             JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
+            return true;
         } catch (SQLException erroAtualizarProduto) {
-            System.out.println(erroAtualizarProduto.getMessage());
+            JOptionPane.showMessageDialog(null, erroAtualizarProduto.getMessage());
+            return false;
         }
     }
 }

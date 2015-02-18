@@ -1,6 +1,5 @@
 package view;
 
-import com.sun.java.swing.plaf.windows.resources.windows;
 import controller.FornecedorController;
 import crud.CidadeCRUD;
 import crud.EstadoCRUD;

@@ -2,15 +2,11 @@ package view;
 
 import controller.ProdutoController;
 import crud.CategoriaCRUD;
-import crud.ClienteCRUD;
 import crud.ProdutoCRUD;
 import domain.Categoria;
-import domain.Cliente;
 import domain.Produto;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -454,27 +450,27 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
         produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
         produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
-
-        // define o status do produto
-        if (rbProdutoStatusAtiv.isSelected()) {
-            // ativo
-            produto.setStatus(true);
-        } else if (rbProdutoStatusInat.isSelected()) {
-            // inativo
-            produto.setStatus(false);
-        }
+        produto.setStatus(rbProdutoStatusAtiv.isSelected());
 
         if (produtoController.validarProduto(produto)) {
-            produtoCRUD.atualizarProduto(produto);
+            if (produtoCRUD.atualizarProduto(produto)) {
+
+                // limpa os campos do formulario
+                FrmPrincipal.limparCampos(tfProdutoCodigo, tfProdutoDescricao,
+                        tfProdutoPrecoVenda, tfProdutoQuantidade);
+
+                // reseta os radio buttons
+                rbProdutoStatusAtiv.setSelected(false);
+                rbProdutoStatusInat.setSelected(false);
+
+                // reseta os ComboBoxes
+                carregarCbCategoria();
+                cbUnidadeMedida.setSelectedIndex(0);
+
+                // reseta o checkBox
+                cb_novoProduto.setSelected(false);
+            }
         }
-
-        // limpa os campos do formulario
-        FrmPrincipal.limparCampos(tfProdutoCodigo, tfProdutoDescricao,
-                tfProdutoPrecoVenda, tfProdutoQuantidade);
-
-        // reseta os radio buttons
-        rbProdutoStatusAtiv.setSelected(false);
-        rbProdutoStatusInat.setSelected(false);
     }//GEN-LAST:event_btnProdutoAlterarActionPerformed
 
     private void cb_novoProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_novoProdutoMouseClicked
@@ -491,6 +487,7 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
 
             // resetar comboBox
             carregarCbCategoria();
+            cbUnidadeMedida.setSelectedIndex(0);
 
             // resetar radioButtons
             rbProdutoStatusInat.setSelected(false);
