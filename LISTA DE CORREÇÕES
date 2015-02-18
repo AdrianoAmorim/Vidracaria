@@ -1,6 +1,3 @@
-* banco de dados
-	funcionario-> campo dtnascimento deve ser alterado para not null.
-
 * geral
 	adicionar botões de deletar
 		-> testa se o banco de dados lança erros de dependencia
