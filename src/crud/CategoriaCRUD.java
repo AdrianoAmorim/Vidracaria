@@ -73,7 +73,7 @@ public class CategoriaCRUD {
         Categoria categoria = new Categoria();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codcategoria, descricao"
+            stmt = conn.prepareStatement("SELECT codcategoria, descricao "
                     + "FROM categoria WHERE codCategoria = " + codCategoria + ";");
 
             result = stmt.executeQuery();

@@ -3,8 +3,10 @@ package view;
 import controller.ProdutoController;
 import crud.CategoriaCRUD;
 import crud.ProdutoCRUD;
+import crud.ProdutoCompradoCRUD;
 import domain.Categoria;
 import domain.Produto;
+import domain.ProdutoComprado;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -13,14 +15,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Adriano
  */
-public class FrmCadastroProduto extends javax.swing.JDialog {
+public class FrmCadastrarProduto extends javax.swing.JDialog {
 
+    ArrayList<ProdutoComprado> listaProdutos = new ArrayList<>();
     Produto produto = new Produto();
 
     /**
      * Creates new form FrmCadastroProduto
      */
-    public FrmCadastroProduto(java.awt.Frame parent, boolean modal) {
+    public FrmCadastrarProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(this);
@@ -60,6 +63,7 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         cb_novoProduto = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbBuscarProduto = new javax.swing.JTable();
+        btnAddProdutoLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -78,7 +82,7 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel52, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+                .addComponent(jLabel52, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel20Layout.setVerticalGroup(
@@ -224,6 +228,13 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbBuscarProduto);
 
+        btnAddProdutoLista.setText("Adicionar na lista");
+        btnAddProdutoLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProdutoListaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -250,30 +261,35 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
                         .addComponent(cb_novoProduto))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfProdutoDescricao, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbProdutoCategoria, 0, 178, Short.MAX_VALUE)
-                                    .addComponent(tfProdutoPrecoVenda))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel58)
-                                    .addComponent(jLabel57))
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
+                                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(cbProdutoCategoria, 0, 178, Short.MAX_VALUE)
+                                            .addComponent(tfProdutoPrecoVenda))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel58)
+                                            .addComponent(jLabel57)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
+                                        .addComponent(rbProdutoStatusAtiv)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(rbProdutoStatusInat)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfProdutoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
-                                .addComponent(rbProdutoStatusAtiv)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbProdutoStatusInat))
-                            .addComponent(tfProdutoDescricao, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(cbUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(208, 208, 208))))
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
-                        .addGap(208, 208, 208))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAddProdutoLista)
+                        .addGap(115, 115, 115))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnProdutoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,8 +329,13 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
                     .addComponent(jLabel60)
                     .addComponent(rbProdutoStatusAtiv)
                     .addComponent(rbProdutoStatusInat))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(btnAddProdutoLista)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnProdutoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -386,15 +407,7 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         produto.setPrecoVenda(Double.parseDouble(tfProdutoPrecoVenda.getText()));
         produto.setQuantidadeEstoque(Double.parseDouble(tfProdutoQuantidade.getText()));
         produto.setUnidadeMedida(cbUnidadeMedida.getSelectedItem().toString());
-
-        // define o status do produto
-        if (rbProdutoStatusAtiv.isSelected()) {
-            // ativo
-            produto.setStatus(true);
-        } else if (rbProdutoStatusInat.isSelected()) {
-            // inativo
-            produto.setStatus(false);
-        }
+        produto.setStatus(rbProdutoStatusAtiv.isSelected());
 
         if (produtoController.validarProduto(produto)) {
             ProdutoCRUD produtoCRUD = new ProdutoCRUD();
@@ -505,35 +518,41 @@ public class FrmCadastroProduto extends javax.swing.JDialog {
         this.pesquisarProdutoCaretUpdate();
     }//GEN-LAST:event_tfProdutoCodigoCaretUpdate
 
-    private void tbBuscarProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscarProdutoMouseClicked
-        DefaultTableModel modelo = (DefaultTableModel) tbBuscarProduto.getModel();
-        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
-        CategoriaCRUD categoriaCRUD = new CategoriaCRUD();
-
-        this.produto = produtoCRUD.consultarProduto("", (int) modelo.getValueAt(tbBuscarProduto.getSelectedRow(), 0));
-        tfProdutoCodigo.setText(String.valueOf(produto.getCodProduto()));
-        tfProdutoDescricao.setText(produto.getDescricao());
-        tfProdutoPrecoVenda.setText(String.valueOf(produto.getPrecoVenda()));
-        tfProdutoQuantidade.setText(String.valueOf(produto.getQuantidadeEstoque()));
-        // FALTA IMPLEMENTAR
-        //cbProdutoCategoria.getModel().setSelectedItem(categoriaCRUD.consultarCategoria(produto.getCodCategoria()).getDescricao());
-        cbUnidadeMedida.getModel().setSelectedItem(produto.getUnidadeMedida());
-
-        if (produto.isStatus()) {
-            rbProdutoStatusAtiv.setSelected(true);
-            rbProdutoStatusInat.setSelected(false);
-        } else {
-            rbProdutoStatusAtiv.setSelected(false);
-            rbProdutoStatusInat.setSelected(true);
-        }
-    }//GEN-LAST:event_tbBuscarProdutoMouseClicked
-
     private void tfProdutoDescricaoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfProdutoDescricaoCaretUpdate
         this.pesquisarProdutoCaretUpdate();
     }//GEN-LAST:event_tfProdutoDescricaoCaretUpdate
 
+    private void btnAddProdutoListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProdutoListaActionPerformed
+        ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
+        
+        listaProdutos.add(produtoCompradoCRUD.consultarProdutoComprado((int) tbBuscarProduto.getValueAt(tbBuscarProduto.getSelectedRow(), 0)));
+    }//GEN-LAST:event_btnAddProdutoListaActionPerformed
+
+    private void tbBuscarProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscarProdutoMouseClicked
+        if(evt.getClickCount() == 2) {
+            ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+            CategoriaCRUD categoriaCRUD = new CategoriaCRUD();
+            
+            produto = produtoCRUD.consultarProduto(tbBuscarProduto.getValueAt(tbBuscarProduto.getSelectedRow(), 1).toString(), 0);        
+            
+            tfProdutoCodigo.setText(Integer.toString(produto.getCodProduto()));
+            tfProdutoDescricao.setText(produto.getDescricao());
+            tfProdutoPrecoVenda.setText(String.valueOf(produto.getPrecoVenda()));
+            tfProdutoQuantidade.setText(String.valueOf(produto.getQuantidadeEstoque()));
+            cbProdutoCategoria.getModel().setSelectedItem(categoriaCRUD.consultarCategoria(produto.getCodCategoria()).getDescricao());
+            cbUnidadeMedida.setSelectedItem(produto.getUnidadeMedida()); 
+            
+            if (produto.isStatus()) {
+                rbProdutoStatusAtiv.setSelected(true);
+            } else {
+                rbProdutoStatusInat.setSelected(true);
+            }            
+        }
+    }//GEN-LAST:event_tbBuscarProdutoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddProdutoLista;
     private javax.swing.JButton btnProdutoAlterar;
     private javax.swing.JButton btnProdutoCadastrar;
     private javax.swing.JComboBox cbProdutoCategoria;

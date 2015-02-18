@@ -670,48 +670,49 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
     }//GEN-LAST:event_tfFornecedorNomeCaretUpdate
 
     private void tbAdicionarFornecedorResultBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAdicionarFornecedorResultBuscaMouseClicked
-        // habilita todos os componentes que estavam bloqueados
-        FrmPrincipal.habilitarDesabilitarComponente(true, tfFornecedorBairro, tfFornecedorCep, tfFornecedorComplemento, tfFornecedorEmail, tfFornecedorLogradouro,
-                tfFornecedorNumero, tfFornecedorRamalVendedor, tfFornecedorSite, tfFornecedorTelCel, tfFornecedorTelFixo, tfFornecedorVendedor);
-        FrmPrincipal.habilitarDesabilitarComponente(true, cbFornecedorCidade, cbFornecedorUf);
-        FrmPrincipal.habilitarDesabilitarComponente(true, rbFornecedorStatusInat, rbFornecedortatusAtiv);
-        FrmPrincipal.habilitarDesabilitarComponente(true, btnFornecedorAlterar, btnFornecedorAdicionar);
+        if (evt.getClickCount() == 2) {
+            // habilita todos os componentes que estavam bloqueados
+            FrmPrincipal.habilitarDesabilitarComponente(true, tfFornecedorBairro, tfFornecedorCep, tfFornecedorComplemento, tfFornecedorEmail, tfFornecedorLogradouro,
+                    tfFornecedorNumero, tfFornecedorRamalVendedor, tfFornecedorSite, tfFornecedorTelCel, tfFornecedorTelFixo, tfFornecedorVendedor);
+            FrmPrincipal.habilitarDesabilitarComponente(true, cbFornecedorCidade, cbFornecedorUf);
+            FrmPrincipal.habilitarDesabilitarComponente(true, rbFornecedorStatusInat, rbFornecedortatusAtiv);
+            FrmPrincipal.habilitarDesabilitarComponente(true, btnFornecedorAlterar, btnFornecedorAdicionar);
 
-        // extrai do banco de dados as informações referentes ao cliente selecionado na tabela
-        fornecedor = new FornecedorCRUD().consultarFornecedor(tbAdicionarFornecedorResultBusca.getValueAt(tbAdicionarFornecedorResultBusca.getSelectedRow(), tbAdicionarFornecedorResultBusca.getSelectedColumn()).toString(), 0);
+            // extrai do banco de dados as informações referentes ao cliente selecionado na tabela
+            fornecedor = new FornecedorCRUD().consultarFornecedor(tbAdicionarFornecedorResultBusca.getValueAt(tbAdicionarFornecedorResultBusca.getSelectedRow(), tbAdicionarFornecedorResultBusca.getSelectedColumn()).toString(), 0);
 
-        // preenche os campos do formulário com os dados do cliente
-        tfFornecedorCodigo.setText(Integer.toString(fornecedor.getCodFornecedor()));
-        tfFornecedorCnpj.setText(fornecedor.getCnpj());
-        tfFornecedorNome.setText(fornecedor.getNome());
-        tfFornecedorTelFixo.setText(fornecedor.getTelFixo());
-        tfFornecedorTelCel.setText(fornecedor.getTelCel());
-        tfFornecedorLogradouro.setText(fornecedor.getLogradouro());
-        tfFornecedorNumero.setText(Integer.toString(fornecedor.getNumero()));
-        tfFornecedorComplemento.setText(fornecedor.getComplemento());
-        tfFornecedorBairro.setText(fornecedor.getBairro());
-        tfFornecedorCep.setText(fornecedor.getCep());
-        tfFornecedorEmail.setText(fornecedor.getEmail());
-        tfFornecedorSite.setText(fornecedor.getSite());
-        tfFornecedorVendedor.setText(fornecedor.getVendedor());
-        tfFornecedorRamalVendedor.setText(fornecedor.getRamal());
+            // preenche os campos do formulário com os dados do cliente
+            tfFornecedorCodigo.setText(Integer.toString(fornecedor.getCodFornecedor()));
+            tfFornecedorCnpj.setText(fornecedor.getCnpj());
+            tfFornecedorNome.setText(fornecedor.getNome());
+            tfFornecedorTelFixo.setText(fornecedor.getTelFixo());
+            tfFornecedorTelCel.setText(fornecedor.getTelCel());
+            tfFornecedorLogradouro.setText(fornecedor.getLogradouro());
+            tfFornecedorNumero.setText(Integer.toString(fornecedor.getNumero()));
+            tfFornecedorComplemento.setText(fornecedor.getComplemento());
+            tfFornecedorBairro.setText(fornecedor.getBairro());
+            tfFornecedorCep.setText(fornecedor.getCep());
+            tfFornecedorEmail.setText(fornecedor.getEmail());
+            tfFornecedorSite.setText(fornecedor.getSite());
+            tfFornecedorVendedor.setText(fornecedor.getVendedor());
+            tfFornecedorRamalVendedor.setText(fornecedor.getRamal());
 
-        // preenche os comboBoxes
-        cbFornecedorUf.getModel().setSelectedItem(fornecedor.getUf());
-        cbFornecedorCidade.getModel().setSelectedItem(fornecedor.getCidade());
+            // preenche os comboBoxes
+            cbFornecedorUf.getModel().setSelectedItem(fornecedor.getUf());
+            cbFornecedorCidade.getModel().setSelectedItem(fornecedor.getCidade());
 
-        // define o status
-        if (fornecedor.getStatus()) {
-            // ativo
-            rbFornecedortatusAtiv.setSelected(true);
-            rbFornecedorStatusInat.setSelected(false);
+            // define o status
+            if (fornecedor.getStatus()) {
+                // ativo
+                rbFornecedortatusAtiv.setSelected(true);
+                rbFornecedorStatusInat.setSelected(false);
 
-        } else {
-            // inativo
-            rbFornecedorStatusInat.setSelected(true);
-            rbFornecedortatusAtiv.setSelected(false);
+            } else {
+                // inativo
+                rbFornecedorStatusInat.setSelected(true);
+                rbFornecedortatusAtiv.setSelected(false);
+            }
         }
-    
     }//GEN-LAST:event_tbAdicionarFornecedorResultBuscaMouseClicked
 
     private void cb_novoFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_novoFornecedorMouseClicked

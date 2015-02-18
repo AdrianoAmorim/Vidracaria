@@ -1,4 +1,3 @@
-
 package domain;
 
 /**
@@ -6,8 +5,10 @@ package domain;
  * @author rafael
  */
 public class ProdutoComprado {
+
     protected int codProduto;
     protected int codDespesa;
+    protected int codEmpresa;
     protected int codCompra;
     protected Double quantidadeProduto;
     protected Double precoCusto;
@@ -26,6 +27,14 @@ public class ProdutoComprado {
 
     public void setCodDespesa(int codDespesa) {
         this.codDespesa = codDespesa;
+    }
+
+    public int getCodEmpresa() {
+        return codEmpresa;
+    }
+
+    public void setCodEmpresa(int codEmpresa) {
+        this.codEmpresa = codEmpresa;
     }
 
     public int getCodCompra() {
@@ -51,5 +60,5 @@ public class ProdutoComprado {
     public void setPrecoCusto(Double precoCusto) {
         this.precoCusto = precoCusto;
     }
-    
+
 }

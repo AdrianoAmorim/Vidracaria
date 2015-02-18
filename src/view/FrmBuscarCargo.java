@@ -203,10 +203,12 @@ public class FrmBuscarCargo extends javax.swing.JDialog {
     }//GEN-LAST:event_tfBuscaCargoCodigoCaretUpdate
 
     private void jlBuscaCargoResultConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBuscaCargoResultConsultaMouseClicked
-        CargoCRUD cargoCRUD = new CargoCRUD();
+        if (evt.getClickCount() == 2) {
+            CargoCRUD cargoCRUD = new CargoCRUD();
 
-        this.cargo = cargoCRUD.consultarCargo(tfBuscaCargoCodigo, tfBuscaCargoDescricao).get(0);
-        this.dispose();
+            this.cargo = cargoCRUD.consultarCargo(tfBuscaCargoCodigo, tfBuscaCargoDescricao).get(0);
+            this.dispose();
+        }
     }//GEN-LAST:event_jlBuscaCargoResultConsultaMouseClicked
 
     /**

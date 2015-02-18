@@ -223,18 +223,20 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
     }//GEN-LAST:event_tfBuscarFuncionarioNomeCaretUpdate
 
     private void tbBuscaFuncionarioResultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscaFuncionarioResultMouseClicked
-        if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
-            DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
-            FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+        if (evt.getClickCount() == 2) {
+            if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
+                DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
+                FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
 
-            this.funcionario = funcionarioCRUD.consultarFuncionario(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString(), 0);
-            this.dispose();
-        } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
-            DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
-            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+                this.funcionario = funcionarioCRUD.consultarFuncionario(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString(), 0);
+                this.dispose();
+            } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
+                DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
+                FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
 
-            this.fornecedor = fornecedorCRUD.consultarFornecedor(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString(), 0);
-            this.dispose();
+                this.fornecedor = fornecedorCRUD.consultarFornecedor(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString(), 0);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_tbBuscaFuncionarioResultMouseClicked
 

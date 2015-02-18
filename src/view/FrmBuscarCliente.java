@@ -346,11 +346,13 @@ public class FrmBuscarCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_tfNomeClienteCaretUpdate
 
     private void tbBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscarClienteMouseClicked
-        DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
-        ClienteCRUD clienteCrud = new ClienteCRUD();
+        if (evt.getClickCount() == 2) {
+            DefaultTableModel modelo = (DefaultTableModel) tbBuscarCliente.getModel();
+            ClienteCRUD clienteCrud = new ClienteCRUD();
 
-        this.cliente = clienteCrud.consultarCliente(modelo.getValueAt(tbBuscarCliente.getSelectedRow(), 1).toString(), 0);
-        this.dispose();
+            this.cliente = clienteCrud.consultarCliente(modelo.getValueAt(tbBuscarCliente.getSelectedRow(), 1).toString(), 0);
+            this.dispose();
+        }
     }//GEN-LAST:event_tbBuscarClienteMouseClicked
 
     private void rbTipoJuridicaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTipoJuridicaClienteActionPerformed

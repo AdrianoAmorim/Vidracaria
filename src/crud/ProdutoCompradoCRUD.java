@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class ProdutoCompradoCRUD {
 
     // INSERT 
-    public void inserirProdutoComprado(ProdutoComprado produtoComprado) {
+    public boolean inserirProdutoComprado(ProdutoComprado produtoComprado) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
@@ -31,8 +31,10 @@ public class ProdutoCompradoCRUD {
             stmt.close();
 
             System.out.println("Produto Comprado cadastrado com sucesso!");
+            return true;
         } catch (SQLException erroInserirProdutoComprado) {
             System.out.println(erroInserirProdutoComprado.getMessage());
+            return false;
         }
     }
 
@@ -59,35 +61,33 @@ public class ProdutoCompradoCRUD {
     }
 
     // SELECT
-    public ArrayList<ProdutoComprado> consultarProdutoComprado() {
-
-        PreparedStatement stmt;
-        ResultSet result;
-
-        ArrayList<ProdutoComprado> listaProdutoComprado = new ArrayList<>();
+    public ProdutoComprado consultarProdutoComprado(int codigo) {
+        ProdutoComprado produtoComprado = new ProdutoComprado();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, codCompra, quantidade, precoCusto "
-                    + "FROM produtoComprado;");
+            PreparedStatement stmt;
+            ResultSet result;
+            stmt = conn.prepareStatement("SELECT codCompra, codDespesa, codEmpresa, "
+                    + "codProduto, quantidade, precoCusto FROM produtoComprado "
+                    + "WHERE codProduto = " + codigo + ";");
 
             result = stmt.executeQuery();
             while (result.next()) {
-                ProdutoComprado produtoComprado = new ProdutoComprado();
-
-                produtoComprado.setCodProduto(result.getInt("codProduto"));
                 produtoComprado.setCodCompra(result.getInt("codCompra"));
+                produtoComprado.setCodDespesa(result.getInt("codDespesa"));
+                produtoComprado.setCodEmpresa(result.getInt("codEmpresa"));
+                produtoComprado.setCodProduto(result.getInt("codProduto"));
                 produtoComprado.setQuantidadeProduto(result.getDouble("quantidade"));
                 produtoComprado.setPrecoCusto(result.getDouble("precoCusto"));
-
-                listaProdutoComprado.add(produtoComprado);
-
-                stmt.close();
-                conn.close();
             }
-            return listaProdutoComprado;
+
+            stmt.close();
+            conn.close();
+
+            return produtoComprado;
         } catch (SQLException erroConsultarProdutoComprado) {
-            System.out.println(erroConsultarProdutoComprado.getMessage());
-            return listaProdutoComprado;
+            JOptionPane.showMessageDialog(null, erroConsultarProdutoComprado.getMessage());
+            return produtoComprado;
         }
     }
 

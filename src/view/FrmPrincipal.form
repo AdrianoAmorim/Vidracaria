@@ -255,17 +255,6 @@
                                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="tfClienteEmail" alignment="0" min="-2" pref="360" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="tfClienteCep" min="-2" pref="158" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="lblClienteCidade" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="cbClienteCidade" min="-2" pref="280" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="lblClienteUf" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="cbClienteUf" min="-2" pref="76" max="-2" attributes="0"/>
-                                              </Group>
                                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="tfClienteCpf" min="-2" pref="158" max="-2" attributes="0"/>
@@ -282,7 +271,19 @@
                                                       <Component id="tfClienteInscEstadual" min="-2" pref="158" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
+                                              <Component id="tfClienteNome" min="-2" pref="631" max="-2" attributes="0"/>
                                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="tfClienteCep" min="-2" pref="158" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="lblClienteUf" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="cbClienteUf" min="-2" pref="76" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="lblClienteCidade" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="cbClienteCidade" min="-2" pref="280" max="-2" attributes="0"/>
+                                                  </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="tfClienteComplemento" min="-2" pref="303" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
@@ -301,7 +302,7 @@
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Component id="tfClienteLogradouro" min="-2" pref="498" max="-2" attributes="0"/>
-                                                              <EmptySpace pref="57" max="32767" attributes="0"/>
+                                                              <EmptySpace pref="74" max="32767" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" alignment="1" attributes="0">
                                                               <Component id="lblClienteNumero" min="-2" max="-2" attributes="0"/>
@@ -311,7 +312,6 @@
                                                       <Component id="tfClienteNumero" min="-2" pref="76" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Component id="tfClienteNome" min="-2" pref="631" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -322,7 +322,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="157" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -397,9 +397,9 @@
                               <Component id="lblClienteUf" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblClienteCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfClienteCep" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbClienteCidade" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="lblClienteCep" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbClienteUf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="cbClienteCidade" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -1138,16 +1138,16 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="tfFuncionarioNumero" min="-2" pref="77" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Component id="tfFuncionarioCep" min="-2" pref="158" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="lblFuncionarioCidade" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                              <Component id="cbFuncionarioCidade" min="-2" pref="304" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="lblFuncionarioUf" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="cbFuncionarioUf" max="32767" attributes="0"/>
+                                              <Component id="cbFuncionarioUf" min="-2" pref="57" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Component id="lblFuncionarioCidade" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="cbFuncionarioCidade" min="-2" pref="304" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="tfFuncionarioComplemento" min="-2" pref="287" max="-2" attributes="0"/>
@@ -1165,16 +1165,6 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblFuncionarioStatus" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnCadastrarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Component id="btnAlterarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnFuncionarioLimpar" min="-2" pref="38" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="lblFuncionarioCodCargo" min="-2" max="-2" attributes="0"/>
@@ -1189,9 +1179,19 @@
                                           <Component id="tfFuncionarioCodCargo" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblFuncionarioStatus" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnCadastrarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="btnAlterarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnFuncionarioLimpar" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="180" max="32767" attributes="0"/>
+                          <EmptySpace pref="163" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1235,7 +1235,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblFuncionarioCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblFuncionarioRg" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1257,40 +1257,40 @@
                                       <Component id="lblFuncionarioBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="tfFuncionarioBairro" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblFuncionarioCep" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tfFuncionarioCep" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="lblFuncionarioCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbFuncionarioCidade" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="lblFuncionarioUf" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbFuncionarioUf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="tfFuncionarioSalario" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="lblFuncionarioSalario" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblFuncionarioStatus" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="btnCadastrarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>
-                                                  <Component id="btnAlterarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>
-                                                  <Component id="btnFuncionarioLimpar" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                          </Group>
+                              </Group>
+                              <Component id="tfFuncionarioRg" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblFuncionarioCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfFuncionarioCep" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="lblFuncionarioUf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbFuncionarioUf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="lblFuncionarioCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbFuncionarioCidade" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tfFuncionarioSalario" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="lblFuncionarioSalario" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblFuncionarioStatus" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="btnCadastrarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>
+                                          <Component id="btnAlterarFuncionario" min="-2" pref="38" max="-2" attributes="0"/>
+                                          <Component id="btnFuncionarioLimpar" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="rbFuncionarioStatusInat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rbFuncionarioStatusAtiv" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="tfFuncionarioRg" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="rbFuncionarioStatusInat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbFuncionarioStatusAtiv" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
