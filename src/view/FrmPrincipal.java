@@ -2555,28 +2555,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraDeletarProdutoListaMouseClicked
 
     private void btnCompraAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraAdicionarProdutoActionPerformed
-        //Cria Uma Instancia da janela de adiçã de produto passando o codCompra como Parametro
-        FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfCompraCodigo.getText()), pnlEfetuarCompra.getName());
-        adicionarProduto.setVisible(true);
 
-        if (!adicionarProduto.listProdutoComprado.isEmpty()) {
-            DefaultTableModel modeloTabela = (DefaultTableModel) tbCompraListProduto.getModel();
-
-            // Adicionando as informaçoes dos produtos comprados na tabela de compra
-            for (ProdutoComprado produtoComprado : adicionarProduto.listProdutoComprado) {
-                ProdutoCRUD produtoCRUD = new ProdutoCRUD();
-                //double valorTotalProduto = produtoComprado.getPrecoCusto() * produtoComprado.getQuantidadeProduto();
-                //totalAtual += valorTotalProduto;
-                //subTotalAtual += valorTotalProduto;
-
-                modeloTabela.addRow(new Object[]{produtoComprado.getCodProduto(),
-                    produtoCRUD.consultarProduto("", produtoComprado.getCodProduto()).getDescricao(),
-                    produtoComprado.getQuantidadeProduto(),
-                    produtoComprado.getPrecoCusto()});
-            }
-        }
-        //lblCompraValorTotal.setText(String.valueOf(totalAtual));
-        //lblCompraValorSubTotal.setText(String.valueOf(subTotalAtual));
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
 
     private void btnFinanceiroAddTituloRendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanceiroAddTituloRendaActionPerformed
@@ -2602,28 +2581,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnVendaAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaAdicionarProdutoActionPerformed
 
-        //Cria Uma Instancia da janela de adicao de produto passando o codCompra como Parametro
-        FrmAdicionarProduto adicionarProduto = new FrmAdicionarProduto(this, true, Integer.parseInt(tfVendaCodigo.getText()), pnlEfetuarVenda.getName());
-        adicionarProduto.setVisible(true);
-
-        if (!adicionarProduto.listProdutoVendido.isEmpty()) {
-            //Guarda valor total Atual
-            //          double totalAtual = Double.parseDouble(lblVendaTotalBrutoValor.getText());
-            //guarda valor do SubTotal Atual
-            //        double subTotalAtual = Double.parseDouble(lblVendaTotalLiquidoValor.getText());
-
-            ///DefaultTableModel modeloTabela = (DefaultTableModel) tbVendaListProduto.getModel();
-            //Adicionando as informaçoes dos produtos comprados e totais na janela de Compra
-            //  for (ProdutoVendido produtoVendido : adicionarProduto.listProdutoVendido) {
-            //    double valorTotalProduto = produtoVendido.getPrecoVenda() * produtoVendido.getQuantidadeProduto();
-            //  totalAtual += valorTotalProduto;
-            //   subTotalAtual += valorTotalProduto;
-            //   modeloTabela.addRow(new Object[]{produtoVendido.getCodProduto(), produtoVendido.getQuantidadeProduto(),
-            //     produtoVendido.getPrecoVenda(), produtoVendido.getPrecoVenda() * produtoVendido.getQuantidadeProduto()});
-            //}
-            //      lblVendaTotalBrutoValor.setText(String.valueOf(totalAtual));
-            //    lblVendaTotalLiquidoValor.setText(String.valueOf(subTotalAtual));
-        }
     }//GEN-LAST:event_btnVendaAdicionarProdutoActionPerformed
 
     private void tfBuscaVendaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscaVendaCaretUpdate
