@@ -1,14 +1,15 @@
-* geral
-	adicionar botões de deletar
+﻿* geral 
+	adicionar botões de deletar (Botao ja ta la falta Implementa)
+
 		-> testa se o banco de dados lança erros de dependencia
 		-> se sim avisa e oferece a opçãoa de inativar
 		-> senão, deleta.
 
-	botões de limpar -> trocar icone por icone de 'vassourinha' kkk
+	botões de limpar -> trocar icone por icone de 'vassourinha' kkk ( o botao ja ta implementado Falta a Vassorinha)
 
 
-CADASTRO DE CLIENTE
-* campo de cnpj não enquadra o cnpj completo.
+CADASTRO DE CLIENTE -  
+* campo de cnpj não enquadra o cnpj completo.  ----------- OK REAJUSTADO
 
 
 PESQUISA DE CLIENTE
@@ -23,7 +24,7 @@ CADASTRO DE FUNCIONARIO
 
 CADASTRO DE FORNECEDOR
 
-* campo de cnpj não enquadra o cnpj completo.
+* campo de cnpj não enquadra o cnpj completo. ---------------- OK REAJUSTADO
 * radioButtons ativo/inativo não estão habilitados por padrão.
 
 PESQUISA DE FORNECEDOR
@@ -36,9 +37,8 @@ PESQUISA DE PRODUTOS
 
 * faltam alguns testes mais bem analisados de pesquisa.
 
-ADICIONAR PRODUTOS NA COMPRA
+ADICIONAR PRODUTOS NA COMPRA - --- OK IMPLEMENTADO
+ADICIONAR PRODUTOS NA VENDA - --- OK IMPLEMENTADO
 
-* adiciona da lista para a tabela na janela de Add, mas lança um NullPointerException
-  ao tentar acessar a lista para usar na janela de compras.
 
 

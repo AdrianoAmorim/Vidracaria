@@ -17,8 +17,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmCadastrarProduto extends javax.swing.JDialog {
 
-    ArrayList<ProdutoComprado> listaProdutos = new ArrayList<>();
-    Produto produto = new Produto();
+    //guarda a lista de produtos q vao ser comprado
+    ArrayList<Produto> listaProdutos = new ArrayList<>();
 
     /**
      * Creates new form FrmCadastroProduto
@@ -210,11 +210,11 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Codigo", "Descrição", "Preço de venda"
+                "Codigo", "Descrição"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -227,6 +227,10 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(tbBuscarProduto);
+        if (tbBuscarProduto.getColumnModel().getColumnCount() > 0) {
+            tbBuscarProduto.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tbBuscarProduto.getColumnModel().getColumn(1).setPreferredWidth(200);
+        }
 
         btnAddProdutoLista.setText("Adicionar na lista");
         btnAddProdutoLista.addActionListener(new java.awt.event.ActionListener() {
@@ -390,7 +394,8 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
         modelo.setRowCount(0);
 
         for (Produto produto : listaProdutos) {
-            modelo.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao(), produto.getPrecoVenda()});
+            modelo.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao()});
+
         }
         return listaProdutos;
     }
@@ -523,30 +528,31 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_tfProdutoDescricaoCaretUpdate
 
     private void btnAddProdutoListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProdutoListaActionPerformed
-        ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
-        
-        listaProdutos.add(produtoCompradoCRUD.consultarProdutoComprado((int) tbBuscarProduto.getValueAt(tbBuscarProduto.getSelectedRow(), 0)));
+        ProdutoCRUD produtoCrud = new ProdutoCRUD();
+
+        listaProdutos.add(produtoCrud.consultarProduto(null, (int) tbBuscarProduto.getValueAt(tbBuscarProduto.getSelectedRow(), 0)));
     }//GEN-LAST:event_btnAddProdutoListaActionPerformed
 
     private void tbBuscarProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscarProdutoMouseClicked
-        if(evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
+            Produto produto = new Produto();
             ProdutoCRUD produtoCRUD = new ProdutoCRUD();
             CategoriaCRUD categoriaCRUD = new CategoriaCRUD();
-            
-            produto = produtoCRUD.consultarProduto(tbBuscarProduto.getValueAt(tbBuscarProduto.getSelectedRow(), 1).toString(), 0);        
-            
+
+            produto = produtoCRUD.consultarProduto(tbBuscarProduto.getValueAt(tbBuscarProduto.getSelectedRow(), 1).toString(), 0);
+
             tfProdutoCodigo.setText(Integer.toString(produto.getCodProduto()));
             tfProdutoDescricao.setText(produto.getDescricao());
             tfProdutoPrecoVenda.setText(String.valueOf(produto.getPrecoVenda()));
             tfProdutoQuantidade.setText(String.valueOf(produto.getQuantidadeEstoque()));
             cbProdutoCategoria.getModel().setSelectedItem(categoriaCRUD.consultarCategoria(produto.getCodCategoria()).getDescricao());
-            cbUnidadeMedida.setSelectedItem(produto.getUnidadeMedida()); 
-            
+            cbUnidadeMedida.setSelectedItem(produto.getUnidadeMedida());
+
             if (produto.isStatus()) {
                 rbProdutoStatusAtiv.setSelected(true);
             } else {
                 rbProdutoStatusInat.setSelected(true);
-            }            
+            }
         }
     }//GEN-LAST:event_tbBuscarProdutoMouseClicked
 
