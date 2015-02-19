@@ -530,7 +530,7 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
     private void btnAddProdutoListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProdutoListaActionPerformed
         ProdutoCRUD produtoCrud = new ProdutoCRUD();
 
-        listaProdutos.add(produtoCrud.consultarProduto(null, (int) tbBuscarProduto.getValueAt(tbBuscarProduto.getSelectedRow(), 0)));
+        listaProdutos.add(produtoCrud.consultarProduto("", (int) tbBuscarProduto.getValueAt(tbBuscarProduto.getSelectedRow(), 0)));
     }//GEN-LAST:event_btnAddProdutoListaActionPerformed
 
     private void tbBuscarProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscarProdutoMouseClicked

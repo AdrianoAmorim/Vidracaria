@@ -55,6 +55,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DA LISTA DE UFS
         this.carregarCbUf(cbClienteUf);
         this.carregarCbUf(cbFuncionarioUf);
+        
+        // ADICIONA LISTENER DA TABELA DE VENDA
+        tbVendaListProduto.getModel().addTableModelListener(new FrmPrincipalTbVendaListener(tbVendaListProduto));
     }
 
     /**
@@ -731,7 +734,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(btnClienteCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnClienteAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnClienteLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
@@ -762,12 +765,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadCliente.setLayout(pnlCadClienteLayout);
         pnlCadClienteLayout.setHorizontalGroup(
             pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadClienteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
+                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlCadClienteLayout.setVerticalGroup(
@@ -1676,7 +1679,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false
+                false, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -2018,7 +2021,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(btnCompraRetirarDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCompraDesconto)))
                     .addComponent(cbCompraParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 255));
@@ -2269,7 +2272,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
         pnlEfetuarCompraLayout.setHorizontalGroup(
             pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2292,7 +2295,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCompraCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCompraAlterar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 973, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
@@ -2619,12 +2622,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         adicionarProduto.setVisible(true);
 
         for (Produto produto : adicionarProduto.listaProdutos) {
-            System.out.println(produto.getCodProduto());
-
             modeloTabCompra.addRow(new Object[]{produto.getDescricao(), 0, produto.getPrecoVenda()});
-
         }
-
     }//GEN-LAST:event_btnVendaAdicionarProdutoActionPerformed
 
     private void tfBuscaVendaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscaVendaCaretUpdate
@@ -3125,8 +3124,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnClienteLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteLimparActionPerformed
         ClienteCRUD clienteCrud = new ClienteCRUD();
 
-        limparCampos(tfClienteBairro, tfClienteCep, tfClienteCnpj, tfClienteCodigo, tfClienteComplemento, tfClienteCpf, tfClienteEmail, tfClienteInscEstadual, 
-                tfClienteLogradouro, tfClienteLogradouro, tfClienteNome, tfClienteNumero, tfClienteRg, 
+        limparCampos(tfClienteBairro, tfClienteCep, tfClienteCnpj, tfClienteCodigo, tfClienteComplemento, tfClienteCpf, tfClienteEmail, tfClienteInscEstadual,
+                tfClienteLogradouro, tfClienteLogradouro, tfClienteNome, tfClienteNumero, tfClienteRg,
                 tfClienteTelCel, tfClienteTelRes);
         // resetar os radioButtons
         rbClienteStatusAtiv.setSelected(true);
