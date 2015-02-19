@@ -23,10 +23,12 @@ public class FrmPrincipalTbVendaListener implements TableModelListener {
     public void tableChanged(TableModelEvent e) {
         try {
             for (int i = 0; i < tabela.getRowCount(); i++) {
-                Object qtdProduto = tabela.getValueAt(1, 1);
-                Object precoVenda = tabela.getValueAt(1, 2);
-                Double totalLinha = ((Double.valueOf(qtdProduto.toString())) * (Double.valueOf(precoVenda.toString())));
-                tabela.setValueAt(totalLinha, 1, 3);
+               
+                Object qtdProduto = tabela.getValueAt(i, 1);
+                Object precoVenda = tabela.getValueAt(i, 2);
+                //Double totalLinha = ((Double.valueOf(qtdProduto.toString())) * (Double.valueOf(precoVenda.toString())));
+                Double totalLinha = (1.0 * 1.0);
+                tabela.setValueAt(totalLinha, i, 3);
            }
         } catch (NullPointerException erroTotalProduto) {
             JOptionPane.showMessageDialog(null, "Erro ao calcular o total do Produto.\n"
