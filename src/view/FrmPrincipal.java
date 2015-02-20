@@ -55,9 +55,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DA LISTA DE UFS
         this.carregarCbUf(cbClienteUf);
         this.carregarCbUf(cbFuncionarioUf);
-        
-        // ADICIONA LISTENER DA TABELA DE VENDA
-        tbVendaListProduto.getModel().addTableModelListener(new FrmPrincipalTbVendaListener(tbVendaListProduto));
+
+        // ADICIONA LISTENER NAS COLUNAS DA TABELA VENDA
+        tbVendaListProduto.getColumnModel().getSelectionModel().addListSelectionListener(new FrmPrincipalTbVendaColumnListener(tbVendaListProduto));
     }
 
     /**
