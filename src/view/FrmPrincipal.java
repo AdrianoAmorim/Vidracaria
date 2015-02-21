@@ -3,6 +3,7 @@ package view;
 import controller.*;
 import crud.*;
 import domain.*;
+import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -55,9 +56,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DA LISTA DE UFS
         this.carregarCbUf(cbClienteUf);
         this.carregarCbUf(cbFuncionarioUf);
-
-        // ADICIONA LISTENER NA TABELA DE VENDA
-        tbVendaListProduto.getColumnModel().getSelectionModel().addListSelectionListener(new FrmPrincipalTbVendaColumnListener(tbVendaListProduto));
     }
 
     /**
@@ -1686,6 +1684,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbVendaListProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbVendaListProdutoKeyPressed(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbVendaListProduto);
         if (tbVendaListProduto.getColumnModel().getColumnCount() > 0) {
             tbVendaListProduto.getColumnModel().getColumn(0).setPreferredWidth(200);
@@ -2249,15 +2252,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Descrição", "QTD", "Valor"
+                "Código", "Descrição", "QTD", "Preco", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbCompraListProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbCompraListProdutoKeyPressed(evt);
             }
         });
         jScrollPane6.setViewportView(tbCompraListProduto);
@@ -2265,7 +2273,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tbCompraListProduto.getColumnModel().getColumn(0).setPreferredWidth(200);
             tbCompraListProduto.getColumnModel().getColumn(1).setPreferredWidth(40);
             tbCompraListProduto.getColumnModel().getColumn(2).setPreferredWidth(40);
-            tbCompraListProduto.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tbCompraListProduto.getColumnModel().getColumn(4).setPreferredWidth(50);
         }
 
         javax.swing.GroupLayout pnlEfetuarCompraLayout = new javax.swing.GroupLayout(pnlEfetuarCompra);
@@ -2587,11 +2595,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         adicionarProduto.setVisible(true);
 
         for (Produto produto : adicionarProduto.listaProdutos) {
-
-            modeloTabCompra.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao(), 0, 0});
-
+            modeloTabCompra.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao(), 0.0, 0.0, 0.0});
         }
 
+        tbCompraListProduto.setRowSelectionInterval(0, 0);
     }//GEN-LAST:event_btnCompraAdicionarProdutoActionPerformed
 
     private void btnFinanceiroAddTituloRendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanceiroAddTituloRendaActionPerformed
@@ -2618,13 +2625,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnVendaAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaAdicionarProdutoActionPerformed
         FrmCadastrarProduto adicionarProduto = new FrmCadastrarProduto(null, true);
         DefaultTableModel modeloTabCompra = (DefaultTableModel) tbVendaListProduto.getModel();
-        
+
         adicionarProduto.setVisible(true);
 
         for (Produto produto : adicionarProduto.listaProdutos) {
             modeloTabCompra.addRow(new Object[]{produto.getDescricao(), 0.0, produto.getPrecoVenda(), 0.0});
         }
-        
+
         tbVendaListProduto.setRowSelectionInterval(0, 0);
     }//GEN-LAST:event_btnVendaAdicionarProdutoActionPerformed
 
@@ -3162,6 +3169,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // reinicia o campo de código
         tfFuncionarioCodigo.setText(Integer.toString(funcionarioCRUD.ultimoIncrementFuncionario()));
     }//GEN-LAST:event_btnFuncionarioLimparActionPerformed
+
+    private void tbVendaListProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbVendaListProdutoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Double qtdProduto = Double.parseDouble(tbVendaListProduto.getValueAt(tbVendaListProduto.getSelectedRow(), 1).toString());
+            Double precoVenda = Double.parseDouble(tbVendaListProduto.getValueAt(tbVendaListProduto.getSelectedRow(), 2).toString());
+            Double totalLinha = qtdProduto * precoVenda;
+            tbVendaListProduto.getModel().setValueAt(totalLinha, tbVendaListProduto.getSelectedRow(), 3);
+        }
+    }//GEN-LAST:event_tbVendaListProdutoKeyPressed
+
+    private void tbCompraListProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbCompraListProdutoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Double qtdProduto = Double.parseDouble(tbCompraListProduto.getValueAt(tbCompraListProduto.getSelectedRow(), 2).toString());
+            Double precoVenda = Double.parseDouble(tbCompraListProduto.getValueAt(tbCompraListProduto.getSelectedRow(), 3).toString());
+            Double totalLinha = qtdProduto * precoVenda;
+            tbCompraListProduto.getModel().setValueAt(totalLinha, tbCompraListProduto.getSelectedRow(), 4);
+        }
+    }//GEN-LAST:event_tbCompraListProdutoKeyPressed
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
