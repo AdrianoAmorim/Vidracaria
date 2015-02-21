@@ -14,6 +14,19 @@ public class FrmPrincipalTbVendaColumnListener implements ListSelectionListener 
 
     public FrmPrincipalTbVendaColumnListener(JTable tabela) {
         this.tabela = tabela;
+
+        // adiciona um Listener de teclas na tabela
+        tabela.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void teclaDigitada(java.awt.event.KeyEvent evt) {
+                // se a tecla digitada for ENTER
+                if (evt.getKeyCode() == evt.VK_ENTER) {
+                    // consome o evento
+                    // (evita que o mesmo seja processado por outro Listener)
+                    evt.consume();
+                }
+            }
+        }
+        );
     }
 
     @Override

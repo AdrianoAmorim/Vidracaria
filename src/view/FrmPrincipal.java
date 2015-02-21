@@ -56,7 +56,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.carregarCbUf(cbClienteUf);
         this.carregarCbUf(cbFuncionarioUf);
 
-        // ADICIONA LISTENER NAS COLUNAS DA TABELA VENDA
+        // ADICIONA LISTENER NA TABELA DE VENDA
         tbVendaListProduto.getColumnModel().getSelectionModel().addListSelectionListener(new FrmPrincipalTbVendaColumnListener(tbVendaListProduto));
     }
 
@@ -2618,12 +2618,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnVendaAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaAdicionarProdutoActionPerformed
         FrmCadastrarProduto adicionarProduto = new FrmCadastrarProduto(null, true);
         DefaultTableModel modeloTabCompra = (DefaultTableModel) tbVendaListProduto.getModel();
-
+        
         adicionarProduto.setVisible(true);
 
         for (Produto produto : adicionarProduto.listaProdutos) {
-            modeloTabCompra.addRow(new Object[]{produto.getDescricao(), 0, produto.getPrecoVenda()});
+            modeloTabCompra.addRow(new Object[]{produto.getDescricao(), 0.0, produto.getPrecoVenda(), 0.0});
         }
+        
+        tbVendaListProduto.setRowSelectionInterval(0, 0);
     }//GEN-LAST:event_btnVendaAdicionarProdutoActionPerformed
 
     private void tfBuscaVendaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscaVendaCaretUpdate
