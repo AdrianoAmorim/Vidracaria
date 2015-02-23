@@ -5,6 +5,10 @@
 		-> se sim avisa e oferece a opçãoa de inativar
 		-> senão, deleta.
 
+* banco de dados
+
+	remover tabelas desnecessárias: renda, despesa, empresa, enderecoEmpresa
+
 PESQUISA DE CLIENTE
 
 * a pesquisa não funciona corretamente com todos os campos simultaneamente.
@@ -32,5 +36,3 @@ PESQUISA DE FORNECEDOR
 PESQUISA DE PRODUTOS
 
 * faltam alguns testes mais bem analisados de pesquisa.
-
-
