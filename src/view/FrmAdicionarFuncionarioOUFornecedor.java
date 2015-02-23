@@ -5,7 +5,6 @@ import crud.FuncionarioCRUD;
 import domain.Fornecedor;
 import domain.Funcionario;
 import java.util.ArrayList;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DefaultFormatterFactory;
 

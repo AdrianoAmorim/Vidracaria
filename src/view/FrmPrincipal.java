@@ -1411,6 +1411,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnVendaRetirarDesconto.setText("-");
         btnVendaRetirarDesconto.setToolTipText("Retirar Desconto");
+        btnVendaRetirarDesconto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVendaRetirarDescontoMouseClicked(evt);
+            }
+        });
 
         btnVendaBuscarVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/buscarNovo02.png"))); // NOI18N
         btnVendaBuscarVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1431,6 +1436,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnVendaAdicionarDesconto.setText("+");
         btnVendaAdicionarDesconto.setToolTipText("Retirar Desconto");
+        btnVendaAdicionarDesconto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVendaAdicionarDescontoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
         jPanel47.setLayout(jPanel47Layout);
@@ -3228,6 +3238,46 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tbCompraListProduto.getModel().setValueAt(totalLinha, tbCompraListProduto.getSelectedRow(), 4);
         }
     }//GEN-LAST:event_tbCompraListProdutoKeyPressed
+
+    private void btnVendaAdicionarDescontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaAdicionarDescontoMouseClicked
+        Double totalDesconto = Double.parseDouble(lblVendaDesconto.getText().substring(3));
+        Double desconto = Double.parseDouble(tfVendaDesconto.getText());
+        totalDesconto += desconto;
+        Double subTotal = (Double.parseDouble(lblVendaTotal.getText().substring(3)) - totalDesconto);
+
+        // tratamento de erros
+        if (totalDesconto < 0) {
+            JOptionPane.showMessageDialog(null, "O valor do desconto não pode ser menor que zero.");
+            return;
+        } else if (subTotal < 0) {
+            JOptionPane.showMessageDialog(null, "O valor do desconto não pode ser maior que o total da Venda");
+            return;
+        }
+
+        // atualização das labels de preço
+        lblVendaDesconto.setText("R$ " + totalDesconto);
+        lblVendaSubTotal.setText("R$ " + subTotal);
+    }//GEN-LAST:event_btnVendaAdicionarDescontoMouseClicked
+
+    private void btnVendaRetirarDescontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaRetirarDescontoMouseClicked
+        Double totalDesconto = Double.parseDouble(lblVendaDesconto.getText().substring(3));
+        Double desconto = Double.parseDouble(tfVendaDesconto.getText());
+        totalDesconto -= desconto;
+        Double subTotal = (Double.parseDouble(lblVendaTotal.getText().substring(3)) - totalDesconto);
+
+        // tratamento de erros
+        if (totalDesconto < 0) {
+            JOptionPane.showMessageDialog(null, "O valor do desconto não pode ser menor que zero.");
+            return;
+        } else if (subTotal < 0) {
+            JOptionPane.showMessageDialog(null, "O valor do desconto não pode ser maior que o total da Venda");
+            return;
+        }
+
+        // atualização das labels de preço
+        lblVendaDesconto.setText("R$ " + totalDesconto);
+        lblVendaSubTotal.setText("R$ " + subTotal);
+    }//GEN-LAST:event_btnVendaRetirarDescontoMouseClicked
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {

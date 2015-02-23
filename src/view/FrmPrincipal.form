@@ -2450,6 +2450,9 @@
                     <Property name="text" type="java.lang.String" value="-"/>
                     <Property name="toolTipText" type="java.lang.String" value="Retirar Desconto"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVendaRetirarDescontoMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="btnVendaBuscarVendedor">
                   <Properties>
@@ -2483,6 +2486,9 @@
                     <Property name="text" type="java.lang.String" value="+"/>
                     <Property name="toolTipText" type="java.lang.String" value="Retirar Desconto"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVendaAdicionarDescontoMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
