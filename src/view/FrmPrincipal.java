@@ -5,9 +5,12 @@ import crud.*;
 import domain.*;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -206,11 +209,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnVendaBuscarCliente = new javax.swing.JLabel();
         btnVendaAdicionarDesconto = new javax.swing.JButton();
         jPanel28 = new javax.swing.JPanel();
-        lblVendaValorSubTotal = new javax.swing.JLabel();
+        lblVendaSubTotal = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblVendaDesconto = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
-        lblVendaValorTotal = new javax.swing.JLabel();
+        lblVendaTotal = new javax.swing.JLabel();
         jPanel36 = new javax.swing.JPanel();
         lblCompraTotal1 = new javax.swing.JLabel();
         jPanel37 = new javax.swing.JPanel();
@@ -1526,10 +1529,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jPanel28.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblVendaValorSubTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblVendaValorSubTotal.setForeground(new java.awt.Color(255, 0, 0));
-        lblVendaValorSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblVendaValorSubTotal.setText("0");
+        lblVendaSubTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblVendaSubTotal.setForeground(new java.awt.Color(255, 0, 0));
+        lblVendaSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblVendaSubTotal.setText("R$ 0.00");
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -1537,13 +1540,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblVendaValorSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(lblVendaSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
-                .addComponent(lblVendaValorSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblVendaSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 3, Short.MAX_VALUE))
         );
 
@@ -1552,7 +1555,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblVendaDesconto.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblVendaDesconto.setForeground(new java.awt.Color(255, 0, 0));
         lblVendaDesconto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblVendaDesconto.setText("0");
+        lblVendaDesconto.setText("R$ 0.00");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1572,10 +1575,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jPanel30.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblVendaValorTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblVendaValorTotal.setForeground(new java.awt.Color(255, 0, 0));
-        lblVendaValorTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblVendaValorTotal.setText("0");
+        lblVendaTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblVendaTotal.setForeground(new java.awt.Color(255, 0, 0));
+        lblVendaTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblVendaTotal.setText("R$ 0.00");
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -1583,13 +1586,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblVendaValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(lblVendaTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
-                .addComponent(lblVendaValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblVendaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 3, Short.MAX_VALUE))
         );
 
@@ -1807,7 +1810,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 164, Short.MAX_VALUE))
+                .addGap(15, 178, Short.MAX_VALUE))
         );
 
         pnlTabbedPrincipal.addTab("", new javax.swing.ImageIcon(getClass().getResource("/imagens/1408033473_cashbox.png")), pnlEfetuarVenda, "Cadastrar Venda"); // NOI18N
@@ -2058,7 +2061,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblCompraValorTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblCompraValorTotal.setForeground(new java.awt.Color(255, 0, 0));
         lblCompraValorTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblCompraValorTotal.setText("0");
+        lblCompraValorTotal.setText("R$ 0.00");
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -2134,7 +2137,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblCompraValorSubTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblCompraValorSubTotal.setForeground(new java.awt.Color(255, 0, 0));
         lblCompraValorSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblCompraValorSubTotal.setText("R$123456789");
+        lblCompraValorSubTotal.setText("R$ 0.00");
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -2192,7 +2195,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblValorTotalDesconto.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblValorTotalDesconto.setForeground(new java.awt.Color(255, 0, 0));
         lblValorTotalDesconto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblValorTotalDesconto.setText("0");
+        lblValorTotalDesconto.setText("R$ 0.00");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -2607,9 +2610,28 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinanceiroAddTituloRendaActionPerformed
 
     private void btnVendaDeletarProdutoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaDeletarProdutoListaMouseClicked
+        // remove a linha selecionada
         ((DefaultTableModel) tbVendaListProduto.getModel()).removeRow(tbVendaListProduto.getSelectedRow());
-
         JOptionPane.showMessageDialog(null, "Produto removido com sucesso!");
+
+        Double totalVenda = 0.00;
+
+        // atualização das labels de preço
+        for (int i = 0; i < tbVendaListProduto.getRowCount(); i++) {
+            Double precoTotal = Double.parseDouble(tbVendaListProduto.getValueAt(i, 3).toString());
+            Double precoUnitario = Double.parseDouble(tbVendaListProduto.getValueAt(i, 2).toString());
+            Double quantidade = Double.parseDouble(tbVendaListProduto.getValueAt(i, 1).toString());
+
+            // caso o total ainda não tenha sido atualizado
+            if (precoTotal == 0 && quantidade != 0) {
+                precoTotal = precoUnitario * quantidade;
+            }
+
+            totalVenda += precoTotal;
+        }
+
+        lblVendaTotal.setText("R$ " + totalVenda);
+        lblVendaSubTotal.setText("R$ " + (totalVenda - Double.parseDouble(lblVendaDesconto.getText().substring(3))));
     }//GEN-LAST:event_btnVendaDeletarProdutoListaMouseClicked
 
     private void cbVendaTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVendaTipoPagamentoActionPerformed
@@ -3176,6 +3198,25 @@ public class FrmPrincipal extends javax.swing.JFrame {
             Double precoVenda = Double.parseDouble(tbVendaListProduto.getValueAt(tbVendaListProduto.getSelectedRow(), 2).toString());
             Double totalLinha = qtdProduto * precoVenda;
             tbVendaListProduto.getModel().setValueAt(totalLinha, tbVendaListProduto.getSelectedRow(), 3);
+
+            Double totalVenda = 0.00;
+
+            // atualização das labels de preço
+            for (int i = 0; i < tbVendaListProduto.getRowCount(); i++) {
+                Double precoTotal = Double.parseDouble(tbVendaListProduto.getValueAt(i, 3).toString());
+                Double precoUnitario = Double.parseDouble(tbVendaListProduto.getValueAt(i, 2).toString());
+                Double quantidade = Double.parseDouble(tbVendaListProduto.getValueAt(i, 1).toString());
+
+                // caso o total ainda não tenha sido atualizado
+                if (precoTotal == 0 && quantidade != 0) {
+                    precoTotal = precoUnitario * quantidade;
+                }
+
+                totalVenda += precoTotal;
+            }
+
+            lblVendaTotal.setText("R$ " + totalVenda);
+            lblVendaSubTotal.setText("R$ " + (totalVenda - Double.parseDouble(lblVendaDesconto.getText().substring(3))));
         }
     }//GEN-LAST:event_tbVendaListProdutoKeyPressed
 
@@ -3573,11 +3614,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblVendaDesconto;
     private javax.swing.JLabel lblVendaDescricao;
     private javax.swing.JLabel lblVendaParcelamento;
+    private javax.swing.JLabel lblVendaSubTotal;
     private javax.swing.JLabel lblVendaTipoPagamento;
     private javax.swing.JLabel lblVendaTitulo;
     private javax.swing.JLabel lblVendaTituloDesconto;
-    private javax.swing.JLabel lblVendaValorSubTotal;
-    private javax.swing.JLabel lblVendaValorTotal;
+    private javax.swing.JLabel lblVendaTotal;
     private javax.swing.JPanel pnlAdministracao;
     private javax.swing.JPanel pnlCadCliente;
     private javax.swing.JPanel pnlCadFuncionario;
