@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import javax.swing.JButton;
@@ -46,7 +47,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfFuncionarioCodigo.setText(String.valueOf(new FuncionarioCRUD().ultimoIncrementFuncionario()));
 
         // INICIALIZAÇÃO DO CODIGO DA VENDA
-        tfVendaCodigo.setText(Integer.toString(new VendaCRUD().incrementCodVenda("inicializar")));
+        tfVendaCodigo.setText(Integer.toString(new VendaCRUD().ultimoIncrementVenda()));
         // INICIALIZAÇÃO DO CODIGO DA COMPRA
         tfCompraCodigo.setText(String.valueOf(new CompraCRUD().incrementCodCompra("inicializar")));
 
@@ -1724,6 +1725,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnVendaCadastrar.setToolTipText("Cadastrar Compra");
         btnVendaCadastrar.setBorder(null);
         btnVendaCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVendaCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendaCadastrarActionPerformed(evt);
+            }
+        });
 
         btnVendaAlterar.setBackground(new java.awt.Color(153, 153, 255));
         btnVendaAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
@@ -3260,6 +3266,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // atualização das labels de preço
         lblVendaDesconto.setText("R$ " + totalDesconto);
         lblVendaSubTotal.setText("R$ " + subTotal);
+
+        // limpa campo de desconto
+        tfVendaDesconto.setText("");
     }//GEN-LAST:event_btnVendaAdicionarDescontoMouseClicked
 
     private void btnVendaRetirarDescontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaRetirarDescontoMouseClicked
@@ -3280,7 +3289,71 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // atualização das labels de preço
         lblVendaDesconto.setText("R$ " + totalDesconto);
         lblVendaSubTotal.setText("R$ " + subTotal);
+
+        // limpa campo de desconto
+        tfVendaDesconto.setText("");
     }//GEN-LAST:event_btnVendaRetirarDescontoMouseClicked
+
+    private void btnVendaCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaCadastrarActionPerformed
+        Venda venda = new Venda();
+        ArrayList<ProdutoVendido> listaProdutos = new ArrayList<>();
+
+        VendaController vendaController = new VendaController();
+
+        ParcelamentoVendaCRUD parcelamentoVendaCRUD = new ParcelamentoVendaCRUD();
+        ClienteCRUD clienteCRUD = new ClienteCRUD();
+        FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+
+        venda.setCodVenda(Integer.parseInt(tfVendaCodigo.getText()));
+        venda.setCodRenda(1);
+        venda.setCodEmpresa(1);
+        venda.setCodParcelamento(parcelamentoVendaCRUD.ConsultarCodParcelamento(cbVendaParcelamento.getSelectedItem().toString()).getCodParcelamento());
+        venda.setCodCliente(clienteCRUD.consultarCliente(tfVendaNomeCliente.getText(), 0).getCodCliente());
+        venda.setCodVendedor(funcionarioCRUD.consultarFuncionario(tfVendaNomeFuncionario.getText(), 0).getCodFuncionario());
+        venda.setDataVenda(desmascarar(tfVendaData.getText()));
+        venda.setDescricao(taVendaDescricao.getText());
+        venda.setTotalDesconto(Double.parseDouble(lblVendaDesconto.getText().substring(3)));
+        venda.setTotalBruto(Double.parseDouble(lblVendaTotal.getText().substring(3)));
+        venda.setTotalLiquido(Double.parseDouble(lblVendaSubTotal.getText().substring(3)));
+
+        for (int i = 0; i < tbVendaListProduto.getRowCount(); i++) {
+            ProdutoVendido produtoVendido = new ProdutoVendido();
+
+            produtoVendido.setCodVenda(venda.getCodVenda());
+            produtoVendido.setCodRenda(venda.getCodRenda());
+            produtoVendido.setCodEmpresa(venda.getCodEmpresa());
+            produtoVendido.setCodProduto(produtoCRUD.consultarProduto(tbVendaListProduto.getValueAt(i, 0).toString(), 0).getCodProduto());
+            produtoVendido.setQuantidadeProduto(Double.parseDouble(tbVendaListProduto.getValueAt(i, 1).toString()));
+            produtoVendido.setPrecoVenda(Double.parseDouble(tbVendaListProduto.getValueAt(i, 2).toString()));
+
+            listaProdutos.add(produtoVendido);
+        }
+
+        if (vendaController.validarVenda(venda)) {
+            VendaCRUD vendaCRUD = new VendaCRUD();
+            if (vendaCRUD.inserirVenda(venda, listaProdutos)) {
+                limparCampos(tfVendaData, tfVendaNomeCliente, tfVendaNomeFuncionario, tfVendaDesconto);
+                taVendaDescricao.setText("");
+
+                // limpar tabela
+                tbVendaListProduto.removeAll();
+
+                // reiniciar comboBoxes
+                cbVendaParcelamento.setSelectedIndex(0);
+                cbVendaTipoPagamento.setSelectedIndex(0);
+                
+                // reiniciar labels de preço
+                lblVendaTotal.setText("R$ 0.00");
+                lblVendaDesconto.setText("R$ 0.00");
+                lblVendaSubTotal.setText("R$ 0.00");
+
+                // reinicia o campo de código
+                tfVendaCodigo.setText(String.valueOf(vendaCRUD.ultimoIncrementVenda()));
+            }
+
+        }
+    }//GEN-LAST:event_btnVendaCadastrarActionPerformed
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {

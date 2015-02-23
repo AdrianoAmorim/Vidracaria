@@ -8,10 +8,11 @@ public class Venda {
 
     protected int codVenda;
     protected int codRenda;
+    protected int codEmpresa;
     protected int codParcelamento;
     private int codTipoPagamento;
     protected int codCliente;
-    private int codVendedor;
+    protected int codVendedor;
     protected String dataVenda;
     protected Double totalDesconto;
     protected String descricao;
@@ -24,6 +25,38 @@ public class Venda {
 
     public void setCodVenda(int codVenda) {
         this.codVenda = codVenda;
+    }
+
+    public int getCodRenda() {
+        return codRenda;
+    }
+
+    public void setCodRenda(int codRenda) {
+        this.codRenda = codRenda;
+    }
+
+    public int getCodEmpresa() {
+        return codEmpresa;
+    }
+
+    public void setCodEmpresa(int codEmpresa) {
+        this.codEmpresa = codEmpresa;
+    }
+
+    public int getCodParcelamento() {
+        return codParcelamento;
+    }
+
+    public void setCodParcelamento(int codParcelamento) {
+        this.codParcelamento = codParcelamento;
+    }
+
+    public int getCodTipoPagamento() {
+        return codTipoPagamento;
+    }
+
+    public void setCodTipoPagamento(int codTipoPagamento) {
+        this.codTipoPagamento = codTipoPagamento;
     }
 
     public int getCodCliente() {
@@ -42,30 +75,6 @@ public class Venda {
         this.codVendedor = codVendedor;
     }
 
-    public int getCodParcelamento() {
-        return codParcelamento;
-    }
-
-    public void setCodParcelamento(int codParcelamento) {
-        this.codParcelamento = codParcelamento;
-    }
-
-    public int getCodTipoPagamento() {
-        return codTipoPagamento;
-    }
-
-    public void setCodTipoPagamento(int codTipoPagamento) {
-        this.codTipoPagamento = codTipoPagamento;
-    }
-    
-    public Double getTotalDesconto() {
-        return totalDesconto;
-    }
-
-    public void setTotalDesconto(Double totalDesconto) {
-        this.totalDesconto = totalDesconto;
-    }
-
     public String getDataVenda() {
         return dataVenda;
     }
@@ -74,12 +83,12 @@ public class Venda {
         this.dataVenda = dataVenda;
     }
 
-    public int getCodRenda() {
-        return codRenda;
+    public Double getTotalDesconto() {
+        return totalDesconto;
     }
 
-    public void setCodRenda(int codRenda) {
-        this.codRenda = codRenda;
+    public void setTotalDesconto(Double totalDesconto) {
+        this.totalDesconto = totalDesconto;
     }
 
     public String getDescricao() {
@@ -105,5 +114,6 @@ public class Venda {
     public void setTotalLiquido(Double totalLiquido) {
         this.totalLiquido = totalLiquido;
     }
+
 
 }

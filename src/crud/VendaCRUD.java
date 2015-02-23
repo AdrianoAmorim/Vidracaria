@@ -16,71 +16,91 @@ import javax.swing.JOptionPane;
  */
 public class VendaCRUD {
 
-    public int incrementCodVenda(String operacao) {
-        PreparedStatement stmt = null;
-        Connection conn = new SQLite().conectar();
-        int increment = 0;        
+    public int ultimoIncrementVenda() {
 
-        try {
-            String sql = "";
-            
-            if (operacao.equalsIgnoreCase("inicializar")) {
-                // seleciona o valor do próximo cliente a ser cadastrado
-                sql = "SELECT last_value FROM venda_codVenda_seq;";
-            } else if (operacao.equalsIgnoreCase("incrementar")) {
-                // incrementa o codigo do próximo cliente
-                sql = "select nextval('venda_codVenda_seq');";
-            }
+        try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            int increment = 0;
+
+            // conta as linhas da tabela
+            String sql = "SELECT COUNT(codVenda) FROM venda";
 
             stmt = conn.prepareStatement(sql);
-            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
-                increment = result.getInt(1);
-                return increment;
-            }
+                int linhas = result.getInt(1);
 
+                // quando a tabela está vazia
+                if (linhas == 0) {
+                    sql = "SELECT last_value FROM venda_codVenda_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1);
+                        // retorna somente o last_value
+                        return increment;
+                    }
+                } else {
+                    // quando a tabela não está vazia
+                    sql = "SELECT last_value FROM venda_codVenda_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1) + 1;
+                        // retorna o last_value + 1
+                        return increment;
+                    }
+                }
+            }
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodVenda) {
             JOptionPane.showMessageDialog(null, erroIncrementCodVenda.getMessage());
         }
-        return increment;
+        // em caso de erros não tratados
+        return 0;
     }
 
-    public void inserirVenda(Venda venda, ArrayList<ProdutoVendido> listaProdutosVendidos) {
+    public boolean inserirVenda(Venda venda, ArrayList<ProdutoVendido> listaProdutosVendidos) {
 
         try (Connection conn = new SQLite().conectar()) {
             conn.setAutoCommit(false);
 
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO venda(codVenda, codRenda, codParcelamento, "
-                    + "codCliente, data, desconto, totalBruto, totalLiquido, descricao) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?);");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO venda(codVenda, codRenda, codEmpresa,"
+                    + "codParcelamento, codCliente, codFuncionario, data, desconto, totalBruto, totalLiquido, descricao) "
+                    + "VALUES(?,?,?,?,?,?,TO_DATE(? , 'DDMMYYYY'),?,?,?,?);");
 
             stmt.setInt(1, venda.getCodVenda());
             stmt.setInt(2, venda.getCodRenda());
-            stmt.setInt(3, venda.getCodParcelamento());
-            stmt.setInt(4, venda.getCodCliente());
-            stmt.setString(5, venda.getDataVenda());
-            stmt.setDouble(6, venda.getTotalDesconto());
-            stmt.setDouble(7, venda.getTotalBruto());
-            stmt.setDouble(8, venda.getTotalLiquido());
-            stmt.setString(9, venda.getDescricao());
+            stmt.setInt(3, venda.getCodEmpresa());
+            stmt.setInt(4, venda.getCodParcelamento());
+            stmt.setInt(5, venda.getCodCliente());
+            stmt.setInt(6, venda.getCodVendedor());
+            stmt.setString(7, venda.getDataVenda());
+            stmt.setDouble(8, venda.getTotalDesconto());
+            stmt.setDouble(9, venda.getTotalBruto());
+            stmt.setDouble(10, venda.getTotalLiquido());
+            stmt.setString(11, venda.getDescricao());
 
             stmt.executeUpdate();
 
             for (ProdutoVendido produtoVendido : listaProdutosVendidos) {
 
-                stmt = conn.prepareStatement("INSERT INTO produtoVendido(codVenda, codProduto, codRenda, "
-                        + "quantidade, precoVenda) "
-                        + "VALUES (?,?,?,?,?);");
+                stmt = conn.prepareStatement("INSERT INTO produtoVendido(codVenda, codRenda, codEmpresa, "
+                        + "codProduto, quantidade, precoVenda) "
+                        + "VALUES (?,?,?,?,?,?);");
 
                 stmt.setInt(1, venda.getCodVenda());
-                stmt.setInt(2, produtoVendido.getCodProduto());
-                stmt.setInt(3, produtoVendido.getCodRenda());
-                stmt.setDouble(4, produtoVendido.getQuantidadeProduto());
-                stmt.setDouble(5, produtoVendido.getPrecoVenda());
+                stmt.setInt(2, produtoVendido.getCodRenda());
+                stmt.setInt(3, produtoVendido.getCodEmpresa());
+                stmt.setInt(4, produtoVendido.getCodProduto());
+                stmt.setDouble(5, produtoVendido.getQuantidadeProduto());
+                stmt.setDouble(6, produtoVendido.getPrecoVenda());
 
                 stmt.executeUpdate();
 
@@ -96,8 +116,10 @@ public class VendaCRUD {
             conn.setAutoCommit(true);
 
             JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
+            return true;
         } catch (SQLException erroTransacaoVenda) {
             JOptionPane.showMessageDialog(null, erroTransacaoVenda.getMessage());
+            return false;
         }
 
     }

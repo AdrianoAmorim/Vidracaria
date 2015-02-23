@@ -11,25 +11,20 @@ import javax.swing.JOptionPane;
 public class VendaController {
 
     public boolean validarVenda(Venda venda) {
-        if (String.valueOf(venda.getCodVenda()).isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento do codigo da venda é obrigatório.");
-            return false;
-        } else if (String.valueOf(venda.getCodRenda()).isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento do codigo do tipo de renda é obrigatório.");
+        if (String.valueOf(venda.getCodParcelamento()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O preenchimento do codigo do parcelamento é obrigatório.");
             return false;
         } else if (String.valueOf(venda.getCodCliente()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento do codigo do cliente é obrigatório.");
             return false;
-        } else if (String.valueOf(venda.getCodParcelamento()).isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento do codigo do parcelamento é obrigatório.");
-            return false;
-        } else if (String.valueOf(venda.getTotalLiquido()).isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O preenchimento do total da venda é obrigatório.");
+        } else if (String.valueOf(venda.getCodVendedor()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O preenchimento do codigo do vendedor é obrigatório.");
             return false;
         } else if (venda.getDataVenda().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O preenchimento da data da venda é obrigatório.");
             return false;
         }
+        
         return true;
     }
 }

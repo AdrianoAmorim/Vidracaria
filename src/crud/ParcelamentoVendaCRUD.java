@@ -101,7 +101,7 @@ public class ParcelamentoVendaCRUD {
                     + "FROM parcelamentoVenda;");
 
             result = stmt.executeQuery();
-            
+
             while (result.next()) {
                 Parcelamento parcelamento = new Parcelamento();
 
@@ -112,7 +112,7 @@ public class ParcelamentoVendaCRUD {
                 listaParcelamento.add(parcelamento);
             }
             stmt.close();
-            
+
             return listaParcelamento;
         } catch (SQLException erroConsultarParcelamento) {
             System.out.println(erroConsultarParcelamento.getMessage());
@@ -154,7 +154,7 @@ public class ParcelamentoVendaCRUD {
         try (Connection conn = new SQLite().conectar()) {
 
             stmt = conn.prepareStatement("SELECT codParcelamento, quantidadeParcelas "
-                    + "FROM parcelamentoVenda WHERE descricaoParcelamento = '" + descricao + "';");
+                    + "FROM parcelamentoVenda WHERE descricao = '" + descricao + "';");
 
             result = stmt.executeQuery();
             if (result.next()) {
