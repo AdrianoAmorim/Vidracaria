@@ -6,22 +6,17 @@ import domain.Fornecedor;
 import domain.Funcionario;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.DefaultFormatterFactory;
 
 /**
  *
  * @author Adriano
  */
-public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
+public class FrmBuscarFuncionario extends javax.swing.JDialog {
 
-    Fornecedor fornecedor = new Fornecedor();
     Funcionario funcionario = new Funcionario();
     int indice = 0;
 
-    /**
-     * Creates new form FrmBuscarFornecedor
-     */
-    public FrmAdicionarFuncionarioOUFornecedor(java.awt.Frame parent, boolean modal, int indice) {
+    public FrmBuscarFuncionario(java.awt.Frame parent, boolean modal, int indice) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,13 +24,9 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         this.indice = indice;
 
         if (indice == 1) {
-            lblFuncOuForn.setText("Cargo:");
             this.setTitle("Pesquisar Funcionario");
         } else if (indice == 2) {
-            lblFuncOuForn.setText("Cargo:");
             this.setTitle("Pesquisar Vendedor");
-        } else {
-            tfBuscarFuncionarioCargo.setFormatterFactory(new DefaultFormatterFactory(FrmPrincipal.MascararCampos("##.###.###/####-##")));
         }
     }
 
@@ -81,7 +72,7 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
 
         lblFuncOuForn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblFuncOuForn.setForeground(new java.awt.Color(0, 69, 139));
-        lblFuncOuForn.setText("CNPJ:");
+        lblFuncOuForn.setText("Cargo:");
 
         tfBuscarFuncionarioCargo.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -122,9 +113,9 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
                     .addComponent(jLabel7)
                     .addComponent(tfBuscarFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(tfBuscarFuncionarioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfBuscarFuncionarioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rgTipoClienteBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFuncOuForn)
@@ -208,34 +199,19 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         DefaultTableModel tabelaModelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
         tabelaModelo.setRowCount(0);
 
-        if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
-            for (Funcionario func : this.pesquisarFuncionarioCaretUpdate()) {
-                tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
-                    func.getTelCel(), func.getTelFixo()});
-            }
-        } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
-            for (Fornecedor fornecedor : this.pesquisarFornecedorCaretUpdate()) {
-                tabelaModelo.addRow(new Object[]{fornecedor.getCodFornecedor(), fornecedor.getNome(),
-                    fornecedor.getTelCel(), fornecedor.getTelFixo()});
-            }
+        for (Funcionario func : this.pesquisarFuncionarioCaretUpdate()) {
+            tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
+                func.getTelCel(), func.getTelFixo()});
         }
     }//GEN-LAST:event_tfBuscarFuncionarioNomeCaretUpdate
 
     private void tbBuscaFuncionarioResultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscaFuncionarioResultMouseClicked
         if (evt.getClickCount() == 2) {
-            if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
-                DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
-                FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+            DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
+            FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
 
-                this.funcionario = funcionarioCRUD.consultarFuncionario(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString(), 0);
-                this.dispose();
-            } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
-                DefaultTableModel modelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
-                FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
-
-                this.fornecedor = fornecedorCRUD.consultarFornecedor(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString(), 0);
-                this.dispose();
-            }
+            this.funcionario = funcionarioCRUD.consultarFuncionario(modelo.getValueAt(tbBuscaFuncionarioResult.getSelectedRow(), 1).toString(), 0);
+            this.dispose();
         }
     }//GEN-LAST:event_tbBuscaFuncionarioResultMouseClicked
 
@@ -243,34 +219,19 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         DefaultTableModel tabelaModelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
         tabelaModelo.setRowCount(0);
 
-        if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
-            for (Funcionario func : this.pesquisarFuncionarioCaretUpdate()) {
-                tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
-                    func.getTelCel(), func.getTelFixo()});
-            }
-        } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
-            for (Fornecedor fornecedor : this.pesquisarFornecedorCaretUpdate()) {
-                tabelaModelo.addRow(new Object[]{fornecedor.getCodFornecedor(), fornecedor.getNome(),
-                    fornecedor.getTelCel(), fornecedor.getTelFixo()});
-            }
+        for (Funcionario func : this.pesquisarFuncionarioCaretUpdate()) {
+            tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
+                func.getTelCel(), func.getTelFixo()});
         }
-
     }//GEN-LAST:event_tfBuscarFuncionarioCargoCaretUpdate
 
     private void tfBuscarFuncionarioCodigoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscarFuncionarioCodigoCaretUpdate
         DefaultTableModel tabelaModelo = (DefaultTableModel) tbBuscaFuncionarioResult.getModel();
         tabelaModelo.setRowCount(0);
 
-        if (lblFuncOuForn.getText().equalsIgnoreCase("Cargo:")) {
-            for (Funcionario func : this.pesquisarFuncionarioCaretUpdate()) {
-                tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
-                    func.getTelCel(), func.getTelFixo()});
-            }
-        } else if (lblFuncOuForn.getText().equalsIgnoreCase("CNPJ:")) {
-            for (Fornecedor fornecedor : this.pesquisarFornecedorCaretUpdate()) {
-                tabelaModelo.addRow(new Object[]{fornecedor.getCodFornecedor(), fornecedor.getNome(),
-                    fornecedor.getTelCel(), fornecedor.getTelFixo()});
-            }
+        for (Funcionario func : this.pesquisarFuncionarioCaretUpdate()) {
+            tabelaModelo.addRow(new Object[]{func.getCodFuncionario(), func.getNomeFuncionario(),
+                func.getTelCel(), func.getTelFixo()});
         }
     }//GEN-LAST:event_tfBuscarFuncionarioCodigoCaretUpdate
 
@@ -292,18 +253,26 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAdicionarFuncionarioOUFornecedor.class
+            java.util.logging.Logger.getLogger(FrmBuscarFuncionario.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAdicionarFuncionarioOUFornecedor.class
+            java.util.logging.Logger.getLogger(FrmBuscarFuncionario.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAdicionarFuncionarioOUFornecedor.class
+            java.util.logging.Logger.getLogger(FrmBuscarFuncionario.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAdicionarFuncionarioOUFornecedor.class
+            java.util.logging.Logger.getLogger(FrmBuscarFuncionario.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -316,7 +285,7 @@ public class FrmAdicionarFuncionarioOUFornecedor extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmAdicionarFuncionarioOUFornecedor dialog = new FrmAdicionarFuncionarioOUFornecedor(new javax.swing.JFrame(), true, 0);
+                FrmBuscarFuncionario dialog = new FrmBuscarFuncionario(new javax.swing.JFrame(), true, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

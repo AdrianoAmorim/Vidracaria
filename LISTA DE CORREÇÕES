@@ -1,15 +1,9 @@
 ﻿* geral 
-	adicionar botões de deletar (Botao ja ta la falta Implementa)
+	implementar botões de deletar
 
 		-> testa se o banco de dados lança erros de dependencia
 		-> se sim avisa e oferece a opçãoa de inativar
 		-> senão, deleta.
-
-	botões de limpar -> trocar icone por icone de 'vassourinha' kkk ( o botao ja ta implementado Falta a Vassorinha)
-
-CADASTRO DE CLIENTE -  
-* campo de cnpj não enquadra o cnpj completo.  ----------- OK REAJUSTADO
-
 
 PESQUISA DE CLIENTE
 
@@ -21,9 +15,12 @@ CADASTRO DE FUNCIONARIO
 
 * pesquisa de funcionários não funciona.
 
+PESQUISA DE CARGO
+
+* a cor do texto nos campos de codigo e descrição está cinza.
+
 CADASTRO DE FORNECEDOR
 
-* campo de cnpj não enquadra o cnpj completo. ---------------- OK REAJUSTADO
 * radioButtons ativo/inativo não estão habilitados por padrão.
 
 PESQUISA DE FORNECEDOR
@@ -36,9 +33,4 @@ PESQUISA DE PRODUTOS
 
 * faltam alguns testes mais bem analisados de pesquisa.
 
-ADICIONAR PRODUTOS NA COMPRA - --- OK IMPLEMENTADO
-ADICIONAR PRODUTOS NA VENDA - --- OK IMPLEMENTADO
-
-VENDA - LISTA DE VENDA
-Implementando Listener na tabela para que após as edições nos campos de quantidade ou valor o total seja modificado.
 

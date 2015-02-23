@@ -189,15 +189,16 @@ public class FuncionarioCRUD {
 
         // percorre todos os JTextFields
         for (int i = 0; i < args.length; i++) {
-            if (args[i].getName().equalsIgnoreCase("f.codFuncionario") && !args[i].getText().isEmpty()
-                    || args[i].getName().equalsIgnoreCase("f.codCargo") && !args[i].getText().isEmpty()) {
-
+            // se os campos não estiverem vazios
+            if (!args[i].getText().trim().isEmpty()) {
                 // caso o parametro seja o codFuncionario ou codCargo 
-                // é necessário usar (Cast) e comparação exata (=)
-                sql += "AND " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
-            } else if (!args[i].getText().isEmpty()) {
-                // demais parametros não usam cast e são comparados por aproximação (%LIKE%)
-                sql += "AND " + args[i].getName() + " LIKE '%" + args[i].getText() + "%' ";
+                if (args[i].getName().equalsIgnoreCase("f.codFuncionario") || args[i].getName().equalsIgnoreCase("f.codCargo")) {
+                    // é necessário usar (Cast) e comparação exata (=)
+                    sql += "AND " + args[i].getName() + " = " + args[i].getText().trim() + " ";
+                } else {
+                    // demais parametros não usam cast e são comparados por aproximação (%LIKE%)
+                    sql += "AND " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
+                }
             }
         }
 
@@ -205,7 +206,7 @@ public class FuncionarioCRUD {
         return sql;
     }
 
-// SELECT
+    // SELECT
     public ArrayList<Funcionario> consultarFuncionario(JTextField... args) {
         PreparedStatement stmt;
         ResultSet result;

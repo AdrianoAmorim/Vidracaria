@@ -2664,7 +2664,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
             modeloTabCompra.addRow(new Object[]{produto.getDescricao(), 0.0, produto.getPrecoVenda(), 0.0});
         }
 
-        tbVendaListProduto.setRowSelectionInterval(0, 0);
+        // se a lista não estiver vazia
+        if (!adicionarProduto.listaProdutos.isEmpty()) {
+            tbVendaListProduto.setRowSelectionInterval(0, 0);
+        }
     }//GEN-LAST:event_btnVendaAdicionarProdutoActionPerformed
 
     private void tfBuscaVendaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfBuscaVendaCaretUpdate
@@ -2722,9 +2725,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_rbFuncionarioStatusAtivActionPerformed
 
     private void btnFuncionarioBuscarNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionarioBuscarNomeMouseClicked
-        FrmAdicionarFuncionarioOUFornecedor buscarFuncionario;
+        FrmBuscarFuncionario buscarFuncionario;
 
-        buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());
+        buscarFuncionario = new FrmBuscarFuncionario(this, true, pnlTabbedPrincipal.getSelectedIndex());
         buscarFuncionario.setVisible(true);
 
         if (buscarFuncionario.funcionario.getCodFuncionario() != 0) {
@@ -2920,7 +2923,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraAdicionarFornecedorActionPerformed
 
     private void btnVendaBuscarVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaBuscarVendedorMouseClicked
-        FrmAdicionarFuncionarioOUFornecedor buscarFuncionario = new FrmAdicionarFuncionarioOUFornecedor(this, true, pnlTabbedPrincipal.getSelectedIndex());
+        FrmBuscarFuncionario buscarFuncionario = new FrmBuscarFuncionario(this, true, pnlTabbedPrincipal.getSelectedIndex());
         buscarFuncionario.setVisible(true);
 
         tfVendaNomeFuncionario.setText(buscarFuncionario.funcionario.getNomeFuncionario());
