@@ -51,7 +51,6 @@ public class FrmBuscarCargo extends javax.swing.JDialog {
 
         tfBuscaCargoCodigo.setBackground(new java.awt.Color(204, 255, 204));
         tfBuscaCargoCodigo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfBuscaCargoCodigo.setForeground(java.awt.Color.lightGray);
         tfBuscaCargoCodigo.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 tfBuscaCargoCodigoCaretUpdate(evt);
@@ -59,7 +58,6 @@ public class FrmBuscarCargo extends javax.swing.JDialog {
         });
 
         tfBuscaCargoDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfBuscaCargoDescricao.setForeground(java.awt.Color.lightGray);
         tfBuscaCargoDescricao.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         tfBuscaCargoDescricao.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
