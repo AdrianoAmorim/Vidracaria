@@ -82,7 +82,7 @@ public class ParcelamentoVendaCRUD {
 
             return parcelamentoVenda;
         } catch (SQLException erroConsultarParcelamento) {
-            System.out.println(erroConsultarParcelamento.getMessage());
+            JOptionPane.showMessageDialog(null, erroConsultarParcelamento.getMessage());
             return parcelamentoVenda;
         }
     }

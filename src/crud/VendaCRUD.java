@@ -139,13 +139,15 @@ public class VendaCRUD {
             while (result.next()) {
                 stmt.setInt(1, venda.getCodVenda());
                 stmt.setInt(2, venda.getCodRenda());
-                stmt.setInt(3, venda.getCodParcelamento());
-                stmt.setInt(4, venda.getCodCliente());
-                stmt.setString(5, venda.getDataVenda());
-                stmt.setDouble(6, venda.getTotalDesconto());
-                stmt.setString(7, venda.getDescricao());
-                stmt.setDouble(8, venda.getTotalBruto());
-                stmt.setDouble(9, venda.getTotalLiquido());
+                stmt.setInt(3, venda.getCodEmpresa());
+                stmt.setInt(4, venda.getCodParcelamento());
+                stmt.setInt(5, venda.getCodCliente());
+                stmt.setInt(6, venda.getCodVendedor());
+                stmt.setString(7, venda.getDataVenda());
+                stmt.setDouble(8, venda.getTotalDesconto());
+                stmt.setString(9, venda.getDescricao());
+                stmt.setDouble(10, venda.getTotalBruto());
+                stmt.setDouble(11, venda.getTotalLiquido());
 
                 stmt.close();
                 conn.close();
