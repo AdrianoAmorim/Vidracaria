@@ -61,7 +61,7 @@ public class ProdutoVendidoCRUD {
     }
 
     // SELECT
-    public ArrayList<ProdutoVendido> consultarProdutoVendido() {
+    public ArrayList<ProdutoVendido> consultarProdutoVendido(int codVenda) {
 
         PreparedStatement stmt;
         ResultSet result;
@@ -69,18 +69,20 @@ public class ProdutoVendidoCRUD {
         ArrayList<ProdutoVendido> listaProdutoVendido = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codProduto, codCompra, quantidade, precoVenda "
-                    + "FROM produtoVendido;");
+            stmt = conn.prepareStatement("SELECT codRenda, codEmpresa, codProduto, "
+                    + "quantidade, precoVenda FROM produtoVendido "
+                    + "WHERE codVenda = " + codVenda + ";");
 
             result = stmt.executeQuery();
             while (result.next()) {
                 ProdutoVendido produtoVendido = new ProdutoVendido();
 
+                produtoVendido.setCodRenda(result.getInt("codRenda"));
+                produtoVendido.setCodEmpresa(result.getInt("codEmpresa"));
                 produtoVendido.setCodProduto(result.getInt("codProduto"));
-                produtoVendido.setCodVenda(result.getInt("codCompra"));
                 produtoVendido.setQuantidadeProduto(result.getDouble("quantidade"));
                 produtoVendido.setPrecoVenda(result.getDouble("precoVenda"));
-                
+
                 listaProdutoVendido.add(produtoVendido);
 
                 stmt.close();

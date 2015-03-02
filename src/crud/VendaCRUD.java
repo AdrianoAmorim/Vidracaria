@@ -108,7 +108,6 @@ public class VendaCRUD {
                         + "" + produtoVendido.getQuantidadeProduto() + " WHERE codProduto = " + produtoVendido.getCodProduto());
 
                 stmt.executeUpdate();
-
             }
             stmt.close();
 
@@ -159,27 +158,55 @@ public class VendaCRUD {
         }
     }
 
-    public void atualizarVenda(Venda venda) {
+    public boolean atualizarVenda(Venda venda, ArrayList<ProdutoVendido> listaProdutos) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE venda SET codTipoRenda = ?, codCliente = ?, codParcelamento = ?, totalVenda = ?, "
-                    + "dataVenda = ? WHERE codVenda = ?;");
+            conn.setAutoCommit(false);
 
-            stmt.setInt(1, venda.getCodVenda());
-            stmt.setInt(2, venda.getCodRenda());
+            stmt = conn.prepareStatement("UPDATE venda SET codRenda = ?, codEmpresa = ?, codParcelamento = ?, "
+                    + "codCliente = ?, codFuncionario = ?, data = TO_DATE(?, 'ddMMyyyy'), desconto = ?, "
+                    + "descricao = ?, totalBruto = ?, totalLiquido = ? "
+                    + "WHERE codVenda = ?;");
+
+            stmt.setInt(1, venda.getCodRenda());
+            stmt.setInt(2, venda.getCodEmpresa());
             stmt.setInt(3, venda.getCodParcelamento());
             stmt.setInt(4, venda.getCodCliente());
-            stmt.setString(5, venda.getDataVenda());
-            stmt.setDouble(6, venda.getTotalBruto());
-            stmt.setDouble(7, venda.getTotalLiquido());
+            stmt.setInt(5, venda.getCodVendedor());
+            stmt.setString(6, venda.getDataVenda());
+            stmt.setDouble(7, venda.getTotalDesconto());
+            stmt.setString(8, venda.getDescricao());
+            stmt.setDouble(9, venda.getTotalBruto());
+            stmt.setDouble(10, venda.getTotalLiquido());
+            stmt.setInt(11, venda.getCodVenda());
 
             stmt.executeUpdate();
+
+            for (ProdutoVendido produtoVendido : listaProdutos) {
+
+                stmt = conn.prepareStatement("UPDATE produtoVendido SET codRenda = ?, codEmpresa = ?,"
+                        + "codProduto = ?, quantidade = ?, precoVenda = ? WHERE codVenda = ?;");
+
+                stmt.setInt(1, produtoVendido.getCodRenda());
+                stmt.setInt(2, produtoVendido.getCodEmpresa());
+                stmt.setInt(3, produtoVendido.getCodProduto());
+                stmt.setDouble(4, produtoVendido.getQuantidadeProduto());
+                stmt.setDouble(5, produtoVendido.getPrecoVenda());
+                stmt.setInt(6, produtoVendido.getCodVenda());
+
+                stmt.executeUpdate();
+            }
             stmt.close();
-            conn.close();
-            System.out.println("Informações atualizadas com sucesso!");
+
+            conn.commit();
+            conn.setAutoCommit(true);
+
+            JOptionPane.showMessageDialog(null, "Informações atualizadas com sucesso!");
+            return true;
         } catch (SQLException erroAtualizarVenda) {
-            System.out.println(erroAtualizarVenda.getMessage());
+            JOptionPane.showMessageDialog(null, erroAtualizarVenda.getMessage());
+            return false;
         }
     }
 }

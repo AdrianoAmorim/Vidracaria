@@ -1770,6 +1770,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         btnVendaAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Editar.png"))); // NOI18N
+        btnVendaAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVendaAlterarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlEfetuarVendaLayout = new javax.swing.GroupLayout(pnlEfetuarVenda);
         pnlEfetuarVenda.setLayout(pnlEfetuarVendaLayout);
@@ -2681,11 +2686,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         if (!tfVendaBusca.getText().trim().isEmpty()) {
 
             VendaCRUD vendaCRUD = new VendaCRUD();
+            ProdutoVendidoCRUD produtoVendidoCRUD = new ProdutoVendidoCRUD();
+
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
             ClienteCRUD clienteCRUD = new ClienteCRUD();
             ParcelamentoVendaCRUD parcelamentoVendaCRUD = new ParcelamentoVendaCRUD();
 
             Venda venda = vendaCRUD.consultarVenda(Integer.parseInt(tfVendaBusca.getText()));
+            ArrayList<ProdutoVendido> listaProdutos = produtoVendidoCRUD.consultarProdutoVendido(Integer.parseInt(tfVendaBusca.getText()));
 
             tfVendaCodigo.setText(String.valueOf(venda.getCodVenda()));
             tfVendaData.setText(venda.getDataVenda());
@@ -2700,6 +2708,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             cbVendaParcelamento.getModel().setSelectedItem(parcelamentoVendaCRUD.consultarParcelamento(venda.getCodParcelamento()).getDescricaoParcelamento());
             // tipo de pagamento ainda não implementado
             //cbVendaTipoPagamento.setSelectedItem(venda.getCodTipoPagamento());
+
+            DefaultTableModel modelo = (DefaultTableModel) tbVendaListProduto.getModel();
+            for (ProdutoVendido produtoVendido : listaProdutos) {
+                ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+                String descricao = produtoCRUD.consultarProduto("", produtoVendido.getCodProduto()).getDescricao();
+
+                modelo.addRow(new Object[]{descricao, produtoVendido.getQuantidadeProduto(), produtoVendido.getPrecoVenda(),
+                    produtoVendido.getQuantidadeProduto() * produtoVendido.getPrecoVenda()});
+            }
         }
     }//GEN-LAST:event_tfVendaBuscaCaretUpdate
 
@@ -3338,6 +3355,67 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnVendaCadastrarMouseClicked
+
+    private void btnVendaAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaAlterarMouseClicked
+        Venda venda = new Venda();
+        ArrayList<ProdutoVendido> listaProdutos = new ArrayList<>();
+
+        VendaController vendaController = new VendaController();
+
+        ParcelamentoVendaCRUD parcelamentoVendaCRUD = new ParcelamentoVendaCRUD();
+        ClienteCRUD clienteCRUD = new ClienteCRUD();
+        FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+
+        venda.setCodVenda(Integer.parseInt(tfVendaCodigo.getText()));
+        venda.setCodRenda(1);
+        venda.setCodEmpresa(1);
+        venda.setCodParcelamento(parcelamentoVendaCRUD.ConsultarCodParcelamento(cbVendaParcelamento.getSelectedItem().toString()).getCodParcelamento());
+        venda.setCodCliente(clienteCRUD.consultarCliente(tfVendaNomeCliente.getText(), 0).getCodCliente());
+        venda.setCodVendedor(funcionarioCRUD.consultarFuncionario(tfVendaNomeFuncionario.getText(), 0).getCodFuncionario());
+        venda.setDataVenda(desmascarar(tfVendaData.getText()));
+        venda.setDescricao(taVendaDescricao.getText());
+        venda.setTotalDesconto(Double.parseDouble(lblVendaDesconto.getText().substring(3)));
+        venda.setTotalBruto(Double.parseDouble(lblVendaTotal.getText().substring(3)));
+        venda.setTotalLiquido(Double.parseDouble(lblVendaSubTotal.getText().substring(3)));
+
+        for (int i = 0; i < tbVendaListProduto.getRowCount(); i++) {
+            ProdutoVendido produtoVendido = new ProdutoVendido();
+
+            produtoVendido.setCodVenda(venda.getCodVenda());
+            produtoVendido.setCodRenda(venda.getCodRenda());
+            produtoVendido.setCodEmpresa(venda.getCodEmpresa());
+            produtoVendido.setCodProduto(produtoCRUD.consultarProduto(tbVendaListProduto.getValueAt(i, 0).toString(), 0).getCodProduto());
+            produtoVendido.setQuantidadeProduto(Double.parseDouble(tbVendaListProduto.getValueAt(i, 1).toString()));
+            produtoVendido.setPrecoVenda(Double.parseDouble(tbVendaListProduto.getValueAt(i, 2).toString()));
+
+            listaProdutos.add(produtoVendido);
+        }
+
+        if (vendaController.validarVenda(venda)) {
+            VendaCRUD vendaCRUD = new VendaCRUD();
+            if (vendaCRUD.atualizarVenda(venda, listaProdutos)) {
+                limparCampos(tfVendaData, tfVendaNomeCliente, tfVendaNomeFuncionario, tfVendaDesconto);
+                taVendaDescricao.setText("");
+
+                // limpar tabela
+                tbVendaListProduto.removeAll();
+
+                // reiniciar comboBoxes
+                cbVendaParcelamento.setSelectedIndex(0);
+                cbVendaTipoPagamento.setSelectedIndex(0);
+
+                // reiniciar labels de preço
+                lblVendaTotal.setText("R$ 0.00");
+                lblVendaDesconto.setText("R$ 0.00");
+                lblVendaSubTotal.setText("R$ 0.00");
+
+                // reinicia o campo de código
+                tfVendaCodigo.setText(String.valueOf(vendaCRUD.ultimoIncrementVenda()));
+            }
+
+        }
+    }//GEN-LAST:event_btnVendaAlterarMouseClicked
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {

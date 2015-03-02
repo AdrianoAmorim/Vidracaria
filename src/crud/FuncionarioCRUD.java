@@ -127,7 +127,7 @@ public class FuncionarioCRUD {
 
             stmt = conn.prepareStatement("UPDATE funcionario SET codEmpresa = ?, codCargo = ?, "
                     + "nome = ?, telFixo = ?, telCel = ?, cpf = ?, rg = ?, "
-                    + "dtnascimento = TO_DATE(? , 'DDMMYYYY'), salario = ?, "
+                    + "dtnascimento = TO_DATE(? , 'ddMMyyyy'), salario = ?, "
                     + "status = ? , email = ? WHERE codFuncionario = ?;");
 
             stmt.setInt(1, funcionario.getCodEmpresa());
