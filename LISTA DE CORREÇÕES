@@ -14,22 +14,16 @@
 
 * banco de dados
 
-		remover tabelas desnecessárias: renda, despesa, empresa, 			enderecoEmpresa
-
+		remover tabelas desnecessárias: renda, despesa, empresa, enderecoEmpresa
 
 PESQUISA DE CLIENTE
 
 * a pesquisa não funciona corretamente com todos os campos simultaneamente.
   em conjunto funcionam só codigo, nome e cpf/cnpj.
 
-
 CADASTRO DE FUNCIONARIO
 
 * pesquisa de funcionários não funciona.
-
-CADASTRO DE FORNECEDOR
- 
-* radioButtons ativo/inativo não estão habilitados por padrão.
 
 PESQUISA DE FORNECEDOR
 

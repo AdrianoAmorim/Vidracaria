@@ -425,7 +425,6 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         btnFornecedorCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Save-icon.png"))); // NOI18N
         btnFornecedorCadastrar.setToolTipText("Cadastrar");
         btnFornecedorCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnFornecedorCadastrar.setPreferredSize(new java.awt.Dimension(64, 64));
         btnFornecedorCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnFornecedorCadastrarMouseClicked(evt);
