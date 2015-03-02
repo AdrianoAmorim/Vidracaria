@@ -2697,7 +2697,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             lblVendaDesconto.setText("R$ " + venda.getTotalDesconto());
             lblVendaSubTotal.setText("R$ " + venda.getTotalLiquido());
 
-            //cbVendaParcelamento.setSelectedItem(parcelamentoVendaCRUD.consultarParcelamento(venda.getCodParcelamento()).getDescricaoParcelamento());
+            cbVendaParcelamento.getModel().setSelectedItem(parcelamentoVendaCRUD.consultarParcelamento(venda.getCodParcelamento()).getDescricaoParcelamento());
             // tipo de pagamento ainda não implementado
             //cbVendaTipoPagamento.setSelectedItem(venda.getCodTipoPagamento());
         }

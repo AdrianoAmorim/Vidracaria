@@ -291,6 +291,7 @@ public class FuncionarioCRUD {
                 funcionario.setCidade(result.getString("cidade"));
                 funcionario.setUf(result.getString("uf"));
             }
+            stmt.close();            
         } catch (SQLException erroConsultarFuncPorNome) {
             JOptionPane.showMessageDialog(null, erroConsultarFuncPorNome.getMessage());
         }

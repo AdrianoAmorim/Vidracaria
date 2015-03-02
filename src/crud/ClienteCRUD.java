@@ -212,7 +212,7 @@ public class ClienteCRUD {
             stmt = conn.prepareStatement("SELECT c.codCliente, c.tipoCliente, c.nome, c.cpf, c.rg, c.cnpj, "
                     + "c.inscricaoEstadual, c.telFixo, c.telCel, c.email, c.status, "
                     + "ec.logradouro, ec.numero, ec.complemento, ec.bairro, ec.cep, ec.cidade, "
-                    + "ec.uf FROM cliente c NATURAL INNER JOIN enderecoCliente ec "
+                    + "ec.uf FROM cliente c CROSS JOIN enderecoCliente ec "
                     + "WHERE c.nome = '" + nome + "' OR c.codCliente = " + codigoCliente + ";");
 
             result = stmt.executeQuery();
@@ -237,8 +237,7 @@ public class ClienteCRUD {
                 cliente.setUf(result.getString("uf"));
             }
             stmt.close();
-            conn.close();
-        } catch (SQLException erroConsultarNomeCliente) {
+            } catch (SQLException erroConsultarNomeCliente) {
             System.out.println(erroConsultarNomeCliente.getMessage());
         }
         return cliente;

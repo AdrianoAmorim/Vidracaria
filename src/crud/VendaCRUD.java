@@ -132,26 +132,26 @@ public class VendaCRUD {
         Venda venda = new Venda();
 
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT * FROM venda "
-                    + "WHERE codVenda = " + codigoVenda + ";");
+            stmt = conn.prepareStatement("SELECT codVenda, codRenda, codEmpresa, codParcelamento, "
+                    + "codCliente, codFuncionario, TO_CHAR(data, 'ddMMyyyy') AS data, desconto, descricao, totalBruto, totalLiquido "
+                    + "FROM venda WHERE codVenda = " + codigoVenda + ";");
 
             result = stmt.executeQuery();
             while (result.next()) {
-                stmt.setInt(1, venda.getCodVenda());
-                stmt.setInt(2, venda.getCodRenda());
-                stmt.setInt(3, venda.getCodEmpresa());
-                stmt.setInt(4, venda.getCodParcelamento());
-                stmt.setInt(5, venda.getCodCliente());
-                stmt.setInt(6, venda.getCodVendedor());
-                stmt.setString(7, venda.getDataVenda());
-                stmt.setDouble(8, venda.getTotalDesconto());
-                stmt.setString(9, venda.getDescricao());
-                stmt.setDouble(10, venda.getTotalBruto());
-                stmt.setDouble(11, venda.getTotalLiquido());
+                venda.setCodVenda(result.getInt("codVenda"));
+                venda.setCodRenda(result.getInt("codRenda"));
+                venda.setCodEmpresa(result.getInt("codEmpresa"));
+                venda.setCodParcelamento(result.getInt("codParcelamento"));
+                venda.setCodCliente(result.getInt("codCliente"));
+                venda.setCodVendedor(result.getInt("codFuncionario"));
+                venda.setDataVenda(result.getString("data"));
+                venda.setTotalDesconto(result.getDouble("desconto"));
+                venda.setDescricao(result.getString("descricao"));
+                venda.setTotalBruto(result.getDouble("totalBruto"));
+                venda.setTotalLiquido(result.getDouble("totalLiquido"));
 
-                stmt.close();
-                conn.close();
             }
+            stmt.close();
             return venda;
         } catch (SQLException erroConsultarVenda) {
             JOptionPane.showMessageDialog(null, erroConsultarVenda.getMessage());
