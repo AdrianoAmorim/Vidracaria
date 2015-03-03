@@ -164,6 +164,7 @@ public class VendaCRUD {
         try (Connection conn = new SQLite().conectar()) {
             conn.setAutoCommit(false);
 
+            // atualiza as informações da venda
             stmt = conn.prepareStatement("UPDATE venda SET codRenda = ?, codEmpresa = ?, codParcelamento = ?, "
                     + "codCliente = ?, codFuncionario = ?, data = TO_DATE(?, 'ddMMyyyy'), desconto = ?, "
                     + "descricao = ?, totalBruto = ?, totalLiquido = ? "
@@ -183,17 +184,47 @@ public class VendaCRUD {
 
             stmt.executeUpdate();
 
+            // atualiza as quantidades na tabela de produtos
+            // de acordo com as alterações feitas na tabela de produtosVendidos
             for (ProdutoVendido produtoVendido : listaProdutos) {
+                Double qtdTabelaProdutoVendido;
+                stmt = conn.prepareStatement("UPDATE produto "
+                        + "SET quantidadeEstoque = (SELECT SUM(quantidade) FROM produtoVendido "
+                        + "                         WHERE codProduto = ? AND codVenda = ?) "
+                        + "WHERE codProduto = ?;");
 
-                stmt = conn.prepareStatement("UPDATE produtoVendido SET codRenda = ?, codEmpresa = ?,"
-                        + "codProduto = ?, quantidade = ?, precoVenda = ? WHERE codVenda = ?;");
-
-                stmt.setInt(1, produtoVendido.getCodRenda());
-                stmt.setInt(2, produtoVendido.getCodEmpresa());
+                stmt.setInt(1, produtoVendido.getCodProduto());
+                stmt.setInt(2, produtoVendido.getCodVenda());
                 stmt.setInt(3, produtoVendido.getCodProduto());
-                stmt.setDouble(4, produtoVendido.getQuantidadeProduto());
-                stmt.setDouble(5, produtoVendido.getPrecoVenda());
-                stmt.setInt(6, produtoVendido.getCodVenda());
+
+                stmt.executeUpdate();
+            }
+
+            // limpa os dados, referentes à venda em questão, da tabela de produtosVendidos
+            stmt = conn.prepareStatement("DELETE FROM produtoVendido WHERE codVenda = ?");
+            stmt.setInt(1, venda.getCodVenda());
+
+            stmt.executeUpdate();
+
+            // insere os novos dados na tabela de produtosVendidos
+            for (ProdutoVendido produtoVendido : listaProdutos) {
+                stmt = conn.prepareStatement("INSERT INTO produtoVendido(codVenda, codRenda, codEmpresa, "
+                        + "codProduto, quantidade, precoVenda) "
+                        + "VALUES (?,?,?,?,?,?);");
+
+                stmt.setInt(1, venda.getCodVenda());
+                stmt.setInt(2, produtoVendido.getCodRenda());
+                stmt.setInt(3, produtoVendido.getCodEmpresa());
+                stmt.setInt(4, produtoVendido.getCodProduto());
+                stmt.setDouble(5, produtoVendido.getQuantidadeProduto());
+                stmt.setDouble(6, produtoVendido.getPrecoVenda());
+
+                stmt.executeUpdate();
+
+                // atualiza as quantidades na tabela de produtos
+                // de acordo com as alterações feitas na tabela de produtosVendidos
+                stmt = conn.prepareStatement("UPDATE produto SET quantidadeEstoque = quantidadeEstoque - "
+                        + "" + produtoVendido.getQuantidadeProduto() + " WHERE codProduto = " + produtoVendido.getCodProduto());
 
                 stmt.executeUpdate();
             }

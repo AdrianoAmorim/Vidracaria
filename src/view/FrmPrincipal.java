@@ -2718,7 +2718,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             VendaCRUD vendaCRUD = new VendaCRUD();
             ProdutoVendidoCRUD produtoVendidoCRUD = new ProdutoVendidoCRUD();
-
             FuncionarioCRUD funcionarioCRUD = new FuncionarioCRUD();
             ClienteCRUD clienteCRUD = new ClienteCRUD();
             ParcelamentoVendaCRUD parcelamentoVendaCRUD = new ParcelamentoVendaCRUD();
@@ -2737,10 +2736,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             lblVendaSubTotal.setText("R$ " + venda.getTotalLiquido());
 
             cbVendaParcelamento.getModel().setSelectedItem(parcelamentoVendaCRUD.consultarParcelamento(venda.getCodParcelamento()).getDescricaoParcelamento());
+
             // tipo de pagamento ainda não implementado
             //cbVendaTipoPagamento.setSelectedItem(venda.getCodTipoPagamento());
-
             DefaultTableModel modelo = (DefaultTableModel) tbVendaListProduto.getModel();
+            modelo.setRowCount(0);  // resetar linhas da tabela            
             for (ProdutoVendido produtoVendido : listaProdutos) {
                 ProdutoCRUD produtoCRUD = new ProdutoCRUD();
                 String descricao = produtoCRUD.consultarProduto("", produtoVendido.getCodProduto()).getDescricao();
@@ -3369,12 +3369,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 taVendaDescricao.setText("");
 
                 // limpar tabela
-                tbVendaListProduto.removeAll();
-
+                DefaultTableModel modelo = (DefaultTableModel) tbVendaListProduto.getModel();
+                modelo.setRowCount(0);
                 // reiniciar comboBoxes
                 cbVendaParcelamento.setSelectedIndex(0);
                 cbVendaTipoPagamento.setSelectedIndex(0);
-
                 // reiniciar labels de preço
                 lblVendaTotal.setText("R$ 0.00");
                 lblVendaDesconto.setText("R$ 0.00");
@@ -3412,7 +3411,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         for (int i = 0; i < tbVendaListProduto.getRowCount(); i++) {
             ProdutoVendido produtoVendido = new ProdutoVendido();
-
             produtoVendido.setCodVenda(venda.getCodVenda());
             produtoVendido.setCodRenda(venda.getCodRenda());
             produtoVendido.setCodEmpresa(venda.getCodEmpresa());
@@ -3428,23 +3426,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
             if (vendaCRUD.atualizarVenda(venda, listaProdutos)) {
                 limparCampos(tfVendaData, tfVendaNomeCliente, tfVendaNomeFuncionario, tfVendaDesconto);
                 taVendaDescricao.setText("");
-
                 // limpar tabela
-                tbVendaListProduto.removeAll();
-
+                DefaultTableModel modelo = (DefaultTableModel) tbVendaListProduto.getModel();
+                modelo.setRowCount(0);
                 // reiniciar comboBoxes
                 cbVendaParcelamento.setSelectedIndex(0);
                 cbVendaTipoPagamento.setSelectedIndex(0);
-
                 // reiniciar labels de preço
                 lblVendaTotal.setText("R$ 0.00");
                 lblVendaDesconto.setText("R$ 0.00");
                 lblVendaSubTotal.setText("R$ 0.00");
-
                 // reinicia o campo de código
                 tfVendaCodigo.setText(String.valueOf(vendaCRUD.ultimoIncrementVenda()));
             }
-
         }
     }//GEN-LAST:event_btnVendaAlterarMouseClicked
 

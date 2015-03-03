@@ -84,10 +84,10 @@ public class ProdutoVendidoCRUD {
                 produtoVendido.setPrecoVenda(result.getDouble("precoVenda"));
 
                 listaProdutoVendido.add(produtoVendido);
-
-                stmt.close();
-                conn.close();
             }
+            stmt.close();
+            conn.close();
+
             return listaProdutoVendido;
         } catch (SQLException erroConsultarProdutoVendido) {
             System.out.println(erroConsultarProdutoVendido.getMessage());
