@@ -5,13 +5,10 @@ import crud.*;
 import domain.*;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -2695,10 +2692,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             tfVendaNomeCliente.setText(clienteCRUD.consultarCliente("", venda.getCodCliente()).getNome());
             taVendaDescricao.setText(venda.getDescricao());
 
-            lblVendaTotal.setText("R$ " + venda.getTotalBruto());
-            lblVendaDesconto.setText("R$ " + venda.getTotalDesconto());
-            lblVendaSubTotal.setText("R$ " + venda.getTotalLiquido());
-
+            if (venda.getTotalBruto() > 0) {
+                lblVendaTotal.setText("R$ " + venda.getTotalBruto());
+            }
+            if (venda.getTotalDesconto() > 0) {
+                lblVendaDesconto.setText("R$ " + venda.getTotalDesconto());
+            }
+            if (venda.getTotalLiquido() > 0) {
+                lblVendaSubTotal.setText("R$ " + venda.getTotalLiquido());
+            }
             cbVendaParcelamento.getModel().setSelectedItem(parcelamentoVendaCRUD.consultarParcelamento(venda.getCodParcelamento()).getDescricaoParcelamento());
 
             // tipo de pagamento ainda não implementado
@@ -3361,7 +3363,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVendaAlterarMouseClicked
 
     private void btnVendaAddDescontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaAddDescontoMouseClicked
-          Double totalDesconto = Double.parseDouble(lblVendaDesconto.getText().substring(3));
+        Double totalDesconto = Double.parseDouble(lblVendaDesconto.getText().substring(3));
         Double desconto = Double.parseDouble(tfVendaDesconto.getText());
         totalDesconto += desconto;
         Double subTotal = (Double.parseDouble(lblVendaTotal.getText().substring(3)) - totalDesconto);
@@ -3384,7 +3386,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVendaAddDescontoMouseClicked
 
     private void btnVendaRetirarDescontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaRetirarDescontoMouseClicked
-      Double totalDesconto = Double.parseDouble(lblVendaDesconto.getText().substring(3));
+        Double totalDesconto = Double.parseDouble(lblVendaDesconto.getText().substring(3));
         Double desconto = Double.parseDouble(tfVendaDesconto.getText());
         totalDesconto -= desconto;
         Double subTotal = (Double.parseDouble(lblVendaTotal.getText().substring(3)) - totalDesconto);

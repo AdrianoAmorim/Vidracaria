@@ -184,20 +184,26 @@ public class VendaCRUD {
 
             stmt.executeUpdate();
 
-            // atualiza as quantidades na tabela de produtos
+            // ATUALIZA as QUANTIDADES na TABELA de PRODUTOS
             // de acordo com as alterações feitas na tabela de produtosVendidos
             for (ProdutoVendido produtoVendido : listaProdutos) {
                 Double qtdTabelaProdutoVendido;
-                stmt = conn.prepareStatement("UPDATE produto "
-                        + "SET quantidadeEstoque = (SELECT SUM(quantidade) FROM produtoVendido "
-                        + "                         WHERE codProduto = ? AND codVenda = ?) "
-                        + "WHERE codProduto = ?;");
+                // se o produto já foi vendido anteriormente
+                stmt = conn.prepareStatement("SELECT codProduto FROM produtoVendido WHERE codProduto = " + produtoVendido.getCodProduto() + ";");
+                ResultSet result = stmt.executeQuery();
+                if (result.next()) {
+                    // retorna para o estoquee o produto que havia sido vendido
+                    stmt = conn.prepareStatement("UPDATE produto "
+                            + "SET quantidadeEstoque = quantidadeEstoque + (SELECT SUM(quantidade) FROM produtoVendido "
+                            + "                         WHERE codProduto = ? AND codVenda = ?) "
+                            + "WHERE codProduto = ?;");
 
-                stmt.setInt(1, produtoVendido.getCodProduto());
-                stmt.setInt(2, produtoVendido.getCodVenda());
-                stmt.setInt(3, produtoVendido.getCodProduto());
+                    stmt.setInt(1, produtoVendido.getCodProduto());
+                    stmt.setInt(2, produtoVendido.getCodVenda());
+                    stmt.setInt(3, produtoVendido.getCodProduto());
 
-                stmt.executeUpdate();
+                    stmt.executeUpdate();                
+                }
             }
 
             // limpa os dados, referentes à venda em questão, da tabela de produtosVendidos

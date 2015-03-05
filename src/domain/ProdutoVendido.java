@@ -1,4 +1,3 @@
-
 package domain;
 
 /**
@@ -6,10 +5,11 @@ package domain;
  * @author rafael
  */
 public class ProdutoVendido {
-    protected int codProduto;
+
     protected int codVenda;
     protected int codRenda;
     protected int codEmpresa;
+    protected int codProduto;
     protected Double quantidadeProduto;
     protected Double precoVenda;
 
@@ -60,6 +60,5 @@ public class ProdutoVendido {
     public void setPrecoVenda(Double precoVenda) {
         this.precoVenda = precoVenda;
     }
-    
-    
+
 }

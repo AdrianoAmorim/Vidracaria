@@ -22,8 +22,8 @@ public class SQLite {
             Class.forName("org.postgresql.Driver");
 
             String user = "postgres";
-            String pass = "cea016";
-            String url = "jdbc:postgresql://localhost:5432/vidracaria";
+            String pass = "mudar@senha";
+            String url = "jdbc:postgresql://localhost:5433/vidracaria";
 
             Connection conn = DriverManager.getConnection(url, user, pass);
             return conn;
