@@ -46,7 +46,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // INICIALIZAÇÃO DO CODIGO DA VENDA
         tfVendaCodigo.setText(Integer.toString(new VendaCRUD().ultimoIncrementVenda()));
         // INICIALIZAÇÃO DO CODIGO DA COMPRA
-        tfCompraCodigo.setText(String.valueOf(new CompraCRUD().incrementCodCompra("inicializar")));
+        tfCompraCodigo.setText(String.valueOf(new CompraCRUD().ultimoIncrementCompra()));
 
         // INICIALIZAÇÃO DA LISTA DE PARCELAMENTO
         this.carregarCbParcelamentoVenda();
@@ -262,7 +262,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel35 = new javax.swing.JPanel();
         lblTotalDesconto = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        lblValorTotalDesconto = new javax.swing.JLabel();
+        lblCompraTotalDesconto = new javax.swing.JLabel();
         jPanel40 = new javax.swing.JPanel();
         lblCompraTotal2 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -574,7 +574,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(rbClienteStatusAtiv)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(rbClienteStatusInat)
                 .addContainerGap())
         );
@@ -637,7 +637,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addComponent(tfClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel23Layout.createSequentialGroup()
                         .addComponent(lblClienteNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addComponent(btnClienteBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -769,7 +769,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadCliente.setLayout(pnlCadClienteLayout);
         pnlCadClienteLayout.setHorizontalGroup(
             pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
             .addGroup(pnlCadClienteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1139,7 +1139,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfFuncionarioCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfFuncionarioCodCargo))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1246,7 +1246,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlCadFuncionario.setLayout(pnlCadFuncionarioLayout);
         pnlCadFuncionarioLayout.setHorizontalGroup(
             pnlCadFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel44, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            .addComponent(jPanel44, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
             .addGroup(pnlCadFuncionarioLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlCadFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1445,7 +1445,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnVendaAddDesconto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/NovoIconeAddDesconto.png"))); // NOI18N
         btnVendaAddDesconto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVendaAddDesconto.setPreferredSize(new java.awt.Dimension(24, 24));
         btnVendaAddDesconto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVendaAddDescontoMouseClicked(evt);
@@ -1967,7 +1966,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnCompraAdicionarDesconto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/NovoIconeAddDesconto.png"))); // NOI18N
         btnCompraAdicionarDesconto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCompraAdicionarDesconto.setPreferredSize(new java.awt.Dimension(24, 24));
 
         btnCompraRetirarDesconto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/NovoIconeRemoveDesconto.png"))); // NOI18N
         btnCompraRetirarDesconto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -2008,12 +2006,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel22Layout.createSequentialGroup()
                         .addComponent(tfCompraDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCompraAdicionarDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCompraAdicionarDesconto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCompraRetirarDesconto))
                     .addComponent(cbCompraParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbCompraTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2042,7 +2040,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addComponent(tfCompraFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblCompraDesconto)
                                 .addComponent(tfCompraDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnCompraAdicionarDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnCompraAdicionarDesconto))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCompraAdicionarFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
@@ -2212,10 +2210,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblValorTotalDesconto.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblValorTotalDesconto.setForeground(new java.awt.Color(255, 0, 0));
-        lblValorTotalDesconto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblValorTotalDesconto.setText("R$ 0.00");
+        lblCompraTotalDesconto.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblCompraTotalDesconto.setForeground(new java.awt.Color(255, 0, 0));
+        lblCompraTotalDesconto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCompraTotalDesconto.setText("R$ 0.00");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -2223,13 +2221,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblValorTotalDesconto, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(lblCompraTotalDesconto, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lblValorTotalDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCompraTotalDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 3, Short.MAX_VALUE))
         );
 
@@ -2264,11 +2262,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Descrição", "QTD", "Preco", "Valor"
+                "Descrição", "QTD", "Preco", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, false
+                false, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -2282,13 +2280,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(tbCompraListProduto);
         if (tbCompraListProduto.getColumnModel().getColumnCount() > 0) {
-            tbCompraListProduto.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tbCompraListProduto.getColumnModel().getColumn(0).setPreferredWidth(40);
             tbCompraListProduto.getColumnModel().getColumn(1).setPreferredWidth(40);
-            tbCompraListProduto.getColumnModel().getColumn(2).setPreferredWidth(40);
-            tbCompraListProduto.getColumnModel().getColumn(4).setPreferredWidth(50);
+            tbCompraListProduto.getColumnModel().getColumn(3).setPreferredWidth(50);
         }
 
         btnCompraCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Save-icon.png"))); // NOI18N
+        btnCompraCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCompraCadastrarMouseClicked(evt);
+            }
+        });
 
         btnCompraAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Editar.png"))); // NOI18N
 
@@ -2296,7 +2298,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
         pnlEfetuarCompraLayout.setHorizontalGroup(
             pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
             .addGroup(pnlEfetuarCompraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2319,7 +2321,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(pnlEfetuarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCompraCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCompraAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 973, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2909,7 +2911,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     //carrega as cidades de acordo com o ESTADO selecionado - CLIENTE
     private void cbClienteUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbClienteUfItemStateChanged
-
         if (evt.getStateChange() == 1) {
             carregarCbCidades(cbClienteCidade, cbClienteUf.getSelectedItem().toString());
         }
@@ -2926,13 +2927,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         FrmCadastrarFornecedor cadFornecedor = new FrmCadastrarFornecedor(this, true);
         cadFornecedor.setVisible(true);
 
-        //verifica se foi selecionado algum fornecedor se SIM seta as Informações
+        // verifica se algum fornecedor foi selecionado
         if (cadFornecedor.fornecedor.getCodFornecedor() != 0) {
-            //seta o fornecedor escolhido nos Textfield
+            // preenche as informações correspondentes
             tfCompraCodigoFornecedor.setText(String.valueOf(cadFornecedor.fornecedor.getCodFornecedor()));
             tfCompraFornecedor.setText(String.valueOf(cadFornecedor.fornecedor.getNome()));
         }
-
     }//GEN-LAST:event_btnCompraAdicionarFornecedorActionPerformed
 
     private void btnVendaBuscarVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaBuscarVendedorMouseClicked
@@ -2982,10 +2982,28 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void tbCompraListProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbCompraListProdutoKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            Double qtdProduto = Double.parseDouble(tbCompraListProduto.getValueAt(tbCompraListProduto.getSelectedRow(), 2).toString());
-            Double precoVenda = Double.parseDouble(tbCompraListProduto.getValueAt(tbCompraListProduto.getSelectedRow(), 3).toString());
-            Double totalLinha = qtdProduto * precoVenda;
-            tbCompraListProduto.getModel().setValueAt(totalLinha, tbCompraListProduto.getSelectedRow(), 4);
+            Double qtdProduto = Double.parseDouble(tbCompraListProduto.getValueAt(tbCompraListProduto.getSelectedRow(), 1).toString());
+            Double precoCusto = Double.parseDouble(tbCompraListProduto.getValueAt(tbCompraListProduto.getSelectedRow(), 2).toString());
+            Double totalLinha = qtdProduto * precoCusto;
+            tbCompraListProduto.getModel().setValueAt(totalLinha, tbCompraListProduto.getSelectedRow(), 3);
+
+            Double totalVenda = 0.00;
+
+            // atualização das labels de preço
+            for (int i = 0; i < tbCompraListProduto.getRowCount(); i++) {
+                Double precoTotal = Double.parseDouble(tbCompraListProduto.getValueAt(i, 3).toString());
+                Double precoUnitario = Double.parseDouble(tbCompraListProduto.getValueAt(i, 2).toString());
+                Double quantidade = Double.parseDouble(tbCompraListProduto.getValueAt(i, 1).toString());
+
+                // caso o total ainda não tenha sido atualizado
+                if (precoTotal == 0 && quantidade != 0) {
+                    precoTotal = precoUnitario * quantidade;
+                }
+                totalVenda += precoTotal;
+            }
+
+            lblCompraValorTotal.setText("R$ " + totalVenda);
+            lblCompraValorSubTotal.setText("R$ " + (totalVenda - Double.parseDouble(lblCompraTotalDesconto.getText().substring(3))));
         }
     }//GEN-LAST:event_tbCompraListProdutoKeyPressed
 
@@ -3408,6 +3426,61 @@ public class FrmPrincipal extends javax.swing.JFrame {
         tfVendaDesconto.setText("");
     }//GEN-LAST:event_btnVendaRetirarDescontoMouseClicked
 
+    private void btnCompraCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompraCadastrarMouseClicked
+        Compra compra = new Compra();
+        ArrayList<ProdutoComprado> listaProdutos = new ArrayList<>();
+        CompraController compraController = new CompraController();
+
+        ParcelamentoCompraCRUD parcelamentoCompraCRUD = new ParcelamentoCompraCRUD();
+        FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+
+        compra.setCodCompra(Integer.parseInt(tfCompraCodigo.getText()));
+        compra.setCodDespesa(1);
+        compra.setCodEmpresa(1);
+        compra.setCodParcelamento(parcelamentoCompraCRUD.ConsultarCodParcelamento(cbCompraParcelamento.getSelectedItem().toString()).getCodParcelamento());
+        compra.setCodFornecedor(fornecedorCRUD.consultarFornecedor(tfCompraFornecedor.getText(), 0).getCodFornecedor());
+        compra.setData(desmascarar(tfCompraData.getText()));
+        compra.setDesconto(Double.parseDouble(lblCompraTotalDesconto.getText().substring(3)));
+        compra.setTotalBruto(Double.parseDouble(lblCompraValorTotal.getText().substring(3)));
+        compra.setTotalLiquido(Double.parseDouble(lblCompraValorSubTotal.getText().substring(3)));
+
+        for (int i = 0; i < tbVendaListProduto.getRowCount(); i++) {
+            ProdutoComprado produtoComprado = new ProdutoComprado();
+
+            produtoComprado.setCodCompra(compra.getCodCompra());
+            produtoComprado.setCodDespesa(compra.getCodDespesa());
+            produtoComprado.setCodEmpresa(compra.getCodEmpresa());
+            produtoComprado.setCodProduto(produtoCRUD.consultarProduto(tbVendaListProduto.getValueAt(i, 0).toString(), 0).getCodProduto());
+            produtoComprado.setQuantidadeProduto(Double.parseDouble(tbVendaListProduto.getValueAt(i, 1).toString()));
+            produtoComprado.setPrecoCusto(Double.parseDouble(tbVendaListProduto.getValueAt(i, 2).toString()));
+
+            listaProdutos.add(produtoComprado);
+        }
+
+        if (compraController.validarCompra(compra)) {
+            CompraCRUD compraCRUD = new CompraCRUD();
+            if (compraCRUD.inserirCompra(compra, listaProdutos)) {
+                limparCampos(tfCompraCodigo, tfCompraCodigoFornecedor, tfCompraData,
+                        tfCompraFornecedor, tfCompraDesconto);
+
+                // limpar tabela
+                DefaultTableModel modelo = (DefaultTableModel) tbCompraListProduto.getModel();
+                modelo.setRowCount(0);
+                // reiniciar comboBoxes
+                cbCompraParcelamento.setSelectedIndex(0);
+                cbCompraTipoPagamento.setSelectedIndex(0);
+                // reiniciar labels de preço
+                lblCompraValorTotal.setText("R$ 0.00");
+                lblCompraTotalDesconto.setText("R$ 0.00");
+                lblCompraValorSubTotal.setText("R$ 0.00");
+
+                // reinicia o campo de código
+                tfCompraCodigo.setText(String.valueOf(compraCRUD.ultimoIncrementCompra()));
+            }
+        }
+    }//GEN-LAST:event_btnCompraCadastrarMouseClicked
+
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
         int totalCampos = args.length;
@@ -3761,6 +3834,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblCompraTotal;
     private javax.swing.JLabel lblCompraTotal1;
     private javax.swing.JLabel lblCompraTotal2;
+    private javax.swing.JLabel lblCompraTotalDesconto;
     private javax.swing.JLabel lblCompraValorSubTotal;
     private javax.swing.JLabel lblCompraValorTotal;
     private javax.swing.JLabel lblFinanceiroDtFinal;
@@ -3788,7 +3862,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTotalDesconto;
     private javax.swing.JLabel lblTotalDesconto1;
     private javax.swing.JLabel lblTotalDesconto2;
-    private javax.swing.JLabel lblValorTotalDesconto;
     private javax.swing.JLabel lblVendaCliente;
     private javax.swing.JLabel lblVendaCliente1;
     private javax.swing.JLabel lblVendaCodigo;

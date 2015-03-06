@@ -8,6 +8,7 @@ public class Compra {
 
     protected int codCompra;
     protected int codDespesa;
+    protected int codEmpresa;
     protected int codParcelamento;
     protected int codFornecedor;
     protected String data;
@@ -29,6 +30,14 @@ public class Compra {
 
     public void setCodDespesa(int codDespesa) {
         this.codDespesa = codDespesa;
+    }
+
+    public int getCodEmpresa() {
+        return codEmpresa;
+    }
+
+    public void setCodEmpresa(int codEmpresa) {
+        this.codEmpresa = codEmpresa;
     }
 
     public int getCodParcelamento() {
@@ -78,5 +87,6 @@ public class Compra {
     public void setTotalLiquido(Double totalLiquido) {
         this.totalLiquido = totalLiquido;
     }
+
 
 }

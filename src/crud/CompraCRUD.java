@@ -16,42 +16,58 @@ import javax.swing.JOptionPane;
  */
 public class CompraCRUD {
 
-    public int incrementCodCompra(String operacao) {
-        PreparedStatement stmt = null;
-        Connection conn = new SQLite().conectar();
-        int increment = 0;
+    public int ultimoIncrementCompra() {
 
-        try {
-            String sql = "";
+        try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            int increment = 0;
 
-            if (operacao.equalsIgnoreCase("inicializar")) {
-                // seleciona o valor do próximo cliente a ser cadastrado
-                sql = "SELECT last_value FROM compra_codCompra_seq;";
-            } else if (operacao.equalsIgnoreCase("incrementar")) {
-                // incrementa o codigo do próximo cliente
-                sql = "select nextval('compra_codCompra_seq');";
-            }
+            // conta as linhas da tabela
+            String sql = "SELECT COUNT(codCompra) FROM compra";
 
             stmt = conn.prepareStatement(sql);
-            stmt.executeQuery();
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
-                increment = result.getInt(1);
-                return increment;
-            }
+                int linhas = result.getInt(1);
 
+                // quando a tabela está vazia
+                if (linhas == 0) {
+                    sql = "SELECT last_value FROM compra_codCompra_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1);
+                        // retorna somente o last_value
+                        return increment;
+                    }
+                } else {
+                    // quando a tabela não está vazia
+                    sql = "SELECT last_value FROM compra_codCompra_seq";
+
+                    stmt = conn.prepareStatement(sql);
+                    result = stmt.executeQuery();
+
+                    if (result.next()) {
+                        increment = result.getInt(1) + 1;
+                        // retorna o last_value + 1
+                        return increment;
+                    }
+                }
+            }
             stmt.close();
             conn.close();
         } catch (SQLException erroIncrementCodCompra) {
             JOptionPane.showMessageDialog(null, erroIncrementCodCompra.getMessage());
         }
-        return increment;
-
+        // em caso de erros não tratados
+        return 0;
     }
 
     // INSERT 
-    public void inserirCompra(Compra compra, ArrayList<ProdutoComprado> listaProdutosComprados) {
+    public boolean inserirCompra(Compra compra, ArrayList<ProdutoComprado> listaProdutosComprados) {
 
         PreparedStatement stmt;
 
@@ -101,8 +117,10 @@ public class CompraCRUD {
             conn.close();
 
             JOptionPane.showMessageDialog(null, "Compra cadastrada com sucesso!");
+            return true;
         } catch (SQLException erroInserirCompra) {
             JOptionPane.showMessageDialog(null, erroInserirCompra.getMessage());
+            return false;
         }
     }
 

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import view.FrmPrincipal;
 
 /**
  *
@@ -176,39 +177,22 @@ public class FornecedorCRUD {
                 + "f.telCel, f.email, f.site, f.vendedor, f.ramal, "
                 + "f.status, ef.logradouro, ef.numero, ef.complemento, "
                 + "ef.bairro, ef.cep, ef.cidade, ef.uf FROM fornecedor f "
-                + "NATURAL INNER JOIN enderecoFornecedor ef ";
+                + "CROSS JOIN enderecoFornecedor ef WHERE f.codFornecedor =  ef.codFornecedor ";
 
         args[0].setName("f.codFornecedor");
         args[1].setName("f.nome");
         args[2].setName("f.cnpj");
 
-        // percorre os JTextFields até encontrar um preenchido
-        for (int i = 0; i < tam; i++) {
-            // quando encontrar um JTextField não vazio (preenchido)
-            //Acrescentei o desmascarar pq tava entrando sempre o cnpj
-            if (!args[i].getText().isEmpty()) {
-                // incrementa a query de acordo com o nome e conteúdo do JTExtField
-                if (args[i].getName().equalsIgnoreCase("f.codFornecedor")) {
-                    sql += "WHERE " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
-                } else {
-                    sql += "WHERE " + args[i].getName() + " LIKE '%" + args[i].getText().trim() + "%' ";
-                }
-
-                /*
-                 // percorre novamente o vetor em busca de outro JTextField preenchido
-                 for (int j = 0; j < tam; j++) {
-                 // quando encontrar um JTextField preenchido (que não seja o encontrado anteriormente)
-                 if (!args[j].getText().isEmpty() && (!args[j].getText().equals(args[i].getText()))) {
-                 // incrementa a query de acordo com o nome e conteúdo do JTextField
-                 sql += "AND " + args[j].getName() + " LIKE '%" + args[j].getText().trim() + "%'";
-                        
-                 // retorna a query montada
-                 return sql;
-                 }
-                 }
-                 */
+        // percorre todos os JTextFields
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].getName().equalsIgnoreCase("f.codFornecedor") && !FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
+                // caso o parametro seja o codFornecedor é necessário usar (Cast) e comparação exata (=)
+                sql += "AND " + args[i].getName() + " = " + Integer.parseInt(args[i].getText().trim()) + " ";
+            } else if (!FrmPrincipal.desmascarar(args[i].getText()).trim().isEmpty()) {
+                // demais parametros não usam cast e são comparados por aproximação (%LIKE%)
+                sql += "AND " + args[i].getName() + " LIKE '%" + FrmPrincipal.desmascarar(args[i].getText()).trim() + "%' ";
             }
-        }
+        }        
         sql += ";";
         // instrução para burlar o erro do compilador - nunca chega até aqui
         return sql;

@@ -36,7 +36,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                 tfFornecedorNumero, tfFornecedorRamalVendedor, tfFornecedorSite, tfFornecedorTelCel, tfFornecedorTelFixo, tfFornecedorVendedor);
         FrmPrincipal.habilitarDesabilitarComponente(false, cbFornecedorCidade, cbFornecedorUf);
         FrmPrincipal.habilitarDesabilitarComponente(false, rbFornecedorStatusInat, rbFornecedortatusAtiv);
-        FrmPrincipal.habilitarDesabilitarComponente(false, btnFornecedorAlterar, btnFornecedorCadastrar, btnFornecedorAdicionar);
+        FrmPrincipal.habilitarDesabilitarComponente(true, btnFornecedorAlterar, btnFornecedorCadastrar, btnFornecedorAdicionar);
     }
 
     // Carrega lista de Ufs
@@ -70,12 +70,10 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         if (listaFornecedor.size() > 0) {
             DefaultTableModel modelo = (DefaultTableModel) tbAdicionarFornecedorResultBusca.getModel();
             modelo.setRowCount(0);
-            for (Fornecedor fornecedo : listaFornecedor) {
-                modelo.addRow(new Object[]{fornecedo.getNome()});
+            for (Fornecedor fornecedor : listaFornecedor) {
+                modelo.addRow(new Object[]{fornecedor.getNome()});
             }
-
         }
-
         return listaFornecedor;
     }
 
@@ -706,7 +704,6 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                 // ativo
                 rbFornecedortatusAtiv.setSelected(true);
                 rbFornecedorStatusInat.setSelected(false);
-
             } else {
                 // inativo
                 rbFornecedorStatusInat.setSelected(true);
