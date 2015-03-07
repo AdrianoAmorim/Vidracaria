@@ -74,18 +74,19 @@ public class CompraCRUD {
         try (Connection conn = new SQLite().conectar()) {
             conn.setAutoCommit(false);
 
-            stmt = conn.prepareStatement("INSERT INTO compra(codCompra, codDespesa, codParcelamento, "
-                    + "codFornecedor, data, totalBruto, desconto, totalLiquido) "
-                    + " VALUES (?,?,?,?,?,?,?,?)");
+            stmt = conn.prepareStatement("INSERT INTO compra(codCompra, codDespesa, codEmpresa,"
+                    + "codParcelamento, codFornecedor, data, totalBruto, desconto, totalLiquido) "
+                    + " VALUES (?,?,?,?,?,TO_DATE(?, 'DDMMYYYY'),?,?,?)");
 
             stmt.setInt(1, compra.getCodCompra());
             stmt.setInt(2, compra.getCodDespesa());
-            stmt.setInt(3, compra.getCodParcelamento());
-            stmt.setInt(4, compra.getCodFornecedor());
-            stmt.setString(5, compra.getData());
-            stmt.setDouble(6, compra.getTotalBruto());
-            stmt.setDouble(7, compra.getDesconto());
-            stmt.setDouble(8, compra.getTotalLiquido());
+            stmt.setInt(3, compra.getCodEmpresa());
+            stmt.setInt(4, compra.getCodParcelamento());
+            stmt.setInt(5, compra.getCodFornecedor());
+            stmt.setString(6, compra.getData());
+            stmt.setDouble(7, compra.getTotalBruto());
+            stmt.setDouble(8, compra.getDesconto());
+            stmt.setDouble(9, compra.getTotalLiquido());
 
             stmt.executeUpdate();
 
@@ -100,6 +101,8 @@ public class CompraCRUD {
                 stmt.setDouble(4, produtoComprado.getQuantidadeProduto());
                 stmt.setDouble(5, produtoComprado.getPrecoCusto());
 
+                System.out.println(stmt);
+                
                 stmt.executeUpdate();
 
                 stmt = conn.prepareStatement("UPDATE produto SET quantidadeEstoque = quantidadeEstoque + "

@@ -36,7 +36,6 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
                 tfFornecedorNumero, tfFornecedorRamalVendedor, tfFornecedorSite, tfFornecedorTelCel, tfFornecedorTelFixo, tfFornecedorVendedor);
         FrmPrincipal.habilitarDesabilitarComponente(false, cbFornecedorCidade, cbFornecedorUf);
         FrmPrincipal.habilitarDesabilitarComponente(false, rbFornecedorStatusInat, rbFornecedortatusAtiv);
-        FrmPrincipal.habilitarDesabilitarComponente(true, btnFornecedorAlterar, btnFornecedorCadastrar, btnFornecedorAdicionar);
     }
 
     // Carrega lista de Ufs
@@ -423,6 +422,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         btnFornecedorCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Save-icon.png"))); // NOI18N
         btnFornecedorCadastrar.setToolTipText("Cadastrar");
         btnFornecedorCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFornecedorCadastrar.setEnabled(false);
         btnFornecedorCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnFornecedorCadastrarMouseClicked(evt);
@@ -636,11 +636,8 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
     private void tfFornecedorCodigoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfFornecedorCodigoCaretUpdate
         DefaultTableModel modelo = (DefaultTableModel) tbAdicionarFornecedorResultBusca.getModel();
         //se  o campo nao estiver vazio e nao estiver marcado para criar Novo Fornecedor  realiza a pesquisa
-        if (!tfFornecedorCodigo.getText().isEmpty() && !cb_novoFornecedor.isSelected() && !btnFornecedorAlterar.isEnabled()) {
+        if (!tfFornecedorCodigo.getText().isEmpty() && !cb_novoFornecedor.isSelected() && btnFornecedorAlterar.isEnabled()) {
             this.pesquisarFornecedorCaretUpdate();
-            //senao limpa a tabela de resultados
-        } else {
-            modelo.setRowCount(0);
         }
     }//GEN-LAST:event_tfFornecedorCodigoCaretUpdate
 
@@ -648,27 +645,22 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel) tbAdicionarFornecedorResultBusca.getModel();
         //se  o campo nao estiver vazio e nao estiver marcado para criar Novo Fornecedor  realiza a pesquisa
         String campo = FrmPrincipal.desmascarar(tfFornecedorCnpj.getText()).trim();
-        if (!campo.isEmpty() && !cb_novoFornecedor.isSelected() && !btnFornecedorAlterar.isEnabled()) {
+        if (!campo.isEmpty() && !cb_novoFornecedor.isSelected() && btnFornecedorAlterar.isEnabled()) {
             this.pesquisarFornecedorCaretUpdate();
-            //senao limpa a tabela de resultados
-        } else {
-            modelo.setRowCount(0);
         }
     }//GEN-LAST:event_tfFornecedorCnpjCaretUpdate
 
     private void tfFornecedorNomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfFornecedorNomeCaretUpdate
         DefaultTableModel modelo = (DefaultTableModel) tbAdicionarFornecedorResultBusca.getModel();
         //se  o campo nao estiver vazio e nao estiver marcado para criar Novo Fornecedor e desativado btn de Alterar, realiza a pesquisa
-        if (!tfFornecedorNome.getText().isEmpty() && !cb_novoFornecedor.isSelected() && !btnFornecedorAlterar.isEnabled()) {
-            this.pesquisarFornecedorCaretUpdate();
-            //senao limpa a tabela de resultados
-        } else {
-            modelo.setRowCount(0);
+        if (!tfFornecedorNome.getText().isEmpty() && !cb_novoFornecedor.isSelected() && btnFornecedorAlterar.isEnabled()) {
+            this.pesquisarFornecedorCaretUpdate();         
         }
     }//GEN-LAST:event_tfFornecedorNomeCaretUpdate
 
     private void tbAdicionarFornecedorResultBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAdicionarFornecedorResultBuscaMouseClicked
         if (evt.getClickCount() == 2) {
+            
             // habilita todos os componentes que estavam bloqueados
             FrmPrincipal.habilitarDesabilitarComponente(true, tfFornecedorBairro, tfFornecedorCep, tfFornecedorComplemento, tfFornecedorEmail, tfFornecedorLogradouro,
                     tfFornecedorNumero, tfFornecedorRamalVendedor, tfFornecedorSite, tfFornecedorTelCel, tfFornecedorTelFixo, tfFornecedorVendedor);
@@ -734,7 +726,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
             tfFornecedorCodigo.setText("");
             tfFornecedorCodigo.setEditable(true);
 
-            btnFornecedorAlterar.setEnabled(false);
+            btnFornecedorAlterar.setEnabled(true);
             btnFornecedorCadastrar.setEnabled(false);
 
             // limpa os campos de cadastro
@@ -855,6 +847,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFornecedorAlterarMouseClicked
 
     private void btnFornecedorAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFornecedorAdicionarMouseClicked
+        fornecedor = new FornecedorCRUD().consultarFornecedor(tbAdicionarFornecedorResultBusca.getValueAt(tbAdicionarFornecedorResultBusca.getSelectedRow(), 0).toString(), 0);
         this.dispose();
     }//GEN-LAST:event_btnFornecedorAdicionarMouseClicked
 

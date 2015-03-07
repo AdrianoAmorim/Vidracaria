@@ -2614,7 +2614,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         adicionarProduto.setVisible(true);
 
         for (Produto produto : adicionarProduto.listaProdutos) {
-            modeloTabCompra.addRow(new Object[]{produto.getCodProduto(), produto.getDescricao(), 0.0, 0.0, 0.0});
+            modeloTabCompra.addRow(new Object[]{produto.getDescricao(), 0.0, 0.0, 0.0});
         }
 
         tbCompraListProduto.setRowSelectionInterval(0, 0);
@@ -3457,7 +3457,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             listaProdutos.add(produtoComprado);
         }
-
+        
         if (compraController.validarCompra(compra)) {
             CompraCRUD compraCRUD = new CompraCRUD();
             if (compraCRUD.inserirCompra(compra, listaProdutos)) {
@@ -3478,7 +3478,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 // reinicia o campo de código
                 tfCompraCodigo.setText(String.valueOf(compraCRUD.ultimoIncrementCompra()));
             }
-        }
+        }        
     }//GEN-LAST:event_btnCompraCadastrarMouseClicked
 
     // reseta os textos de TextFields 
