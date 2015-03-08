@@ -62,13 +62,12 @@ public class ProdutoVendidoCRUD {
 
     // SELECT
     public ArrayList<ProdutoVendido> consultarProdutoVendido(int codVenda) {
-
-        PreparedStatement stmt;
-        ResultSet result;
-
         ArrayList<ProdutoVendido> listaProdutoVendido = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            ResultSet result;
+
             stmt = conn.prepareStatement("SELECT codRenda, codEmpresa, codProduto, "
                     + "quantidade, precoVenda FROM produtoVendido "
                     + "WHERE codVenda = " + codVenda + ";");

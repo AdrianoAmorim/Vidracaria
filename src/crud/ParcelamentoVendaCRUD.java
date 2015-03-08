@@ -60,13 +60,11 @@ public class ParcelamentoVendaCRUD {
 
     // SELECT
     public Parcelamento consultarParcelamento(int codParcelamento) {
-
-        PreparedStatement stmt;
-        ResultSet result;
-
         Parcelamento parcelamentoVenda = new Parcelamento();
 
         try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            ResultSet result;
 
             stmt = conn.prepareStatement("SELECT codParcelamento, descricao, quantidadeParcelas "
                     + "FROM parcelamentoVenda WHERE codParcelamento = " + codParcelamento + ";");
@@ -89,13 +87,11 @@ public class ParcelamentoVendaCRUD {
 
     // SELECT
     public ArrayList<Parcelamento> consultarParcelamento() {
-
-        PreparedStatement stmt;
-        ResultSet result;
-
         ArrayList<Parcelamento> listaParcelamento = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            ResultSet result;
 
             stmt = conn.prepareStatement("SELECT codParcelamento, descricao, quantidadeParcelas "
                     + "FROM parcelamentoVenda;");

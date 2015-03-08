@@ -228,7 +228,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel54 = new javax.swing.JPanel();
         lblCompraTitulo = new javax.swing.JLabel();
         jLabel573 = new javax.swing.JLabel();
-        tfBuscaCompra = new javax.swing.JTextField();
+        tfCompraBusca = new javax.swing.JTextField();
         jPanel22 = new javax.swing.JPanel();
         lblCompraData = new javax.swing.JLabel();
         tfCompraCodigo = new javax.swing.JTextField();
@@ -1863,8 +1863,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel573.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel573.setText("PESQUISAR : ");
 
-        tfBuscaCompra.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        tfBuscaCompra.setPreferredSize(new java.awt.Dimension(125, 49));
+        tfCompraBusca.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tfCompraBusca.setPreferredSize(new java.awt.Dimension(125, 49));
+        tfCompraBusca.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfCompraBuscaCaretUpdate(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
         jPanel54.setLayout(jPanel54Layout);
@@ -1876,7 +1881,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel573, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addComponent(tfBuscaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfCompraBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanel54Layout.setVerticalGroup(
@@ -1886,7 +1891,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCompraTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel573, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfBuscaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCompraBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
         );
 
@@ -3457,7 +3462,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
             listaProdutos.add(produtoComprado);
         }
-        
+
         if (compraController.validarCompra(compra)) {
             CompraCRUD compraCRUD = new CompraCRUD();
             if (compraCRUD.inserirCompra(compra, listaProdutos)) {
@@ -3478,8 +3483,49 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 // reinicia o campo de código
                 tfCompraCodigo.setText(String.valueOf(compraCRUD.ultimoIncrementCompra()));
             }
-        }        
+        }
     }//GEN-LAST:event_btnCompraCadastrarMouseClicked
+
+    private void tfCompraBuscaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfCompraBuscaCaretUpdate
+        if (!tfCompraBusca.getText().trim().isEmpty()) {
+
+            CompraCRUD compraCRUD = new CompraCRUD();
+            ProdutoCompradoCRUD produtoCompradoCRUD = new ProdutoCompradoCRUD();
+            FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+            ParcelamentoCompraCRUD parcelamentoCompraCRUD = new ParcelamentoCompraCRUD();
+
+            Compra compra = compraCRUD.consultarCompra(Integer.parseInt(tfCompraBusca.getText()));
+            ArrayList<ProdutoComprado> listaProdutos = produtoCompradoCRUD.consultarProdutoComprado(Integer.parseInt(tfCompraBusca.getText()));
+
+            tfCompraCodigo.setText(String.valueOf(compra.getCodCompra()));
+            tfCompraData.setText(String.valueOf(compra.getData()));
+            tfCompraCodigoFornecedor.setText(String.valueOf(compra.getCodFornecedor()));
+            tfCompraFornecedor.setText(fornecedorCRUD.consultarFornecedor("", compra.getCodFornecedor()).getNome());
+
+            if (compra.getTotalBruto() > 0) {
+                lblCompraValorTotal.setText("R$ " + compra.getTotalBruto());
+            }
+            if (compra.getDesconto() > 0) {
+                lblCompraTotalDesconto.setText("R$ " + compra.getDesconto());
+            }
+            if (compra.getTotalLiquido() > 0) {
+                lblCompraValorSubTotal.setText("R$ " + compra.getTotalLiquido());
+            }
+            cbCompraParcelamento.getModel().setSelectedItem(parcelamentoCompraCRUD.consultarParcelamento(compra.getCodParcelamento()).getDescricaoParcelamento());
+
+            // tipo de pagamento ainda não implementado
+            //cbVendaTipoPagamento.setSelectedItem(venda.getCodTipoPagamento());
+            DefaultTableModel modelo = (DefaultTableModel) tbCompraListProduto.getModel();
+            modelo.setRowCount(0);  // resetar linhas da tabela            
+            for (ProdutoComprado produtoComprado : listaProdutos) {
+                ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+                String descricao = produtoCRUD.consultarProduto("", produtoComprado.getCodProduto()).getDescricao();
+
+                modelo.addRow(new Object[]{descricao, produtoComprado.getQuantidadeProduto(), produtoComprado.getPrecoCusto(),
+                    produtoComprado.getQuantidadeProduto() * produtoComprado.getPrecoCusto()});
+            }
+        }
+    }//GEN-LAST:event_tfCompraBuscaCaretUpdate
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {
@@ -3903,7 +3949,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tbCompraListProduto;
     private javax.swing.JTable tbFinanceiroContas;
     private javax.swing.JTable tbVendaListProduto;
-    private javax.swing.JTextField tfBuscaCompra;
     private javax.swing.JTextField tfClienteBairro;
     private javax.swing.JFormattedTextField tfClienteCep;
     private javax.swing.JFormattedTextField tfClienteCnpj;
@@ -3918,6 +3963,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField tfClienteRg;
     private javax.swing.JFormattedTextField tfClienteTelCel;
     private javax.swing.JFormattedTextField tfClienteTelRes;
+    private javax.swing.JTextField tfCompraBusca;
     private javax.swing.JTextField tfCompraCodigo;
     private javax.swing.JTextField tfCompraCodigoFornecedor;
     private javax.swing.JFormattedTextField tfCompraData;

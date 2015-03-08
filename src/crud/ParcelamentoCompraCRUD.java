@@ -59,34 +59,59 @@ public class ParcelamentoCompraCRUD {
     }
 
     // SELECT
+    public Parcelamento consultarParcelamento(int codParcelamento) {
+        Parcelamento parcelamentoCompra = new Parcelamento();
+
+        try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            ResultSet result;
+
+            stmt = conn.prepareStatement("SELECT codParcelamento, descricao, quantidadeParcelas "
+                    + "FROM parcelamentoCompra WHERE codParcelamento = " + codParcelamento + ";");
+
+            result = stmt.executeQuery();
+
+            while (result.next()) {
+                parcelamentoCompra.setCodParcelamento(result.getInt("codParcelamento"));
+                parcelamentoCompra.setDescricaoParcelamento(result.getString("descricao"));
+                parcelamentoCompra.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
+            }
+            stmt.close();
+
+            return parcelamentoCompra;
+        } catch (SQLException erroConsultarParcelamento) {
+            JOptionPane.showMessageDialog(null, erroConsultarParcelamento.getMessage());
+            return parcelamentoCompra;
+        }
+    }
+
+    // SELECT
     public ArrayList<Parcelamento> consultarParcelamento() {
-
-        PreparedStatement stmt;
-        ResultSet result;
-
         ArrayList<Parcelamento> listaParcelamento = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
+            PreparedStatement stmt;
+            ResultSet result;
 
             stmt = conn.prepareStatement("SELECT codParcelamento, descricao, quantidadeParcelas "
                     + "FROM parcelamentoCompra;");
 
             result = stmt.executeQuery();
-            
+
             while (result.next()) {
                 Parcelamento parcelamento = new Parcelamento();
-
+                
                 parcelamento.setCodParcelamento(result.getInt("codParcelamento"));
                 parcelamento.setDescricaoParcelamento(result.getString("descricao"));
                 parcelamento.setQuantidadeParcelas(result.getInt("quantidadeParcelas"));
-
+                
                 listaParcelamento.add(parcelamento);
             }
             stmt.close();
-            
+
             return listaParcelamento;
         } catch (SQLException erroConsultarParcelamento) {
-            System.out.println(erroConsultarParcelamento.getMessage());
+            JOptionPane.showMessageDialog(null, erroConsultarParcelamento.getMessage());
             return listaParcelamento;
         }
     }
@@ -114,8 +139,8 @@ public class ParcelamentoCompraCRUD {
         }
         return parcelamento.getQuantidadeParcelas();
     }
-    
-     // pesquisa de parcelamento pela descrição
+
+    // pesquisa de parcelamento pela descrição
     public Parcelamento ConsultarCodParcelamento(String descricao) {
         PreparedStatement stmt;
         ResultSet result;
@@ -141,5 +166,5 @@ public class ParcelamentoCompraCRUD {
         }
 
         return parcelamento;
-    }    
+    }
 }

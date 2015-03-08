@@ -3,6 +3,7 @@ package crud;
 import database.SQLite;
 import domain.Compra;
 import domain.ProdutoComprado;
+import domain.Venda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -102,7 +103,7 @@ public class CompraCRUD {
                 stmt.setDouble(5, produtoComprado.getPrecoCusto());
 
                 System.out.println(stmt);
-                
+
                 stmt.executeUpdate();
 
                 stmt = conn.prepareStatement("UPDATE produto SET quantidadeEstoque = quantidadeEstoque + "
@@ -149,30 +150,34 @@ public class CompraCRUD {
         }
     }
 
-    // SELECT
-    public ArrayList<Compra> consultarCompra() {
+    public Compra consultarCompra(int codigoCompra) {
+        Compra compra = new Compra();
 
-        PreparedStatement stmt;
-        ResultSet result;
-        ArrayList<Compra> listaCompras = new ArrayList<>();
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("SELECT codCompra, codFornecedor, codTipoDespesa, dataCompra FROM compra;");
+            PreparedStatement stmt;
+            ResultSet result;
+
+            stmt = conn.prepareStatement("SELECT codCompra, codDespesa, codEmpresa, codParcelamento, "
+                    + "codFornecedor, TO_CHAR(data, 'ddMMyyyy') AS data, desconto, descricao, totalBruto, totalLiquido "
+                    + "FROM compra WHERE codCompra = " + codigoCompra + ";");
+           
             result = stmt.executeQuery();
             while (result.next()) {
-                Compra compra = new Compra();
                 compra.setCodCompra(result.getInt("codCompra"));
+                compra.setCodDespesa(result.getInt("codDespesa"));
+                compra.setCodEmpresa(result.getInt("codEmpresa"));
+                compra.setCodParcelamento(result.getInt("codParcelamento"));
                 compra.setCodFornecedor(result.getInt("codFornecedor"));
-                compra.setCodDespesa(result.getInt("codTipoDespesa"));
-                compra.setData(result.getString("dataCompra"));
-
-                listaCompras.add(compra);
-                stmt.close();
-                conn.close();
+                compra.setData(result.getString("data"));
+                compra.setDesconto(result.getDouble("desconto"));
+                compra.setTotalBruto(result.getDouble("totalBruto"));
+                compra.setTotalLiquido(result.getDouble("totalLiquido"));
             }
-            return listaCompras;
-        } catch (SQLException erroConsultarCompras) {
-            System.out.println(erroConsultarCompras.getMessage());
-            return listaCompras;
+            stmt.close();
+            return compra;
+        } catch (SQLException erroConsultarCompra) {
+            JOptionPane.showMessageDialog(null, erroConsultarCompra.getMessage());
+            return compra;
         }
     }
 

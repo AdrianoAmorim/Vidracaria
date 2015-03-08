@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -61,33 +62,38 @@ public class ProdutoCompradoCRUD {
     }
 
     // SELECT
-    public ProdutoComprado consultarProdutoComprado(int codigo) {
-        ProdutoComprado produtoComprado = new ProdutoComprado();
+    public ArrayList<ProdutoComprado> consultarProdutoComprado(int codCompra) {
+        ArrayList<ProdutoComprado> listaProdutoComprado = new ArrayList<>();
 
         try (Connection conn = new SQLite().conectar()) {
             PreparedStatement stmt;
             ResultSet result;
+            
             stmt = conn.prepareStatement("SELECT codCompra, codDespesa, codEmpresa, "
                     + "codProduto, quantidade, precoCusto FROM produtoComprado "
-                    + "WHERE codProduto = " + codigo + ";");
+                    + "WHERE codProduto = " + codCompra + ";");
 
             result = stmt.executeQuery();
             while (result.next()) {
+                ProdutoComprado produtoComprado = new ProdutoComprado();
+                
                 produtoComprado.setCodCompra(result.getInt("codCompra"));
                 produtoComprado.setCodDespesa(result.getInt("codDespesa"));
                 produtoComprado.setCodEmpresa(result.getInt("codEmpresa"));
                 produtoComprado.setCodProduto(result.getInt("codProduto"));
                 produtoComprado.setQuantidadeProduto(result.getDouble("quantidade"));
                 produtoComprado.setPrecoCusto(result.getDouble("precoCusto"));
+
+                listaProdutoComprado.add(produtoComprado);
             }
 
             stmt.close();
             conn.close();
 
-            return produtoComprado;
+            return listaProdutoComprado;
         } catch (SQLException erroConsultarProdutoComprado) {
             JOptionPane.showMessageDialog(null, erroConsultarProdutoComprado.getMessage());
-            return produtoComprado;
+            return listaProdutoComprado;
         }
     }
 

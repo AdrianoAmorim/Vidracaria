@@ -203,6 +203,7 @@ public class ProdutoCRUD {
                     + "AND p.codProduto = " + codProduto + " OR p.descricao = '" + descricao + "';");
 
             result = stmt.executeQuery();
+            
             while (result.next()) {
                 produto.setCodProduto(result.getInt("codProduto"));
                 produto.setCodCategoria(result.getInt("codCategoria"));
