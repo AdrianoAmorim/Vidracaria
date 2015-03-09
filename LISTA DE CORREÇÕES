@@ -14,7 +14,10 @@
 
 * banco de dados
 
-		remover tabelas desnecessárias: renda, despesa, empresa, enderecoEmpresa
+		--> remover tabelas desnecessárias: renda, despesa, empresa, enderecoEmpresa
+
+		--> a tabela de compra tem o campo descrição, a janela não.
+		    decidir qual dos 2 será alterado.
 
 PESQUISA DE CLIENTE
 

@@ -2298,6 +2298,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         btnCompraAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Editar.png"))); // NOI18N
+        btnCompraAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCompraAlterarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlEfetuarCompraLayout = new javax.swing.GroupLayout(pnlEfetuarCompra);
         pnlEfetuarCompra.setLayout(pnlEfetuarCompraLayout);
@@ -3526,6 +3531,61 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tfCompraBuscaCaretUpdate
+
+    private void btnCompraAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompraAlterarMouseClicked
+        Compra compra = new Compra();
+        ArrayList<ProdutoComprado> listaProdutos = new ArrayList<>();
+        CompraController compraController = new CompraController();
+
+        ParcelamentoCompraCRUD parcelamentoCompraCRUD = new ParcelamentoCompraCRUD();
+        FornecedorCRUD fornecedorCRUD = new FornecedorCRUD();
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+
+        compra.setCodCompra(Integer.parseInt(tfCompraCodigo.getText()));
+        compra.setCodDespesa(1);
+        compra.setCodEmpresa(1);
+        compra.setCodParcelamento(parcelamentoCompraCRUD.ConsultarCodParcelamento(cbCompraParcelamento.getSelectedItem().toString()).getCodParcelamento());
+        compra.setCodFornecedor(fornecedorCRUD.consultarFornecedor(tfCompraFornecedor.getText(), 0).getCodFornecedor());
+        compra.setData(desmascarar(tfCompraData.getText()));
+        compra.setDesconto(Double.parseDouble(lblCompraTotalDesconto.getText().substring(3)));
+        compra.setTotalBruto(Double.parseDouble(lblCompraValorTotal.getText().substring(3)));
+        compra.setTotalLiquido(Double.parseDouble(lblCompraValorSubTotal.getText().substring(3)));
+
+        for (int i = 0; i < tbCompraListProduto.getRowCount(); i++) {
+            ProdutoComprado produtoComprado = new ProdutoComprado();
+
+            produtoComprado.setCodCompra(compra.getCodCompra());
+            produtoComprado.setCodDespesa(compra.getCodDespesa());
+            produtoComprado.setCodEmpresa(compra.getCodEmpresa());
+            produtoComprado.setCodProduto(produtoCRUD.consultarProduto(tbCompraListProduto.getValueAt(i, 0).toString(), 0).getCodProduto());
+            produtoComprado.setQuantidadeProduto(Double.parseDouble(tbCompraListProduto.getValueAt(i, 1).toString()));
+            produtoComprado.setPrecoCusto(Double.parseDouble(tbCompraListProduto.getValueAt(i, 2).toString()));
+
+            listaProdutos.add(produtoComprado);
+        }
+
+        if (compraController.validarCompra(compra)) {
+            CompraCRUD compraCRUD = new CompraCRUD();
+            if (compraCRUD.atualizarCompra(compra, listaProdutos)) {
+                limparCampos(tfCompraCodigo, tfCompraCodigoFornecedor, tfCompraData,
+                        tfCompraFornecedor, tfCompraDesconto);
+
+                // limpar tabela
+                DefaultTableModel modelo = (DefaultTableModel) tbCompraListProduto.getModel();
+                modelo.setRowCount(0);
+                // reiniciar comboBoxes
+                cbCompraParcelamento.setSelectedIndex(0);
+                cbCompraTipoPagamento.setSelectedIndex(0);
+                // reiniciar labels de preço
+                lblCompraValorTotal.setText("R$ 0.00");
+                lblCompraTotalDesconto.setText("R$ 0.00");
+                lblCompraValorSubTotal.setText("R$ 0.00");
+
+                // reinicia o campo de código
+                tfCompraCodigo.setText(String.valueOf(compraCRUD.ultimoIncrementCompra()));
+            }
+        }
+    }//GEN-LAST:event_btnCompraAlterarMouseClicked
 
     // reseta os textos de TextFields 
     static public void limparCampos(JTextField... args) {

@@ -188,7 +188,7 @@ public class VendaCRUD {
             // de acordo com as alterações feitas na tabela de produtosVendidos
             for (ProdutoVendido produtoVendido : listaProdutos) {
                 Double qtdTabelaProdutoVendido;
-                // se o produto já foi vendido anteriormente
+                // se o produto já foi vendido nesta transação
                 stmt = conn.prepareStatement("SELECT codProduto FROM produtoVendido WHERE codProduto = " + produtoVendido.getCodProduto() + ";");
                 ResultSet result = stmt.executeQuery();
                 if (result.next()) {

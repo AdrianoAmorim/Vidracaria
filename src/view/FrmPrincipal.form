@@ -3900,6 +3900,9 @@
                   <Image iconType="3" name="/imagens/Editar.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCompraAlterarMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

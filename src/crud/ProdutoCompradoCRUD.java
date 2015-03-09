@@ -68,16 +68,15 @@ public class ProdutoCompradoCRUD {
         try (Connection conn = new SQLite().conectar()) {
             PreparedStatement stmt;
             ResultSet result;
-            
-            stmt = conn.prepareStatement("SELECT codCompra, codDespesa, codEmpresa, "
+
+            stmt = conn.prepareStatement("SELECT codDespesa, codEmpresa, "
                     + "codProduto, quantidade, precoCusto FROM produtoComprado "
-                    + "WHERE codProduto = " + codCompra + ";");
+                    + "WHERE codCompra = " + codCompra + ";");
 
             result = stmt.executeQuery();
             while (result.next()) {
                 ProdutoComprado produtoComprado = new ProdutoComprado();
-                
-                produtoComprado.setCodCompra(result.getInt("codCompra"));
+
                 produtoComprado.setCodDespesa(result.getInt("codDespesa"));
                 produtoComprado.setCodEmpresa(result.getInt("codEmpresa"));
                 produtoComprado.setCodProduto(result.getInt("codProduto"));

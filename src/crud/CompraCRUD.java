@@ -3,7 +3,6 @@ package crud;
 import database.SQLite;
 import domain.Compra;
 import domain.ProdutoComprado;
-import domain.Venda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -129,24 +128,90 @@ public class CompraCRUD {
     }
 
     // UPDATE
-    public void atualizarCompra(Compra compra) {
+    public boolean atualizarCompra(Compra compra, ArrayList<ProdutoComprado> listaProdutos) {
 
         PreparedStatement stmt;
         try (Connection conn = new SQLite().conectar()) {
-            stmt = conn.prepareStatement("UPDATE compra SET codFornecedor = ?, codTipoDespesa = ?, "
-                    + "dataCompra = ? WHERE codCompra = ?;");
+            conn.setAutoCommit(false);
 
-            stmt.setInt(1, compra.getCodFornecedor());
-            stmt.setInt(2, compra.getCodDespesa());
-            stmt.setString(3, compra.getData());
-            stmt.setInt(4, compra.getCodCompra());
+            // atualiza as informações da Compra
+            stmt = conn.prepareStatement("UPDATE compra SET codDespesa = ?, codEmpresa = ?, codParcelamento = ?, "
+                    + "codFornecedor = ?, data = TO_DATE(?, 'ddMMyyyy'), desconto = ?, "
+                    + "totalBruto = ?, totalLiquido = ? "
+                    + "WHERE codCompra = ?;");
+
+            stmt.setInt(1, compra.getCodDespesa());
+            stmt.setInt(2, compra.getCodEmpresa());
+            stmt.setInt(3, compra.getCodParcelamento());
+            stmt.setInt(4, compra.getCodFornecedor());
+            stmt.setString(5, compra.getData());
+            stmt.setDouble(6, compra.getDesconto());
+            stmt.setDouble(7, compra.getTotalBruto());
+            stmt.setDouble(8, compra.getTotalLiquido());
+            stmt.setInt(9, compra.getCodCompra());
 
             stmt.executeUpdate();
+
+            // ATUALIZA as QUANTIDADES na TABELA de PRODUTOS
+            // de acordo com as alterações feitas na tabela de produtosComprados
+            for (ProdutoComprado produtoComprado : listaProdutos) {
+                Double qtdTabelaProdutoVendido;
+                // se o produto já foi comprado nesta transação
+                stmt = conn.prepareStatement("SELECT codProduto FROM produtoComprado WHERE codProduto = " + produtoComprado.getCodProduto() + ";");
+                ResultSet result = stmt.executeQuery();
+                if (result.next()) {
+                    // retira do estoque o produto que havia sido comprado
+                    stmt = conn.prepareStatement("UPDATE produto "
+                            + "SET quantidadeEstoque = quantidadeEstoque - (SELECT SUM(quantidade) FROM produtoComprado "
+                            + "                         WHERE codProduto = ? AND codCompra = ?) "
+                            + "WHERE codProduto = ?;");
+
+                    stmt.setInt(1, produtoComprado.getCodProduto());
+                    stmt.setInt(2, produtoComprado.getCodCompra());
+                    stmt.setInt(3, produtoComprado.getCodProduto());
+
+                    stmt.executeUpdate();
+                }
+            }
+
+            // limpa os dados, referentes à compra em questão, da tabela de produtosComprados
+            stmt = conn.prepareStatement("DELETE FROM produtoComprado WHERE codCompra = ?");
+            stmt.setInt(1, compra.getCodCompra());
+
+            stmt.executeUpdate();
+
+            // insere os novos dados na tabela de produtosComprados
+            for (ProdutoComprado produtoComprado : listaProdutos) {
+                stmt = conn.prepareStatement("INSERT INTO produtoComprado(codCompra, codDespesa, codEmpresa, "
+                        + "codProduto, quantidade, precoCusto) "
+                        + "VALUES (?,?,?,?,?,?);");
+
+                stmt.setInt(1, produtoComprado.getCodCompra());
+                stmt.setInt(2, produtoComprado.getCodDespesa());
+                stmt.setInt(3, produtoComprado.getCodEmpresa());
+                stmt.setInt(4, produtoComprado.getCodProduto());
+                stmt.setDouble(5, produtoComprado.getQuantidadeProduto());
+                stmt.setDouble(6, produtoComprado.getPrecoCusto());
+
+                stmt.executeUpdate();
+
+                // atualiza as quantidades na tabela de produtos
+                // de acordo com as alterações feitas na tabela de produtosComprados
+                stmt = conn.prepareStatement("UPDATE produto SET quantidadeEstoque = quantidadeEstoque + "
+                        + "" + produtoComprado.getQuantidadeProduto() + " WHERE codProduto = " + produtoComprado.getCodProduto());
+
+                stmt.executeUpdate();
+            }
             stmt.close();
-            conn.close();
-            System.out.println("Informações atualizadas com sucesso!");
+
+            conn.commit();
+            conn.setAutoCommit(true);
+
+            JOptionPane.showMessageDialog(null, "Informações atualizadas com sucesso!");
+            return true;
         } catch (SQLException erroAtualizarCompra) {
-            System.out.println(erroAtualizarCompra.getMessage());
+            JOptionPane.showMessageDialog(null, erroAtualizarCompra.getMessage());
+            return false;
         }
     }
 
@@ -160,7 +225,7 @@ public class CompraCRUD {
             stmt = conn.prepareStatement("SELECT codCompra, codDespesa, codEmpresa, codParcelamento, "
                     + "codFornecedor, TO_CHAR(data, 'ddMMyyyy') AS data, desconto, descricao, totalBruto, totalLiquido "
                     + "FROM compra WHERE codCompra = " + codigoCompra + ";");
-           
+
             result = stmt.executeQuery();
             while (result.next()) {
                 compra.setCodCompra(result.getInt("codCompra"));
